@@ -1,0 +1,205 @@
+% The "Buttons.dem" program.
+% This demonstrates the Button widget along with the GUI routines
+% that use Button widgets. [SetDefault, Enable, Disable, Show, Hide,
+% SetPosition, SetPositionAndSize, Refresh, SetLabel, Quit, CreateButton,
+% CreateButtonFull, ProcessEvent, Dispose]
+
+import GUI % Must be included in a programs using the GPL
+
+View.Set ("graphics:400;300,noecho,nobuttonbar") % Shrink the window to the minimum size
+
+% The button IDs
+var button1, button2 : int
+var changeDefaultButton, enableDisableButton, showHideButton : int
+var moveButton, resizeButton, refreshButton, changeText1Button : int
+var changeText2Button, quitButton : int
+
+% Variables used by the button routines
+var newDefault := 1 % Which button to make default
+var enable := false % Whether to enable or disable the button
+var hide := true % Whether to hide or show the button
+var right := true % Whether to move the button right or left
+var big := true % Whether ot make the button big or small
+% The array of names for button 1
+const button1Names : array 0 .. 4 of string := init ("Button 1", "a",
+    "abcdef", "abcdefghijkl",
+    "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+var text1 := 1 % The array index to change button 1 to
+% The array of names for button 2
+const button2Names : array 0 .. 4 of string := init ("Button 2", "a",
+    "abcdef", "abcdefghijkl",
+    "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+var text2 := 1 % The array index to change button 2 to
+
+% The routines the widgets call when pressed
+% Called when button 1 is pressed
+procedure Button1Pressed
+    locate (1, 1)
+    put "Button 1 Pressed                        " ..
+end Button1Pressed
+
+% Called when button 2 is pressed
+procedure Button2Pressed
+    locate (1, 1)
+    put "Button 2 Pressed                        " ..
+end Button2Pressed
+
+% Called when enable/disable button is pressed
+procedure EnableDisablePressed
+    locate (1, 1)
+    if enable then
+	put "Button 1 Enabled                        " ..
+	GUI.Enable (button1) % Enable Button 1
+	enable := false
+	GUI.SetLabel (enableDisableButton, "Disable Button 1")
+    else
+	put "Button 1 Disabled                       " ..
+	GUI.Disable (button1) % Disable Button 1
+	enable := true
+	GUI.SetLabel (enableDisableButton, "Enable Button 1")
+    end if
+end EnableDisablePressed
+
+% Called when show/hide button is pressed
+procedure ShowHidePressed
+    locate (1, 1)
+    if hide then
+	put "Button 1 Hidden                         " ..
+	GUI.Hide (button1) % Hide Button 1
+	hide := false
+	GUI.SetLabel (showHideButton, "Show Button 1")
+    else
+	put "Button 1 Shown                          " ..
+	GUI.Show (button1) % Show Button 1
+	hide := true
+	GUI.SetLabel (showHideButton, "Hide Button 1")
+    end if
+end ShowHidePressed
+
+% Called when move button is pressed
+procedure MovePressed
+    locate (1, 1)
+    if right then
+	put "Button 1 Moved Right                    " ..
+	GUI.SetPosition (button1, 280, maxy - 125) % Move Button 1 Right
+	right := false
+	GUI.SetLabel (moveButton, "Move Button 1 Left")
+    else
+	put "Button 1 Moved Left                     " ..
+	GUI.SetPosition (button1, 60, maxy - 125) % Move Button 1 Left
+	right := true
+	GUI.SetLabel (moveButton, "Move Button 1 Right")
+    end if
+end MovePressed
+
+% Called when refresh button is pressed
+procedure RefreshPressed
+    Draw.FillBox (0, 0, maxx, maxy, GUI.GetBackgroundColour) % Clear the screen
+    GUI.Refresh % Redraw all the widgets on the screen
+end RefreshPressed
+
+% Called when change button 1's text is pressed
+procedure ChangeText1Pressed
+    locate (1, 1)
+    put "Button 1 Text Becomes: " + button1Names (text1) +
+	"                                   " ..
+    GUI.SetLabel (button1, button1Names (text1))
+    text1 := (text1 + 1) mod 5
+end ChangeText1Pressed
+
+% Called when change button 2's text is pressed
+procedure ChangeText2Pressed
+    locate (1, 1)
+    put "Button 2 Text Becomes: " + button2Names (text2) +
+	"                                   " ..
+    GUI.SetLabel (button2, button2Names (text2))
+    text2 := (text2 + 1) mod 5
+end ChangeText2Pressed
+
+% Called when resize button is pressed
+procedure ResizePressed
+    locate (1, 1)
+    if big then
+	put "Button 1 Made Large                     " ..
+	% Move and Resize Button 1
+	GUI.SetPositionAndSize (button1, 280, maxy - 125, 100, 100)
+	big := false
+	GUI.SetLabel (resizeButton, "Make Button 1 Small")
+    else
+	put "Button 1 Made Small                     " ..
+	% Move and Resize Button 1
+	GUI.SetPositionAndSize (button1, 60, maxy - 125, 0, 0)
+	big := true
+	GUI.SetLabel (resizeButton, "Make Button 1 Large")
+    end if
+end ResizePressed
+
+% Called when change default button is pressed
+procedure ChangeDefaultPressed
+    locate (1, 1)
+    if newDefault = 1 then
+	put "Button 1 Made Default                   " ..
+	GUI.SetDefault (button1, true) % Make button 1 default
+	newDefault := 2
+	GUI.SetLabel (changeDefaultButton, "Set Button 2 as default")
+    else
+	put "Button 2 Made Default                   " ..
+	GUI.SetDefault (button2, true) % Make button 2 default
+	newDefault := 1
+	GUI.SetLabel (changeDefaultButton, "Set Button 1 as default")
+    end if
+end ChangeDefaultPressed
+
+% Called when quit button is pressed.
+procedure QuitPressed
+    GUI.Quit
+end QuitPressed
+
+% The main program
+% Create the buttons
+button1 := GUI.CreateButton (60, maxy - 125, 0, "Button 1", Button1Pressed)
+button2 := GUI.CreateButtonFull (160, maxy - 125, 100, "Button 2",
+    Button2Pressed, 100, GUI.NONE, true)
+
+% Create the dividing line
+var line := GUI.CreateLine (0, maxy - 135, maxx, maxy - 135, 0)
+
+% Create the buttons
+enableDisableButton := GUI.CreateButton (33, maxy - 170, 150,
+    "Disable Button 1", EnableDisablePressed)
+showHideButton := GUI.CreateButton (216, maxy - 170, 150, "Hide Button 1",
+    ShowHidePressed)
+moveButton := GUI.CreateButton (33, maxy - 200, 150, "Move Button 1 Right",
+    MovePressed)
+refreshButton := GUI.CreateButton (216, maxy - 200, 150, "Refresh",
+    RefreshPressed)
+changeText1Button := GUI.CreateButton (33, maxy - 230, 150,
+    "Change Button 1 Text", ChangeText1Pressed)
+changeText2Button := GUI.CreateButton (216, maxy - 230, 150,
+    "Change Button 2 Text", ChangeText2Pressed)
+resizeButton := GUI.CreateButton (33, maxy - 260, 150, "Make Button 1 Large",
+    ResizePressed)
+changeDefaultButton := GUI.CreateButton (216, maxy - 260, 150,
+    "Set Button 1 as default", ChangeDefaultPressed)
+quitButton := GUI.CreateButton (125, maxy - 290, 150, "Quit", QuitPressed)
+
+% Process events, exit loop when GUI.QUIT called
+loop
+    exit when GUI.ProcessEvent
+end loop
+
+% Do the clean up.  Dispose of all but the main buttons.
+GUI.Dispose (enableDisableButton)
+GUI.Dispose (showHideButton)
+GUI.Dispose (moveButton)
+GUI.Dispose (refreshButton)
+GUI.Dispose (changeText1Button)
+GUI.Dispose (changeText2Button)
+GUI.Dispose (resizeButton)
+GUI.Dispose (changeDefaultButton)
+GUI.Dispose (quitButton)
+
+% Create a label to indicate we're finished
+var quitMessage := GUI.CreateLabelFull (0, 0, "Execution Terminated",
+    maxx, maxy - 135, GUI.CENTER + GUI.MIDDLE, 0)
+

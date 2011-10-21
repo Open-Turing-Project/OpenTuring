@@ -1,0 +1,221 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "Coder"=.\vc projects\Coder.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Compiler"=.\vc projects\Compiler.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Debugger"=.\vc projects\Debugger.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Editor"=.\vc projects\Editor.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Executor"=.\vc projects\Executor.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "FileManager"=.\vc projects\FileManager.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "GIF"=.\vc projects\GIF.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Interpreter"=.\vc projects\Interpreter.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "JPEG"=.\vc projects\JPEG.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "MIO"=.\vc projects\MIO.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "TLib"=.\vc projects\TLib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "TLib Override"=".\vc projects\TLib Override.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Turing"=.\vc projects\Turing.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name Coder
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Compiler
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Debugger
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Editor
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Executor
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name FileManager
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Interpreter
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name TLib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name TLib Override
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name MIO
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name JPEG
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name GIF
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "Turing License DLL"=".\vc projects\Turing License DLL.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

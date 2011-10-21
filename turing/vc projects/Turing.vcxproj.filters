@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{db8c1168-86a2-4acb-9f4d-93cd32237828}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{36797d53-941e-4ed1-8e6e-459c793892ac}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{078c054f-77b1-40d0-8795-c047c4797fa9}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\ready\src\rsrc\breakpoint.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\ready\src\rsrc\breakpoint.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\ready\src\rsrc\dbgdir.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\ready\src\rsrc\dbgfile.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\ready\src\rsrc\dbgfont.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\ready\src\rsrc\dbglexer.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\ready\src\rsrc\dbgnet.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\ready\src\rsrc\dbgpic.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\ready\src\rsrc\dbgsprite.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\ready\src\rsrc\dbgunknown.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\ready\src\rsrc\dbgwin.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\ready\src\rsrc\readyclass.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\ready\src\rsrc\readyjava.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\ready\src\rsrc\turing.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\ready\src\rsrc\turingdem.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\ready\src\rsrc\turingfile.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\ready\src\rsrc\turinginclude.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\ready\src\rsrc\turingrunsm.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\ready\src\rsrc\turingunit.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\ready\src\rsrc\two_up.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\ready\src\ed.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+    <ResourceCompile Include="src\mio.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\Debug\HTMLHELP.LIB" />
+  </ItemGroup>
+</Project>

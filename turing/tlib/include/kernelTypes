@@ -1,0 +1,117 @@
+#if not TL_KERNEL_TYPES then
+#define TL_KERNEL_TYPES
+
+%
+% file containing MACHINE and IMPLEMENTATION DEPENDENT
+%  definitions for Turing Plus Library (SUN3 version)
+%
+%
+
+% -- software priorities (nat type)
+%
+type * TL_priority_t: nat
+const * lowestPriority  : TL_priority_t := 16#7fff
+const * defaultPriority : TL_priority_t := 1000
+const * highestPriority : TL_priority_t := 0
+
+include "%handler"	/* handler types */
+
+/*
+ * interrupt procedures on UNIX systems are really signal handlers,
+ *
+ * Thus, interrupt procedure's 'deviceSpecification' is a signal number
+ * Thus, device monitor's 'compileTimeExpn' is a signal mask
+ *
+*/
+
+type * TL_hardwarePriority_t: set of 1 .. 32
+const * defaultHardwarePrio := TL_hardwarePriority_t()
+const * hiHardwarePrio      := TL_hardwarePriority_t(all)
+
+%   
+% timeslice_off - do not allow context switching.
+%   We do this by blocking out all UNIX signals.
+%   
+% Don't block SIGHUP and SIGQUIT so we can always kill the program
+% in case of bugs in TLD or TLK
+% Don't block SIGCONT, SIGSTOP or SIGKILL since system does
+% not allow these signals to be blocked anyway
+%   
+%
+/*
+const * timeslice_off: sigmask
+     := sigmask(all) - sigmask(SIGTRAP, SIGHUP,SIGQUIT,SIGCONT,SIGSTOP,SIGKILL)
+*/
+
+
+% -- lockStatus_t and lock_t is used by TLKLKON() and TLKLKOFF()
+%
+type *TL_lockStatus_t : TL_hardwarePriority_t
+type *TL_lock_t : nat4   % semaphore type, for locking queues on multi-cpus
+
+
+% -- Process Descriptor - used by TLK
+%
+var TL_Process	    : unchecked collection of forward TL_ProcessDescriptor
+type * TL_PDpointer : pointer to TL_Process
+
+% -- record used in doubly linked lists of process descriptors
+type TL_link_t :
+  record
+    flink : TL_PDpointer	% forward link
+    blink : TL_PDpointer	% backward link
+  end record
+
+
+type *TL_ProcessDescriptor :
+    record
+	% -- note: TLK initializes all these fields at 'fork' time
+
+	% -- compiler/translator know about these so they must be FIRST :
+	% -- TLE and TLK also use and modify some of these 
+	%
+	lineAndFile	: nat4		% line and file number
+	fileTable	: addressint	% pointer to table of file names
+	stackLimit	: addressint	% upper limit of stack 
+	stackPointer	: addressint	% saved sp when process is not running
+	handlerQhead	: TL_HApointer	% ptr to link list of abort handlers
+	currentHandler	: TL_HApointer	% ptr to currently running abort handler
+
+	% -- fields used and modified by TLE
+	%
+	name		: addressint	    % (r/o) name of process
+	exception	: TL_ExceptionInfo  % (r/w) abort information
+
+	% -- fields used and modfied by TLM
+	%
+	waitParameter	: nat4		% 'wait' argument for priority condition
+	monitorQlink	: TL_PDpointer	% link used in monitor & condition Qs
+	timeOutStatus	: nat4          % process status re: timeout conditions
+
+	% -- the following fields maintained only by TLK
+	%
+	pid		: nat4		% process id
+
+	memoryBase	: addressint	% lower bound of allocated memory
+
+	timeoutTime	: nat4		% non-zero value when on timeoutQ
+	timeoutEpoch	: nat4		% epoch count
+	timeoutQ	: TL_link_t	% links used in timerQ
+	timedOut	: boolean	% TRUE when timed-out 
+	pausing		: boolean	% TRUE when doing a "pause" 
+
+	dispatchPriority: TL_priority_t	% scheduling priority
+	runQlink	: TL_PDpointer	% link used in runQ and dead process Q
+	ready		: boolean	% true when running or on run queue
+
+	tsyncWaiter     : TL_PDpointer	% pointer to process asleep
+
+	quantum		: nat		% number of ticks per timeslice
+	quantumCntr	: nat		% number of ticks left in timeslice
+
+	devmonLevel     : nat		% nesting into device monitors
+
+	otherInfo	: addressint	% ptr to user defined info
+    end record
+
+#end if

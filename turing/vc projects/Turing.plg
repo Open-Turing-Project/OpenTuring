@@ -1,0 +1,126 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: MIO - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\Tom\LOCALS~1\Temp\RSP2D.tmp" with contents
+[
+/nologo /MTd /W3 /WX /Gm /GX /Zi /Od /I "p:\ready\src" /I "..\..\ready\src" /I "..\..\ready\src\tools" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /D "_CRTDBG_MAP_ALLOC" /D "_WINDOWS" /D "_WINOOT_" /D _WIN32_IE=0x0300 /D "_MEMORY_CHECK" /Fp"..\obj\Debug\MIO/MIO.pch" /YX /Fo"..\obj\Debug\MIO/" /Fd"..\obj\Debug\MIO/" /FD /GZ /c 
+"P:\turing\src\mdio.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Tom\LOCALS~1\Temp\RSP2D.tmp" 
+Creating temporary file "C:\DOCUME~1\Tom\LOCALS~1\Temp\RSP2E.tmp" with contents
+[
+/nologo /out:"..\obj\Debug\MIO\MIO.lib" 
+"\turing\obj\Debug\MIO\mdio.obj"
+"\turing\obj\Debug\MIO\mdioconfig.obj"
+"\turing\obj\Debug\MIO\mdiodir.obj"
+"\turing\obj\Debug\MIO\mdiodraw.obj"
+"\turing\obj\Debug\MIO\mdiofile.obj"
+"\turing\obj\Debug\MIO\mdiofont.obj"
+"\turing\obj\Debug\MIO\mdiogui.obj"
+"\turing\obj\Debug\MIO\mdiojoy.obj"
+"\turing\obj\Debug\MIO\mdiomusic.obj"
+"\turing\obj\Debug\MIO\mdionet.obj"
+"\turing\obj\Debug\MIO\mdiopc.obj"
+"\turing\obj\Debug\MIO\mdiopic.obj"
+"\turing\obj\Debug\MIO\mdiopicgif.obj"
+"\turing\obj\Debug\MIO\mdiopicjpeg.obj"
+"\turing\obj\Debug\MIO\mdiorgb.obj"
+"\turing\obj\Debug\MIO\mdiosprite.obj"
+"\turing\obj\Debug\MIO\mdiosys.obj"
+"\turing\obj\Debug\MIO\mdiotime.obj"
+"\turing\obj\Debug\MIO\mdioutil.obj"
+"\turing\obj\Debug\MIO\mdiowin.obj"
+"\turing\obj\Debug\MIO\mdiowingraph.obj"
+"\turing\obj\Debug\MIO\mdiowintext.obj"
+"\turing\obj\Debug\MIO\mdiowintop.obj"
+"\turing\obj\Debug\MIO\mio.obj"
+"\turing\obj\Debug\MIO\mioconfig.obj"
+"\turing\obj\Debug\MIO\miodir.obj"
+"\turing\obj\Debug\MIO\miodraw.obj"
+"\turing\obj\Debug\MIO\mioerror.obj"
+"\turing\obj\Debug\MIO\miofile.obj"
+"\turing\obj\Debug\MIO\miofont.obj"
+"\turing\obj\Debug\MIO\miogui.obj"
+"\turing\obj\Debug\MIO\miojoy.obj"
+"\turing\obj\Debug\MIO\miolexer.obj"
+"\turing\obj\Debug\MIO\miomouse.obj"
+"\turing\obj\Debug\MIO\miomusic.obj"
+"\turing\obj\Debug\MIO\mionet.obj"
+"\turing\obj\Debug\MIO\miopc.obj"
+"\turing\obj\Debug\MIO\miopic.obj"
+"\turing\obj\Debug\MIO\miorgb.obj"
+"\turing\obj\Debug\MIO\miosprite.obj"
+"\turing\obj\Debug\MIO\miosys.obj"
+"\turing\obj\Debug\MIO\miotext.obj"
+"\turing\obj\Debug\MIO\miotime.obj"
+"\turing\obj\Debug\MIO\mioview.obj"
+"\turing\obj\Debug\MIO\miowin.obj"
+"\turing\obj\Debug\MIO\miowindow.obj"
+"\turing\obj\Debug\MIO\miowingraph.obj"
+"\turing\obj\Debug\MIO\miowintext.obj"
+"\turing\obj\Debug\MIO\miowrapper.obj"
+]
+Creating command line "link.exe -lib @C:\DOCUME~1\Tom\LOCALS~1\Temp\RSP2E.tmp"
+<h3>Output Window</h3>
+Compiling...
+mdio.c
+Creating library...
+<h3>
+--------------------Configuration: Turing - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\Tom\LOCALS~1\Temp\RSP2F.bat" with contents
+[
+@echo off
+del ..\test\turing.exe
+]
+Creating command line "C:\DOCUME~1\Tom\LOCALS~1\Temp\RSP2F.bat"
+Creating temporary file "C:\DOCUME~1\Tom\LOCALS~1\Temp\RSP30.tmp" with contents
+[
+libcmtd.lib version.lib winmm.lib comctl32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /incremental:yes /pdb:"..\Debug/Turing.pdb" /debug /machine:I386 /out:"..\Debug/Turing.exe" /pdbtype:sept 
+"\turing\Debug\ed.res"
+"..\Debug\HTMLHELP.LIB"
+"\turing\obj\Debug\Coder\Coder.lib"
+"\turing\obj\Debug\Compiler\Compiler.lib"
+"\turing\obj\Debug\Debugger\Debugger.lib"
+"\turing\obj\Debug\Editor\Editor.lib"
+"\turing\obj\Debug\Executor\Executor.lib"
+"\turing\obj\Debug\FileManager\FileManager.lib"
+"\turing\obj\Debug\Interpreter\Interpreter.lib"
+"\turing\obj\Debug\TLib\TLib.lib"
+"\turing\obj\Debug\TLib_Override\TLib Override.lib"
+"\turing\obj\Debug\MIO\MIO.lib"
+"\turing\obj\Debug\JPEG\JPEG.lib"
+"\turing\obj\Debug\GIF\GIF.lib"
+]
+Creating command line "link.exe @C:\DOCUME~1\Tom\LOCALS~1\Temp\RSP30.tmp"
+
+<h3>Output Window</h3>
+Linking...
+Creating temporary file "C:\DOCUME~1\Tom\LOCALS~1\Temp\RSP32.bat" with contents
+[
+@echo off
+copy ..\Debug\turing.exe ..\test\turing.exe
+echo Copied turing.exe
+copy ..\Debug\turing.pdb ..\test\support\bin\turing.pdb
+echo Copied turing.pdb
+]
+Creating command line "C:\DOCUME~1\Tom\LOCALS~1\Temp\RSP32.bat"
+
+        1 file(s) copied.
+Copied turing.exe
+        1 file(s) copied.
+Copied turing.pdb
+
+
+
+<h3>Results</h3>
+Turing.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

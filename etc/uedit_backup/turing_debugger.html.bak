@@ -1,0 +1,225 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Turing Debugger Guide</title>
+</head>
+<body>
+<h1>Turing Debugger Guide</h1>
+<h2>Introduction</h2>
+Turing supports a number of tools to enable users to debug their programs and
+examine program execution.  Some of the available tools are:
+<ul>
+  <li><a href="#step">Stepping execution</a> a line at a time.
+  <li><a href="#trace">Tracing execution</a> with a set pause between 
+      lines of execution
+  <li><a href="#bp">Setting breakpoints</a> to pause execution at 
+      specified points in the program.
+  <li><a href="#alloc">Viewing all open resources</a> of a program including files, fonts,
+      pictures, etc.
+</ul>
+As of May 2002, the Turing 4.0.5 software does contain the following feature:
+<ul>
+  <li>View variables.
+</ul>
+This feature will be implemented over the summer of 2002 and should be 
+available by September 2002.
+
+<h2>Displaying The Debugger Menu</h2>
+In order to use any of the debugger commands, you need to have the Debugger
+menu showing in the Editor window.  By default, the Debugger menu is hidden
+in order to simplify the Turing environment for the majority of students not
+using the debugger.
+<p>
+There are two ways that the Debugger menu can be displayed.  You can select
+the <b>Show Debugger Menu</b> command in the <b>Run</b> menu.
+<p> 
+<center>
+  <img src="turing_debugger01.gif"><br>
+  <b><b>Show Debugger Menu</b> command in the <b>Run</b> menu</b>
+</center>
+<p> 
+If you are consistenly using the debugger, then you should change the 
+Preferences so that the Debugger menu is always displayed.  This can
+be done by bringing up the <b>Editor Window</b> pane of the <b>Preferences</b>
+dialog box and setting the <b>Always Show 'Debugger' Menu</b> check box.
+<p> 
+<center>
+  <img src="turing_admin10.gif"><br>
+  <b>Always Show 'Debugger' Menu in the Editor Window Pane</b>
+</center>
+<p> 
+
+<h2>Using The Debugger Menu</h2>
+<p> 
+<center>
+  <img src="turing_debugger02.gif"><br>
+  <b><b>Show Debugger Menu</b> command in the <b>Run</b> menu</b>
+</center>
+<p> 
+The Debugger menu gives you access to all the debugging features in Turing 4.0.
+The following menu options are available:
+<ul>
+  <li><b>Show Debugger Controls</b><br>
+      This command causes each Editor window to display a second row of 
+      controls at the top of the window (called the Debugger controls) 
+      that allow the user to step through a program and trace execution 
+      of the program.  When the Debugger controls are visible, then this
+      menu item changes to <b>Hide Debugger Controls</b>.
+      <p> 
+      <center>
+        <img src="turing_debugger03.gif"><br>
+        <b>Window with Debugger Controls Visible</b>
+      </center>
+      <p> 
+  <li><b>Show Breakpoints</b>
+      This command causes each Editor window to dislay an area on the left
+      where breakpoints can be placed.  A breakpoint is a marker that causes
+      the program to pause when execution reaches the marked line.
+      <p> 
+      <center>
+        <img src="turing_debugger04.gif"><br>
+        <b>Window with Breakpoint Visible</b>
+      </center>
+      <p> 
+  <li><b>Clear Breakpoints</b>
+      This command quickly eliminates all breakpoints that have been set in 
+      any Editor window.       
+  <li><b>Show Allocated Objects</b>
+      This command shows all the files, fonts, pictures, etc that have been
+      opened or created by the program but have not been closed. As the program
+      executes, this window updates every time a resource is allocated or freed.
+      <p> 
+      <center>
+        <img src="turing_debugger05.gif"><br>
+        <b>Allocated Objects Window</b>
+      </center>
+</ul>
+
+<h2>Turing Execution</h2>
+The rest of this document will use some terms that must be understood properly.
+<ul>
+  <li><b>Running</b> - A Turing program is running when statements are being
+      continuously executed without human intervention.  However, running
+      may be stalled while the program is waiting for keyboard input, executing
+      a delay statement, etc.
+  <li><b>Paused</b> - A Turing program is paused when execution is 
+      temporarily halted.  No input is accepted by the program while
+      it is paused.  A program can become paused in a variety of ways including:
+      <ul>
+        <li>The user pressing the <b>Pause</b> button.
+        <li>The user pressing a <b>Step</b>, <b>Step Over</b> or 
+            <b>Step Return</b> button.
+        <li>Execution reaching a breakpoint.
+        <li>Execution reaching the <b>break</b> statement in a program.
+      </ul>
+      When a Turing program is paused, the line in the source code on which 
+      the Turing program was about to execute is highlighted.<br>
+      In each case, the program can resume running by clicking the 
+      <b>Resume</b> button.  The program can also temporarily resume running
+      by the user pressing the <b>Step</b>, <b>Step Over</b> or 
+      <b>Step Return</b> button.  Once the statement or statements are finished
+      running, the program is paused again.
+  <li><b>Executing</b> - A program is executing when it is either <b>Running</b>
+      or <b>Paused</b>.
+  <li><b>Halted</b> - A Turing program is halted when it can no longer 
+      executing.  It cannot be resumed and must be started from the beginning
+      in order to run it again.  A program can be halted by:
+      <ul>
+        <li>The user pressing the <b>Stop</b> button.
+        <li>A run-time error.
+        <li>The user closing a Run window.
+      </ul>
+</ul>  
+
+<h2><a name="step"></a>Stepping a Program</h2>
+Stepping a program consists of executing a Turing program a line at a time.
+After each step command, execution pauses, highlighting the next line to be 
+executed.  To step a program, the program must not be running.  The Debugger
+controls in the Editor window must be visible.  To step the program, the 
+user clicks one of the three buttons in the Debugger Controls:
+<ul>
+  <li><b>Step</b> - If the program is halted, this executes the very first
+      line of code and then pauses.  If the program is paused, it executes
+      the highlighted line of code and then pauses.  If it line of code to
+      be executed is a subprogram call, then it enters the subprogram and 
+      pauses at the first line of code in the subprogram.  If it is at the
+      end of the subprogram, then it leaves the subprogram and pauses at
+      the subprogram call.  This command is sometimes called <b>Step Into</b>.
+  <li><b>Step Over</b> - This executes a single line of code.  However, if
+      the program is paused at a subprogram call, then the entire subprogram
+      is executed and execution is paused at the next line after the subprogram
+      call.
+  <li><b>Step Return</b> - This resumes execution until the execution returns
+      from a subprogram. The next line after the subprogram call.  Note that
+      if this command is given in the main program, then execution will continue
+      until the program terminates.
+</ul>
+
+<h2><a name="trace"></a>Tracing a Program</h2>
+Tracing a program is simply executing a program slowly with each line of code
+in the program being highlighted as it is executed.  Tracing allows users
+to see how control constructs operate.  Unlike stepping, with tracing, execution
+continues until it is paused or halted in some other fashion.
+<p>
+To start a program tracing, the Debugger Controls must be visible.  The user
+then clicks the <b>Trace Execution</b> check box.  When the program is next 
+running, each time a statement is executed, the line in the source code will be
+highlighted.  The speed at which the tracing occurs is controlled by the 
+<b>Trace Speed</b> slider found in the Debugger Controls.  When the slider is
+on the left, there is essentially no delay between execution of statements.  
+(Note that execution will still be much slower than not tracing due to the time
+taken to highlight each executing statement.)  When the slider is on the right,
+each statement will wait for about 5 seconds after executing before the next
+statement is executed.
+
+<h2><a name="bp"></a>Setting Breakpoints</h2>
+Often only a particular section of code is of interest to the user. Breakpoints 
+provide a mechanism for pausing a program only when execution reaches a 
+specified statement.  To set breakpoints, they need to be displayed in the 
+Editor window.  This is done with the <b>Show Breakpoints</b> command in the 
+<b>Debugger</b> menu.  Once breakpoints are visible, they can be set (and 
+removed) by simply clicking the mouse in the breakpoint area.  When the mouse
+is over the breakpoint area, it turns into a diamond.  When the breakpoint is
+set, a red diamond appears in the breakpoint area.  To remove the breakpoint,
+simply click the red diamond and the breakpoint disappears.
+<p> 
+<center>
+  <img src="turing_debugger04.gif"><br>
+  <b>Window with Two Breakpoints Set</b>
+</center>
+<p>
+When execution reaches a line with a breakpoint on it, the program pauses
+and the line is highlighted.  The program can then be resumed or stepped as
+desired.  Note that it is possible to set a breakpoint on a line that is not
+executed.  If you place a breakpoint on a blank line, it is quite likely that
+execution will not stop.  Likewise, in lines broken over multiple lines, it
+is best to put the breakpoint on the last line in the statement.
+<p>
+To clear all the breakpoints, select <b>Clear Breakpoints</b> from the 
+<b>Debugger</b> menu.
+
+<h2><a name="alloc"></a>Viewing Open Files/Pictures/Fonts, etc.</h2>
+A common error in Turing programs is to neglect to close open files (using 
+the <b>Close</b> statement) or free pictures or fonts (using the <b>Pic.Free</b>
+or <b>Font.Free</b> procedures).  The <b>Allocated Objects</b> window displays
+all allocated resources until they are freed. This window is displayed by
+selecting the <b>Show Allocated Objects</b> command from the <b>Debugger</b>
+menu. The command can be given even after a program has halted.  It is a
+useful command to use when am <b>open</b>, Pic.New or Font.New has failed
+because of too many open files, pictures or fonts.
+<p>
+The window will also display just how much memory each picture takes up.
+<p> 
+<center>
+  <img src="turing_debugger05.gif"><br>
+  <b>Allocated Objects Window</b>
+</center>
+<p>
+Clicking on the line containing the allocated object will highlight the line in
+the code where the object was allocated.  The headings on each of the columns
+can be clicked allowing the objects to be sorted either by their ID, or by
+where in the program they were allocated.
+<p>
+
+</head>
+</html>

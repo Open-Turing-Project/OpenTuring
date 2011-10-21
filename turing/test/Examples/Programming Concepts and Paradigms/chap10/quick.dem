@@ -1,0 +1,69 @@
+% File "quick.dem".
+% Generate a random list of 10 elements and sort using quick sort.
+
+procedure swap (var list : array 1 .. * of string (*), i, j : int)
+    const temp := list (i)
+    list (i) := list (j)
+    list (j) := temp
+end swap
+
+procedure shift (var list : array 1 .. * of string (*), i, j : int)
+    const temp := list (j)
+    for decreasing k : j .. i + 1
+        list (k) := list (k - 1)
+    end for
+    list (i) := temp
+end shift
+
+procedure fakeData (var list : array 1 .. * of string (*),
+        numberOfElements : int)
+    for i : 1 .. numberOfElements
+        list (i) := "" % Null string.
+        for letterIndex : 1 .. 4 % Pick four letters at random.
+            list (i) += chr (Rand.Int (ord ("a"), ord ("z")))
+        end for
+    end for
+end fakeData
+
+procedure printList10 (list : array 1 .. * of string (*))
+    for i : 1 .. 10
+        put list (i), " " ..
+    end for
+    put ""
+end printList10
+
+procedure quickSort (var list : array 1 .. * of string (*),
+        left, right : int)
+    var pivotPlace : int
+    % Temporary statements to trace execution.
+    put left : 3, right : 3, " " ..
+    printList10 (list)
+    % Place pivot at left side of list.
+    swap (list, left, (left + right) div 2)
+    var lastSmall := left
+    for i : left + 1 .. right
+        if list (i) <= list (left) then
+            lastSmall += 1
+            swap (list, lastSmall, i)
+        end if
+    end for
+    % Place pivot at boundary.
+    swap (list, left, lastSmall)
+    pivotPlace := lastSmall
+    % Sort left part.
+    if left < pivotPlace - 1 then
+        quickSort (list, left, pivotPlace - 1)
+    end if
+    % Sort right part.
+    if pivotPlace + 1 < right then
+        quickSort (list, pivotPlace + 1, right)
+    end if
+end quickSort
+
+var list : array 1 .. 10 of string (4)
+fakeData (list, 10)
+printList10 (list)
+quickSort (list, 1, 10)
+printList10 (list)
+
+

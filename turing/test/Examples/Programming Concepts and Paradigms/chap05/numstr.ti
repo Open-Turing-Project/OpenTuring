@@ -1,0 +1,16 @@
+% File "numstr.ti".  Procedure to find the representation s
+% of the value n in base b.
+procedure numstr (n : int, b : int, var s : string)
+    const digits := "0123456789ABCDEF"
+    if n = 0 then
+        s := "0"
+    else
+        var v := n  % Initialize v to value n.
+        s := ""  % Initialize string to null.
+        loop
+            exit when v = 0
+            s := digits (v mod b + 1) + s  % Catenate next digit on left of string.
+            v := v div b  % Divide value by base.
+        end loop
+    end if
+end numstr

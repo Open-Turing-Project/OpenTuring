@@ -1,0 +1,131 @@
+#include "jsdialogs.h"
+#include "jscommands.h"
+//
+// Icons
+//
+APP_ICON	ICON	DISCARDABLE	"rsrc\\ready.ico"
+APP_SMALL_ICON	ICON	DISCARDABLE	"rsrc\\readysm.ico"
+RUN_ICON	ICON	DISCARDABLE	"rsrc\\ready.ico"
+RUN_SMALL_ICON	ICON	DISCARDABLE	"rsrc\\readyrunsm.ico"
+
+//
+// Strings
+//
+STRINGTABLE
+{
+    // JSMain - Error Messages
+    IDS_ERROR_BOX_TITLE		"Internal Java Supervisor Error"
+    IDS_NO_JAVA_DLL_SUPPLIED	"The ""-java <path to Java VM DLL>"" option was not supplied"
+    IDS_NO_CLASSPATH_SUPPLIED	"The ""-cp <classpath>"" option was not supplied"
+    IDS_NO_CLASSNAME_SUPPLIED	"The ""-class <name of class file>"" option was not supplied"
+    IDS_NO_DIRECTORY_SUPPLIED	"The ""-dir <directory>"" option was not supplied"
+    IDS_UNABLE_TO_LOAD_LIBRARY	"Unable to load JavaVM DLL located at ""%1""\n\nError Message=%2\nError Code=%3!d!"
+    IDS_UNABLE_TO_FIND_PROC	"Unable to locate procedure ""%1"" in DLL located at ""%2"""
+    IDS_UNABLE_TO_FIND_CLASS	"Unable to find the class ""%1"""
+    IDS_UNABLE_TO_FIND_METHOD	"Unable to find the method ""%2"" in the class ""%1"""
+    IDS_CANT_CHANGE_DIR		"Cannot change directory to ""%1"". Error code = %2!d!"
+    IDS_MALFORMED_OPTION	"Malformed command line option.\nOption line is\n\n   ""%1"""
+    IDS_OUT_OF_MEM_FOR_STRING	"Out of memory allocating space for string ""%1"""
+    IDS_ALLOC_CONSOLE_FAILED	"Cannot create output console.  Error code = %1!d!"
+    IDS_UNKNOWN_OPTION		"Unknown command line option ""%1"""
+    IDS_JVM_CREATION_FAILED	"Unable to create Java VM"
+    IDS_CANT_LOAD_LIB		"Unable to load library ""%1""\n\nError Message=%2\nError Code=%3!d!"
+    IDS_UNEXPECTED_PATH		"Illegal application path name ""%1"""
+    IDS_UNABLE_TO_CREATE_THREAD	"Unable to create thread"
+    IDS_CANT_FREE_MEMORY	"Unable to free memory allocated by DLL"
+    IDS_CANT_OPEN_FILE		"Execution - Open File Failed"
+    IDS_CANT_OPEN_FILE_FOR_READ	"Unable to open input file ""%1"" for read\n\nError Message=%2\nError Code=%3!d!"
+    IDS_CANT_OPEN_FILE_FOR_WRITE "Unable to open output file ""%1"" for write\n\nError Message=%2\nError Code=%3!d!"
+    IDS_BAD_FULLSCREEN_OPTION	"Bad Fullscreen Option.\nMust be T of F.\nRead ""%1"""
+    IDS_BAD_TEXTROWS_OPTION	"Bad Text Rows Option.\nMust be integer.\nRead ""%1"""
+    IDS_BAD_TEXTCOLS_OPTION	"Bad Text Cols Option.\nMust be integer.\nRead ""%1"""
+    IDS_BAD_TEXTFONTSIZE_OPTION	"Bad Font Size Option.\nMust be integer.\nRead ""%1"""
+    IDS_BAD_CARETWIDTH_OPTION	"Bad Caret Width Option.\nMust be integer.\nRead ""%1"""
+    IDS_BAD_LOGGING_OPTION	"Bad Logging Option.\nMust be T of F.\nRead ""%1"""
+    IDS_BAD_LOGGINGWINDOWS_OPTION "Bad Windows Message Logging Option.\nMust be T of F.\nRead ""%1"""
+    IDS_BAD_DIALOGFONTSIZE_OPTION "Bad Dialog Font Size Option.\nMust be integer.\nRead ""%1"""
+    IDS_BAD_SPACESPERTAB_OPTION	"Bad Spaces Per Tab Option.\nMust be integer.\nRead ""%1"""
+    IDS_BAD_VERIFYDB_OPTION	"Bad Verify DB Option.\nMust be T of F.\nRead ""%1"""
+    IDS_UNABLE_TO_FIND_STRING_CLASS "Unable to locate the String class"
+    IDS_UNABLE_TO_CREATE_ARGS_ARRAY "Unable to create a String array for the %1!d! command line arguments"
+    IDS_UNABLE_TO_CREATE_ARG_STRING "Unable to create a String object for command line argument #%1!d!"
+    IDS_UNABLE_TO_OPEN_PRINT_SIGNAL "Unable to signal main to start printing"
+    IDS_UNABLE_TO_WRITE_PRINT_JOB "Unable to send print job to main program (%1!d!)"
+    IDS_UNABLE_TO_OPEN_EXCEPTION_SIGNAL "Unable to signal main to process exception"
+    IDS_UNABLE_TO_WRITE_EXCEPTION "Unable to send exception text to main program (%1!d!)"
+    IDS_LOG_FILE_WRITE_FAILED	"Unable to write to log file (Windows error = %1!d!)"
+    IDS_LOG_FILE_WRITE_FAILED1	"Write to log file failed (Wrote %1!d! of %2!d! bytes)"
+    IDS_LOG_FILE_FLUSH_FAILED	"Unable to flush log file (Windows error = %1!d!)"
+    IDS_UNABLE_TO_OPEN_FAIL_MESSAGE_SIGNAL	"Unable to signal main to process diagnostic message"
+    IDS_UNABLE_TO_WRITE_FAIL_MESSAGE		"Unable to write diagnostic message to main program (%1!d!)"
+    IDS_BAD_RUN13_OPTION	"Bad Running JRE 1.3 Option.\nMust be T of F.\nRead ""%1"""
+
+    // From JSCon - Error Messages
+    IDS_CREATEBRUSHFAIL		"CreateBrush failed"
+    IDS_REGISTERCLASSFAIL	"RegisterClassEx failed"
+    IDS_COMMAND_NOT_PROCESSED	"This command is not processed anywhere (%1!d!)"
+    IDS_BADWINDOWTYPE		"Wrong window type for call (%1!d!/%1!d!)"
+    IDS_GETWINDOWLONGFAIL	"GetWindowLong failed (%1!d!)"
+    IDS_NO_MEM_FOR_RESIZE	"Not enough memory to resize window"
+    IDS_NO_RESIZE		"Unable to resize window"
+    IDS_CREATEFONTFAIL		"CreateFont failed"
+    IDS_CREATEWINDOWFAIL	"CreateWindow failed (Error=%1!d!)"
+    IDS_LOCATER_LOOPING_INFINITELY	"Ready has gone into an infinite loop.  Please record the following numbers:\n%4!d! %5!d! %6!d! %7!d! %8!d! %9!d! %10!d! %11!d!"
+    
+    // From EdGUI - Error Messages
+    IDS_LOADSTRINGFAIL		"LoadString failed"
+    IDS_FORMATMESSAGEFAIL	"FormatMessage failed (""%1"")"
+    
+    // Window Titles for Message Box
+    IDS_STOP_PROGRAM_TITLE	"Halt Program"
+    IDS_EMPTY_FILE_TITLE	"Empty File"
+    IDS_COPY_FAILED_TITLE	"Copy Failed"
+    IDS_FILE_DIALOG_ERROR_TITLE	"Windows File Dialog Error"
+
+    // Window Messages for Message Box
+    IDS_STOP_PROGRAM		"Closing the standard input/output window will halt the %1 program.\nDo you want to close the window?"
+    IDS_NOTHING_TO_SAVE		"No text to save"
+    IDS_NOTHING_TO_PRINT	"No text to print"
+    IDS_COPY_FAILED_MESSAGE	"Not enough free memory to copy selection to clipboard"
+    IDS_LINEDBVERIFY_FAILED	"Line Database Verify Failed (%d)\n%s\nNum lines: %d - Size: %d - Other - %d - %d\n---\n%s---"
+    IDS_FILE_DIALOG_ERROR_MESSAGE  "An error occurred in the Windows file dialog\n\n[Error code: %1!d!]"
+    IDS_LINEDBVERIFY1_FAILED	"Line DB Verify Failed %d - %d - %d"
+
+    // Button names
+    IDS_PAUSE_BUTTON		"Pause"
+    IDS_CLOSE_BUTTON		"Close"
+    IDS_PRINT_BUTTON		"Print"
+    IDS_SAVE_BUTTON		"Save"
+    IDS_COPY_BUTTON		"Copy"
+    IDS_PASTE_BUTTON		"Paste"
+    IDS_RESUME_BUTTON		"Resume"
+
+    IDS_PAUSE_BUTTON_LONG	"Pause"
+    IDS_CLOSE_BUTTON_LONG	"Close (^W)"
+    IDS_PRINT_BUTTON_LONG	"Print (^P)"
+    IDS_SAVE_BUTTON_LONG	"Save (^S)"
+    IDS_COPY_BUTTON_LONG	"Copy (^C)"
+    IDS_PASTE_BUTTON_LONG	"Paste (^V)"
+    IDS_RESUME_BUTTON_LONG	"Resume"
+
+    // Other Strings
+    IDS_CONSOLE_WINDOW_NAME	"ReadyConsoleWindow"
+    IDS_CONSOLETEXT_WINDOW_NAME	"ReadyConsoleTextWindow"
+    IDS_JSTOP_WINDOW_NAME    	"ReadyConsoleButtonBar"
+    IDS_RAISED_FRAME_WINDOW_NAME "ReadyConsoleRaisedFrameWindow"
+
+    IDS_DIALOG_FONT_NAME	"MS Shell Dlg"
+}
+
+
+CONSOLE_WINDOW_ACCELERATOR ACCELERATORS
+{
+    "A", COMMAND_SELECT_ALL, CONTROL, VIRTKEY
+    "C", COMMAND_COPY, CONTROL, VIRTKEY
+    "P", COMMAND_PRINT_FILE, CONTROL, VIRTKEY
+    "Q", COMMAND_EXIT, CONTROL, VIRTKEY
+    "S", COMMAND_SAVEAS_FILE, CONTROL, VIRTKEY
+    "V", COMMAND_PASTE, CONTROL, VIRTKEY
+    "W", COMMAND_CLOSE, CONTROL, VIRTKEY
+    "X", COMMAND_EXIT, ALT, VIRTKEY
+}

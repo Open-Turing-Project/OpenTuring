@@ -1,0 +1,9 @@
+% File "strnumd.dem".  Demonstrate the procedure strnum.
+include "strnum.ti"
+var value : int
+strnum ("1000", 2, value)
+put value
+strnum ("1234", 10, value)
+put value
+strnum ("1F", 16, value)
+put value

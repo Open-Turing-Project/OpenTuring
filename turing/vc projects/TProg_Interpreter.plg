@@ -1,0 +1,53 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: TProg_Interpreter - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\Tom\LOCALS~1\Temp\RSP35.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /D "_CRTDBG_MAP_ALLOC" /D "_WINDOWS" /D "_WINOOT_" /D _WIN32_IE=0x0300 /D "_MEMORY_CHECK" /Fp"..\obj\Debug\TProg_Interpreter/TProg_Interpreter.pch" /YX /Fo"..\obj\Debug\TProg_Interpreter/" /Fd"..\obj\Debug\TProg_Interpreter/" /FD /GZ /c 
+"P:\turing\src\tprolog\error.c"
+"P:\turing\src\tprolog\language.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Tom\LOCALS~1\Temp\RSP35.tmp" 
+Creating command line "link.exe -lib /nologo /out:"..\obj\Debug\TProg_Interpreter\TProg_Interpreter.lib"  "\turing\obj\Debug\TProg_Interpreter\error.obj" "\turing\obj\Debug\TProg_Interpreter\language.obj" "
+<h3>Output Window</h3>
+Compiling...
+error.c
+P:\turing\src\tprolog\error.c(158) : warning C4013: 'TL_TLB_TLBNWU' undefined; assuming extern returning int
+P:\turing\src\tprolog\error.c(208) : warning C4013: 'strcpy' undefined; assuming extern returning int
+P:\turing\src\tprolog\error.c(252) : warning C4013: 'TL_TLE_TLEQUIT' undefined; assuming extern returning int
+P:\turing\src\tprolog\error.c(320) : warning C4013: 'TL_TLB_TLBFRU' undefined; assuming extern returning int
+P:\turing\src\tprolog\error.c(334) : warning C4101: 'TL_dummy' : unreferenced local variable
+language.c
+P:\turing\src\tprolog\language.c(420) : warning C4013: 'TL_TLS_TLSCAT' undefined; assuming extern returning int
+P:\turing\src\tprolog\language.c(424) : warning C4013: 'TL_TLI_TLISSO' undefined; assuming extern returning int
+P:\turing\src\tprolog\language.c(425) : warning C4013: 'TL_TLI_TLIPS' undefined; assuming extern returning int
+P:\turing\src\tprolog\language.c(426) : warning C4013: 'TL_TLI_TLIPK' undefined; assuming extern returning int
+P:\turing\src\tprolog\language.c(456) : warning C4013: 'strcpy' undefined; assuming extern returning int
+P:\turing\src\tprolog\language.c(563) : warning C4013: 'TL_TLI_TLISS' undefined; assuming extern returning int
+P:\turing\src\tprolog\language.c(564) : warning C4013: 'TL_TLI_TLIRE' undefined; assuming extern returning int
+P:\turing\src\tprolog\language.c(588) : warning C4013: 'strcmp' undefined; assuming extern returning int
+P:\turing\src\tprolog\language.c(810) : warning C4013: 'TL_TLB_TLBNWU' undefined; assuming extern returning int
+P:\turing\src\tprolog\language.c(862) : warning C4013: 'TL_TLS_TLSCTA' undefined; assuming extern returning int
+P:\turing\src\tprolog\language.c(1402) : warning C4101: 'TL_dummy' : unreferenced local variable
+P:\turing\src\tprolog\language.c(1421) : warning C4013: 'TL_TLE_TLEHE' undefined; assuming extern returning int
+P:\turing\src\tprolog\language.c(1428) : warning C4013: 'TL_TLE_TLEQUIT' undefined; assuming extern returning int
+P:\turing\src\tprolog\language.c(1441) : warning C4013: 'TL_TLE_TLEHX' undefined; assuming extern returning int
+P:\turing\src\tprolog\language.c(1531) : warning C4013: 'Language_ErrorModule' undefined; assuming extern returning int
+P:\turing\src\tprolog\language.c(1545) : warning C4013: 'TL_TLA_TLAIMX' undefined; assuming extern returning int
+P:\turing\src\tprolog\language.c(1587) : warning C4013: 'Language_Execute' undefined; assuming extern returning int
+P:\turing\src\tprolog\language.c(1529) : warning C4101: 'TL_dummy' : unreferenced local variable
+P:\turing\src\tprolog\language.c(435) : warning C4715: 'Language_LoadObjectFile_GetFile' : not all control paths return a value
+Creating library...
+
+
+
+<h3>Results</h3>
+TProg_Interpreter.lib - 0 error(s), 24 warning(s)
+</pre>
+</body>
+</html>

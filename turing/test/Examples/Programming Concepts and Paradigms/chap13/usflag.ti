@@ -1,0 +1,46 @@
+% File "usflag.ti". Draw the American flag.
+import Shape in "shape.tu"
+procedure DrawUSFlag (x, y, width : int)
+    % Draw the American flag with lower left corner at (x, y)
+    % and specified width.
+
+    % Specification of flag at: http://www.icss.com/usflag/flag.specs.html
+
+    var height : int := round (width / 1.9) % The height of the flag
+
+    % All constants are proportions of "height".
+    const starSize : real := 0.0308 % Size of star.
+    const hSep : real := 0.063 % The horizontal separation between stars.
+    const vSep : real := 0.054 % The vertical separation between stars.
+    const unionWidth : real := 0.76 % Width of blue ("union") area.
+
+    % Draw stripes
+    for stripe : 0 .. 12
+        var stripeColor : int
+        if stripe mod 2 = 0 then
+            stripeColor := red
+        else
+            stripeColor := white
+        end if
+        Draw.FillBox (x, y + height * stripe div 13, x + width,
+            y + height * (stripe + 1) div 13, stripeColor)
+    end for
+
+    % Draw blue box (called the "union").
+    Draw.FillBox (x, y + height * 6 div 13,
+        x + round (height * unionWidth), y + height, blue)
+
+    % Draw the stars in the union.
+    for row : 1 .. 9
+        for star : 1 .. 11
+            % On odd rows, draw stars at position 1, 3, 5, 7, 9, and 11.
+            % On even rows, draw stars at position 2, 4, 6, 8, and 10.
+            if row mod 2 = star mod 2 then
+                Shape.star (round (x + star * hSep * height),
+                    round (y + height - (row * vSep * height)),
+                    round (starSize * height), white)
+            end if
+        end for
+    end for
+    Draw.Box (x, y, x + width, y + height, black) % Outline flag.
+end DrawUSFlag

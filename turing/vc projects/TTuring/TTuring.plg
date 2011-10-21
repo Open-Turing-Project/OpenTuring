@@ -1,0 +1,39 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: TTuring - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\Tom\LOCALS~1\Temp\RSP72.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/TTuring.pdb" /debug /machine:I386 /out:"Debug/TTuring.exe" /pdbtype:sept 
+"\turing\obj\Debug\Coder\Coder.lib"
+"\turing\obj\Debug\Compiler\Compiler.lib"
+"\turing\obj\Debug\Debugger\Debugger.lib"
+"\turing\obj\Debug\Editor\Editor.lib"
+"\turing\obj\Debug\Executor\Executor.lib"
+"\turing\obj\Debug\FileManager\FileManager.lib"
+"\turing\obj\Debug\GIF\GIF.lib"
+"\turing\obj\Debug\Interpreter\Interpreter.lib"
+"\turing\obj\Debug\JPEG\JPEG.lib"
+"\turing\obj\Debug\MIO\MIO.lib"
+"\turing\obj\Debug\TLib\TLib.lib"
+"\turing\obj\Debug\TLib_Override\TLib Override.lib"
+]
+Creating command line "link.exe @C:\DOCUME~1\Tom\LOCALS~1\Temp\RSP72.tmp"
+<h3>Output Window</h3>
+Linking...
+LINK : warning LNK4001: no object files specified; libraries used
+LINK : error LNK2001: unresolved external symbol _WinMainCRTStartup
+Debug/TTuring.exe : fatal error LNK1120: 1 unresolved externals
+Error executing link.exe.
+
+
+
+<h3>Results</h3>
+TTuring.exe - 2 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

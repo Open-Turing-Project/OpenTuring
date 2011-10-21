@@ -1,0 +1,537 @@
+/*****************/
+/* miolexread.in */
+/*****************/
+
+/***************************************/
+/* This file is included by miolexer.c */
+/***************************************/
+
+/*******************/
+/* System includes */
+/*******************/
+
+/*************/
+/* Constants */
+/*************/
+/* #define DEBUG */
+
+/********************/
+/* Static variables */
+/********************/
+static int	stTableLine;
+static void	*stTableFilePointer;
+static void	*stLogFilePointer;
+
+
+/*********************/
+/* Static procedures */
+/*********************/
+/************************************************************************/
+/* MyTableError								*/
+/************************************************************************/
+static void	MyTableError (const char *pmStr)
+{
+    MDIO_DiskFile_Close (stTableFilePointer);
+
+#ifdef DEBUG
+    MDIO_DiskFile_Close (stLogFilePointer);
+#endif
+
+    MIO_MoreInfo("Lex table error: '%s' - line: %d\n", pmStr, stTableLine);
+
+    ABORT_WITH_ERRNO (E_LEX_TABLE_ERROR);
+} // MyTableError
+
+
+/************************************************************************/
+/* MyTget								*/
+/*									*/
+/* Read in a new lex table						*/
+/************************************************************************/
+static char	*MyTget (char *pmBuf, int pmSize)
+{
+    char	myLine[1024], *myPtr;
+
+    do 
+    {
+	myPtr = MDIO_DiskFile_ReadLine (myLine, sizeof(myLine), 
+					stTableFilePointer);
+	stTableLine++;
+
+	pmBuf [0] = EOS;
+
+	if (myPtr) 
+	{
+	    int i = 0;
+	    int	j = 0;
+
+	    while (myLine [i] && isspace (myLine [i]))
+	    {
+		i++;
+	    }
+	    while ((j < pmSize - 1) && myLine [i] && (myLine [i] != NL) && 
+		   (myLine [i] != CR))
+	    {
+	        if (myLine [i] == '\\') 
+		{
+		    i++;
+		    switch (myLine [i++])
+		    {
+			case '\\':
+			    pmBuf [j++] = '\\';
+			    break;
+
+			case 'n':
+			    pmBuf [j++] = NL;
+			    break;
+
+			case 't':
+			    pmBuf[j++] = HT;
+			    break;
+
+			default:
+			    MyTableError ("Illegal char");
+		    } // switch
+	        }
+	        else
+		{
+		    pmBuf [j++] = myLine [i++];
+		}
+	    }
+	    pmBuf [j] = EOS;
+
+#ifdef DEBUG
+	    fprintf(logfp, "%d - %s\n", tableLine, buf);
+#endif
+        }
+#ifdef DEBUG
+        else
+	    fprintf(logfp, "%d - [EOF]\n", tableLine);
+#endif
+    } while (myPtr && (pmBuf[0] == EOS));
+
+    return myPtr;
+} // MyTget
+
+
+/************************************************************************/
+/* MyReadComments							*/
+/************************************************************************/
+static void	MyReadComments (LexTable *pmLexTable)
+{
+    int cnt;
+
+    for (cnt = 0; cnt < MAX_NUM_COMMENTS; cnt++) 
+    {
+	char myLine[256], *myPtr;
+
+	if (MyTget (myLine, sizeof(myLine)) == NULL)
+	{
+	    MyTableError ("Premature EOF - Missing 'end comments'");
+	}
+
+	if (strcmp (myLine, "end comment") == 0) 
+	{
+    	    pmLexTable -> numComments = cnt;
+	    return;
+	}
+
+	myPtr = strtok (myLine, " \t");
+
+	if (myPtr) 
+	{
+	    if (strlen (myPtr) > MAX_COMMENT_SIZE)
+	    {
+	        MyTableError ("Comment too large");
+	    }
+
+	    strcpy (pmLexTable -> commentStart [cnt], myPtr);
+
+	    myPtr = strtok (NULL, " \t");
+	    if (myPtr)
+	    {
+		strcpy (pmLexTable -> commentEnd [cnt], myPtr);
+	    }
+	    else
+	    {
+	        MyTableError ("Missing second comment string");
+	    }
+	}
+	else 
+	{
+	    MyTableError ("Missing comment strings");
+	}
+    }
+    MyTableError ("Too many comment strings");
+} // MyReadComments
+
+
+/************************************************************************/
+/* MyReadString								*/
+/************************************************************************/
+static void	MyReadString (LexTable *pmLexTable)
+{
+    char	myLine[256], *myPtr0, *myPtr1;
+    int		cnt;
+
+    MyTget (myLine, sizeof (myLine));
+
+    myPtr0 = strtok(myLine, " \t");
+    myPtr1 = strtok(NULL, " \t");
+
+    if ((myPtr0 == NULL) || (myPtr1 == NULL)) 
+    {
+	MyTableError ("Missing string character");
+    }
+
+    if ((strlen(myPtr0) != 1) || (strlen(myPtr1) != 1)) 
+    {
+ 	MyTableError ("String character must be only one character");
+    }
+
+    pmLexTable -> startStringChar = *myPtr0;
+    pmLexTable -> endStringChar = *myPtr1;
+
+    for (cnt = 0;; cnt++) 
+    {
+	int	myLen;
+
+        if (MyTget (myLine, sizeof(myLine)) == NULL)
+	{
+	    MyTableError ("Premature EOF - Missing 'end string'");
+	}
+
+        if (strcmp (myLine, "end string") == 0) 
+	{
+	    pmLexTable -> numNotEOS = cnt;
+	    return;
+	}
+
+	if (cnt == MAX_NUM_NEOS)
+	{
+	    MyTableError ("Too many not end-of-string strings");
+	}
+
+	myLen = strlen (myLine);
+
+	if (myLen > MAX_NEOS_SIZE)
+	{
+	    MyTableError ("Not end of string too large");
+	}
+
+	strcpy (pmLexTable -> notEOS [cnt], myLine);
+    }
+} // MyReadString
+
+
+/************************************************************************/
+/* MyReadTokens								*/
+/*									*/
+/* Read tokens and form hash table					*/
+/************************************************************************/
+static void	MyReadTokens (LexTable *pmLexTable)
+{
+    char	myLine [STRLEN];
+    int		cnt = 0;
+
+    while ((cnt < MAX_NUM_TOKENS) && (MyTget (myLine, sizeof(myLine))))
+    {
+	int	mySlot;
+
+	if (strcmp (myLine, "end token") == 0) 
+	{
+	    pmLexTable -> numTokens = cnt;
+	    return;
+	}
+
+	strncpy (pmLexTable -> token [cnt], myLine, MAX_TOKEN_SIZE);
+	pmLexTable -> token[cnt][MAX_TOKEN_SIZE] = EOS;
+	mySlot = MyHash (pmLexTable -> token [cnt]);
+	while (pmLexTable -> hashTable [mySlot] != NONE) 
+	{
+	    mySlot = ((mySlot + 1) % NUM_HASH_SLOTS);
+	}
+	pmLexTable -> hashTable [mySlot] = cnt;
+	cnt++;
+    }
+
+    if (cnt == MAX_NUM_TOKENS)
+    {
+        MyTableError ("Too many tokens");
+    }
+    else
+    {
+	MyTableError ("Premature EOF - Missing 'end token'");
+    }
+} // MyReadTokens
+
+
+/************************************************************************/
+/* MyReadIdentifier							*/
+/************************************************************************/
+static void	MyReadIdentifier (LexTable *pmLexTable)
+{
+    char myLine [STRLEN];
+
+    if (MyTget (myLine, sizeof(myLine)) == NULL)
+    {
+	MyTableError ("Premature EOF - Missing 'end identifier'");
+    }
+
+    if (strcmp (myLine, "none") != 0) 
+    {
+        if (strlen (myLine) > MAX_NUM_BEGINCHAR)
+	{
+	    MyTableError ("Too many beginning identifier characters");
+	}
+    
+        strcpy (pmLexTable -> beginIDchars, myLine);
+    }
+
+    if (MyTget (myLine, sizeof(myLine)) == NULL)
+    {
+	MyTableError ("Premature EOF - Missing 'end identifier'");
+    }
+
+    if (strcmp (myLine, "none") != 0) 
+    {
+        if (strlen (myLine) > MAX_NUM_SPECCHAR)
+	{
+	    MyTableError ("Too many special identifier characters");
+	}
+
+        strcpy (pmLexTable -> specialIDchars, myLine);
+    }
+
+    if (MyTget (myLine, sizeof(myLine)) == NULL)
+    {
+	MyTableError ("Premature EOF - Missing 'end identifier'");
+    }
+
+    if (strcmp (myLine, "end identifier") != 0)
+    {
+	MyTableError ("Missing 'end identifier'");
+    }
+} // MyReadIdentifier
+
+
+/************************************************************************/
+/* MyReadReal								*/
+/************************************************************************/
+static void	MyReadReal (LexTable *pmLexTable)
+{
+    char	myLine [STRLEN];
+
+    if (MyTget (myLine, sizeof(myLine)) == NULL)
+    {
+	MyTableError ("Premature EOF - Missing 'end real'");
+    }
+
+    if (strlen (myLine) > MAX_NUM_SPECCHAR)
+    {
+	MyTableError ("Too many exponent characters");
+    }
+
+    strcpy (pmLexTable -> realExpChars, myLine);
+
+    if (MyTget (myLine, sizeof(myLine)) == NULL)
+    {
+	MyTableError ("Premature EOF - Missing 'end real'");
+    }
+
+    if (strcmp (myLine, "end real") != 0)
+    {
+	MyTableError ("Missing 'end real'");
+    }
+} // MyReadReal
+
+
+/************************************************************************/
+/* MyReadInteger								*/
+/************************************************************************/
+static void	MyReadInteger (LexTable *pmLexTable)
+{
+    char	myLine [STRLEN];
+    int		myPre = 0;
+
+    while (MyTget (myLine, sizeof(myLine))) 
+    {
+	char	*myPtr0, *myPtr1;
+	int	myBase;
+
+	if (strcmp (myLine, "end integer") == 0) 
+	{
+	    pmLexTable -> numIntegerPrefix = myPre;
+	    return;
+	}
+
+	myPtr0 = strtok (myLine, " \t");
+	myPtr1 = strtok (NULL, " \t");
+
+	if ((myPtr0 == NULL) || (myPtr1 == NULL))
+	{
+	    MyTableError ("Error in integer entry");
+	}
+
+	if (strcmp (myPtr0, "base") == 0) 
+	{
+	    if (pmLexTable -> baseConvertChar)
+	    {
+		MyTableError ("Only one base convert character allowed");
+	    }
+	    pmLexTable -> baseConvertChar = *myPtr1;
+	}
+	else 
+	{
+	    if (myPre == MAX_NUM_PREFIX)
+	    {
+	        MyTableError ("Too many prefixes");
+	    }
+
+	    if (strlen (myPtr0) > MAX_PREFIX_SIZE)
+	    {
+	        MyTableError ("Prefix too long");
+	    }
+
+	    strcpy (pmLexTable -> integerPrefix [myPre], myPtr0);
+
+	    myBase = atol (myPtr1);
+
+	    if (myBase < 2 || myBase > 36)
+	    {
+	        MyTableError ("Illegal base in integer entry");
+	    }
+
+	    pmLexTable -> preBaseConvert [myPre] = myBase;
+	    myPre++;
+	}
+    } // while
+
+    MyTableError ("Premature EOF - Missing 'end integer'");
+} // MyReadInteger
+
+
+/************************************************************************/
+/* MyReadChar								*/
+/************************************************************************/
+static void	MyReadChar (LexTable *pmLexTable)
+{
+    char myLine[STRLEN];
+
+    if (MyTget (myLine, sizeof(myLine)) == NULL)
+    {
+	MyTableError ("Premature EOF - Missing 'end char'");
+    }
+
+    if (strlen(myLine) > 1)
+    {
+	MyTableError ("Only single char delimitter please");
+    }
+
+    pmLexTable -> charDelimitter = myLine[0];
+
+    if (MyTget (myLine, sizeof(myLine)) == NULL)
+    {
+	MyTableError ("Premature EOF - Missing 'end char'");
+    }
+
+    if (strcmp (myLine, "end char") != 0)
+    {
+	MyTableError ("Missing 'end char'");
+    }
+} // ReadChar
+
+
+/************************************************************************/
+/* MyGetSection								*/
+/************************************************************************/
+static BOOL	MyGetSection (char *pmSection)
+{
+    char myLine [STRLEN];
+
+    while (MyTget (myLine, sizeof(myLine))) 
+    {
+	if (strncmp (myLine, "section ", 8) == 0) 
+	{
+	    char	*myPtr = myLine + 8;
+
+	    while(*myPtr && isspace(*myPtr))
+	    {
+		myPtr++;
+	    }
+
+	    if (*myPtr == EOS)
+	    {
+		MyTableError ("Section name improperly terminated");
+	    }
+
+	    strcpy(pmSection, myPtr);
+	    return TRUE;
+	}
+    }
+    return FALSE;
+} // MyGetSection
+
+
+/************************************************************************/
+/* MyReadTable								*/
+/************************************************************************/
+static void	MyReadTable (void *pmFilePointer, LexTable *pmLexTable)
+{
+    char		mySection [20];
+
+    stTableFilePointer = pmFilePointer;
+    stTableLine = 0;
+
+#ifdef DEBUG
+    logfp = fopen("read.log", "w");
+#endif
+
+    while (MyGetSection (mySection)) 
+    {
+#ifdef DEBUG
+	fprintf(logfp, "\nStart section %s\n\n", section);
+#endif
+
+	if (strcmp (mySection, "comment") == 0) 
+	{
+	    MyReadComments (pmLexTable);
+ 	}
+	else if (strcmp (mySection, "string") == 0) 
+	{
+	    MyReadString (pmLexTable);
+	}
+	else if (strcmp (mySection, "token") == 0) 
+	{
+	    MyReadTokens (pmLexTable);
+	}
+	else if (strcmp (mySection, "identifier") == 0) 
+	{
+	    MyReadIdentifier (pmLexTable);
+	}
+	else if (strcmp (mySection, "integer") == 0) 
+	{
+	    MyReadInteger (pmLexTable);
+	}
+	else if (strcmp (mySection, "real") == 0) 
+	{
+	    MyReadReal (pmLexTable);
+	}
+	else if (strcmp (mySection, "char") == 0) 
+	{
+	    MyReadChar (pmLexTable);
+	}
+	else
+	{
+	    MyTableError ("Invalid section name");
+	}
+
+#ifdef DEBUG
+	fprintf(logfp, "\nEnd section %s\n\n", mySection);
+#endif
+    }
+#ifdef DEBUG
+    MDIO_DiskFile_Close (stLogFilePointer);
+#endif
+} // MyReadTable
+

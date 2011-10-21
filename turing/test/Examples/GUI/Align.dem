@@ -1,0 +1,31 @@
+% The "Align.dem" program.
+% This demomstrates the methods of aligning labels with widgets.
+import GUI % Must be included in a programs using the GPL
+
+View.Set ("graphics:200;170,nobuttonbar") % Shrink the window to the minimum size
+
+% The widget ID
+var w : int
+
+% The label IDs
+var left, right, above, below, middle, title : int
+
+GUI.SetBackgroundColour (grey)
+
+w := GUI.CreateFrame (50, 20, maxx - 50, maxy - 50, GUI.INDENT)
+
+left := GUI.CreateLabelFull (GUI.GetX (w) - 2, GUI.GetY (w), "Left",
+    0, GUI.GetHeight (w), GUI.RIGHT + GUI.MIDDLE, 0)
+above := GUI.CreateLabelFull (GUI.GetX (w),
+    GUI.GetY (w) + GUI.GetHeight (w) + 2,
+    "Above", GUI.GetWidth (w), 0, GUI.CENTER + GUI.BOTTOM, 0)
+right := GUI.CreateLabelFull (GUI.GetX (w) + GUI.GetWidth (w) + 2,
+    GUI.GetY (w), "Right", 0, GUI.GetHeight (w), GUI.LEFT + GUI.MIDDLE, 0)
+below := GUI.CreateLabelFull (GUI.GetX (w), GUI.GetY (w) - 2,
+    "Below", GUI.GetWidth (w), 0, GUI.CENTER + GUI.TOP, 0)
+middle := GUI.CreateLabelFull (GUI.GetX (w), GUI.GetY (w), "Middle",
+    GUI.GetWidth (w), GUI.GetHeight (w), GUI.CENTER + GUI.MIDDLE, 0)
+var titleFont := Font.New ("Serif:18")
+title := GUI.CreateLabelFull (0, maxy, "Aligning Labels", maxx, 0,
+    GUI.CENTER + GUI.TOP, titleFont)
+

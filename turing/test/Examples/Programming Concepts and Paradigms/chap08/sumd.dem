@@ -1,0 +1,7 @@
+% File "sumd.dem".  Demonstrate the function sum.
+include "sum.ti"
+var list : array 1 .. 10 of int
+for i : 1 .. 10
+    list (i) := i
+end for
+put sum (list)

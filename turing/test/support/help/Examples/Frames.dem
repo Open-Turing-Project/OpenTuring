@@ -1,0 +1,135 @@
+% The "Frames.dem" program
+% This demonstrates the Frames widget along with the GUI routines
+% that use Frames widgets. [Show, Hide, SetPosition, SetSize, Refresh, 
+% SetLabel, Quit, CreateFrame, ProcessEvent, Dispose]
+import GUI % Must be included in a programs using the GPL
+
+View.Set ("graphics:330;240,nobuttonbar") % Shrink the window to the minimum size
+
+% The background must be grey for indented and exdented
+% items to be visible.
+GUI.SetBackgroundColour (grey)
+
+% The frame IDs
+var lineFrame, indentFrame, exdentFrame : int
+
+% The label IDs
+var lineLabel, indentLabel, exdentLabel : int
+
+% The button IDs
+var showHideButton, moveButton, resizeButton, refreshButton, quitButton : int
+
+% Variables used by the button routines
+var hide := true % Whether to hide or show the button
+var right := true % Whether to move the button right or left
+var big := true % Whether ot make the button big or small
+
+% Called when show/hide button is pressed
+procedure ShowHidePressed
+    if hide then
+	GUI.Hide (lineFrame) % Hide line frame
+	GUI.Hide (indentFrame) % Hide indent frame
+	GUI.Hide (exdentFrame) % Hide exdent frame
+	hide := false
+	GUI.SetLabel (showHideButton, "Show Frames")
+    else
+	GUI.Show (lineFrame) % Show line frame
+	GUI.Show (indentFrame) % Show indent frame
+	GUI.Show (exdentFrame) % Show exdent frame
+	hide := true
+	GUI.SetLabel (showHideButton, "Hide Frames")
+    end if
+end ShowHidePressed
+
+% Called when move button is pressed
+procedure MovePressed
+    if right then
+	GUI.SetPosition (lineFrame, 250, maxy - 100) % Move frame right
+	GUI.SetPosition (lineLabel, 250, maxy - 100) % Move label right
+	right := false
+	GUI.SetLabel (moveButton, "Move Frame Left")
+    else
+	GUI.SetPosition (lineFrame, 10, maxy - 100) % Move frame left
+	GUI.SetPosition (lineLabel, 10, maxy - 100) % Move label left
+	right := true
+	GUI.SetLabel (moveButton, "Move Frame Right")
+    end if
+end MovePressed
+
+% Called when refresh button is pressed
+procedure RefreshPressed
+    Draw.FillBox (0, 0, maxx, maxy, GUI.GetBackgroundColour) % Clear the screen
+    GUI.Refresh % Redraw all the widgets on the screen
+end RefreshPressed
+
+% Called when resize button is pressed
+procedure ResizePressed
+    if big then
+	% Resize Line
+	GUI.SetSize (lineFrame, 70, 90)
+	GUI.SetSize (lineLabel, 70, 90)
+	big := false
+	GUI.SetLabel (resizeButton, "Make Frame Shorter")
+    else
+	% Resize Line
+	GUI.SetSize (lineFrame, 70, 60)
+	GUI.SetSize (lineLabel, 70, 60)
+	big := true
+	GUI.SetLabel (resizeButton, "Make Frame Taller")
+    end if
+end ResizePressed
+
+% Called when quit button is pressed.
+procedure QuitPressed
+    GUI.Quit
+end QuitPressed
+
+% The main program
+% Create the lines
+lineFrame := GUI.CreateFrame (10, maxy - 100, 80, maxy - 40, 0)
+indentFrame := GUI.CreateFrame (90, maxy - 100, 160, maxy - 40, GUI.INDENT)
+exdentFrame := GUI.CreateFrame (170, maxy - 100, 240, maxy - 40, GUI.EXDENT)
+
+% Label the lines
+lineLabel := GUI.CreateLabelFull (10, maxy - 100, "Line",
+    70, 60, GUI.CENTER + GUI.MIDDLE, 0)
+indentLabel := GUI.CreateLabelFull (90, maxy - 100, "Indent",
+    70, 60, GUI.CENTER + GUI.MIDDLE, 0)
+exdentLabel := GUI.CreateLabelFull (170, maxy - 100, "Exdent",
+    70, 60, GUI.CENTER + GUI.MIDDLE, 0)
+
+% Create the main label
+var titleFont := Font.New ("Serif:18")
+var title := GUI.CreateLabelFull (0, maxy - 5, "Frame Widgets", maxx, 0,
+    GUI.CENTER + GUI.TOP, titleFont)
+
+% Create the dividing line
+var dividingLine := GUI.CreateLine (0, maxy - 120, maxx, maxy - 120, 0)
+
+% Create the buttons
+showHideButton := GUI.CreateButton (10, maxy - 170, 150, "Hide Frames",
+    ShowHidePressed)
+moveButton := GUI.CreateButton (170, maxy - 170, 150, "Move Frame Right",
+    MovePressed)
+refreshButton := GUI.CreateButton (10, maxy - 200, 150, "Refresh",
+    RefreshPressed)
+resizeButton := GUI.CreateButton (170, maxy - 200, 150, "Make Frame Taller",
+    ResizePressed)
+quitButton := GUI.CreateButton (90, maxy - 230, 150, "Quit", QuitPressed)
+
+% Process events, exit loop when GUI.QUIT called
+loop
+    exit when GUI.ProcessEvent
+end loop
+
+% Do the clean up.  Dispose of all but the main buttons.
+GUI.Dispose (showHideButton)
+GUI.Dispose (moveButton)
+GUI.Dispose (refreshButton)
+GUI.Dispose (resizeButton)
+GUI.Dispose (quitButton)
+
+% Create a label to indicate we're finished
+var quitMessage := GUI.CreateLabelFull (0, 0, "Execution Terminated",
+    maxx, maxy - 120, GUI.CENTER + GUI.MIDDLE, 0)
+

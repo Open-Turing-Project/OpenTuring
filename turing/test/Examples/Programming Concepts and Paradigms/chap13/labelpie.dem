@@ -1,0 +1,32 @@
+% File "labelpie.dem". Demonstrate the use of the LabelledPie class.
+import LabelledPie in "labelpie.tu"
+
+setscreen ("graphics:640;480")
+var p1 : ^LabelledPie
+new p1
+p1 -> AddLabelledSegment (100, "Rent")
+p1 -> AddLabelledSegment (50, "Taxes")
+p1 -> AddLabelledSegment (70, "Food")
+p1 -> AddLabelledSegment (30, "Entertainment")
+p1 -> SetCenter (maxx div 2, maxy div 2)
+p1 -> SetRadius (100)
+p1 -> ShowPie
+
+var p2 : ^LabelledPie
+new p2
+p2 -> AddLabelledSegment (100, "Rent")
+p2 -> AddLabelledSegment (50, "Taxes")
+p2 -> AddLabelledSegment (70, "Food")
+p2 -> SetCenter (110, 80)
+p2 -> SetRadius (50)
+p2 -> ShowPie
+
+var p3 : ^LabelledPie
+new p3
+p3->AddSegment (30)
+p3->AddLabelledSegment (20, "Mad Money")
+p3->AddSegment (50)
+p3->AddLabelledSegment (45, "Slush Fund")
+p3->SetCenter (500, 350)
+p3->SetRadius (40)
+p3->ShowPie

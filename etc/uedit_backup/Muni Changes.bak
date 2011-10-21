@@ -1,0 +1,26 @@
+Assume that there CNB and COU are no longer aliases.  Assume that we want to
+pass the same information for CAN, CNA, CNB, CNC, and SORT
+
+- [NC] Municipal does not change race locator to chiclet, even if using chiclets
+  
+RAC/RID
+- Municipal now always use 2 fields (reporting & total)
+- All elections always use 2 fields, even when dialog selects other
+- Municipal no longer display number of winners
+- Municipal no longer combine elected and veil character
+- Municipal now have a separate elected flag field
+- Municipal now has party name/incumbent party field  
+- All elections now have a vote% field
+
+CAN
+- CAN, CNA, CNB, CNC, and SORT all call CanDisplay (1) and COU calls 
+  CanDisplay (2).
+- All elections have 2 line group name and then display qualifier (CAN, et al.) 
+  or group auxilary (COU) [Fed ignores second group name]
+- All elections CAN now have race locator
+- Municipal now has party name/incumbent party field  
+- Municipal now always has race name, even for CAN (order of fields changed for
+  Municipal)
+
+LCA
+- 

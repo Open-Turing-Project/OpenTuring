@@ -1,0 +1,9 @@
+% File "sum.ti".  Function to compute the sum of values in an array.
+function sum (a : array 1 .. * of int)
+    r : int
+    var s := 0
+    for i : 1 .. upper (a)
+        s += a (i)
+    end for
+    result s
+end sum

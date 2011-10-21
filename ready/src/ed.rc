@@ -1,0 +1,1825 @@
+#include <windows.h>
+#include <commctrl.h>
+
+#include "edcommands.h"
+#include "eddialogs.h"
+
+//
+// Import the MIO stuff if this is Turing
+#ifdef TURING
+#include "..\..\turing\src\mio.rc"
+#endif
+
+//
+// Icons 
+// 
+// Order is important because file association icons depend on 
+// icon's place in the file.
+//
+#ifdef JAVA
+APP_ICON		ICON	DISCARDABLE	"rsrc\\ready.ico"
+APP_SMALL_ICON		ICON	DISCARDABLE	"rsrc\\readysm.ico"
+RUN_ICON		ICON	DISCARDABLE	"rsrc\\ready.ico"
+RUN_SMALL_ICON		ICON	DISCARDABLE	"rsrc\\readyrunsm.ico"
+DEBUG_ICON		ICON	DISCARDABLE	"rsrc\\ready.ico"
+DEBUG_SMALL_ICON	ICON	DISCARDABLE	"rsrc\\readydbgsm.ico"
+#elif TURING
+// TW Change the icons
+APP_ICON		ICON	DISCARDABLE	"rsrc\\turing.ico"
+APP_SMALL_ICON		ICON	DISCARDABLE	"rsrc\\turingsm.ico"
+RUN_ICON		ICON	DISCARDABLE	"rsrc\\turing.ico"
+RUN_SMALL_ICON		ICON	DISCARDABLE	"rsrc\\turingrunsm.ico"
+DEBUG_ICON		ICON	DISCARDABLE	"rsrc\\turing.ico"
+DEBUG_SMALL_ICON	ICON	DISCARDABLE	"rsrc\\turingdbgsm.ico"
+#endif // #elif TURING
+TWO_UP_ICON		ICON	DISCARDABLE	"rsrc\\two_up.ico"
+JAVA_ICON		ICON	DISCARDABLE	"rsrc\\readyjava.ico"
+CLASS_ICON		ICON	DISCARDABLE	"rsrc\\readyclass.ico"
+TURING_ICON		ICON	DISCARDABLE	"rsrc\\turingfile.ico"
+TURING_UNIT_ICON	ICON	DISCARDABLE	"rsrc\\turingunit.ico"
+TURING_INCLUDE_ICON	ICON	DISCARDABLE	"rsrc\\turinginclude.ico"
+TURING_DEMO_ICON	ICON	DISCARDABLE	"rsrc\\turingdem.ico"
+
+BREAKPOINT_ICON		ICON	DISCARDABLE	"rsrc\\breakpoint.ico"
+
+DBG_FILE_ICON		ICON	DISCARDABLE	"rsrc\\dbgfile.ico"
+DBG_WINDOW_ICON		ICON	DISCARDABLE	"rsrc\\dbgwin.ico"
+DBG_NET_ICON		ICON	DISCARDABLE	"rsrc\\dbgnet.ico"
+DBG_FONT_ICON		ICON	DISCARDABLE	"rsrc\\dbgfont.ico"
+DBG_DIR_ICON		ICON	DISCARDABLE	"rsrc\\dbgdir.ico"
+DBG_PIC_ICON		ICON	DISCARDABLE	"rsrc\\dbgpic.ico"
+DBG_SPRITE_ICON		ICON	DISCARDABLE	"rsrc\\dbgsprite.ico"
+DBG_LEXER_ICON		ICON	DISCARDABLE	"rsrc\\dbglexer.ico"
+DBG_UNKNOWN_ICON	ICON	DISCARDABLE	"rsrc\\dbgunknown.ico"
+
+//
+// Mouse Cursors
+//
+BREAKPOINT_CURSOR	CURSOR	DISCARDABLE	"rsrc\\breakpoint.cur"
+
+//
+// Images
+//
+READY_SPLASH_IMAGE	BITMAP	DISCARDABLE	"rsrc\\ready.bmp"
+TURING_SPLASH_IMAGE	BITMAP	DISCARDABLE	"rsrc\\turing.bmp"
+TURING_256_SPLASH_IMAGE	BITMAP	DISCARDABLE	"rsrc\\turing256.bmp"
+
+STRINGTABLE
+{
+    //
+    // Ready File and Directory Names
+    //
+    //     Ready
+    //       |
+    //       +---- Ready.exe
+    //       |
+    //       +---- Support
+
+    //                |
+    //                +---- Bin
+    //                |
+    //                +---- Ini
+    //                |
+    //                +---- Classes
+    //                |
+    //                +---- Help
+    //                |
+    //                +---- jre11
+    //                       |
+    //                       +--- bin
+    //                       |     |
+    //                       |     +---- javai.dll
+    //                       |     |
+    //                       |     +---- Executables
+    //                       |
+    //                       +--- lib
+    //                             |
+    //                             +---- rt.jar
+    //                             |
+    //                             +---- Bunch of files and directories
+    //
+    
+    // Directories
+    IDS_SUPPORT_DIR			"Support\"
+    IDS_READY_BIN    			"Support\Bin\"
+    IDS_INI_DIR				"Support\Ini\"
+    IDS_HELP_DIR			"Support\Help\"
+    IDS_JAVA_BIN_131			"Support\jre131_09\bin\hotspot\"
+    IDS_JAVA_BIN_BUILT_IN		"Support\jre142_01\bin\client\"
+    IDS_JAVA_JRE_USER_INSTALLED		"Support\jre"
+    IDS_JAVA_LIB_131			"Support\jre131_09\lib\"
+    IDS_JAVA_LIB_BUILT_IN		"Support\jre142_01\lib\"
+    IDS_READY_CLASSES_DIR		"Support\Ready Classes\"
+    IDS_USER_CLASSES_DIR		"Support\Classes\"
+    IDS_EXAMPLES_DIR			"Examples\"
+    IDS_HELP_EXAMPLES_DIR		"Support\Help\Examples\"
+
+    // Files (INI)
+    IDS_JAVA_ADMIN_PREF			"ready_admin.ini"
+    IDS_JAVA_USER_PREF			"ready.ini"
+    IDS_TURING_ADMIN_PREF		"turing_admin.ini"
+    IDS_TURING_USER_PREF		"turing.ini"
+    IDS_NEW_MENU			"new_menu.ini"
+    IDS_INSERT_MENU			"insert_menu.ini"
+    IDS_HTML_BOILERPLATE		"html.ini"
+    IDS_JAVA_RECENT_FILES		"ready_files.ini"
+    IDS_TURING_RECENT_FILES		"turing_files.ini"
+    IDS_PANIC_LOG_FILE			"panic.log"
+    IDS_LOG_FILE    			"ready.log"
+    IDS_MEMORY_LEAK_FILE		"memory.log"
+    IDS_JAVA_KEYWORD_LOOKUP		"keyword lookup.txt"
+    IDS_TURING_KEYWORD_LOOKUP		"keyword lookup.txt"
+    IDS_JAVA_EXE_PROLOG			"JavaEXEProlog.prg"
+    IDS_TURING_EXE_PROLOG		"TuringEXEProlog.prg"
+    IDS_JDB_DLL				"edjdll.dll"
+    IDS_EXAMPLES_FILE			"examples.txt"
+    IDS_JAVA_EXAMPLES_DIR		"Java Examples"
+    IDS_TURING_EXAMPLES_DIR		"Turing Examples"
+    
+    // Class Libraries and directories
+    IDS_JAVA_RT_JAR			"rt.jar"
+    IDS_JAVA_TOOLS_JAR			"tools.jar"
+
+    // Java Executors
+    IDS_READY_PROGRAM_RUNNER		"javasup.exe"
+    IDS_JAVA_DLL			"jvm.dll"
+    IDS_LANG_DLL			"lang.dll"
+    
+    // Help File Names
+    IDS_CLASS_LIB_HELP_FILE		"Java142Doc.chm"
+    IDS_TURING_HELP_FILE		"TuringDoc.chm"
+    
+    //    
+    // Window names
+    //
+    IDS_APPLICATION_NAME		"Ready"
+    IDS_EDIT_WINDOW_NAME		"ReadyEditWindow"
+    IDS_STATUS_WINDOW_NAME		"ReadyStatusWindow"
+    IDS_TEXTDISPLAY_WINDOW_NAME		"ReadyTextDisplayWindow"
+    IDS_TEXTDISPLAY_MDI_WINDOW_NAME	"ReadyTextDisplayMDIWindow"
+    IDS_BBAR_WINDOW_NAME		"ReadyBeginnerButtonBar"
+    IDS_RAISED_FRAME_WINDOW_NAME    	"ReadyRaisedFrameWindow"
+    IDS_SUNKEN_FRAME_WINDOW_NAME    	"ReadySunkenFrameWindow"
+    IDS_SPLASH_WINDOW_NAME		"ReadySplash"
+    IDS_EDIT_MDI_FRAME_WINDOW_NAME	"ReadyEditMDIFrameWindow"
+    IDS_CONSOLE_WINDOW_NAME		"ReadyConsoleWindow"
+    IDS_CONSOLETEXT_WINDOW_NAME		"ReadyConsoleTextWindow"
+    IDS_TOPC_WINDOW_NAME    		"ReadyConsoleButtonBar"
+    IDS_DEBUG_CTRL_WINDOW_NAME		"ReadyDebuggerControllerWindow"
+    IDS_DEBUG_ALLOC_WINDOW_NAME		"ReadyDebuggerAllocWindow"
+    IDS_FALSE_WINDOW_NAME		"ReadyFalseWindow"
+
+    // Parameters to EdFail_Warn/Fatal
+    IDS_CREATEBRUSHFAIL			"CreateBrush failed"
+    IDS_LOADSTRINGFAIL			"LoadString failed (%d)"
+    IDS_REGISTERCLASSFAIL		"RegisterClassEx failed"
+    IDS_CREATEWINDOWFAIL		"CreateWindow failed"
+    IDS_DDEINITIALIZEFAIL		"DdeInitialize failed"
+    IDS_DDECREATESTRINGHANDLEFAIL	"DdeCreateStringHandle failed"
+    IDS_DDENAMESERVICEFAIL		"DdeNameService failed"
+    IDS_LOADACCELERATORSFAIL		"LoadAccelerators failed (%d)"
+    IDS_GETPROCADDRESSFAIL		"Unable to find procedure ""%s"" in library ""%s"""
+    IDS_CREATEFONTFAIL			"CreateFont failed"
+    IDS_REGISTERWINDOWMESSAGEFAIL	"RegisterWindowMessage failed"
+    IDS_OUTOFMEMORY			"Not enough memory to allocate table"
+    IDS_GETDATEFORMATFAIL		"GetDateFormat failed"
+    IDS_GETTIMEFORMATFAIL		"GetTimeFormat failed"
+    IDS_GETWINDOWLONGFAIL		"GetWindowLong failed (%d)"
+    IDS_BADWINDOWTYPE			"Wrong window type for call (%d/%d)"
+    IDS_UNEXPECTED_CHAR			"Illegal character encountered while processing file (%d)"
+    IDS_GETDLGITEMFAIL			"GetDlgItem failed (%d)"
+    IDS_CREATECOMPATIBLEDCFAIL		"CreateCompatibleDC failed"
+    IDS_CREATECOMPATIBLEBITMAPFAIL	"CreateCompatibleBitmap failed"
+    IDS_CANTFINDMARK			"Can't find mark in mark menu (%d)"
+    IDS_UNEXPECTED_WINDOW_KIND    	"Unexpected window type (%d)"
+    IDS_WINDOW_NOT_FOUND		"No record of this window being open"
+    IDS_COMMAND_NOT_PROCESSED    	"This command is not processed anywhere (%d)"
+    IDS_RECENT_FILE_NOT_FOUND    	"File not found in Recent Files menu (%d)"
+    IDS_CANT_REVERT_NO_NAME_FILE	"Can't revert an unsaved file"
+    IDS_FORMATMESSAGEFAIL		"FormatMessage failed (""%s"")"
+    IDS_NO_MEM_FOR_RESIZE		"Not enough memory to resize window"
+    IDS_NO_RESIZE			"Unable to resize window"
+    IDS_NO_MENU_NAME			"No menu entry name on line %d of %s"
+    IDS_NO_MEM_FOR_MENU			"Out of memory creating menu item on line %d of %s"
+    IDS_NO_TEXT_FOR_MEM_ENTRY		"Menu item %s in %s has no text associated with it"
+    IDS_LINEDBVERIFY_FAILED		"Line Database Verify Failed (%d)\nNum lines: %d - Size: %d - Other - %d - %d\n---\n%s---"
+    IDS_OUTPUTCHAR_OF_SPACE		"OutputChar in indenter was passed a space by mistake"
+    IDS_NEW_SKELETON_NOT_FOUND		"Can't find new item in list (%d)"
+    IDS_READFROMPIPEFAIL		"Failure reading error messages from pipe - program not compiled"
+    IDS_PEEKFROMPIPEFAIL		"Failure inspecting error messages from pipe - program not compiled"
+    IDS_READFROMPIPESHORT		"Unable to read all of error messages from pipe was short - only %d bytes of %d available were read - program not compiled"
+    IDS_MALFORMEDERROR    		"Malformed error message received from the compiler - program not compiled\nError = ""%s"""
+    IDS_ILLEGAL_INSTRUCTION_SIGNAL	"Illegal CPU instruction"
+    IDS_FLOATING_POINT_EXCEPTION_SIGNAL	"Floating point exception"
+    IDS_GENERAL_PROTECTION_FAULT_SIGNAL	"General protection fault"
+    IDS_FREECONSOLEFAIL			"FreeConsole failed"
+    IDS_ALLOCCONSOLEFAIL		"AllocConsole failed"
+    IDS_HTMLBOILERMISSINGFAIL		"HTML Boilerplate file (""%s"") missing"
+    IDS_HTMLBOILERREADFAIL		"Unable to read HTML Boilerplate file (""%s"")"
+    IDS_CREATEPIPEFAIL			"CreatePipe failed"
+    IDS_DUPLICATEPIPEFAIL		"DuplicatePipe failed"
+    IDS_LOCATER_LOOPING_INFINITELY	"Ready has gone into an infinite loop.\n\nReady Internal State: %d %d %d %d %d %d %d %d\n---\n%s---"
+    IDS_FINDRESOURCEFAIL		"FindResource failed.  Unable to find resource %d"
+    IDS_RESOURCEWRONGSIZE		"Resource #%d has incorrect size (%d instead of %d)"
+    IDS_LOADRESOURCEFAIL		"Unable to load resource #%d"
+    IDS_BADINSTALLTYPE			"Unrecognized installation type = %d\nThis software may have been modified and should be reinstalled."
+    IDS_SYSTEMTIMETOFILETIMEFAIL	"SystemTimeToFileTime failed"
+    IDS_LOADLIBRARYFAIL			"Unable to load ""%s"""
+    IDS_UNKNOWNLANGUAGE			"Unrecognized environment language = %d\nThis software may have been modified and should be reinstalled."
+    IDS_RUNTIMEASSERTFAIL		"Assertion failure in Turing run time system.\nAssertion number = %d"
+    IDS_RUNTIMEPANIC			"Turing run time failure\nCause: %s"
+    IDS_MALFORMED_SUFFIX		"Malformed #SUFFIX line on line %d of %s"
+    IDS_TURING_INFO_NOT_INIT		"Turing Information not Initialized\nSizePtr: %x - Where Init: %d - FileNo: %d - Path: '%s' - Unname #: %d"
+    IDS_USER_ASSERT_FAILURE		"The user deliberately caused an assertion failure by pressing Ctrl+Alt+Shift+F2!"
+    IDS_LINEDBVERIFY1_FAILED		"Line Database Verify Failed (%d - %d - %d)"
+    IDS_BADDIRECTORY			"Illegal Directory Name (No Backslash): ""%s"""
+    IDS_BAD_MENU			"Attempt to examine non-existent menu (%d)"
+    IDS_PAUSE_FAILURE			"Environment Failure - Turing should not be paused (%d-%d-%d-%d-%d)"
+    IDS_BAD_REASON_FOR_PAUSE		"Environment Failure - Bad Pause Reason (%d-%d-%d-%d-%d-%d)"
+    IDS_LOADICONFAIL			"Unable to load icon #%d"
+    IDS_LOADCURSORFAIL			"Unable to load cursor #%d"
+    IDS_ADDICONFAIL			"Unable to add icon #%d to the image list"
+    IDS_ICONMISMATCHFAIL		"Mismatch between icons and their names (%d - %d/%d)"
+    IDS_WINDOWNOTCREATEDFAIL		"Window not created."
+    IDS_LISTVIEWNOTCREATEDFAIL		"ListView not created."
+    IDS_CANTINSERTCOLUMNFAIL		"ListView_InsertColumn failed.  ListView not created."
+    IDS_FREED_ITEM_NOT_IN_LIST		"Freed item %d is not in the debugger list of allocated items" 
+    IDS_NOT_ALL_ITEMS_IN_LIST_FREED	"Some allocated resources were not freed in the debugger.  A resource with ID %d was not freed."
+    IDS_CANTFINDPREDEFS			"Unable to find list of Turing predefined subprograms in ""%s"""
+    IDS_CANTFINDHIRESTIMER		"Unable to load Windows high resolution timer"
+    IDS_FINDFIRSTCHANGEFAIL		"FindFirstChangeNotification failed on directory ""%s"""
+    IDS_CREATETHREADFAIL		"CreateThread failed"
+    IDS_BADJVMTYPE			"Unknown JVM type (%d)"
+    
+    // Menu Item Names - File
+    IDS_NEW_MENU_ITEM			"New\tCtrl+N"
+    IDS_OBTAIN_READY_MENU_ITEM		"Obtaining Ready for Personal or Classroom Use"
+    IDS_OBTAIN_TURING_MENU_ITEM		"Obtaining Turing for Personal or Classroom Use"
+    
+    // Menu Item Names - Undo
+    IDS_NORMAL_UNDO			"Undo\tCtrl+Z"
+    IDS_UNDO_TYPING			"Undo Typing\tCtrl+Z"
+    IDS_UNDO_CUT			"Undo Cut\tCtrl+Z"
+    IDS_UNDO_PASTE			"Undo Paste\tCtrl+Z"
+    IDS_UNDO_CLEAR			"Undo Clear\tCtrl+Z"
+    IDS_UNDO_REVERT			"Undo Revert\tCtrl+Z"
+    IDS_UNDO_COMMENT			"Undo Comment Range\tCtrl+Z"
+    IDS_UNDO_UNCOMMENT			"Undo Uncomment Range\tCtrl+Z"
+    IDS_UNDO_COMPLETION			"Undo Structure Completion\tCtrl+Z"
+    IDS_UNDO_INSERT			"Undo Insert Block\tCtrl+Z"
+    IDS_UNDO_INDENT			"Undo Indent File\tCtrl+Z"
+    IDS_UNDO_REPLACE			"Undo Replace\tCtrl+Z"
+    IDS_UNDO_REPLACE_ALL		"Undo Replace All\tCtrl+Z"
+    IDS_REDO_BASE			"Redo\tCtrl+Y"
+    IDS_REDO_TYPING			"Redo Typing\tCtrl+Y"
+    IDS_REDO_CUT			"Redo Cut\tCtrl+Y"
+    IDS_REDO_PASTE			"Redo Paste\tCtrl+Y"
+    IDS_REDO_CLEAR			"Redo Clear\tCtrl+Y"
+    IDS_REDO_REVERT			"Redo Revert\tCtrl+Y"
+    IDS_REDO_COMMENT			"Redo Comment Range\tCtrl+Y"
+    IDS_REDO_UNCOMMENT			"Redo Uncomment Range\tCtrl+Y"
+    IDS_REDO_COMPLETION			"Redo Structure Completion\tCtrl+Y"
+    IDS_REDO_INSERT			"Redo Insert Block\tCtrl+Y"
+    IDS_REDO_INDENT			"Redo Indent File\tCtrl+Y"
+    IDS_REDO_REPLACE			"Redo Replace\tCtrl+Y"
+    IDS_REDO_REPLACE_ALL		"Redo Replace All\tCtrl+Y"
+
+    // Menu Item Names - Run
+    IDS_RUN_MENU_ITEM			"Run\tF1"
+    IDS_RUN_MAIN_MENU_ITEM		"Run %1"
+    IDS_COMPILE_MENU_ITEM		"Compile"
+    IDS_COMPILE_MAIN_MENU_ITEM		"Compile %1"
+    IDS_SHOW_DEBUGGER_MENU		"Show Debugger Menu"
+    IDS_HIDE_DEBUGGER_MENU		"Hide Debugger Menu"
+    IDS_SHOW_DEBUGGER_CONTROLS		"Show Debugger Controls"
+    IDS_HIDE_DEBUGGER_CONTROLS		"Hide Debugger Controls"
+    IDS_SHOW_BREAKPOINTS		"Show Breakpoints"
+    IDS_HIDE_BREAKPOINTS		"Hide Breakpoints"
+    IDS_HIDE_DBG_ALLOC			"Hide Allocated Objects"
+    IDS_SHOW_DBG_ALLOC			"Show Allocated Objects"
+    
+    //
+    // Status Messages
+    //
+    IDS_NORMAL_UNDO_STATUS		"Action Undone"
+    IDS_UNDO_TYPING_STATUS		"Typing Undone"
+    IDS_UNDO_CUT_STATUS			"Cut Undone"
+    IDS_UNDO_PASTE_STATUS		"Paste Undone"
+    IDS_UNDO_CLEAR_STATUS		"Clear Undone"
+    IDS_UNDO_REVERT_STATUS		"Revert Undone"
+    IDS_UNDO_COMMENT_STATUS		"Comment Range Undone"
+    IDS_UNDO_UNCOMMENT_STATUS		"Uncomment Range Undone"
+    IDS_UNDO_COMPLETION_STATUS		"Completion Undone"
+    IDS_UNDO_INSERT_STATUS		"Insert Block Undone"
+    IDS_UNDO_INDENT_STATUS		"Indent File Undone"
+    IDS_UNDO_REPLACE_STATUS		"Replace Undone"
+    IDS_UNDO_REPLACE_ALL_STATUS		"Replace All Undone"
+    IDS_REDO_TYPING_STATUS		"Typing Redone"
+    IDS_REDO_CUT_STATUS			"Cut Redone"
+    IDS_REDO_PASTE_STATUS		"Paste Redone"
+    IDS_REDO_CLEAR_STATUS		"Clear Redone"
+    IDS_REDO_REVERT_STATUS		"Revert Redone"
+    IDS_REDO_COMMENT_STATUS		"Comment Range Redone"
+    IDS_REDO_UNCOMMENT_STATUS		"Uncomment Range Redone"
+    IDS_REDO_COMPLETION_STATUS		"Completion Redone"
+    IDS_REDO_INSERT_STATUS		"Insert Block Redone"
+    IDS_REDO_INDENT_STATUS		"Indent File Redone"
+    IDS_REDO_REPLACE_STATUS		"Replace Redone"
+    IDS_REDO_REPLACE_ALL_STATUS		"Replace All Redone"
+    IDS_ERRORS_AND_WARNINGS_STATUS	"%1!d! errors and %2!d! warnings found while compiling %3"
+    IDS_ERRORS_AND_WARNING_STATUS	"%1!d! errors and %2!d! warning found while compiling %3"
+    IDS_ERROR_AND_WARNINGS_STATUS	"%1!d! error and %2!d! warnings found while compiling %3"
+    IDS_ERROR_AND_WARNING_STATUS	"%1!d! error and %2!d! warning found while compiling %3"
+    IDS_ERRORS_STATUS			"%1!d! errors found while compiling %2"
+    IDS_ERROR_STATUS			"%1!d! error found while compiling %2"
+    IDS_WARNINGS_STATUS			"%1!d! warnings found while compiling %2"
+    IDS_WARNING_STATUS			"%1!d! warning found while compiling %2"
+    IDS_ERRORS_AND_WARNINGS_MF_STATUS	"%1!d! errors and %2!d! warnings in %3!d! files found while compiling %4"
+    IDS_ERRORS_AND_WARNING_MF_STATUS	"%1!d! errors and %2!d! warning in %3!d! files found while compiling %4"
+    IDS_ERROR_AND_WARNINGS_MF_STATUS	"%1!d! error and %2!d! warnings in %3!d! files found while compiling %4"
+    IDS_ERROR_AND_WARNING_MF_STATUS	"%1!d! error and %2!d! warning\nin %3!d! files found while compiling %4"
+    IDS_ERRORS_MF_STATUS		"%1!d! errors in %2!d! files found while compiling %3"
+    IDS_ERROR_MF_STATUS			"%1!d! error in %2!d! files found while compiling %3"
+    IDS_WARNINGS_MF_STATUS		"%1!d! warnings in %2!d! files found while compiling %3"
+    IDS_WARNING_MF_STATUS		"%1!d! warning in %2!d! files found while compiling %3"
+    IDS_SUCCESSFUL_COMPILE_STATUS	"%1 successfully compiled"
+    IDS_FIX_MAIN_STATUS			"%1 Fixed as Main Program"
+    IDS_FLOAT_MAIN_STATUS		"Main Program Floats"
+
+    // Other strings
+    IDS_DIALOG_FONT_NAME		"MS Shell Dlg"
+    
+    // EdStat strings
+    IDS_SHORT_POSITION_STRING		"L: %d/%d\t\tC: %d"
+    IDS_LONG_POSITION_STRING		"Line %d of %d\t\tCol %d"
+    
+    // EdDisp strings
+    IDS_UNNAMED_WINDOW_TITLE		"Unnamed #%d"
+    
+    // The name for the hidden java console
+    IDS_JAVA_CONSOLE_NAME		"Ready Hidden Java Console"
+
+    // Environment names
+    IDS_TURING_ENVIRONMENT_NAME		"Turing"
+    IDS_JAVA_ENVIRONMENT_NAME		"""Ready"""
+    
+    // Column names in Debugger
+    IDS_DEBUG_ALLOC_COL_NAME		"Type"
+    IDS_DEBUG_ALLOC_COL_NAME_2		"ID"
+    IDS_DEBUG_ALLOC_COL_NAME_3		"Where Allocated"
+    IDS_DEBUG_ALLOC_COL_NAME_4		"Description"
+
+    // Messages in the Splash page
+    IDS_MINI_VERSION_STRING		"Mini Version: "
+    IDS_OPEN_VERSION_STRING		"Version: "
+    IDS_EVAL_VERSION_STRING		"Evaluation Version: "
+    IDS_BETA_VERSION_STRING		"BETA Version: "
+    IDS_SITE_VERSION_STRING		"Site Version: "
+    IDS_PERSONAL_VERSION_STRING		"Personal Version: "
+    IDS_REDISTRIB_VERSION_STRING	"Redistributable Version: "
+    IDS_JAVA_PRODUCT_NAME_1		"Ready to Program with"
+    IDS_JAVA_PRODUCT_NAME_2	    	"Java\231 Technology"
+    IDS_TURING_PRODUCT_NAME		"Turing"
+    IDS_CREATED_BY			"Created by Holt Software Associates Inc."        
+    IDS_IBM_ASSIST			"Development Assisted by IBM Corp."
+    IDS_LEAD_PROGRAMMER			"Lead Programmer: Tom West"
+    IDS_MINI_MSG_1			"Licensed to "
+    IDS_MINI_MSG_2			"The ""Mini"" version of the software cannot compile"
+    IDS_MINI_MSG_3			"programs of greater than 100 lines in length."
+    IDS_EVAL_MSG_1			"This version is for personal evaluation purposes only."
+    IDS_EVAL_MSG_2			"It may not be redistributed or used for teaching purposes."
+    IDS_EVAL_MSG_3			"To obtain Ready for classroom or personal use, see the ""Help"" menu."
+    IDS_EVAL_MSG_4			"This version of the software will not execute programs after "
+    IDS_BETA_MSG_1			"This version is for personal beta test purposes only."
+    IDS_BETA_MSG_2			"It may not be redistributed or used for teaching purposes."
+    IDS_BETA_MSG_3			"Please report all bugs found in this software to west@hsa.on.ca"
+    IDS_BETA_MSG_4			"This version of the software will not execute programs after "
+    IDS_RESTRICT_MSG_1			"This demonstration version of the software is restricted and"
+    IDS_RESTRICT_MSG_2			"   (1) Cannot save programs,"
+    IDS_RESTRICT_MSG_3			"   (2) Cannot compile programs of greater than 100 lines in length, and"
+    IDS_RESTRICT_MSG_4			"   (3) Will not execute programs after "
+    IDS_SITE_MSG_1			"Licensed to "
+    IDS_PERSONAL_MSG_1			"Licensed for individual use to "
+    IDS_REDISTRIB_MSG_1			"Licensed for redistribution to members of "
+    IDS_USES_JIKES			"Ready Uses IBM's Jikes Java Compiler"
+    IDS_WIN_95_JRE_131			"Using Java 1.3.1 (Windows 95 does not support Java 1.4)"
+    IDS_JRE_LEVEL			"Using Java 1.4.2"
+    IDS_MINIED_MSG_1			"Ministry of Education of Ontario, Canada; Licensee"
+    IDS_MINIED_MSG_2			"For non-profit, educational use only at authorized elementary and secondary"
+    IDS_MINIED_MSG_3			"schools, educational institutions and school boards in the Province of"
+    IDS_MINIED_MSG_4			"Ontario, Canada.  Any commercial use of this licensed product is strictly"
+    IDS_MINIED_MSG_5			"prohibited.  Teachers and pre-service student teachers may use this product at"
+    IDS_MINIED_MSG_6			"home solely for lesson preparation purposes."
+    IDS_MINIED_MSG_7			" "
+    IDS_MINIED_MSG_8			"This product may be redistributed to students for home use only if a"
+    IDS_MINIED_MSG_9			"separate student redistribution license has been purchased by the school"
+    IDS_MINIED_MSG_10			"or board from Holt Software Associates."
+    
+    // Strings used Copy Examples dialogs
+    IDS_EXAMPLE_DLG_1			"Click the ""Copy"" button to copy the associated examples into"
+    IDS_EXAMPLE_DLG_2A_JAVA		"the ""Java Examples"" folder in the ""My Documents"" folder."
+    IDS_EXAMPLE_DLG_2A_TURING		"the ""Turing Examples"" folder in the ""My Documents"" folder."
+    IDS_EXAMPLE_DLG_2B_JAVA		"the ""Java Examples"" folder in your home directory."
+    IDS_EXAMPLE_DLG_2B_TURING		"the ""Turing Examples"" folder in your home directory."
+        
+    // Parameters to EdGUI_Message1 (Dialog Box Titles)
+    IDS_FATALWINDOWTITLE		"Fatal Internal Error"
+    IDS_WARNWINDOWTITLE			"Internal Error"
+    IDS_FAILPREAMBLE1			"The environment has experienced an unexpected internal error.\r\n\r\nThis error is caused by a bug in the environment and is not your fault!\r\nDetails about the crash have been saved in the file """
+    IDS_FAILPREAMBLE2			""".\r\n\r\nIf possible, please e-mail this file to readybugs@hsa.on.ca\r\n\r\nHere are some details about the error:\r\n"
+    IDS_FAILREASONNOTFOUND		"   Error code = %d\r\n"
+    IDS_FAILREASONFOUND			"   Error = %s (%d)\r\n"
+    IDS_FAILWINDOWSERROR		"   Windows error = %s (%d)\r\n"
+    IDS_FAILWINDOWSUNKNOWNERROR		"   Windows error code = %d\r\n"
+    IDS_FAILFILELINE			"   File = %s\r\n   Line = %d\r\n"
+    IDS_FAILSAVEFILE			"\r\nAll unsaved open files will be saved with a "".sav"" or "".sv#"" extension."
+    IDS_CRASHPREAMBLE1			"The environment (not your program) has crashed.\r\n\r\nThis error is caused by a bug in the environment and is not your fault!\r\nDetails about the crash have been saved in the file """
+    IDS_CRASHPREAMBLE2			""".\r\n\r\nIf possible, please e-mail this file to readybugs@hsa.on.ca\r\n\r\nHere are some details about the crash:\r\n"
+
+    // Dialog box titles
+    IDS_INIT_FAILURE_TITLE		"Initialization Failure"
+    IDS_CMD_LINE_FAILURE_TITLE		"Command Line Error"
+    IDS_CMD_LINE_HELP_TITLE		"[ENVIRONMENT] Command Line Help"
+    IDS_CMD_LINE_ERR_TITLE		"[ENVIRONMENT] Command Line Error"
+    IDS_COPY_FAILED_TITLE		"Copy Failed"
+    IDS_OUT_OF_TEXT_MEM_TITLE		"Out of Memory"
+    IDS_FILE_OPEN_FAILED_TITLE		"File Open Error"
+    IDS_INDENT_FAILED_TITLE        	"Indent Failed"
+    IDS_PRINT_ERROR_TITLE		"Print Error"    
+    IDS_WARNING_TITLE			"Warning"
+    IDS_STARTUP_ERROR_TITLE		"Startup Error"
+    IDS_FILE_SAVE_DISALLOWED_TITLE	"File Save Disallowed"
+    IDS_FILE_OPEN_DISALLOWED_TITLE	"File Open Disallowed"
+    IDS_PREF_ERROR_TITLE		"Preference Error"
+    IDS_EMPTY_FILE_TITLE		"Empty File"
+    IDS_NO_SELECTION_TITLE		"No Text Selected"
+    IDS_NOT_CHANGED_TITLE		"File Not Changed"
+    IDS_NO_ASSOC_FILE_TITLE		"File Never Saved"
+    IDS_NO_MAIN_PROG_TITLE		"No Main Program"
+    IDS_NO_UNDO_TITLE			"No Undo"
+    IDS_NO_CLIPBOARD_TITLE		"Empty Clipboard"
+    IDS_NO_SEARCH_TEXT_TITLE		"No Search Text"
+    IDS_ADMIN_TITLE			"Administator"
+    IDS_ERRORS_FOUND_TITLE		"Compilation Errors"
+    IDS_RUN_ERROR_TITLE    		"Run Error"
+    IDS_CLASS_NAME_TITLE		"Class Name"
+    IDS_FILE_NAME_COLLISION_TITLE	"File Name Collision"
+    IDS_ILLEGAL_FILE_NAME_TITLE		"File Name Problem"
+    IDS_STOP_PROGRAM_TITLE		"Halt Program"
+    IDS_UNIMPL_FEATURE_TITLE    	"Unimplemented Feature"
+    IDS_CANT_START_JAVA_TITLE    	"Java VM Failure"
+    IDS_NO_CLASSLIB_TITLE    		"Can't find Java Class Library"
+    IDS_COMPILATION_ERROR_TITLE		"Compilation Error"
+    IDS_TURING_ALREADY_OPEN_TITLE	"Turing Already Open"
+    IDS_FILE_DIALOG_ERROR_TITLE		"Windows File Dialog Error"
+    IDS_NO_PAUSE_TITLE			"Pause Command Ignored"
+    IDS_READY_ALREADY_OPEN_TITLE	"Ready Already Open"
+    IDS_HTMLREADFAIL_TITLE		"HTML File Read Failure"
+    IDS_HTMLNOAPPLET_TITLE		"HTML File Missing Applet"
+    IDS_ILLEGAL_PATH_NAME_TITLE		"Path Name Problem"
+    IDS_BAD_PARAMS_TITLE                "Bad Applet Parameters"
+    IDS_BAD_DDE_COMMAND_TITLE		"Bad DDE Command"
+    IDS_DDE_TROUBLE_TITLE		"Failure in DDE Command"
+    IDS_CANT_OPEN_CLASS_TITLE		"Cannot Open Class File"
+    IDS_DEMO_EXPIRED_TITLE		"Evaluation Copy Expired"
+    IDS_REG_CLEAR_ERROR_TITLE		"Unable to Clear Registry Key"
+    IDS_REG_READ_ERROR_TITLE		"Unable to Ready Registry Key"
+    IDS_REG_CREATE_ERROR_TITLE		"Unable to Create Registry Key"
+    IDS_UNKNOWN_FILE_TYPE_TITLE    	"Unknown File Type"
+    IDS_OPEN_FILE_TITLE			"Open File"
+    IDS_DISPLAY_ERR_TITLE		"Display Next Error"
+    IDS_BAD_CMD_LINE_ARG_TITLE		"Bad Command Line Argument"
+    IDS_FEATURE_NOT_AVAIL_TITLE		"Feature Not Available"
+    IDS_FILE_WRITE_FAILED_TITLE		"File Write Failure"
+    IDS_FILE_READ_FAILED_TITLE		"File Read Error"
+    IDS_TEMP_FILE_NAME_CREATE_TITLE	"Temporary File Name Creation Error"
+    IDS_FILE_DELETE_FAILED_TITLE	"File Delete Error"
+    IDS_FILE_RENAME_FAILED_TITLE	"File Rename Error"
+    IDS_CANT_START_JAVAVM_TITLE		"Java VM Debugger Start Error"
+    IDS_CANT_ATTACH_TITLE		"Debugger Attachment Failure"
+    IDS_DEBUGGER_FAILURE_TITLE		"Debugger Failure"
+    IDS_CANT_FIND_KEYWORD_TITLE		"Keyword not found"
+    IDS_CREATE_EXE_FAILED_TITLE		"Create Standalone EXE Failed"
+    IDS_TEST_SUITE_ERROR_TITLE		"Test Suite Error"
+    IDS_CREATE_DIR_FAILED_TITLE		"Create Directory Failed"
+    IDS_CANT_CHANGE_JVM_TITLE		"Cannot Use Java 1.4"
+    IDS_JAVA_13_NO_ASSERTS_TITLE	"Cannot Enable assert Statement"
+    IDS_BAD_EXAMPLES_TITLE		"Cannot Read Examples File"
+    IDS_CANT_COPY_EXAMPLES_TITLE	"Cannot Copy Examples"
+    IDS_REPLACE_EXAMPLE_DIR_TITLE	"Directory Already Exists"
+    IDS_EXAMPLES_COPIED_TITLE		"Examples Copied"
+    IDS_EXAMPLES_COPY_FAILED_TITLE	"Examples Not Copied"
+
+    // Parameters to EdGUI_Message1 (Dialog Box Msgs) (in FormatMessage format)
+    IDS_CONFIRM_QUIT_MESSAGE		"Exit %1?"
+    IDS_SAVE_CHANGES_MESSAGE		"Save changes to %1?"
+    IDS_INIT_FAILURE_MESSAGE		"[ENVIRONMENT] was unable to initialize itself.\n[ENVIRONMENT] will not be started.\nFor technical support, call (416) 978-8363"
+    IDS_CMD_LINE_FAILURE_MESSAGE	"[ENVIRONMENT] is in beginner mode\nOnly one file can be open at a time\nIgnoring command line file names beyond the first"
+    IDS_UNABLE_TO_OPEN_WINDOW		"[ENVIRONMENT] was unable to open an editor window.\n[ENVIRONMENT] will not be started.\nFor technical support, call (416) 978-8363"
+    IDS_CMD_LINE_HELP_MESSAGE		"Usage: %1 [%2] [%3] [%4] [file]\n%2  Turn on logging\n%3  Write out all preferences to preferences file\n%4  Display command line options\n[file] Name of file to open"
+    IDS_OUT_OF_TEXT_MEM_MESSAGE		"Not enough memory to enter text. Try\nquitting any open applications or exiting\nand restarting [ENVIRONMENT]."
+    IDS_NO_MEM_FOR_UNDO_MESSAGE		"Not enough memory to undo operation. Try\nquitting any open applications or exiting\nand restarting [ENVIRONMENT]."
+    IDS_UNKNOWN_CMD_LINE_OPTION		"Unrecognized option\noption = ""%1""\nLegal options: ""%2"", ""%3"" and ""%4"""
+    IDS_COPY_FAILED_MESSAGE		"Not enough free memory to copy selection to clipboard"
+    IDS_FILE_NOT_FOUND			"""%1"" not found."
+    IDS_FILE_OPEN_FAILED_MESSAGE	"Unable to open file ""%1"".\n\n%2\n[Error code: %3!d!]"
+    IDS_INDENT_OUT_OF_MEM		"Not enough memory to indent file"
+    IDS_REVERT_MESSAGE			"Reload ""%1"" and lose changes?"
+    IDS_NO_TWO_UP_LANDSCAPE		"Two-up printing cannot be selected when\nthe printer is in landscape mode.\n\nSelect ""Page Setup"" from the File menu to\nchange the printer into portrait mode."
+    IDS_CANT_CHANGE_PREFS		"The administrator has turned off access\nto the preferences dialog box."
+    IDS_NO_WRITE_PREFS			"You do not have permission to write the preference file to the\nstartup directory. Any preferences that you set will be used\nfor this session only and will not be saved."
+    IDS_CANT_CHANGE_STARTUP_DIR		"Unable to set startup directory to ""%1"".\nPreference setting for startup directory is ""%2"".\nError = %3"
+    IDS_CANT_FIND_ENVIRONMENT_VAR	"The environment variable ""%1"" found in the preference\nsetting for startup directory (""%2"")\nis not defined."
+    IDS_UNTERMINATED_ENV_VAR		"The environment variable ""%1"" found in the preference\nsetting for startup directory (""%2"")\nmust be terminated with a '%%'."
+    IDS_FILE_ONLY_IN_HOME		"You may only open or save files in your home directory or\nin subdirectories of your home directory.\n(Home = ""%s"")"
+    IDS_NETWORK_DRIVE_NOT_PERMITTED	"You are not permitted access to files on network drives"
+    IDS_DRIVE_NOT_PERMITTED		"You are not permitted access to files on drive %1!c!"
+    IDS_NOT_A_NUMBER			"Field is not a number from 0.25 - 3.0"
+    IDS_CANT_CLOSE_FILE			"Unable to close ""%1"".\n\n%2\n[Error code: %3!d!]"
+    IDS_BAD_PREF1			"Error in preferences file ""%1"".\nMissing equal sign or bad property name on line %2!d!.\nRequired format: <Property Name>=<Property Value>.\nLine = ""%3""\nPreference file will be ignored."
+    IDS_BAD_PREF2			"Error in preferences file ""%1"".\nMissing equal sign or bad property name on line %2!d!.\n(Possible hint: Property names have no spaces in them).\nLine = ""%3""\nPreference file will be ignored."
+    IDS_PREF_NEEDS_INT			"Error in preferences file ""%1"".\nProperty on line %2!d! requires an integer value.\nLine = ""%3""\nLine will be ignored."
+    IDS_PREF_NEEDS_BOOL			"Error in preferences file ""%1"".\nProperty on line %2!d! requires a boolean value.\nValue must either be ""true"" or ""false"".\nLine = ""%3""\nLine will be ignored."
+    IDS_UNKNOWN_PROPERTY		"Error in preferences file ""%1"".\nUnknown property on line %2!d!.\nLine = ""%3""\nLine will be ignored."
+    IDS_NOTHING_TO_SAVE			"No text to save"
+    IDS_NO_SELECTION_TO_SAVE		"No selection to save"
+    IDS_FILE_HAS_NOT_BEEN_CHANGED	"File has not been changed since last save."
+    IDS_FILE_HAS_NO_ASSOCIATED_FILE	"File has never been saved.\mThere's nothing to revert to!"
+    IDS_NOTHING_TO_PRINT		"No text to print"
+    IDS_NOTHING_TO_FIX_AS_MAIN		"A main program must have some text"
+    IDS_NO_MAIN_PROG_SELECTED		"There is no main program.\nThere is no need to float anything."
+    IDS_NOTHING_TO_UNDO			"There is nothing to undo"
+    IDS_NO_SELECTION_TO_CUT		"No selection to cut"
+    IDS_NO_SELECTION_TO_COPY		"No selection to copy"
+    IDS_NO_TEXT_IN_CLIPBOARD		"No text in clipboard to paste"
+    IDS_NOTHING_TO_SELECT		"No text to select"
+    IDS_NO_SELECTION_TO_COMMENT		"No selection to comment"
+    IDS_NO_SELECTION_TO_UNCOMMENT	"No selection to uncomment"
+    IDS_NOTHING_TO_INDENT		"No text to indent"
+    IDS_NOTHING_TO_SEARCH		"No text to search"
+    IDS_NO_SEARCH_TEXT			"No search string to find"
+    IDS_NOTHING_TO_GOTO			"No text to goto"
+    IDS_NOTHING_TO_RUN			"No text to run"
+    IDS_ADMIN_MESSAGE			"You are in administrator mode.  Any changes to preferences\nwill be saved as administrator preferences located at:\n\n          %1"
+    IDS_ADMIN_FAIL_MESSAGE		"You attempted to enter administrator mode but do not have priviledges\nto write to the administrator preferences file located at:\n\n          %1\n\nCheck your account for write access to this file.\n\nError = %2 (%3!d!)"
+    IDS_ERRORS_AND_WARNINGS_FOUND	"There were %1!d! errors and %2!d! warnings."
+    IDS_ERRORS_AND_WARNING_FOUND	"There were %1!d! errors and %2!d! warning."
+    IDS_ERROR_AND_WARNINGS_FOUND	"There was %1!d! error and %2!d! warnings."
+    IDS_ERROR_AND_WARNING_FOUND		"There was %1!d! error and %2!d! warning."
+    IDS_ERRORS_FOUND			"There were %1!d! errors."
+    IDS_ERROR_FOUND			"There was %1!d! error."
+    IDS_WARNINGS_FOUND			"There were %1!d! warnings.\nRun anyway?"
+    IDS_WARNING_FOUND			"There was %1!d! warning.\nRun anyway?"
+    IDS_ERRORS_AND_WARNINGS_MF_FOUND	"There were %1!d! errors and %2!d! warnings\nin %3!d! files."
+    IDS_ERRORS_AND_WARNING_MF_FOUND	"There were %1!d! errors and %2!d! warning\nin %3!d! files."
+    IDS_ERROR_AND_WARNINGS_MF_FOUND	"There was %1!d! error and %2!d! warnings\nin %3!d! files."
+    IDS_ERROR_AND_WARNING_MF_FOUND	"There was %1!d! error and %2!d! warning\nin %3!d! files."
+    IDS_ERRORS_MF_FOUND			"There were %1!d! errors in %2!d! files."
+    IDS_ERROR_MF_FOUND			"There was %1!d! error in %2!d! files."
+    IDS_WARNINGS_MF_FOUND		"There were %1!d! warnings in %2!d! files.\nRun anyway?"
+    IDS_WARNING_MF_FOUND		"There was %1!d! warning in %2!d! files.\nRun anyway?"
+    IDS_WARNINGS_NO_ASK_FOUND		"There were %1!d! warnings."
+    IDS_WARNING_NO_ASK_FOUND		"There was %1!d! warning."
+    IDS_WARNINGS_MF_NO_ASK_FOUND	"There were %1!d! warnings in %3!d! files."
+    IDS_WARNING_MF_NO_ASK_FOUND		"There was %1!d! warning in %3!d! files."
+    IDS_NOT_A_JAVA_FILE			"This file does not contain recognizable Java (no class statement)"
+    IDS_FILE_DOES_NOT_END_IN_JAVA	"You can only compile files whose names end in "".java"""
+    IDS_CLASS_NAME_BAD_STYLE		"Are you certain you want to have the class name begin with\na lower case letter?  This is against Java naming conventions."
+    IDS_FILE_NAME_COLLISION		"WARNING: More than one file is open as ""%1"".\nSave all open files to eliminate the ambiguity and compile again."     
+    IDS_USE_CLASS_NAME			"The class ""%1"" is currently saved as ""%2.java"",\nwhich is illegal in Java.\n\nDo you want the compiler to pretend that\nthe class is saved as ""%1.java""?"
+    IDS_ILLEGAL_FILE_NAME		"You are attempting to save the class ""%1"" in ""%2"",\nwhich is illegal in Java (it should be saved in ""%1.java"").\n\nAre you sure you want to do this?"
+    IDS_STOP_PROGRAM			"Closing the standard input/output window will halt the %1 program.\nDo you want to close the window?"
+    IDS_UNIMPLEMENTED_FEATURE		"This feature is not implemented in this version of the software.\nIf you really need this feature now, please contact west@hsa.on.ca\nand tell him so that he can try and put it into next week's release.\nOtherwise, it should make its appearance sometime in the next month."
+    IDS_CANT_START_JAVA		    	"Unable to start the Java Virtual Machine.  The program will not be run.\nError = %1 (%2!d!)"
+    IDS_NO_CLASSLIB			"The compiler was unable to find the Java class library at\n\n    %1\n\nCompilation aborted.\n\n(You may need to reinstall Ready)"
+    IDS_USE_STRING			"%1"
+    IDS_RTF_MUST_BE_KNOWN_LANG		"Files to be saved in RTF format must be valid Java classes or Turing files"
+    IDS_ILLEGAL_RTF_FILE_NAME1		"You are attempting to save an RTF version of the file in a file named ""%1"",\nwhich may lead to confusion (it should be saved in ""%2"").\n\nAre you sure you want to do this?"
+    IDS_FILE_DIALOG_ERROR_MESSAGE	"An error occurred in the Windows file dialog\n\n[Error code: %1!d!]"
+    IDS_CANT_PAUSE_APPLET_MESSAGE	"Applets cannot be paused"
+    IDS_NO_PROGRAM_RUNNING_MESSAGE	"No running program to pause"
+    IDS_READY_ALREADY_OPEN_MESSAGE	"The Ready application is already open.  A\nsecond instance of Ready will not be created."
+    IDS_HTMLREADFAIL_MESSAGE		"Unable to read from ""%1"".\nCreating new HTML file instead." 
+    IDS_HTMLNOAPPLET_MESSAGE		"The HTML file ""%1"" does not contain\na correct APPLET tag with for the class"
+    IDS_ILLEGAL_PATH_NAME		"You are attempting to save a class in the package ""%1"" in ""%2"",\nwhich is illegal in Java (it should be saved in ""...\%3\%4.java"").\n\nAre you sure you want to do this?"
+    IDS_QUOTE_IN_PARAM_NAME		"No quotes allowed in the parameter name"
+    IDS_SPACE_IN_PARAM_NAME		"No spaces or tabs allowed in the parameter name"
+    IDS_NO_EQUAL_SIGN			"Missing '='.  Each line must be in the format ""name=value"""
+    IDS_NO_QUOTE_IN_VALUE		"The parameter value should not be surrounded by quotes.\nThe value may have spaces in it.\n(For example: ""title=Beginner Java"")"
+    IDS_CANT_CLEAR_FILE_ASSOC		"Unable to clear registry entry for\n"".java"" file assocation.\n\n%2\n[Error code: %3!d!]"
+    IDS_CANT_SET_FILE_ASSOC		"Unable to set "".java"" file\nassocation registry entry.\n\n%2\n[Error code: %3!d!]"
+    IDS_BAD_DDE_COMMAND			"Unrecognized command sent via DDE\nCommand=""%1"""
+    IDS_DDE_TROUBLE_CONNECT		"Unable to connect to DDE server\nError = %1!d!"
+    IDS_DDE_TROUBLE_TRANS		"Unable to send command to DDE server\nError = %1!d!"
+    IDS_DDE_TROUBLE_DISCONNECT		"Unable to disconnect from DDE server\nError = %1!d!"
+    IDS_CANT_OPEN_CLASS			"You cannot open\n\n         %1\n\nbecause it is a "".class"" file containing\nJava bytecode, not editable text.\n\nJava source code is found in files ending with "".java"""
+    IDS_CANT_OPEN_CLASS_USE_JAVA	"You cannot open\n\n         %1\n\nbecause it is a "".class"" file containing\nJava bytecode, not editable text.\n\nDo you wish to open\n\n         %2\n\ninstead?"
+    IDS_DEMO_EXPIRED			"This demo expired on %1 and will no\nlonger execute Java programs.\n\nContact Holt Software for more information.\n\nCheck ""Ready on the Web"" in the ""Help"" menu."
+    IDS_REG_BAD_NAME			"Bad registry key name"
+    IDS_REG_BAD_OPEN			"Unable to open registry key ""%1"".\n\nError = %2 (%3!d!)"
+    IDS_REG_BAD_DELETE			"Unable to delete registry key ""%1"".\n\nError = %2 (%3!d!)"
+    IDS_REG_BAD_ENUM			"Unable to enumerate registry key ""%1"".\n\nError = %2 (%3!d!)"
+    IDS_REG_BAD_CLOSE			"Unable to close registry key ""%1"".\n\nError = %2 (%3!d!)"
+    IDS_REG_BAD_QUERY			"Unable to query registry key ""%1"".\n\nError = %2 (%3!d!)"
+    IDS_REG_BAD_CREATE			"Unable to create registry key ""%1"".\n\nError = %2 (%3!d!)"
+    IDS_REG_BAD_SET_VALUE		"Unable to set registry key ""%1"" value.\n\nError = %2 (%3!d!)"
+    IDS_UNKNOWN_COMMENT_FOR_FILE_TYPE	"The environment does not know the commenting\nconvention for ""%1"" files."
+    IDS_UNKNOWN_INDENT_FOR_FILE_TYPE	"The environment does not know the indenting\nconvention for ""%1"" files."
+    IDS_OPEN_FILE_NOT_DIRTY		"Open ""%1""?"
+    IDS_DISPLAY_ERR_NOT_DIRTY		"An error was found in ""%1"".\n\nOpen the file and display the error?"
+    IDS_OPEN_FILE_DIRTY	    		"The current file has not been saved.\n\nSave ""%1"" before opening ""%2""?"
+    IDS_DISPLAY_ERR_DIRTY		"An error was found in ""%2"".\n\nThe current file has not been saved.\n\nSave ""%1"" before opening ""%2""?"
+    IDS_ARG_TOO_LONG			"Command line argument too long"
+    IDS_UNTERMINATED_QUOTE		"Unterminated quotation mark"
+    IDS_NO_MATCHING_QUOTE		"Missing closing quote in command line arguments"
+    IDS_GEN_STANDALONE_NOT_AVAIL	"This version of Turing does not yet have the ability\nto generate stand-alone executables ("".EXE"" files).\n\nCheck ""Turing Technical Support"" in the\n""Turing on the Web"" sub-menu in the ""Help"" menu\nfor information on the latest version of Turing."
+    IDS_FILE_ALREADY_OPEN		"A window with this path name is currently open.\nYou must choose a different name or close the other window first."
+    IDS_FILE_WRITE_FAILED		"Attempt to write to file failed.\n\n""%1"" has not been saved.\n\n%2\n[Error code: %3!d!]"
+    IDS_FILE_WRITE_SHORT		"Attempt to write to file failed.\n\n""%1"" has not been saved.\n\nOnly %2!d! of %3!d! bytes were written to the file."
+    IDS_FILE_CLOSE_FAILED		"Attempt to close file failed.  This may be due to a lack of disk space\n""%1"" has not been saved.\n\n%2\n[Error code: %3!d!]"
+    IDS_FILE_CHECK_FAILED		"Verification of file save failed [%1!d!].\n\nThe temporary file ""%2"" was written, but attempting to verify the save failed.\n\n""%3"" has not been saved.\n\n%4\n[Error code: %5!d!]"
+    IDS_FILE_SIZE_WRONG			"Verification of file save failed.\n\nThe temporary file ""%2"" was written but it is only %3!d! bytes in size\n(It should be %4!d! bytes long.)\n\nDo you really want to copy the temporary file over top of ""%1""?\n\nIf you are not certain, select ""No""."
+    IDS_CANT_GET_FILE_SIZE		"Unable to obtain file size of ""%1"".\n\n%2\n[Error code: %3!d!]"
+    IDS_FILE_READ_FAILED		"Unable to read file ""%1"".\n\n%2\n[Error code: %3!d!]"
+    IDS_FILE_READ_SHORT			"Attempt to read file ""%1"" failed.\n\nOnly %2!d! of %3!d! bytes could be read."
+    IDS_TEMP_FILE_NAME_CREATE_MSG	"Unable to create temporary file name.\n\n%2\n[Error code: %3!d!]"
+    IDS_FILE_OPEN_TEMP_FAILED		"Unable to open temporary file ""%1""\n\n%2\n[Error code: %3!d!]"
+    IDS_FILE_DELETE_FAILED		"Unable to delete backup file ""%1"".\nFile is saved as ""%2""\n\n%3\n[Error code: %4!d!]"
+    IDS_FILE_RENAME_FAILED		"Unable to rename ""%1"" to ""%2"".\nFile is saved as ""%3""\n\n%4\n[Error code: %5!d!]"
+    IDS_FILE_RENAME_TEMP_FAILED		"Unable to rename temporary file to ""%1"".\nFile is saved as ""%2""\n\n%3\n[Error code: %4!d!]"
+    IDS_FILE_WRITE_FAILED1		"Attempt to write to ""%1"" failed.\n\n%2\n[Error code: %3!d!]"
+    IDS_FILE_WRITE_SHORT1		"Attempt to write to ""%1"" failed.\n\nOnly %2!d! of %3!d! bytes were written to the file."
+    IDS_FILE_FLUSH_FAILED		"Attempt to write to ""%1"" failed while flushing buffers.\n\n%2\n[Error code: %3!d!]"
+    IDS_CANT_LOAD_JAVAVM		"Unable to load JavaVM DLL for debugging located at ""%1""\n\nError Message=%2\nError Code=%3!d!\n\nDebugging aborted for this session"
+    IDS_UNABLE_TO_FIND_PROC		"Unable to locate procedure ""%1"" in DLL located at ""%2""\n\nDebugging aborted for this session"
+    IDS_JVM_CREATION_FAILED		"Unable to create Java VM\n\nError code = %1!d!\n\nDebugging aborted for this session"
+    IDS_CANT_FIND_DEBUGGER_CLASS	"Unable to locate debugger class ""%1""\n\nDebugging aborted for this session"
+    IDS_CANT_FIND_DEBUGGER_METHOD	"Unable to locate ""%1"" method in debugger class\n\nDebugging aborted for this session"
+    IDS_EXCEPTIONOCCUREDINATTACHMETHOD  "Exception occurred when debugger attempted to attach to program\n\nDebugging aborted for this session" 
+    IDS_UNABLETOATTACH			"Error #%1!d! occurred when debugger attempted to attach to program\n\nDebugging aborted for this session" 
+    IDS_EXCEPTIONOCCUREDINPAUSEMETHOD	"Exception occurred when debugger attempted to pause the program\n\nDebugging aborted for this session" 
+    IDS_EXCEPTIONOCCUREDINRESUMEMETHOD	"Exception occurred when debugger attempted to resume the program\n\nDebugging aborted for this session" 
+    IDS_JVM_THREAD_CREATION_FAILED	"Unable to create thread to start debugger JVM\n\n%s\n[Error code: %d]\n\nDebugging aborted for this session"
+    IDS_CANT_LOAD_SUN_DEBUG_CLASS	"Unable to load Sun's debugger classes\n\nDebugging aborted for this session"
+    IDS_UNKNOWN_JVM_START_ERROR		"Unknown error #%1!d! occurred when starting JVM\n\nDebugging aborted for this session"
+    IDS_CANT_ATTACH_THREAD		"Unable to attach debugger to running program\nError #%1!d!\n\nDebugging aborted for this session"
+    IDS_TURING_ALREADY_OPEN_MESSAGE	"The Turing application is already open.  A\nsecond instance of Turing will not be created."
+    IDS_CANT_GET_LIST_ITEM		"ListView_GetItem failed with error %2!d!.\n%1 will not be added to the list of allocated resources.\nIf this problem persists, contact Turing technical support with the error number."
+    IDS_CANT_FIND_LIST_ITEM		"ListView_FindItem failed with error %2!d!.\n%1 will not be removed from the list of allocated resources.\nIf this problem persists, contact Turing technical support with the error number."
+    IDS_CANT_FIND_KEYWORD		"Unable to find keyword '%1' in Help\n\nPress F10 for general Turing help"
+    IDS_ILLEGAL_RTF_FILE_NAME2		"You are attempting to save an RTF version of ""%1"" in a file named ""%2"",\nwhich may lead to confusion (it should be saved in ""%3"").\n\nAre you sure you want to do this?"
+    IDS_CANT_OPEN_EXEC_PROLOG		"Unable to open the EXE prolog file ""%1"".\n\nThe Turing installation may be damaged.\n\nCreation of EXE cancelled."
+    IDS_CANT_CREATE_EXE			"Unable to create ""%1"".\n\nCreation of EXE cancelled."
+    IDS_UNABLE_TO_WRITE_EXE		"Unable to write to ""%1"" (%2!d!).\n\nCreation of EXE cancelled."
+    IDS_CANT_FIND_TPROLOG		"Unable to find executable prolog that should be located at\n\n    %1\n\nCreation of EXE cancelled."
+    IDS_CANT_REOPEN_EXE			"Unable to open ""%1"" in order to\n\nset a file offset.\n\nCreation of EXE cancelled."
+    IDS_CANT_FIND_OFFSET_MARKER		"Unable to find offset marker in Turing prolog.\n\nTuring may be corrupt an need to be reinstalled\n\nCreation of EXE cancelled."
+    IDS_CANNOT_CREATE_EXE_WHILE_PROG_RUNNING	"You must stop execution of the current program\nbefore you can create a standalone executable."
+    IDS_NO_TESTSUITE_FILE		"The ""-testsuite"" option is missing the test file name"
+    IDS_TEST_SUITE_DIRECTORY_DOESNT_EXIST	"The specified test suite directory ""%1"" does not exist.\n\nTest suite execution aborted."
+    IDS_TEST_SUITE_ABORT		"Test suite execution aborted because ""%1""\ncould not be read"
+    IDS_TEST_SUITE_EXECDIR_ALREADY_SPECIFIED	"Line %1!d! of ""%2"": The output directory has already been specified for this test suite.\n\nTest suite execution in this directory aborted."
+    IDS_TEST_SUITE_DIRECTORY_DOESNT_EXIST_1	"Line %1!d! of ""%2"": The specified test suite directory ""%3"" does not exist.\n\nTest suite execution in this directory aborted."
+    IDS_TEST_SUITE_FILE_DOESNT_EXIST	"Line %1!d! of ""%2"": The specified test file ""%3"" does not exist.\n\nTest suite execution in this directory aborted."
+    IDS_TEST_SUITE_UNABLE_TO_OPEN_WINDOW	"Line %1!d! of ""%2"": Unable to open test file ""%3"" into a window.\n\nTest suite execution in this directory aborted."
+    IDS_TEST_SUITE_UNABLE_TO_OPEN_WINDOW_1	"Unable to initial blank window for test suite.\n\nTest suite execution aborted."
+    IDS_TEST_SUITE_UNABLE_TO_OPEN_ERR_FILE	"Line %1!d! of ""%2"": Unable to open error file ""%3"" (Error code = %4!d!).\n\nTest suite execution in this directory aborted."
+    IDS_TEST_SUITE_NO_OUTPUT_DIR	"Line %1!d! of ""%2"": Cannot compile ""%3"" because no output diretcory specified.\n\nTest suite execution in this directory aborted."
+    IDS_FILE_EXISTS			"Could not create directory ""%2"" because ""%1"" is a file, not a directory."
+    IDS_CREATE_DIR_FAILED		"Could not create directory ""%2"" because an error #%3!d!\noccurred while trying to create the directory ""%1""."
+    IDS_TEST_SUITE_NO_CREATE_DIR	"Line %1!d! of ""%2"": Unable to create directory ""%3""\n\nTest suite execution in this directory aborted."
+    IDS_CANT_CHANGE_JVM			"You are running Windows 95.\n\nWindows 95 is not capable of running Java 1.4 or higher."
+    IDS_JAVA_13_NO_ASSERTS		"Java 1.3 does not support the ""assert"" statement."
+    IDS_CLASS_NAME_IN_LANG		"""%1"" is the name of a class in the java.lang package of the Java Class Library.\n\nYou are strongly advised to pick a different class name as Java will have difficulty\ndistinguishing between your class and the %1 class in the Java Class Library.\n\nAre you certain you want to use this class name?"
+    IDS_CLASS_NAME_IN_USE		"""%1"" is the name of a class in the %2 package of the Java Class Library.\n\nYou may want to choose a different name for this class as Java will have\ndifficulty distinguishing between your class and the %1 class in the\n%2 package if you use the class in your program.\n\nAre you certain you want to use this class name?"
+    IDS_MISSING_TAB			"Line %1!d! of the Examples file (""%2"")\nis missing the required tab character between the label and the directory name."
+    IDS_TOO_MANY_TABS			"Line %1!d! of the Examples file (""%2"")\nhas more than one tab in the line. Only one tab be placed in the line"
+    IDS_HOME_IS_APPLICATION_DIR		"Your startup directory is the application directory. The startup\ndirectory contains all the examples in the ""Examples"" folder."
+    IDS_EXAMPLES_NOT_FOUND		"The ""examples.txt"" file was not found in the ""Examples"" directory"
+    IDS_EXAMPLES_BAD_FORMAT		"The ""examples.txt"" file in the ""Examples"" directory\nwas malformed so no examples can be copied"
+    IDS_EXAMPLES_EMPTY			"The ""examples.txt"" file in the ""Examples"" directory\nwas empty so no examples can be copied"
+    IDS_EXAMPLES_OUT_OF_MEMORY		"The program ran out of memory while attempting to read the\n""examples.txt"" file in the ""Examples""\ndirectory so no examples can be copied"
+    IDS_REPLACE_EXAMPLE_DIR		"The directory %2\%1 already exists. Replace this\ndirectory with a fresh copy from the ""Examples"" directory?"
+    IDS_EXAMPLES_COPIED			"The %1 were successfully copied\ninto the directory %3\%2"
+    IDS_EXAMPLES_COPY_ABORTED		"Unable to copy the ""%1"".\nYou aborted the copy operation."
+    IDS_EXAMPLES_COPY_FAILED		"Unable to copy the ""%1"".\nThe copy operation failed."
+    IDS_CANNOT_FIND_SOURCE_DIR		"Unable to copy the ""%1"".\nThe directory ""%2"" in the Ready Examples directory does not exist!"
+
+    // Strings for place holders in the HTML
+    IDS_CLASSNAMEHOLDER			"[ClassName]"
+    IDS_PROGRAMNAMEHOLDER		"[ProgramName]"
+    IDS_APPLETWIDTHHOLDER    		"[width]"
+    IDS_APPLETHEIGHTHOLDER    		"[height]"
+    IDS_APPLETPARAMETERSHOLDER		"[Parameters]"
+    
+    // Error messages for Get classname
+    IDS_BAD_FIRST_CLASSNAME_CHAR	"First letter of a class name must be a letter, ""_"" or ""$"""
+    IDS_BAD_FOLLOW_CLASSNAME_CHAR	"Class name consists of  letters, digits, ""_"" or ""$"""
+    IDS_LOWER_FIRST_CLASSNAME_CHAR	"Class names should start with an upper case letter"
+    // EdTop and Debugger Controller strings
+    IDS_RUN_BUTTON			"Run"
+    IDS_STOP_BUTTON			"Stop"
+    IDS_PAUSE_BUTTON			"Pause"
+    IDS_RESUME_BUTTON			"Resume"
+    IDS_OPEN_BUTTON			"Open"
+    IDS_SAVE_BUTTON			"Save"
+    IDS_INDENT_BUTTON			"Indent"
+    IDS_PRINT_BUTTON			"Print"
+    IDS_CUT_BUTTON			"Cut"
+    IDS_COPY_BUTTON			"Copy"
+    IDS_PASTE_BUTTON			"Paste"
+    IDS_FIND_BUTTON			"Find"
+    IDS_FIND_NEXT_BUTTON		"Find Next"
+    IDS_REPLACE_BUTTON			"Replace"
+    IDS_CLOSE_BUTTON			"Close"
+    IDS_STEP_BUTTON			"Step"
+    IDS_STEP_OVER_BUTTON		"Step Over"
+    IDS_STEP_RETURN_BUTTON		"Step Return"
+
+    IDS_RUN_BUTTON_LONG			"Run (F1)"
+    IDS_STOP_BUTTON_LONG		"Stop"
+    IDS_PAUSE_BUTTON_LONG		"Pause"
+    IDS_RESUME_BUTTON_LONG		"Resume"
+    IDS_OPEN_BUTTON_LONG		"Open (^O)"
+    IDS_SAVE_BUTTON_LONG		"Save (^S)"
+    IDS_INDENT_BUTTON_LONG		"Indent (F2)"
+    IDS_PRINT_BUTTON_LONG		"Print (^P)"
+    IDS_CUT_BUTTON_LONG			"Cut (^X)"
+    IDS_COPY_BUTTON_LONG		"Copy (^C)"
+    IDS_PASTE_BUTTON_LONG		"Paste (^V)"
+    IDS_FIND_BUTTON_LONG		"Find (^F)"
+    IDS_FIND_NEXT_BUTTON_LONG		"Find Next (F3)"
+    IDS_REPLACE_BUTTON_LONG		"Replace (^H)"
+    IDS_CLOSE_BUTTON_LONG		"Close (^W)"
+
+    // Label names
+    IDS_SLOW_LABEL			"Slow\nTrace"
+    IDS_FAST_LABEL			"Fast\nTrace"
+    IDS_TRACE_SPEED_LABEL		"Trace Speed"
+    
+    // Check box labels
+    IDS_TRACE_CHECKBOX			"Trace\nExecution"
+    IDS_SHOW_VARS_CHECKBOX		"Show\nVariables"
+    
+    // Registry Strings
+    IDS_TURING_DESCRIPTION		"Turing File"
+    IDS_TURING_UNIT_DESCRIPTION		"Turing Unit File"
+    IDS_TURING_INCLUDE_DESCRIPTION	"Turing Include File"
+    IDS_TURING_DEMO_DESCRIPTION		"Turing Demo File"
+    IDS_TURING_COMMAND_NAME		"&Open with Turing"
+    IDS_CLASS_DESCRIPTION		"Java Class (bytecode) File"
+    IDS_JAVA_DESCRIPTION		"Java Source File"
+    IDS_JAVA_COMMAND_NAME		"&Open with Ready to Program"
+
+}
+
+EDIT_WINDOW_MENUS MENU 
+{
+    POPUP "File" 
+    {
+	POPUP "New" 
+	{
+	    MENUITEM "Empty\tCtrl+N", COMMAND_NEW_UNNAMED
+	}
+	MENUITEM "Open...\tCtrl+O", COMMAND_OPEN_FILE
+	POPUP "Recent Files" 
+	{
+	    MENUITEM "No Recent Files", COMMAND_NEW_UNNAMED
+	}
+	MENUITEM "Close\tCtrl+W", COMMAND_CLOSE_FILE	
+	MENUITEM SEPARATOR
+	MENUITEM "Save\tCtrl+S", COMMAND_SAVE_FILE
+	MENUITEM "Save As...", COMMAND_SAVEAS_FILE
+	MENUITEM "Save Selection...", COMMAND_SAVE_SELECTION
+	MENUITEM "Revert to Saved", COMMAND_REVERT_FILE
+	MENUITEM SEPARATOR
+	MENUITEM "Print...\tCtrl+P", COMMAND_PRINT_FILE
+	MENUITEM "Page Setup...", COMMAND_PAGE_SETUP
+	MENUITEM SEPARATOR
+	MENUITEM "Select as Main", COMMAND_FIX_MAIN
+	MENUITEM "No Fixed Main", COMMAND_FLOAT_MAIN, GRAYED
+	MENUITEM SEPARATOR
+	MENUITEM "Copy Examples...", COMMAND_COPY_EXAMPLES
+	MENUITEM SEPARATOR
+	MENUITEM "Preferences...", COMMAND_PREFS
+	MENUITEM SEPARATOR
+	MENUITEM "Exit\tCtrl+Q", COMMAND_EXIT
+    }
+    POPUP "Edit" 
+    {
+	MENUITEM "Undo\tCtrl+Z", COMMAND_UNDO
+	MENUITEM "Redo\tCtrl+Y", COMMAND_REDO
+	MENUITEM SEPARATOR
+	MENUITEM "Cut\tCtrl+X", COMMAND_CUT
+	MENUITEM "Copy\tCtrl+C", COMMAND_COPY
+	MENUITEM "Paste\tCtrl+V", COMMAND_PASTE
+	MENUITEM SEPARATOR
+	MENUITEM "Select All\tCtrl+A", COMMAND_SELECT_ALL
+	MENUITEM SEPARATOR
+	MENUITEM "Comment range\tCtrl+Shift-%", COMMAND_COMMENT_RANGE
+	MENUITEM "Uncomment range\tCtrl+5", COMMAND_UNCOMMENT_RANGE
+#ifdef TURING
+	MENUITEM SEPARATOR
+	MENUITEM "Structure Completion\tCtrl+Enter", COMMAND_COMPLETE_STRUCT
+#endif // #ifdef TURING	
+	MENUITEM SEPARATOR
+	POPUP "Insert" 
+	{
+	    MENUITEM "No Templates Available", COMMAND_NEW_UNNAMED
+	}
+	MENUITEM SEPARATOR
+	MENUITEM "Indent file\tF2", COMMAND_INDENT
+    }
+    POPUP "Search"
+    {
+	MENUITEM "Find...\tCtrl+F", COMMAND_FIND
+	MENUITEM "Find Next\tF3", COMMAND_FIND_NEXT
+	MENUITEM "Find """"", COMMAND_FIND_SELECTION
+	MENUITEM "Replace...\tCtrl+H", COMMAND_REPLACE
+	MENUITEM SEPARATOR
+	MENUITEM "Find Next Error\tF5", COMMAND_FIND_NEXT_ERROR
+#ifdef JAVA
+	MENUITEM SEPARATOR
+	MENUITEM "Find Matching Brace", COMMAND_FIND_MATCH_BRACE
+#endif // #ifdef JAVA
+	MENUITEM SEPARATOR
+	MENUITEM "Goto line...\tCtrl+G", COMMAND_GOTO_LINE
+    }
+    POPUP "Mark" 
+    {
+	MENUITEM "Dummy Item", COMMAND_RUN
+    }
+    POPUP "Run" 
+    {
+	MENUITEM "Run\tCtrl+R", COMMAND_RUN
+	MENUITEM "Run with Args...", COMMAND_RUN_ARGS
+#ifdef JAVA
+	MENUITEM "Compile", COMMAND_COMPILE
+#endif
+	MENUITEM SEPARATOR
+	MENUITEM "Stop", COMMAND_STOP
+	MENUITEM "Pause", COMMAND_PAUSERESUME
+//	MENUITEM SEPARATOR
+//	MENUITEM "Submit...", COMMAND_SUBMIT
+#ifndef JAVA
+	MENUITEM "Close Run Windows", COMMAND_CLOSE_ALL_RUN_WIN
+	MENUITEM SEPARATOR
+	MENUITEM "Compiler reset", COMMAND_COMPILER_RESET
+	MENUITEM SEPARATOR
+	MENUITEM "Generate stand-alone program", COMMAND_CREATE_EXE
+#endif // #else - #ifdef JAVA
+    }
+#ifdef JAVA
+    POPUP "Help" 
+    {
+//	MENUITEM "Help with Editor", COMMAND_HELP_EDITOR
+//	MENUITEM "Help with Language", COMMAND_HELP_LANG
+	MENUITEM "Help with Java Class Libraries", COMMAND_HELP_CLASSLIB
+	MENUITEM SEPARATOR
+	POPUP "Ready on the Web"
+	{
+	    MENUITEM "Ready Home Page", COMMAND_HELP_READY_HOME
+	    MENUITEM "Ready Technical Support", COMMAND_HELP_READY_SUPPORT
+	    MENUITEM "Textbooks for Java", COMMAND_HELP_READY_TEXTBOOKS
+	    MENUITEM "Teaching Resources for Java", COMMAND_HELP_READY_RESOURCES
+	    MENUITEM "More Help Learning Java", COMMAND_HELP_JAVA_HELP
+	    MENUITEM "Holt Software Home Page", COMMAND_HELP_HSA_HOME
+	}
+	POPUP "IBM on the Web"
+	{
+	    MENUITEM "IBM's Academic Program for Java", COMMAND_HELP_IBM_ACAD
+	    MENUITEM "IBM's Home Page", COMMAND_HELP_IBM_HOME
+	}
+	MENUITEM SEPARATOR
+	MENUITEM "About Ready to Program with Java Technology", COMMAND_ABOUT
+    }
+#else // #ifdef JAVA
+    POPUP "Help" 
+    {
+//	MENUITEM "Help with Editor", COMMAND_HELP_EDITOR
+	MENUITEM "Keyword Usage\tF8", COMMAND_KEYWORD_PROTO
+	MENUITEM "Keyword Reference\tF9", COMMAND_KEYWORD_REF
+	MENUITEM "Turing Reference\tF10", COMMAND_HELP_TURING_REF
+	MENUITEM SEPARATOR
+	POPUP "Turing on the Web"
+	{
+	    MENUITEM "Turing Home Page", COMMAND_HELP_TURING_HOME
+	    MENUITEM "Turing Technical Support", COMMAND_HELP_TURING_SUPPORT
+	    MENUITEM "Updates to Latest Version", COMMAND_HELP_TURING_UPDATE
+	    MENUITEM "Textbooks for Turing", COMMAND_HELP_TURING_TEXTBOOKS
+	    MENUITEM "Teaching Resources for Turing", COMMAND_HELP_TURING_RESOURCES
+	    MENUITEM "More Help Learning Turing", COMMAND_HELP_TURING_HELP
+	    MENUITEM "Holt Software Home Page", COMMAND_HELP_HSA_HOME
+	}
+	MENUITEM SEPARATOR
+	MENUITEM "About Turing", COMMAND_ABOUT
+    }
+#endif // #else - #ifdef JAVA 
+}
+
+EDIT_WINDOW_DEBUGGER_MENU MENU 
+{
+    POPUP "Debugger" 
+    {
+	MENUITEM "Show Debugger Controls", COMMAND_DEBUG_SHOW_HIDE_CONTROLS
+	MENUITEM SEPARATOR
+	MENUITEM "Show Breakpoints", COMMAND_DEBUG_SHOW_BREAKPOINTS
+	MENUITEM "Clear Breakpoints", COMMAND_DEBUG_CLEAR_BREAKPOINTS
+	MENUITEM SEPARATOR
+	MENUITEM "Show Unit List", COMMAND_DEBUG_SHOW_UNIT_LIST
+	MENUITEM "Show Processes", COMMAND_DEBUG_SHOW_PROCESSES
+	MENUITEM "Show Queues", COMMAND_DEBUG_SHOW_QUEUES
+	MENUITEM "Show Allocate Objects", COMMAND_DEBUG_SHOW_ALLOCATED_OBJECTS
+	MENUITEM SEPARATOR
+	MENUITEM "Show Execution Line", COMMAND_DEBUG_SHOW_EXECUTION_LINE
+	MENUITEM "Show Definition", COMMAND_DEBUG_SHOW_DEFINITION
+	MENUITEM SEPARATOR
+	MENUITEM "Send Stream 0 to Stderr", COMMAND_DEBUG_STREAM_0_TO_STDERR
+	MENUITEM "Send Errors to Stderr", COMMAND_DEBUG_ERRORS_TO_STDERR
+	MENUITEM "Send Library Info to Stderr", COMMAND_DEBUG_LIB_INFO_TO_STDERR
+    }
+}
+
+EDIT_CONTEXTUAL_MENU MENU 
+{
+    POPUP "" 
+    {
+	MENUITEM "Undo\tCtrl+Z", COMMAND_UNDO
+	MENUITEM "Redo\tCtrl+Y", COMMAND_REDO
+	MENUITEM SEPARATOR
+	MENUITEM "Cut\tCtrl+X", COMMAND_CUT
+	MENUITEM "Copy\tCtrl+C", COMMAND_COPY
+	MENUITEM "Paste\tCtrl+V", COMMAND_PASTE
+	MENUITEM SEPARATOR
+	MENUITEM "Select All\tCtrl+A", COMMAND_SELECT_ALL
+	MENUITEM SEPARATOR
+	MENUITEM "Comment range\tCtrl+Shift-%", COMMAND_COMMENT_RANGE
+	MENUITEM "Uncomment range\tCtrl+5", COMMAND_UNCOMMENT_RANGE
+    }
+}
+    
+EDIT_INIT_SINGLE_WINDOW_MENUS MENU 
+{
+    POPUP "File" 
+    {
+	POPUP "New" 
+	{
+	    MENUITEM "Empty", COMMAND_NEW_UNNAMED
+	}
+	MENUITEM "Open\tCtrl+O", COMMAND_OPEN_FILE
+	POPUP "Recent Files" 
+	{
+	    MENUITEM "Dummy", COMMAND_NEW_UNNAMED
+	}
+	MENUITEM SEPARATOR
+	MENUITEM "Preferences", COMMAND_PREFS
+	MENUITEM SEPARATOR
+	MENUITEM "Exit\tCtrl+Q", COMMAND_EXIT
+    }
+}
+
+GOTO_LINE_DIALOG DIALOGEX LOADONCALL MOVEABLE DISCARDABLE 30, 73, 137, 42
+CAPTION "Goto Line"
+STYLE WS_BORDER | WS_CAPTION | DS_MODALFRAME | WS_POPUP | WS_SYSMENU | DS_3DLOOK | DS_CONTEXTHELP | DS_SHELLFONT
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT "Goto Line:", -1, 4, 8, 34, 8
+    EDITTEXT GOTO_EDITBOX, 42, 7, 34, 12, WS_GROUP | ES_NUMBER
+    DEFPUSHBUTTON "Goto Line", IDOK, 83, 5, 50, 14
+    PUSHBUTTON "Cancel", IDCANCEL, 83, 23, 50, 14
+END
+
+PROGRAM_TYPE_1_DIALOG DIALOG LOADONCALL MOVEABLE DISCARDABLE 30, 73, 168, 52
+CAPTION "Type of Program"
+STYLE WS_BORDER | WS_CAPTION | DS_MODALFRAME | WS_POPUP | WS_SYSMENU | DS_3DLOOK | DS_CONTEXTHELP
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT "This program can be run as either an application or an applet.  How should this program be run?", -1, 4, 7, 157, 18
+    DEFPUSHBUTTON   "Application",APPLICATION_BUTTON, 56, 30, 50, 14
+    PUSHBUTTON      "Applet",APPLET_BUTTON, 110, 30, 50, 14
+END
+
+PROGRAM_TYPE_2_DIALOG DIALOG LOADONCALL MOVEABLE DISCARDABLE 30, 73, 221, 110
+CAPTION "Type of Program"
+STYLE WS_BORDER | WS_CAPTION | DS_MODALFRAME | WS_POPUP | WS_SYSMENU | DS_3DLOOK | DS_CONTEXTHELP
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT "This program does not appear to be an application or an applet. Applications have a method defined as", -1, 4, 8, 209, 18
+    LTEXT "public static void main (String[] <argument name>)", -1, 44, 28, 165, 8
+    LTEXT "Applets have a class header extending java.applet.Applet", -1, 4, 40, 209, 8
+    LTEXT "import java.applet.*\npublic class <class name> extends Applet", -1, 44, 52, 165, 18
+    LTEXT "How should this program be run?", -1, 4, 72, 209, 8
+    DEFPUSHBUTTON "Cancel", IDCANCEL, 163, 88, 50, 14
+    PUSHBUTTON "Application", APPLICATION_BUTTON, 55, 88, 50, 14
+    PUSHBUTTON "Applet", APPLET_BUTTON, 109, 88, 50, 14
+END
+
+PROGRAM_TYPE_3_DIALOG DIALOG LOADONCALL MOVEABLE DISCARDABLE 30, 73, 168, 52
+CAPTION "Type of Program"
+STYLE WS_BORDER | WS_CAPTION | DS_MODALFRAME | WS_POPUP | WS_SYSMENU | DS_3DLOOK | DS_CONTEXTHELP
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT "The main program can be run as either an application or an applet.  How will this program be run?", -1, 4, 7, 157, 18
+    DEFPUSHBUTTON   "Application",APPLICATION_BUTTON, 56, 30, 50, 14
+    PUSHBUTTON      "Applet",APPLET_BUTTON, 110, 30, 50, 14
+END
+
+PROGRAM_TYPE_4_DIALOG DIALOG LOADONCALL MOVEABLE DISCARDABLE 30, 73, 221, 110
+CAPTION "Type of Program"
+STYLE WS_BORDER | WS_CAPTION | DS_MODALFRAME | WS_POPUP | WS_SYSMENU | DS_3DLOOK | DS_CONTEXTHELP
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT "The main program does not appear to be an application or an applet. Applications have a method defined as", -1, 4, 8, 209, 18
+    LTEXT "public static void main (String[] <argument name>)", -1, 44, 28, 165, 8
+    LTEXT "Applets have a class header extending java.applet.Applet", -1, 4, 40, 209, 8
+    LTEXT "import java.applet.*\npublic class <class name> extends Applet", -1, 44, 52, 165, 18
+    LTEXT "How will this program be run?", -1, 4, 72, 209, 8
+    DEFPUSHBUTTON "Cancel", IDCANCEL, 163, 88, 50, 14
+    PUSHBUTTON "Application", APPLICATION_BUTTON, 55, 88, 50, 14
+    PUSHBUTTON "Applet", APPLET_BUTTON, 109, 88, 50, 14
+END
+
+UNKNOWN_COMCTL_VERSION DIALOG LOADONCALL MOVEABLE DISCARDABLE 30, 73, 221, 110
+CAPTION "Bad Common Control Version"
+STYLE WS_BORDER | WS_CAPTION | DS_MODALFRAME | WS_POPUP | WS_SYSMENU | DS_3DLOOK | DS_CONTEXTHELP
+FONT 8, "MS Sans Serif"
+BEGIN
+#ifdef JAVA
+    LTEXT "Ready was unable to determine the version of the Windows common controls installed on this system.  Since Ready requires common controls version 4.70 or higher to function, you may not have the required system and Ready may not function properly.", -1, 4, 8, 209, 35
+    LTEXT "(Note the correct common controls are installed by Internet Explorer 3.0 or higher).", -1, 4, 46, 209, 18
+    LTEXT "Do you want to continue running Ready?", -1, 4, 68, 209, 18
+    DEFPUSHBUTTON "Continue Ready", IDOK, 81, 88, 64, 14
+    PUSHBUTTON "Quit Ready", IDCANCEL, 149, 88, 64, 14
+#else // #ifdef JAVA
+    LTEXT "Turing was unable to determine the version of the Windows common controls installed on this system.  Since Turing requires common controls version 4.70 or higher to function, you may not have the required system and Turing may not function properly.", -1, 4, 8, 209, 35
+    LTEXT "(Note the correct common controls are installed by Internet Explorer 3.0 or higher).", -1, 4, 46, 209, 18
+    LTEXT "Do you want to continue running Turing?", -1, 4, 68, 209, 10
+    DEFPUSHBUTTON "Continue Turing", IDOK, 81, 88, 64, 14
+    PUSHBUTTON "Quit Turing", IDCANCEL, 149, 88, 64, 14
+#endif // #else - #ifdef JAVA
+END
+
+
+BAD_COMCTL_VERSION DIALOG LOADONCALL MOVEABLE DISCARDABLE 30, 73, 221, 110
+CAPTION "Bad Common Control Version"
+STYLE WS_BORDER | WS_CAPTION | DS_MODALFRAME | WS_POPUP | WS_SYSMENU | DS_3DLOOK | DS_CONTEXTHELP
+FONT 8, "MS Sans Serif"
+BEGIN
+#ifdef JAVA
+    LTEXT "You do not have a recent enough version of the Windows common controls installed on this system.  Since Ready requires common controls version 4.70 or higher to function, you may not have the required system and Ready may not function properly.", -1, 4, 8, 209, 35
+    LTEXT "(Note the correct common controls are installed by Internet Explorer 3.0 or higher).", -1, 4, 46, 209, 18
+    LTEXT "Do you want to continue running Ready?", -1, 4, 68, 209, 18
+    DEFPUSHBUTTON "Quit Ready", IDCANCEL, 149, 88, 64, 14
+    PUSHBUTTON "Continue Ready", IDOK, 81, 88, 64, 14
+#else // #ifdef JAVA
+    LTEXT "You do not have a recent enough version of the Windows common controls installed on this system.  Since Turing requires common controls version 4.70 or higher to function, you may not have the required system and Turing may not function properly.", -1, 4, 8, 209, 35
+    LTEXT "(Note the correct common controls are installed by Internet Explorer 3.0 or higher).", -1, 4, 46, 209, 18
+    LTEXT "Do you want to continue running Turing?", -1, 4, 68, 209, 10
+    DEFPUSHBUTTON "Quit Turing", IDCANCEL, 149, 88, 64, 14
+    PUSHBUTTON "Continue Turing", IDOK, 81, 88, 64, 14
+#endif // #else - #ifdef JAVA
+END
+
+
+GET_CLASSNAME_DIALOG DIALOG LOADONCALL MOVEABLE DISCARDABLE 30, 73, 220, 59
+CAPTION "Enter Class Name"
+STYLE WS_BORDER | WS_CAPTION | DS_MODALFRAME | WS_POPUP | WS_SYSMENU | DS_3DLOOK | DS_CONTEXTHELP
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT "Class Name:", -1, 4, 8, 40, 8
+    EDITTEXT CLASSNAME_EDITBOX, 48, 7, 166, 12, ES_AUTOHSCROLL | WS_GROUP
+    LTEXT "", CLASSNAME_WARNING_LABEL, 29, 26, 175, 8
+    DEFPUSHBUTTON "OK", IDOK, 104, 40, 50, 14
+    PUSHBUTTON "Cancel", IDCANCEL, 164, 40, 50, 14
+END
+
+GET_PROGRAMNAME_DIALOG DIALOG LOADONCALL MOVEABLE DISCARDABLE 30, 73, 220, 59
+CAPTION "Enter Program Name"
+STYLE WS_BORDER | WS_CAPTION | DS_MODALFRAME | WS_POPUP | WS_SYSMENU | DS_3DLOOK | DS_CONTEXTHELP
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT "Program Name:", -1, 4, 8, 40, 8
+    EDITTEXT CLASSNAME_EDITBOX, 48, 7, 166, 12, ES_AUTOHSCROLL | WS_GROUP
+    LTEXT "", CLASSNAME_WARNING_LABEL, 29, 26, 175, 8
+    DEFPUSHBUTTON "OK", IDOK, 104, 40, 50, 14
+    PUSHBUTTON "Cancel", IDCANCEL, 164, 40, 50, 14
+END
+
+GET_APPLET_SIZE_DIALOG DIALOG LOADONCALL MOVEABLE DISCARDABLE 30, 73, 208, 99
+CAPTION "Get Applet Window Size"
+STYLE WS_BORDER | WS_CAPTION | DS_MODALFRAME | WS_POPUP | WS_SYSMENU | DS_3DLOOK | DS_CONTEXTHELP
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT "To create the HTML to run the applet, you must specify the size of the window (in pixels) in which the applet will run.", -1, 4, 8, 193, 20
+    LTEXT "To change the size of the applet window at a later date, simply load the HTML file and change the width and height values.", -1, 4, 28, 193, 28
+    LTEXT "Applet Width:", -1, 4, 59, 45, 8
+    EDITTEXT XSIZE_EDITBOX, 50, 57, 34, 12, WS_GROUP | ES_NUMBER
+    LTEXT "Applet Height:", -1, 110, 59, 45, 8
+    EDITTEXT YSIZE_EDITBOX, 156, 57, 34, 12, WS_GROUP | ES_NUMBER
+    DEFPUSHBUTTON "OK", IDOK, 90, 80, 50, 14
+    PUSHBUTTON "Cancel", IDCANCEL, 150, 80, 50, 14
+END
+
+TURING_CREATE_EXE_DIALOG DIALOG LOADONCALL MOVEABLE DISCARDABLE 30, 73, 190, 114
+CAPTION "Options for "".EXE"""
+STYLE WS_BORDER | WS_CAPTION | DS_MODALFRAME | WS_POPUP | WS_SYSMENU | DS_3DLOOK | DS_CONTEXTHELP
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT "When program terminates:", -1, 7, 7, 87, 8
+    CONTROL "Leave Run Window(s) Open", LEAVE_OPEN, "Button",BS_AUTORADIOBUTTON|WS_GROUP,22,17,128,12
+    CONTROL "Immediately Close Run Window(s)", CLOSE_ON_TERMINATE, "Button",BS_AUTORADIOBUTTON,22,31,128,12
+    CHECKBOX "Display ""Run with Arguments"" dialog on start-up", DISPLAY_R_W_A, 7, 48, 175, 10, BS_AUTOCHECKBOX|WS_GROUP
+    CHECKBOX "Center Output Window", CENTER_OUTPUT_WINDOW, 7, 62, 175, 10, BS_AUTOCHECKBOX|WS_GROUP
+    CHECKBOX "Prevent User from Terminating Program", STOP_USER_CLOSE, 7, 76, 175, 10, BS_AUTOCHECKBOX|WS_GROUP
+    DEFPUSHBUTTON "OK", IDOK, 74, 95, 50, 14,WS_GROUP
+    PUSHBUTTON "Cancel", IDCANCEL, 134, 95, 50, 14
+END
+
+//
+// Notes: CHECKBOX:	Height = 10
+//			Next item is 14 below
+//        EDITTEXT	Height = 12
+//			Next item after is 18 below
+//	  LTEXT		Height = 8 (2 beneath EDITTEXT on same line)
+//
+
+AdminPrefDialog DIALOG DISCARDABLE  20, 40, 272, 180
+Caption "Administation Preferences"
+STYLE DS_MODALFRAME | WS_OVERLAPPED | WS_CAPTION | WS_VISIBLE | WS_SYSMENU
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT "Startup Directory:", -1, 7, 15, 56, 8
+    EDITTEXT PREF_STARTUPDIR, 67, 12, 161, 12, WS_GROUP | ES_AUTOHSCROLL
+    CHECKBOX "Use ""My Documents"" folder as Startup Directory", PREF_USEMYDOCUMENTS, 67, 28, 165, 10, BS_AUTOCHECKBOX
+    CHECKBOX "Can Set User Name", PREF_CHANGEUSERNAME, 7, 48, 120, 10, BS_AUTOCHECKBOX
+#ifdef TURING
+    CHECKBOX "Can Enter Regular Mode", PREF_ENTERADVANCED, 7, 62, 120, 10, BS_AUTOCHECKBOX
+    CHECKBOX "Debugger Available", PREF_DEBUGGERAVAIL, 7, 76, 120, 10, BS_AUTOCHECKBOX
+#endif // #ifdef TURING    
+    CHECKBOX "Cannot Alter Preferences", PREF_CANTCHANGEPREF, 140, 48, 140, 10, BS_AUTOCHECKBOX
+#ifdef TURING
+    CHECKBOX "Prohibit use of 'Sys.Exec'", PREF_PROHIBITSYSEXEC, 140, 62, 150, 10, BS_AUTOCHECKBOX
+    CHECKBOX "No Sound or Music", PREF_NOSOUND, 140, 76, 150, 10, BS_AUTOCHECKBOX
+#endif // #ifdef TURING    
+    CHECKBOX "Use Only Startup Directory and Below", PREF_ONLYSTARTUPDIR, 7, 100, 140, 10, BS_AUTOCHECKBOX
+    CHECKBOX "Use Only Allowed Drives", PREF_ALLOWEDDRIVES, 7, 114, 140, 10, BS_AUTOCHECKBOX
+    LTEXT "Allowed Drives:", -1, 21, 130, 50, 8
+    EDITTEXT PREF_ALLOWEDDRIVESLIST, 82, 128, 140, 12
+    CHECKBOX "Forbid Use of Specified Drives", PREF_FORBIDDENDRIVES, 7, 146, 140, 10, BS_AUTOCHECKBOX
+    LTEXT "Forbidden Drives:", -1, 21, 162, 56, 8
+    EDITTEXT PREF_FORBIDDENDRIVESLIST, 82, 160, 140, 12
+END
+
+GeneralPrefDialog DIALOG DISCARDABLE 20, 40, 272, 180
+Caption "General Preferences"
+STYLE DS_MODALFRAME | WS_OVERLAPPED | WS_CAPTION | WS_VISIBLE | WS_SYSMENU
+FONT 8, "MS Sans Serif"
+BEGIN
+    CHECKBOX "Beginner Mode (One file at a time)", PREF_BEGINNER, 7, 14, 123, 10, BS_AUTOCHECKBOX
+    CHECKBOX "One Window Mode", PREF_ONEWINDOW, 7, 28, 123, 10, BS_AUTOCHECKBOX
+    CHECKBOX "Display Full Pathnames", PREF_EDITFULLPATH, 7, 42, 125, 10, BS_AUTOCHECKBOX
+    CHECKBOX "Save Previous File as "".BAK""", PREF_EDITSAVEBACKUP, 7, 56, 125, 10, BS_AUTOCHECKBOX
+    CHECKBOX "Confirm on Quit", PREF_CONFIRMQUIT, 7, 70, 125, 10, BS_AUTOCHECKBOX
+    CHECKBOX "Skip Splash Screen", PREF_SKIPSPLASH, 7, 84, 125, 10, BS_AUTOCHECKBOX
+#ifdef JAVA
+    CHECKBOX "Add "".java"" to File Names", PREF_ADDSUFFIX, 7, 98, 125, 10, BS_AUTOCHECKBOX
+#else // #ifdef JAVA
+    CHECKBOX "Add "".t"" to File Names", PREF_ADDSUFFIX, 7, 98, 125, 10, BS_AUTOCHECKBOX
+#endif // #else - #ifdef JAVA
+    CHECKBOX "Convert Leading Spaces into Tabs", PREF_EDITSPACESTOTABS, 7, 112, 125, 10, BS_AUTOCHECKBOX
+    CHECKBOX "Don't Save Recent Files Menu", PREF_NORECENTFILES, 7, 126, 125, 10, BS_AUTOCHECKBOX
+#ifdef JAVA    
+//    TW When this is implemented, this checkbox must be placed elsewhere
+//    CHECKBOX "Indent: Place '{' on Same Line", PREF_OPENBRACESAMELINE, 7, 140, 125, 10, BS_AUTOCHECKBOX
+#endif // #ifdef JAVA
+    CHECKBOX "Find Uses Selected Text", PREF_FINDUSESSELECTION, 7, 140, 125, 10, BS_AUTOCHECKBOX
+    CHECKBOX "Start in Last Active Directory", PREF_USELASTACTIVEDIRECTORY, 7, 154, 125, 10, BS_AUTOCHECKBOX
+    LTEXT "Spaces per Tab:", -1, 152, 17, 54, 8
+    EDITTEXT PREF_EDITSPACESPERTAB, 209, 15, 30, 12
+    LTEXT "Indent Size:",-1, 168, 35, 38, 8
+    EDITTEXT PREF_INDENTSIZE, 209, 33, 30, 12
+    CTEXT "", PREF_OPENEDWITH, 133, 65, 136, 20, 0, WS_EX_CLIENTEDGE
+    CTEXT "", PREF_WASOPENEDWITH, 133, 101, 136, 20, 0, WS_EX_CLIENTEDGE
+#ifdef JAVA    
+    LTEXT """.java"" Files Are Currently Associated With:", -1, 133, 55, 136, 8
+    LTEXT """.java"" Files Were Associated With:", -1, 133, 91, 136, 8
+    PUSHBUTTON "Associate "".java"" files With Ready", PREF_ASSOCWITHREADY, 141, 127, 120, 14
+    PUSHBUTTON "Reset "".java"" File Association", PREF_RESETFILEASSOC, 141, 145, 120, 14
+#else // #ifdef JAVA
+    LTEXT """.t"" Files Are Currently Associated With:", -1, 133, 55, 136, 8
+    LTEXT """.t"" Files Were Associated With:", -1, 133, 91, 136, 8
+    PUSHBUTTON "Associate "".t"" files With Turing", PREF_ASSOCWITHREADY, 141, 127, 120, 14
+    PUSHBUTTON "Reset "".t"" File Association", PREF_RESETFILEASSOC, 141, 145, 120, 14
+#endif // #ifdef JAVA
+END
+        
+AppearancePrefDialog DIALOG DISCARDABLE 47, 59, 272, 180
+Caption "Appearance Preferences"
+STYLE DS_MODALFRAME | WS_OVERLAPPED | WS_CAPTION | WS_VISIBLE | WS_SYSMENU
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX "Editor Font",  -1,  7,  7, 112, 58
+    LTEXT "Font Name:",      -1, 13, 19,  38, 8
+    LTEXT "", PREF_EDITFONTNAME, 56, 19,  57, 8
+    LTEXT "Font Size:",      -1, 13, 31,  38, 8
+    LTEXT "", PREF_EDITFONTSIZE, 56, 31,  57, 8
+    PUSHBUTTON "Change Font", PREF_EDITCHANGEFONT, 60, 44, 52, 14
+    CHECKBOX "Syntax Coloring", PREF_EDITCOLOUR, 131, 12, 64, 10, BS_AUTOCHECKBOX
+    CHECKBOX "Always Show 'Debugger' Menu", PREF_SHOWDEBUGGERMENU, 131, 26, 113, 10, BS_AUTOCHECKBOX
+    CHECKBOX "Show 'Window' Menu", PREF_SHOWWINDOWMENU, 131, 54, 100, 10, BS_AUTOCHECKBOX | NOT WS_VISIBLE 
+    LTEXT "Text Cursor Width:", -1, 162, 74, 60, 8
+    EDITTEXT PREF_CARETWIDTH, 225, 72, 30, 12
+
+    GROUPBOX "Editor Window Size", -1, 7, 82, 138, 81
+    CHECKBOX "Full Screen for Beginner Mode", PREF_BEGINFULLSCREEN, 13, 94, 111, 10, BS_AUTOCHECKBOX
+    CHECKBOX "Full Screen in Regular Mode", PREF_ADVFULLSCREEN, 13, 108, 116, 10, BS_AUTOCHECKBOX
+    LTEXT "Editor Window Rows:", -1, 26, 127, 69, 8
+    EDITTEXT PREF_EDITTEXTROWS, 99, 125, 30, 12
+    LTEXT "Editor Window Columns:", -1, 17, 145, 78, 8
+    EDITTEXT PREF_EDITTEXTCOLS, 99, 143, 30, 12
+END
+
+RunPrefDialog DIALOG DISCARDABLE 93, 15, 272, 180
+Caption "Run Window Preferences"
+STYLE DS_MODALFRAME | WS_OVERLAPPED | WS_CAPTION | WS_VISIBLE | WS_SYSMENU
+FONT 8, "MS Sans Serif"
+BEGIN
+#ifdef JAVA    
+    GROUPBOX "Standard I/O Window Font",  -1,  7,  7, 112, 58
+#else // #ifdef JAVA
+    GROUPBOX "Default Run Window Font",  -1,  7,  7, 112, 58
+#endif // #else - #ifdef JAVA
+    LTEXT "Font Name:",      -1, 13, 19,  38, 8
+    LTEXT "", PREF_RUNFONTNAME, 56, 19,  57, 8
+    LTEXT "Font Size:",      -1, 13, 31,  38, 8
+    LTEXT "", PREF_RUNFONTSIZE, 56, 31,  57, 8
+    PUSHBUTTON "Change Font", PREF_RUNCHANGEFONT, 60, 44, 52, 14
+#ifdef JAVA    
+    GROUPBOX "Standard I/O Window Size", -1, 7, 82, 138, 81
+#else // #ifdef JAVA
+    GROUPBOX "Default Run Window Size", -1, 7, 82, 138, 81
+    CHECKBOX "Start in Graphics Mode", PREF_RUNGRAPHICSMODE, 13, 94, 111, 10, BS_AUTOCHECKBOX
+#endif // #else - #ifdef JAVA
+    CHECKBOX "Full Screen Run Window", PREF_RUNFULLSCREEN, 13, 108, 116, 10, BS_AUTOCHECKBOX
+    LTEXT "Run Window Rows:", -1, 26, 127, 69, 8
+    EDITTEXT PREF_RUNTEXTROWS, 99, 125, 30, 12
+    LTEXT "Run Window Columns:", -1, 17, 145, 78, 8
+    EDITTEXT PREF_RUNTEXTCOLS, 99, 143, 30, 12
+#ifdef TURING
+    CHECKBOX "Use small font on 640x480 screen", PREF_RUNUSESMALLFONT, 131, 12, 150, 10, BS_AUTOCHECKBOX
+#endif // #ifdef TURING
+#ifdef JAVA    
+    GROUPBOX "Default Applet Window Size", -1, 153, 82, 115, 50
+    LTEXT "Applet Window Width:", -1, 160, 96, 73, 8
+    EDITTEXT PREF_RUNAPPLETXSIZE, 234, 94, 30, 12
+    LTEXT "Applet Window Height:", -1, 160, 114, 73, 8
+    EDITTEXT PREF_RUNAPPLETYSIZE, 234, 112, 30, 12
+#endif // #ifdef JAVA
+END
+
+JavaPrefDialog DIALOG DISCARDABLE 93, 15, 272, 180
+Caption "Java Preferences"
+STYLE DS_MODALFRAME | WS_OVERLAPPED | WS_CAPTION | WS_VISIBLE | WS_SYSMENU
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT "Additional Class Path Directories:", -1, 7, 13, 104, 8
+    EDITTEXT PREF_JAVAADDCLASSPATH, 121, 11, 138, 12, ES_AUTOHSCROLL|WS_GROUP
+    LTEXT "Options to Jikes Compiler:", -1, 7, 31, 91, 8
+    EDITTEXT PREF_JAVAJIKESOPTION, 121, 29, 138, 12, ES_AUTOHSCROLL|WS_GROUP
+    GROUPBOX "Compatibility with older JVMs", -1,  7, 47, 230, 38
+    CONTROL "Compatibility with Java 1.0 - 1.3 ('assert' statement disallowed)", PREF_JAVA13COMPILE, "Button", BS_AUTORADIOBUTTON | WS_GROUP, 13, 58, 215, 10
+    CONTROL "'assert' statement enabled (Not compatible with Java 1.0 - 1.3)", PREF_JAVA14COMPILE, "Button", BS_AUTORADIOBUTTON, 13, 70, 215, 10
+    GROUPBOX "Version of Java", -1,  7, 91, 230, 38
+    CONTROL "Use Java 1.3.1", PREF_JAVA13JVM, "Button", BS_AUTORADIOBUTTON | WS_GROUP, 13, 102, 215, 10
+    CONTROL "Use Java 1.4.2", PREF_JAVA14JVM, "Button", BS_AUTORADIOBUTTON, 13, 114, 215, 10
+//    CHECKBOX "Use New JVM (Only if new JVM is installed in [Ready]\Support\jre)", 
+//    	PREF_JAVAUSENEWJVM, 13, 61, 300, 10, BS_AUTOCHECKBOX
+    LTEXT "Max Memory for JVM:",-1, 7, 135, 69, 8
+    EDITTEXT PREF_JAVAJVMSIZE, 85, 133, 27, 14, ES_AUTOHSCROLL|WS_GROUP
+    LTEXT "MB",-1, 119, 135, 12, 8
+    
+//    LTEXT "Options to JVM:", -1, 13, 60, 91, 8
+//    EDITTEXT PREF_JAVAJVMOPTION, 106, 58, 153, 12, ES_AUTOHSCROLL
+//    LTEXT "Options to Applet Viewer:", -1, 13, 78, 91, 8
+//    EDITTEXT PREF_JAVAAPPLVIEWOPTION, 106, 76, 153, 12
+    
+//    GROUPBOX "Alternate Programs", -1, 7, 122, 258, 48
+//    LTEXT "Alternate Java DLL:", -1, 13, 134, 91, 8
+//    EDITTEXT PREF_JAVAALTJAVADLL, 106, 132, 113, 12, ES_AUTOHSCROLL
+//    PUSHBUTTON "Browse", PREF_JAVAALTJAVADLLBTN, 223, 131, 36, 14
+//    LTEXT "Alternate Class Library:", -1, 13, 152, 91, 8
+//    EDITTEXT PREF_JAVAALTCLASSLIB, 106, 150, 113, 12, ES_AUTOHSCROLL
+//    PUSHBUTTON "Browse", PREF_JAVAALTCLASSLIBBTN, 223, 149, 36, 14
+END
+
+PrintPrefDialog DIALOG DISCARDABLE 93, 15, 272, 180
+Caption "Printing Preferences"
+STYLE DS_MODALFRAME | WS_OVERLAPPED | WS_CAPTION | WS_VISIBLE | WS_SYSMENU
+FONT 8, "MS Sans Serif"
+BEGIN
+	GROUPBOX "Printing Text Font", -1,  7,  7, 112, 58
+	LTEXT "Font Name:",       -1, 13, 19,  38,  8
+	LTEXT "", PREF_PRINTFONTNAME, 56, 19,  57,  8
+	LTEXT "Font Size:",       -1, 13, 31,  36,  8
+	LTEXT "", PREF_PRINTFONTSIZE, 56, 31,  57,  8
+	PUSHBUTTON "Change Font", PREF_PRINTCHANGEFONT, 60, 44, 52, 14
+	GROUPBOX "Printing Header Font", -1,  127,  7, 112, 58
+	LTEXT "Font Name:",       -1, 133, 19,  38,  8
+	LTEXT "", PREF_PRINTHDRFONTNAME, 176, 19,  57,  8
+	LTEXT "Font Size:",       -1, 133, 31,  36,  8
+	LTEXT "", PREF_PRINTHDRFONTSIZE, 176, 31,  57,  8
+	PUSHBUTTON "Change Font", PREF_PRINTHDRCHANGEFONT, 180, 44, 52, 14
+	CHECKBOX "Bold Keywords", PREF_PRINTBOLD, 13, 74, 91, 10, BS_AUTOCHECKBOX
+	CHECKBOX "Italicize Identifiers", PREF_PRINTITAL, 13, 88, 91, 10, BS_AUTOCHECKBOX
+	CHECKBOX "Print Page Header", PREF_PRINTHEADER, 13, 102, 91, 10, BS_AUTOCHECKBOX
+	CHECKBOX "User Name in Header", PRINT_PRINTPRINTUSERNAME, 27, 116, 91, 10, BS_AUTOCHECKBOX
+	CHECKBOX "Two-Up Printing", PREF_PRINTTWOUP, 13, 130, 91, 10, BS_AUTOCHECKBOX
+	CHECKBOX "Line Numbers", PREF_PRINTLINENUMBER, 13, 144, 91, 10, BS_AUTOCHECKBOX
+	CHECKBOX "Border Around Text", PREF_PRINTBORDER, 13, 158, 91, 10, BS_AUTOCHECKBOX
+	GROUPBOX "Margins (Inches)", -1,  127,  70, 137, 56
+	LTEXT "Left:", -1, 135, 86, 15, 8
+	EDITTEXT PREF_PRINTLEFTMARG, 157, 84, 28, 12
+	LTEXT "Right:", -1, 200, 86, 20, 8
+	EDITTEXT PREF_PRINTRIGHTMARG, 228, 84, 28, 12
+	LTEXT "Top:", -1, 135, 106, 16, 8
+	EDITTEXT PREF_PRINTTOPMARG, 157, 104, 28, 12
+	LTEXT "Bottom:", -1, 200, 106, 25, 8
+	EDITTEXT PREF_PRINTBOTTOMMARG, 228, 104, 28, 12
+	LTEXT "User Name:", -1, 133, 142, 40, 8
+	EDITTEXT PREF_PRINTUSERNAME, 175, 140, 74, 12
+END
+
+PrintAbortDialog DIALOG DISCARDABLE  32, 32, 186, 95
+CAPTION "Printing"
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+FONT 8, "MS Sans Serif"
+BEGIN
+	PUSHBUTTON "Cancel", IDCANCEL, 67, 74, 50, 14
+	CTEXT "Printing", -1, 8, 8, 172, 8
+	CTEXT "", PRINT_PAGENUMBER, 8, 18, 172, 8
+	CTEXT "of", -1, 8, 28, 172, 8
+	CTEXT "", PRINT_JOBNAME, 8, 38, 172, 8
+END
+
+READY_PRINT_DIALOG DIALOG DISCARDABLE  32, 32, 288, 264
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU |
+      DS_CONTEXTHELP | DS_3DLOOK
+#ifdef JAVA    
+CAPTION "Ready Print"
+#else // #ifdef JAVA 
+CAPTION "Turing Print"
+#endif // #else - #ifdef JAVA
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Printer",grp4,8,4,272,84,WS_GROUP
+    LTEXT           "&Name:",stc6,16,20,36,8
+    COMBOBOX        cmb4,52,18,152,152,CBS_DROPDOWNLIST | CBS_SORT |
+                    WS_VSCROLL | WS_GROUP | WS_TABSTOP
+    PUSHBUTTON      "&Properties",psh2,212,17,60,14,WS_GROUP
+    LTEXT           "Status:",stc8,16,36,36,10,SS_NOPREFIX
+    LTEXT           "",stc12,52,36,224,10,SS_NOPREFIX | SS_LEFTNOWORDWRAP
+    LTEXT           "Type:",stc7,16,48,36,10,SS_NOPREFIX
+    LTEXT           "",stc11,52,48,224,10,SS_NOPREFIX | SS_LEFTNOWORDWRAP
+    LTEXT           "Where:",stc10,16,60,36,10,SS_NOPREFIX
+    LTEXT           "",stc14,52,60,224,10,SS_NOPREFIX | SS_LEFTNOWORDWRAP
+    LTEXT           "Comment:",stc9,16,72,36,10,SS_NOPREFIX
+    LTEXT           "",stc13,52,72,152,10,SS_NOPREFIX | SS_LEFTNOWORDWRAP
+    CONTROL         "Print to fi&le",chx1,"Button",BS_AUTOCHECKBOX |
+                    WS_GROUP | WS_TABSTOP,212,70,64,12
+    GROUPBOX        "Print range",grp1,8,92,144,64,WS_GROUP
+    CONTROL         "&All",rad1,"Button",BS_AUTORADIOBUTTON | WS_GROUP |
+                    WS_TABSTOP,16,106,64,12
+    CONTROL         "Pa&ges",rad3,"Button",BS_AUTORADIOBUTTON,16,122,36,12
+    CONTROL         "&Selection",rad2,"Button",BS_AUTORADIOBUTTON,16,138,64,
+                    12
+    RTEXT           "&from:",stc2,52,124,20,8
+    EDITTEXT        edt1,74,122,26,12,WS_GROUP | ES_NUMBER
+    RTEXT           "&to:",stc3,100,124,16,8
+    EDITTEXT        edt2,118,122,26,12,WS_GROUP | ES_NUMBER
+    GROUPBOX        "Copies",grp2,160,92,120,64,WS_GROUP
+    LTEXT           "Number of &copies:",stc5,168,108,68,8
+    EDITTEXT        edt3,240,106,32,12,WS_GROUP | ES_NUMBER
+    ICON            "",ico3,162,124,76,24,WS_GROUP | SS_CENTERIMAGE
+    CONTROL         "C&ollate",chx2,"Button",BS_AUTOCHECKBOX | WS_GROUP |
+                    WS_TABSTOP,240,130,36,12
+    DEFPUSHBUTTON   "OK",IDOK,180,242,48,14,WS_GROUP
+    PUSHBUTTON      "Cancel",IDCANCEL,232,242,48,14
+    
+    // Ready to Program additions
+#ifdef JAVA    
+    GROUPBOX	    "Ready",grp3,8,160,272,64,WS_GROUP
+#else // #ifdef JAVA
+    GROUPBOX	    "Turing",grp3,8,160,272,64,WS_GROUP
+#endif // #else - #ifdef JAVA
+    CONTROL         "Bold Keywords",PRINT_BOLD_KEYWORDS,"Button",BS_AUTOCHECKBOX | WS_GROUP |
+                    WS_TABSTOP,16,174,136,12
+    CONTROL         "Italicize Identifiers",PRINT_ITAL_IDENTS,"Button",BS_AUTOCHECKBOX | WS_GROUP |
+                    WS_TABSTOP,16,190,136,12
+    CONTROL         "Full Pathname in Header",PRINT_FULL_PATHNAME,"Button",BS_AUTOCHECKBOX | WS_GROUP |
+                    WS_TABSTOP,16,206,100,12
+    CONTROL         "2-Up Printing",PRINT_TWO_UP,"Button",BS_AUTOCHECKBOX | WS_GROUP |
+                     WS_TABSTOP,160,174,57,12
+    CONTROL         "Line Numbers",PRINT_LINE_NUMBERS,"Button",BS_AUTOCHECKBOX | WS_GROUP |
+                    WS_TABSTOP,160,190,59,12
+    CONTROL         "Border Around Text",PRINT_BORDERS,"Button",BS_AUTOCHECKBOX | WS_GROUP |
+                    WS_TABSTOP,160,206,110,12
+    ICON            TWO_UP_ICON,ico4,223,172,21,21,WS_GROUP | SS_CENTERIMAGE
+END
+
+READY_PRINT_GRAPHICS_DIALOG DIALOG DISCARDABLE  32, 32, 288, 264
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU |
+      DS_CONTEXTHELP | DS_3DLOOK
+#ifdef JAVA    
+CAPTION "Ready Print Graphics"
+#else // #ifdef JAVA 
+CAPTION "Turing Print Graphics"
+#endif // #else - #ifdef JAVA
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Printer",grp4,8,4,272,84,WS_GROUP
+    LTEXT           "&Name:",stc6,16,20,36,8
+    COMBOBOX        cmb4,52,18,152,152,CBS_DROPDOWNLIST | CBS_SORT |
+                    WS_VSCROLL | WS_GROUP | WS_TABSTOP
+    PUSHBUTTON      "&Properties",psh2,212,17,60,14,WS_GROUP
+    LTEXT           "Status:",stc8,16,36,36,10,SS_NOPREFIX
+    LTEXT           "",stc12,52,36,224,10,SS_NOPREFIX | SS_LEFTNOWORDWRAP
+    LTEXT           "Type:",stc7,16,48,36,10,SS_NOPREFIX
+    LTEXT           "",stc11,52,48,224,10,SS_NOPREFIX | SS_LEFTNOWORDWRAP
+    LTEXT           "Where:",stc10,16,60,36,10,SS_NOPREFIX
+    LTEXT           "",stc14,52,60,224,10,SS_NOPREFIX | SS_LEFTNOWORDWRAP
+    LTEXT           "Comment:",stc9,16,72,36,10,SS_NOPREFIX
+    LTEXT           "",stc13,52,72,152,10,SS_NOPREFIX | SS_LEFTNOWORDWRAP
+    CONTROL         "Print to fi&le",chx1,"Button",BS_AUTOCHECKBOX |
+                    WS_GROUP | WS_TABSTOP,212,70,64,12
+    GROUPBOX        "Print range",grp1,8,92,144,64,WS_GROUP
+    CONTROL         "&All",rad1,"Button",BS_AUTORADIOBUTTON | WS_GROUP |
+                    WS_TABSTOP,16,106,64,12
+    CONTROL         "Pa&ges",rad3,"Button",BS_AUTORADIOBUTTON,16,122,36,12
+    CONTROL         "&Selection",rad2,"Button",BS_AUTORADIOBUTTON,16,138,64,
+                    12
+    RTEXT           "&from:",stc2,52,124,20,8
+    EDITTEXT        edt1,74,122,26,12,WS_GROUP | ES_NUMBER
+    RTEXT           "&to:",stc3,100,124,16,8
+    EDITTEXT        edt2,118,122,26,12,WS_GROUP | ES_NUMBER
+    GROUPBOX        "Copies",grp2,160,92,120,64,WS_GROUP
+    LTEXT           "Number of &copies:",stc5,168,108,68,8
+    EDITTEXT        edt3,240,106,32,12,WS_GROUP | ES_NUMBER
+    ICON            "",ico3,162,124,76,24,WS_GROUP | SS_CENTERIMAGE
+    CONTROL         "C&ollate",chx2,"Button",BS_AUTOCHECKBOX | WS_GROUP |
+                    WS_TABSTOP,240,130,36,12
+    DEFPUSHBUTTON   "OK",IDOK,180,242,48,14,WS_GROUP
+    PUSHBUTTON      "Cancel",IDCANCEL,232,242,48,14
+    
+    // Ready to Program additions
+#ifdef JAVA    
+    GROUPBOX	    "Ready",grp3,8,160,272,64,WS_GROUP
+#else // #ifdef JAVA
+    GROUPBOX	    "Turing",grp3,8,160,272,64,WS_GROUP
+#endif // #else - #ifdef JAVA
+    CONTROL         "Draw Border Around Graphic",PRINTG_DRAW_BORDER,"Button",BS_AUTOCHECKBOX | WS_GROUP |
+                    WS_TABSTOP,16,174,136,12
+    CONTROL         "Scale Graphic to Fit Page",PRINTG_SCALE_TO_FIT,"Button",BS_AUTOCHECKBOX | WS_GROUP |
+                    WS_TABSTOP,16,190,136,12
+    CONTROL         "Print Header",PRINTG_HEADER,"Button",BS_AUTOCHECKBOX | WS_GROUP |
+                    WS_TABSTOP,16,206,100,12
+END
+
+JAVA_RUN_WITH_ARGS_DIALOG DIALOG DISCARDABLE  0, 0, 388, 189
+STYLE WS_BORDER | WS_CAPTION | DS_MODALFRAME | WS_POPUP | WS_SYSMENU | DS_3DLOOK | DS_CONTEXTHELP
+CAPTION "Run with Arguments"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Run",IDOK,280,167,48,14
+    PUSHBUTTON      "Cancel",IDCANCEL,332,167,48,14
+    GROUPBOX        "Application",-1,8,4,202,157
+    LTEXT           "Command Line Args:",-1,16,20,66,8
+    EDITTEXT        ARGS_COMMAND_LINE_ARGS,90,18,104,12,ES_AUTOHSCROLL
+    LTEXT           "Input From:",-1,39,40,35,8
+    CONTROL         "Keyboard",ARGS_IN_KEY,"Button",BS_AUTORADIOBUTTON | WS_GROUP,29,52,46,12
+    CONTROL         "File",ARGS_IN_FILE,"Button",BS_AUTORADIOBUTTON,29,68,27,12
+    CONTROL         "File with Echo",ARGS_IN_FILE_ECHO,"Button",BS_AUTORADIOBUTTON,29,84,60,12
+    LTEXT	    "File: Name Here", ARGS_INPUT_FILE_NAME,29,112,80,8
+    LTEXT           "Output To:",-1,126,40,35,8
+    CONTROL         "Screen",ARGS_OUT_SCREEN,"Button",BS_AUTORADIOBUTTON | WS_GROUP,116,52,39,10
+    CONTROL         "File",ARGS_OUT_FILE,"Button",BS_AUTORADIOBUTTON,116,68,27,10
+    CONTROL         "File and Screen",ARGS_OUT_FILE_SCREEN,"Button",BS_AUTORADIOBUTTON,116,84,65,10
+    CONTROL         "Printer",ARGS_OUT_PRINTER,"Button",BS_AUTORADIOBUTTON,116,100,36,10
+    CONTROL         "Printer and Screen",ARGS_OUT_PRINTER_SCREEN,"Button",BS_AUTORADIOBUTTON,116,116,75,10
+    LTEXT	    "File: Name Here", ARGS_OUTPUT_FILE_NAME,116,144,80,8
+    GROUPBOX        "Applet",-1,218,4,162,157
+    LTEXT           "Width:",-1,226,20,22,8
+    EDITTEXT        ARGS_APPLET_WIDTH,256,18,35,12,ES_AUTOHSCROLL
+    LTEXT           "Height:",-1,307,20,24,8
+    EDITTEXT        ARGS_APPLET_HEIGHT,337,18,35,12,ES_AUTOHSCROLL
+    LTEXT           "Parameters (Format: name=value   one per line):",-1,224,41,151,8
+    EDITTEXT        ARGS_APPLET_PARAMS,230,54,142,95,ES_AUTOHSCROLL | ES_MULTILINE | ES_WANTRETURN
+END
+
+LOAD_FILE_OVER_DIALOG DIALOG LOADONCALL MOVEABLE DISCARDABLE 30, 73, 202, 60
+CAPTION "Open File"
+STYLE WS_BORDER | WS_CAPTION | DS_MODALFRAME | WS_POPUP | WS_SYSMENU | DS_3DLOOK | DS_CONTEXTHELP
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT "Blank Message", OPEN_OVER_MESSAGE, 4, 7, 190, 24
+    DEFPUSHBUTTON   "Save + Open",IDYES, 8, 38, 50, 14
+    PUSHBUTTON      "Don't Save + Open", IDNO, 66, 38, 50, 14
+    PUSHBUTTON      "Cancel", IDCANCEL, 144, 38, 50, 14
+END
+
+LOAD_ERROR_OVER_DIALOG DIALOG LOADONCALL MOVEABLE DISCARDABLE 30, 73, 202, 78
+CAPTION "Display Next Error"
+STYLE WS_BORDER | WS_CAPTION | DS_MODALFRAME | WS_POPUP | WS_SYSMENU | DS_3DLOOK | DS_CONTEXTHELP
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT "Blank Message", OPEN_OVER_MESSAGE, 4, 7, 190, 42
+    DEFPUSHBUTTON   "Save + Open",IDYES, 8, 56, 50, 14
+    PUSHBUTTON      "Don't Save + Open", IDNO, 66, 56, 70, 14
+    PUSHBUTTON      "Cancel", IDCANCEL, 144, 56, 50, 14
+END
+
+TURING_RUN_WITH_ARGS_DIALOG DIALOG DISCARDABLE  0, 0, 197, 173
+STYLE WS_BORDER | WS_CAPTION | DS_MODALFRAME | WS_POPUP | WS_SYSMENU | DS_3DLOOK | DS_CONTEXTHELP
+CAPTION "Run with Arguments"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Run",IDOK,88,153,48,14
+    PUSHBUTTON      "Cancel",IDCANCEL,140,153,48,14
+    LTEXT           "Command Line Args:",-1,8,16,66,8
+    EDITTEXT        ARGS_COMMAND_LINE_ARGS,82,14,104,12,ES_AUTOHSCROLL
+    LTEXT           "Input From:",-1,31,36,35,8
+    CONTROL         "Keyboard",ARGS_IN_KEY,"Button",BS_AUTORADIOBUTTON | WS_GROUP,21,48,46,12
+    CONTROL         "File",ARGS_IN_FILE,"Button",BS_AUTORADIOBUTTON,21,64,27,12
+    CONTROL         "File with Echo",ARGS_IN_FILE_ECHO,"Button",BS_AUTORADIOBUTTON,21,80,60,12
+    LTEXT	    "File: Name Here", ARGS_INPUT_FILE_NAME,21,100,80,8
+    LTEXT           "Output To:",-1,118,36,35,8
+    CONTROL         "Screen",ARGS_OUT_SCREEN,"Button",BS_AUTORADIOBUTTON | WS_GROUP,108,48,39,10
+    CONTROL         "File",ARGS_OUT_FILE,"Button",BS_AUTORADIOBUTTON,108,64,27,10
+    CONTROL         "File and Screen",ARGS_OUT_FILE_SCREEN,"Button",BS_AUTORADIOBUTTON,108,80,65,10
+    CONTROL         "Printer",ARGS_OUT_PRINTER,"Button",BS_AUTORADIOBUTTON,108,96,36,10
+    CONTROL         "Printer and Screen",ARGS_OUT_PRINTER_SCREEN,"Button",BS_AUTORADIOBUTTON,108,112,75,10
+    LTEXT	    "File: Name Here", ARGS_OUTPUT_FILE_NAME,108,132,80,8
+END
+
+EDIT_WINDOW_ACCELERATOR ACCELERATORS 
+{
+    "A", COMMAND_SELECT_ALL, CONTROL, VIRTKEY
+    "C", COMMAND_COPY, CONTROL, VIRTKEY
+    "D", COMMAND_MOVE_PAGE_HALF_DOWN, CONTROL, VIRTKEY
+    "E", COMMAND_DEL_EOL, CONTROL, VIRTKEY
+    "F", COMMAND_FIND, CONTROL, VIRTKEY
+    "G", COMMAND_GOTO_LINE, CONTROL, VIRTKEY
+    "H", COMMAND_REPLACE, CONTROL, VIRTKEY
+    "I", COMMAND_INDENT, CONTROL, VIRTKEY
+    "J", COMMAND_JOIN, CONTROL, VIRTKEY
+    "K", COMMAND_DEL_LINE, CONTROL, VIRTKEY
+    "L", COMMAND_FIND_SELECTION, CONTROL, VIRTKEY
+//    "M", COMMAND_MATCH, CONTROL, VIRTKEY
+    "N", COMMAND_NEW_UNNAMED, CONTROL, VIRTKEY
+    "O", COMMAND_OPEN_FILE, CONTROL, VIRTKEY
+    "P", COMMAND_PRINT_FILE, CONTROL, VIRTKEY
+    "Q", COMMAND_EXIT, CONTROL, VIRTKEY
+    "R", COMMAND_RUN, CONTROL, VIRTKEY
+    "S", COMMAND_SAVE_FILE, CONTROL, VIRTKEY
+    "U", COMMAND_MOVE_PAGE_HALF_UP, CONTROL, VIRTKEY
+    "V", COMMAND_PASTE, CONTROL, VIRTKEY
+    "W", COMMAND_CLOSE_FILE, CONTROL, VIRTKEY
+    "X", COMMAND_CUT, CONTROL, VIRTKEY
+    "Y", COMMAND_REDO, CONTROL, VIRTKEY
+    "Z", COMMAND_UNDO, CONTROL, VIRTKEY
+    "5", COMMAND_COMMENT_RANGE, SHIFT, CONTROL, VIRTKEY
+    "5", COMMAND_UNCOMMENT_RANGE, CONTROL, VIRTKEY
+
+    "X", COMMAND_EXIT_IMMEDIATE, ALT, VIRTKEY
+
+    VK_RETURN, COMMAND_COMPLETE_STRUCT, CONTROL, VIRTKEY
+
+    // The unmodified keypad
+    VK_UP, COMMAND_MOVE_LINE_UP, VIRTKEY
+    VK_DOWN, COMMAND_MOVE_LINE_DOWN, VIRTKEY
+    VK_RIGHT, COMMAND_MOVE_COLUMN_RIGHT, VIRTKEY
+    VK_LEFT, COMMAND_MOVE_COLUMN_LEFT, VIRTKEY
+
+    VK_HOME, COMMAND_MOVE_LINE_BEGIN, VIRTKEY
+    VK_END, COMMAND_MOVE_LINE_END, VIRTKEY
+
+    VK_NEXT, COMMAND_MOVE_PAGE_DOWN, VIRTKEY
+    VK_PRIOR, COMMAND_MOVE_PAGE_UP, VIRTKEY
+
+    // The keypad with shift
+    VK_UP, COMMAND_SELECT_LINE_UP, SHIFT, VIRTKEY
+    VK_DOWN, COMMAND_SELECT_LINE_DOWN, SHIFT, VIRTKEY
+    VK_RIGHT, COMMAND_SELECT_COLUMN_RIGHT, SHIFT, VIRTKEY
+    VK_LEFT, COMMAND_SELECT_COLUMN_LEFT, SHIFT, VIRTKEY
+    
+    VK_HOME, COMMAND_SELECT_LINE_BEGIN, SHIFT, VIRTKEY
+    VK_END, COMMAND_SELECT_LINE_END, SHIFT, VIRTKEY
+
+    VK_NEXT, COMMAND_SELECT_PAGE_DOWN, SHIFT, VIRTKEY
+    VK_PRIOR, COMMAND_SELECT_PAGE_UP, SHIFT, VIRTKEY
+
+    // The keypad with control
+    VK_RIGHT, COMMAND_MOVE_WORD_NEXT, CONTROL, VIRTKEY
+    VK_LEFT, COMMAND_MOVE_WORD_PREV, CONTROL, VIRTKEY
+
+    VK_HOME, COMMAND_MOVE_PROGRAM_TOP, CONTROL, VIRTKEY
+    VK_END, COMMAND_MOVE_PROGRAM_BOTTOM, CONTROL, VIRTKEY
+    
+    VK_NEXT, COMMAND_MOVE_PAGE_HALF_DOWN, CONTROL, VIRTKEY
+    VK_PRIOR, COMMAND_MOVE_PAGE_HALF_UP, CONTROL, VIRTKEY
+
+    // The keypad with shift+control
+    VK_RIGHT, COMMAND_SELECT_WORD_NEXT, SHIFT, CONTROL, VIRTKEY
+    VK_LEFT, COMMAND_SELECT_WORD_PREV, SHIFT, CONTROL, VIRTKEY
+    
+    VK_HOME, COMMAND_SELECT_PROGRAM_TOP, SHIFT, CONTROL, VIRTKEY
+    VK_END, COMMAND_SELECT_PROGRAM_BOTTOM, SHIFT, CONTROL, VIRTKEY
+    
+    VK_NEXT, COMMAND_SELECT_PAGE_HALF_DOWN, SHIFT, CONTROL, VIRTKEY
+    VK_PRIOR, COMMAND_SELECT_PAGE_HALF_UP, SHIFT, CONTROL, VIRTKEY
+
+
+    VK_DELETE, COMMAND_DEL, VIRTKEY
+
+//    VK_PAUSE, EDITOR_PAUSE_RESUME, VIRTKEY
+//    VK_CANCEL, EDITOR_STOP, CONTROL, VIRTKEY
+
+    VK_TAB, COMMAND_BACKTAB, SHIFT, VIRTKEY
+
+    VK_F1, COMMAND_RUN, VIRTKEY
+    VK_F2, COMMAND_INDENT, VIRTKEY
+    VK_F3, COMMAND_FIND_NEXT, VIRTKEY
+    VK_F3, COMMAND_FIND_PREV, CONTROL, VIRTKEY
+    VK_F3, COMMAND_FIND_PREV, SHIFT, VIRTKEY
+    VK_F3, COMMAND_FIND_PREV, SHIFT, CONTROL, VIRTKEY
+    VK_F4, COMMAND_EXIT_IMMEDIATE, ALT, VIRTKEY
+    VK_F5, COMMAND_FIND_NEXT_ERROR, VIRTKEY
+    VK_F12, COMMAND_SAVE_TO_RTF, VIRTKEY
+#ifndef JAVA
+        VK_F8, COMMAND_KEYWORD_PROTO, VIRTKEY
+        VK_F9, COMMAND_KEYWORD_REF, VIRTKEY
+        VK_F10, COMMAND_HELP_TURING_REF, VIRTKEY
+#endif // #ifndef JAVA
+//    VK_F10, EDITOR_TRACE_BUTTON, VIRTKEY
+//    VK_F11, EDITOR_SHOWVAR_BUTTON, VIRTKEY
+    VK_F1, COMMAND_CRASH_ENVIRONMENT, SHIFT, CONTROL, ALT, VIRTKEY
+    VK_F2, COMMAND_CAUSE_ASSERT_FAIL, SHIFT, CONTROL, ALT, VIRTKEY
+    "M", COMMAND_DUMP_MEMORY, SHIFT, CONTROL, ALT, VIRTKEY
+
+    /* CUA definitions */
+
+    VK_BACK, COMMAND_UNDO, ALT, VIRTKEY
+    VK_INSERT, COMMAND_COPY, CONTROL, VIRTKEY
+    VK_INSERT, COMMAND_PASTE, SHIFT, VIRTKEY
+    VK_DELETE, COMMAND_CUT, SHIFT, VIRTKEY
+}
+
+FIND_REPLACE_DIALOG_ACCELERATOR ACCELERATORS 
+{
+    "F", COMMAND_FIND, CONTROL, VIRTKEY
+    "H", COMMAND_REPLACE, CONTROL, VIRTKEY
+    "N", COMMAND_NEW_UNNAMED, CONTROL, VIRTKEY
+    "O", COMMAND_OPEN_FILE, CONTROL, VIRTKEY
+    "W", COMMAND_CLOSE_DIALOG, CONTROL, VIRTKEY
+    "X", COMMAND_EXIT, ALT, VIRTKEY
+    "Z", COMMAND_UNDO, CONTROL, VIRTKEY
+}
+
+DEBUGGER_DIALOG_ACCELERATOR ACCELERATORS 
+{
+    "X", COMMAND_EXIT, ALT, VIRTKEY
+}
+
+CONSOLE_WINDOW_ACCELERATOR ACCELERATORS
+{
+    "A", COMMAND_SELECT_ALL, CONTROL, VIRTKEY
+    "C", COMMAND_COPY, CONTROL, VIRTKEY
+    "P", COMMAND_PRINT_FILE, CONTROL, VIRTKEY
+    "Q", COMMAND_EXIT, CONTROL, VIRTKEY
+    "S", COMMAND_SAVEAS_FILE, CONTROL, VIRTKEY
+    "V", COMMAND_PASTE, CONTROL, VIRTKEY
+    "W", COMMAND_CLOSE_FILE, CONTROL, VIRTKEY
+    "X", COMMAND_EXIT, ALT, VIRTKEY
+}
+
+TURING_RUN_WINDOW_ACCELERATOR ACCELERATORS
+{
+    "P", COMMAND_PRINT_FILE, CONTROL, VIRTKEY
+    "Q", COMMAND_EXIT, CONTROL, VIRTKEY
+    "S", COMMAND_SAVEAS_FILE, CONTROL, VIRTKEY
+    "V", COMMAND_PASTE, CONTROL, VIRTKEY
+    "W", COMMAND_CLOSE_FILE, CONTROL, VIRTKEY
+    "X", COMMAND_EXIT, ALT, VIRTKEY
+}
+
+TOP_BUTTON_DATA RCDATA
+{
+    // The height of the button bar (non-debugger/debugger)
+    20,
+    
+    // Run/Pause buttons
+    IDS_RUN_BUTTON, IDS_STOP_BUTTON, COMMAND_RUN, COMMAND_STOP, 	  4,  4,  25, 12,
+    IDS_PAUSE_BUTTON, IDS_RESUME_BUTTON, COMMAND_PAUSERESUME, 0, 	 31,  4,  25, 12,
+    
+    // Open/Save buttons
+    IDS_OPEN_BUTTON, 0, COMMAND_OPEN_FILE, 0, 				 61,  4,  18, 12,
+    IDS_SAVE_BUTTON, 0, COMMAND_SAVE_FILE, 0, 				 81,  4,  18, 12,
+    
+    // Indent/Print buttons
+    IDS_INDENT_BUTTON, 0, COMMAND_INDENT, 0, 				105,  4,  20, 12,
+    IDS_PRINT_BUTTON, 0, COMMAND_PRINT_FILE, 0, 			127,  4,  20, 12,
+    
+    // Cut/Copy/Paste buttons
+    IDS_CUT_BUTTON, 0, COMMAND_CUT, 0, 					153,  4,  19, 12,
+    IDS_COPY_BUTTON, 0, COMMAND_COPY, 0, 				174,  4,  19, 12,
+    IDS_PASTE_BUTTON, 0, COMMAND_PASTE, 0, 				194,  4,  19, 12,
+
+    // Find/Find Next/Replace Buttons    
+    IDS_FIND_BUTTON, 0, COMMAND_FIND, 0, 				219,  4,  28, 12,
+    IDS_FIND_NEXT_BUTTON, 0, COMMAND_FIND_NEXT, 0, 			248,  4,  28, 12,
+    IDS_REPLACE_BUTTON, 0, COMMAND_REPLACE, 0, 				278,  4,  28, 12,
+    
+    // Debugger Buttons
+    IDS_STEP_BUTTON, 0, COMMAND_DEBUG_STEP, 0, 				 61,  4,  35, 12,
+    IDS_STEP_OVER_BUTTON, 0, COMMAND_DEBUG_STEP_OVER, 0, 		 98,  4,  35, 12,
+    IDS_STEP_RETURN_BUTTON, 0, COMMAND_DEBUG_STEP_RETURN, 0, 		135,  4,  35, 12,
+    
+    // Debugger Checkbox
+    IDS_TRACE_CHECKBOX, 0, COMMAND_DEBUG_TRACE, 0, 			177,  4,  35, 12,
+    IDS_SHOW_VARS_CHECKBOX, 0, COMMAND_DEBUG_SHOWVARS, 0, 		214,  4,  35, 12,
+    
+    // Debugger Label (Positions determined by TBS_BUDDY flag)
+    IDS_FAST_LABEL, 0, 0, 0, 						0, 0, 14, 12, 
+    IDS_SLOW_LABEL, 0, 0, 0, 						0, 0, 14, 12, 
+    
+    // Debugger Trace Speed Trackbar
+    0, 0, 0, 0, 							271,  4, 37, 12
+    
+    // Raised Frames
+      2,  2,  55, 16,
+     59,  2,  42, 16,
+    103,  2,  46, 16,
+    151,  2,  64, 16,
+    217,  2,  91, 16,
+     59,  2, 113, 16
+    174,  2,  77, 16
+    253,  2,  73, 16
+}
+
+#ifdef JAVA
+1 VERSIONINFO
+    FILEVERSION		1,7,2,1
+    PRODUCTVERSION	1,7,2,1
+    FILEFLAGSMASK	VS_FF_DEBUG
+    FILEFLAGS		VS_FF_DEBUG
+    FILEOS		VOS__WINDOWS32
+    FILETYPE		VFT_APP
+    FILESUBTYPE		0
+    BEGIN
+        BLOCK "StringFileInfo"
+        BEGIN
+	    BLOCK "04090000"
+	    BEGIN
+	    	VALUE "FileDescription", "Ready to Program for Java\256 Technology\0"
+	    	VALUE "LegalCopyright",  "Copyright \251 Holt Software Associates Inc. 2003\0"
+	    	VALUE "Comments",        "Written by: Tom L. West\0"
+	    	VALUE "CompanyName",     "Holt Software Associates Inc.\0"
+	    	VALUE "FileVersion",     "1.7.2a\0"
+	    	VALUE "LegalTrademarks", "Java\256 is a registered trademark of Sun Microsystems\0"
+	    	VALUE "ProductName",     "Ready to Program for Java\256 Technology\0"
+	    	VALUE "ProductVersion",  "1.7.2a\0"
+	    END
+        END
+    	BLOCK "VarFileInfo"
+    	BEGIN
+            VALUE "Translation", 0x409, 0
+    	END
+    END
+#elif TURING
+1 VERSIONINFO
+    FILEVERSION		4,1,2,0
+    PRODUCTVERSION	4,1,2,0
+    FILEFLAGSMASK	VS_FF_DEBUG
+    FILEFLAGS		VS_FF_DEBUG
+    FILEOS		VOS__WINDOWS32
+    FILETYPE		VFT_APP
+    FILESUBTYPE		0
+    BEGIN
+        BLOCK "StringFileInfo"
+        BEGIN
+	    BLOCK "04090000"
+	    BEGIN
+	    	VALUE "FileDescription", "Turing for Windows\0"
+	    	VALUE "LegalCopyright",  "Copyright \251 Holt Software Associates Inc. 2011\0"
+	    	VALUE "Comments",        "Environment written by: Tom L. West\0"
+	    	VALUE "CompanyName",     "Holt Software Associates Inc.\0"
+	    	VALUE "FileVersion",     "4.1.2\0"
+	    	VALUE "ProductName",     "Turing for Windows (formerly Object Oriented Turing)\0"
+	    	VALUE "ProductVersion",  "4.1.2\0"
+	    END
+        END
+    	BLOCK "VarFileInfo"
+    	BEGIN
+            VALUE "Translation", 0x409, 0
+    	END
+    END
+#endif // #elif TURING

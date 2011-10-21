@@ -1,0 +1,93 @@
+#include <windows.h>
+#include <commctrl.h>
+
+#include "tprologdialogs.h"
+
+//
+// Import the MIO stuff
+//
+#include "mio.rc"
+
+//
+// Icons 
+// 
+// Order is important because file association icons depend on 
+// icon's place in the file.
+//
+
+STRINGTABLE
+{
+    IDS_TPROLOG_TURING_PROLOG_NAME	"Turing Standalone Prolog"
+    
+    IDS_TPROLOG_APPLICATION_NAME	"TProlog"
+    
+    IDS_TPROLOG_SYSTEMTIMETOFILETIMEFAIL	"SystemTimeToFileTime failed"
+    IDS_LOCATER_LOOPING_INFINITELY	"Turing Prolog has gone into an infinite loop.\n\nReady Internal State: %d %d %d %d %d %d %d %d\n---\n%s---"
+    IDS_LINEDBVERIFY1_FAILED		"Line Database Verify Failed (%d - %d - %d)"
+    IDS_LINEDBVERIFY_FAILED		"Line Database Verify Failed (%d)\nNum lines: %d - Size: %d - Other - %d - %d\n---\n%s---"
+    IDS_TPROLOG_GETMODULEFILENAMEFAIL	"GetModuleFileName failed"
+    IDS_TPROLOG_REGISTERCLASSFAIL	"RegisterClass failed"
+    
+    IDS_TPROLOG_FILE_READ_FAILED_TITLE	"Object File Read Failed"
+    IDS_TPROLOG_BAD_CMD_LINE_ARG_TITLE	"Bad Command Line Argument"
+
+    IDS_TPROLOG_NO_OBJECT_FILE		"No object file was specified.\nUsage: TProlog <objectfile>"
+    IDS_TPROLOG_CANT_OPEN_OBJECT_FILE	"Unable to open object file ""%1""."
+    IDS_TPROLOG_UNABLE_TO_READ_EXE	"Unable to read object file ""%1"". (%2!d!)"
+    IDS_TPROLOG_BAD_HEADER_MATCH	"Bad object file header in ""%1"". (%2!d!)"
+    IDS_TPROLOG_ARG_TOO_LONG		"Command line argument too long"
+    IDS_TPROLOG_UNTERMINATED_QUOTE	"Unterminated quotation mark"
+    IDS_TPROLOG_OFFSET_NOT_SET		"The data offset has not been set on this executable.\nThis executable must be recreated from within Turing."
+}
+
+
+TPROLOG_RUN_WITH_ARGS_DIALOG DIALOG DISCARDABLE  0, 0, 197, 173
+STYLE WS_BORDER | WS_CAPTION | DS_MODALFRAME | WS_POPUP | WS_SYSMENU | DS_3DLOOK | DS_CONTEXTHELP
+CAPTION "Run with Arguments"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Run",IDOK,88,153,48,14
+    PUSHBUTTON      "Cancel",IDCANCEL,140,153,48,14
+    LTEXT           "Command Line Args:",-1,8,16,66,8
+    EDITTEXT        ARGS_COMMAND_LINE_ARGS,82,14,104,12,ES_AUTOHSCROLL
+    LTEXT           "Input From:",-1,31,36,35,8
+    CONTROL         "Keyboard",ARGS_IN_KEY,"Button",BS_AUTORADIOBUTTON | WS_GROUP,21,48,46,12
+    CONTROL         "File",ARGS_IN_FILE,"Button",BS_AUTORADIOBUTTON,21,64,27,12
+    CONTROL         "File with Echo",ARGS_IN_FILE_ECHO,"Button",BS_AUTORADIOBUTTON,21,80,60,12
+    LTEXT	    "File: Name Here", ARGS_INPUT_FILE_NAME,21,100,80,8
+    LTEXT           "Output To:",-1,118,36,35,8
+    CONTROL         "Screen",ARGS_OUT_SCREEN,"Button",BS_AUTORADIOBUTTON | WS_GROUP,108,48,39,10
+    CONTROL         "File",ARGS_OUT_FILE,"Button",BS_AUTORADIOBUTTON,108,64,27,10
+    CONTROL         "File and Screen",ARGS_OUT_FILE_SCREEN,"Button",BS_AUTORADIOBUTTON,108,80,65,10
+    CONTROL         "Printer",ARGS_OUT_PRINTER,"Button",BS_AUTORADIOBUTTON,108,96,36,10
+    CONTROL         "Printer and Screen",ARGS_OUT_PRINTER_SCREEN,"Button",BS_AUTORADIOBUTTON,108,112,75,10
+    LTEXT	    "File: Name Here", ARGS_OUTPUT_FILE_NAME,108,132,80,8
+END
+
+1 VERSIONINFO
+    FILEVERSION		4,0,4,4
+    PRODUCTVERSION	4,0,4,4
+    FILEFLAGSMASK	VS_FF_DEBUG
+    FILEFLAGS		VS_FF_DEBUG
+    FILEOS		VOS__WINDOWS32
+    FILETYPE		VFT_APP
+    FILESUBTYPE		0
+    BEGIN
+        BLOCK "StringFileInfo"
+        BEGIN
+	    BLOCK "04090000"
+	    BEGIN
+	    	VALUE "FileDescription", "Turing Standalone Prolog for Windows\0"
+	    	VALUE "LegalCopyright",  "Copyright \251 Holt Software Associates Inc. 2002\0"
+	    	VALUE "Comments",        "Environment written by: Tom L. West\0"
+	    	VALUE "CompanyName",     "Holt Software Associates Inc.\0"
+	    	VALUE "FileVersion",     "4.0.4d\0"
+	    	VALUE "ProductName",     "Turing Standalone Prolog for Windows\0"
+	    	VALUE "ProductVersion",  "4.0.4d\0"
+	    END
+        END
+    	BLOCK "VarFileInfo"
+    	BEGIN
+            VALUE "Translation", 0x409, 0
+    	END
+    END

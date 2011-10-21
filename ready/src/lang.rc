@@ -1,0 +1,184 @@
+#include "eddialogs.h"
+
+/************************************************************************/
+/* The following section is for version modifiers.  Setting different	*/
+/* flags will cause different appearances.  Flags defined:		*/
+/*									*/
+/* _EXPIRES_	This version has an expiry date specified in YYYY/MM/DD	*/
+/* _RESTRICT_	This version does not save programs and is limited 	*/
+/*              to programs of less than 100 lines.			*/
+/* _MINI_	This version is limited to programs of less than 100 	*/
+/*		lines.							*/
+/* _EVAL_ 	Splash shows this version is for evaluation only and 	*/
+/*          	places how to obtain information at top of Help men	*/
+/* _IBM_ 	Splash indicates development supported by IBM		*/
+/* _MINIED_	Splash indicates for Ministry of Education		*/
+/*									*/
+/* _OPEN_	Does not checking.					*/
+/* _PERSONAL_	Checks copy protection file.				*/
+/* _SITE_	Checks copy protection file.				*/
+/* _REDISTRIB_	Checks copy protection file.				*/
+/*									*/
+/* _TURING_	The environment is for Turing.				*/
+/* _JAVA_	The environment is for Java				*/
+/*									*/
+/* Note that one of: _OPEN_, _COMMERCIAL_, _ACADEMIC_ or _STUDENT_	*/
+/* must be defined.							*/
+/* Note that one of: _TURING_ or _JAVA_ must be defined			*/
+/*									*/
+/* There are many different possible versions and thus many different	*/
+/* possible splash screens:						*/
+/*									*/
+/* _OPEN_, {_JAVA_, _TURING_}						*/
+/* _PERSONAL_, {_JAVA_, _TURING_}	Personal Use			*/
+/* _SITE_, {_JAVA_, _TURING_}		Site License			*/
+/* _REDISTRIB_, {_JAVA_, _TURING_}	Redistrib License		*/
+/* _SITE_, {_JAVA_, _TURING_}, _MINI_	Mini Ready/Turing		*/
+/* _PERSONAL_, {_JAVA_, _TURING_}, _EVAL_, _EXPIRES_			*/
+/*					Personal Evaluation (AP)	*/
+/* _PERSONAL_, {_ßJAVA_, _TURING_}, _EVAL_, _EXPIRES_, _RESTRICT_	*/
+/*					Personal Evaluation (Untrusted)	*/
+/* _SITE_, _JAVA_, _IBM_		Version given for IBM		*/
+/*									*/
+/* To make it easier, here are short forms				*/
+/* _OPEN_JAVA_			Java with no restrictions		*/
+/* _OPEN_TURING_		Turing with no restrictions		*/
+/* _PERSONAL_JAVA_		Java for single users			*/
+/* _PERSONAL_TURING_		Turing for single users			*/
+/* _SITE_JAVA_			Java for sites				*/
+/* _SITE_TURING_		Turing for sites			*/
+/* _REDISTRIB_JAVA_		Java for student redistribution		*/
+/* _REDISTRIB_TURING_		Turing for student redistribution	*/
+/* _MINI_JAVA_			Mini Ready				*/
+/* _MINI_TURING_		MiniTuring				*/
+/* _AP_EVAL_			Personal evaluation copy of Ready for AP */
+/* _DEMO_JAVA_			Demo copy of Java			*/
+/* _DEMO_TURING_		Demo copy of Turing			*/
+/* _IBM_JAVA_			Ready for distribution by IBM		*/
+/* _MINIED_TURING_		Turing for Ministry of Education	*/			
+/************************************************************************/
+
+#if defined(_OPEN_JAVA_)
+    #define _OPEN_
+    #define _JAVA_
+#elif defined(_OPEN_TURING_)
+    #define _OPEN_
+    #define _TURING_
+#elif defined(_PERSONAL_JAVA_)
+    #define _PERSONAL_
+    #define _JAVA_
+#elif defined(_PERSONAL_TURING_)
+    #define _PERSONAL_
+    #define _TURING_
+#elif defined(_SITE_JAVA_)
+    #define _SITE_
+    #define _JAVA_
+#elif defined(_SITE_TURING_)
+    #define _SITE_
+    #define _TURING_
+#elif defined(_REDISTRIB_JAVA_)
+    #define _REDISTRIB_
+    #define _JAVA_
+#elif defined(_REDISTRIB_TURING_)
+    #define _REDISTRIB_
+    #define _TURING_
+#elif defined(_MINI_JAVA_)
+    #define _SITE_
+    #define _JAVA_
+    #define _MINI_
+#elif defined(_MINI_TURING_)
+    #define _SITE_
+    #define _TURING_
+    #define _MINI_
+#elif defined(_AP_EVAL_)
+    #define _EVAL_
+    #define _JAVA_
+#elif defined(_OPEN_EVAL_)
+    #define _EVAL_
+    #define _JAVA_
+    #define _NO_EXPIRY_
+#elif defined(_DEMO_JAVA_)
+    #define _EVAL_
+    #define _JAVA_
+    #define _RESTRICT_
+#elif defined(_DEMO_TURING_)
+    #define _EVAL_
+    #define _TURING_
+    #define _RESTRICT_
+#elif defined(_BETA_JAVA_)
+    #define _BETA_
+    #define _JAVA_
+#elif defined(_BETA_TURING_)
+    #define _BETA_
+    #define _TURING_
+#elif defined(_IBM_JAVA_)
+    #define _OPEN_
+    #define _JAVA_
+    #define _IBM_
+#elif defined(_MINIED_TURING_)
+    #define _OPEN_
+    #define _TURING_
+    #define _MINIED_
+#else
+    One of the above must be defined!  This sentence is long enough to cause
+    the resource compiler to abort.
+#endif
+
+//
+// Language Type
+//
+#if defined (_TURING_)
+    LANGUAGE_RSRC	RCDATA	{LANGUAGE_KIND_TURING}
+#elif defined (_JAVA_)
+    LANGUAGE_RSRC	RCDATA	{LANGUAGE_KIND_JAVA}
+#else
+    One of _TURING_ or _JAVA_ must be defined
+#endif
+
+//
+// Install kind
+//
+#if defined (_OPEN_)
+    INSTALL_KIND_RSRC	RCDATA	{INSTALL_KIND_OPEN}
+#elif defined (_EVAL_)
+    INSTALL_KIND_RSRC	RCDATA	{INSTALL_KIND_EVAL}
+    #ifdef _NO_EXPIRY_
+        EXPIRY_DATE_RSRC	RCDATA	{2100 + DATE_CYPHER, 1 + DATE_CYPHER, 1 + DATE_CYPHER}
+    #else
+        EXPIRY_DATE_RSRC	RCDATA	{2004 + DATE_CYPHER, 2 + DATE_CYPHER, 28 + DATE_CYPHER}
+    #endif        
+#elif defined (_BETA_)
+    INSTALL_KIND_RSRC	RCDATA	{INSTALL_KIND_BETA}
+    EXPIRY_DATE_RSRC	RCDATA	{2004 + DATE_CYPHER, 2 + DATE_CYPHER, 28 + DATE_CYPHER}
+#elif defined (_SITE_)
+    INSTALL_KIND_RSRC	RCDATA	{INSTALL_KIND_SITE}
+//    _SITE_ flags not yet implemented
+#elif defined (_PERSONAL_)
+    INSTALL_KIND_RSRC	RCDATA	{INSTALL_KIND_PERSONAL}
+    _PERSONAL_ flags not yet implemented
+#elif defined (_REDISTRIB_)
+    INSTALL_KIND_RSRC	RCDATA	{INSTALL_KIND_REDISTRIB}
+    _REDISTRIB_ flags not yet implemented
+#else
+    One of _OPEN_, _EVAL_, _SITE_, _PERSONAL_ or _REDISTRIB_ must be defined
+#endif
+
+#ifdef _RESTRICT_
+    RESTRICTED_VERSION_RSRC		RCDATA	{1L}
+//    _RESTRICT_ flags not yet implemented
+#else    
+    RESTRICTED_VERSION_RSRC		RCDATA	{0L}
+#endif
+#ifdef _MINI_
+    MINI_VERSION_RSRC			RCDATA	{1L}
+    _MINI_ flags not yet implemented
+#else    
+    MINI_VERSION_RSRC			RCDATA	{0L}
+#endif
+#if defined (_IBM_) || defined (_MINIED_)
+    ASSISTED_RSRC			RCDATA	{1L}
+#else    
+    ASSISTED_RSRC			RCDATA	{0L}
+#endif
+
+

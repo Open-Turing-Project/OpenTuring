@@ -1,0 +1,3579 @@
+RIDING 001 "Dunvegan-Central Peace" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Goudreau, Hector G." PC
+
+CANDIDATE "Lueken, Dale" AAP
+
+CANDIDATE "Pendleton, Leon R." NDP
+
+CANDIDATE "Portsmouth, Lanny" SC
+
+CANDIDATE "Thompson, Don" LIB
+
+
+
+RIDING 002 "Calgary-Bow" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Askin, Margaret (Peggy)" IND
+
+CANDIDATE "Banks, Jennifer" NDP
+
+CANDIDATE "DeLong, Alana" PC
+
+CANDIDATE "Istvanffy, James Donald" AAP
+
+CANDIDATE "McDonnell, Kelly" LIB
+
+CANDIDATE "Picken, Douglas A." SC
+
+CANDIDATE "Picken, Marie" GRN
+
+
+
+RIDING 003 "Calgary-Buffalo" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Cenaiko, Harvey" PC
+
+CANDIDATE "Fielding, Elizabeth Kaur" SC
+
+CANDIDATE "Hesby, Cliff" NDP
+
+CANDIDATE "Hunka, Nadine" AAP
+
+CANDIDATE "Neufeld, Grant" GRN
+
+CANDIDATE "Schwartz, Carl" AP
+
+CANDIDATE "Taylor, Terry" LIB
+
+
+
+RIDING 004 "Calgary-Cross" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Dehaney, Raleigh" LIB
+
+CANDIDATE "Fritz, Yvonne" PC
+
+CANDIDATE "Huth, Gordon" AAP
+
+CANDIDATE "Keebler, Jeanie" NDP
+
+CANDIDATE "Richardson, Ryan" GRN
+
+
+
+RIDING 005 "Calgary-Currie" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Lord, Jon" PC
+
+CANDIDATE "Mazeroll, Ken" AAP
+
+CANDIDATE "Scobel, Robert" NDP
+
+CANDIDATE "Taylor, Dave" LIB
+
+CANDIDATE "Warnke, Kim" GRN
+
+
+
+RIDING 006 "Calgary-East" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Amery, Moe" PC
+
+CANDIDATE "Berard, Brad" AAP
+
+CANDIDATE "Collins, Bonnie-Jean" COM
+
+CANDIDATE "Harvey, Bill" LIB
+
+CANDIDATE "Michalenko, Rick" GRN
+
+CANDIDATE "Vargis, Paul" NDP
+
+
+
+RIDING 007 "Calgary-Egmont" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Crutcher, David" AAP
+
+CANDIDATE "Dovey, Christopher" NDP
+
+CANDIDATE "Herard, Denis" PC
+
+CANDIDATE "Queenan, Michael" LIB
+
+CANDIDATE "Read, George" GRN
+
+
+
+RIDING 008 "Calgary-Elbow" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Blimke, Lloyd" IND
+
+CANDIDATE "Brooks, Diana-Lynn" AAP
+
+CANDIDATE "Brown, Stephen" LIB
+
+CANDIDATE "Grover, Trevor" SC
+
+CANDIDATE "Kelley, Becky" NDP
+
+CANDIDATE "Klein, Ralph" PC
+
+CANDIDATE "Roth, Allison" GRN
+
+
+
+RIDING 009 "Calgary-Fish Creek" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Badenduck, Tore" LIB
+
+CANDIDATE "Forsyth, Heather" PC
+
+CANDIDATE "Kuipers, Mike" AAP
+
+CANDIDATE "Leavitt, Eric" NDP
+
+CANDIDATE "Sealy, Chris" GRN
+
+
+
+RIDING 010 "Calgary-Foothills" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Forster, Malcolm" NDP
+
+CANDIDATE "Jansen-van Doorn, Vincent S." AAP
+
+CANDIDATE "Jenuth, Stephen" LIB
+
+CANDIDATE "Webber, Len" PC
+
+
+
+RIDING 011 "Calgary-Fort" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Cao, Wayne" PC
+
+CANDIDATE "Charkie, Tyler" GRN
+
+CANDIDATE "Chase, Travis Paul" AAP
+
+CANDIDATE "Hart, Gerry" LIB
+
+CANDIDATE "Ollenberger, Leo" SEP
+
+CANDIDATE "Thomas, Elizabeth A." NDP
+
+
+
+RIDING 012 "Calgary-Glenmore" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Heather, Larry R." SC
+
+CANDIDATE "Heffernan, Holly" NDP
+
+CANDIDATE "McCutcheon, Ernest" AAP
+
+CANDIDATE "Roberts, Avalon" LIB
+
+CANDIDATE "Sklarski, Evan" GRN
+
+CANDIDATE "Stevens, Ron" PC
+
+
+
+RIDING 013 "Calgary-Hays" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Amell, Bernie" GRN
+
+CANDIDATE "Howe, Sharon L." LIB
+
+CANDIDATE "Johnston, Art" PC
+
+CANDIDATE "Wawrzynowski, Robert" AAP
+
+CANDIDATE "Weinfeld, Rachel" NDP
+
+
+
+RIDING 014 "Calgary-Lougheed" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Boucher, Ryan" GRN
+
+CANDIDATE "Khan, Tariq" AAP
+
+CANDIDATE "Koczkur, Matt" NDP
+
+CANDIDATE "Pollock, Al" LIB
+
+CANDIDATE "Rodney, Dave" PC
+
+
+
+RIDING 015 "Calgary-Mackay" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Cattabeni, Giorgio" NDP
+
+CANDIDATE "Hawkins, Darryl G." LIB
+
+CANDIDATE "Hubbard, Shawn" AAP
+
+CANDIDATE "Mar, Gary" PC
+
+CANDIDATE "Martin, Paul" IND
+
+CANDIDATE "McTavish, David" GRN
+
+
+
+RIDING 016 "Calgary-McCall" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Brocklesby, Sean" GRN
+
+CANDIDATE "Given, Ina" AAP
+
+CANDIDATE "Kang, Darshan S." LIB
+
+CANDIDATE "Shariff, Shiraz" PC
+
+CANDIDATE "Sihota, Preet" NDP
+
+
+
+RIDING 017 "Calgary-Montrose" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Collingwood, Cyril" AAP
+
+CANDIDATE "Colton, Kevin" GRN
+
+CANDIDATE "Danielson, Arthur" LIB
+
+CANDIDATE "Nishiyama, Jason" NDP
+
+CANDIDATE "Pham, Hung" PC
+
+
+
+RIDING 018 "Calgary-Mountain View" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Cassell, Ryan" AAP
+
+CANDIDATE "Donovan, John" NDP
+
+CANDIDATE "Hlady, Mark" PC
+
+CANDIDATE "MacGillivray, Mark" GRN
+
+CANDIDATE "Swann, David" LIB
+
+
+
+RIDING 019 "Calgary-North Hill" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Best, Brent" AAP
+
+CANDIDATE "Machell, Aileen L." NDP
+
+CANDIDATE "Magnus, Richard" PC
+
+CANDIDATE "Murray, Pat" LIB
+
+CANDIDATE "Stratton, Susan" GRN
+
+
+
+RIDING 020 "Calgary-North West" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Brunet, Bob" NDP
+
+CANDIDATE "Friesen, Jenell" AAP
+
+CANDIDATE "Krekoski, Jeffery" GRN
+
+CANDIDATE "Melchin, Greg" PC
+
+CANDIDATE "Stewart, Judy" LIB
+
+
+
+RIDING 021 "Calgary-Nose Hill" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Borowski, Len" LIB
+
+CANDIDATE "Brown, Neil" PC
+
+CANDIDATE "Hurst, Raymond (Chick)" SC
+
+CANDIDATE "Huysman, Dirk" NDP
+
+CANDIDATE "Johnson, John" GRN
+
+CANDIDATE "McGregor, Bill" AAP
+
+
+
+RIDING 022 "Calgary-Shaw" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Ady, Cindy" PC
+
+CANDIDATE "Chase, Barry" AAP
+
+CANDIDATE "Doherty, Daniel" SEP
+
+CANDIDATE "Papineau, Rick" GRN
+
+CANDIDATE "Roggeveen, John" LIB
+
+CANDIDATE "Young, Jarrett" NDP
+
+
+
+RIDING 023 "Calgary-Varsity" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Beninger, Ronald" AAP
+
+CANDIDATE "Chase, Harry B." LIB
+
+CANDIDATE "Gabruch, Mark" NDP
+
+CANDIDATE "Larson, Richard" GRN
+
+CANDIDATE "Skowronski, Leonard" SC
+
+CANDIDATE "Smyth, Michael W." PC
+
+
+
+RIDING 024 "Calgary-West" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Dubois, Chantelle" NDP
+
+CANDIDATE "Keyes, John" AAP
+
+CANDIDATE "Kohut, James" GRN
+
+CANDIDATE "Liepert, Ron" PC
+
+CANDIDATE "Smith, Derek" LIB
+
+
+
+RIDING 025 "Edmonton-Beverly-Clareview" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Couture, Benoit" GRN
+
+CANDIDATE "Gamache, Philip" AAP
+
+CANDIDATE "Martin, Ray" NDP
+
+CANDIDATE "Parmar, Sam" LIB
+
+CANDIDATE "Shipka, Ken" SC
+
+CANDIDATE "Yankowsky, Julius" PC
+
+
+
+RIDING 026 "Edmonton-Calder" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Eggen, David" NDP
+
+CANDIDATE "Kramer, Vicki" AAP
+
+CANDIDATE "Rathgeber, Brent" PC
+
+CANDIDATE "Smith, Brad" LIB
+
+
+
+RIDING 027 "Edmonton-Castle Downs" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Cross, Peter" NDP
+
+CANDIDATE "Kibermanis, Chris" LIB
+
+CANDIDATE "Korpi, Ross" SC
+
+CANDIDATE "Lukaszuk, Thomas" PC
+
+CANDIDATE "Presizniuk, Colin" AAP
+
+
+
+RIDING 028 "Edmonton-Centre" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Archer, Mary Elizabeth" NDP
+
+CANDIDATE "Blakeman, Laurie" LIB
+
+CANDIDATE "Caterina, Tony" AAP
+
+CANDIDATE "Clements, Linda" SC
+
+CANDIDATE "Parker, David J." GRN
+
+CANDIDATE "Weideman, Don" PC
+
+
+
+RIDING 029 "Edmonton-Decore" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Barg, Shirley" NDP
+
+CANDIDATE "Bonko, Bill" LIB
+
+CANDIDATE "Chevrier, Geoffrey" SC
+
+CANDIDATE "Masyk, Gary" AAP
+
+CANDIDATE "Szwender, Walter" PC
+
+
+
+RIDING 030 "Edmonton-Ellerslie" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Agnihotri, Bharat" LIB
+
+CANDIDATE "Assheton-Smith, Marilyn" NDP
+
+CANDIDATE "Dodd, Gurnam" PC
+
+CANDIDATE "Maciejewski, Amelia" SC
+
+CANDIDATE "Maroes, Eleanor" AAP
+
+
+
+RIDING 031 "Edmonton-Glenora" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Booi, Larry" NDP
+
+CANDIDATE "Currie, Blaine" AAP
+
+CANDIDATE "Hutton, Drew" PC
+
+CANDIDATE "Johnston, Peter" GRN
+
+CANDIDATE "Miller, Bruce" LIB
+
+CANDIDATE "Schachenhofer, Walter" SC
+
+
+
+RIDING 032 "Edmonton-Gold Bar" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Dhaliwal, Manjit" PC
+
+CANDIDATE "Dowling, Dave" IND
+
+CANDIDATE "Hunt, Delmar" AAP
+
+CANDIDATE "MacDonald, Hugh" LIB
+
+CANDIDATE "Turnbull, Keith" NDP
+
+
+
+RIDING 033 "Edmonton-Highlands-Norwood" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Ferris, Dale" IND
+
+CANDIDATE "Loyer, Ray" AAP
+
+CANDIDATE "Manzevich, Jason" LIB
+
+CANDIDATE "Martiniuk, Terry" PC
+
+CANDIDATE "Mason, Brian" NDP
+
+
+
+RIDING 034 "Edmonton-Manning" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Adshead, Ross" GRN
+
+CANDIDATE "Backs, Dan" LIB
+
+CANDIDATE "Lang, Laurie" NDP
+
+CANDIDATE "Pietramala, Mike" AAP
+
+CANDIDATE "Tisdall, Sean" SC
+
+CANDIDATE "Vandermeer, Tony" PC
+
+
+
+RIDING 035 "Edmonton-McClung" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Bauer, Reuben" AAP
+
+CANDIDATE "Conlin, Patrick" SC
+
+CANDIDATE "Dach, Lorne" NDP
+
+CANDIDATE "Elsalhy, Mo" LIB
+
+CANDIDATE "Norris, Mark" PC
+
+
+
+RIDING 036 "Edmonton-Meadowlark" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Burns, Lance" NDP
+
+CANDIDATE "Campbell, Aaron" AAP
+
+CANDIDATE "Doyle, Amanda" GRN
+
+CANDIDATE "Maskell, Bob" PC
+
+CANDIDATE "Morton, Peggy" IND
+
+CANDIDATE "Tougas, Maurice" LIB
+
+
+
+RIDING 037 "Edmonton-Mill Creek" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Alford, Robert J." AAP
+
+CANDIDATE "Gill, Aman" LIB
+
+CANDIDATE "Johnson, Cameron" IND
+
+CANDIDATE "Stieglitz, Eric" GRN
+
+CANDIDATE "Taylor, Nathan" NDP
+
+CANDIDATE "Zwozdesky, Gene" PC
+
+
+
+RIDING 038 "Edmonton-Mill Woods" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Bhardwaj, Naresh" PC
+
+CANDIDATE "Mather, Weslyn" LIB
+
+CANDIDATE "Nelson, Lloyd" NDP
+
+CANDIDATE "Rankin, Naomi" COM
+
+CANDIDATE "Relland, Charles" AAP
+
+
+
+RIDING 039 "Edmonton-Riverview" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Edgar, David" AAP
+
+CANDIDATE "Horne, Fred" PC
+
+CANDIDATE "Lackey, John" GRN
+
+CANDIDATE "Martyn, Donna" NDP
+
+CANDIDATE "Power, David W." SC
+
+CANDIDATE "Taft, Kevin" LIB
+
+
+
+RIDING 040 "Edmonton-Rutherford" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Ashmore, Anita" SC
+
+CANDIDATE "Ewart, R. J. (Bob)" AAP
+
+CANDIDATE "McClelland, Ian" PC
+
+CANDIDATE "Miller, Rick" LIB
+
+CANDIDATE "Slade, George A." NDP
+
+
+
+RIDING 041 "Edmonton-Strathcona" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Burns, Jeremy" AAP
+
+CANDIDATE "Cole, Adrian" GRN
+
+CANDIDATE "Graham, Kelly" SC
+
+CANDIDATE "Leard, Steven" LIB
+
+CANDIDATE "Pannu, Raj" NDP
+
+CANDIDATE "Stubbs, Shannon" PC
+
+
+
+RIDING 042 "Edmonton-Whitemud" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Andrews, John" IND
+
+CANDIDATE "Fleck, Brian" NDP
+
+CANDIDATE "Hancock, Dave" PC
+
+CANDIDATE "Rayner, Kathy" AAP
+
+CANDIDATE "Smith, Donna Lynn" LIB
+
+
+
+RIDING 043 "Airdrie-Chestermere" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Burke, John" LIB
+
+CANDIDATE "Gaida, Bradley" AAP
+
+CANDIDATE "Gautreau, Jerry" SC
+
+CANDIDATE "Haley, Carol" PC
+
+CANDIDATE "Lefurgey, Bob" SEP
+
+CANDIDATE "Massie, Grant" NDP
+
+CANDIDATE "Scully, Angela" GRN
+
+CANDIDATE "Willerton, Jeff" AP
+
+
+
+RIDING 044 "Athabasca-Redwater" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Belland, Nicole" LIB
+
+CANDIDATE "Cardinal, Mike" PC
+
+CANDIDATE "De Smet, Luke" GRN
+
+CANDIDATE "Fish, Leonard" SC
+
+CANDIDATE "Opryshko, Peter" NDP
+
+CANDIDATE "Whelan, Sean" AAP
+
+
+
+RIDING 045 "Banff-Cochrane" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Argent, Bob" AAP
+
+CANDIDATE "Cambridge, Melissa" NDP
+
+CANDIDATE "Foote, Chris" GRN
+
+CANDIDATE "McDougall, Ian" LIB
+
+CANDIDATE "Tarchuk, Janis" PC
+
+
+
+RIDING 046 "Barrhead-Morinville-Westlock" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Fiebich, Alan" LIB
+
+CANDIDATE "Haugen, Carl" SC
+
+CANDIDATE "Kirkeby, Peggy" NDP
+
+CANDIDATE "Kowalski, Ken" PC
+
+CANDIDATE "Radojcic, Mike" AAP
+
+
+
+RIDING 047 "Battle River-Wainwright" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Griffiths, Doug" PC
+
+CANDIDATE "Legault, Len" NDP
+
+CANDIDATE "Rogers, Gordon" LIB
+
+CANDIDATE "Skitteral, Robin" SC
+
+CANDIDATE "Werezak, Orest" AAP
+
+
+
+RIDING 048 "Bonnyville-Cold Lake" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Ducharme, Denis" PC
+
+CANDIDATE "Gervais, Shane" AAP
+
+CANDIDATE "Mildon, Lloyd" LIB
+
+CANDIDATE "Ogonoski, Denise" NDP
+
+
+
+RIDING 049 "Cardston-Taber-Warner" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Bannister, Luann" NDP
+
+CANDIDATE "Ferguson, Lindsay" GRN
+
+CANDIDATE "Hinman, Paul" AAP
+
+CANDIDATE "Jacobs, Broyce" PC
+
+CANDIDATE "Shimp, Paula" LIB
+
+
+
+RIDING 050 "Cypress-Medicine Hat" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Angle, Stuart" LIB
+
+CANDIDATE "Anten, Cliff" NDP
+
+CANDIDATE "Mitzel, Leonard" PC
+
+CANDIDATE "Pierson, Dan H." AAP
+
+CANDIDATE "Solberg, Eric" SC
+
+
+
+RIDING 051 "Drayton Valley-Calmar" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Abbott, Tony" PC
+
+CANDIDATE "Cliff, Thomas" SC
+
+CANDIDATE "Cunningham, Viona" AAP
+
+CANDIDATE "Erickson, Edwin" GRN
+
+CANDIDATE "Higgerty, Laura" LIB
+
+CANDIDATE "Knopp, Elmer" IND
+
+CANDIDATE "Oberle, Lynn" NDP
+
+
+
+RIDING 052 "Drumheller-Stettler" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Bough, Richard" NDP
+
+CANDIDATE "Carnegie, David" SEP
+
+CANDIDATE "France, Dave" AAP
+
+CANDIDATE "Kloppenburg, Mary-Lou" SC
+
+CANDIDATE "McClellan, Shirley" PC
+
+CANDIDATE "Walker, Eileen" AP
+
+
+
+RIDING 053 "Foothills-Rockyview" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Coburn, Herb" LIB
+
+CANDIDATE "Herasemluk, Jason" AAP
+
+CANDIDATE "Morton, F. L. (Ted)" PC
+
+CANDIDATE "Schmidt, Roland" NDP
+
+CANDIDATE "Willson, Shelley" GRN
+
+
+
+RIDING 054 "Fort McMurray-Wood Buffalo" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Boutilier, Guy C." PC
+
+CANDIDATE "Collicott, Russell W. (Russ)" LIB
+
+CANDIDATE "Eklund, Eugene" AAP
+
+CANDIDATE "Malka, Dave" NDP
+
+CANDIDATE "Normore, Reginald" IND
+
+
+
+RIDING 055 "Fort Saskatchewan-Vegreville" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Buyarski, Wes" NDP
+
+CANDIDATE "King, Byron" AAP
+
+CANDIDATE "Patterson, Mark R." SC
+
+CANDIDATE "Schneider, Peter" LIB
+
+CANDIDATE "Stelmach, Ed" PC
+
+
+
+RIDING 056 "Grande Prairie-Smoky" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Knight, Mel" PC
+
+CANDIDATE "Peacock, Neil" LIB
+
+CANDIDATE "Rahn, Hank" AAP
+
+CANDIDATE "Szoke, Georgina" NDP
+
+
+
+RIDING 057 "Grande Prairie-Wapiti" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Graydon, Gordon" PC
+
+CANDIDATE "Hilton-O'Brien, John" AAP
+
+CANDIDATE "MacDonald, Jerry" NDP
+
+CANDIDATE "Rakestraw, Cibylla" LIB
+
+CANDIDATE "Webber, Allan" GRN
+
+
+
+RIDING 058 "Highwood" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Czerwinski, Lori" LIB
+
+CANDIDATE "Groeneveld, George" PC
+
+CANDIDATE "Matthews, Sheelagh" GRN
+
+CANDIDATE "Morgan, Cory" SEP
+
+CANDIDATE "Whelan Costen, Catherine" NDP
+
+CANDIDATE "Wickhorst, Brian" AAP
+
+
+
+RIDING 059 "Innisfail-Sylvan Lake" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Davis, Garth" LIB
+
+CANDIDATE "Janke, Chris" NDP
+
+CANDIDATE "Ouellette, Luke" PC
+
+CANDIDATE "Thorsteinson, Randy" AAP
+
+CANDIDATE "Tricker, Wilf" SC
+
+
+
+RIDING 060 "Lac La Biche-St. Paul" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Broomfield, Dickson" LIB
+
+CANDIDATE "Danyluk, Ray" PC
+
+CANDIDATE "Goebel, Phil" NDP
+
+CANDIDATE "Lacombe, Oscar" AAP
+
+
+
+RIDING 061 "Lacombe-Ponoka" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Cormack, Teena" SC
+
+CANDIDATE "Graves, Jim" NDP
+
+CANDIDATE "Klop, Ed" AAP
+
+CANDIDATE "Prins, Ray" PC
+
+CANDIDATE "Simmonds, Glen T." LIB
+
+
+
+RIDING 062 "Leduc-Beaumont-Devon" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Assen, Joyce" LIB
+
+CANDIDATE "Dalke, Dave" AAP
+
+CANDIDATE "Lindop, Stephen" GRN
+
+CANDIDATE "Oppen, Katie" NDP
+
+CANDIDATE "Richert, Karen" SC
+
+CANDIDATE "Rogers, George" PC
+
+
+
+RIDING 063 "Lesser Slave Lake" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Bannister, Doris" NDP
+
+CANDIDATE "Calahasen, Pearl" PC
+
+CANDIDATE "Hopfe, Ian" GRN
+
+CANDIDATE "Pleckaitis, Jonathan" LIB
+
+CANDIDATE "Rahn, Valerie" AAP
+
+
+
+RIDING 064 "Lethbridge-East" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Fong, Rod" PC
+
+CANDIDATE "Matthews, Erin" GRN
+
+CANDIDATE "Metz, Gaye" NDP
+
+CANDIDATE "Pastoor, Bridget" LIB
+
+CANDIDATE "Popik, Darren" SC
+
+CANDIDATE "Stewart, Brian" AAP
+
+
+
+RIDING 065 "Lethbridge-West" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Boora, Bal" LIB
+
+CANDIDATE "Dunford, Clint" PC
+
+CANDIDATE "Sandilands, Mark" NDP
+
+CANDIDATE "Sawatsky, Scott" SC
+
+CANDIDATE "Sheridan, Andrea" GRN
+
+CANDIDATE "Terlesky, Merle" AAP
+
+
+
+RIDING 066 "Little Bow" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Cook, Brian" SC
+
+CANDIDATE "Langstraat, Arij" LIB
+
+CANDIDATE "Logie, Hugh" NDP
+
+CANDIDATE "McFarland, Barry" PC
+
+CANDIDATE "Phin, Jay" AAP
+
+CANDIDATE "Shaw, Grant" SEP
+
+
+
+RIDING 067 "Livingstone-Macleod" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Coutts, David" PC
+
+CANDIDATE "Lyster, George" AAP
+
+CANDIDATE "Thomas, Joyce" NDP
+
+CANDIDATE "Walker, Jim" SEP
+
+CANDIDATE "Watts, Chris" GRN
+
+CANDIDATE "Whitehead, Craig" LIB
+
+
+
+RIDING 068 "Medicine Hat" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Arnott, Diana" NDP
+
+CANDIDATE "Charlton, Karen" LIB
+
+CANDIDATE "Cowan, Scott" AAP
+
+CANDIDATE "Lorentzen, Jonathan" SC
+
+CANDIDATE "Renner, Rob" PC
+
+
+
+RIDING 069 "Olds-Didsbury-Three Hills" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Davies, Christopher" NDP
+
+CANDIDATE "Henckel-Sutmoller, Sarah" GRN
+
+CANDIDATE "Kissick, Myrna" SC
+
+CANDIDATE "Marz, Richard" PC
+
+CANDIDATE "Quantz, Gordon" AAP
+
+CANDIDATE "Vasseur, Brian" SEP
+
+CANDIDATE "Vonesch, Tony" LIB
+
+
+
+RIDING 070 "Peace River" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Bourque, Adam" LIB
+
+CANDIDATE "Checknita, Garry" AAP
+
+CANDIDATE "Crocker, Stephen" NDP
+
+CANDIDATE "Lindberg, Patsy" SC
+
+CANDIDATE "Oberle, Frank" PC
+
+
+
+RIDING 071 "Red Deer-North" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Bedford, Steven" NDP
+
+CANDIDATE "Fisher, Colin" GRN
+
+CANDIDATE "Jablonski, Mary Anne" PC
+
+CANDIDATE "McDougall, Norm" LIB
+
+CANDIDATE "Sisson, Rand" AAP
+
+
+
+RIDING 072 "Red Deer-South" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Argent, Patti" AAP
+
+CANDIDATE "Doerksen, Victor" PC
+
+CANDIDATE "Kubanek, Walter" LIB
+
+CANDIDATE "Milne, Judy" SEP
+
+CANDIDATE "Sloychuk, Jeff" NDP
+
+
+
+RIDING 073 "Rocky Mountain House" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Ahlstrom, Lavern J." SC
+
+CANDIDATE "Hutton, Bruce" SEP
+
+CANDIDATE "Isaac, Jennifer" GRN
+
+CANDIDATE "Jones, Anthony" NDP
+
+CANDIDATE "Lund, Ty" PC
+
+CANDIDATE "Scott, Susan M." LIB
+
+CANDIDATE "Wilhite, Ed" AAP
+
+
+
+RIDING 074 "Sherwood Park" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Barrett, Gordon" SC
+
+CANDIDATE "Evans, Iris" PC
+
+CANDIDATE "LaBonte, Cora" AAP
+
+CANDIDATE "Lau, Lynn" GRN
+
+CANDIDATE "Rogers, Louise" LIB
+
+CANDIDATE "Sloan, Tim" NDP
+
+
+
+RIDING 075 "Spruce Grove-Sturgeon-St. Albert" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Apostal, Dale" NDP
+
+CANDIDATE "Blaylock, Glen" SC
+
+CANDIDATE "Boudreau, Ray" LIB
+
+CANDIDATE "Friesen, Tim" AAP
+
+CANDIDATE "Horner, Doug" PC
+
+
+
+RIDING 076 "St. Albert" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Bitangcol, Conrad" GRN
+
+CANDIDATE "Flaherty, Jack" LIB
+
+CANDIDATE "Meldrum, Michaela" AAP
+
+CANDIDATE "O'Neill, Mary" PC
+
+CANDIDATE "Thompson, Travis" NDP
+
+
+
+RIDING 077 "Stony Plain" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Burns, Marilyn" AAP
+
+CANDIDATE "Fraser, Bill" LIB
+
+CANDIDATE "Lindsay, Fred" PC
+
+CANDIDATE "Neumann, Henry" SC
+
+CANDIDATE "Yanor, Ruth" NDP
+
+
+
+RIDING 078 "Strathcona" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Elchuk, Thomas" NDP
+
+CANDIDATE "Friel, Jon" LIB
+
+CANDIDATE "Lougheed, Rob" PC
+
+CANDIDATE "McDonald, Roberta" SEP
+
+CANDIDATE "Rembowski, Brian" SC
+
+CANDIDATE "Seto, Ryan" AAP
+
+CANDIDATE "Stubbs, Bruce" AP
+
+
+
+RIDING 079 "Strathmore-Brooks" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Jaques, Carrol" LIB
+
+CANDIDATE "Kolody, Jay" SEP
+
+CANDIDATE "MacFarlane, Don" NDP
+
+CANDIDATE "Martens, Rudy" SC
+
+CANDIDATE "Oberg, Lyle" PC
+
+CANDIDATE "Ogden, Mark David" AAP
+
+
+
+RIDING 080 "Vermilion-Lloydminster" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Benoit, David" AAP
+
+CANDIDATE "Snelgrove, Lloyd" PC
+
+CANDIDATE "Stone, Ray" NDP
+
+CANDIDATE "Thomas, Patricia" LIB
+
+
+
+RIDING 081 "West Yellowhead" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Cunningham, Earle" AAP
+
+CANDIDATE "Jolly, Robert" LIB
+
+CANDIDATE "Madsen, Barry" NDP
+
+CANDIDATE "Schaefer, Monika" GRN
+
+CANDIDATE "Strang, Ivan" PC
+
+
+
+RIDING 082 "Wetaskiwin-Camrose" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Elliott, Keith" LIB
+
+CANDIDATE "Johnson, LeRoy" PC
+
+CANDIDATE "Lawson, Clay" NDP
+
+CANDIDATE "Trefz, Dale" AAP
+
+CANDIDATE "Wolter, Janice H." SC
+
+
+
+RIDING 083 "Whitecourt-Ste. Anne" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Dow, David" AAP
+
+CANDIDATE "Higgerty, George" LIB
+
+CANDIDATE "Redmond, Leah" NDP
+
+CANDIDATE "VanderBurg, George" PC
+
+
+
+RIDING 100 "SENATE - Provincial Totals" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 101 "SENATE - Dunvegan-Central Peace" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 102 "SENATE - Calgary-Bow" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 103 "SENATE - Calgary-Buffalo" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 104 "SENATE - Calgary-Cross" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 105 "SENATE - Calgary-Currie" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 106 "SENATE - Calgary-East" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 107 "SENATE - Calgary-Egmont" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 108 "SENATE - Calgary-Elbow" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 109 "SENATE - Calgary-Fish Creek" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 110 "SENATE - Calgary-Foothills" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 111 "SENATE - Calgary-Fort" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 112 "SENATE - Calgary-Glenmore" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 113 "SENATE - Calgary-Hays" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 114 "SENATE - Calgary-Lougheed" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 115 "SENATE - Calgary-Mackay" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 116 "SENATE - Calgary-McCall" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 117 "SENATE - Calgary-Montrose" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 118 "SENATE - Calgary-Mountain View" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 119 "SENATE - Calgary-North Hill" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 120 "SENATE - Calgary-North West" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 121 "SENATE - Calgary-Nose Hill" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 122 "SENATE - Calgary-Shaw" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 123 "SENATE - Calgary-Varsity" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 124 "SENATE - Calgary-West" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 125 "SENATE - Edmonton-Beverly-Clareview" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 126 "SENATE - Edmonton-Calder" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 127 "SENATE - Edmonton-Castle Downs" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 128 "SENATE - Edmonton-Centre" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 129 "SENATE - Edmonton-Decore" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 130 "SENATE - Edmonton-Ellerslie" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 131 "SENATE - Edmonton-Glenora" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 132 "SENATE - Edmonton-Gold Bar" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 133 "SENATE - Edmonton-Highlands-Norwood" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 134 "SENATE - Edmonton-Manning" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 135 "SENATE - Edmonton-McClung" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 136 "SENATE - Edmonton-Meadowlark" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 137 "SENATE - Edmonton-Mill Creek" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 138 "SENATE - Edmonton-Mill Woods" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 139 "SENATE - Edmonton-Riverview" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 140 "SENATE - Edmonton-Rutherford" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 141 "SENATE - Edmonton-Strathcona" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 142 "SENATE - Edmonton-Whitemud" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 143 "SENATE - Airdrie-Chestermere" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 144 "SENATE - Athabasca-Redwater" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 145 "SENATE - Banff-Cochrane" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 146 "SENATE - Barrhead-Morinville-Westlock" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 147 "SENATE - Battle River-Wainwright" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 148 "SENATE - Bonnyville-Cold Lake" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 149 "SENATE - Cardston-Taber-Warner" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 150 "SENATE - Cypress-Medicine Hat" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 151 "SENATE - Drayton Valley-Calmar" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 152 "SENATE - Drumheller-Stettler" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 153 "SENATE - Foothills-Rockyview" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 154 "SENATE - Fort McMurray-Wood Buffalo" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 155 "SENATE - Fort Saskatchewan-Vegreville" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 156 "SENATE - Grande Prairie-Smoky" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 157 "SENATE - Grande Prairie-Wapiti" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 158 "SENATE - Highwood" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 159 "SENATE - Innisfail-Sylvan Lake" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 160 "SENATE - Lac La Biche-St. Paul" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 161 "SENATE - Lacombe-Ponoka" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 162 "SENATE - Leduc-Beaumont-Devon" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 163 "SENATE - Lesser Slave Lake" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 164 "SENATE - Lethbridge-East" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 165 "SENATE - Lethbridge-West" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 166 "SENATE - Little Bow" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 167 "SENATE - Livingstone-Macleod" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 168 "SENATE - Medicine Hat" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 169 "SENATE - Olds-Didsbury-Three Hills" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 170 "SENATE - Peace River" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 171 "SENATE - Red Deer-North" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 172 "SENATE - Red Deer-South" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 173 "SENATE - Rocky Mountain House" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 174 "SENATE - Sherwood Park" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 175 "SENATE - Spruce Grove-Sturgeon-St. Albert" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 176 "SENATE - St. Albert" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 177 "SENATE - Stony Plain" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 178 "SENATE - Strathcona" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 179 "SENATE - Strathmore-Brooks" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 180 "SENATE - Vermilion-Lloydminster" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 181 "SENATE - West Yellowhead" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 182 "SENATE - Wetaskiwin-Camrose" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC
+
+
+
+RIDING 183 "SENATE - Whitecourt-Ste. Anne" /POLLS=999 /NO_OF_VOTERS=99999
+
+
+
+CANDIDATE "Breitkreuz, Cliff" PC
+
+CANDIDATE "Brown, Bert" PC 
+
+CANDIDATE "Byfield, Link" IND
+
+CANDIDATE "Gough, Vance" AAP
+
+CANDIDATE "Horan, Gary" AAP
+
+CANDIDATE "Roth, Michael" AAP
+
+CANDIDATE "Silye, Jim" PC
+
+CANDIDATE "Sindlinger, Tom" IND
+
+CANDIDATE "Unger, Betty" PC
+
+CANDIDATE "Usherwood, David" PC

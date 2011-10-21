@@ -1,0 +1,10 @@
+% File "sumint.ti".  Function to sum the first n integers.
+function sum  (n : int) r : int
+    pre n >= 0
+    % post r = summation for i from 1 to n of i
+    if n <= 1 then
+        result n  % First result statement.
+    else
+        result n + sum (n - 1)  % Second result statement.
+    end if
+end sum

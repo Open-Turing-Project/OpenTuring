@@ -1,0 +1,6 @@
+drawfilloval (50, 50, 50, 50, red)
+var p := Pic.New (0, 0, 100, 100)
+drawfillbox (0, 0, maxx, maxy, green)
+Pic.Draw (p, 200, 200, picMerge)
+Pic.Draw (p, 200, 350, picMerge)
+Pic.Draw (p, -50, 200, picMerge)

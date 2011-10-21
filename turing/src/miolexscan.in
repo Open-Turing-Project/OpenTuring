@@ -1,0 +1,958 @@
+/*****************/
+/* miolexscan.in */
+/*****************/
+
+/***************************************/
+/* This file is included by miolexer.c */
+/***************************************/
+
+/*******************/
+/* System includes */
+/*******************/
+
+/*************/
+/* Constants */
+/*************/
+
+/********************/
+/* Static variables */
+/********************/
+
+/*********************/
+/* Static procedures */
+/*********************/
+#define IS_MATCH(str1, str2) \
+    ((str2 [1] == EOS) || strncmp((str1), (str2), strlen(str2)) == 0)
+
+/************************************************************************/
+/* MyIsDigitChar							*/
+/************************************************************************/
+static BOOL	MyIsDigitChar (int pmBase, char pmChar)
+{
+    if (pmBase) 
+    {
+	UINT	myChar = toupper (pmChar);
+
+	return (isdigit(pmChar) && ((pmChar - '0') < pmBase)) ||
+	        (('A' <= pmChar) && (myChar < (UINT) ('A' + pmBase - 10)));
+    }
+    return isdigit (pmChar);
+} // MyIsDigitChar
+
+
+/************************************************************************/
+/* MyHash								*/
+/*									*/
+/* Hash token to hash table slot index					*/
+/************************************************************************/
+static UINT	MyHash (const char *pmStr)
+{
+    DWORD	myIndex = 0;
+    int		myLen = strlen (pmStr);
+    int		cnt;
+
+    for (cnt = 0 ; cnt < myLen ; cnt++) 
+    {
+	myIndex = (myIndex >> 16) | (myIndex << 16) | pmStr [cnt];
+    }
+
+    return (myIndex % NUM_HASH_SLOTS);
+} // MyHash
+
+
+/************************************************************************/
+/* MyLookupToken							*/
+/*									*/
+/* Check token against token list.					*/
+/* Return tTokenBase + offset if found, else return 0;			*/
+/************************************************************************/
+static int	MyLookupToken (LexTable *pmLexTable, const char *pmToken)
+{
+   UINT	mySlot = MyHash (pmToken);
+
+   for (;;) 
+   {
+	int	myIndex = pmLexTable -> hashTable [mySlot];
+
+	if (myIndex == NONE)
+	{
+	    return 0;
+	}
+	
+	if (strcmp (pmToken, pmLexTable -> token [myIndex]) == 0)
+	{
+	    return tTokenBase + myIndex;
+	}
+
+	mySlot = ((mySlot + 1) % NUM_HASH_SLOTS);
+   }
+} // MyLookupToken
+
+
+/************************************************************************/
+/* MyGetComment								*/
+/*									*/
+/* Copy comment into token record. Return TRUE if more comment remains	*/
+/************************************************************************/
+static void	MyGetComment (LexRecord *pmLexRecord, TOKEN_RECORD *pmTokRecord)
+{
+    LexTable	*myLexTable = pmLexRecord -> table;
+    char	*myToken = pmTokRecord -> token;
+    UINT	myCommentNum = pmLexRecord -> commentNum;
+    int		myEndPos = strlen (myToken);
+    int		myPos = pmLexRecord -> pos + myEndPos;
+
+    for (;;) 
+    {
+	char	myChar = pmLexRecord -> line [myPos];
+
+	if (myChar == myLexTable -> commentEnd [myCommentNum][0]) 
+	{
+	    if (IS_MATCH (pmLexRecord -> line+myPos, 
+			  myLexTable -> commentEnd [myCommentNum])) 
+	    {
+		if (myChar != NL)
+		{
+		    strcpy (myToken + myEndPos, 
+			    myLexTable -> commentEnd [myCommentNum]);
+		}
+		else
+		{
+		    myToken [myEndPos] = EOS;
+		}
+		pmLexRecord -> pos = myPos + 
+			strlen (myLexTable -> commentEnd [myCommentNum]);
+		pmLexRecord -> commentNum = NONE;
+		return;
+	    }
+	}
+
+	if (myChar == NL) 
+	{
+	    pmLexRecord -> pos = myPos;
+	    myToken [myEndPos] = EOS;
+	    return;
+	}
+
+	myToken [myEndPos++] = myChar;
+	myPos++;
+    }
+} // MyGetComment
+
+
+/************************************************************************/
+/* MyOOTprocess								*/
+/************************************************************************/
+static void	MyOOTprocess (TOKEN_RECORD *pmTokRecord, const char *pmStr)
+{
+    int mySrc = 0;
+    int myDest = 0;
+
+    while (pmStr [mySrc])
+    {
+	switch (pmStr [mySrc])
+	{
+	    case '\\':
+		mySrc++;
+		switch (pmStr [mySrc])
+		{
+		    case 'b':
+		    case 'B':
+			pmTokRecord -> stringVal [myDest] = '\b';
+			break;
+		    case 'd':
+		    case 'D':
+			pmTokRecord -> stringVal [myDest] = 127;
+			break;
+		    case 'e':
+		    case 'E':
+			pmTokRecord -> stringVal [myDest] = 27;
+			break;
+		    case 'f':
+		    case 'F':
+			pmTokRecord -> stringVal [myDest] = '\f';
+			break;
+		    case 'n':
+		    case 'N':
+			pmTokRecord -> stringVal [myDest] = '\n';
+			break;
+		    case 'r':
+		    case 'R':
+			pmTokRecord -> stringVal [myDest] = '\r';
+			break;
+		    case 't':
+		    case 'T':
+			pmTokRecord -> stringVal [myDest] = '\t';
+			break;
+		    case '"':
+		    case '\\':
+		    case '^':
+		    case '\'':
+			pmTokRecord -> stringVal [myDest] = pmStr [mySrc];
+			break;
+		    default:
+			pmTokRecord -> error = TRUE;
+			return;
+		} // switch (pmStr [mySrc])
+		break;
+    	    case '^':
+		mySrc++;
+		pmTokRecord -> stringVal [myDest] = (pmStr [mySrc] & 0xf);
+		break;
+	    default:
+		pmTokRecord -> stringVal [myDest] = pmStr [mySrc];
+		break;
+	} // switch (pmStr [mySrc])
+	mySrc++;
+	myDest++;
+    } // while (pmStr [mySrc])
+    pmTokRecord -> stringVal [myDest] = EOS;
+} // MyOOTprocess
+
+
+/************************************************************************/
+/* MyConvertNum								*/
+/************************************************************************/
+static char	MyConvertNum (const char *pmStr, int *pmPos, int pmBase)
+{
+    int		mySrc = *pmPos;
+    int		myDest = 0;
+    char	myNumStr [256];
+
+    while (myDest < ((pmBase == 8) ? 3 : 2) && pmStr [mySrc] && 
+	   MyIsDigitChar (pmBase, pmStr [mySrc])) 
+    {
+	myNumStr [myDest++] = pmStr [mySrc++];
+    }
+    *pmPos = mySrc;
+    myNumStr [myDest] = EOS;
+
+    return (char) strtol (myNumStr, NULL, pmBase);
+} // MyConvertNum
+
+
+/************************************************************************/
+/* MyCprocess								*/
+/************************************************************************/
+static void	MyCprocess (TOKEN_RECORD *pmTokRecord, const char *pmStr)
+{
+    int mySrc = 0;
+    int myDest = 0;
+
+    while (pmStr [mySrc])
+    {
+	switch (pmStr [mySrc])
+	{
+	    case '\\':
+		mySrc++;
+		switch (pmStr [mySrc])
+		{
+		    case 'a':
+			pmTokRecord -> stringVal [myDest] = '\a';
+			break;
+		    case 'b':
+			pmTokRecord -> stringVal [myDest] = '\b';
+			break;
+		    case 'f':
+			pmTokRecord -> stringVal [myDest] = '\f';
+			break;
+		    case 'n':
+			pmTokRecord -> stringVal [myDest] = '\n';
+			break;
+		    case 'r':
+			pmTokRecord -> stringVal [myDest] = '\r';
+			break;
+		    case 't':
+			pmTokRecord -> stringVal [myDest] = '\t';
+			break;
+		    case 'v':
+			pmTokRecord -> stringVal [myDest] = '\v';
+			break;
+		    case 'x':
+			{
+			    char	myChar;
+
+			    mySrc++;
+			    myChar = toupper (pmStr [mySrc]);
+
+			    if (isdigit (pmStr [mySrc]) || 
+				(('A' <= myChar) && (myChar <= 'F')))
+			    {
+				pmTokRecord -> stringVal [myDest] = 
+					    MyConvertNum (pmStr, &mySrc, 16);
+			    }
+			    else
+			    {
+				pmTokRecord -> stringVal [myDest] = 'x';
+			    }
+		
+			}
+			break;
+		    default:
+			if (('0' <= pmStr [mySrc]) && (pmStr [mySrc] < '8'))
+			{
+			    pmTokRecord -> stringVal [myDest] = 
+					    MyConvertNum (pmStr, &mySrc, 8);
+			}
+			else
+			{
+			    pmTokRecord -> stringVal [myDest] = pmStr [mySrc];
+			}
+		} // switch (pmStr [mySrc])
+		break;
+	    default:
+		pmTokRecord -> stringVal [myDest] = pmStr [mySrc];
+		break;
+	} // switch (pmStr [mySrc])
+	mySrc++;
+	myDest++;
+    } // while (pmStr [mySrc])
+    pmTokRecord -> stringVal [myDest] = EOS;
+} // MyCprocess
+
+
+/************************************************************************/
+/* MyProcessString							*/
+/************************************************************************/
+static void	MyProcessString (LexRecord *pmLexRecord, 
+				 TOKEN_RECORD *pmTokRecord, char *pmStr)
+{
+    if (pmLexRecord -> flags & FLAG_OOTESCAPE)
+    {
+	MyOOTprocess (pmTokRecord, pmStr);
+    }
+    else if (pmLexRecord -> flags & FLAG_CESCAPE)
+    {
+	MyCprocess (pmTokRecord, pmStr);
+    }
+    else
+    {
+        strcpy (pmTokRecord -> stringVal, pmStr);
+    }
+} // MyProcessString
+
+
+/************************************************************************/
+/* MyNotEosStartIndex							*/
+/************************************************************************/
+static int	MyNotEosStartIndex (LexRecord *pmLexRecord, char pmChar)
+{
+    int cnt;
+
+    for (cnt = 0 ; cnt < (int) pmLexRecord -> table -> numNotEOS ; cnt++) 
+    {
+	if (pmChar == pmLexRecord -> table -> notEOS [cnt][0]) 
+	{
+	    int	myLen = strlen (pmLexRecord -> table -> notEOS [cnt]);
+
+	    if (strncmp (pmLexRecord -> line + pmLexRecord -> pos, 
+			 pmLexRecord -> table -> notEOS [cnt], myLen) == 0) 
+	    {
+		return cnt;
+	    }
+	}
+    }
+    return -1;
+}
+
+
+/************************************************************************/
+/* MyGetString								*/
+/*									*/
+/* Copy string into token record. Return TRUE if more string remains	*/
+/************************************************************************/
+static BOOL	MyGetString (LexRecord *pmLexRecord, TOKEN_RECORD *pmTokRecord)
+{
+    char	*myToken = pmTokRecord -> token;
+    int		myPos = 0;
+
+    if (myToken [0]) 
+    {
+        myPos++;
+	pmLexRecord -> pos++;
+    }
+
+    for (;;) 
+    {
+	char	myChar = pmLexRecord -> line [pmLexRecord -> pos];
+	int	myIndex;
+
+	if (myChar == pmLexRecord -> table -> endStringChar) 
+	{
+	    // Copy string into stringLit here
+
+	    if (myChar != NL)
+	    {
+		myToken[myPos++] = myChar;
+	    }
+	    myToken[myPos] = EOS;
+	    pmLexRecord -> pos++;
+
+	    if (pmLexRecord -> flags & FLAG_EVAL) 
+	    {
+	        if (myToken[0] == pmLexRecord -> table -> startStringChar)
+		{
+		    MyProcessString (pmLexRecord, pmTokRecord, myToken + 1);
+		}
+		else
+		{
+		    MyProcessString (pmLexRecord, pmTokRecord, myToken);
+		}
+
+		if (myChar != NL) 
+		{
+		    int	myLen = strlen (pmTokRecord -> stringVal);
+		    pmTokRecord -> stringVal [myLen-1] = EOS;
+		}
+	    }
+	    return FALSE;
+	}
+
+	// See if we're at a "NOT EOS" string 
+	myIndex = MyNotEosStartIndex (pmLexRecord, myChar);
+
+	if (myIndex >= 0) 
+	{
+	    int	myLen = strlen (pmLexRecord -> table -> notEOS [myIndex]);
+
+	    strcpy (myToken + myPos, pmLexRecord -> table -> notEOS [myIndex]);
+	    myPos += myLen;
+	    pmLexRecord -> pos += myLen;
+	}
+	else 
+	{
+            if (myChar == NL) 
+	    {
+	        myToken [myPos] = EOS;
+	        if (pmLexRecord -> flags & FLAG_EVAL) 
+		{
+	            if (myToken [0] == pmLexRecord -> table -> startStringChar)
+		    {
+		        MyProcessString (pmLexRecord, pmTokRecord, myToken + 1);
+		    }
+		    else
+		    {
+		        MyProcessString (pmLexRecord, pmTokRecord, myToken);
+		    }
+		}
+	        return TRUE;
+	    }
+
+	    pmLexRecord -> pos++;
+	    myToken [myPos++] = myChar;
+	}
+    }
+} // MyGetString
+
+
+/************************************************************************/
+/* MyGetChar								*/
+/************************************************************************/
+static void	MyGetChar (LexRecord *pmLexRecord, TOKEN_RECORD *pmTokRecord)
+{
+    char	myChrStr[256], *myToken;
+    int		cnt = 0;
+
+    pmTokRecord -> token [0] = pmLexRecord -> line [pmLexRecord -> pos++];
+
+    myToken = pmTokRecord -> token + 1;
+
+    for (;;) 
+    {
+	char	myChar = pmLexRecord -> line [pmLexRecord -> pos];
+
+	if ((myChar == pmLexRecord -> table->charDelimitter) || (myChar == NL))
+	{
+	    if (myChar == pmLexRecord -> table->charDelimitter) 
+	    {
+		myToken [cnt] = myChar;
+		myToken [cnt + 1] = EOS;
+		pmLexRecord -> pos++;
+	    }
+	    else
+	    {
+		myToken [cnt] = EOS;
+	    }
+
+	    myChrStr [cnt] = EOS;
+	    if (pmLexRecord -> flags & FLAG_EVAL) 
+	    {
+	        MyProcessString (pmLexRecord, pmTokRecord, myChrStr);
+	    }
+	    return;
+	}
+
+	myToken [cnt] = myChar;
+	myChrStr [cnt] = myChar;
+
+	pmLexRecord -> pos++;
+	cnt++;
+    }
+} // MyGetChar
+
+
+/************************************************************************/
+/* MyGetIdentifier							*/
+/************************************************************************/
+static void	MyGetIdentifier (LexRecord *pmLexRecord, 
+				 TOKEN_RECORD *pmTokRecord)
+{
+    char	*myToken = pmTokRecord -> token;
+    UINT	myPos = 0;
+
+    for (;;) 
+    {
+	char	myChar = pmLexRecord -> line [pmLexRecord -> pos];
+
+	if (isalnum (myChar) || 
+	    strchr (pmLexRecord -> table -> specialIDchars, myChar)) 
+	{
+	    myToken [myPos++] = myChar;
+	    pmLexRecord -> pos++;
+	}
+	else 
+	{
+	    myToken [myPos] = EOS;
+	    return;
+	}
+    }
+} // MyGetIdentifier
+
+/************************************************************************/
+/* MyGetWhitespace							*/
+/************************************************************************/
+static void	MyGetWhitespace (LexRecord *pmLexRecord, 
+				 TOKEN_RECORD *pmTokRecord)
+{
+    char	*myToken = pmTokRecord -> token;
+    UINT	myPos = 0;
+
+    for (;;) 
+    {
+	char	myChar = pmLexRecord -> line [pmLexRecord -> pos];
+
+	if (!isspace(myChar) || (myChar == NL)) 
+	{
+	    myToken [myPos] = EOS;
+	    return;
+	}
+
+	myToken [myPos++] = myChar;
+	pmLexRecord -> pos++;
+    }
+} // MyGetWhitespace
+
+
+/************************************************************************/
+/* MyAnalyzeNum								*/
+/*									*/
+/* Return tIntLit or tRealLit and fill in appropriate token field	*/
+/************************************************************************/
+static UINT	MyAnalyzeNum (LexRecord *pmLexRecord, TOKEN_RECORD *pmTokRecord,
+			      const char *pmNumStr, BOOL pmIsReal, UINT pmBase)
+{
+    if (pmIsReal) 
+    {
+	if (pmLexRecord -> flags & FLAG_EVAL)
+	{
+	    pmTokRecord -> realVal = atof (pmNumStr);
+	}
+	return tRealLit;
+    }
+    else 
+    {
+	if (pmLexRecord -> flags & FLAG_EVAL) 
+	{
+	    if (pmBase)
+	    {
+		pmTokRecord -> intVal = strtol (pmNumStr, NULL, pmBase);
+	    }
+	    else
+	    {
+	        pmTokRecord -> intVal = atol (pmNumStr);
+	    }
+	}
+	return tIntLit;
+    }
+} // MyAnalyzeNum
+
+
+/************************************************************************/
+/* MyGetPrefixBase							*/
+/*									*/
+/* See if a prefixed base conversion is being requested			*/
+/************************************************************************/
+static UINT	MyGetPrefixBase (LexRecord *pmLexRecord, 
+				 TOKEN_RECORD *pmTokRecord)
+{
+    UINT	cnt;
+
+    if (isspace (pmLexRecord -> line [pmLexRecord -> pos + 1]))
+    {
+	return 0;
+    }
+
+    for (cnt = 0; cnt < pmLexRecord -> table -> numIntegerPrefix; cnt++) 
+    {
+	int	myLen = strlen (pmLexRecord -> table -> integerPrefix [cnt]);
+
+	if (pmLexRecord -> line [pmLexRecord -> pos + myLen] && 
+	    !isspace (pmLexRecord -> line [pmLexRecord -> pos + myLen]) &&
+	    (strncmp (pmLexRecord -> line + pmLexRecord -> pos, 
+		      pmLexRecord -> table -> integerPrefix [cnt], myLen) == 0))
+	{
+	    pmLexRecord -> pos += myLen;
+	    strcpy (pmTokRecord -> token, 
+		    pmLexRecord -> table -> integerPrefix [cnt]);
+	    return pmLexRecord -> table -> preBaseConvert[cnt];
+	}
+    }
+    return 0;
+} // MyGetPrefixBase
+
+
+#if 0
+
+static void GetSuffix(lr, tok)
+    LEX_RECORD   *lr;
+    char	 *tok;
+{
+    Uint i;
+
+    if (pmLexRecord -> line[pmLexRecord -> pos] == EOS || isspace(pmLexRecord -> line[pmLexRecord -> pos]))
+	return;
+
+    for (i=0; i<pmLexRecord -> table->numNumberSuffix; i++) {
+	Uint len = strlen(pmLexRecord -> table->integerSuffix[i]);
+
+	if (pmLexRecord -> line[pmLexRecord -> pos+len] && !isspace(pmLexRecord -> line[pmLexRecord -> pos+len]) &&
+	    strncmp(pmLexRecord -> line+pmLexRecord -> pos, pmLexRecord -> table->integerSuffix[i], len) == 0)
+	{
+	    pmLexRecord -> pos += len;
+	    strcpy(tok, pmLexRecord -> table->integerSuffix[i]);
+	    return;
+	}
+    }
+}
+
+#endif
+
+
+/************************************************************************/
+/* MyGetNumber 								*/
+/************************************************************************/
+static UINT	MyGetNumber (LexRecord *pmLexRecord, TOKEN_RECORD *pmTokRecord)
+{
+    char	myNumStr [256];
+    int		myBase = MyGetPrefixBase (pmLexRecord, pmTokRecord);
+    char	*myToken = pmTokRecord -> token + 
+				((myBase) ? strlen (pmTokRecord -> token) : 0);
+    int		myPos = 0;
+    BOOL	mySeenDot = FALSE;
+    BOOL	mySeenExp = FALSE;
+    BOOL	mySeenBaseConv = FALSE;
+
+    for (;;) 
+    {
+	char	myChar = pmLexRecord -> line [pmLexRecord -> pos];
+
+	if (MyIsDigitChar (myBase, myChar)) 
+	{
+	    myNumStr [myPos] = myChar;
+	    myToken [myPos++] = myChar;
+	    pmLexRecord -> pos++;
+	}
+	else 
+	{
+	    if (myChar == '.') 
+	    {
+		if (mySeenDot || myBase) 
+		{
+	            myNumStr [myPos] = EOS;
+		    myToken [myPos]    = EOS;
+		    return MyAnalyzeNum (pmLexRecord, pmTokRecord, myNumStr, 
+					 mySeenDot | mySeenExp, myBase);
+		}
+		mySeenDot = TRUE;
+	        myNumStr [myPos] = myChar;
+		myToken [myPos++]  = myChar;
+		pmLexRecord -> pos++;
+	    }
+	    else if (strchr (pmLexRecord -> table -> realExpChars, myChar)) 
+	    {
+		if (mySeenExp || myBase) 
+		{
+	            myNumStr [myPos] = EOS;
+		    myToken [myPos] = EOS;
+		    return MyAnalyzeNum (pmLexRecord, pmTokRecord, myNumStr, 
+					 mySeenDot | mySeenExp, myBase);
+		}
+		mySeenExp = TRUE;
+		myNumStr [myPos] = 'e';	// Replace with C's character 
+		myToken [myPos++] = myChar;
+		pmLexRecord -> pos++;
+
+		while (pmLexRecord -> line [pmLexRecord -> pos] && 
+		       !isdigit (pmLexRecord -> line [pmLexRecord -> pos])) 
+		{
+		    myChar = pmLexRecord -> line [pmLexRecord -> pos];
+	            myNumStr [myPos] = myChar;
+		    myToken [myPos++] = myChar;
+		    pmLexRecord -> pos++;
+		}
+	    }
+	    else if ((myChar == pmLexRecord -> table -> baseConvertChar) && 
+		     !mySeenBaseConv) 
+	    {
+		// Prefix is base to convert to 
+
+		myNumStr [myPos] = EOS;
+		myToken [myPos++] = myChar;
+
+		myBase = atol (myNumStr);
+		myToken = myToken + myPos;	// New zero is current pos 
+		myPos = 0;
+		pmLexRecord -> pos++;
+
+		mySeenBaseConv = TRUE;
+	    }
+	    else 
+	    {
+		myNumStr [myPos] = EOS;
+		myToken [myPos] = EOS;
+
+		// Handle suffixes here 
+
+		return MyAnalyzeNum (pmLexRecord, pmTokRecord, myNumStr, 
+				     mySeenDot | mySeenExp, myBase);
+	    }
+	}
+    }
+} // MyGetNumber
+
+
+/************************************************************************/
+/* MyGetToken 								*/
+/*									*/
+/* Return a general token 						*/
+/************************************************************************/
+static void	MyGetToken (LexRecord *pmLexRecord, TOKEN_RECORD *pmTokRecord)
+{
+    char	*myToken = pmTokRecord -> token;
+    UINT	myPos = 0;
+
+    for (;;) 
+    {
+	char	myChar = pmLexRecord -> line [pmLexRecord -> pos];
+
+	if (isspace (myChar)) 
+	{
+	    myToken [myPos] = EOS;
+	    return;
+	}
+
+	myToken [myPos++] = myChar;
+	pmLexRecord -> pos++;
+    }
+} // MyGetToken
+
+
+/************************************************************************/
+/* MyNextToken								*/
+/************************************************************************/
+static void	MyNextToken (LexRecord *pmLexRecord, TOKEN_RECORD *pmTokRecord)
+{
+    LexTable	*myLexTable = pmLexRecord -> table;
+    char	myChar;
+    char	*myLine;
+    int		cnt;
+
+    pmTokRecord -> lineNo  = pmLexRecord -> lineNo;
+    pmTokRecord -> linePos = pmLexRecord -> pos;
+    pmTokRecord -> error   = FALSE;
+
+    if (pmLexRecord -> seenEOF) 
+    {
+	pmTokRecord -> tokNum   = tEOF;
+	pmTokRecord -> token [0] = EOS;
+ 	return;
+    }
+
+    if (pmLexRecord -> pos == NONE) 
+    {
+	pmLexRecord -> pos = 0;
+	pmTokRecord -> linePos = 0;
+	pmLexRecord -> lineNo++;
+	pmTokRecord -> lineNo++;
+	myLine = MDIO_DiskFile_ReadLine (pmLexRecord -> line, 
+				         sizeof (pmLexRecord -> line), 
+				         pmLexRecord -> fp);
+	if (myLine == NULL) 
+	{
+	    pmLexRecord -> seenEOF = TRUE;
+	    pmTokRecord -> tokNum = tEOF;
+	    pmTokRecord -> token[0] = EOS;
+	    return;
+	}
+    }
+
+    myChar = pmLexRecord -> line [pmLexRecord -> pos];
+
+    if (myChar == NL) 
+    {
+	pmLexRecord -> pos = NONE;
+	pmTokRecord -> tokNum = tNewLine;
+	pmTokRecord -> token[0] = EOS;
+	return;
+    }
+
+    if (pmLexRecord -> commentNum != NONE) 
+    {
+	pmTokRecord -> token[0] = EOS;
+	MyGetComment (pmLexRecord, pmTokRecord);
+	pmTokRecord -> tokNum = tComment;
+	return;
+    }
+
+    if (pmLexRecord -> inString) 
+    {
+	pmTokRecord -> token[0] = EOS;
+	pmLexRecord -> inString = MyGetString (pmLexRecord, pmTokRecord);
+	pmTokRecord -> tokNum = tStringLit;
+	return;
+    }
+
+    if (isalpha (myChar) || 
+    	(strchr (pmLexRecord -> table -> beginIDchars, myChar)))
+    {
+	MyGetIdentifier (pmLexRecord, pmTokRecord);
+	pmTokRecord -> tokNum = MyLookupToken (myLexTable, 
+					       pmTokRecord -> token);
+	if (pmTokRecord -> tokNum == 0)
+	{
+	    pmTokRecord -> tokNum = tIdentifier;
+	}
+	return;
+    }
+
+    if (isspace (myChar)) 
+    {
+	MyGetWhitespace (pmLexRecord, pmTokRecord);
+	pmTokRecord -> tokNum = tWhitespace;
+	return;
+    }
+
+    if (isdigit (myChar) || 
+    	((myChar == '.') && 
+    	 isdigit (pmLexRecord -> line [pmLexRecord -> pos + 1]))) 
+    {
+	pmTokRecord -> tokNum = MyGetNumber (pmLexRecord, pmTokRecord);
+	return;
+    }
+
+    if (myChar == myLexTable -> startStringChar) 
+    {
+	pmTokRecord -> token [0] = myLexTable -> startStringChar;
+	pmLexRecord -> inString = MyGetString (pmLexRecord, pmTokRecord);
+	pmTokRecord -> tokNum = tStringLit;
+	return;
+    }
+
+    if (myChar == myLexTable -> charDelimitter) 
+    {
+	MyGetChar (pmLexRecord, pmTokRecord);
+	pmTokRecord -> tokNum = tCharLit;
+	return;
+    }
+
+    // See if we're at beginning of a comment 
+
+    for (cnt = 0; cnt < (int) myLexTable -> numComments; cnt++) 
+    {
+	if (myChar == myLexTable -> commentStart [cnt][0]) 
+	{
+	    if (IS_MATCH (pmLexRecord -> line + pmLexRecord -> pos, 
+	    		  myLexTable -> commentStart[cnt])) 
+	    {
+		pmLexRecord -> commentNum = cnt;
+		strcpy (pmTokRecord -> token, myLexTable -> commentStart [cnt]);
+	        MyGetComment (pmLexRecord, pmTokRecord);
+		pmTokRecord -> tokNum = tComment;
+		return;
+	    }
+	}
+    }
+
+    // Get a general (whitespace delimitted) token 
+
+    MyGetToken (pmLexRecord, pmTokRecord);
+
+    // Check if entire token is in token list 
+
+    pmTokRecord -> tokNum = MyLookupToken (myLexTable, pmTokRecord -> token);
+
+    if (pmTokRecord -> tokNum)
+    {
+	return;
+    }
+    
+    //
+    // Isolate prefix of token for testing
+    //
+    {
+    	char myStr [256];
+
+    	cnt = 0;
+    	while (pmTokRecord -> token[cnt] && 
+    	       !isalnum (pmTokRecord -> token [cnt]))
+    	{
+	    myStr [cnt] = pmTokRecord -> token [cnt];
+	    cnt++;
+    	}
+
+	// For each prefix, check for returned tokNum 
+
+    	while (cnt > 0) 
+    	{
+            myStr [cnt] = EOS;
+            pmTokRecord -> tokNum = MyLookupToken (myLexTable, myStr);
+
+            if (pmTokRecord -> tokNum) 
+            {
+            	// Reset the position 
+	    	pmLexRecord -> pos -= (strlen (pmTokRecord -> token) - cnt); 
+	    	pmTokRecord -> token [cnt] = EOS;
+	    	return;
+            }
+	    cnt--;
+    	}
+
+    	pmTokRecord -> tokNum = tOther;
+    }
+} // MyNextToken
+
+
+/*
+static Uint ConvertBase(str, base)
+    CONST char *str;
+    Uint        base;
+{
+    Uint val  = 0;
+    Uint mult = 1;
+
+    int len  = strlen(str);
+    int i;
+
+    for (i=len-1; i >= 0; i--) {
+	char dig = str[i];
+
+	if (isdigit(dig))
+	    val += (mult * (dig - '0'));
+	else
+	    val += (mult * (toupper(dig) - 'A' + 10));
+
+	mult *= base;
+    }
+    return val;
+}
+*/

@@ -1,0 +1,16 @@
+# This file specifies the directories that Turing can copy 
+# when the "Copy Examples" command is given
+
+# The format of the file is the label followed by a tab followed by the
+# directory name found in the "Examples" directory.  Turing will copy this
+# directory into a directory called "Turing Examples" in the user's home 
+# directory.
+
+Example programs from "Introduction to Programming in Turing"	Introduction to Programming in Turing
+Example programs from "Programming Concepts and Paradigms"	Programming Concepts and Paradigms
+Example programs from "Computer Engineering"	Computer Engineering
+Example programs from "Networks, Interfaces and Integrated Circuits"	Networks, Interfaces and Integrated Circuits
+Games written in Turing	Games
+Examples of Graphical User Interfaces (GUI)	GUI
+Examples of Advanced Graphics Features	Advanced Graphics
+Miscellaneous Examples	Misc

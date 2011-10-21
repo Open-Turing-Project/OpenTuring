@@ -1,0 +1,104 @@
+
+section comment
+/* */
+end comment
+
+section string
+" "
+\\"
+end string
+
+section char
+'
+end char
+
+section real
+eE
+end real
+
+section integer
+0x 16
+0  8
+end integer
+
+section identifier
+_
+_$
+end identifier
+
+section token
+;
+=
+(
+)
+[
+]
+{
+}
+.
+*
++
+-
+~
+!
+'
+%
+<
+>
+&
+|
+^
+?
+:
+,
+->
+++
+--
+<<
+>>
+<=
+>=
+==
+!=
+&&
+||
++=
+-=
+*=
+/=
+%=
+&=
+^=
+|=
+<<=
+>>=
+auto
+break
+case
+char
+continue
+default
+do
+double
+else
+enum
+extern
+float
+for
+goto
+if
+int
+long
+register
+return
+short
+sizeof
+static
+struct
+switch
+typedef
+union
+unsigned
+void
+while
+end token

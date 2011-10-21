@@ -1,0 +1,218 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "Coder"=.\Coder.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Compiler"=.\Compiler.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Debugger"=.\Debugger.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Editor"=.\Editor.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Executor"=.\Executor.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "FileManager"=.\FileManager.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "GIF files"=".\GIF files.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Interpreter"=.\Interpreter.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "JPEG"=.\JPEG.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "MIO"=.\MIO.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "TLib"=.\TLib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "TLib Override"=".\TLib Override.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Turing"=.\Turing.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name Coder
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Compiler
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Debugger
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Editor
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Executor
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name FileManager
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Interpreter
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name TLib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name TLib Override
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name MIO
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name JPEG
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "Turing License DLL"=".\Turing License DLL.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

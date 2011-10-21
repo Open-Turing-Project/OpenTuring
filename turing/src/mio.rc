@@ -1,0 +1,367 @@
+/
+// This file contains resources used by the Turing executor
+//
+#include "miodialogs.h"
+#include "miocommands.h"
+
+//
+// Icons
+//
+MIO_RUN_ICON		ICON	DISCARDABLE	"..\\..\\ready\\src\\rsrc\\turing.ico"
+MIO_RUN_SMALL_ICON	ICON	DISCARDABLE	"..\\..\\ready\\src\\rsrc\\turingrunsm.ico"
+
+STRINGTABLE
+{
+    // EdInt_Fail/Warn/HaltEnvironment Messages
+    IDS_MIO_GETWINDOWLONGFAIL		"GetWindowLong failed (%d)"
+    IDS_MIO_CREATEFONTFAIL		"CreateFont failed"
+    IDS_MIO_NO_MEM_FOR_RESIZE		"Not enough memory to resize window"
+    IDS_MIO_NO_RESIZE			"Unable to resize window"
+    IDS_MIO_CREATEBRUSHFAIL		"CreateBrush failed"
+    IDS_MIO_REGISTERCLASSFAIL		"RegisterClassEx failed"
+    IDS_MIO_CREATEWINDOWFAIL		"CreateWindow failed"
+    IDS_MIO_COMMAND_NOT_PROCESSED    	"This command is not processed anywhere (%d)"
+    IDS_MIO_FINDRESOURCEFAIL		"FindResource failed.  Unable to find resource %d"
+    IDS_MIO_LOADRESOURCEFAIL		"Unable to load resource #%d"
+    IDS_MIO_MISMATCHEDERRORMSGS		"Not all error numbers have associated messages (Group=%d) (Errs=%d Msgs=%d)"
+    IDS_MIO_MISMATCHEDERRORSTRS		"Not all error numbers have associated names (Group=%d) (Errs=%d Names=%d)"
+
+    IDS_MIO_FILEFAIL			"MIOFile Module Failure #%d"
+    IDS_MIO_FILEFAIL_1			"MIOFile Module Failure #%d\n\nDir=""%s"", ""%s""\nPath type=%d\n"
+    
+    // Dialog Titles
+    IDS_MIO_EMPTY_FILE_TITLE		"Empty File"
+    IDS_MIO_STOP_PROGRAM_TITLE		"Halt Program"
+    IDS_MIO_COPY_FAILED_TITLE		"Copy Failed"
+   
+    // Dialog Messages
+    IDS_MIO_BADWINDOWTYPE		"Wrong window type for call (%d/%d)"
+    IDS_MIO_NOTHING_TO_SAVE		"No text to save"
+    IDS_MIO_NOTHING_TO_PRINT		"No text to print"
+    IDS_MIO_STOP_PROGRAM		"Closing the standard input/output window will halt the %1 program.\nDo you want to close the window?"
+    IDS_MIO_COPY_FAILED_MESSAGE		"Not enough free memory to copy selection to clipboard"
+
+    // Window Names
+    IDS_MIOTEXT_WINDOW_NAME		"TuringMIOTextWindowName"
+    IDS_MIOWINDOWTOP_WINDOW_NAME	"TuringMIOWindowTopWindowName"
+    IDS_MIOTEXT_INNER_WINDOW_NAME	"TuringMIOTextInnerWindowName"
+    IDS_MIOGRAPHICS_WINDOW_NAME		"TuringMIOGraphicsWindowName"
+    IDS_MIOGRAPHICS_INNER_WINDOW_NAME	"TuringMIOGraphicsInnerWindowName"
+    IDS_MIO_RAISED_FRAME_WINDOW_NAME    "ReadyRaisedFrameWindow"
+
+    // Button Names
+    IDS_MIO_PAUSE_BUTTON		"Pause"
+    IDS_MIO_RESUME_BUTTON		"Resume"
+    IDS_MIO_STOP_BUTTON			"Stop"
+    IDS_MIO_CLOSE_BUTTON		"Close"
+    IDS_MIO_PRINT_BUTTON		"Print"
+    IDS_MIO_SAVE_BUTTON			"Save"
+    IDS_MIO_COPY_BUTTON			"Copy"
+    IDS_MIO_PASTE_BUTTON		"Paste"
+
+    // Other strings
+    IDS_MIO_DIALOG_FONT_NAME		"MS Shell Dlg"
+}
+
+MIO_TEXT_CONTEXTUAL_MENU MENU 
+{
+    POPUP "" 
+    {
+	MENUITEM "Resume Execution", MIO_COMMAND_PAUSE_RESUME
+	MENUITEM "Rerun Program\tF1", MIO_COMMAND_RERUN
+	MENUITEM "Close All Run Windows", MIO_COMMAND_CLOSE_ALL
+	MENUITEM SEPARATOR
+	MENUITEM "Copy", MIO_COMMAND_COPY
+	MENUITEM SEPARATOR
+	MENUITEM "Close Run Window\tCtrl+W", MIO_COMMAND_CLOSE
+	MENUITEM "Print Run Window\tCtrl+P", MIO_COMMAND_PRINT_FILE
+	MENUITEM "Save Run Window\tCtrl+S", MIO_COMMAND_SAVEAS_FILE
+	MENUITEM SEPARATOR
+	MENUITEM "New Editor Window\tCtrl+N", MIO_COMMAND_NEW_EDITOR_WIN
+	MENUITEM "Open Editor Window\tCtrl+O", MIO_COMMAND_OPEN_EDITOR_WIN
+	MENUITEM SEPARATOR
+	MENUITEM "Quit Turing\tCtrl+Q", MIO_COMMAND_EXIT
+    }
+}
+ 
+MIO_GRAPHICS_CONTEXTUAL_MENU MENU 
+{
+    POPUP "" 
+    {
+	MENUITEM "Resume Execution", MIO_COMMAND_PAUSE_RESUME
+	MENUITEM "Rerun Program\tF1", MIO_COMMAND_RERUN
+	MENUITEM "Close All Run Windows", MIO_COMMAND_CLOSE_ALL
+	MENUITEM SEPARATOR
+	MENUITEM "Close Run Window\tCtrl+W", MIO_COMMAND_CLOSE
+	MENUITEM "Print Run Window\tCtrl+P", MIO_COMMAND_PRINT_FILE
+	MENUITEM "Save Run Window\tCtrl+S", MIO_COMMAND_SAVEAS_FILE
+	MENUITEM SEPARATOR
+	MENUITEM "New Editor Window\tCtrl+N", MIO_COMMAND_NEW_EDITOR_WIN
+	MENUITEM "Open Editor Window\tCtrl+O", MIO_COMMAND_OPEN_EDITOR_WIN
+	MENUITEM SEPARATOR
+	MENUITEM "Quit Turing\tCtrl+Q", MIO_COMMAND_EXIT
+    }
+}
+ 
+
+// Colour Palette
+DEFAULT_PALETTE_RSRC	RCDATA	
+{
+    256,			// Number of colours
+    255, 255, 255,		// 0  = white
+      0,   0, 128,		// 1  = blue
+      0, 128,   0,		// 2  = green
+      0, 128, 128,		// 3  = cyan
+    128,   0,   0,		// 4  = red
+    128,   0, 128,		// 5  = magenta (purple)
+    128, 128,   0,		// 6  = brown
+      0,   0,   0,		// 7  = black
+    192, 192, 192,		// 8  = gray
+      0,   0, 255,		// 9  = bright blue
+      0, 255,   0,		// 10 = bright green
+      0, 255, 255,		// 11 = bright cyan
+    255,   0,   0,		// 12 = bright red
+    255,   0, 255,		// 13 = bright magenta (purple)
+    255, 255,   0,		// 14 = yellow
+    128, 128, 128,		// 15 = dark gray
+      0,   0,   0,		// 16
+     20,  20,  20,		// 17
+     32,  32,  32,		// 18
+     44,  44,  44,		// 19
+     56,  56,  56,		// 20
+     69,  69,  69,		// 21
+     81,  81,  81,		// 22
+     97,  97,  97,		// 23
+    113, 113, 113,		// 24
+    130, 130, 130,		// 25
+    146, 146, 146,		// 26
+    162, 162, 162,		// 27
+    182, 182, 182,		// 28
+    203, 203, 203,		// 29
+    227, 227, 227,		// 30
+    255, 255, 255,		// 31
+      0,   0, 255,		// 32
+     65,   0, 255,		// 33
+    125,   0, 255,		// 34
+    190,   0, 255,		// 35
+    255,   0, 255,		// 36
+    255,   0, 190,		// 37
+    255,   0, 125,		// 38
+    255,   0,  65,		// 39
+    255,   0,   0,		// 40
+    255,  65,   0,		// 41
+    255, 125,   0,		// 42
+    255, 190,   0,		// 43
+    255, 255,   0,		// 44
+    190, 255,   0,		// 45
+    125, 255,   0,		// 46
+     65, 255,   0,		// 47
+      0, 255,   0,		// 48
+      0, 255,  65,		// 49
+      0, 255, 125,		// 50
+      0, 255, 190,		// 51
+      0, 255, 255,		// 52
+      0, 190, 255,		// 53
+      0, 125, 255,		// 54
+      0,  65, 255,		// 55
+    125, 125, 255,		// 56
+    158, 125, 255,		// 57
+    190, 125, 255,		// 58
+    223, 125, 255,		// 59
+    255, 125, 255,		// 60
+    255, 125, 223,		// 61
+    255, 125, 190,		// 62
+    255, 125, 158,		// 63
+    255, 125, 125,		// 64
+    255, 158, 125,		// 65
+    255, 190, 125,		// 66
+    255, 223, 125,		// 67
+    255, 255, 125,		// 68
+    223, 255, 125,		// 69
+    190, 255, 125,		// 70
+    158, 255, 125,		// 71
+    125, 255, 125,		// 72
+    125, 255, 158,		// 73
+    125, 255, 190,		// 74
+    125, 255, 223,		// 75
+    125, 255, 255,		// 76
+    125, 223, 255,		// 77
+    125, 190, 255,		// 78
+    125, 158, 255,		// 79
+    182, 182, 255,		// 80
+    199, 182, 255,		// 81
+    219, 182, 255,		// 82
+    235, 182, 255,		// 83
+    255, 182, 255,		// 84
+    255, 182, 235,		// 85
+    255, 182, 219,		// 86
+    255, 182, 199,		// 87
+    255, 182, 182,		// 88
+    255, 199, 182,		// 89
+    255, 219, 182,		// 90
+    255, 235, 182,		// 91
+    255, 255, 182,		// 92
+    235, 255, 182,		// 93
+    219, 255, 182,		// 94
+    199, 255, 182,		// 95
+    182, 255, 182,		// 96
+    182, 255, 199,		// 97
+    182, 255, 219,		// 98
+    182, 255, 235,		// 99
+    182, 255, 255,		// 100
+    182, 235, 255,		// 101
+    182, 219, 255,		// 102
+    182, 199, 255,		// 103
+      0,   0, 113,		// 104
+     28,   0, 113,		// 105
+     56,   0, 113,		// 106
+     85,   0, 113,		// 107
+    113,   0, 113,		// 108
+    113,   0,  85,		// 109
+    113,   0,  56,		// 110
+    113,   0,  28,		// 111
+    113,   0,   0,		// 112
+    113,  28,   0,		// 113
+    113,  56,   0,		// 114
+    113,  85,   0,		// 115
+    113, 113,   0,		// 116
+     85, 113,   0,		// 117
+     56, 113,   0,		// 118
+     28, 113,   0,		// 119
+      0, 113,   0,		// 120
+      0, 113,  28,		// 121
+      0, 113,  56,		// 122
+      0, 113,  85,		// 123
+      0, 113, 113,		// 124
+      0,  85, 113,		// 125
+      0,  56, 113,		// 126
+      0,  28, 113,		// 127
+     56,  56, 113,		// 128
+     69,  56, 113,		// 129
+     85,  56, 113,		// 130
+     97,  56, 113,		// 131
+    113,  56, 113,		// 132
+    113,  56,  97,		// 133
+    113,  56,  85,		// 134
+    113,  56,  69,		// 135
+    113,  56,  56,		// 136
+    113,  69,  56,		// 137
+    113,  85,  56,		// 138
+    113,  97,  56,		// 139
+    113, 113,  56,		// 140
+     97, 113,  56,		// 141
+     85, 113,  56,		// 142
+     69, 113,  56,		// 143
+     56, 113,  56,		// 144
+     56, 113,  69,		// 145
+     56, 113,  85,		// 146
+     56, 113,  97,		// 147
+     56, 113, 113,		// 148
+     56,  97, 113,		// 149
+     56,  85, 113,		// 150
+     56,  69, 113,		// 151
+     81,  81, 113,		// 152
+     89,  81, 113,		// 153
+     97,  81, 113,		// 154
+    105,  81, 113,		// 155
+    113,  81, 113,		// 156
+    113,  81, 105,		// 157
+    113,  81,  97,		// 158
+    113,  81,  89,		// 159
+    113,  81,  81,		// 160
+    113,  89,  81,		// 161
+    113,  97,  81,		// 162
+    113, 105,  81,		// 163
+    113, 113,  81,		// 164
+    105, 113,  81,		// 165
+     97, 113,  81,		// 166
+     89, 113,  81,		// 167
+     81, 113,  81,		// 168
+     81, 113,  89,		// 169
+     81, 113,  97,		// 170
+     81, 113, 105,		// 171
+     81, 113, 113,		// 172
+     81, 105, 113,		// 173
+     81,  97, 113,		// 174
+     81,  89, 113,		// 175
+      0,   0,  65,		// 176
+     16,   0,  65,		// 177
+     32,   0,  65,		// 178
+     48,   0,  65,		// 179
+     65,   0,  65,		// 180
+     65,   0,  48,		// 181
+     65,   0,  32,		// 182
+     65,   0,  16,		// 183
+     65,   0,   0,		// 184
+     65,  16,   0,		// 185
+     65,  32,   0,		// 186
+     65,  48,   0,		// 187
+     65,  65,   0,		// 188
+     48,  65,   0,		// 189
+     32,  65,   0,		// 190
+     16,  65,   0,		// 191
+      0,  65,   0,		// 192
+      0,  65,  16,		// 193
+      0,  65,  32,		// 194
+      0,  65,  48,		// 195
+      0,  65,  65,		// 196
+      0,  48,  65,		// 197
+      0,  32,  65,		// 198
+      0,  16,  65,		// 199
+     32,  32,  65,		// 200
+     40,  32,  65,		// 201
+     48,  32,  65,		// 202
+     56,  32,  65,		// 203
+     65,  32,  65,		// 204
+     65,  32,  56,		// 205
+     65,  32,  48,		// 206
+     65,  32,  40,		// 207
+     65,  32,  32,		// 208
+     65,  40,  32,		// 209
+     65,  48,  32,		// 210
+     65,  56,  32,		// 211
+     65,  65,  32,		// 212
+     56,  65,  32,		// 213
+     48,  65,  32,		// 214
+     40,  65,  32,		// 215
+     32,  65,  32,		// 216
+     32,  65,  40,		// 217
+     32,  65,  48,		// 218
+     32,  65,  56,		// 219
+     32,  65,  65,		// 220
+     32,  56,  65,		// 221
+     32,  48,  65,		// 222
+     32,  40,  65,		// 223
+     44,  44,  65,		// 224
+     48,  44,  65,		// 225
+     52,  44,  65,		// 226
+     60,  44,  65,		// 227
+     65,  44,  65,		// 228
+     65,  44,  60,		// 229
+     65,  44,  52,		// 230
+     65,  44,  48,		// 231
+     65,  44,  44,		// 232
+     65,  48,  44,		// 233
+     65,  52,  44,		// 234
+     65,  60,  44,		// 235
+     65,  65,  44,		// 236
+     60,  65,  44,		// 237
+     52,  65,  44,		// 238
+     48,  65,  44,		// 239
+     44,  65,  44,		// 240
+     44,  65,  48,		// 241
+     44,  65,  52,		// 242
+     44,  65,  60,		// 243
+     44,  65,  65,		// 244
+     44,  60,  65,		// 245
+     44,  52,  65,		// 246
+     44,  48,  65,		// 247
+      0,   0,   0,		// 248
+      0,   0,   0,		// 249
+      0,   0,   0,		// 250
+      0,   0,   0,		// 251
+      0,   0,   0,		// 252
+      0,   0,   0,		// 253
+      0,   0,   0,		// 254
+      0,   0,   0,		// 255
+}

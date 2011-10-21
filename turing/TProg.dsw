@@ -1,0 +1,179 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "Coder"=".\vc projects\Coder.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "FileManager"=".\vc projects\FileManager.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "GIF"=".\vc projects\GIF.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "JPEG"=".\vc projects\JPEG.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "MIO"=".\vc projects\MIO.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "TLib"=".\vc projects\TLib.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "TLib Override"=".\vc projects\TLib Override.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "TProg"=".\vc projects\TProg.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name MIO
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name TProg_Editor
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name TProg_Executor
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name TProg_Interpreter
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name TLib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name GIF
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name JPEG
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name TLib Override
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name FileManager
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Coder
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "TProg_Editor"=".\vc projects\TProg_Editor.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "TProg_Executor"=".\vc projects\TProg_Executor.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "TProg_Interpreter"=".\vc projects\TProg_Interpreter.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

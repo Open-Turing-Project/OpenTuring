@@ -1,0 +1,704 @@
+VERSION 5.00
+Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCK.OCX"
+Begin VB.Form frmHostTelnet 
+   Caption         =   "Form1"
+   ClientHeight    =   3195
+   ClientLeft      =   60
+   ClientTop       =   345
+   ClientWidth     =   4680
+   LinkTopic       =   "Form1"
+   ScaleHeight     =   3195
+   ScaleWidth      =   4680
+   StartUpPosition =   3  'Windows Default
+   Visible         =   0   'False
+   Begin VB.Timer ctlTmrReconnect 
+      Left            =   240
+      Top             =   1320
+   End
+   Begin VB.Timer ctlTmrKeepAlive 
+      Left            =   240
+      Top             =   720
+   End
+   Begin MSWinsockLib.Winsock ctlTelnetWinsock 
+      Left            =   240
+      Top             =   120
+      _ExtentX        =   741
+      _ExtentY        =   741
+      _Version        =   393216
+   End
+End
+Attribute VB_Name = "frmHostTelnet"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+'****************************************************
+'*                      FrmHostTelnet               *
+'****************************************************
+
+' This form is used to handle Telnet connections to the Host.  It makes the
+' connection, logs in to the Telnet session, send commands to the Host, and
+' receives data from the Host.
+
+' Interface:
+'   ReadSettings
+'   OpenTelnetConnectionToHost
+'   CloseTelnetConnectionToHost
+'   SendCommandToHost
+'   IsReady
+
+' Called by System
+'   Form_Load
+'   Form_Unload
+'   ctlTelnetWinsock_DataArrival
+'   ctlTmrKeepAlive_Timer
+'   ctlTmrReconnect_Timer
+
+Option Explicit
+
+' Enumerations
+
+Private Enum enumConnState
+    ConnState_Ready = 1
+    ConnState_Busy = 2
+    ConnState_Connecting = 3
+    ConnState_NotInit = 4
+    ConnState_Timeout = 5
+    ConnState_Closed = 6
+End Enum
+
+Private Enum enumTelnetStatus
+    TelnetStatus_Normal = 0
+    TelnetStatus_ReceivedIAC = 1
+    TelnetStatus_ReceivedDOTEL = 2
+    TelnetStatus_ReceivedWILLTEL = 3
+    TelnetStatus_ReceivedSUBNEG = 4
+End Enum
+
+' Private variables
+
+' The IP, backup IP address, port, user name amd password for the
+' telnet session used for contacting the host.
+Private mIPAddress As String
+Private mBackupIPAddress As String
+Private mPort As String
+Private mUserName As String
+Private mPassword As String
+Private mWinsock As MSWinsockLib.Winsock
+
+Private mReceiving As Boolean
+Private mReceivedResponseToKeepAlive As Boolean
+
+Private mXMLData As String
+
+Private mConnectionState As enumConnState
+
+' The last command sent to the host.
+Private stLastCommand As String
+
+' Constants
+
+' Telnet commands
+Const SUBNEGOTIATE_BEGIN = 250
+Const SUBNEGOTIATE_END = 240
+Const WILLTEL = 251
+Const WONTTEL = 252
+Const DOTEL = 253
+Const DONTTEL = 254
+Const IAC = 255
+
+' Telnet command options
+Const ECHO = 1
+Const SUPPRESS_GO_AHEAD = 3
+Const STATUS = 5
+Const TERMINAL_TYPE = 24
+Const WINDOW_SIZE = 31
+Const TERMINAL_SPEED = 32
+Const FLOW_CONTROL = 33
+Const X_DISPLAY_LOCATION = 35
+Const ENVIRONMENT_VARS = 36
+Const AUTHENTICATION = 37
+Const ENCRYPT = 38
+Const TELNET_ENVIRONMENT_OPTION = 39
+
+' Authentication Telnet options
+Const IS_ = 0
+Const AUTH = 0
+Const NULL_AUTH = 0
+
+' Called automatically when the form is first loaded.
+Private Sub Form_Load()
+    Call MAIN_WriteLog(5, "Loading frmTelnet form")
+    
+    Set mWinsock = ctlTelnetWinsock
+    
+    ' The keep alive timer send a token every 20 seconds.  If it has not
+    ' received a reply to the last keep alive token in 20 seconds, it
+    ' assumes the line's gone down and reconnects.
+    ctlTmrKeepAlive.Interval = 20000   ' Send a keep alive every 20 secs
+    
+    ' The reconnect timer is used when we attempt a connection to the
+    ' host.  If we haven't successfully connected in fifteen seconds, then
+    ' we close the current connection and try again.
+    ctlTmrReconnect.Interval = 15000 ' Give up to 15 seconds to connect
+    
+    mReceiving = False
+    
+    mConnectionState = ConnState_Closed
+End Sub
+Private Sub Form_Unload(pmCancel As Integer)
+    Call MAIN_WriteLog(5, "Unloading frmTelnet form")
+    pmCancel = 0
+    Set mWinsock = Nothing
+End Sub
+
+' Read the telnet reading from the file
+Public Sub ReadSettings()
+    Call MAIN_WriteLog(5, "Reading Telnet Host settings")
+    
+    mIPAddress = MAIN_GetIniString("Host", "IPAddress", "127.0.0.1")
+    mBackupIPAddress = MAIN_GetIniString("Host", "BackupIPAddress", "127.0.0.1")
+    mPort = MAIN_GetIniString("Host", "Port", 23)
+    mUserName = MAIN_GetIniString("Host", "User", "vertigo")
+    mPassword = MAIN_GetIniString("Host", "Pass", "vertigo")
+End Sub
+
+' Connect to the host
+Public Sub OpenTelnetConnectionToHost()
+    ' Start 20 second countdown
+    ctlTmrKeepAlive.Enabled = False
+    ctlTmrReconnect.Enabled = True
+    Call MAIN_WriteLog(5, "Telnet: Starting connection")
+    Call MyStartConnection
+End Sub
+
+' Perform the connection to the host
+Private Sub MyStartConnection()
+    On Error Resume Next    ' Handle errors...
+    
+    Dim myTimeout As Integer
+    
+    Call MAIN_WriteLog(5, "Telnet: Opening Connection")
+
+    ' If the mWinsock is not 0, close it down
+    If mWinsock.State <> 0 Then
+        mWinsock.Close
+        mWinsock.RemotePort = 0
+        '.LocalPortPort = 0
+        Do
+            DoEvents
+        Loop Until mWinsock.State = 0
+    End If
+
+    ' If we're connecting a second time, switch main and backup IP addresses
+    If mWinsock.RemoteHost = mIPAddress Then
+        mWinsock.RemoteHost = mBackupIPAddress
+    Else
+        mWinsock.RemoteHost = mIPAddress
+    End If
+    mWinsock.RemotePort = mPort
+
+    ' Log our connection attempt
+    Call MAIN_WriteLog(5, "Telnet: Attempting to connect to port " & _
+                    CStr(mWinsock.RemotePort) & " on " & _
+                    mWinsock.RemoteHost)
+    Call gMAIN_Main.WriteFeedback("Attempting to connect to " & mWinsock.RemoteHost)
+
+    ' Attempt to connect
+    mWinsock.Connect ' Attempt new connection
+    mConnectionState = ConnState_Connecting
+    
+    Err.Clear
+    
+    ' Wait up to 10 seconds for a connection
+    myTimeout = 0
+    While myTimeout < 10 And _
+            mWinsock.State = MSWinsockLib.StateConstants.sckConnecting
+        DoEvents
+        sapiSleep (1000)
+        DoEvents
+        myTimeout = myTimeout + 1
+    Wend
+
+    ' If we didn't get a connection, then log it and leave
+    If mWinsock.State <> sckConnected Then
+        Call MAIN_WriteLog(5, "Telnet: Unable to connect after 10 seconds")
+        Call gMAIN_Main.WriteFeedback("Unable to connect after 10 seconds.  Bad IP address for Host?")
+        Exit Sub
+    End If
+
+    ' Log connection informaiton
+    Call MAIN_WriteLog(5, "Telnet: Connected to Host " & _
+                    "[" & mWinsock.RemoteHost & "] " & _
+                    "[" & mWinsock.RemoteHostIP & "] " & _
+                    "[" & CStr(mWinsock.RemotePort) & "]")
+    Call gMAIN_Main.WriteFeedback("Connected to Host " & mWinsock.RemoteHost)
+    Call gMAIN_Main.WriteFeedback("Negotiating telnet protocol")
+
+End Sub
+Public Sub CloseTelnetConnectionToHost()
+    On Error GoTo ErrorHandler
+    
+    Call MAIN_WriteLog(5, "Telnet: CloseTelnetConnectionToHost called")
+    
+    ctlTmrKeepAlive.Enabled = False
+    
+    If mWinsock.State <> 0 Then
+        Call MAIN_WriteLog(3, "Telnet: Closing open connection")
+        
+        mWinsock.Close
+        mWinsock.RemotePort = 0
+        '.LocalPortPort = 0
+        Do
+            DoEvents
+        Loop Until mWinsock.State = 0
+        Call MAIN_WriteLog(3, "Telnet: Connection closed")
+    End If
+    
+ErrorHandler:
+    Err.Clear
+End Sub
+Public Function SendCommandToHost(pmCommand As String) As String
+'    DoEvents
+'    sapiSleep (200) ' TW Note: was 1000
+'    DoEvents
+    
+    On Error GoTo ErrorHandler
+    
+    Call MAIN_WriteLog(5, "Telnet: Sending '" & pmCommand & "'")
+
+    ' Store the last command so that we don't echo it in the feedback area
+    ' when we get it from the host.
+    stLastCommand = pmCommand
+    
+    mWinsock.SendData pmCommand & vbCr
+    
+    ' Get a reaction
+'    DoEvents
+'    sapiSleep (1000)
+'    DoEvents
+    
+    Exit Function
+    
+ErrorHandler:
+    Call CloseTelnetConnectionToHost
+End Function
+
+' Determine if we are ready to receive a command
+Public Function IsReady() As Boolean
+    IsReady = mConnectionState = ConnState_Ready
+End Function
+
+' This subroutine gets called every time data arrives on the telnet port
+Private Sub ctlTelnetWinsock_DataArrival(ByVal pmBytesTotal As Long)
+    Dim myChars() As Byte
+    Dim myChar As Byte
+    Dim myStringData As String
+    Dim mySubNegData As String
+    Dim i As Integer
+    Dim myPos As Integer
+    Static stCommand As Byte
+    Static stTelnetStatus As enumTelnetStatus
+    Static stXMLState As Integer
+    Static stXMLData As String
+    
+    ' We got data so we are still alive. Reset timer for another 20 seconds
+    ResetKeepAlive (True)
+
+    If Not mReceiving Then
+        mReceiving = True
+    Else
+        Exit Sub
+    End If
+    
+    If pmBytesTotal > 0 Then  ' If there is any data...
+        While mWinsock.State = sckConnecting
+            DoEvents
+            sapiSleep (100)
+            DoEvents
+        Wend
+        mWinsock.GetData myChars, vbByte + vbArray, pmBytesTotal
+        myStringData = ""
+        For i = 0 To pmBytesTotal - 1
+            myChar = myChars(i)
+            Select Case stTelnetStatus
+                Case TelnetStatus_Normal
+                    If myChar = IAC Then
+                        stTelnetStatus = TelnetStatus_ReceivedIAC
+                    Else
+                        If myChar <> 13 And myChar <> 10 Then
+                            myStringData = myStringData & Chr(myChar)
+                        End If
+                    End If
+                Case TelnetStatus_ReceivedIAC
+                    If myChar = DOTEL Then
+                        stTelnetStatus = TelnetStatus_ReceivedDOTEL
+                    ElseIf myChar = WILLTEL Then
+                        stTelnetStatus = TelnetStatus_ReceivedWILLTEL
+                    ElseIf myChar = SUBNEGOTIATE_BEGIN Then
+                        mySubNegData = ""
+                        stTelnetStatus = TelnetStatus_ReceivedSUBNEG
+                    Else
+                        Call MAIN_WriteLog(5, "Telnet: Confused - received" & _
+                                " a " & CInt(myChar) & " in ReceivedIAC mode")
+                        stTelnetStatus = TelnetStatus_Normal
+                    End If
+                Case TelnetStatus_ReceivedDOTEL
+                    Select Case myChar
+                        Case ECHO:
+                            ' We don't send echo
+                            Call DoTell(ECHO, "ECHO", False)
+                        Case TERMINAL_TYPE:
+                            ' We don't send terminal type
+                            Call DoTell(TERMINAL_TYPE, "TERMINAL TYPE", False)
+                        Case WINDOW_SIZE:
+                            ' We don't send window size
+                            Call DoTell(WINDOW_SIZE, "WINDOW SIZE", False)
+                        Case TERMINAL_SPEED:
+                            ' We don't send terminal speed
+                            Call DoTell(TERMINAL_SPEED, "TERMINAL SPEED", False)
+                        Case FLOW_CONTROL:
+                            ' We don't send flow control
+                            Call DoTell(FLOW_CONTROL, "FLOW CONTROL", False)
+                        Case X_DISPLAY_LOCATION:
+                            ' We don't send X windows display location
+                            Call DoTell(X_DISPLAY_LOCATION, _
+                                    "X WINDOWS DISPLAY LOCATION", False)
+                        Case TELNET_ENVIRONMENT_OPTION:
+                            ' We don't send X windows display location
+                            Call DoTell(TELNET_ENVIRONMENT_OPTION, _
+                                    "TELNET ENVIRONMENT OPTIONS", False)
+                        Case AUTHENTICATION:
+                            ' Send we do do this
+                            Call MAIN_WriteLog(5, "Telnet: Rcvd DOTEL " & _
+                                    "AUTHENTICATION")
+                            Call MAIN_WriteLog(5, "Telnet: Sent WILLTEL " & _
+                                    "AUTHENTICATION")
+                            mWinsock.SendData Chr$(IAC) & Chr$(WILLTEL) & _
+                                    Chr$(AUTHENTICATION)
+                        Case ENCRYPT:
+                            ' We don't send encryption
+                            Call DoTell(ENCRYPT, "ENCRYPTION", False)
+                        Case ENVIRONMENT_VARS:
+                            ' We don't send environment variables
+                            Call DoTell(ENVIRONMENT_VARS, "ENVIRONMENT VARIABLES", _
+                                    False)
+                        Case Else
+                            ' We won't accept encryption
+                            Call DoTell(myChar, "Option#" & myChar, False)
+                    End Select
+                    stTelnetStatus = TelnetStatus_Normal
+                Case TelnetStatus_ReceivedWILLTEL
+                    Select Case myChar
+                        Case ECHO:
+                            ' We don't accept echo
+                            Call WillTell(ECHO, "ECHO", False)
+                        Case SUPPRESS_GO_AHEAD:
+                            ' We do accept suppress go ahead
+                            Call WillTell(SUPPRESS_GO_AHEAD, "SUPPRESS GO AHEAD", True)
+                        Case STATUS:
+                            ' We don't accept status
+                            Call WillTell(STATUS, "STATUS", False)
+                        Case ENCRYPT:
+                            ' We won't accept encryption
+                            Call WillTell(ENCRYPT, "ENCRYPT", False)
+                        Case Else
+                            ' We won't accept encryption
+                            Call WillTell(myChar, "Option#" & myChar, False)
+                    End Select
+                    stTelnetStatus = TelnetStatus_Normal
+                Case TelnetStatus_ReceivedSUBNEG
+                    Select Case myChar
+                        Case SUBNEGOTIATE_END:
+                            ' Send we don't do this.
+                            If Left(mySubNegData, 1) = Chr(AUTHENTICATION) Then
+                                Call MAIN_WriteLog(5, "Telnet: Rcvd SUBNEGOTIATE " & _
+                                        "AUTHENTICATION")
+                                Call MAIN_WriteLog(5, "Telnet: Sent SUBNEGOTIATE " & _
+                                        "NULL-NULL AUTHENTICATION")
+                                mWinsock.SendData Chr$(IAC) & _
+                                        Chr(SUBNEGOTIATE_BEGIN) & _
+                                        Chr(AUTHENTICATION) & _
+                                        Chr(IS_) & _
+                                        Chr(NULL_AUTH) & Chr(NULL_AUTH) & _
+                                        Chr(AUTH) & _
+                                        Chr(IAC) & Chr(SUBNEGOTIATE_END)
+                            Else
+                                Call MAIN_WriteLog(5, "Telnet: Rcvd SB " & _
+                                        mySubNegData & "SE")
+                            End If
+'                            Call MAIN_WriteLog(5, "Telnet: Sent DONTTEL " & _
+'                                    "ECHO")
+'                            mWinsock.SendData Chr$(IAC) & Chr$(DONTTEL) & _
+'                                    Chr$(ECHO)
+                            stTelnetStatus = TelnetStatus_Normal
+                        Case Else
+                            mySubNegData = mySubNegData & Chr(myChar)
+                    End Select
+            End Select
+        Next i
+    End If
+
+    If myStringData <> "" Then
+        Call MAIN_WriteLog(5, "Telnet: Rcvd '" & myStringData & "' from Host")
+    End If
+
+    If LCase(Right(myStringData, 7)) = "login: " Then
+        ' Send login name
+        Call MAIN_WriteLog(5, "Telnet: Received login prompt from host")
+        Call gMAIN_Main.WriteFeedback("Telnet protocol negotiated succesfully " & _
+                "- login prompt received")
+        mWinsock.SendData mUserName & vbNewLine
+        Call MAIN_WriteLog(5, "Telnet: Replied '" & mUserName & "'")
+    End If
+
+    If LCase(Right(myStringData, 10)) = "password: " Then
+        ' Send password
+        Call MAIN_WriteLog(5, "Telnet: Received password prompt from host")
+        mWinsock.SendData mPassword & vbNewLine
+        Call MAIN_WriteLog(5, "Telnet: Replied '" & mPassword & "'")
+    End If
+    
+    If Len(myStringData) > 4 And Left(myStringData, 5) = "<?xml" Then
+        ' We are now connected!!!!!!!
+        mConnectionState = ConnState_Ready
+        ' TW: Is it necessary to keep sending DataConnected events?
+        Call MAIN_WriteLog(5, "Telnet: Log on successful")
+        Call gMAIN_Main.WriteFeedback("Logged in to host successfully.")
+        If gMAIN_XStdioProducer Is Nothing Then
+            Call MAIN_WriteLog(5, "No producer to send 'DataConnected' event")
+        Else
+            gMAIN_XStdioProducer.App.SendUserEvent ("DataConnected")
+        End If
+        
+        ' We've successfully connected, we don't need the reconnection
+        ' timer any more.
+        ctlTmrReconnect.Enabled = False
+       
+        ResetKeepAlive (True)
+        
+        ' Send the initial commands
+        Call MAIN_SendInitialCommands
+    End If
+    
+    
+    '************************************
+    'Detect beginning and end of segment
+    '************************************
+        
+    ' Append data to existing thread if already started
+    If stXMLState = 1 Then
+        stXMLData = stXMLData & Trim(myStringData)
+    Else
+        ' If we are reentering due to several blocks at once...
+        If pmBytesTotal = 0 And stXMLData <> "" Then
+            myStringData = stXMLData
+        End If
+        
+        ' Start of segment
+        myPos = InStr(myStringData, "<queryResult id")
+        If myPos > 0 Then
+            stXMLData = Trim(Mid(myStringData, myPos))
+            stXMLState = 1
+            
+            ' We may have messages from before the opening XML, in which case
+            ' echo them.
+            Call EchoAlphaNumericToFeedback(Left(myStringData, myPos - 1))
+        Else
+            Call EchoAlphaNumericToFeedback(myStringData)
+        End If
+    End If
+    
+    ' End of segment found
+    If stXMLState = 1 Then
+        myPos = InStr(stXMLData, "</queryResult>")
+        If myPos > 0 Then
+            stXMLState = 2
+        End If
+    End If
+    
+    ' Parse out complete segment
+    If stXMLState = 2 Then
+        stXMLState = 0
+        Dim oDoc As DOMDocument
+        Set oDoc = New DOMDocument
+        stXMLData = Trim(stXMLData)
+        myPos = InStr(stXMLData, "</queryResult>")
+        mXMLData = Left(stXMLData, myPos + 13)
+        ' stXMLData is now set to the rest of the string after the closing tag
+        stXMLData = Trim(Mid(stXMLData, myPos + 14))
+        
+        If Left(stXMLData, 1) = ":" Then
+            stXMLData = Mid(stXMLData, 2)
+        End If
+        mConnectionState = ConnState_Ready
+        
+        Call MAIN_WriteLog(5, "Telnet: Received XML: " & mXMLData)
+        
+        oDoc.loadXML (mXMLData)
+
+        ' Only parse if it exists with no errors...
+        If oDoc.childNodes.length <> 0 Then
+            Call PARSE_XMLMessage(oDoc)
+            mReceiving = False
+        End If
+        
+        ' If there's more stuff to be parsed, the check for more commands
+        If stXMLData <> "" Then
+            ctlTelnetWinsock_DataArrival (0)
+        End If
+        
+        ' Reset data
+        stXMLData = ""
+        myStringData = ""
+    End If
+    
+    ' Response for command on specific chanel
+    If pmBytesTotal > 7 And Left(Trim(myStringData), 7) = "Channel" Then
+        'pStatusmsg.Text = sData
+        mXMLData = myStringData
+        mConnectionState = ConnState_Ready
+    
+    ' Response for change in refresh
+    ElseIf pmBytesTotal > 7 And Left(Trim(myStringData), 7) = "Refresh" Then
+        'pStatusmsg.Text = myStringData
+        mXMLData = myStringData
+        mConnectionState = ConnState_Ready
+    
+    ' As long as we are not processing a thread, display the response
+    ElseIf stXMLState = 0 And myStringData <> "" Then
+        'pStatusmsg.Text = sData
+        mXMLData = myStringData
+        mConnectionState = ConnState_Ready
+    End If
+    
+    'Response for BLA
+    'Response for RES
+    'Response for LOG
+    'Response for REC
+    
+    mReceiving = False
+End Sub
+
+Private Function TrimToAlpha(pmStr As String) As String
+    Dim myChar As String
+    
+    ' Get rid of leading non-alphanumerics
+    myChar = Left(pmStr, 1)
+    While Len(pmStr) > 0 And _
+            (myChar < "0") Or ("9" < myChar) And (myChar < "A") Or _
+            ("Z" < myChar) And (myChar <= "a") Or ("z" < myChar)
+        pmStr = Mid(pmStr, 2)
+        myChar = Left(pmStr, 1)
+    Wend
+    
+    ' Get rid of trailing non-alphanumerics
+    myChar = Right(pmStr, 1)
+    While Len(pmStr) > 0 And _
+            (myChar < "0") Or ("9" < myChar) And (myChar < "A") Or _
+            ("Z" < myChar) And (myChar <= "a") Or ("z" < myChar)
+        pmStr = Left(pmStr, Len(pmStr) - 1)
+        myChar = Right(pmStr, 1)
+    Wend
+
+    TrimToAlpha = pmStr
+End Function
+
+Private Sub EchoAlphaNumericToFeedback(pmStr As String)
+    Dim myLine As String
+    ' If there are newlines in there, echo each section on a separate line
+    While InStr(pmStr, vbNewLine) <> 0
+        myLine = TrimToAlpha(Left(pmStr, InStr(pmStr, vbNewLine) - 1))
+        
+        If myLine <> "" And myLine <> "KeepAliveToken" And _
+                myLine <> "Unknown request: KEEPALIV" And _
+                myLine <> "Channel 1 refresh on" And _
+                myLine <> "Refresh on both channels" And _
+                Left(myLine, 11) <> "xml version" And _
+                myLine <> stLastCommand Then
+            Call gMAIN_Main.WriteFeedback(myLine)
+        End If
+        pmStr = Mid(pmStr, InStr(pmStr, vbNewLine) + 2)
+    Wend
+    
+    myLine = TrimToAlpha(pmStr)
+    
+    If myLine <> "" And myLine <> "KeepAliveToken" And _
+            myLine <> "Unknown request: KEEPALIV" And _
+            myLine <> "Channel 1 refresh on" And _
+            myLine <> "Refresh on both channels" And _
+            Left(myLine, 11) <> "xml version" And _
+            myLine <> stLastCommand Then
+        Call gMAIN_Main.WriteFeedback("Host: " & myLine)
+    End If
+End Sub
+
+' The host is willing to send this
+Private Sub WillTell(pmOption As Byte, pmName As String, pmAllow As Boolean)
+    ' If pmAllow is true, reply with DoTell (client is willing to receive this)
+    ' otherwise reply with DontTell (client is unwilling to receive this)
+    Call MAIN_WriteLog(5, "Telnet: Rcvd: Host is willing to send " & pmName)
+    If pmAllow Then
+        Call MAIN_WriteLog(5, "Telnet: Send: Client is willing to receive " & pmName)
+        mWinsock.SendData Chr(IAC) & Chr(DOTEL) & Chr(pmOption)
+    Else
+        Call MAIN_WriteLog(5, "Telnet: Send: Client is *not* willing to receive " & _
+                pmName)
+        mWinsock.SendData Chr(IAC) & Chr(DONTTEL) & Chr(pmOption)
+    End If
+End Sub
+
+' The host is willing to receive this
+Private Sub DoTell(pmOption As Byte, pmName As String, pmAllow As Boolean)
+    ' If pmAllow is true, reply with WillTell (client is willing to send this)
+    ' otherwise reply with WontTell (client is unwilling to send this)
+    Call MAIN_WriteLog(5, "Telnet: Rcvd: Host is willing to receive " & pmName)
+    If pmAllow Then
+        Call MAIN_WriteLog(5, "Telnet: Send: Client is willing to send " & pmName)
+        mWinsock.SendData Chr(IAC) & Chr(WILLTEL) & Chr(pmOption)
+    Else
+        Call MAIN_WriteLog(5, "Telnet: Send: Client is *not* willing to send " & _
+                pmName)
+        mWinsock.SendData Chr(IAC) & Chr(WONTTEL) & Chr(pmOption)
+    End If
+End Sub
+' Called automatically when the keep alive timer goes off
+' This is called every 20 seconds since the last time data was received.
+Private Sub ctlTmrKeepAlive_Timer()
+    'Connection might be down
+    If mReceivedResponseToKeepAlive Then
+        ' Reset the timer
+        Call ResetKeepAlive(False)
+        
+        Call MAIN_WriteLog(5, "Telnet: Sending 'KeepAliveToken'")
+        mWinsock.SendData "KeepAliveToken" & vbCr
+    Else
+        ' We have not received a response to our last keepalive message
+        ' in the last 20 seconds.  This probably means that we have been
+        ' disconnected.
+        Call MAIN_WriteLog(2, "ERROR: No response to keep alive to Host " & _
+                "in the last 20 seconds.  Disconnecting and reconnecting.")
+        Call gMAIN_Main.WriteFeedback("ERROR: No response from Host " & _
+                "in the last 20 seconds.  Disconnecting and reconnecting.")
+        CloseTelnetConnectionToHost
+        OpenTelnetConnectionToHost
+    End If
+End Sub
+
+' Called automatically when the reconnection timer goes off.
+Private Sub ctlTmrReconnect_Timer()
+    Call MAIN_WriteLog(2, "ERROR: Waited 15 seconds for connection to host " & _
+            " there was no reply.  Disconnecting and reconnecting.")
+    Call gMAIN_Main.WriteFeedback("ERROR: Telnet connection and login sequence " & _
+            "to host did not complete in 15 seconds.  Disconnecting and trying again.")
+    Call CloseTelnetConnectionToHost
+    Call OpenTelnetConnectionToHost
+End Sub
+
+' Set the timer to go off another 20 seconds from now and indicate whether
+' we've received a response to the KeepAlive token.
+Private Sub ResetKeepAlive(pmReceivedResponse As Boolean)
+    ctlTmrKeepAlive.Enabled = False
+    ctlTmrKeepAlive.Enabled = True
+    mReceivedResponseToKeepAlive = pmReceivedResponse
+End Sub

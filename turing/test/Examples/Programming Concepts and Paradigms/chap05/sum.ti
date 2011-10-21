@@ -1,0 +1,7 @@
+% File "sum.ti".  Procedure to sum the first n integers.
+procedure computeSum (n : int, var sum : int)
+    sum := 0
+    for i : 1 .. n
+        sum += i
+    end for
+end computeSum

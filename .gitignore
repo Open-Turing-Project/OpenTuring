@@ -1,0 +1,18 @@
+# Compiled source #
+###################
+*.com
+*.class
+*.obj
+*.log
+*.o
+*.so
+
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+turing/obj/**/*
+turing/Debug/**/*

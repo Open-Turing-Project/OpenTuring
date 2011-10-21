@@ -1,0 +1,59 @@
+% File "insert.dem".
+% Generate a random list of 10 elements and sort by insertion.
+
+procedure swap (var list : array 1 .. * of string (*), i, j : int)
+    const temp := list (i)
+    list (i) := list (j)
+    list (j) := temp
+end swap
+
+procedure shift (var list : array 1 .. * of string (*), i, j : int)
+    const temp := list (j)
+    for decreasing k : j .. i + 1
+        list (k) := list (k - 1)
+    end for
+    list (i) := temp
+end shift
+
+procedure fakeData (var list : array 1 .. * of string (*),
+        numberOfElements : int)
+    for i : 1 .. numberOfElements
+        list (i) := "" % Null string.
+        for letterIndex : 1 .. 4 % Pick four letters at random.
+            list (i) += chr (Rand.Int (ord ("a"), ord ("z")))
+        end for
+    end for
+end fakeData
+
+procedure printList10 (list : array 1 .. * of string (*))
+    for i : 1 .. 10
+        put list (i), " " ..
+    end for
+    put ""
+end printList10
+
+% Sort list of strings by insertion.
+procedure insertSort (var list : array 1 .. * of string (*),
+        numberOfElements : int)
+    for j : 2 .. numberOfElements
+        % Invariant list (1 .. j - 1) sorted.
+        % Insert the jth element.
+        % Find where to insert it.
+        var i := 1
+        loop
+            exit when i = j or list (i) >= list (j)
+            i += 1
+        end loop
+        shift (list, i, j)
+        put j : 3, i : 3, " " ..
+        printList10 (list)
+    end for
+end insertSort
+
+var list : array 1 .. 10 of string (4)
+fakeData (list, 10)
+printList10 (list)
+insertSort (list, 10)
+printList10 (list)
+
+

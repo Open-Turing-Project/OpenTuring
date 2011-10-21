@@ -1,0 +1,66 @@
+% File "bubble.dem".
+% Generate a random list of 10 elements and sort using bubble sort.
+
+procedure swap (var list : array 1 .. * of string (*), i, j : int)
+    const temp := list (i)
+    list (i) := list (j)
+    list (j) := temp
+end swap
+
+procedure shift (var list : array 1 .. * of string (*), i, j : int)
+    const temp := list (j)
+    for decreasing k : j .. i + 1
+        list (k) := list (k - 1)
+    end for
+    list (i) := temp
+end shift
+
+procedure fakeData (var list : array 1 .. * of string (*),
+        numberOfElements : int)
+    for i : 1 .. numberOfElements
+        list (i) := "" % Null string.
+        for letterIndex : 1 .. 4 % Pick four letters at random.
+            list (i) += chr (Rand.Int (ord ("a"), ord ("z")))
+        end for
+    end for
+end fakeData
+
+procedure printList10 (list : array 1 .. * of string (*))
+    for i : 1 .. 10
+        put list (i), " " ..
+    end for
+    put ""
+end printList10
+
+% Sort list of strings using bubble sort.
+procedure bubbleSort (var list : array 1 .. * of string (*), n : int)
+    pre 1 <= n and n <= upper (list)
+    % and initialized (list (1 .. n))
+    % post sorted (list (1 .. n))
+    %       and permutation (list (1..n), list' (1..n))
+
+    for j : 1 .. n - 1 % Make n - 1 passes.
+        const last := n - j + 1
+        % Swap elements in list (1 .. last) so largest is in list (last).
+        for k : 1 .. last - 1 % Handle each pair.
+            % List (k) contains largest element in list (1 .. k).
+            % Swap pair (k, k+1) if out of order.
+            if list (k) > list (k + 1) then
+                % Swap list (k) and list (k+1).
+                swap (list, k, k + 1)
+                % Temporary statements to trace execution.
+                put k : 3, k + 1 : 3, " " ..
+                printList10 (list)
+            end if
+        end for
+        % Largest j elements are in list (last + 1 .. n) and are sorted.
+    end for
+end bubbleSort
+
+var list : array 1 .. 10 of string (4)
+fakeData (list, 10)
+printList10 (list)
+bubbleSort (list, 10)
+printList10 (list)
+
+

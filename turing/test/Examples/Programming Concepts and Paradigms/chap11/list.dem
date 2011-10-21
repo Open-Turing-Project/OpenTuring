@@ -1,0 +1,70 @@
+% File "list.dem".  % Program to use list class.
+% The list will contain a set of items that each consist of a name
+% and phone number. New items can be entered and old items deleted.
+% Items can be changed, looked up, and printed.
+% The list is initially empty.
+import List in "listcl.tu" % Use list class.
+var p : ^List
+new p % Instantiate a list.
+var name, phone : string
+var command : string
+var inList : boolean
+put "Phone list program"
+put "You must give a command and supply requested information"
+put skip, "Enter(e), Delete(d), Change(c), LookUp(l), Print(p), or Quit(q) "
+% Read and handle each command.
+loop
+    put "Command " ..
+    get command : *
+    case command of
+        label "e" : % Enter.
+            put "Give name " ..
+            get name : *
+            put "Give phone number " ..
+            get phone : *
+            % Look up to see if already there.
+            p -> LookUp (name, phone, inList)
+            if not inList then
+                p -> Enter (name, phone)
+            else
+                put "Item already in list"
+            end if
+        label "d" : % Delete.
+            put "Give name " ..
+            get name : *
+            p -> LookUp (name, phone, inList)
+            if inList then
+                p -> Delete (name)
+                put "Entry is deleted"
+            else
+                put "Item is not in the list"
+            end if
+        label "c" : % Change.
+            put "Give name " ..
+            get name : *
+            p -> LookUp (name, phone, inList)
+            if inList then
+                put "Give new phone number " ..
+                get phone
+                p -> Change (name, phone)
+            else
+                put "Name not in book"
+            end if
+        label "l" : % Look up.
+            put "Give name " ..
+            get name : *
+            p -> LookUp (name, phone, inList)
+            if inList then
+                put "Phone number is ", phone
+            else
+                put "Name not in list"
+            end if
+        label "p" : % Print.
+            p -> Display
+        label "q" : % Quit.
+            exit
+        label :
+            put "Command ", command, " not available"
+    end case
+end loop
+put "Quitting, list not saved. "

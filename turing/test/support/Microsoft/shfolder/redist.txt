@@ -1,0 +1,19 @@
+============
+ShFolder DLL
+============
+
+The SHFOLDER.DLL may only be redistributed as part of SHFOLDER.EXE. You may
+not redistribute COMCTL32.DLL except by using SHFOLDER.EXE. You may not
+modify SHFOLDER.EXE
+
+SHFOLDER.EXE is a self-extracting executable that will install the SHFOLDER.DLL
+only if there is not a more recent version of the SHFOLDER.DLL in the system
+directory.  SHFOLDER.EXE will write the registry keys required by SHFOLDER.DLL.
+SHFOLDER.EXE may be used on Windows NT 4.0, Windows 95, or Windows 98.
+
+In addition to the rights granted in Section 1 of the Agreement ("Agreement"),
+with respect to the SHFOLDER Redistributable Code, 
+you have the following non-exclusive, royalty free rights subject to the 
+Distribution Requirements detailed in Section 1 of the Agreement:
+
+(1)  You may distribute SHFOLDER.EXE

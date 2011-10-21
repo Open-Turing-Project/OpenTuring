@@ -1,0 +1,13 @@
+/o p:\turing\Debug\Turing.bsc 
+p:\turing\obj\Debug\Coder\*.sbr 
+p:\turing\obj\Debug\Compiler\*.sbr 
+p:\turing\obj\Debug\Debugger\*.sbr 
+p:\turing\obj\Debug\Editor\*.sbr 
+p:\turing\obj\Debug\Executor\*.sbr 
+p:\turing\obj\Debug\FileManager\*.sbr 
+p:\turing\obj\Debug\GIF\*.sbr 
+p:\turing\obj\Debug\Interpreter\*.sbr 
+p:\turing\obj\Debug\JPEG\*.sbr 
+p:\turing\obj\Debug\MIO\*.sbr 
+p:\turing\obj\Debug\TLib\*.sbr 
+p:\turing\obj\Debug\TLib_Override\*.sbr 

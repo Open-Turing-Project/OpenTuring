@@ -1,0 +1,434 @@
+/****************/
+/* mioerrmsg.in */
+/****************/
+
+/***************************************/
+/* This file is included by mioerror.c */
+/***************************************/
+
+static char *noneErrMsg[] = {
+"No error",
+};
+
+static char *generalErrMsg[] = {
+"Unknown error",
+"Unable to allocate memory",
+"This feature is not supported in this version",
+"No operation",
+"No output can be sent to the screen",
+"This routine can not be used in text mode",
+"This routine can not be used in graphics mode",
+"This routine can only be used in graphics mode",
+"This feature is currently not implemented",
+"System failed in attempt to create environment window",
+"Illegal attempt to do binary read from keyboard",
+"Illegal attempt to do binary write to window",
+"Cannot allocate item.  Out of id numbers (max 1000)",
+"User program activated error",
+};
+
+static char *fileSysErrMsg[] = {
+"Unknown file system error",
+"File not found",
+"Path not found (couldn't find the directory file is in)",
+"Too many open files at once in system",
+"Access (permission) denied",
+"Invalid file handle",
+"Insufficient memory to process operation",
+"Environment invalid",
+"Format invalid",
+"Access code invalid",
+"Data invalid",
+"File is read only",
+"The system cannot find the drive specified",
+"The operation is not supported across devices",
+"No more files",
+"The diskette is write-protected",
+"The drive is not ready",
+"There is no disk in the drive",
+"System didn't recognize the request",
+"A CRC error was reported by drive controller",
+"Error performing seek",
+"System doesn't recognize the media type",
+"The drive controller couldn't find a sector",
+"The printer is out of paper",
+"File system write error",
+"File system read error",
+"A general fault occured",
+"There is no space available on the drive",
+"A file of that name already exists",
+"A directory of that name already exists",
+"Name doesn't match a file",
+"Can't binary \"read\" to a file in a window",
+"Can't binary \"write\" to a file in a window",
+"The path name was modified to match system requirements",
+"Can't go up from the root directory",
+"Bad character in the path name",
+"Badly formed path name",
+"DOS Error: Bad DOS function number",
+"DOS error: DOS Error: Memory control block destroyed",
+"DOS Error: Memory control block invalid",
+"DOS Error: Bad request length structure",
+"DOS Error: Unknown unit",
+"File is already in use",
+"Test Suite program read from stdin, but has no input file",
+"Test Suite program attempted to read from non-default run window",
+"Cannot put/get/read or write to a dialog window",
+};
+
+static char *streamErrMsg[] = {
+"Unknown stream error",
+"Illegal file stream identifier",
+"File stream was never opened",
+"File stream was closed",
+"Too many file streams opened at once",
+"Unknown error message",
+};
+
+static char *fileErrMsg[] = {
+"Unknown error message",
+"Path is a directory",
+"Windows 95 cannot determine free disk space on a network drive",
+"Cannot obtain the parent of a root directory"
+};
+
+static char *dirErrMsg[] = {
+"Unknown Dir module error",
+"Illegal directory identifier",
+"Directory was never opened",
+"Directory was closed",
+"Too many directories opened at once",
+"Attempt to read past end of directory file list",
+"Name doesn't match a directory",
+"Attempt was made to remove current working directory",
+"Can't allocate memory for directory listing",
+"Path is a file",
+};
+
+static char *picErrMsg[] = {
+"Unknown Pic module error",
+"Illegal pic identifier",
+"Pic was never allocated",
+"Pic was freed",
+"Too many pics are allocated at once",
+"A system error occured processing pic",
+"Bad pic box",
+"That is not a pic file",
+"A sprite is using that pic",
+"Not a takepic array",
+"Not in same graphics mode",
+"Illegal pic mode",
+"Unsupported pic mode",
+"Coordinates are off the screen",
+"Can't allocate memory for pic",
+"Can't allocate memory to process pic",
+"Unknown error message",
+"I/O error on pic file",
+"Picture file not found",
+"Unable to open picture file for write",
+"Unknown picture file format",
+"Turing does not support the picture file format at this time",
+"Cannot scale image to width or height of zero",
+"Cannot scale image to width or height greater than 4096",
+"Rotation point must be inside the picture",
+"Unable to rotate picture with this bit depth",
+"Picture cannot be freed because it is being used by a sprite",
+"Array size is smaller than the number of frames",
+"Unknown transition type",
+};
+
+static char *penErrMsg[] = {
+"Unknown Pen module error",
+"Illegal pen identifier",
+"Pen was never allocated",
+"Pen was freed",
+};
+
+static char *brushErrMsg[] = {
+"Unknown Brush module error",
+"Illegal brush identifier",
+"Brush was never allocated",
+"Brush was freed",
+};
+
+static char *spriteErrMsg[] = {
+"Unknown Sprite module error",
+"Illegal sprite identifier",
+"Sprite was never allocated",
+"Sprite was freed",
+"Too many sprites allocated at once",
+"Sprite didn't change",
+"Unknown error message",
+};
+
+static char *fontErrMsg[] = {
+"Unknown Font module error",
+"Illegal font identifier",
+"Font was never allocated",
+"Attempt to use an already freed font",
+"The default font can't be freed",
+"Too many fonts are allocated at once",
+"No font with this name was found",
+"Unknown font style",
+"Bad font selection string",
+"Unable to create font with requested name.  Different font name used"
+};
+
+static char *drawErrMsg[] = {
+"Unknown Draw module error",
+"Drawing took place outside of clipping region",
+"A system error occured processing draw command",
+"Polygon is too complicated",
+"The colour number was less than zero",
+"The colour number was less than maxcolour",
+"Not enough memory to store polygon points",
+};
+
+static char *timeErrMsg[] = {
+"Unknown Time module error",
+"Invalid time string",
+"Invalid date string",
+"Seconds parameter must be positive",
+"Bad day specified in date",
+"Bad month specified in date",
+"Bad year specified in date",
+"Bad hour specified in date",
+"Bad minute specified in date",
+"Bad second speficied in date",
+};
+
+static char *mouseErrMsg[] = {
+"Unknown Mouse module error",
+"No mouse available",
+"Bad ButtonChoose string",
+"Bad Motion string",
+};
+
+static char *rgbErrMsg[] = {
+"Unknown RGB module error",
+"Bad colour number passed to RGB routine",
+"A system error occured processing RGB command",
+"Couldn't change the colour map",
+"Red component must be between 0 and 1",
+"Green component must be between 0 and 1",
+"Blue component must be between 0 and 1",
+"Unknown error message",
+};
+
+static char *musicErrMsg[] = {
+"Unknown Music module error",
+"No notes to be played",
+"Bad character in play string",
+"Bad note length.  Legal values are: 1, 2, 4, 8, 6, 3",
+"Frequency out of range",
+"Duration out of range",
+"Unable to open MIDI sequencer",
+"Unable to play MIDI file",
+"Unable to open CD player",
+"Unable to play CD",
+"Unable to open WAVE player",
+"Unable to play WAVE",
+"Unable to close audio device",
+"Unable to get audio device status",
+"Unable to open note player",
+"Unable to play note",
+"Unable to open frequency player",
+"Unable to play frequency",
+"Unable to open MP3 player",
+"Unable to play MP3",
+"Music and sound have been disabled by the Administrator",
+"Unknown music file type",
+"I/O Error while reading music file",
+"Music file has bad format",
+};
+
+static char *configErrMsg[] = {
+"Unknown Config module error",
+"Unknown display code",
+"Unknown lang code",
+"Unknown machine code",
+"Unable to obtain requested information",
+};
+
+static char *viewErrMsg[] = {
+"",
+"Drawing took place outside of clipping region",
+"X coordinate less than zero",
+"X coordinate greater than maxx",
+"Y coordinate less than zero",
+"Y coordinate greater than maxy",
+"Bad cursor size",
+"Unknown graphics mode",
+"Bad display mode",
+"Bad graphics depth",
+"Unsupported graphics mode on this platform",
+"Unable to switch into graphics mode",
+"Illegal position specified for window",
+"Unknown set command",
+};
+
+static char *windowErrMsg[] = {
+"Unknown Window module error",
+"Illegal window identifier",
+"Window was never opened",
+"Window was closed",
+"Bad option passed to Window.Set",
+"Unknown error message",
+"Obsolete method to open window",
+"Obsolete method to close window",
+"Can't seek on a window",
+"Can't request tell on a window",
+"Can't \"read\" from window",
+"Can't \"write\" to window",
+"Active window is not a Turing run window",
+};
+
+static char *printerErrMsg[] = {
+"Unknown Printer module error",
+"Illegal window identifier",
+"Printer stream was never opened",
+"Printer stream was closed",
+"Unknown error message",
+"Unknown error message",
+"Can't seek on printer",
+"Can't request tell from printer",
+"Can't \"read\" from window",
+"Can't \"write\" to window",
+};
+
+static char *textErrMsg[] = {
+"Unknown Text module error",
+"Row less than 1",
+"Row greater than maxrow",
+"Column less than 1",
+"Column greater than maxcol",
+"\"Text.WhatChar\" no longer supported in Turing",
+};
+
+static char *guiErrMsg[] = {
+"Unknown error message",
+"Missing button text",
+};
+
+static char *lexerErrMsg[] = {
+"Unknown lexer error",
+"Invalid lexer stream id",
+"Lexer stream never initialized",
+"Too many lexer streams are open",
+"Lexer stream already open",
+"Error in lexer table defintion file",
+"Lexer stream already ended",
+"Not enough memory to allocate lexer table",
+};
+
+static char *netErrMsg[] = {
+"Unknown net error",
+"Invalid network stream id",
+"Network stream never opened",
+"Missing network address",
+"Invalid port number specified",
+"Invalid or malformed network address",
+"Failed to resolve machine name to address",
+"Other end of connection has closed",
+"Network stream id has been closed",
+"Unable to initialize networking software on this machine",
+"Network connection aborted",
+"Network connection aborted by remote host",
+"Badly formatted URL for cookies.  Must be 'http://x.y.z' or 'file:///drive:\\dir\\dir\\dir\\'",
+"No cookies found for this URL",
+"No cookies found for this name",
+"Array to hold cookie names/values is too small",
+"Do not use 'eof' with Net connection.  Use 'Net.ConnectionStatus' instead",
+};
+
+static char *joystickErrMsg[] = {
+"Unknown joystick message",
+"No joystick drivers installed on this machine",
+"Bad joystick number",
+"Joystick is not plugged in",
+};
+
+static char *pcErrMsg[] = {
+"Unknown error message",
+"Illegal port number (ports 1-4 are allowed)",
+"Failure initializing the parallel port",
+};
+
+static char *sysErrMsg[] = {
+"Unknown error message",
+"Environment variable not found",
+"Environment variable too long",
+"Not enough system memory to run command",
+"The .exe file is invalid or corrupt",
+"The system denied access to the file",
+"The file name association is incomplete or invalid",
+"There is no application associated with this file",
+"A Sharing violation occurred.  This file is probably in use elsewhere",
+"'Sys.Exec' command disallowed by Administrator.",
+};
+
+static char *iniFileErrMsg[] = {
+"Unknown IniFile error",
+"Bad Section in INI file",
+"Missing '=' in INI file",
+"Section not found in INI file",
+"Property not found in INI file",
+"Property does not have a boolean value",
+"Property does not have a integer value",
+"Property does not have a real value",
+"No INI file opened to write",
+"At end of section/property list",
+"Array is not large enough to hold all the property values",
+};
+
+static char *strErrMsg[] = {
+"Unknown Str module error",
+"Array position parameter out of bounds (too small or too large)",
+"Number of chars parameter larger than size of char array",
+"Partial line (line did not end with a newline)",
+"Line greater than 255 character (line truncated)",
+"Writing line to char array would exceed char array length",
+"Source array position parameter out of bounds (too small or too large)",
+"Destination array position parameter out of bounds (too small or too large)",
+"Copying characters to char array would exceed char array length",
+};
+
+static char *cryptoErrMsg[] = {
+"Unknown Cryptography module error",
+"Number of chars parameter must be a multiple of 8",
+"Number of chars parameter larger than size of char array",
+}; 
+
+static char **errorMsgBase [] = {
+noneErrMsg,
+generalErrMsg,
+fileSysErrMsg,
+streamErrMsg,
+fileErrMsg,
+dirErrMsg,
+picErrMsg,
+penErrMsg,
+brushErrMsg,
+spriteErrMsg,
+fontErrMsg,
+drawErrMsg,
+timeErrMsg,
+mouseErrMsg,
+rgbErrMsg,
+musicErrMsg,
+configErrMsg,
+viewErrMsg,
+windowErrMsg,
+printerErrMsg,
+textErrMsg,
+guiErrMsg,
+lexerErrMsg,
+netErrMsg,
+joystickErrMsg,
+pcErrMsg,
+sysErrMsg,
+iniFileErrMsg,
+strErrMsg,
+cryptoErrMsg,
+};
+

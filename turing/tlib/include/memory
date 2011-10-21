@@ -1,0 +1,9 @@
+/*
+ * Interface to C malloc, and friends
+ */
+
+external function malloc (Size : int) : addressint
+
+external function realloc (ptr : addressint, Size : int) : addressint
+
+external "free" procedure Cfree (ptr : addressint)

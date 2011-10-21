@@ -1,0 +1,543 @@
+001 CA PC    Goudreau, Hector G.
+001 CA AAP   Lueken, Dale
+001 CA NDP   Pendleton, Leon R.
+001 CA SC    Portsmouth, Lanny
+001 CA LIB   Thompson, Don
+002 CA IND   Askin, Margaret (Peggy)
+002 CA NDP   Banks, Jennifer
+002 CA PC    DeLong, Alana
+002 CA AAP   Istvanffy, James Donald
+002 CA LIB   McDonnell, Kelly
+002 CA SC    Picken, Douglas A.
+002 CA GRN   Picken, Marie
+003 CA PC    Cenaiko, Harvey
+003 CA SC    Fielding, Elizabeth Kaur
+003 CA NDP   Hesby, Cliff
+003 CA AAP   Hunka, Nadine
+003 CA GRN   Neufeld, Grant
+003 CA AP    Schwartz, Carl
+003 CA LIB   Taylor, Terry
+004 CA LIB   Dehaney, Raleigh
+004 CA PC    Fritz, Yvonne
+004 CA AAP   Huth, Gordon
+004 CA NDP   Keebler, Jeanie
+004 CA GRN   Richardson, Ryan
+005 CA PC    Lord, Jon
+005 CA AAP   Mazeroll, Ken
+005 CA NDP   Scobel, Robert
+005 CA LIB   Taylor, Dave
+005 CA GRN   Warnke, Kim
+006 CA PC    Amery, Moe
+006 CA AAP   Berard, Brad
+006 CA COM   Collins, Bonnie-Jean
+006 CA LIB   Harvey, Bill
+006 CA GRN   Michalenko, Rick
+006 CA NDP   Vargis, Paul
+007 CA AAP   Crutcher, David
+007 CA NDP   Dovey, Christopher
+007 CA PC    Herard, Denis
+007 CA LIB   Queenan, Michael
+007 CA GRN   Read, George
+008 CA IND   Blimke, Lloyd
+008 CA AAP   Brooks, Diana-Lynn
+008 CA LIB   Brown, Stephen
+008 CA SC    Grover, Trevor
+008 CA NDP   Kelley, Becky
+008 CA PC    Klein, Ralph
+008 CA GRN   Roth, Allison
+009 CA LIB   Badenduck, Tore
+009 CA PC    Forsyth, Heather
+009 CA AAP   Kuipers, Mike
+009 CA NDP   Leavitt, Eric
+009 CA GRN   Sealy, Chris
+010 CA NDP   Forster, Malcolm
+010 CA AAP   Jansen-van Doorn, Vincent S.
+010 CA LIB   Jenuth, Stephen
+010 CA PC    Webber, Len
+011 CA PC    Cao, Wayne
+011 CA GRN   Charkie, Tyler
+011 CA AAP   Chase, Travis Paul
+011 CA LIB   Hart, Gerry
+011 CA SEP   Ollenberger, Leo
+011 CA NDP   Thomas, Elizabeth A.
+012 CA SC    Heather, Larry R.
+012 CA NDP   Heffernan, Holly
+012 CA AAP   McCutcheon, Ernest
+012 CA LIB   Roberts, Avalon
+012 CA GRN   Sklarski, Evan
+012 CA PC    Stevens, Ron
+013 CA GRN   Amell, Bernie
+013 CA LIB   Howe, Sharon L.
+013 CA PC    Johnston, Art
+013 CA AAP   Wawrzynowski, Robert
+013 CA NDP   Weinfeld, Rachel
+014 CA GRN   Boucher, Ryan
+014 CA AAP   Khan, Tariq
+014 CA NDP   Koczkur, Matt
+014 CA LIB   Pollock, Al
+014 CA PC    Rodney, Dave
+015 CA NDP   Cattabeni, Giorgio
+015 CA LIB   Hawkins, Darryl G.
+015 CA AAP   Hubbard, Shawn
+015 CA PC    Mar, Gary
+015 CA IND   Martin, Paul
+015 CA GRN   McTavish, David
+016 CA GRN   Brocklesby, Sean
+016 CA AAP   Given, Ina
+016 CA LIB   Kang, Darshan S.
+016 CA PC    Shariff, Shiraz
+016 CA NDP   Sihota, Preet
+017 CA AAP   Collingwood, Cyril
+017 CA GRN   Colton, Kevin
+017 CA LIB   Danielson, Arthur
+017 CA NDP   Nishiyama, Jason
+017 CA PC    Pham, Hung
+018 CA AAP   Cassell, Ryan
+018 CA NDP   Donovan, John
+018 CA PC    Hlady, Mark
+018 CA GRN   MacGillivray, Mark
+018 CA LIB   Swann, David
+019 CA AAP   Best, Brent
+019 CA NDP   Machell, Aileen L.
+019 CA PC    Magnus, Richard
+019 CA LIB   Murray, Pat
+019 CA GRN   Stratton, Susan
+020 CA NDP   Brunet, Bob
+020 CA AAP   Friesen, Jenell
+020 CA GRN   Krekoski, Jeffery
+020 CA PC    Melchin, Greg
+020 CA LIB   Stewart, Judy
+021 CA LIB   Borowski, Len
+021 CA PC    Brown, Neil
+021 CA SC    Hurst, Raymond (Chick)
+021 CA NDP   Huysman, Dirk
+021 CA GRN   Johnson, John
+021 CA AAP   McGregor, Bill
+022 CA PC    Ady, Cindy
+022 CA AAP   Chase, Barry
+022 CA SEP   Doherty, Daniel
+022 CA GRN   Papineau, Rick
+022 CA LIB   Roggeveen, John
+022 CA NDP   Young, Jarrett
+023 CA AAP   Beninger, Ronald
+023 CA LIB   Chase, Harry B.
+023 CA NDP   Gabruch, Mark
+023 CA GRN   Larson, Richard
+023 CA SC    Skowronski, Leonard
+023 CA PC    Smyth, Michael W.
+024 CA NDP   Dubois, Chantelle
+024 CA AAP   Keyes, John
+024 CA GRN   Kohut, James
+024 CA PC    Liepert, Ron
+024 CA LIB   Smith, Derek
+025 CA GRN   Couture, Benoit
+025 CA AAP   Gamache, Philip
+025 CA NDP   Martin, Ray
+025 CA LIB   Parmar, Sam
+025 CA SC    Shipka, Ken
+025 CA PC    Yankowsky, Julius
+026 CA NDP   Eggen, David
+026 CA AAP   Kramer, Vicki
+026 CA PC    Rathgeber, Brent
+026 CA LIB   Smith, Brad
+027 CA NDP   Cross, Peter
+027 CA LIB   Kibermanis, Chris
+027 CA SC    Korpi, Ross
+027 CA PC    Lukaszuk, Thomas
+027 CA AAP   Presizniuk, Colin
+028 CA NDP   Archer, Mary Elizabeth
+028 CA LIB   Blakeman, Laurie
+028 CA AAP   Caterina, Tony
+028 CA SC    Clements, Linda
+028 CA GRN   Parker, David J.
+028 CA PC    Weideman, Don
+029 CA NDP   Barg, Shirley
+029 CA LIB   Bonko, Bill
+029 CA SC    Chevrier, Geoffrey
+029 CA AAP   Masyk, Gary
+029 CA PC    Szwender, Walter
+030 CA LIB   Agnihotri, Bharat
+030 CA NDP   Assheton-Smith, Marilyn
+030 CA PC    Dodd, Gurnam
+030 CA SC    Maciejewski, Amelia
+030 CA AAP   Maroes, Eleanor
+031 CA NDP   Booi, Larry
+031 CA AAP   Currie, Blaine
+031 CA PC    Hutton, Drew
+031 CA GRN   Johnston, Peter
+031 CA LIB   Miller, Bruce
+031 CA SC    Schachenhofer, Walter
+032 CA PC    Dhaliwal, Manjit
+032 CA IND   Dowling, Dave
+032 CA AAP   Hunt, Delmar
+032 CA LIB   MacDonald, Hugh
+032 CA NDP   Turnbull, Keith
+033 CA IND   Ferris, Dale
+033 CA AAP   Loyer, Ray
+033 CA LIB   Manzevich, Jason
+033 CA PC    Martiniuk, Terry
+033 CA NDP   Mason, Brian
+034 CA GRN   Adshead, Ross
+034 CA LIB   Backs, Dan
+034 CA NDP   Lang, Laurie
+034 CA AAP   Pietramala, Mike
+034 CA SC    Tisdall, Sean
+034 CA PC    Vandermeer, Tony
+035 CA AAP   Bauer, Reuben
+035 CA SC    Conlin, Patrick
+035 CA NDP   Dach, Lorne
+035 CA LIB   Elsalhy, Mo
+035 CA PC    Norris, Mark
+036 CA NDP   Burns, Lance
+036 CA AAP   Campbell, Aaron
+036 CA GRN   Doyle, Amanda
+036 CA PC    Maskell, Bob
+036 CA IND   Morton, Peggy
+036 CA LIB   Tougas, Maurice
+037 CA AAP   Alford, Robert J.
+037 CA LIB   Gill, Aman
+037 CA IND   Johnson, Cameron
+037 CA GRN   Stieglitz, Eric
+037 CA NDP   Taylor, Nathan
+037 CA PC    Zwozdesky, Gene
+038 CA PC    Bhardwaj, Naresh
+038 CA LIB   Mather, Weslyn
+038 CA NDP   Nelson, Lloyd
+038 CA COM   Rankin, Naomi
+038 CA AAP   Relland, Charles
+039 CA AAP   Edgar, David
+039 CA PC    Horne, Fred
+039 CA GRN   Lackey, John
+039 CA NDP   Martyn, Donna
+039 CA SC    Power, David W.
+039 CA LIB   Taft, Kevin
+040 CA SC    Ashmore, Anita
+040 CA AAP   Ewart, R. J. (Bob)
+040 CA PC    McClelland, Ian
+040 CA LIB   Miller, Rick
+040 CA NDP   Slade, George A.
+041 CA AAP   Burns, Jeremy
+041 CA GRN   Cole, Adrian
+041 CA SC    Graham, Kelly
+041 CA LIB   Leard, Steven
+041 CA NDP   Pannu, Raj
+041 CA PC    Stubbs, Shannon
+042 CA IND   Andrews, John
+042 CA NDP   Fleck, Brian
+042 CA PC    Hancock, Dave
+042 CA AAP   Rayner, Kathy
+042 CA LIB   Smith, Donna Lynn
+043 CA LIB   Burke, John
+043 CA AAP   Gaida, Bradley
+043 CA SC    Gautreau, Jerry
+043 CA PC    Haley, Carol
+043 CA SEP   Lefurgey, Bob
+043 CA NDP   Massie, Grant
+043 CA GRN   Scully, Angela
+043 CA AP    Willerton, Jeff
+044 CA LIB   Belland, Nicole
+044 CA PC    Cardinal, Mike
+044 CA GRN   De Smet, Luke
+044 CA SC    Fish, Leonard
+044 CA NDP   Opryshko, Peter
+044 CA AAP   Whelan, Sean
+045 CA AAP   Argent, Bob
+045 CA NDP   Cambridge, Melissa
+045 CA GRN   Foote, Chris
+045 CA LIB   McDougall, Ian
+045 CA PC    Tarchuk, Janis
+046 CA LIB   Fiebich, Alan
+046 CA SC    Haugen, Carl
+046 CA NDP   Kirkeby, Peggy
+046 CA PC    Kowalski, Ken
+046 CA AAP   Radojcic, Mike
+047 CA PC    Griffiths, Doug
+047 CA NDP   Legault, Len
+047 CA LIB   Rogers, Gordon
+047 CA SC    Skitteral, Robin
+047 CA AAP   Werezak, Orest
+048 CA PC    Ducharme, Denis
+048 CA AAP   Gervais, Shane
+048 CA LIB   Mildon, Lloyd
+048 CA NDP   Ogonoski, Denise
+049 CA NDP   Bannister, Luann
+049 CA GRN   Ferguson, Lindsay
+049 CA AAP   Hinman, Paul
+049 CA PC    Jacobs, Broyce
+049 CA LIB   Shimp, Paula
+050 CA LIB   Angle, Stuart
+050 CA NDP   Anten, Cliff
+050 CA PC    Mitzel, Leonard
+050 CA AAP   Pierson, Dan H.
+050 CA SC    Solberg, Eric
+051 CA PC    Abbott, Tony
+051 CA SC    Cliff, Thomas
+051 CA AAP   Cunningham, Viona
+051 CA GRN   Erickson, Edwin
+051 CA LIB   Higgerty, Laura
+051 CA IND   Knopp, Elmer
+051 CA NDP   Oberle, Lynn
+052 CA NDP   Bough, Richard
+052 CA SEP   Carnegie, David
+052 CA AAP   France, Dave
+052 CA SC    Kloppenburg, Mary-Lou
+052 CA PC    McClellan, Shirley
+052 CA AP    Walker, Eileen
+053 CA LIB   Coburn, Herb
+053 CA AAP   Herasemluk, Jason
+053 CA PC    Morton, F. L. (Ted)
+053 CA NDP   Schmidt, Roland
+053 CA GRN   Willson, Shelley
+054 CA PC    Boutilier, Guy C.
+054 CA LIB   Collicott, Russell W. (Russ)
+054 CA AAP   Eklund, Eugene
+054 CA NDP   Malka, Dave
+054 CA IND   Normore, Reginald
+055 CA NDP   Buyarski, Wes
+055 CA AAP   King, Byron
+055 CA SC    Patterson, Mark R.
+055 CA LIB   Schneider, Peter
+055 CA PC    Stelmach, Ed
+056 CA PC    Knight, Mel
+056 CA LIB   Peacock, Neil
+056 CA AAP   Rahn, Hank
+056 CA NDP   Szoke, Georgina
+057 CA PC    Graydon, Gordon
+057 CA AAP   Hilton-O'Brien, John
+057 CA NDP   MacDonald, Jerry
+057 CA LIB   Rakestraw, Cibylla
+057 CA GRN   Webber, Allan
+058 CA LIB   Czerwinski, Lori
+058 CA PC    Groeneveld, George
+058 CA GRN   Matthews, Sheelagh
+058 CA SEP   Morgan, Cory
+058 CA NDP   Whelan Costen, Catherine
+058 CA AAP   Wickhorst, Brian
+059 CA LIB   Davis, Garth
+059 CA NDP   Janke, Chris
+059 CA PC    Ouellette, Luke
+059 CA AAP   Thorsteinson, Randy
+059 CA SC    Tricker, Wilf
+060 CA LIB   Broomfield, Dickson
+060 CA PC    Danyluk, Ray
+060 CA NDP   Goebel, Phil
+060 CA AAP   Lacombe, Oscar
+061 CA SC    Cormack, Teena
+061 CA NDP   Graves, Jim
+061 CA AAP   Klop, Ed
+061 CA PC    Prins, Ray
+061 CA LIB   Simmonds, Glen T.
+062 CA LIB   Assen, Joyce
+062 CA AAP   Dalke, Dave
+062 CA GRN   Lindop, Stephen
+062 CA NDP   Oppen, Katie
+062 CA SC    Richert, Karen
+062 CA PC    Rogers, George
+063 CA NDP   Bannister, Doris
+063 CA PC    Calahasen, Pearl
+063 CA GRN   Hopfe, Ian
+063 CA LIB   Pleckaitis, Jonathan
+063 CA AAP   Rahn, Valerie
+064 CA PC    Fong, Rod
+064 CA GRN   Matthews, Erin
+064 CA NDP   Metz, Gaye
+064 CA LIB   Pastoor, Bridget
+064 CA SC    Popik, Darren
+064 CA AAP   Stewart, Brian
+065 CA LIB   Boora, Bal
+065 CA PC    Dunford, Clint
+065 CA NDP   Sandilands, Mark
+065 CA SC    Sawatsky, Scott
+065 CA GRN   Sheridan, Andrea
+065 CA AAP   Terlesky, Merle
+066 CA SC    Cook, Brian
+066 CA LIB   Langstraat, Arij
+066 CA NDP   Logie, Hugh
+066 CA PC    McFarland, Barry
+066 CA AAP   Phin, Jay
+066 CA SEP   Shaw, Grant
+067 CA PC    Coutts, David
+067 CA AAP   Lyster, George
+067 CA NDP   Thomas, Joyce
+067 CA SEP   Walker, Jim
+067 CA GRN   Watts, Chris
+067 CA LIB   Whitehead, Craig
+068 CA NDP   Arnott, Diana
+068 CA LIB   Charlton, Karen
+068 CA AAP   Cowan, Scott
+068 CA SC    Lorentzen, Jonathan
+068 CA PC    Renner, Rob
+069 CA NDP   Davies, Christopher
+069 CA GRN   Henckel-Sutmoller, Sarah
+069 CA SC    Kissick, Myrna
+069 CA PC    Marz, Richard
+069 CA AAP   Quantz, Gordon
+069 CA SEP   Vasseur, Brian
+069 CA LIB   Vonesch, Tony
+070 CA LIB   Bourque, Adam
+070 CA AAP   Checknita, Garry
+070 CA NDP   Crocker, Stephen
+070 CA SC    Lindberg, Patsy
+070 CA PC    Oberle, Frank
+071 CA NDP   Bedford, Steven
+071 CA GRN   Fisher, Colin
+071 CA PC    Jablonski, Mary Anne
+071 CA LIB   McDougall, Norm
+071 CA AAP   Sisson, Rand
+072 CA AAP   Argent, Patti
+072 CA PC    Doerksen, Victor
+072 CA LIB   Kubanek, Walter
+072 CA SEP   Milne, Judy
+072 CA NDP   Sloychuk, Jeff
+073 CA SC    Ahlstrom, Lavern J.
+073 CA SEP   Hutton, Bruce
+073 CA GRN   Isaac, Jennifer
+073 CA NDP   Jones, Anthony
+073 CA PC    Lund, Ty
+073 CA LIB   Scott, Susan M.
+073 CA AAP   Wilhite, Ed
+074 CA SC    Barrett, Gordon
+074 CA PC    Evans, Iris
+074 CA AAP   LaBonte, Cora
+074 CA GRN   Lau, Lynn
+074 CA LIB   Rogers, Louise
+074 CA NDP   Sloan, Tim
+075 CA NDP   Apostal, Dale
+075 CA SC    Blaylock, Glen
+075 CA LIB   Boudreau, Ray
+075 CA AAP   Friesen, Tim
+075 CA PC    Horner, Doug
+076 CA GRN   Bitangcol, Conrad
+076 CA LIB   Flaherty, Jack
+076 CA AAP   Meldrum, Michaela
+076 CA PC    O'Neill, Mary
+076 CA NDP   Thompson, Travis
+077 CA AAP   Burns, Marilyn
+077 CA LIB   Fraser, Bill
+077 CA PC    Lindsay, Fred
+077 CA SC    Neumann, Henry
+077 CA NDP   Yanor, Ruth
+078 CA NDP   Elchuk, Thomas
+078 CA LIB   Friel, Jon
+078 CA PC    Lougheed, Rob
+078 CA SEP   McDonald, Roberta
+078 CA SC    Rembowski, Brian
+078 CA AAP   Seto, Ryan
+078 CA AP    Stubbs, Bruce
+079 CA LIB   Jaques, Carrol
+079 CA SEP   Kolody, Jay
+079 CA NDP   MacFarlane, Don
+079 CA SC    Martens, Rudy
+079 CA PC    Oberg, Lyle
+079 CA AAP   Ogden, Mark David
+080 CA AAP   Benoit, David
+080 CA PC    Snelgrove, Lloyd
+080 CA NDP   Stone, Ray
+080 CA LIB   Thomas, Patricia
+081 CA AAP   Cunningham, Earle
+081 CA LIB   Jolly, Robert
+081 CA NDP   Madsen, Barry
+081 CA GRN   Schaefer, Monika
+081 CA PC    Strang, Ivan
+082 CA LIB   Elliott, Keith
+082 CA PC    Johnson, LeRoy
+082 CA NDP   Lawson, Clay
+082 CA AAP   Trefz, Dale
+082 CA SC    Wolter, Janice H.
+083 CA AAP   Dow, David
+083 CA LIB   Higgerty, George
+083 CA NDP   Redmond, Leah
+083 CA PC    VanderBurg, George
+100 CA PC    Breitkreuz, Cliff
+100 CA PC    Brown, Bert
+100 CA IND   Byfield, Link
+100 CA AAP   Gough, Vance
+100 CA AAP   Horan, Gary
+100 CA AAP   Roth, Michael
+100 CA PC    Silye, Jim
+100 CA IND   Sindlinger, Tom
+100 CA PC    Unger, Betty
+100 CA PC    Usherwood, David
+101 CR 100
+102 CR 100
+103 CR 100
+104 CR 100
+105 CR 100
+106 CR 100
+107 CR 100
+108 CR 100
+109 CR 100
+110 CR 100
+111 CR 100
+112 CR 100
+113 CR 100
+114 CR 100
+115 CR 100
+116 CR 100
+117 CR 100
+118 CR 100
+119 CR 100
+120 CR 100
+121 CR 100
+122 CR 100
+123 CR 100
+124 CR 100
+125 CR 100
+126 CR 100
+127 CR 100
+128 CR 100
+129 CR 100
+130 CR 100
+131 CR 100
+132 CR 100
+133 CR 100
+134 CR 100
+135 CR 100
+136 CR 100
+137 CR 100
+138 CR 100
+139 CR 100
+140 CR 100
+141 CR 100
+142 CR 100
+143 CR 100
+144 CR 100
+145 CR 100
+146 CR 100
+147 CR 100
+148 CR 100
+149 CR 100
+150 CR 100
+151 CR 100
+152 CR 100
+153 CR 100
+154 CR 100
+155 CR 100
+156 CR 100
+157 CR 100
+158 CR 100
+159 CR 100
+160 CR 100
+161 CR 100
+162 CR 100
+163 CR 100
+164 CR 100
+165 CR 100
+166 CR 100
+167 CR 100
+168 CR 100
+169 CR 100
+170 CR 100
+171 CR 100
+172 CR 100
+173 CR 100
+174 CR 100
+175 CR 100
+176 CR 100
+177 CR 100
+178 CR 100
+179 CR 100
+180 CR 100
+181 CR 100
+182 CR 100
+183 CR 100

@@ -1,0 +1,213 @@
+% The "RadioButtons.dem" program.
+% This demonstrates the Radio Button widget along with the GUI routines
+% that use Radio Button widgets. [GetEventWidgetID, SelectRadio, Enable,
+% Disable, Show, Hide, SetPosition, Refresh, SetLabel, Quit,
+% CreateRadioButton, CreateRadioButtonFull, ProcessEvent, Dispose]
+
+import GUI % Must be included in a programs using the GPL
+
+View.Set ("graphics:400;300,nobuttonbar") % Shrink the window to the minimum size
+
+% The radio button IDs
+var radioButton : array 1 .. 6 of int
+
+% The button IDs
+var selectButton, enableDisableButton, showHideButton : int
+var moveButton, refreshButton, changeText1Button : int
+var changeText2Button, quitButton : int
+
+% Variables used by the button routines.
+var enable := false % Whether to enable or disable the radio button
+var hide := true % Whether to hide or show the radio button
+var reverse := true % Whether to reverse the radio buttons
+var select1 := true % Which button to select
+% The array of names for radio button 1
+const radioButton1Names : array 0 .. 4 of string := init ("Radio Button 1",
+    "a", "abcdef", "abcdefghijkl",
+    "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+var text1 := 1 % The array index to change radio button 1 to
+% The array of names for radio button 4
+const radioButton4Names : array 0 .. 4 of string :=
+    init ("Radio Button 4 (Shortcut: '4')", "a", "abcdef", "abcdefghijkl",
+    "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+var text4 := 1 % The array index to change radio button 4 to
+
+% The routines the widgets call when pressed.
+% Called when any radio button is pressed
+procedure RadioButtonPressed
+    locate (1, 1)
+    put "Radio Button " ..
+    for i : 1 .. 6
+	if radioButton (i) = GUI.GetEventWidgetID then
+	    put i ..
+	end if
+    end for
+    put " Selected                          " ..
+end RadioButtonPressed
+
+% Called when enable/disable button is pressed
+procedure EnableDisablePressed
+    locate (1, 1)
+    if enable then
+	put "Button 1 Enabled                        " ..
+	GUI.Enable (radioButton (1)) % Enable Radio Button 1
+	enable := false
+	GUI.SetLabel (enableDisableButton, "Disable Radio Button 1")
+    else
+	put "Button 1 Disabled                       " ..
+	GUI.Disable (radioButton (1)) % Disable Radio Button 1
+	enable := true
+	GUI.SetLabel (enableDisableButton, "Enable Radio Button 1")
+    end if
+end EnableDisablePressed
+
+% Called when show/hide button is pressed
+procedure ShowHidePressed
+    locate (1, 1)
+    if hide then
+	put "Radio Button 1 Hidden                         " ..
+	GUI.Hide (radioButton (1)) % Hide Radio Button 1
+	hide := false
+	GUI.SetLabel (showHideButton, "Show Radio Button 1")
+    else
+	put "Radio Button 1 Shown                          " ..
+	GUI.Show (radioButton (1)) % Show Radio Button 1
+	hide := true
+	GUI.SetLabel (showHideButton, "Hide Radio Button 1")
+    end if
+end ShowHidePressed
+
+% Called when move button is pressed
+procedure MovePressed
+    locate (1, 1)
+    if reverse then
+	put "Reverse Radio Button Positions             " ..
+	% Move the Radio Buttons in this order to avoid overlapping Radio Buttons
+	% during the move.
+	GUI.SetPosition (radioButton (3), 183, maxy - 110)
+	GUI.SetPosition (radioButton (6), 177, maxy - 110)
+	GUI.SetPosition (radioButton (2), 183, maxy - 90)
+	GUI.SetPosition (radioButton (5), 177, maxy - 90)
+	GUI.SetPosition (radioButton (1), 183, maxy - 70)
+	GUI.SetPosition (radioButton (4), 177, maxy - 70)
+	reverse := false
+	GUI.SetLabel (moveButton, "Move Radio Buttons Back")
+    else
+	put "Move Radio Buttons Back                   " ..
+	% Move Radio Buttons Back to Original Positions.
+	% Move the Radio Buttons in this order to avoid overlapping Radio Buttons
+	% during the move.
+	GUI.SetPosition (radioButton (1), 33, maxy - 50)
+	GUI.SetPosition (radioButton (4), maxx - 33, maxy - 50)
+	GUI.SetPosition (radioButton (2), 33, maxy - 70)
+	GUI.SetPosition (radioButton (5), maxx - 33, maxy - 70)
+	GUI.SetPosition (radioButton (3), 33, maxy - 90)
+	GUI.SetPosition (radioButton (6), maxx - 33, maxy - 90)
+	reverse := true
+	GUI.SetLabel (moveButton, "Reverse Radio Buttons")
+    end if
+end MovePressed
+
+% Called when refresh button is pressed
+procedure RefreshPressed
+    Draw.FillBox (0, 0, maxx, maxy, GUI.GetBackgroundColour) % Clear the screen
+    GUI.Refresh % Redraw all the widgets on the screen
+end RefreshPressed
+
+% Called when change button 1's text is pressed
+procedure ChangeText1Pressed
+    locate (1, 1)
+    put "Radio Button 1 Text Becomes: " + radioButton1Names (text1) +
+	"                                   " ..
+    GUI.SetLabel (radioButton (1), radioButton1Names (text1))
+    text1 := (text1 + 1) mod 5
+end ChangeText1Pressed
+
+% Called when change button 2's text is pressed
+procedure ChangeText2Pressed
+    locate (1, 1)
+    put "Radio Button 4 Text Becomes: " + radioButton4Names (text4) +
+	"                                   " ..
+    GUI.SetLabel (radioButton (4), radioButton4Names (text4))
+    text4 := (text4 + 1) mod 5
+end ChangeText2Pressed
+
+% Called when select button is pressed
+procedure SelectRadio
+    locate (1, 1)
+    if select1 then
+	put "Radio Button 1 Selected                 " ..
+	GUI.SelectRadio (radioButton (1)) % Select Radio Button 1
+	GUI.SetLabel (selectButton, "Select Radio Button 4")
+    else
+	put "Radio Button 4 Selected                 " ..
+	GUI.SelectRadio (radioButton (4)) % Select Radio Button 4
+	GUI.SetLabel (selectButton, "Select Radio Button 1")
+    end if
+    select1 := not select1
+end SelectRadio
+
+% Called when quit button is pressed.
+procedure QuitPressed
+    GUI.Quit
+end QuitPressed
+
+% The main program
+% Create the radio buttons
+radioButton (1) := GUI.CreateRadioButton (33, maxy - 50, "Radio Button 1",
+    0, RadioButtonPressed)
+radioButton (2) := GUI.CreateRadioButton ( - 1, - 1, "Radio Button 2",
+    radioButton (1), RadioButtonPressed)
+radioButton (3) := GUI.CreateRadioButton ( - 1, - 1, "Radio Button 3",
+    radioButton (2), RadioButtonPressed)
+radioButton (4) := GUI.CreateRadioButtonFull (maxx - 33, maxy - 50,
+    "Radio Button 4 (Shortcut: '4')", 0, RadioButtonPressed, GUI.RIGHT, '4')
+radioButton (5) := GUI.CreateRadioButtonFull ( - 1, - 1,
+    "Radio Button 5 (Shortcut: '5')", radioButton (4), RadioButtonPressed,
+    GUI.RIGHT, '5')
+radioButton (6) := GUI.CreateRadioButtonFull ( - 1, - 1,
+    "Radio Button 6 (Shortcut: '6')", radioButton (5), RadioButtonPressed,
+    GUI.RIGHT, '6')
+
+% Create the dividing line.
+var line := GUI.CreateLine (0, maxy - 135, maxx, maxy - 135, 0)
+
+% Create the buttons
+enableDisableButton := GUI.CreateButton (20, maxy - 170, 170,
+    "Disable Radio Button 1", EnableDisablePressed)
+showHideButton := GUI.CreateButton (210, maxy - 170, 170, 
+    "Hide Radio Button 1",
+    ShowHidePressed)
+moveButton := GUI.CreateButton (20, maxy - 200, 170,
+    "Reverse Radio Buttons", MovePressed)
+refreshButton := GUI.CreateButton (210, maxy - 200, 170, "Refresh",
+    RefreshPressed)
+changeText1Button := GUI.CreateButton (20, maxy - 230, 170,
+    "Change Button 1 Text", ChangeText1Pressed)
+changeText2Button := GUI.CreateButton (210, maxy - 230, 170,
+    "Change Button 2 Text", ChangeText2Pressed)
+selectButton := GUI.CreateButton (20, maxy - 260, 170, 
+    "Select Radio Button 1",
+    SelectRadio)
+quitButton := GUI.CreateButton (125, maxy - 290, 170, "Quit", QuitPressed)
+
+% Process events, exit loop when GUI.QUIT called
+loop
+    exit when GUI.ProcessEvent
+end loop
+
+% Do the clean up.  Dispose of all but the radio buttons
+GUI.Dispose (enableDisableButton)
+GUI.Dispose (showHideButton)
+GUI.Dispose (moveButton)
+GUI.Dispose (refreshButton)
+GUI.Dispose (changeText1Button)
+GUI.Dispose (changeText2Button)
+GUI.Dispose (selectButton)
+GUI.Dispose (quitButton)
+
+% Create a label to indicate we're finished
+var quitMessage := GUI.CreateLabelFull (0, 0, "Execution Terminated",
+    maxx, maxy - 135, GUI.CENTER + GUI.MIDDLE, 0)
+
+

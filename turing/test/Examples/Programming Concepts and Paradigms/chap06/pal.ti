@@ -1,0 +1,7 @@
+% File "pal.ti".  Function to check if a string is a palindrome.
+function palindrome (s : string) r : boolean
+    % pre initialized (s)
+    % post r = (lowercase (clean (s))  = reverse (lowercase (clean (s))))
+    const t := lowercase (clean (s))
+    result reverse (t) = t
+end palindrome

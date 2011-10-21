@@ -1,0 +1,17 @@
+% File "pald.dem".  Demonstrate the function palindrome.
+% The sequence of include statements is important.
+% Any function that is used by another must come first.
+include "clean.ti"
+include "reverse.ti"
+include "lower.ti"
+include "pal.ti"
+
+procedure testPalindrome (s : string)
+    % pre initialized (s)
+    put s : 30, palindrome (s)
+end testPalindrome
+
+testPalindrome ("Madam, in Eden I'm Adam")
+testPalindrome ("Hello")
+testPalindrome ("")
+testPalindrome ("A man, a plan, a canal, Panama! ")
