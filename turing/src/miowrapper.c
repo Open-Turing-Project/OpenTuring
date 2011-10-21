@@ -61,6 +61,7 @@
 #include "miotime.h"
 #include "mioview.h"
 #include "miowindow.h"
+#include "miohashmap.h"
 
 /**********/
 /* Macros */
@@ -842,7 +843,54 @@ void MIO_font_getsize (OOTaddr *sp)
     RESULT_OOT_INT(sp, MIOFont_GetSize ());
 } // MIO_font_getsize
 
+/************************************************************************/
+/* Hashmaps								*/
+/************************************************************************/
 
+void MIO_hashmap_new (OOTaddr *sp)
+{
+    SRCPOS	srcPos;
+    Language_Execute_RunSrcPosition (&srcPos);
+
+    RESULT_OOT_INT(sp, MIOHashmap_New (&srcPos));
+}
+
+void MIO_hashmap_free (OOTaddr *sp)
+{
+    OOTint hashId;
+
+    MyExecutorScan (sp, "I", &hashId);
+    MIOHashmap_Free (hashId);
+}
+
+void MIO_hashmap_put (OOTaddr *sp)
+{
+    OOTint hashId;
+	OOTstring key;
+	OOTint val;
+
+    MyExecutorScan (sp, "IRI", &hashId,&key,&val);
+    MIOHashmap_Put (hashId,key,val);
+}
+
+void MIO_hashmap_get (OOTaddr *sp)
+{
+    OOTint hashId;
+	OOTstring key;
+
+    MyExecutorScan (sp, "rIR", &hashId,&key);
+
+	RESULT_OOT_INT(sp, MIOHashmap_Get (hashId,key));
+}
+
+void MIO_hashmap_remove (OOTaddr *sp)
+{
+    OOTint hashId;
+	OOTstring key;
+
+    MyExecutorScan (sp, "IR", &hashId,&key);
+    MIOHashmap_Remove (hashId,key);
+}
 /************************************************************************/
 /* GUI module								*/
 /************************************************************************/

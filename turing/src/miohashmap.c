@@ -75,7 +75,6 @@ extern void	MIOHashmap_Free (OOTint pmMapID)
 {
     map_t myMap;
 
-	// The font has been free'd once for each 'new'.  Now get rid of it.
 	myMap = MIO_IDGet (pmMapID, HASHMAP_ID);
 	hashmap_free (myMap);
 	MIO_IDRemove (pmMapID, HASHMAP_ID);
@@ -87,7 +86,7 @@ extern OOTint MIOHashmap_New (SRCPOS *pmSrcPos)
 
 	newmap = hashmap_new();
 
-	myID = MIO_IDAdd (HASHMAP_ID, newmap, pmSrcPos, "Hashmap", "Hashmap");
+	myID = MIO_IDAdd (HASHMAP_ID, newmap, pmSrcPos, "Hashmap", "Hashmap"); //comparison bit is set to "Hasmap" just because
 
     // Couldn't allocate an identifier.  Return the default font ID.
     if (myID == 0)
