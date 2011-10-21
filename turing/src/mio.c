@@ -104,6 +104,7 @@
 #include "miosys.h"
 #include "miotime.h"
 #include "miowindow.h"
+#include "miohashmap.h"
 
 #include "edint.h"
 
@@ -183,6 +184,7 @@ xxx
 #define PIC_ID_BASE			7001
 #define SPRITE_ID_BASE			8001
 #define LEX_ID_BASE			9001
+#define HASHMAP_ID_BASE			10001
 
 /********************/
 /* Global variables */
@@ -1664,6 +1666,10 @@ int	MIO_IDAdd (int pmIDType, void *pmInfo, SRCPOS *pmSrcPos,
     {
     	myIDNumber = stIDCounter + LEX_ID_BASE;
     }
+	else if (pmIDType == HASHMAP_ID)
+    {
+    	myIDNumber = stIDCounter + HASHMAP_ID_BASE;
+    }
     else
     {
     	// TW Error!
@@ -1768,6 +1774,9 @@ void	MIO_IDFree (int pmSlotNumber)
 	    case LEXER_ID:
     		MIOLexer_End (myIDNumber);
 		break;
+		case HASHMAP_ID:
+    		MIOHashmap_Free (myIDNumber);
+		break;
 	    default:
     		// TW - Abort!
 		break;
@@ -1831,6 +1840,12 @@ void	*MIO_IDGet (int pmIDNumber, int pmIDType)
 		myKindWhat = "created";
     	    	myMessageNumber = E_SPRITE_NOT_AN_ID;
 		break;
+		case HASHMAP_ID:
+		myFirstPart = "HASHMAP ID";
+		myKind = "HASHMAP object";
+		myKindWhat = "created";
+    	    	myMessageNumber = E_SPRITE_NOT_AN_ID;
+		break;
 	}
     	switch (myActualIDType)
     	{
@@ -1848,6 +1863,9 @@ void	*MIO_IDGet (int pmIDNumber, int pmIDType)
 		break;
     	    case LEXER_ID:
 		mySecondPart = "lexer ID";
+		break;
+		case HASHMAP_ID:
+		mySecondPart = "hashmap ID";
 		break;
 	}
 
@@ -1899,6 +1917,9 @@ void	*MIO_IDGet (int pmIDNumber, int pmIDType)
     	    case LEXER_ID:
 	    	ABORT_WITH_ERRNO (E_LEX_ENDED);
     	        break;
+			case HASHMAP_ID:
+	    	ABORT_WITH_ERRNO (E_HASHMAP_FREED);
+    	        break;
     	} // switch
     }
     else 
@@ -1919,6 +1940,9 @@ void	*MIO_IDGet (int pmIDNumber, int pmIDType)
     	        break;
     	    case LEXER_ID:
 	    	ABORT_WITH_ERRNO (E_LEX_NEVER_INITIALIZED);
+    	        break;
+			case HASHMAP_ID:
+	    	ABORT_WITH_ERRNO (E_HASHMAP_NEVER_INITIALIZED);
     	        break;
     	} // switch
     }
@@ -2698,6 +2722,12 @@ static void	MyGetIDSlot (int pmIDNumber, int *pmIDType, int *pmIDSlot)
     {    	 
         myActualIDType = LEXER_ID;
         myActualIDSlot = pmIDNumber - LEX_ID_BASE;
+    }
+	else if ((HASHMAP_ID_BASE <= pmIDNumber) && 
+    	(pmIDNumber < HASHMAP_ID_BASE + MAX_IDS))
+    {    	 
+        myActualIDType = HASHMAP_ID;
+        myActualIDSlot = pmIDNumber - HASHMAP_ID_BASE;
     }
     else if (pmIDNumber == 0)
     {

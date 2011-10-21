@@ -65,6 +65,7 @@
 #define LEXER_ID			24
 #define UNKNOWN_ID			25
 #define ZERO_ID				26
+#define HASHMAP_ID			27
 
 /*********/
 /* Types */

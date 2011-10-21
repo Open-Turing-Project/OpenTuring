@@ -173,6 +173,12 @@
     <ClCompile Include="..\src\miowrapper.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\hashmap.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\miohashmap.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\mioerrmsg.in">
@@ -394,6 +400,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\turing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hashmap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\miohashmap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

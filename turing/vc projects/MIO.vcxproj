@@ -106,6 +106,7 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\hashmap.c" />
     <ClCompile Include="..\src\mdio.c">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -316,6 +317,7 @@
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <ClCompile Include="..\src\miohashmap.c" />
     <ClCompile Include="..\src\miojoy.c">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -442,6 +444,7 @@
     <ClInclude Include="..\src\edint.h" />
     <ClInclude Include="..\ready\src\edtext.h" />
     <ClInclude Include="..\src\fileman.h" />
+    <ClInclude Include="..\src\hashmap.h" />
     <ClInclude Include="..\src\libungif\gif_lib.h" />
     <ClInclude Include="..\src\jpeg-6b\jconfig.h" />
     <ClInclude Include="..\src\jpeg-6b\jerror.h" />
@@ -487,6 +490,7 @@
     <ClInclude Include="..\src\miofile.h" />
     <ClInclude Include="..\src\miofont.h" />
     <ClInclude Include="..\src\miogui.h" />
+    <ClInclude Include="..\src\miohashmap.h" />
     <ClInclude Include="..\src\miojoy.h" />
     <ClInclude Include="..\src\miolexer.h" />
     <ClInclude Include="..\src\miomouse.h" />
