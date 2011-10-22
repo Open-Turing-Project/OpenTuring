@@ -162,7 +162,6 @@ module pervasive Pic
 	var picID : int
     
 	if cache = 0 then
-	    put "creating new cache"
 	    cache := HashMap.New()
 	end if
 	

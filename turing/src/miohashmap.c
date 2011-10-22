@@ -75,9 +75,19 @@ extern void	MIOHashmap_Free (OOTint pmMapID)
 {
     map_t myMap;
 
-	myMap = MIO_IDGet (pmMapID, HASHMAP_ID);
-	hashmap_free (myMap);
-	MIO_IDRemove (pmMapID, HASHMAP_ID);
+	if (MIO_IDGetCount (pmMapID, HASHMAP_ID) > 1)
+    {
+		// The font has been 'new'ed several times,  Decrement the use count
+		// by one.
+		MIO_IDDecrement (pmMapID);
+    }
+    else
+    {
+		// The font has been free'd once for each 'new'.  Now get rid of it.
+		myMap = MIO_IDGet (pmMapID, HASHMAP_ID);
+		hashmap_free (myMap);
+		MIO_IDRemove (pmMapID, HASHMAP_ID);
+    }
 }
 extern OOTint MIOHashmap_New (SRCPOS *pmSrcPos)
 {
@@ -86,7 +96,7 @@ extern OOTint MIOHashmap_New (SRCPOS *pmSrcPos)
 
 	newmap = hashmap_new();
 
-	myID = MIO_IDAdd (HASHMAP_ID, newmap, pmSrcPos, "Hashmap", "Hashmap"); //comparison bit is set to "Hasmap" just because
+	myID = MIO_IDAdd (HASHMAP_ID, newmap, pmSrcPos, "Hashmap", NULL); //comparison bit is set to "Hasmap" just because
 
     // Couldn't allocate an identifier.  Return the default font ID.
     if (myID == 0)
@@ -129,6 +139,13 @@ extern OOTint	MIOHashmap_Get (OOTint pmMapID, OOTstring key, OOTint *result)
 extern void	MIOHashmap_Remove (OOTint pmMapID, OOTstring key)
 {
 	map_t myMap = MIO_IDGet (pmMapID, HASHMAP_ID);
+	OOTint *retrieved;
 
-	hashmap_remove (myMap,key);
+	int status = hashmap_get (myMap,key,(any_t*)&retrieved);
+
+	if(status != MAP_MISSING) {
+		hashmap_remove (myMap,key);
+		free(retrieved);
+	}
+	
 }

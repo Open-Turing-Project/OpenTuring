@@ -310,7 +310,6 @@ int hashmap_get(map_t in, char* key, any_t *arg){
 
 		curr = (curr + 1) % m->table_size;
 	}
-
 	*arg = NULL;
 
 	/* Not found */

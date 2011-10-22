@@ -50,6 +50,7 @@
 #define OPTION_NO_INITIAL_WINDOW	"-nowindow"
 #define OPTION_DISPLAY_HELP_STR		"-?"
 #define OPTION_TESTSUITE		"-testsuite"
+#define OPTION_AUTORUN			"-run"
 
 // Argumens for MyProcessCommandLineArguments
 #define PROCESS_OPTIONS			TRUE
@@ -114,6 +115,9 @@ static BOOL		stNoWindow = FALSE;
 
 // Admin command line option set
 static BOOL		stWantToBecomeAdmin = FALSE;
+
+// Run files on startup
+static BOOL		stAutoRunPrograms = FALSE;
 
 // Test suite command line option set
 static BOOL		stRunningTestSuite = FALSE;
@@ -1718,6 +1722,14 @@ static BOOL	MyProcessCommandLineArguments (int pmNumArgs, char *pmArgs[],
     	    	if (pmProcessOptions)
     	    	{
     	    	    stWantToBecomeAdmin = TRUE;
+    	    	}
+    	    	pmArgs [cnt] [0] = 0;
+    	    }
+			else if (strcmp (myArgument, OPTION_AUTORUN) == 0)
+    	    {
+    	    	if (pmProcessOptions)
+    	    	{
+    	    	    stAutoRunPrograms = TRUE;
     	    	}
     	    	pmArgs [cnt] [0] = 0;
     	    }
