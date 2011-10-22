@@ -311,7 +311,7 @@ int hashmap_get(map_t in, char* key, any_t *arg){
 		curr = (curr + 1) % m->table_size;
 	}
 
-	*arg = 0;
+	*arg = NULL;
 
 	/* Not found */
 	return MAP_MISSING;
@@ -367,7 +367,7 @@ int hashmap_remove(map_t in, char* key){
             if (strcmp(m->data[curr].key,key)==0){
                 /* Blank out the fields */
                 m->data[curr].in_use = 0;
-                m->data[curr].data = 0;
+                m->data[curr].data = NULL;
                 m->data[curr].key = NULL;
 
                 /* Reduce the size */

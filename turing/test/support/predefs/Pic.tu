@@ -8,7 +8,7 @@
 unit
 module pervasive Pic
     export New, Free, Draw, FileNew, Width, Height, Save,
-	ScreenLoad, ScreenSave, Mirror, Flip, Rotate, Scale,
+	ScreenLoad,ScreenLoadNoCache, ScreenSave, Mirror, Flip, Rotate, Scale,
 	SetTransparentColor, SetTransparentColour,
 	~.*picCopy, ~.*picXor, ~.*picMerge, ~.*picUnderMerge,
     % New with Turing 4.1
@@ -42,6 +42,8 @@ module pervasive Pic
 	~.*picSlideTopToBottomNoBar, ~.*picSlideBottomToTopNoBar,
 	~.*picFadeIn, ~.*picBlend
 
+    
+	
     % Exported constants
 
     const picCopy := 0
@@ -110,6 +112,10 @@ module pervasive Pic
     const picFadeIn := 99
 
     const picBlend := 100
+    
+    % THE CACHE
+    
+    var cache : int := 0
 
     % Exported routines
 
@@ -154,12 +160,34 @@ module pervasive Pic
 
     procedure ScreenLoad (fileStr : string, x, y, mode : int)
 	var picID : int
+    
+	if cache = 0 then
+	    put "creating new cache"
+	    cache := HashMap.New()
+	end if
+	
+	var wasStored := HashMap.Get(cache,fileStr,picID)
+	
+	if wasStored = 0 then % not cached
+	    picID := Pic.FileNew (fileStr)
+	    if picID not= 0 then
+		HashMap.Put(cache,fileStr,picID)
+	    end if
+	end if
+	
+	if picID > 0 then
+	    Pic.Draw (picID, x, y, mode)
+	end if
+    end ScreenLoad
+    
+    procedure ScreenLoadNoCache (fileStr : string, x, y, mode : int)
+	var picID : int
 	picID := Pic.FileNew (fileStr)
 	if picID > 0 then
 	    Pic.Draw (picID, x, y, mode)
 	    Pic.Free (picID)
 	end if
-    end ScreenLoad
+    end ScreenLoadNoCache
 
     procedure ScreenSave (x1, y1, x2, y2 : int, fileStr : string)
 	var picID : int

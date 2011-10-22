@@ -877,10 +877,11 @@ void MIO_hashmap_get (OOTaddr *sp)
 {
     OOTint hashId;
 	OOTstring key;
+	OOTint *result;
 
-    MyExecutorScan (sp, "rIR", &hashId,&key);
+    MyExecutorScan (sp, "rIRR", &hashId,&key,&result);
 
-	RESULT_OOT_INT(sp, MIOHashmap_Get (hashId,key));
+	RESULT_OOT_INT(sp, MIOHashmap_Get (hashId,key,result));
 }
 
 void MIO_hashmap_remove (OOTaddr *sp)

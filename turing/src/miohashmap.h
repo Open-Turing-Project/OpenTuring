@@ -37,7 +37,7 @@ extern OOTint MIOHashmap_New (SRCPOS *pmSrcPos);
 extern void	MIOHashmap_Free (OOTint pmFontID);
 
 extern void	MIOHashmap_Put (OOTint pmMapID, OOTstring key,OOTint value);
-extern OOTint	MIOHashmap_Get (OOTint pmMapID, OOTstring key);
+extern OOTint	MIOHashmap_Get (OOTint pmMapID, OOTstring key, OOTint *result);
 extern void	MIOHashmap_Remove (OOTint pmMapID, OOTstring key);
 
 /***************************************/

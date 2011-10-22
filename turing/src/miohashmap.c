@@ -99,18 +99,32 @@ extern OOTint MIOHashmap_New (SRCPOS *pmSrcPos)
 
 extern void	MIOHashmap_Put (OOTint pmMapID, OOTstring key,OOTint value)
 {
-	map_t myMap = MIO_IDGet (pmMapID, HASHMAP_ID);
+	map_t myMap;
+	OOTint *putval;
 
-	hashmap_put (myMap,key,value);
+	putval	= (OOTint*)malloc(sizeof(OOTint));
+	*putval = value;
+
+	myMap = MIO_IDGet (pmMapID, HASHMAP_ID);
+
+	hashmap_put (myMap,key,(any_t)putval);
 }
-extern OOTint	MIOHashmap_Get (OOTint pmMapID, OOTstring key)
+extern OOTint	MIOHashmap_Get (OOTint pmMapID, OOTstring key, OOTint *result)
 {
-	OOTint result;
 	map_t myMap = MIO_IDGet (pmMapID, HASHMAP_ID);
 
-	hashmap_get (myMap,key,&result);
+	OOTint *retrieved;
+	int status = hashmap_get (myMap,key,(any_t*)&retrieved);
 
-	return result; // Is 0/NULL if not found
+	if(status == MAP_MISSING) {
+		*result = 0;
+		return 0; // 0 if not found
+	} else {
+		*result = *retrieved;
+		return 1; 
+	}
+
+	
 }
 extern void	MIOHashmap_Remove (OOTint pmMapID, OOTstring key)
 {

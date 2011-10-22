@@ -18,7 +18,7 @@
  * any_t is a pointer.  This allows you to put arbitrary structures in
  * the hashmap.
  */
-typedef long any_t;
+typedef void *any_t;
 
 /*
  * PFany is a pointer to a function that can take two any_t arguments
