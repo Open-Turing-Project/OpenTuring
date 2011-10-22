@@ -29,6 +29,13 @@
 /***********************/
 /* External procedures */
 /***********************/
-extern void	MIOSDLGraph_NewWin (OOTint width,OOTint height);
+extern void	MIOSDLGraph_InitRun ();
+extern void	MIOSDLGraph_NewWin (OOTint width,OOTint height,OOTint winMode);
+extern void	MIOSDLGraph_CloseWin ();
+extern void	MIOSDLGraph_Update ();
+
+extern void	MIOSDLGraph_Line (OOTint x1,OOTint y1,OOTint x2,OOTint y2,
+								OOTint r, OOTint g, OOTint b, OOTint a);
+
 
 #endif // #ifndef _MIOSDLGRAPH_H_

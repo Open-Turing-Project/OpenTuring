@@ -244,6 +244,11 @@ extern void MIO_music_playfiledone();
 extern void MIO_music_playfilestop();
 extern void MIO_music_preload();
 
+extern void MIO_sdlgraph_newwin();
+extern void MIO_sdlgraph_closewin();
+extern void MIO_sdlgraph_update();
+extern void MIO_sdlgraph_drawline();
+
 extern void MIO_sys_exec();
 extern void MIO_sys_exit();
 extern void MIO_sys_getcomputername();
@@ -532,6 +537,11 @@ struct LookupEntry externLookupTable[] = {
     { "rgb_getcolour",		MIO_rgb_getcolour },
     { "rgb_maxcolour",		MIO_rgb_maxcolour },
     { "rgb_setcolour",		MIO_rgb_setcolour },
+
+	{ "sdlgraph_closewin",	MIO_sdlgraph_closewin },
+	{ "sdlgraph_drawline",	MIO_sdlgraph_drawline },
+	{ "sdlgraph_newwin",	MIO_sdlgraph_newwin },
+	{ "sdlgraph_update",	MIO_sdlgraph_update },
 
     { "sprite_animate",		MIO_sprite_animate },
     { "sprite_changepic",	MIO_sprite_changepic },

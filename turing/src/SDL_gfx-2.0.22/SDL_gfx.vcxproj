@@ -124,6 +124,9 @@ copy "$(ProjectDir)\..\SDL-1.2.14\VisualC\SDL\Debug\SDL.dll" "$(SolutionDir)\Tes
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </CustomBuildStep>
   </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Debug\SDL_gfx_manifest.rc" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

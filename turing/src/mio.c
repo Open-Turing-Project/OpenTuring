@@ -106,6 +106,8 @@
 #include "miowindow.h"
 #include "miohashmap.h"
 
+#include "miosdlgraph.h"
+
 #include "edint.h"
 
 // Test to make certain we're not accidentally including <windows.h> which
@@ -792,6 +794,8 @@ BOOL	MIO_Init_Run (const char *pmProgramName,
     MIOTime_Init_Run ();	    	// Set the start of app time
     MIOSys_Init_Run (pmAllowSysExec);   // Set whether Sys.Exec allowed
 
+	MIOSDLGraph_InitRun (); // init SDL
+
     return TRUE;
 } // MIO_Init_Run
 
@@ -847,6 +851,9 @@ void	MIO_Finalize_Run (void)
 
     // Close all hidden run windows
     MyCloseRunWindows (HIDDEN_ONLY);
+
+	// Close SDL Window
+	MIOSDLGraph_CloseWin ();
 
     // Close any files opened for redirection
     if (stMIOStdinRedirect -> fileType == FILE_KIND_FILE)

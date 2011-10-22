@@ -55,4 +55,9 @@
     <CustomBuildStep Include="ChangeLog" />
     <CustomBuildStep Include="README" />
   </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Debug\SDL_gfx_manifest.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
 </Project>

@@ -55,6 +55,7 @@
 #include "miopic.h"
 #include "miopc.h"
 #include "miorgb.h"
+#include "miosdlgraph.h"
 #include "miosprite.h"
 #include "miosys.h"
 #include "miotext.h"
@@ -1775,7 +1776,37 @@ void MIO_music_preload (OOTaddr *sp)
 
     MIOMusic_PreLoad (playFile);
 } // MIO_music_playfile
+/************************************************************************/
+/* SDL Graphics							*/
+/************************************************************************/
 
+void MIO_sdlgraph_newwin (OOTaddr *sp)
+{
+    OOTint width,height,mode;
+
+    MyExecutorScan (sp, "III", &width,&height,&mode);
+
+    MIOSDLGraph_NewWin (width,height,mode);
+}
+
+void MIO_sdlgraph_closewin (OOTaddr *sp)
+{
+    MIOSDLGraph_CloseWin();
+}
+
+void MIO_sdlgraph_update (OOTaddr *sp)
+{
+    MIOSDLGraph_Update();
+}
+
+void MIO_sdlgraph_drawline (OOTaddr *sp)
+{
+    OOTint x1,y1,x2,y2,r,g,b,a;
+
+    MyExecutorScan (sp, "IIIIIIII", &x1,&y1,&x2,&y2,&r,&g,&b,&a);
+
+    MIOSDLGraph_Line (x1,y1,x2,y2,r,g,b,a);
+}
 
 /************************************************************************/
 /* Sprite module							*/

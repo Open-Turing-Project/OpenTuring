@@ -44,6 +44,7 @@
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\Debug\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\src\SDL-1.2.14\lib;..\src\SDL_gfx-2.0.22\lib;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Midl>
@@ -127,7 +128,7 @@
       <Command>del ..\test\turing.exe</Command>
     </PreLinkEvent>
     <Link>
-      <AdditionalDependencies>libcmtd.lib;version.lib;winmm.lib;comctl32.lib;odbc32.lib;odbccp32.lib;wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL.lib;SDL_gfx.lib;libcmtd.lib;version.lib;winmm.lib;comctl32.lib;odbc32.lib;odbccp32.lib;wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\Debug/Turing.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <GenerateDebugInformation>true</GenerateDebugInformation>
