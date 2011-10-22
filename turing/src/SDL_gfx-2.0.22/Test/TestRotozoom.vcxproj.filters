@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Images">
+      <UniqueIdentifier>{073f7a96-83ec-4071-8538-dd31eb2c6bdd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="TestRotozoom.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuildStep Include="sample24-box.bmp">
+      <Filter>Images</Filter>
+    </CustomBuildStep>
+    <CustomBuildStep Include="sample24.bmp">
+      <Filter>Images</Filter>
+    </CustomBuildStep>
+    <CustomBuildStep Include="sample8-box.bmp">
+      <Filter>Images</Filter>
+    </CustomBuildStep>
+    <CustomBuildStep Include="sample8.bmp">
+      <Filter>Images</Filter>
+    </CustomBuildStep>
+  </ItemGroup>
+</Project>
