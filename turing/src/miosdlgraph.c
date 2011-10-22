@@ -2,6 +2,7 @@
 /* System includes */
 /*******************/
 #include "SDL.h"
+#include "SDL_gfxPrimitives.h" 
 
 /****************/
 /* Self include */
@@ -26,10 +27,13 @@ xxx
 /*************/
 /* Constants */
 /*************/
+#define MIO_SDL_WINDOW_TITLE "Turing SDL Window"
 
 /********************/
 /* Global variables */
 /********************/
+
+static bool mioSDLGraphWinOpen = false;
 
 /*********/
 /* Types */
@@ -59,3 +63,15 @@ xxx
 /***********************/
 /* External procedures */
 /***********************/
+
+extern void	MIOSDLGraph_NewWin (OOTint width,OOTint height)
+{
+	if(!mioSDLGraphWinOpen){
+		SDL_Init( SDL_INIT_VIDEO );
+
+		SDL_Surface* screen = SDL_SetVideoMode( width, height, 0, SDL_HWSURFACE | SDL_DOUBLEBUF );
+		SDL_WM_SetCaption( MIO_SDL_WINDOW_TITLE, 0 );
+
+		mioSDLGraphWinOpen = true;
+	}
+}
