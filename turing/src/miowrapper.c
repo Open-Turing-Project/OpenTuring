@@ -1799,13 +1799,27 @@ void MIO_sdlgraph_update (OOTaddr *sp)
     MIOSDLGraph_Update();
 }
 
+void MIO_sdlgraph_cls (OOTaddr *sp)
+{
+    MIOSDLGraph_Cls();
+}
+
 void MIO_sdlgraph_drawline (OOTaddr *sp)
 {
-    OOTint x1,y1,x2,y2,r,g,b,a;
+    OOTint x1,y1,x2,y2,r,g,b;
 
-    MyExecutorScan (sp, "IIIIIIII", &x1,&y1,&x2,&y2,&r,&g,&b,&a);
+    MyExecutorScan (sp, "IIIIIII", &x1,&y1,&x2,&y2,&r,&g,&b);
 
-    MIOSDLGraph_Line (x1,y1,x2,y2,r,g,b,a);
+    MIOSDLGraph_Line (x1,y1,x2,y2,r,g,b);
+}
+
+void MIO_sdlgraph_drawfillrect (OOTaddr *sp)
+{
+    OOTint x1,y1,x2,y2,r,g,b;
+
+    MyExecutorScan (sp, "IIIIIII", &x1,&y1,&x2,&y2,&r,&g,&b);
+
+    MIOSDLGraph_FillRect (x1,y1,x2,y2,r,g,b);
 }
 
 /************************************************************************/

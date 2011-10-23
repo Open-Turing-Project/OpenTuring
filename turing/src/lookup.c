@@ -246,8 +246,10 @@ extern void MIO_music_preload();
 
 extern void MIO_sdlgraph_newwin();
 extern void MIO_sdlgraph_closewin();
+extern void MIO_sdlgraph_cls();
 extern void MIO_sdlgraph_update();
 extern void MIO_sdlgraph_drawline();
+extern void MIO_sdlgraph_drawfillrect();
 
 extern void MIO_sys_exec();
 extern void MIO_sys_exit();
@@ -539,6 +541,8 @@ struct LookupEntry externLookupTable[] = {
     { "rgb_setcolour",		MIO_rgb_setcolour },
 
 	{ "sdlgraph_closewin",	MIO_sdlgraph_closewin },
+	{ "sdlgraph_cls",	MIO_sdlgraph_cls },
+	{ "sdlgraph_drawfillrect",	MIO_sdlgraph_drawfillrect },
 	{ "sdlgraph_drawline",	MIO_sdlgraph_drawline },
 	{ "sdlgraph_newwin",	MIO_sdlgraph_newwin },
 	{ "sdlgraph_update",	MIO_sdlgraph_update },

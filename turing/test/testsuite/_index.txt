@@ -1,2 +1,3 @@
 #execdir testout
 B HashmapTest1.t
+B SDLTest.t

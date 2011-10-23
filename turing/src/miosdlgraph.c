@@ -105,7 +105,7 @@ extern void	MIOSDLGraph_NewWin (OOTint width,OOTint height,OOTint winMode)
 		glOrtho(0, width, height, 0, 1, -1); // set up 2d perspective
 
 		glDisable(GL_DEPTH_TEST); // disable depth
- 
+		
 		glMatrixMode(GL_MODELVIEW);
  
 		glEnable(GL_TEXTURE_2D);
@@ -145,11 +145,11 @@ extern void	MIOSDLGraph_Cls ()
 }
 
 extern void	MIOSDLGraph_Line (OOTint x1,OOTint y1,OOTint x2,OOTint y2,
-								OOTint r, OOTint g, OOTint b, OOTint a)
+								OOTint r, OOTint g, OOTint b)
 {
 	if(stSDLWinOpen){
-		glColor3f(r/255.0f,g/255.0f,b/255.0f);
-		//glColor4ub(CAP8(r), CAP8(g), CAP8(b),CAP8(a));
+		//glColor3f(r/255.0f,g/255.0f,b/255.0f);
+		glColor3ub(CAP8(r), CAP8(g), CAP8(b));
 
 		glBegin(GL_LINES);
 		glVertex2f((GLfloat)x1, (GLfloat)y1); 
@@ -159,10 +159,10 @@ extern void	MIOSDLGraph_Line (OOTint x1,OOTint y1,OOTint x2,OOTint y2,
 }
 
 extern void	MIOSDLGraph_FillRect (OOTint x1,OOTint y1,OOTint x2,OOTint y2,
-								OOTint r, OOTint g, OOTint b, OOTint a)
+								OOTint r, OOTint g, OOTint b)
 {
 	if(stSDLWinOpen){
-		glColor4ub(CAP8(r), CAP8(g), CAP8(b),CAP8(a));
+		glColor3ub(CAP8(r), CAP8(g), CAP8(b));
 		
 		glBegin(GL_QUADS); // draw rect with quads
 		glVertex2f((GLfloat)x1, (GLfloat)y1);
