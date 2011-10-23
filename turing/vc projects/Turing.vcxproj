@@ -128,7 +128,7 @@
       <Command>del ..\test\turing.exe</Command>
     </PreLinkEvent>
     <Link>
-      <AdditionalDependencies>SDL.lib;SDL_gfx.lib;libcmtd.lib;version.lib;winmm.lib;comctl32.lib;odbc32.lib;odbccp32.lib;wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL.lib;SDL_gfx.lib;opengl32.lib;glu32.lib;libcmtd.lib;version.lib;winmm.lib;comctl32.lib;odbc32.lib;odbccp32.lib;wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\Debug/Turing.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <GenerateDebugInformation>true</GenerateDebugInformation>
