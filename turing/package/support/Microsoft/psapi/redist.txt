@@ -1,0 +1,21 @@
+====================
+PSAPI for Windows NT
+====================
+
+To install the PSAPI helper DLL on Windows NT copy PSAPI.DLL into
+the %windir%\System directory.  The PSAPI.DLL should never be installed over
+an existing copy of the same DLL that has a later version resource.  The
+PSAPI.DLL should never be installed on a Windows 95 system (it will not work).
+
+For Windows 2000, use the system-supplied psapi.dll; do not install a new 
+psapi.dll (it will fail due to Windows File Protection). 
+
+The version of PSAPI.DLL that can be redistributed is located in 
+the \Redist\PSApi\x86 directory in the Platform SDK.
+
+In addition to the rights granted in Section 1 of the Agreement ("Agreement"), 
+with respect to the PSAPI DLL for Windows NT Redistributable Code, you have 
+the following non-exclusive, royalty free rights subject to the Distribution 
+Requirements detailed in Section 1 of the Agreement:
+
+(1)  You may distribute PSAPI.DLL.
