@@ -380,7 +380,7 @@ STRINGTABLE
     IDS_JAVA_PRODUCT_NAME_1		"Ready to Program with"
     IDS_JAVA_PRODUCT_NAME_2	    	"Java\231 Technology"
     IDS_TURING_PRODUCT_NAME		"Turing"
-    IDS_CREATED_BY			"Created by Holt Software Associates Inc."        
+    IDS_CREATED_BY			"An open-source Turing interpreter based on Holt Software's Turing 4.1"        
     IDS_IBM_ASSIST			"Development Assisted by IBM Corp."
     IDS_LEAD_PROGRAMMER			"Lead Programmer: Tom West"
     IDS_MINI_MSG_1			"Licensed to "
@@ -1812,9 +1812,9 @@ TOP_BUTTON_DATA RCDATA
 	    	VALUE "LegalCopyright",  "Copyright \251 Holt Software Associates Inc. 2011\0"
 	    	VALUE "Comments",        "Environment written by: Tom L. West\0"
 	    	VALUE "CompanyName",     "Holt Software Associates Inc.\0"
-	    	VALUE "FileVersion",     "4.1.2\0"
+	    	VALUE "FileVersion",     "1.0.0\0"
 	    	VALUE "ProductName",     "Turing for Windows (formerly Object Oriented Turing)\0"
-	    	VALUE "ProductVersion",  "4.1.2\0"
+	    	VALUE "ProductVersion",  "1.0.0\0"
 	    END
         END
     	BLOCK "VarFileInfo"

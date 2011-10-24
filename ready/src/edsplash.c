@@ -585,7 +585,7 @@ static int	MyCreateSplashWindow (HWND pmSplashWindow, BOOL pmAbout)
         "Times New Roman", 30, BOLD, NO_ITALIC);
         
     myInfo -> createdByFont = EdGUI_CreateFont (pmSplashWindow, NULL,
-        "Times New Roman", 14, BOLD, NO_ITALIC);
+        "Times New Roman", 12, BOLD, NO_ITALIC);
 
     myInfo -> chiefProgrammerFont = EdGUI_CreateFont (pmSplashWindow, NULL,
         "Times New Roman", 10, NO_BOLD, NO_ITALIC);
