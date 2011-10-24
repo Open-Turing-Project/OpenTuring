@@ -35,30 +35,9 @@ extern void	MIOSDLGraph_CloseWin ();
 extern void	MIOSDLGraph_Update ();
 extern void	MIOSDLGraph_Cls ();
 
-extern void	MIOSDLGraph_SetLight (OOTint lighting);
-
-// matrix stack
-extern void	MIOSDLGraph_PushMatrix ();
-extern void	MIOSDLGraph_PopMatrix ();
-extern void MIOSDLGraph_ClearMatrix ();
-// matrix manipulation
-extern void	MIOSDLGraph_Translate (OOTreal x,OOTreal y,OOTreal z);
-extern void	MIOSDLGraph_Rotate (OOTreal angle,OOTreal x,OOTreal y,OOTreal z);
-extern void	MIOSDLGraph_Scale (OOTreal x,OOTreal y,OOTreal z);
-
-extern void	MIOSDLGraph_Line (
-								OOTreal x1,OOTreal y1,OOTreal z1, 
-								OOTreal x2,OOTreal y2,OOTreal z2,
+extern void	MIOSDLGraph_Line (OOTint x1,OOTint y1,OOTint x2,OOTint y2,
 								OOTint r, OOTint g, OOTint b);
-extern void	MIOSDLGraph_FillTriangle (
-								OOTreal x1,OOTreal y1,OOTreal z1, 
-								OOTreal x2,OOTreal y2,OOTreal z2,
-								OOTreal x3,OOTreal y3,OOTreal z3,
-								OOTint r, OOTint g, OOTint b);
-extern void	MIOSDLGraph_Triangle (
-								OOTreal x1,OOTreal y1,OOTreal z1, 
-								OOTreal x2,OOTreal y2,OOTreal z2,
-								OOTreal x3,OOTreal y3,OOTreal z3,
+extern void	MIOSDLGraph_FillRect (OOTint x1,OOTint y1,OOTint x2,OOTint y2,
 								OOTint r, OOTint g, OOTint b);
 
 

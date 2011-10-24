@@ -40,8 +40,6 @@
 /********************/
 
 static int stSDLWinOpen;
-static int stSDLLightingOn;
-
 static SDL_Surface* stSDLScreen;
 
 /*********/
@@ -75,16 +73,11 @@ static SDL_Surface* stSDLScreen;
 
 extern void	MIOSDLGraph_InitRun () {
 	stSDLWinOpen = FALSE;
-	stSDLLightingOn = FALSE;
 }
 
 extern void	MIOSDLGraph_NewWin (OOTint width,OOTint height,OOTint winMode)
 {
 	int mode;
-	GLfloat LightAmbient[]= { 0.5f, 0.5f, 0.5f, 1.0f };
-	GLfloat LightDiffuse[]= { 1.0f, 1.0f, 1.0f, 1.0f };
-	GLfloat LightPosition[]= { 0.0f, 0.0f, 2.0f, 1.0f }; 
-
 	if(!stSDLWinOpen){
 		// Initializes the video subsystem
 		if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -101,29 +94,25 @@ extern void	MIOSDLGraph_NewWin (OOTint width,OOTint height,OOTint winMode)
 
 		// set up openGL for 2D rendering ----------
 
-		/* Enable multisampling for a nice antialiased effect */
-		SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 2);
-		SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 5);
+		glClearColor(1.0f, 1.0f, 1.0f, 1.0f); // clear to white
+		//glClearDepth(1.0f);
+ 
+		glViewport(0, 0, width, height); // set coordinate system (0,0) in top left
+ 
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity(); // clear projection matix
+ 
+		glOrtho(0, width, height, 0, 1, -1); // set up 2d perspective
 
-		// better lines		
-		glEnable(GL_LINE_SMOOTH);
-		glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-		glLineWidth(1.5f);
+		glDisable(GL_DEPTH_TEST); // disable depth
+		
+		glMatrixMode(GL_MODELVIEW);
+ 
+		glEnable(GL_TEXTURE_2D);
+ 
+		glLoadIdentity();
 
-		glShadeModel(GL_SMOOTH);							// Enable Smooth Shading
-		glClearColor(0.0f, 0.0f, 0.0f, 0.5f);				// Black Background
-		glClearDepth(1.0f);									// Depth Buffer Setup
-		glEnable(GL_DEPTH_TEST);							// Enables Depth Testing
-		glDepthFunc(GL_LEQUAL);								// The Type Of Depth Testing To Do
-		glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);	// Really Nice Perspective Calculations
-
-		//lighting
-		glShadeModel(GL_SMOOTH);
-		glLightfv(GL_LIGHT1, GL_AMBIENT, LightAmbient);
-
-		glLightfv(GL_LIGHT1, GL_DIFFUSE, LightDiffuse);             // Setup The Diffuse Light
-		glLightfv(GL_LIGHT1, GL_POSITION,LightPosition);            // Position The Light
-		glEnable(GL_LIGHT1);
+		glTranslatef(0.375f, 0.375f, 0.0f); // displacement trick for more exact pixelization
 
 		MIOSDLGraph_Cls();
 
@@ -151,128 +140,35 @@ extern void	MIOSDLGraph_Update ()
 extern void	MIOSDLGraph_Cls ()
 {
 	if(stSDLWinOpen){
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// Clear Screen And Depth Buffer
-	}
-}
-//light
-extern void	MIOSDLGraph_SetLight (OOTint lighting)
-{
-	if(stSDLWinOpen){
-		if(lighting) {
-			glEnable(GL_LIGHTING);
-			stSDLLightingOn = TRUE;
-		} else {
-			glDisable(GL_LIGHTING);
-			stSDLLightingOn = FALSE;
-		}
+		glClear(GL_COLOR_BUFFER_BIT);
 	}
 }
 
-// matrix stack
-extern void	MIOSDLGraph_ClearMatrix ()
-{
-	if(stSDLWinOpen){
-		glLoadIdentity();
-	}
-}
-
-extern void	MIOSDLGraph_PushMatrix ()
-{
-	if(stSDLWinOpen){
-		glPushMatrix();
-	}
-}
-
-extern void	MIOSDLGraph_PopMatrix ()
-{
-	if(stSDLWinOpen){
-		glPopMatrix();
-	}
-}
-// matrix manipulation
-extern void	MIOSDLGraph_Translate (OOTreal x,OOTreal y,OOTreal z)
-{
-	if(stSDLWinOpen){
-		glTranslatef((GLfloat)x,(GLfloat)y,(GLfloat)z);
-	}
-}
-extern void	MIOSDLGraph_Rotate (OOTreal angle,OOTreal x,OOTreal y,OOTreal z)
-{
-	if(stSDLWinOpen){
-		glRotatef((GLfloat)angle,(GLfloat)x,(GLfloat)y,(GLfloat)z);
-	}
-}
-extern void	MIOSDLGraph_Scale (OOTreal x,OOTreal y,OOTreal z)
-{
-	if(stSDLWinOpen){
-		glScalef((GLfloat)x,(GLfloat)y,(GLfloat)z);
-	}
-}
-// drawing
-extern void	MIOSDLGraph_Line (
-								OOTreal x1,OOTreal y1,OOTreal z1, 
-								OOTreal x2,OOTreal y2,OOTreal z2,
+extern void	MIOSDLGraph_Line (OOTint x1,OOTint y1,OOTint x2,OOTint y2,
 								OOTint r, OOTint g, OOTint b)
 {
 	if(stSDLWinOpen){
-		if(stSDLLightingOn) { // because winding is weird. Hafta light both sides
-			float color[] = { r/255.0f, g/255.0f, b/255.0f, 1.0f };
-			glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, color);
-		}
-
 		//glColor3f(r/255.0f,g/255.0f,b/255.0f);
 		glColor3ub(CAP8(r), CAP8(g), CAP8(b));
 
 		glBegin(GL_LINES);
-		glVertex3f((GLfloat)x1, (GLfloat)y1, (GLfloat)z1); 
-		glVertex3f((GLfloat)x2, (GLfloat)y2, (GLfloat)z2);
+		glVertex2f((GLfloat)x1, (GLfloat)y1); 
+		glVertex2f((GLfloat)x2, (GLfloat)y2);
 		glEnd();
-
-		if(stSDLLightingOn) { // because winding is weird. Hafta light both sides
-
-		}
 	}
 }
 
-extern void	MIOSDLGraph_FillTriangle (
-								OOTreal x1,OOTreal y1,OOTreal z1, 
-								OOTreal x2,OOTreal y2,OOTreal z2,
-								OOTreal x3,OOTreal y3,OOTreal z3,
+extern void	MIOSDLGraph_FillRect (OOTint x1,OOTint y1,OOTint x2,OOTint y2,
 								OOTint r, OOTint g, OOTint b)
 {
 	if(stSDLWinOpen){
-		if(stSDLLightingOn) { // because winding is weird. Hafta light both sides
-			float color[] = { r/255.0f, g/255.0f, b/255.0f, 1.0f };
-			glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, color);
-		}
-
 		glColor3ub(CAP8(r), CAP8(g), CAP8(b));
 		
-		glBegin(GL_TRIANGLES);
-		glVertex3f((GLfloat)x1, (GLfloat)y1, (GLfloat)z1);
-		glVertex3f((GLfloat)x2, (GLfloat)y2, (GLfloat)z2);
-		glVertex3f((GLfloat)x3, (GLfloat)y3, (GLfloat)z3);
-		glEnd();
-	}
-}
-
-extern void	MIOSDLGraph_Triangle (
-								OOTreal x1,OOTreal y1,OOTreal z1, 
-								OOTreal x2,OOTreal y2,OOTreal z2,
-								OOTreal x3,OOTreal y3,OOTreal z3,
-								OOTint r, OOTint g, OOTint b)
-{
-	if(stSDLWinOpen){		
-		if(stSDLLightingOn) { // because winding is weird. Hafta light both sides
-			float color[] = { r/255.0f, g/255.0f, b/255.0f, 1.0f };
-			glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, color);
-		}
-		glColor3ub(CAP8(r), CAP8(g), CAP8(b));
-		
-		glBegin(GL_LINE_LOOP); // draw rect with quads
-		glVertex3f((GLfloat)x1, (GLfloat)y1, (GLfloat)z1);
-		glVertex3f((GLfloat)x2, (GLfloat)y2, (GLfloat)z2);
-		glVertex3f((GLfloat)x3, (GLfloat)y3, (GLfloat)z3);
+		glBegin(GL_QUADS); // draw rect with quads
+		glVertex2f((GLfloat)x1, (GLfloat)y1);
+		glVertex2f((GLfloat)x2, (GLfloat)y1);
+		glVertex2f((GLfloat)x2, (GLfloat)y2);
+		glVertex2f((GLfloat)x1, (GLfloat)y2);
 		glEnd();
 	}
 }
