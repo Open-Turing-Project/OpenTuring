@@ -6,6 +6,8 @@
 *.log
 *.o
 *.so
+*.pdb
+*.exe
 
 # OS generated files #
 ######################
@@ -13,6 +15,7 @@
 ehthumbs.db
 Icon?
 Thumbs.db
+turing_files.ini
 
 turing/obj/**/*
 turing/Debug/**/*
