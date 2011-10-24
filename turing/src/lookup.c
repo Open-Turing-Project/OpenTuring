@@ -248,8 +248,18 @@ extern void MIO_sdlgraph_newwin();
 extern void MIO_sdlgraph_closewin();
 extern void MIO_sdlgraph_cls();
 extern void MIO_sdlgraph_update();
+extern void MIO_sdlgraph_setlight();
+
+extern void MIO_sdlgraph_pushmatrix();
+extern void MIO_sdlgraph_popmatrix();
+extern void MIO_sdlgraph_clearmatrix();
+extern void MIO_sdlgraph_translate();
+extern void MIO_sdlgraph_rotate();
+extern void MIO_sdlgraph_scale();
+
 extern void MIO_sdlgraph_drawline();
-extern void MIO_sdlgraph_drawfillrect();
+extern void MIO_sdlgraph_drawfilltriangle();
+extern void MIO_sdlgraph_drawtriangle();
 
 extern void MIO_sys_exec();
 extern void MIO_sys_exit();
@@ -540,11 +550,19 @@ struct LookupEntry externLookupTable[] = {
     { "rgb_maxcolour",		MIO_rgb_maxcolour },
     { "rgb_setcolour",		MIO_rgb_setcolour },
 
+	{ "sdlgraph_clearmatrix", MIO_sdlgraph_clearmatrix },
 	{ "sdlgraph_closewin",	MIO_sdlgraph_closewin },
 	{ "sdlgraph_cls",	MIO_sdlgraph_cls },
-	{ "sdlgraph_drawfillrect",	MIO_sdlgraph_drawfillrect },
+	{ "sdlgraph_drawfilltriangle",	MIO_sdlgraph_drawfilltriangle },
 	{ "sdlgraph_drawline",	MIO_sdlgraph_drawline },
+	{ "sdlgraph_drawtriangle",	MIO_sdlgraph_drawtriangle },
 	{ "sdlgraph_newwin",	MIO_sdlgraph_newwin },
+	{ "sdlgraph_popmatrix", MIO_sdlgraph_popmatrix },
+	{ "sdlgraph_pushmatrix", MIO_sdlgraph_pushmatrix },
+	{ "sdlgraph_rotate", MIO_sdlgraph_rotate },
+	{ "sdlgraph_scale", MIO_sdlgraph_scale },
+	{ "sdlgraph_setlight", MIO_sdlgraph_setlight },
+	{ "sdlgraph_translate", MIO_sdlgraph_translate },
 	{ "sdlgraph_update",	MIO_sdlgraph_update },
 
     { "sprite_animate",		MIO_sprite_animate },

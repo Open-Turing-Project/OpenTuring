@@ -1804,22 +1804,87 @@ void MIO_sdlgraph_cls (OOTaddr *sp)
     MIOSDLGraph_Cls();
 }
 
-void MIO_sdlgraph_drawline (OOTaddr *sp)
+void MIO_sdlgraph_setlight (OOTaddr *sp)
 {
-    OOTint x1,y1,x2,y2,r,g,b;
+    OOTint l; // enable light?
 
-    MyExecutorScan (sp, "IIIIIII", &x1,&y1,&x2,&y2,&r,&g,&b);
+    MyExecutorScan (sp, "I", &l);
 
-    MIOSDLGraph_Line (x1,y1,x2,y2,r,g,b);
+    MIOSDLGraph_SetLight (l);
 }
 
-void MIO_sdlgraph_drawfillrect (OOTaddr *sp)
+void MIO_sdlgraph_pushmatrix (OOTaddr *sp)
 {
-    OOTint x1,y1,x2,y2,r,g,b;
+    MIOSDLGraph_PushMatrix();
+}
 
-    MyExecutorScan (sp, "IIIIIII", &x1,&y1,&x2,&y2,&r,&g,&b);
+void MIO_sdlgraph_popmatrix (OOTaddr *sp)
+{
+    MIOSDLGraph_PopMatrix();
+}
+void MIO_sdlgraph_clearmatrix (OOTaddr *sp)
+{
+    MIOSDLGraph_ClearMatrix();
+}
 
-    MIOSDLGraph_FillRect (x1,y1,x2,y2,r,g,b);
+void MIO_sdlgraph_translate (OOTaddr *sp)
+{
+    OOTreal x1, y1, z1;
+
+    MyExecutorScan (sp, "888", &x1,&y1,&z1);
+
+    MIOSDLGraph_Translate (x1, y1, z1);
+}
+void MIO_sdlgraph_scale (OOTaddr *sp)
+{
+    OOTreal x1, y1, z1;
+
+    MyExecutorScan (sp, "888", &x1,&y1,&z1);
+
+    MIOSDLGraph_Scale (x1, y1, z1);
+}
+void MIO_sdlgraph_rotate (OOTaddr *sp)
+{
+    OOTreal angle,x1, y1, z1;
+
+    MyExecutorScan (sp, "*888", &angle,&x1,&y1,&z1);
+
+    MIOSDLGraph_Rotate (angle,x1, y1, z1);
+}
+
+void MIO_sdlgraph_drawline (OOTaddr *sp)
+{
+    OOTreal x1, y1, z1;
+	OOTreal x2, y2, z2;
+	OOTint r, g, b;
+
+    MyExecutorScan (sp, "888888III", &x1,&y1,&z1,&x2,&y2,&z2,&r,&g,&b);
+
+    MIOSDLGraph_Line (x1, y1, z1,x2, y2, z2,r,g,b);
+}
+
+void MIO_sdlgraph_drawfilltriangle (OOTaddr *sp)
+{
+    OOTreal x1, y1, z1;
+	OOTreal x2, y2, z2;
+	OOTreal x3, y3, z3;
+	OOTint r, g, b;
+
+    MyExecutorScan (sp, "888888888III", &x1,&y1,&z1,&x2,&y2,&z2,&x3,&y3,&z3,&r,&g,&b);
+
+    MIOSDLGraph_FillTriangle (x1, y1, z1,x2, y2, z2,x3, y3, z3,r,g,b);
+}
+
+void MIO_sdlgraph_drawtriangle (OOTaddr *sp)
+{
+    OOTreal x1, y1, z1;
+	OOTreal x2, y2, z2;
+	OOTreal x3, y3, z3;
+	OOTint r, g, b;
+
+    MyExecutorScan (sp, "888888888III", &x1,&y1,&z1,&x2,&y2,&z2,&x3,&y3,&z3,&r,&g,&b);
+
+    MIOSDLGraph_Triangle (x1, y1, z1,x2, y2, z2,x3, y3, z3,r,g,b);
 }
 
 /************************************************************************/
