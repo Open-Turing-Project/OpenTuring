@@ -7,7 +7,7 @@
 /****************/
 /* Self include */
 /****************/
-#include "miosdlgraph.h"
+#include "mioglgraph.h"
 
 /******************/
 /* Other includes */
@@ -39,8 +39,14 @@
 /* Global variables */
 /********************/
 
-static int stSDLWinOpen;
+static int stGLWinOpen;
 static int stSDLLightingOn;
+
+static int myWidth,myHeight;
+
+// windows specific
+static HDC glDeviceContext;
+static HGLRC glRenderContext;
 
 static SDL_Surface* stSDLScreen;
 
@@ -67,44 +73,11 @@ static SDL_Surface* stSDLScreen;
 /*********************/
 /* Static procedures */
 /*********************/
-
-
-/***********************/
-/* External procedures */
-/***********************/
-
-extern void	MIOSDLGraph_InitRun () {
-	stSDLWinOpen = FALSE;
-	stSDLLightingOn = FALSE;
-}
-
-extern void	MIOSDLGraph_NewWin (OOTint width,OOTint height,OOTint winMode)
-{
-	int mode;
-	GLfloat LightAmbient[]= { 0.5f, 0.5f, 0.5f, 1.0f };
-	GLfloat LightDiffuse[]= { 1.0f, 1.0f, 1.0f, 1.0f };
-	GLfloat LightPosition[]= { 0.0f, 0.0f, 2.0f, 1.0f }; 
-
-	if(!stSDLWinOpen){
-		// Initializes the video subsystem
-		if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-			char	myMessage [1024];    	
-    		MDIO_sprintf (myMessage, "Unable to init SDL: %s", 
-    				  SDL_GetError());
-    		ABORT_WITH_ERRMSG (E_FONT_BAD_FONT_SELECT_STR, myMessage);
-		}
-
-		mode = ((winMode == 2) ? SDL_FULLSCREEN : 0); // winMode should = 2 for fullscreen
-		SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
-		stSDLScreen = SDL_SetVideoMode( width, height, 0, SDL_HWSURFACE | SDL_OPENGL | mode );
-		SDL_WM_SetCaption( MIO_SDL_WINDOW_TITLE, 0 );
-
-		// set up openGL for 2D rendering ----------
-
-		/* Enable multisampling for a nice antialiased effect */
-		SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 2);
-		SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 5);
-
+void MySetupOpenGL() {
+		GLfloat LightAmbient[]= { 0.5f, 0.5f, 0.5f, 1.0f };
+		GLfloat LightDiffuse[]= { 1.0f, 1.0f, 1.0f, 1.0f };
+		GLfloat LightPosition[]= { 0.0f, 0.0f, 2.0f, 1.0f }; 
+		
 		// better lines		
 		glEnable(GL_LINE_SMOOTH);
 		glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
@@ -124,40 +97,124 @@ extern void	MIOSDLGraph_NewWin (OOTint width,OOTint height,OOTint winMode)
 		glLightfv(GL_LIGHT1, GL_DIFFUSE, LightDiffuse);             // Setup The Diffuse Light
 		glLightfv(GL_LIGHT1, GL_POSITION,LightPosition);            // Position The Light
 		glEnable(GL_LIGHT1);
+}
 
-		MIOSDLGraph_Cls();
+/***********************/
+/* External procedures */
+/***********************/
 
-		stSDLWinOpen = TRUE;
+extern void	MIOGLGraph_InitRun () {
+	stGLWinOpen = FALSE;
+	stSDLLightingOn = FALSE;
+}
+extern void	MIOGLGraph_NewContext (OOTint width,OOTint height)
+{
+	MIOWinInfoPtr	myInfo = MIO_selectedRunWindowInfo;
+	HBITMAP emptyBitmap;
+	if(!stGLWinOpen){
+		// create an in memory device context to render to
+		glDeviceContext = CreateCompatibleDC (myInfo -> deviceContext);
+		emptyBitmap = CreateCompatibleBitmap(glDeviceContext,width,height);
+		SelectObject(glDeviceContext,emptyBitmap);
+
+		//setup for GL
+		glRenderContext = wglCreateContext( glDeviceContext );
+		wglMakeCurrent( glDeviceContext, glRenderContext );
+
+		myWidth = width;
+		myHeight = height;
+
+		//ogl stuff
+		MySetupOpenGL();
+
+		stGLWinOpen = TRUE;
 	}
 }
 
-extern void	MIOSDLGraph_CloseWin ()
+extern void	MIOGLGraph_FreeContext()
 {
-	if(stSDLWinOpen){
+	if(stGLWinOpen){
+		//wglMakeCurrent( NULL, NULL );
+		wglDeleteContext( glRenderContext );
+		DeleteDC (glDeviceContext);
+	}
+}
+
+extern void	MIOGLGraph_CopyToWin (OOTint x,OOTint y) 
+{
+	MIOWinInfoPtr	myInfo = MIO_selectedRunWindowInfo;
+	if (myInfo -> displayOnScreen)
+	{
+		BitBlt (myInfo -> deviceContext, x, y+myHeight, 
+				myWidth, myHeight, glDeviceContext, 0, 0,
+			SRCCOPY);
+	}
+	// Blit the picture onto the backing store
+	BitBlt (myInfo -> offscreenDeviceContext, x, y+myHeight, 
+				myWidth, myHeight, glDeviceContext, 0, 0,
+			SRCCOPY);
+}
+
+extern void	MIOGLGraph_NewWin (OOTint width,OOTint height,OOTint winMode)
+{
+	int mode;
+
+	if(!stGLWinOpen){
+		// Initializes the video subsystem
+		if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+			char	myMessage [1024];    	
+    		MDIO_sprintf (myMessage, "Unable to init SDL: %s", 
+    				  SDL_GetError());
+    		ABORT_WITH_ERRMSG (E_FONT_BAD_FONT_SELECT_STR, myMessage);
+		}
+
+		mode = ((winMode == 2) ? SDL_FULLSCREEN : 0); // winMode should = 2 for fullscreen
+		SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
+		stSDLScreen = SDL_SetVideoMode( width, height, 0, SDL_HWSURFACE | SDL_OPENGL | mode );
+		SDL_WM_SetCaption( MIO_SDL_WINDOW_TITLE, 0 );
+
+		// set up openGL for 2D rendering ----------
+
+		/* Enable multisampling for a nice antialiased effect */
+		SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 2);
+		SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 5);
+
+		//ogl stuff
+		MySetupOpenGL();
+
+		MIOGLGraph_Cls();
+
+		stGLWinOpen = TRUE;
+	}
+}
+
+extern void	MIOGLGraph_CloseWin ()
+{
+	if(stGLWinOpen){
 		SDL_Quit();
-		stSDLWinOpen = FALSE;
+		stGLWinOpen = FALSE;
 	}
 }
 
-extern void	MIOSDLGraph_Update ()
+extern void	MIOGLGraph_Update ()
 {
-	if(stSDLWinOpen){
+	if(stGLWinOpen){
 		//SDL_Flip(stSDLScreen);
 		//SDL_UpdateRect(stSDLScreen, 0, 0, 0, 0);
 		SDL_GL_SwapBuffers();
 	}
 }
 
-extern void	MIOSDLGraph_Cls ()
+extern void	MIOGLGraph_Cls ()
 {
-	if(stSDLWinOpen){
+	if(stGLWinOpen){
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// Clear Screen And Depth Buffer
 	}
 }
 //light
-extern void	MIOSDLGraph_SetLight (OOTint lighting)
+extern void	MIOGLGraph_SetLight (OOTint lighting)
 {
-	if(stSDLWinOpen){
+	if(stGLWinOpen){
 		if(lighting) {
 			glEnable(GL_LIGHTING);
 			stSDLLightingOn = TRUE;
@@ -169,52 +226,52 @@ extern void	MIOSDLGraph_SetLight (OOTint lighting)
 }
 
 // matrix stack
-extern void	MIOSDLGraph_ClearMatrix ()
+extern void	MIOGLGraph_ClearMatrix ()
 {
-	if(stSDLWinOpen){
+	if(stGLWinOpen){
 		glLoadIdentity();
 	}
 }
 
-extern void	MIOSDLGraph_PushMatrix ()
+extern void	MIOGLGraph_PushMatrix ()
 {
-	if(stSDLWinOpen){
+	if(stGLWinOpen){
 		glPushMatrix();
 	}
 }
 
-extern void	MIOSDLGraph_PopMatrix ()
+extern void	MIOGLGraph_PopMatrix ()
 {
-	if(stSDLWinOpen){
+	if(stGLWinOpen){
 		glPopMatrix();
 	}
 }
 // matrix manipulation
-extern void	MIOSDLGraph_Translate (OOTreal x,OOTreal y,OOTreal z)
+extern void	MIOGLGraph_Translate (OOTreal x,OOTreal y,OOTreal z)
 {
-	if(stSDLWinOpen){
+	if(stGLWinOpen){
 		glTranslatef((GLfloat)x,(GLfloat)y,(GLfloat)z);
 	}
 }
-extern void	MIOSDLGraph_Rotate (OOTreal angle,OOTreal x,OOTreal y,OOTreal z)
+extern void	MIOGLGraph_Rotate (OOTreal angle,OOTreal x,OOTreal y,OOTreal z)
 {
-	if(stSDLWinOpen){
+	if(stGLWinOpen){
 		glRotatef((GLfloat)angle,(GLfloat)x,(GLfloat)y,(GLfloat)z);
 	}
 }
-extern void	MIOSDLGraph_Scale (OOTreal x,OOTreal y,OOTreal z)
+extern void	MIOGLGraph_Scale (OOTreal x,OOTreal y,OOTreal z)
 {
-	if(stSDLWinOpen){
+	if(stGLWinOpen){
 		glScalef((GLfloat)x,(GLfloat)y,(GLfloat)z);
 	}
 }
 // drawing
-extern void	MIOSDLGraph_Line (
+extern void	MIOGLGraph_Line (
 								OOTreal x1,OOTreal y1,OOTreal z1, 
 								OOTreal x2,OOTreal y2,OOTreal z2,
 								OOTint r, OOTint g, OOTint b)
 {
-	if(stSDLWinOpen){
+	if(stGLWinOpen){
 		if(stSDLLightingOn) { // because winding is weird. Hafta light both sides
 			float color[] = { r/255.0f, g/255.0f, b/255.0f, 1.0f };
 			glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, color);
@@ -234,13 +291,13 @@ extern void	MIOSDLGraph_Line (
 	}
 }
 
-extern void	MIOSDLGraph_FillTriangle (
+extern void	MIOGLGraph_FillTriangle (
 								OOTreal x1,OOTreal y1,OOTreal z1, 
 								OOTreal x2,OOTreal y2,OOTreal z2,
 								OOTreal x3,OOTreal y3,OOTreal z3,
 								OOTint r, OOTint g, OOTint b)
 {
-	if(stSDLWinOpen){
+	if(stGLWinOpen){
 		if(stSDLLightingOn) { // because winding is weird. Hafta light both sides
 			float color[] = { r/255.0f, g/255.0f, b/255.0f, 1.0f };
 			glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, color);
@@ -256,13 +313,13 @@ extern void	MIOSDLGraph_FillTriangle (
 	}
 }
 
-extern void	MIOSDLGraph_Triangle (
+extern void	MIOGLGraph_Triangle (
 								OOTreal x1,OOTreal y1,OOTreal z1, 
 								OOTreal x2,OOTreal y2,OOTreal z2,
 								OOTreal x3,OOTreal y3,OOTreal z3,
 								OOTint r, OOTint g, OOTint b)
 {
-	if(stSDLWinOpen){		
+	if(stGLWinOpen){		
 		if(stSDLLightingOn) { // because winding is weird. Hafta light both sides
 			float color[] = { r/255.0f, g/255.0f, b/255.0f, 1.0f };
 			glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, color);

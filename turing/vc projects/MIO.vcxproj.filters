@@ -179,7 +179,7 @@
     <ClCompile Include="..\src\miohashmap.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\miosdlgraph.c">
+    <ClCompile Include="..\src\mioglgraph.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -411,7 +411,7 @@
     <ClInclude Include="..\src\miohashmap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\miosdlgraph.h">
+    <ClInclude Include="..\src\mioglgraph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

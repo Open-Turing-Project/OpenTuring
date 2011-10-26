@@ -55,7 +55,7 @@
 #include "miopic.h"
 #include "miopc.h"
 #include "miorgb.h"
-#include "miosdlgraph.h"
+#include "mioglgraph.h"
 #include "miosprite.h"
 #include "miosys.h"
 #include "miotext.h"
@@ -1780,79 +1780,79 @@ void MIO_music_preload (OOTaddr *sp)
 /* SDL Graphics							*/
 /************************************************************************/
 
-void MIO_sdlgraph_newwin (OOTaddr *sp)
+void MIO_glgraph_newwin (OOTaddr *sp)
 {
     OOTint width,height,mode;
 
     MyExecutorScan (sp, "III", &width,&height,&mode);
 
-    MIOSDLGraph_NewWin (width,height,mode);
+    MIOGLGraph_NewWin (width,height,mode);
 }
 
-void MIO_sdlgraph_closewin (OOTaddr *sp)
+void MIO_glgraph_closewin (OOTaddr *sp)
 {
-    MIOSDLGraph_CloseWin();
+    MIOGLGraph_CloseWin();
 }
 
-void MIO_sdlgraph_update (OOTaddr *sp)
+void MIO_glgraph_update (OOTaddr *sp)
 {
-    MIOSDLGraph_Update();
+    MIOGLGraph_Update();
 }
 
-void MIO_sdlgraph_cls (OOTaddr *sp)
+void MIO_glgraph_cls (OOTaddr *sp)
 {
-    MIOSDLGraph_Cls();
+    MIOGLGraph_Cls();
 }
 
-void MIO_sdlgraph_setlight (OOTaddr *sp)
+void MIO_glgraph_setlight (OOTaddr *sp)
 {
     OOTint l; // enable light?
 
     MyExecutorScan (sp, "I", &l);
 
-    MIOSDLGraph_SetLight (l);
+    MIOGLGraph_SetLight (l);
 }
 
-void MIO_sdlgraph_pushmatrix (OOTaddr *sp)
+void MIO_glgraph_pushmatrix (OOTaddr *sp)
 {
-    MIOSDLGraph_PushMatrix();
+    MIOGLGraph_PushMatrix();
 }
 
-void MIO_sdlgraph_popmatrix (OOTaddr *sp)
+void MIO_glgraph_popmatrix (OOTaddr *sp)
 {
-    MIOSDLGraph_PopMatrix();
+    MIOGLGraph_PopMatrix();
 }
-void MIO_sdlgraph_clearmatrix (OOTaddr *sp)
+void MIO_glgraph_clearmatrix (OOTaddr *sp)
 {
-    MIOSDLGraph_ClearMatrix();
+    MIOGLGraph_ClearMatrix();
 }
 
-void MIO_sdlgraph_translate (OOTaddr *sp)
-{
-    OOTreal x1, y1, z1;
-
-    MyExecutorScan (sp, "888", &x1,&y1,&z1);
-
-    MIOSDLGraph_Translate (x1, y1, z1);
-}
-void MIO_sdlgraph_scale (OOTaddr *sp)
+void MIO_glgraph_translate (OOTaddr *sp)
 {
     OOTreal x1, y1, z1;
 
     MyExecutorScan (sp, "888", &x1,&y1,&z1);
 
-    MIOSDLGraph_Scale (x1, y1, z1);
+    MIOGLGraph_Translate (x1, y1, z1);
 }
-void MIO_sdlgraph_rotate (OOTaddr *sp)
+void MIO_glgraph_scale (OOTaddr *sp)
+{
+    OOTreal x1, y1, z1;
+
+    MyExecutorScan (sp, "888", &x1,&y1,&z1);
+
+    MIOGLGraph_Scale (x1, y1, z1);
+}
+void MIO_glgraph_rotate (OOTaddr *sp)
 {
     OOTreal angle,x1, y1, z1;
 
     MyExecutorScan (sp, "*888", &angle,&x1,&y1,&z1);
 
-    MIOSDLGraph_Rotate (angle,x1, y1, z1);
+    MIOGLGraph_Rotate (angle,x1, y1, z1);
 }
 
-void MIO_sdlgraph_drawline (OOTaddr *sp)
+void MIO_glgraph_drawline (OOTaddr *sp)
 {
     OOTreal x1, y1, z1;
 	OOTreal x2, y2, z2;
@@ -1860,10 +1860,10 @@ void MIO_sdlgraph_drawline (OOTaddr *sp)
 
     MyExecutorScan (sp, "888888III", &x1,&y1,&z1,&x2,&y2,&z2,&r,&g,&b);
 
-    MIOSDLGraph_Line (x1, y1, z1,x2, y2, z2,r,g,b);
+    MIOGLGraph_Line (x1, y1, z1,x2, y2, z2,r,g,b);
 }
 
-void MIO_sdlgraph_drawfilltriangle (OOTaddr *sp)
+void MIO_glgraph_drawfilltriangle (OOTaddr *sp)
 {
     OOTreal x1, y1, z1;
 	OOTreal x2, y2, z2;
@@ -1872,10 +1872,10 @@ void MIO_sdlgraph_drawfilltriangle (OOTaddr *sp)
 
     MyExecutorScan (sp, "888888888III", &x1,&y1,&z1,&x2,&y2,&z2,&x3,&y3,&z3,&r,&g,&b);
 
-    MIOSDLGraph_FillTriangle (x1, y1, z1,x2, y2, z2,x3, y3, z3,r,g,b);
+    MIOGLGraph_FillTriangle (x1, y1, z1,x2, y2, z2,x3, y3, z3,r,g,b);
 }
 
-void MIO_sdlgraph_drawtriangle (OOTaddr *sp)
+void MIO_glgraph_drawtriangle (OOTaddr *sp)
 {
     OOTreal x1, y1, z1;
 	OOTreal x2, y2, z2;
@@ -1884,7 +1884,7 @@ void MIO_sdlgraph_drawtriangle (OOTaddr *sp)
 
     MyExecutorScan (sp, "888888888III", &x1,&y1,&z1,&x2,&y2,&z2,&x3,&y3,&z3,&r,&g,&b);
 
-    MIOSDLGraph_Triangle (x1, y1, z1,x2, y2, z2,x3, y3, z3,r,g,b);
+    MIOGLGraph_Triangle (x1, y1, z1,x2, y2, z2,x3, y3, z3,r,g,b);
 }
 
 /************************************************************************/

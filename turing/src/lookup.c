@@ -244,22 +244,22 @@ extern void MIO_music_playfiledone();
 extern void MIO_music_playfilestop();
 extern void MIO_music_preload();
 
-extern void MIO_sdlgraph_newwin();
-extern void MIO_sdlgraph_closewin();
-extern void MIO_sdlgraph_cls();
-extern void MIO_sdlgraph_update();
-extern void MIO_sdlgraph_setlight();
+extern void MIO_glgraph_newwin();
+extern void MIO_glgraph_closewin();
+extern void MIO_glgraph_cls();
+extern void MIO_glgraph_update();
+extern void MIO_glgraph_setlight();
 
-extern void MIO_sdlgraph_pushmatrix();
-extern void MIO_sdlgraph_popmatrix();
-extern void MIO_sdlgraph_clearmatrix();
-extern void MIO_sdlgraph_translate();
-extern void MIO_sdlgraph_rotate();
-extern void MIO_sdlgraph_scale();
+extern void MIO_glgraph_pushmatrix();
+extern void MIO_glgraph_popmatrix();
+extern void MIO_glgraph_clearmatrix();
+extern void MIO_glgraph_translate();
+extern void MIO_glgraph_rotate();
+extern void MIO_glgraph_scale();
 
-extern void MIO_sdlgraph_drawline();
-extern void MIO_sdlgraph_drawfilltriangle();
-extern void MIO_sdlgraph_drawtriangle();
+extern void MIO_glgraph_drawline();
+extern void MIO_glgraph_drawfilltriangle();
+extern void MIO_glgraph_drawtriangle();
 
 extern void MIO_sys_exec();
 extern void MIO_sys_exit();
@@ -429,6 +429,21 @@ struct LookupEntry externLookupTable[] = {
     { "font_startsize",		MIO_font_startsize },
     { "font_width",		MIO_font_width },
 
+	{ "glgraph_clearmatrix", MIO_glgraph_clearmatrix },
+	{ "glgraph_closewin",	MIO_glgraph_closewin },
+	{ "glgraph_cls",	MIO_glgraph_cls },
+	{ "glgraph_drawfilltriangle",	MIO_glgraph_drawfilltriangle },
+	{ "glgraph_drawline",	MIO_glgraph_drawline },
+	{ "glgraph_drawtriangle",	MIO_glgraph_drawtriangle },
+	{ "glgraph_newwin",	MIO_glgraph_newwin },
+	{ "glgraph_popmatrix", MIO_glgraph_popmatrix },
+	{ "glgraph_pushmatrix", MIO_glgraph_pushmatrix },
+	{ "glgraph_rotate", MIO_glgraph_rotate },
+	{ "glgraph_scale", MIO_glgraph_scale },
+	{ "glgraph_setlight", MIO_glgraph_setlight },
+	{ "glgraph_translate", MIO_glgraph_translate },
+	{ "glgraph_update",	MIO_glgraph_update },
+
     { "gui_alert",		MIO_gui_alert },
     { "gui_choose",		MIO_gui_choose },
 /*
@@ -549,21 +564,6 @@ struct LookupEntry externLookupTable[] = {
     { "rgb_getcolour",		MIO_rgb_getcolour },
     { "rgb_maxcolour",		MIO_rgb_maxcolour },
     { "rgb_setcolour",		MIO_rgb_setcolour },
-
-	{ "sdlgraph_clearmatrix", MIO_sdlgraph_clearmatrix },
-	{ "sdlgraph_closewin",	MIO_sdlgraph_closewin },
-	{ "sdlgraph_cls",	MIO_sdlgraph_cls },
-	{ "sdlgraph_drawfilltriangle",	MIO_sdlgraph_drawfilltriangle },
-	{ "sdlgraph_drawline",	MIO_sdlgraph_drawline },
-	{ "sdlgraph_drawtriangle",	MIO_sdlgraph_drawtriangle },
-	{ "sdlgraph_newwin",	MIO_sdlgraph_newwin },
-	{ "sdlgraph_popmatrix", MIO_sdlgraph_popmatrix },
-	{ "sdlgraph_pushmatrix", MIO_sdlgraph_pushmatrix },
-	{ "sdlgraph_rotate", MIO_sdlgraph_rotate },
-	{ "sdlgraph_scale", MIO_sdlgraph_scale },
-	{ "sdlgraph_setlight", MIO_sdlgraph_setlight },
-	{ "sdlgraph_translate", MIO_sdlgraph_translate },
-	{ "sdlgraph_update",	MIO_sdlgraph_update },
 
     { "sprite_animate",		MIO_sprite_animate },
     { "sprite_changepic",	MIO_sprite_changepic },

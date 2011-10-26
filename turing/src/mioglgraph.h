@@ -1,5 +1,5 @@
-#ifndef _MIOSDLGRAPH_H_
-#define _MIOSDLGRAPH_H_
+#ifndef _MIOGLGRAPH_H_
+#define _MIOGLGRAPH_H_
 
 /*******************/
 /* System includes */
@@ -29,37 +29,37 @@
 /***********************/
 /* External procedures */
 /***********************/
-extern void	MIOSDLGraph_InitRun ();
-extern void	MIOSDLGraph_NewWin (OOTint width,OOTint height,OOTint winMode);
-extern void	MIOSDLGraph_CloseWin ();
-extern void	MIOSDLGraph_Update ();
-extern void	MIOSDLGraph_Cls ();
+extern void	MIOGLGraph_InitRun ();
+extern void	MIOGLGraph_NewWin (OOTint width,OOTint height,OOTint winMode);
+extern void	MIOGLGraph_CloseWin ();
+extern void	MIOGLGraph_Update ();
+extern void	MIOGLGraph_Cls ();
 
-extern void	MIOSDLGraph_SetLight (OOTint lighting);
+extern void	MIOGLGraph_SetLight (OOTint lighting);
 
 // matrix stack
-extern void	MIOSDLGraph_PushMatrix ();
-extern void	MIOSDLGraph_PopMatrix ();
-extern void MIOSDLGraph_ClearMatrix ();
+extern void	MIOGLGraph_PushMatrix ();
+extern void	MIOGLGraph_PopMatrix ();
+extern void MIOGLGraph_ClearMatrix ();
 // matrix manipulation
-extern void	MIOSDLGraph_Translate (OOTreal x,OOTreal y,OOTreal z);
-extern void	MIOSDLGraph_Rotate (OOTreal angle,OOTreal x,OOTreal y,OOTreal z);
-extern void	MIOSDLGraph_Scale (OOTreal x,OOTreal y,OOTreal z);
+extern void	MIOGLGraph_Translate (OOTreal x,OOTreal y,OOTreal z);
+extern void	MIOGLGraph_Rotate (OOTreal angle,OOTreal x,OOTreal y,OOTreal z);
+extern void	MIOGLGraph_Scale (OOTreal x,OOTreal y,OOTreal z);
 
-extern void	MIOSDLGraph_Line (
+extern void	MIOGLGraph_Line (
 								OOTreal x1,OOTreal y1,OOTreal z1, 
 								OOTreal x2,OOTreal y2,OOTreal z2,
 								OOTint r, OOTint g, OOTint b);
-extern void	MIOSDLGraph_FillTriangle (
-								OOTreal x1,OOTreal y1,OOTreal z1, 
-								OOTreal x2,OOTreal y2,OOTreal z2,
-								OOTreal x3,OOTreal y3,OOTreal z3,
-								OOTint r, OOTint g, OOTint b);
-extern void	MIOSDLGraph_Triangle (
+extern void	MIOGLGraph_FillTriangle (
 								OOTreal x1,OOTreal y1,OOTreal z1, 
 								OOTreal x2,OOTreal y2,OOTreal z2,
 								OOTreal x3,OOTreal y3,OOTreal z3,
 								OOTint r, OOTint g, OOTint b);
+extern void	MIOGLGraph_Triangle (
+								OOTreal x1,OOTreal y1,OOTreal z1, 
+								OOTreal x2,OOTreal y2,OOTreal z2,
+								OOTreal x3,OOTreal y3,OOTreal z3,
+								OOTint r, OOTint g, OOTint b);
 
 
-#endif // #ifndef _MIOSDLGRAPH_H_
+#endif // #ifndef _MIOGLGRAPH_H_

@@ -368,7 +368,7 @@
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
-    <ClCompile Include="..\src\miosdlgraph.c" />
+    <ClCompile Include="..\src\mioglgraph.c" />
     <ClCompile Include="..\src\miosprite.c">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -502,7 +502,7 @@
     <ClInclude Include="..\src\miopc.h" />
     <ClInclude Include="..\src\miopic.h" />
     <ClInclude Include="..\src\miorgb.h" />
-    <ClInclude Include="..\src\miosdlgraph.h" />
+    <ClInclude Include="..\src\mioglgraph.h" />
     <ClInclude Include="..\src\miosprite.h" />
     <ClInclude Include="..\src\miosys.h" />
     <ClInclude Include="..\src\miotext.h" />
