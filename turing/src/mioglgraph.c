@@ -107,19 +107,38 @@ extern void	MIOGLGraph_InitRun () {
 	stGLWinOpen = FALSE;
 	stSDLLightingOn = FALSE;
 }
-extern void	MIOGLGraph_NewContext (OOTint width,OOTint height)
+/*extern void	MIOGLGraph_NewContext (OOTint width,OOTint height)
 {
 	MIOWinInfoPtr	myInfo = MIO_selectedRunWindowInfo;
 	HBITMAP emptyBitmap;
+	PIXELFORMATDESCRIPTOR pfd;
+	int iFormat;
+	BOOL success;
 	if(!stGLWinOpen){
 		// create an in memory device context to render to
 		glDeviceContext = CreateCompatibleDC (myInfo -> deviceContext);
 		emptyBitmap = CreateCompatibleBitmap(glDeviceContext,width,height);
 		SelectObject(glDeviceContext,emptyBitmap);
 
+		
+		ZeroMemory( &pfd, sizeof( pfd ) );
+		pfd.nSize = sizeof( pfd );
+		pfd.nVersion = 1;
+		pfd.dwFlags = PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL;
+		pfd.iPixelType = PFD_TYPE_RGBA;
+		pfd.cColorBits = 24;
+		pfd.cDepthBits = 16;
+		pfd.iLayerType = PFD_MAIN_PLANE;
+		iFormat = ChoosePixelFormat( glDeviceContext, &pfd );
+		SetPixelFormat( glDeviceContext, iFormat, &pfd );
+
 		//setup for GL
 		glRenderContext = wglCreateContext( glDeviceContext );
-		wglMakeCurrent( glDeviceContext, glRenderContext );
+		success = wglMakeCurrent( glDeviceContext, glRenderContext );
+		if(!success) {
+			char	myMessage [] = "Unable to init Windows GL.";    	
+    		ABORT_WITH_ERRMSG (E_FONT_BAD_FONT_SELECT_STR, myMessage);
+		}
 
 		myWidth = width;
 		myHeight = height;
@@ -145,15 +164,15 @@ extern void	MIOGLGraph_CopyToWin (OOTint x,OOTint y)
 	MIOWinInfoPtr	myInfo = MIO_selectedRunWindowInfo;
 	if (myInfo -> displayOnScreen)
 	{
-		BitBlt (myInfo -> deviceContext, x, y+myHeight, 
+		BitBlt (myInfo -> deviceContext, x, y, 
 				myWidth, myHeight, glDeviceContext, 0, 0,
 			SRCCOPY);
 	}
 	// Blit the picture onto the backing store
-	BitBlt (myInfo -> offscreenDeviceContext, x, y+myHeight, 
+	BitBlt (myInfo -> offscreenDeviceContext, x, y, 
 				myWidth, myHeight, glDeviceContext, 0, 0,
 			SRCCOPY);
-}
+}*/
 
 extern void	MIOGLGraph_NewWin (OOTint width,OOTint height,OOTint winMode)
 {

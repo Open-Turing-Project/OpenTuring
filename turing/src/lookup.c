@@ -244,6 +244,10 @@ extern void MIO_music_playfiledone();
 extern void MIO_music_playfilestop();
 extern void MIO_music_preload();
 
+//extern void MIO_glgraph_newcontext();
+//extern void MIO_glgraph_freecontext();
+//extern void MIO_glgraph_copytowin();
+
 extern void MIO_glgraph_newwin();
 extern void MIO_glgraph_closewin();
 extern void MIO_glgraph_cls();
@@ -432,9 +436,12 @@ struct LookupEntry externLookupTable[] = {
 	{ "glgraph_clearmatrix", MIO_glgraph_clearmatrix },
 	{ "glgraph_closewin",	MIO_glgraph_closewin },
 	{ "glgraph_cls",	MIO_glgraph_cls },
+//	{ "glgraph_copytowin",	MIO_glgraph_copytowin },
 	{ "glgraph_drawfilltriangle",	MIO_glgraph_drawfilltriangle },
 	{ "glgraph_drawline",	MIO_glgraph_drawline },
 	{ "glgraph_drawtriangle",	MIO_glgraph_drawtriangle },
+//	{ "glgraph_freecontext",	MIO_glgraph_freecontext },
+//	{ "glgraph_newcontext",	MIO_glgraph_newcontext },
 	{ "glgraph_newwin",	MIO_glgraph_newwin },
 	{ "glgraph_popmatrix", MIO_glgraph_popmatrix },
 	{ "glgraph_pushmatrix", MIO_glgraph_pushmatrix },

@@ -1780,6 +1780,28 @@ void MIO_music_preload (OOTaddr *sp)
 /* SDL Graphics							*/
 /************************************************************************/
 
+/*void MIO_glgraph_newcontext (OOTaddr *sp)
+{
+    OOTint width,height;
+
+    MyExecutorScan (sp, "II", &width,&height);
+
+    MIOGLGraph_NewContext (width,height);
+}
+void MIO_glgraph_copytowin (OOTaddr *sp)
+{
+    OOTint x,y;
+
+    MyExecutorScan (sp, "II", &x,&y);
+
+    MIOGLGraph_CopyToWin (x,y);
+}
+
+void MIO_glgraph_freecontext (OOTaddr *sp)
+{
+    MIOGLGraph_FreeContext ();
+}*/
+
 void MIO_glgraph_newwin (OOTaddr *sp)
 {
     OOTint width,height,mode;

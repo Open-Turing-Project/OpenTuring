@@ -29,6 +29,11 @@
 /***********************/
 /* External procedures */
 /***********************/
+/*
+extern void	MIOGLGraph_NewContext (OOTint width,OOTint height);
+extern void	MIOGLGraph_FreeContext();
+extern void	MIOGLGraph_CopyToWin (OOTint x,OOTint y);
+*/
 extern void	MIOGLGraph_InitRun ();
 extern void	MIOGLGraph_NewWin (OOTint width,OOTint height,OOTint winMode);
 extern void	MIOGLGraph_CloseWin ();
