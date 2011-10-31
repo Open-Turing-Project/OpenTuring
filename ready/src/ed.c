@@ -10,6 +10,7 @@
 #include <windows.h>
 #include <commctrl.h>
 #include <crtdbg.h>
+#include <stdio.h>
 //#include <signal.h>
 
 /****************/
@@ -179,6 +180,7 @@ int WINAPI	WinMain (HINSTANCE pmApplicationInstance,
     DWORD	myReturnValue;
     HWND	myWindow;
     int		cnt;
+	
 
     // If the program is started up with the Shift and Ctrl keys both pressed,
     // then start the logging.
@@ -333,6 +335,8 @@ int WINAPI	WinMain (HINSTANCE pmApplicationInstance,
     	EdFile_GetCurrentDirectory (myCurrentDirectory);
 		EdFile_CombinePath (myCurrentDirectory, "testsuite", 
     			    myOutdir);
+
+		printf("starting...\n");
 		EdRun_RunProgramNoEditor (myCurrentDirectory,myOutdir,stAutoRunFile);
 		return 0;
     }
