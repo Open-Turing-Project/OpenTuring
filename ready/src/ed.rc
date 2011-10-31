@@ -26,7 +26,7 @@ DEBUG_SMALL_ICON	ICON	DISCARDABLE	"rsrc\\readydbgsm.ico"
 #elif TURING
 // TW Change the icons
 APP_ICON		ICON	DISCARDABLE	"rsrc\\turing.ico"
-APP_SMALL_ICON		ICON	DISCARDABLE	"rsrc\\turingsm.ico"
+APP_SMALL_ICON		ICON	DISCARDABLE	"rsrc\\turing.ico"
 RUN_ICON		ICON	DISCARDABLE	"rsrc\\turing.ico"
 RUN_SMALL_ICON		ICON	DISCARDABLE	"rsrc\\turingrunsm.ico"
 DEBUG_ICON		ICON	DISCARDABLE	"rsrc\\turing.ico"

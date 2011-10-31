@@ -5,7 +5,7 @@
 /*******************/
 /* System includes */
 /*******************/
-
+#include "stdio.h"
 /****************/
 /* Self include */
 /****************/
@@ -1991,6 +1991,355 @@ void	EdRun_TestSuite (const char *pmDirectoryName, const char *pmOutputDir)
 
     free (myBuffer);
 } // EdRun_TestSuite
+
+/************************************************************************/
+/* EdRun_RunProgramNoEditor						*/
+/*									*/
+/* Run a program not from the editor. Used for command line execution.					*/
+/************************************************************************/
+void	EdRun_RunProgramNoEditor (const char *pmTestDirectory, 
+				       const char *pmOutputDirectory,
+				       const char *pmTestFileName)
+{
+    FilePath		myTestPathName, mySourceDirectory, myErrorPath;
+    HWND		myEditWindow, myTextDisplayWindow;
+    TuringErrorPtr	myError;    
+    const char		*myPtr;
+    int			myErrors;
+
+	printf("running program %s",pmTestFileName);
+
+    // Create the test file path
+    strcpy (myTestPathName, pmTestFileName);
+    
+    // Create the error file path
+    strcpy (myErrorPath, pmOutputDirectory);
+    if (myErrorPath [strlen (myErrorPath) - 1] != '\\')
+    {
+	strcat (myErrorPath, "\\");
+    }
+    strcat (myErrorPath, pmTestFileName);
+    myPtr = EdFile_GetFileSuffix (myErrorPath);
+    myErrorPath [myPtr - myErrorPath] = 0;
+    strcat (myErrorPath, ".err");
+
+    // Make certain the test file exists
+    if (!EdFile_FileExists (myTestPathName))
+    {
+	// Test file not found
+	EdGUI_Message1 (NULL, MB_ICONEXCLAMATION, 
+	    IDS_TEST_SUITE_ERROR_TITLE, 
+	    IDS_TEST_SUITE_FILE_DOESNT_EXIST, 0,
+		"<none>", myTestPathName);
+	return;
+    }
+    
+    // Make certain output directory is specified
+    if (pmOutputDirectory [0] == 0)
+    {
+	EdGUI_Message1 (NULL, MB_ICONEXCLAMATION, 
+	    IDS_TEST_SUITE_ERROR_TITLE, 
+	    IDS_TEST_SUITE_NO_OUTPUT_DIR, 0,
+	    "<none>", myTestPathName);
+	return;
+    }
+    
+    // Create the output directories as necessary
+    if (!EdFile_CreateDirectoriesIfNecessary (pmOutputDirectory))
+    {
+	EdGUI_Message1 (NULL, MB_ICONEXCLAMATION, 
+	    IDS_TEST_SUITE_ERROR_TITLE, 
+	    IDS_TEST_SUITE_NO_CREATE_DIR, 0,
+	    "<none>", pmOutputDirectory);
+	return;
+    }
+    
+    //
+    // Open the file in the editor
+    // Compile the file
+    // Write extant errors to path.err
+    // If no errors, execute program
+    //    During execution, if reading from stdin, redirect from stdin.
+    //    At end of execution, write output to path.out or path.bmp
+    // Close the editor file.
+    //
+    
+    // Open the file in the editor.
+    myEditWindow = EdWin_Create (myTestPathName, NULL, 0, FALSE, FALSE);
+    if (myEditWindow == NULL)
+    {
+	EdGUI_Message1 (NULL, 0, IDS_TEST_SUITE_ERROR_TITLE,
+	    IDS_TEST_SUITE_UNABLE_TO_OPEN_WINDOW, 0,
+	    "<none>", myTestPathName);
+	return;
+    }
+    myTextDisplayWindow = EdWin_GetActiveDisplayWindow (myEditWindow);
+    
+    //
+    // Compile the file
+    //
+    
+    stSourceFileNo = EdDisp_GetTuringFileNo (myTextDisplayWindow);
+    EdDisp_GetPathForDisplay (myTextDisplayWindow, USE_FILENAME, 
+	DONT_SHOW_DIRTY_MARK, stSourceFileName);
+    if (EdDisp_GetPath (myTextDisplayWindow) == NULL)
+    {
+	// We need to make this a full path name
+	EdFile_GetActiveDirectory (stSourcePathName);
+	if (!EdGlob_EndsWith (stSourcePathName, "\\"))
+	{
+	    strcat (stSourcePathName, "\\");
+	}
+	strcat (stSourcePathName, stSourceFileName);
+    }
+    else
+    {
+	strcpy (stSourcePathName, EdDisp_GetPath (myTextDisplayWindow));
+    }
+    
+    strncpy (stRunArgs.ootArgs [0], stSourcePathName, 255);    	    			     
+    
+    // Set the base source directory to be the directory 
+    // in which the source file was located.
+    EdFile_GetDirectoryFromPath (stSourcePathName, mySourceDirectory);
+    FileManager_ChangeDirectory ((OOTstring) mySourceDirectory);
+    
+    // Now, for every open file, set the OOT file manager pointer to 
+    // point to it and mark it modified
+    Ed_EnumerateFiles (MySetTuringPointers, NULL);
+    
+    stCompilingWindow = myTextDisplayWindow;
+    
+    // Clear all previous errors
+    EdErr_ClearErrors ();
+    
+    // Free any previously allocated memory.  This could take a while if 
+    // someone allocated a huge amount
+    EdRun_InitializeForRunWithoutCompile (myTextDisplayWindow);
+    
+    // Close any run windows and free any allocated objects in debugger		      
+    MIO_Init_Free ();
+    
+    // Compile the program
+    EdWin_ShowStatus (myTextDisplayWindow, "Initializing Compiler");
+    Language_CompileProgram ("", stSourceFileNo, &myError, &myErrors);
+    
+    //
+    // Write extant errors to stdout
+    //
+    
+    if (myError != NULL)
+    {
+	int		myMessages = 0;
+	
+	while (myError != NULL)
+	{
+	    WORD	myErrorTuringFileNo;
+	    FilePath	myErrorPathName;
+	    SrcPosition	*mySrc;
+	    
+	    myErrorTuringFileNo = myError -> srcPos.fileNo;
+	    FileManager_FileName (myErrorTuringFileNo, myErrorPathName);
+	    mySrc = &(myError -> srcPos);
+	    
+	    if (mySrc -> tokLen > 0)
+	    {
+		printf ("Line %d [%d - %d] of %s: %s",
+		    mySrc -> lineNo, mySrc -> linePos + 1,
+		    mySrc -> linePos + 1 + mySrc -> tokLen, 
+		    EdFile_GetFileName (myErrorPathName), myError -> text);
+	    }
+	    else
+	    {
+		printf ( 
+		    "Line %d [%d] of %s: %s",
+		    mySrc -> lineNo, mySrc -> linePos + 1,
+		    EdFile_GetFileName (myErrorPathName), myError -> text);
+	    }
+	    myError = myError -> next;
+	    myMessages++;
+	} // while (myError != NULL)
+
+	// Add a message about the number of errors and warnings
+	if (myErrors > 1)
+	{
+	    if (myMessages - myErrors > 1)
+	    {
+		printf ( "%d Errors and %d Warnings",
+		    myErrors, myMessages - myErrors);
+	    }
+	    else if (myMessages - myErrors == 1)
+	    {
+		printf ( "%d Errors and 1 Warning",
+		    myErrors);
+	    }
+	    else
+	    {
+		printf ( "%d Errors", myErrors);
+	    }
+	}
+	else if (myErrors == 1)
+	{
+	    if (myMessages - myErrors > 1)
+	    {
+		printf ( "1 Error and %d Warnings",
+		    myMessages - myErrors);
+	    }
+	    else if (myMessages - myErrors == 1)
+	    {
+		printf ( "1 Error and 1 Warning");
+	    }
+	    else
+	    {
+		printf ( "1 Error");
+	    }
+	}
+	else
+	{
+	    if (myMessages - myErrors > 1)
+	    {
+		printf ( "%d Warnings",
+		    myMessages - myErrors);
+	    }
+	    else if (myMessages - myErrors == 1)
+	    {
+		printf ( "1 Warning");
+	    }
+	}
+    } // if (myError != NULL)
+    
+    if (myErrors == 0)
+    {
+	//
+	// If no errors, execute program
+	//    During execution, if reading from stdin, redirect from stdin.
+	//    At end of execution, write output to path.out or path.bmp
+	//
+	
+	OOTint		myNumErrors;
+	FilePath	myExecutionDirectory;
+	int		myFontSize;
+	OOTargs		myOOTArgs;
+	
+	stExecutingWindow = myTextDisplayWindow;
+	stAllRunWindowsClosed = TRUE;
+	
+	// Clear all previous errors (warnings)
+	EdErr_ClearErrors ();
+	
+	strncpy (myOOTArgs [0], stRunArgs.ootArgs [0], 255);    	    			     
+	
+	Language_SetupExecution (MyGetMaxStackSize (), "", "", myOOTArgs, 0);
+
+	// Set the base source directory and the execution directory to be the
+	// directory in which the source file was located.
+	EdFile_GetDirectoryFromPath (stSourcePathName, myExecutionDirectory);
+	
+	myFontSize = gProperties.runConsoleFontSize;
+	if (gProperties.runUseSmallFont)
+	{
+	    RECT	myRect = EdGUI_GetWorkArea ();
+	    
+	    if ((myRect.right - myRect.left <= 640) ||
+		(myRect.bottom - myRect.top <= 480))
+	    {
+		myFontSize = 9;
+	    }
+	}
+	
+	if (!MIO_Init_Run (stSourceFileName, 
+		      pmTestDirectory, 
+		      FALSE, 
+		      pmOutputDirectory, 
+		      FALSE, FALSE,
+		      myExecutionDirectory,		// Execution directory
+		      FALSE, 				// Graphics Mode
+		      gProperties.runConsoleFontName, 	// Run window font name
+		      myFontSize, 			// Run window font size
+		      0, // Run window font width
+		      0, // Run window font options
+		      0, // Run window dimensions
+		      0, 0, // Run window width and height
+		      25, 				// Run window rows
+		      80, 				// Run window columns
+		      FALSE,
+		      (COLOR) RGB (0, 0, 132),
+		      TRUE,				// Allow Sys.Exec
+		      TRUE,				// Allow Music
+		      0,				// PP I/O Port
+		      TRUE))				// A test program
+	{
+	    return;
+	}
+	
+	// Status message    
+	stTuringProgramRunning = TRUE;
+	stTuringProgramPaused = FALSE;
+	stTuringProgramHalting = FALSE;
+	stQuittingEnvironment = FALSE;
+	stRerunningTuringProgram = FALSE;
+	
+	stStepping = NO_STEP;
+	
+	do
+	{
+	    MyExecuteQuantum (&myNumErrors, NULL);
+	    
+	    Ed_ProcessWaitingEvents (stTuringProgramWaitingForEvent);
+	} while (stRunStatus.state != Finished);
+	
+	//
+	// At this point, the program has either finished executing or the been
+	// told to halt (permanently) either by the user closing a run window or
+	// pressing stop, etc.
+	// 
+	// At this point, we've been processing any number of OS messages.
+	// This means that the system could have closed any open windows
+	// that we refer to.  Check carefully before using them.
+	//
+	
+	MIO_Finalize_Run ();
+	
+	// Close all files opened by the running program
+	Language_EndExecution ();
+	
+	stTuringProgramRunning = FALSE;
+	
+	if (myNumErrors >= 1)
+	{
+	    WORD	myErrorTuringFileNo;
+	    FilePath	myErrorPathName;
+	    SrcPosition	*mySrc;
+	    
+	    myErrorTuringFileNo = stFirstErrorPtr -> srcPos.fileNo;
+	    FileManager_FileName (myErrorTuringFileNo, myErrorPathName);
+	    mySrc = &(stFirstErrorPtr -> srcPos);
+	    if (mySrc -> tokLen > 0)
+	    {
+		printf ( 
+		    "Run Time Error:\n    Line %d [%d - %d] of %s: %s",
+		    mySrc -> lineNo, mySrc -> linePos + 1,
+		    mySrc -> linePos + 1 + mySrc -> tokLen, 
+		    EdFile_GetFileName (myErrorPathName), myError -> text);
+	    }
+	    else
+	    {
+		printf ( 
+		    "Run Time Error:\n    Line %d [%d] of %s: %s",
+		    mySrc -> lineNo, mySrc -> linePos + 1,
+		    EdFile_GetFileName (myErrorPathName), myError -> text);
+	    }
+	} // if (myNumErrors >= 1)
+    } // Finished execution
+    
+    //
+    // Close the editor file.
+    //
+    SendMessage (myEditWindow, WM_CLOSE, 0, 0);
+
+    // Process events to allow windows to close, etc.
+    Ed_ProcessWaitingEvents (FALSE);
+} // EdRun_RunProgramNoEditor
 
 
 /************************************************************************/

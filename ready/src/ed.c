@@ -118,6 +118,7 @@ static BOOL		stWantToBecomeAdmin = FALSE;
 
 // Run files on startup
 static BOOL		stAutoRunPrograms = FALSE;
+static FilePath		stAutoRunFile;
 
 // Test suite command line option set
 static BOOL		stRunningTestSuite = FALSE;
@@ -325,6 +326,16 @@ int WINAPI	WinMain (HINSTANCE pmApplicationInstance,
 	EdRun_TestSuite (myTestSuiteFile, NULL);
 	return 0;
     }
+	if (stAutoRunPrograms)
+    {
+    	FilePath	myCurrentDirectory, myOutdir;
+    	
+    	EdFile_GetCurrentDirectory (myCurrentDirectory);
+		EdFile_CombinePath (myCurrentDirectory, "testsuite", 
+    			    myOutdir);
+		EdRun_RunProgramNoEditor (myCurrentDirectory,myOutdir,stAutoRunFile);
+		return 0;
+    }
 
     if (myNumArgs == myNumOptionArgs)
     {
@@ -450,7 +461,7 @@ int WINAPI	WinMain (HINSTANCE pmApplicationInstance,
     	return 0;
     }
 
-    if (!gProperties.skipSplashScreen)
+    if (!gProperties.skipSplashScreen && !stAutoRunPrograms)
     {    
     	// Start the splash screen
     	EdSplash_Create (FALSE);
@@ -1136,7 +1147,7 @@ BOOL	Ed_RemoveFromWindowList (HWND pmWindow)
     	    myTempWindowListEntry = myTempWindowListEntry -> next;
     	}
     	
-    	if ((myNumEditWindows == 1) && !stRunningTestSuite)
+    	if ((myNumEditWindows == 1) && !stRunningTestSuite && !stAutoRunPrograms)
     	{
     	    if (!MyConfirmExit (pmWindow))
     	    {
@@ -1732,7 +1743,16 @@ static BOOL	MyProcessCommandLineArguments (int pmNumArgs, char *pmArgs[],
     	    	    stAutoRunPrograms = TRUE;
     	    	}
     	    	pmArgs [cnt] [0] = 0;
-    	    }
+				cnt++;
+				if (cnt == pmNumArgs)
+				{
+						EdGUI_Message1 (NULL, 0, IDS_CMD_LINE_ERR_TITLE,
+							IDS_NO_TESTSUITE_FILE);
+    	    				return FALSE;
+				}
+				strcpy (stAutoRunFile, pmArgs [cnt]);
+    	    			pmArgs [cnt] [0] = 0;
+			}
     	    else if (strcmp (myArgument, OPTION_LOG_STR) == 0)
     	    {
     	    	if (pmProcessOptions)

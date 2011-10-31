@@ -131,6 +131,9 @@ extern void		EdRun_SetStep (int pmStep);
 extern void		EdRun_SetTraceSpeed (int pmTraceSpeed);
 extern void		EdRun_TestSuite (const char *pmFileName, 
 					 const char *pmOutputDir);
+extern void	EdRun_RunProgramNoEditor (const char *pmTestDirectory, 
+				       const char *pmOutputDirectory,
+				       const char *pmTestFileName);
 extern void		EdRun_ToggleBreakpointVisibility (void);
 extern void		EdRun_ToggleTracing (void);
 

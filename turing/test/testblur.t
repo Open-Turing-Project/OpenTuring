@@ -1,6 +1,6 @@
 % The "Pic.Blur1" program.
 var f := Font.New ("serif:60:bold,italic,noantialias")
-View.Set ("graphics:510;90,nobuttonbar
+View.Set ("graphics:510;90,nobuttonbar")
 Font.Draw ("Turing", 0, 0, f, black)
 var p : array 1 .. 50 of int
 p (1) := Pic.New (0, 0, maxx, maxy)

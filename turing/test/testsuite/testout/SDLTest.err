@@ -1,0 +1,8 @@
+Line 1 [63 - 64] of SDLTest.t: 'sdlgraph_newwin' is not a defined external name
+Line 2 [44 - 45] of SDLTest.t: 'sdlgraph_closewin' is not a defined external name
+Line 3 [37 - 38] of SDLTest.t: 'sdlgraph_cls' is not a defined external name
+Line 4 [40 - 41] of SDLTest.t: 'sdlgraph_update' is not a defined external name
+Line 5 [67 - 68] of SDLTest.t: 'sdlgraph_drawline' is not a defined external name
+Line 6 [75 - 76] of SDLTest.t: 'sdlgraph_drawfillrect' is not a defined external name
+
+6 Errors

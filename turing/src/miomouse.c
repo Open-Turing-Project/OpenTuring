@@ -289,5 +289,5 @@ static int   MyConvertButtonString (OOTstring pmString)
     
     ABORT_WITH_ERRNO (E_MOUSE_BAD_BUTTONMOTION_STR);
     
-    return 0;
+    return BUTTON_UP;
 } // MyConvertButtonString

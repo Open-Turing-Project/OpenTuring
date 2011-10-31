@@ -199,9 +199,9 @@ static char *timeErrMsg[] = {
 
 static char *mouseErrMsg[] = {
 "Unknown Mouse module error",
-"No mouse available",
+"No mouse found",
 "Bad ButtonChoose string",
-"Bad Motion string",
+"Bad Mouse Button Motion string",
 };
 
 static char *rgbErrMsg[] = {
