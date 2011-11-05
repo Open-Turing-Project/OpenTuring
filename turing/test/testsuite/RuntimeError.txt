@@ -1,0 +1,1 @@
+running program X:\dev\turing\test\testsuite\RuntimeErrorTest.t

@@ -41,13 +41,15 @@
 #define GRAPHICS_NUM			1
 #define WINTURING_NUM			2
 #define WINDOWS_NUM			3
+#define OPENTURING_NUM			4
 
-#define NUM_DEFAULT_PREDEFS		4
+#define NUM_DEFAULT_PREDEFS		5
 
 #define INTERP_STRING			"_INTERP_"
 #define GRAPHICS_STRING			"_GRAPHICS_"
 #define WINTURING_STRING		"_WINOOT_"
 #define WINDOWS_STRING			"_WINDOWS_"
+#define OPENTURING_STRING		"_OPENTURING_"
 
 #define FLOATING_MAIN			0
 #define NULL_OOT_VALUE			0
@@ -2001,27 +2003,16 @@ void	EdRun_RunProgramNoEditor (const char *pmTestDirectory,
 				       const char *pmOutputDirectory,
 				       const char *pmTestFileName)
 {
-    FilePath		myTestPathName, mySourceDirectory, myErrorPath;
+    FilePath		myTestPathName, mySourceDirectory;
     HWND		myEditWindow, myTextDisplayWindow;
     TuringErrorPtr	myError;    
-    const char		*myPtr;
     int			myErrors;
 
-	printf("running program %s",pmTestFileName);
+	printf("running program %s\n",pmTestFileName);
 
     // Create the test file path
     strcpy (myTestPathName, pmTestFileName);
-    
-    // Create the error file path
-    strcpy (myErrorPath, pmOutputDirectory);
-    if (myErrorPath [strlen (myErrorPath) - 1] != '\\')
-    {
-	strcat (myErrorPath, "\\");
-    }
-    strcat (myErrorPath, pmTestFileName);
-    myPtr = EdFile_GetFileSuffix (myErrorPath);
-    myErrorPath [myPtr - myErrorPath] = 0;
-    strcat (myErrorPath, ".err");
+ 
 
     // Make certain the test file exists
     if (!EdFile_FileExists (myTestPathName))
@@ -2065,7 +2056,7 @@ void	EdRun_RunProgramNoEditor (const char *pmTestDirectory,
     //
     
     // Open the file in the editor.
-    myEditWindow = EdWin_Create (myTestPathName, NULL, 0, FALSE, FALSE);
+    myEditWindow = EdWin_CreateShow (myTestPathName, NULL, 0, FALSE, FALSE,FALSE);
     if (myEditWindow == NULL)
     {
 	EdGUI_Message1 (NULL, 0, IDS_TEST_SUITE_ERROR_TITLE,
@@ -2080,28 +2071,11 @@ void	EdRun_RunProgramNoEditor (const char *pmTestDirectory,
     //
     
     stSourceFileNo = EdDisp_GetTuringFileNo (myTextDisplayWindow);
-    EdDisp_GetPathForDisplay (myTextDisplayWindow, USE_FILENAME, 
-	DONT_SHOW_DIRTY_MARK, stSourceFileName);
-    if (EdDisp_GetPath (myTextDisplayWindow) == NULL)
-    {
-	// We need to make this a full path name
-	EdFile_GetActiveDirectory (stSourcePathName);
-	if (!EdGlob_EndsWith (stSourcePathName, "\\"))
-	{
-	    strcat (stSourcePathName, "\\");
-	}
-	strcat (stSourcePathName, stSourceFileName);
-    }
-    else
-    {
-	strcpy (stSourcePathName, EdDisp_GetPath (myTextDisplayWindow));
-    }
-    
-    strncpy (stRunArgs.ootArgs [0], stSourcePathName, 255);    	    			     
+    strncpy (stRunArgs.ootArgs [0], pmTestFileName, 255);    	    			     
     
     // Set the base source directory to be the directory 
     // in which the source file was located.
-    EdFile_GetDirectoryFromPath (stSourcePathName, mySourceDirectory);
+    EdFile_GetDirectoryFromPath (pmTestFileName, mySourceDirectory);
     FileManager_ChangeDirectory ((OOTstring) mySourceDirectory);
     
     // Now, for every open file, set the OOT file manager pointer to 
@@ -2115,7 +2089,9 @@ void	EdRun_RunProgramNoEditor (const char *pmTestDirectory,
     
     // Free any previously allocated memory.  This could take a while if 
     // someone allocated a huge amount
-    EdRun_InitializeForRunWithoutCompile (myTextDisplayWindow);
+    Language_ErrorModule_Initialize ();
+    Language_DebugModule_Initialize ();
+    Language_Execute_RecoverAllMemory ();
     
     // Close any run windows and free any allocated objects in debugger		      
     MIO_Init_Free ();
@@ -2131,7 +2107,7 @@ void	EdRun_RunProgramNoEditor (const char *pmTestDirectory,
     if (myError != NULL)
     {
 	int		myMessages = 0;
-	
+	printf("Syntax Errors:\n");
 	while (myError != NULL)
 	{
 	    WORD	myErrorTuringFileNo;
@@ -2144,7 +2120,7 @@ void	EdRun_RunProgramNoEditor (const char *pmTestDirectory,
 	    
 	    if (mySrc -> tokLen > 0)
 	    {
-		printf ("Line %d [%d - %d] of %s: %s",
+		printf ("Line %d [%d - %d] of %s: %s\n",
 		    mySrc -> lineNo, mySrc -> linePos + 1,
 		    mySrc -> linePos + 1 + mySrc -> tokLen, 
 		    EdFile_GetFileName (myErrorPathName), myError -> text);
@@ -2152,7 +2128,7 @@ void	EdRun_RunProgramNoEditor (const char *pmTestDirectory,
 	    else
 	    {
 		printf ( 
-		    "Line %d [%d] of %s: %s",
+		    "Line %d [%d] of %s: %s\n",
 		    mySrc -> lineNo, mySrc -> linePos + 1,
 		    EdFile_GetFileName (myErrorPathName), myError -> text);
 	    }
@@ -2165,45 +2141,45 @@ void	EdRun_RunProgramNoEditor (const char *pmTestDirectory,
 	{
 	    if (myMessages - myErrors > 1)
 	    {
-		printf ( "%d Errors and %d Warnings",
+		printf ( "%d Errors and %d Warnings\n",
 		    myErrors, myMessages - myErrors);
 	    }
 	    else if (myMessages - myErrors == 1)
 	    {
-		printf ( "%d Errors and 1 Warning",
+		printf ( "%d Errors and 1 Warning\n",
 		    myErrors);
 	    }
 	    else
 	    {
-		printf ( "%d Errors", myErrors);
+		printf ( "%d Errors\n", myErrors);
 	    }
 	}
 	else if (myErrors == 1)
 	{
 	    if (myMessages - myErrors > 1)
 	    {
-		printf ( "1 Error and %d Warnings",
+		printf ( "1 Error and %d Warnings\n",
 		    myMessages - myErrors);
 	    }
 	    else if (myMessages - myErrors == 1)
 	    {
-		printf ( "1 Error and 1 Warning");
+		printf ( "1 Error and 1 Warning\n");
 	    }
 	    else
 	    {
-		printf ( "1 Error");
+		printf ( "1 Error\n");
 	    }
 	}
 	else
 	{
 	    if (myMessages - myErrors > 1)
 	    {
-		printf ( "%d Warnings",
+		printf ( "%d Warnings\n",
 		    myMessages - myErrors);
 	    }
 	    else if (myMessages - myErrors == 1)
 	    {
-		printf ( "1 Warning");
+		printf ( "1 Warning\n");
 	    }
 	}
     } // if (myError != NULL)
@@ -2233,7 +2209,7 @@ void	EdRun_RunProgramNoEditor (const char *pmTestDirectory,
 
 	// Set the base source directory and the execution directory to be the
 	// directory in which the source file was located.
-	EdFile_GetDirectoryFromPath (stSourcePathName, myExecutionDirectory);
+	EdFile_GetDirectoryFromPath (pmTestFileName, myExecutionDirectory);
 	
 	myFontSize = gProperties.runConsoleFontSize;
 	if (gProperties.runUseSmallFont)
@@ -2247,7 +2223,7 @@ void	EdRun_RunProgramNoEditor (const char *pmTestDirectory,
 	    }
 	}
 	
-	if (!MIO_Init_Run (stSourceFileName, 
+	if (!MIO_Init_Run (pmTestFileName, 
 		      pmTestDirectory, 
 		      FALSE, 
 		      pmOutputDirectory, 
@@ -2297,7 +2273,6 @@ void	EdRun_RunProgramNoEditor (const char *pmTestDirectory,
 	// This means that the system could have closed any open windows
 	// that we refer to.  Check carefully before using them.
 	//
-	
 	MIO_Finalize_Run ();
 	
 	// Close all files opened by the running program
@@ -2311,27 +2286,29 @@ void	EdRun_RunProgramNoEditor (const char *pmTestDirectory,
 	    FilePath	myErrorPathName;
 	    SrcPosition	*mySrc;
 	    
+		printf("Runtime Errors:\n");
+
 	    myErrorTuringFileNo = stFirstErrorPtr -> srcPos.fileNo;
 	    FileManager_FileName (myErrorTuringFileNo, myErrorPathName);
 	    mySrc = &(stFirstErrorPtr -> srcPos);
+		
 	    if (mySrc -> tokLen > 0)
 	    {
 		printf ( 
-		    "Run Time Error:\n    Line %d [%d - %d] of %s: %s",
+		    "Run Time Error: Line %d [%d - %d] of %s: %s\n",
 		    mySrc -> lineNo, mySrc -> linePos + 1,
 		    mySrc -> linePos + 1 + mySrc -> tokLen, 
-		    EdFile_GetFileName (myErrorPathName), myError -> text);
+		    EdFile_GetFileName (myErrorPathName), stFirstErrorPtr -> text);
 	    }
 	    else
 	    {
 		printf ( 
-		    "Run Time Error:\n    Line %d [%d] of %s: %s",
+		    "Run Time Error: Line %d [%d] of %s: %s\n",
 		    mySrc -> lineNo, mySrc -> linePos + 1,
-		    EdFile_GetFileName (myErrorPathName), myError -> text);
+		    EdFile_GetFileName (myErrorPathName), stFirstErrorPtr -> text);
 	    }
 	} // if (myNumErrors >= 1)
     } // Finished execution
-    
     //
     // Close the editor file.
     //
@@ -3583,6 +3560,7 @@ static void	MySetPreprocessorSymbols (void)
     strcpy (myPredefSymbols [GRAPHICS_NUM], GRAPHICS_STRING);
     strcpy (myPredefSymbols [WINTURING_NUM], WINTURING_STRING);
     strcpy (myPredefSymbols [WINDOWS_NUM], WINDOWS_STRING);
+	strcpy (myPredefSymbols [OPENTURING_NUM], OPENTURING_STRING);
     Language_EnterPreprocSymbols (myPredefSymbols, NUM_DEFAULT_PREDEFS);
 } // MySetPreprocessorSymbols
 

@@ -20,3 +20,4 @@ put "Blend" ..
 Pic.Draw (pic1, 10, 10, picCopy)
 Pic.Draw (pic2, 120, 10, picCopy)
 Pic.Draw (picBlended, 230, 10, picCopy)
+delay(2000)

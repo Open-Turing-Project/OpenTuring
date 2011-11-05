@@ -1,3 +1,1 @@
-turing.exe -run testCrypto.t > stdout.txt
-turing.exe -run SyntaxErrorTest.t > stdout.txt
-pause
+turing.exe -run Pic.Blend.t > testsuite\stdout.txt

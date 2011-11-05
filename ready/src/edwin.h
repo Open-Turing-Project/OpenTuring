@@ -98,6 +98,9 @@ extern void	EdWin_Finalize (void);
 extern void	EdWin_PropertiesSet (EdWin_Properties pmProperties);
 extern void	EdWin_PropertiesImplementChanges (HWND pmEditWindow);
 // Create, Dispose subprograms
+HWND	EdWin_CreateShow (const char *pmPathName, const char *pmExampleName,
+		      int pmNewSkeleton, BOOL pmBeginnerMode, 
+		      BOOL pmOneWindowMode,BOOL pmShowWindow);
 extern HWND	EdWin_Create (const char *pmPathName, const char *pmExampleName,
 			      int pmNewSkeleton, BOOL pmBeginnerMode, 
 			      BOOL pmOneWindowMode);

@@ -1,0 +1,4 @@
+running program X:\dev\turing\test\testsuite\SyntaxErrorTest.t
+Syntax Errors:
+Line 3 [56638 - 65537] of SyntaxErrorTest.t: Syntax error at 'End of File', expected ':'
+1 Error

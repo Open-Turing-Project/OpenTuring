@@ -440,7 +440,14 @@ void	EdWin_PropertiesImplementChanges (HWND pmEditWindow)
 /************************************************************************/
 HWND	EdWin_Create (const char *pmPathName, const char *pmExampleName,
 		      int pmNewSkeleton, BOOL pmBeginnerMode, 
-		      BOOL pmOneWindowMode)
+		      BOOL pmOneWindowMode) 
+{
+	return EdWin_CreateShow(pmPathName,pmExampleName, pmNewSkeleton, pmBeginnerMode, pmOneWindowMode,TRUE);
+}
+// this allows command line running with no visible editor while keeping existing infrastructure. Yes it's ugly.
+HWND	EdWin_CreateShow (const char *pmPathName, const char *pmExampleName,
+		      int pmNewSkeleton, BOOL pmBeginnerMode, 
+		      BOOL pmOneWindowMode,BOOL pmShowWindow)
 {
     char		myEditWindowClassName [256];
     HWND		myEditWindow, myTextDisplayWindow;
@@ -519,16 +526,17 @@ HWND	EdWin_Create (const char *pmPathName, const char *pmExampleName,
     // We must show the window here because if we maximize the window 
     // in the creation routine, Windows makes the normal rect the same
     // as the maximized rect!  Yuck!
-    if ((pmBeginnerMode && stProperties.beginnerFullScreen) || 	
-        ((!pmBeginnerMode) && stProperties.advancedFullScreen))
-    {
-    	ShowWindow (myEditWindow, SW_SHOWMAXIMIZED);
-    }        
-    else
-    {	    	
-        ShowWindow (myEditWindow, SW_SHOWNORMAL);
-    }
-
+	if(pmShowWindow) {
+		if ((pmBeginnerMode && stProperties.beginnerFullScreen) || 	
+			((!pmBeginnerMode) && stProperties.advancedFullScreen))
+		{
+    		ShowWindow (myEditWindow, SW_SHOWMAXIMIZED);
+		}        
+		else
+		{	    	
+			ShowWindow (myEditWindow, SW_SHOWNORMAL);
+		}
+	}
     if (pmBeginnerMode || pmOneWindowMode)
     {
     	stEditorWindow = myEditWindow;

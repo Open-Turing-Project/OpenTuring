@@ -1,6 +1,7 @@
 anyclass in "%oot/support/predefs/anyclass"
 
 "%oot/support/predefs/HashMap.tu"
+"%oot/support/predefs/GL.tu"
 
 "%oot/support/predefs/Concurrency.tu"
 "%oot/support/predefs/Config.tu"

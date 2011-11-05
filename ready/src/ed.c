@@ -336,7 +336,7 @@ int WINAPI	WinMain (HINSTANCE pmApplicationInstance,
 		EdFile_CombinePath (myCurrentDirectory, "testsuite", 
     			    myOutdir);
 
-		printf("starting...\n");
+		//printf("starting...\n");
 		EdRun_RunProgramNoEditor (myCurrentDirectory,myOutdir,stAutoRunFile);
 		return 0;
     }

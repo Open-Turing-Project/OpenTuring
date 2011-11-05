@@ -45,9 +45,9 @@
 // string resources have become corrupted
 #define WINDOW_TITLE_REPL		"Internal Error"
 #define CRASH_PREAMBLE_REPL1		"The environment (not your program) has crashed.\r\n\r\nThis error is caused by a bug in the environment and is not your fault!\r\nDetails about the crash have been saved in the file \""
-#define CRASH_PREAMBLE_REPL2		"\".\r\n\r\nIf possible, please e-mail this file to readybugs@hsa.on.ca\r\n\r\nHere are some details about the crash:\r\n"
+#define CRASH_PREAMBLE_REPL2		"\".\r\n\r\nIf possible, please e-mail this file to trishume@me.com\r\n\r\nHere are some details about the crash:\r\n"
 #define FAIL_PREAMBLE_REPL1		"The environment has experienced an unexpected internal error.\r\n\r\nThis error is caused by a bug in the environment and is not your fault!\r\nDetails about the crash have been saved in the file \""
-#define FAIL_PREAMBLE_REPL2		"\".\r\n\r\nIf possible, please e-mail this file to readybugs@hsa.on.ca\r\n\r\nHere are some details about the error:\r\n"
+#define FAIL_PREAMBLE_REPL2		"\".\r\n\r\nIf possible, please e-mail this file to trishume@me.com\r\n\r\nHere are some details about the error:\r\n"
 #define FAIL_REASON_NOT_FOUND_REPL	"   Error code = %d\r\n"
 #define FAIL_REASON_FOUND_REPL		"   Error = %s (%d)\r\n"
 #define FAIL_WINDOWS_ERROR_REPL		"   Windows error = %s (%d)\r\n"

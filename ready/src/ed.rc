@@ -26,12 +26,12 @@ DEBUG_SMALL_ICON	ICON	DISCARDABLE	"rsrc\\readydbgsm.ico"
 #elif TURING
 // TW Change the icons
 APP_ICON		ICON	DISCARDABLE	"rsrc\\turing.ico"
-APP_SMALL_ICON		ICON	DISCARDABLE	"rsrc\\turing.ico"
+APP_SMALL_ICON		ICON	DISCARDABLE	"rsrc\\turing-sm.ico"
 RUN_ICON		ICON	DISCARDABLE	"rsrc\\turing.ico"
-RUN_SMALL_ICON		ICON	DISCARDABLE	"rsrc\\turingrunsm.ico"
+RUN_SMALL_ICON		ICON	DISCARDABLE	"rsrc\\turing-sm.ico"
 DEBUG_ICON		ICON	DISCARDABLE	"rsrc\\turing.ico"
-DEBUG_SMALL_ICON	ICON	DISCARDABLE	"rsrc\\turingdbgsm.ico"
-#endif // #elif TURING
+DEBUG_SMALL_ICON	ICON	DISCARDABLE	"rsrc\\turing-sm.ico"
+#endif // #elif TURING 
 TWO_UP_ICON		ICON	DISCARDABLE	"rsrc\\two_up.ico"
 JAVA_ICON		ICON	DISCARDABLE	"rsrc\\readyjava.ico"
 CLASS_ICON		ICON	DISCARDABLE	"rsrc\\readyclass.ico"
@@ -426,7 +426,7 @@ STRINGTABLE
     IDS_FATALWINDOWTITLE		"Fatal Internal Error"
     IDS_WARNWINDOWTITLE			"Internal Error"
     IDS_FAILPREAMBLE1			"The environment has experienced an unexpected internal error.\r\n\r\nThis error is caused by a bug in the environment and is not your fault!\r\nDetails about the crash have been saved in the file """
-    IDS_FAILPREAMBLE2			""".\r\n\r\nIf possible, please e-mail this file to readybugs@hsa.on.ca\r\n\r\nHere are some details about the error:\r\n"
+    IDS_FAILPREAMBLE2			""".\r\n\r\nIf possible, please e-mail this file to trishume@me.com\r\n\r\nHere are some details about the error:\r\n"
     IDS_FAILREASONNOTFOUND		"   Error code = %d\r\n"
     IDS_FAILREASONFOUND			"   Error = %s (%d)\r\n"
     IDS_FAILWINDOWSERROR		"   Windows error = %s (%d)\r\n"
@@ -434,7 +434,7 @@ STRINGTABLE
     IDS_FAILFILELINE			"   File = %s\r\n   Line = %d\r\n"
     IDS_FAILSAVEFILE			"\r\nAll unsaved open files will be saved with a "".sav"" or "".sv#"" extension."
     IDS_CRASHPREAMBLE1			"The environment (not your program) has crashed.\r\n\r\nThis error is caused by a bug in the environment and is not your fault!\r\nDetails about the crash have been saved in the file """
-    IDS_CRASHPREAMBLE2			""".\r\n\r\nIf possible, please e-mail this file to readybugs@hsa.on.ca\r\n\r\nHere are some details about the crash:\r\n"
+    IDS_CRASHPREAMBLE2			""".\r\n\r\nIf possible, please e-mail this file to trishume@me.com\r\n\r\nHere are some details about the crash:\r\n"
 
     // Dialog box titles
     IDS_INIT_FAILURE_TITLE		"Initialization Failure"
@@ -1808,12 +1808,12 @@ TOP_BUTTON_DATA RCDATA
         BEGIN
 	    BLOCK "04090000"
 	    BEGIN
-	    	VALUE "FileDescription", "Turing for Windows\0"
-	    	VALUE "LegalCopyright",  "Copyright \251 Holt Software Associates Inc. 2011\0"
+	    	VALUE "FileDescription", "Open Turing for Windows\0"
+	    	VALUE "LegalCopyright",  "Copyright \251 The Open Turing Project 2011\0"
 	    	VALUE "Comments",        "Environment written by: Tom L. West\0"
-	    	VALUE "CompanyName",     "Holt Software Associates Inc.\0"
+	    	VALUE "CompanyName",     "The Open Turing Project\0"
 	    	VALUE "FileVersion",     "1.0.0\0"
-	    	VALUE "ProductName",     "Turing for Windows (formerly Object Oriented Turing)\0"
+	    	VALUE "ProductName",     "Open Turing for Windows\0"
 	    	VALUE "ProductVersion",  "1.0.0\0"
 	    END
         END
