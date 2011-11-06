@@ -1,9 +1,9 @@
 const width := 640
-const height := 640
+const height := 480
 
 var sTime : int
 
-GL.NewWin (width, height, 0)
+var res := GL.NewWin (width, height)
 
 GL.SetLight (1)
 

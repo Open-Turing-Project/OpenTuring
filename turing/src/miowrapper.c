@@ -1804,11 +1804,11 @@ void MIO_glgraph_freecontext (OOTaddr *sp)
 
 void MIO_glgraph_newwin (OOTaddr *sp)
 {
-    OOTint width,height,mode;
+    OOTint width,height;
 
-    MyExecutorScan (sp, "III", &width,&height,&mode);
+    MyExecutorScan (sp, "rII", &width,&height);
 
-    MIOGLGraph_NewWin (width,height,mode);
+    RESULT_OOT_BOOL(sp, MIOGLGraph_NewWin (width,height));
 }
 
 void MIO_glgraph_closewin (OOTaddr *sp)

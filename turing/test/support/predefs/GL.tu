@@ -3,7 +3,7 @@ module pervasive GL
     export all
     
     % if mode is 2 the window is fullscreen. Don't do this though because at the moment you can't get out gracefully
-    external "glgraph_newwin" proc NewWin (width, height, mode : int) 
+    external "glgraph_newwin" fcn NewWin (width, height : int) : boolean
     external "glgraph_closewin" proc CloseWin ()
     %external "glgraph_copytowin" proc Blit (x,y : int)
 

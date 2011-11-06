@@ -35,7 +35,7 @@ extern void	MIOGLGraph_FreeContext();
 extern void	MIOGLGraph_CopyToWin (OOTint x,OOTint y);
 */
 extern void	MIOGLGraph_InitRun ();
-extern void	MIOGLGraph_NewWin (OOTint width,OOTint height,OOTint winMode);
+extern BOOL	MIOGLGraph_NewWin (OOTint width,OOTint height);
 extern void	MIOGLGraph_CloseWin ();
 extern void	MIOGLGraph_Update ();
 extern void	MIOGLGraph_Cls ();

@@ -1,2 +1,5 @@
 put "YAY!!!!"
-delay(5000)
+var d : int
+Mouse.ButtonWait("up",d,d,d,d)
+put "DONE!"
+delay(1000)
