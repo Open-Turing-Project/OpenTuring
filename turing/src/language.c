@@ -104,8 +104,6 @@ extern void FileManager_AssertTextClosed ();
 
 extern void FileManager_Dump ();
 
-extern TLboolean AbortCheck ();
-
 extern void FeedBack ();
 struct	SrcPosition {
     TLnat2	lineNo;
@@ -630,10 +628,6 @@ Language_UnitManager_UnitKind	unitKind;
 	return;
     };
     TLSETL(100258);
-    if (AbortCheck()) {
-	TLSETL(100259);
-	TL_TLE_TLEQUIT ((TLint4) 1, (char *) 0, 0);
-    };
     TLSETL(100262);
     if (unitStatus == 0) {
 	TLSETL(100264);
@@ -789,10 +783,6 @@ void	*unitPtr;
 	return;
     };
     TLSETL(100369);
-    if (AbortCheck()) {
-	TLSETL(100370);
-	TL_TLE_TLEQUIT ((TLint4) 1, (char *) 0, 0);
-    };
     TLSETL(100376);
     if (Language_UnitManager_Kind(unitPtr) == 3) {
 	TLSETL(100377);

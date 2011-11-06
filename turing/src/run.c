@@ -305,7 +305,7 @@ typedef	TLnat4	Language_set32;
 typedef	TLint2	Language_Opcode;
 typedef	TLchar	Language___x2319[22];
 typedef	Language___x2319	Language___x2318[255];
-extern Language___x2318	Language_OpcodeName;
+//extern Language___x2318	Language_OpcodeName;
 struct	Language_CodeHeader {
     TLaddressint	bodyCode;
 };
@@ -990,7 +990,8 @@ struct Language_Execute_RunDescriptor	*runDesc;
 		TL_TLI_TLIPS ((TLint4) 0, " PC=", (TLint2) 0);
 		TL_TLI_TLIPI ((TLint4) 0, (TLint4) ((unsigned long) Language_Execute_globalPC - Language_codeOprSize), (TLint2) 0);
 		TL_TLI_TLIPS ((TLint4) 0, " OPCODE=", (TLint2) 0);
-		TL_TLI_TLIPS ((TLint4) 0, (Language_OpcodeName[TLINRANGELOW(op, 0, 254, 1)]), (TLint2) 0);
+		//TL_TLI_TLIPS ((TLint4) 0, (Language_OpcodeName[TLINRANGELOW(op, 0, 254, 1)]), (TLint2) 0);
+		TL_TLI_TLIPS ((TLint4) 0, "<opcode finding disabled, see execute.c>", (TLint2) 0);
 		TL_TLI_TLIPS ((TLint4) 0, " FP=", (TLint2) 0);
 		TL_TLI_TLIPN ((TLint4) 0, (TLnat4) fp, (TLint2) 0);
 		TL_TLI_TLIPS ((TLint4) 0, " SP=", (TLint2) 0);

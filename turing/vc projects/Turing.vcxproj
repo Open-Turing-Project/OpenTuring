@@ -190,9 +190,6 @@ echo Copied turing.pdb
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="..\Debug\HTMLHELP.LIB" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="Coder.vcxproj">
       <Project>{304b3e9e-353f-4dba-89cd-0536e4c37000}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
@@ -207,7 +204,11 @@ echo Copied turing.pdb
     </ProjectReference>
     <ProjectReference Include="Editor.vcxproj">
       <Project>{89c7a73a-384e-4cd7-994c-43bb5f865f45}</Project>
+      <Private>true</Private>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
     <ProjectReference Include="Executor.vcxproj">
       <Project>{6fff4e87-a815-47e4-9526-388ce9f340c0}</Project>
@@ -241,6 +242,11 @@ echo Copied turing.pdb
       <Project>{71333baa-9c14-4d40-b15a-db1ff462b765}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\Debug\HTMLHELP.LIB">
+      <FileType>Document</FileType>
+    </Library>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

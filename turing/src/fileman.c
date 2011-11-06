@@ -128,7 +128,7 @@ struct FileManager_FID	FileManager_nullFID =
 
 extern void GetFID ();
 
-extern TLint4 getpid ();
+extern TLint4 _getpid ();
 
 extern void unlink ();
 
@@ -1853,7 +1853,7 @@ TLstring	savedAs;
     TLSETL(101019);
     {
 	TLstring	__x571;
-	TL_TLS_TLSVIS((TLint4) getpid(), (TLint4) 0, (TLint4) 10, __x571);
+	TL_TLS_TLSVIS((TLint4) _getpid(), (TLint4) 0, (TLint4) 10, __x571);
 	{
 	    TLstring	__x570;
 	    TL_TLS_TLSCAT(FileManager_TempDir, "oot", __x570);
@@ -1873,7 +1873,7 @@ void FileManager_RmTemp () {
     TLSETL(101026);
     {
 	TLstring	__x576;
-	TL_TLS_TLSVIS((TLint4) getpid(), (TLint4) 0, (TLint4) 10, __x576);
+	TL_TLS_TLSVIS((TLint4) _getpid(), (TLint4) 0, (TLint4) 10, __x576);
 	{
 	    TLstring	__x575;
 	    TL_TLS_TLSCAT("del /y ", FileManager_TempDir, __x575);

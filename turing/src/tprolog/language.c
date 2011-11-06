@@ -95,10 +95,6 @@ extern void FileManager_CheckReferencedFiles ();
 extern void FileManager_RmFile ();
 
 extern void FileManager_SetDefaultInclude ();
-
-extern TLboolean AbortCheck ();
-
-extern void FeedBack ();
 struct	SrcPosition {
     TLnat2	lineNo;
     FileManager_FileNoType	fileNo;
@@ -111,7 +107,7 @@ struct	ErrMsgDef {
     struct SrcPosition	srcPos;
     __x865	text;
 };
-
+TLboolean	Language_debug;
 static void Language_Debugging ();
 
 static void Language_Paragraph ();
@@ -151,6 +147,33 @@ void Language_EndExecution ();
 void Language_StopExecution ();
 struct SrcPosition	Language_nullSrcPosition = 
     {0, 0, 0, 0};
+typedef	TLint4	CookieKind;
+struct	Cookie {
+    CookieKind	kind;
+    TLaddressint	item;
+    TLaddressint	fp;
+    TLaddressint	data;
+};
+struct Cookie	Language_nullCookie = 
+    {0, 0, 0, 0};
+struct	DumpSymbolDef {
+    struct DumpSymbolDef	*next;
+    TLaddressint	symbolName;
+    TLaddressint	typeName;
+    struct SrcPosition	srcPos;
+    TLstring	value;
+    struct Cookie	cookie;
+    TLboolean	isPredef;
+};
+struct	DumpScopeDef {
+    struct DumpSymbolDef	symbolInfo;
+    struct Cookie	expandCookie;
+    struct DumpSymbolDef	*parameters;
+    struct DumpSymbolDef	*declarations;
+};
+struct DumpSymbolDef	Language_nullSymbolDef;
+struct DumpScopeDef	Language_nullScopeDef;
+
 typedef	TLint1	Language_ErrorModule_Severity;
 
 extern void Language_ErrorModule_Initialize ();
@@ -177,6 +200,36 @@ typedef	TLnat1	Language_set8;
 typedef	TLnat2	Language_set16;
 typedef	TLnat4	Language_set32;
 typedef	TLint2	Language_Opcode;
+typedef	TLchar	Language___x1112[22];
+typedef	Language___x1112	Language___x1111[255];
+Language___x1111	Language_OpcodeName = 
+    {"ABORT", "ABORTCOND", "ABSINT", "ABSREAL", "ADDINT", "ADDINTNAT", "ADDNAT", "ADDNATINT", "ADDREAL", "ADDSET",
+    "ALLOCFLEXARRAY", "ALLOCGLOB", "ALLOCGLOBARRAY", "ALLOCLOC", "ALLOCLOCARRAY", "AND", "ARRAYUPPER", "ASNADDR", "ASNADDRINV", "ASNINT",
+    "ASNINTINV", "ASNINT1", "ASNINT1INV", "ASNINT2", "ASNINT2INV", "ASNINT4", "ASNINT4INV", "ASNNAT", "ASNNATINV", "ASNNAT1",
+    "ASNNAT1INV", "ASNNAT2", "ASNNAT2INV", "ASNNAT4", "ASNNAT4INV", "ASNNONSCALAR", "ASNNONSCALARINV", "ASNPTR", "ASNPTRINV", "ASNREAL",
+    "ASNREALINV", "ASNREAL4", "ASNREAL4INV", "ASNREAL8", "ASNREAL8INV", "ASNSTR", "ASNSTRINV", "BEGINHANDLER", "BITSASSIGN", "BITSEXTRACT",
+    "CALL", "CALLEXTERNAL", "CALLIMPLEMENTBY", "CASE", "CAT", "CHARSUBSTR1", "CHARSUBSTR2", "CHARTOCSTR", "CHARTOSTR", "CHARTOSTRLEFT",
+    "CHKCHRSTRSIZE", "CHKCSTRRANGE", "CHKRANGE", "CHKSTRRANGE", "CHKSTRSIZE", "CLOSE", "COPYARRAYDESC", "CSTRTOCHAR", "CSTRTOSTR", "CSTRTOSTRLEFT",
+    "DEALLOCFLEXARRAY", "DECSP", "DIVINT", "DIVNAT", "DIVREAL", "EMPTY", "ENDFOR", "EOF", "EQADDR", "EQCHARN",
+    "EQINT", "EQINTNAT", "EQNAT", "EQREAL", "EQSET", "EQSTR", "EXPINTINT", "EXPREALINT", "EXPREALREAL", "FETCHADDR",
+    "FETCHBOOL", "FETCHINT", "FETCHINT1", "FETCHINT2", "FETCHINT4", "FETCHNAT", "FETCHNAT1", "FETCHNAT2", "FETCHNAT4", "FETCHPTR",
+    "FETCHREAL", "FETCHREAL4", "FETCHREAL8", "FETCHSET", "FETCHSTR", "FIELD", "FOR", "FORK", "FREE", "FREECLASS",
+    "FREEU", "GECHARN", "GECLASS", "GEINT", "GEINTNAT", "GENAT", "GENATINT", "GEREAL", "GESET", "GESTR",
+    "GET", "GETPRIORITY", "GTCLASS", "IF", "IN", "INCLINENO", "INCSP", "INFIXAND", "INFIXOR", "INITARRAYDESC",
+    "INITCONDITION", "INITMONITOR", "INITUNIT", "INTREAL", "INTREALLEFT", "INTSTR", "JSR", "JUMP", "JUMPB", "LECHARN",
+    "LECLASS", "LEINT", "LEINTNAT", "LENAT", "LENATINT", "LEREAL", "LESET", "LESTR", "LOCATEARG", "LOCATECLASS",
+    "LOCATELOC", "LOCATEPARM", "LOCATETEMP", "LTCLASS", "MAXINT", "MAXNAT", "MAXREAL", "MININT", "MINNAT", "MINREAL",
+    "MODINT", "MODNAT", "MODREAL", "MONITORENTER", "MONITOREXIT", "MULINT", "MULNAT", "MULREAL", "MULSET", "NATREAL",
+    "NATREALLEFT", "NATSTR", "NEGINT", "NEGREAL", "NEW", "NEWARRAY", "NEWCLASS", "NEWU", "NOT", "NUMARRAYELEMENTS",
+    "OBJCLASS", "OPEN", "OR", "ORD", "PAUSE", "PRED", "PROC", "PUSHADDR", "PUSHADDR1", "PUSHCOPY",
+    "PUSHINT", "PUSHINT1", "PUSHINT2", "PUSHREAL", "PUSHVAL0", "PUSHVAL1", "PUT", "QUIT", "READ", "REALDIVIDE",
+    "REMINT", "REMREAL", "RESOLVEDEF", "RESOLVEPTR", "RESTORESP", "RETURN", "RTS", "SAVESP", "SEEK", "SEEKSTAR",
+    "SETALL", "SETCLR", "SETELEMENT", "SETFILENO", "SETLINENO", "SETPRIORITY", "SETSTDSTREAM", "SETSTREAM", "SHL", "SHR",
+    "SIGNAL", "STRINT", "STRINTOK", "STRNAT", "STRNATOK", "STRTOCHAR", "SUBINT", "SUBINTNAT", "SUBNAT", "SUBNATINT",
+    "SUBREAL", "SUBSCRIPT", "SUBSET", "SUBSTR1", "SUBSTR2", "SUCC", "TAG", "TELL", "UFIELD", "UNINIT",
+    "UNINITADDR", "UNINITBOOLEAN", "UNINITINT", "UNINITNAT", "UNINITREAL", "UNINITSTR", "UNLINKHANDLER", "VSUBSCRIPT", "WAIT", "WRITE",
+    "XOR", "XORSET", "BREAK", "SYSEXIT", "ILLEGAL"};
+
 struct	Language_CodeHeader {
     TLaddressint	bodyCode;
 };

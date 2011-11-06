@@ -10,6 +10,7 @@
 #include <commctrl.h>
 #include <zmouse.h>
 #include <crtdbg.h>
+#include <string.h>
 
 /****************/
 /* Self include */

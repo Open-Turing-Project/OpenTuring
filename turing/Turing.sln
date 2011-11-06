@@ -29,6 +29,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Turing", "vc projects\Turin
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Turing License DLL", "vc projects\Turing License DLL.vcxproj", "{3FEA2953-1B87-4A61-886E-9E05A5328D3A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TProlog", "TProlog\TProlog.vcxproj", "{107FAC3F-5017-4C78-859E-4FDDBDD21790}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Prolog", "vc projects\Prolog\Prolog.vcxproj", "{25727E23-B7CA-464E-B6EC-72B6F31B9762}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -91,6 +95,14 @@ Global
 		{3FEA2953-1B87-4A61-886E-9E05A5328D3A}.Debug|Win32.Build.0 = Debug|Win32
 		{3FEA2953-1B87-4A61-886E-9E05A5328D3A}.Release|Win32.ActiveCfg = Release|Win32
 		{3FEA2953-1B87-4A61-886E-9E05A5328D3A}.Release|Win32.Build.0 = Release|Win32
+		{107FAC3F-5017-4C78-859E-4FDDBDD21790}.Debug|Win32.ActiveCfg = Debug|Win32
+		{107FAC3F-5017-4C78-859E-4FDDBDD21790}.Debug|Win32.Build.0 = Debug|Win32
+		{107FAC3F-5017-4C78-859E-4FDDBDD21790}.Release|Win32.ActiveCfg = Release|Win32
+		{107FAC3F-5017-4C78-859E-4FDDBDD21790}.Release|Win32.Build.0 = Release|Win32
+		{25727E23-B7CA-464E-B6EC-72B6F31B9762}.Debug|Win32.ActiveCfg = Debug|Win32
+		{25727E23-B7CA-464E-B6EC-72B6F31B9762}.Debug|Win32.Build.0 = Debug|Win32
+		{25727E23-B7CA-464E-B6EC-72B6F31B9762}.Release|Win32.ActiveCfg = Release|Win32
+		{25727E23-B7CA-464E-B6EC-72B6F31B9762}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

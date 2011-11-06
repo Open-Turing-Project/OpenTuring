@@ -6494,10 +6494,6 @@ void Language_Compile_Parser_ParseUnit () {
 	TLSETL(100078);
 	for(;;) {
 	    TLSETL(100078);
-	    if (AbortCheck()) {
-		TLSETL(100079);
-		TL_TLE_TLEQUIT ((TLint4) 1, (char *) 0, 0);
-	    };
 	    TLSETL(100084);
 	    for(;;) {
 		TLSETL(100084);

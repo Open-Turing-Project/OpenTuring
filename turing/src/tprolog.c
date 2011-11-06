@@ -272,7 +272,7 @@ int WINAPI	WinMain (HINSTANCE pmApplicationInstance,
     	    	        IDS_TPROLOG_UNABLE_TO_READ_EXE, myFileName, 1);
         return 0;
     }
-    myObjectFileHeader [sizeof (OBJECT_FILE_HEADER)] = 0;
+    myObjectFileHeader [sizeof (OBJECT_FILE_HEADER)-1] = 0;
     if (strcmp (myObjectFileHeader, OBJECT_FILE_HEADER) != 0)
     {
     	EdGUI_Message1 (NULL, 0, IDS_TPROLOG_FILE_READ_FAILED_TITLE,
@@ -339,7 +339,7 @@ int WINAPI	WinMain (HINSTANCE pmApplicationInstance,
     	    	        IDS_TPROLOG_UNABLE_TO_READ_EXE, myFileName, 7);
         return 0;
     }
-    myObjectFileHeader [sizeof (OBJECT_FILE_HEADER)] = 0;
+    myObjectFileHeader [sizeof (OBJECT_FILE_HEADER)-1] = 0;
     if (strcmp (myObjectFileHeader, OBJECT_FILE_HEADER) != 0)
     {
     	EdGUI_Message1 (NULL, 0, IDS_TPROLOG_FILE_READ_FAILED_TITLE,

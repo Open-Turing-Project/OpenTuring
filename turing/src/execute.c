@@ -346,7 +346,7 @@ typedef	TLnat4	Language_set32;
 typedef	TLint2	Language_Opcode;
 typedef	TLchar	Language___x1938[22];
 typedef	Language___x1938	Language___x1937[255];
-extern Language___x1937	Language_OpcodeName;
+//extern Language___x1937	Language_OpcodeName;
 struct	Language_CodeHeader {
     TLaddressint	bodyCode;
 };
@@ -3119,7 +3119,8 @@ Language_Opcode	op;
 		    TLSETL(101434);
 		    {
 			TLstring	__x2269;
-			TL_TLS_TLSCAT("Unimplemented opcode ", Language_OpcodeName[TLINRANGELOW(op, 0, 254, 1)], __x2269);
+			//TL_TLS_TLSCAT("Unimplemented opcode ", Language_OpcodeName[TLINRANGELOW(op, 0, 254, 1)], __x2269);
+			TL_TLS_TLSCAT("Unimplemented opcode ", "<opcode finding disabled, see execute.c>", __x2269);
 			Language_Execute_ExecutionError_Abort((TLint4) 10000, __x2269);
 		    };
 		};
