@@ -17,7 +17,7 @@
 
 STRINGTABLE
 {
-    IDS_TPROLOG_TURING_PROLOG_NAME	"Turing Standalone Prolog"
+    IDS_TPROLOG_TURING_PROLOG_NAME	"Turing Standalone Executable"
     
     IDS_TPROLOG_APPLICATION_NAME	"TProlog"
     
@@ -77,12 +77,12 @@ END
         BEGIN
 	    BLOCK "04090000"
 	    BEGIN
-	    	VALUE "FileDescription", "Turing Standalone Prolog for Windows\0"
-	    	VALUE "LegalCopyright",  "Copyright \251 Holt Software Associates Inc. 2002\0"
+	    	VALUE "FileDescription", "Turing Standalone Executable\0"
+	    	VALUE "LegalCopyright",  "Copyright \251 The Open Turing Project. 2011\0"
 	    	VALUE "Comments",        "Environment written by: Tom L. West\0"
-	    	VALUE "CompanyName",     "Holt Software Associates Inc.\0"
+	    	VALUE "CompanyName",     "The Open Turing Project.\0"
 	    	VALUE "FileVersion",     "4.0.4d\0"
-	    	VALUE "ProductName",     "Turing Standalone Prolog for Windows\0"
+	    	VALUE "ProductName",     "Turing Standalone Executable\0"
 	    	VALUE "ProductVersion",  "4.0.4d\0"
 	    END
         END
