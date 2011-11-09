@@ -30,6 +30,8 @@
 
 #include "tprolog.h"
 
+#include "hashmap.h"
+
 /**********/
 /* Macros */
 /**********/
@@ -771,6 +773,12 @@ BOOL	EdRun_Execute (HWND pmWindow, const char *pmDummy1,
     char		*myInputFile, *myOutputFile;
     RunArgs		myRunArgs;
     MMRESULT		myTimer;
+
+	// hashmap to store timing data for profiling
+	// only allocated if profiling is enabled (by checking trace execution)
+	map_t myProfileMap = NULL; 
+	LARGE_INTEGER myTickFreq,myTime1,myTime2;
+	double myProfElapsed;
     
     stExecutingWindow = EdGUI_GetTopWindow (pmWindow);
     stAllRunWindowsClosed = TRUE;
@@ -904,7 +912,7 @@ BOOL	EdRun_Execute (HWND pmWindow, const char *pmDummy1,
 
     if (pmStartWithStep)
     {
-	stStepping = STEP;
+		stStepping = STEP;
     	Language_SetStep (Language_Step_StepIntoCall);
     }
     else
@@ -923,16 +931,48 @@ BOOL	EdRun_Execute (HWND pmWindow, const char *pmDummy1,
 	    (!stTuringProgramPaused && 
 	     (!stTracing  || (stTraceSpeed == 0) ||
 	      (EdGUI_GetTicks () >= stTraceDelayTimer))))
-	{
+		{
+			if(stTracing) {
+				if(myProfileMap == NULL) {
+					myProfileMap = hashmap_new();
+					QueryPerformanceFrequency(&myTickFreq);
+					if(myProfileMap == NULL || myTickFreq.QuadPart == 0) { // still null? We have a problem
+						MessageBox(NULL,"Can't start profiling.","ERROR",MB_OK|MB_ICONEXCLAMATION);
+						return FALSE;
+					}
+				}
+				QueryPerformanceCounter(&myTime1); // start the clock
+			}
+
     	    MyExecuteQuantum (&myNumErrors, pmWindow);
 
-	    // If we're using sprites, then it may be time to update the screen.
-	    MIO_UpdateSpritesIfNecessary ();
+			// If we're using sprites, then it may be time to update the screen.
+			MIO_UpdateSpritesIfNecessary ();
 
     	    if (gProperties.executionDelay > 0)
     	    {
     	    	Sleep (gProperties.executionDelay);
     	    }
+
+			if(stTracing) {
+				double **myResult;
+				double myCurVal = 0.0;
+				char *myKey;
+				char *myFilename;
+				int myOk;
+
+				QueryPerformanceCounter(&myTime2); // stop the clock
+				myProfElapsed = (myTime2.QuadPart - myTime1.QuadPart) * 1000.0 / myTickFreq.QuadPart;
+
+
+				FileManager_FileName (stRunStatus.srcPos.fileNo, myFilename);
+				sprintf(myKey,"%s - %i",myFilename,stRunStatus.srcPos.lineNo);
+
+				myOk = hashmap_get(myProfileMap,myKey,(any_t*)myResult);
+				if(myOk == MAP_OK) myCurVal = **myResult; // this should point to a double if it worked
+
+				//hashmap_put(myProfileMap,myKey,
+			}
         }
 
 	// We are waiting for a certain amount of time to pass.  We do this by
