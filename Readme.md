@@ -3,6 +3,8 @@ Current lead maintainer: Tristan Hume
 * * *
 
 Open Turing is an open-source implementation of Turing for Windows.
+I (Tristan Hume) acquired the source code from Tom West, the last maintainer of the project.
+This version is backwards-compatible with normal turing.
 
 As well as being open-source it is also faster and has more features.
 Unfortunately, at the moment many of these features are undocumented.
