@@ -1,0 +1,45 @@
+% File "books.dem".  Demonstrate class to maintain
+%  a list of book authors and titles.
+import BookList in "books.tu"
+
+% Give instructions.
+procedure printHelp
+    put "Commands you can give after the prompt >"
+    put "  h  help (print these instructions)"
+    put "  i  insert a book into the list"
+    put "  d  delete a book from the list"
+    put "  p  print the list of books"
+    put "  q  quit"
+end printHelp
+
+var books : ^ BookList
+new books
+printHelp
+loop
+    var command : string
+    put ">" .. % prompt for a command
+    get command
+    exit when command = "q"
+    if command  = "h" then
+        printHelp
+    elsif command  = "i" then
+        var a, t : string
+        put "Enter author to insert: " ..
+        get a : *
+        put "Enter title to insert: " ..
+        get t : *
+        books -> Insert (a, t)
+    elsif command  = "d" then
+        var a, t : string
+        put "Enter author to delete: " ..
+        get a  : *
+        put "Enter title to delete: " ..
+        get t  : *
+        books -> Delete (a, t)
+    elsif command (1) = "p" then
+        books -> PrintList
+    else
+        put "Invalid command ", command
+        printHelp
+    end if
+end loop

@@ -1,0 +1,6 @@
+% File "starspan.ti". Play "Star Spangled Banner".
+process PlayStarSpangledBanner
+    loop
+        Music.Play ("")
+    end loop
+end PlayStarSpangledBanner

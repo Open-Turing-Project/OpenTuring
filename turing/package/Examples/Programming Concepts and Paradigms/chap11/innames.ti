@@ -1,0 +1,23 @@
+% File "innames.ti".
+% Put names in a linked list.
+type nameType : string (40)
+type linkedName :
+    record
+        name : nameType
+        link : ^linkedName
+    end record
+var last : ^linkedName := nil % Start with empty list.
+put "Enter names, one per line (end with q) "
+% Read each name and add it to the list.
+loop
+    var newName : nameType
+    put "Enter new name, end with 'q'"
+    get newName : *
+    exit when newName = "q"
+    var p : ^linkedName
+    new p % Allocate a new record.
+    p -> name := newName % Put name in new record.
+    p -> link := last % Set link to point to existing list.
+    last := p % Set last to point to new record.
+end loop
+

@@ -1,0 +1,13 @@
+% File "lower.ti".  Function to put a string of letters into lower case.
+function lowercase (s : string) r : string
+    % pre initialized (s) and s contains only letters
+    % post r contains only lower case letters
+    const down := "abcdefghijklmnopqrstuvwxyz"
+    const up := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    var t := ""
+    for i : 1 .. length (s)
+        const where := max (index (down, s (i)), index (up, s (i)))
+        t += down (where)
+    end for
+    result t
+end lowercase

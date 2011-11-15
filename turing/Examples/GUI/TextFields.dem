@@ -1,0 +1,109 @@
+% The "TextFields.dem" program
+% This demonstrates the Text Field widget along with the GUI routines
+% that use Text Field widgets. [GetText, SetText, SetSelection, MakeActive,
+% CreateTextFieldFull, ProcessEvent]
+
+import GUI % Must be included in a programs using the GPL
+
+View.Set ("graphics:200;150,nobuttonbar") % Shrink the window to the minimum size
+
+% The Text Field IDs
+var nameTextField, addressTextField, ageTextField : int
+
+% The slider to choose people
+var scrollBar : int
+
+% The label for record number
+var recordLabel : int
+
+% The array of data
+var data : array 1 .. 50 of
+    record
+	name : string
+	address : string
+	age : string
+    end record
+
+var numRecords : int := 1
+var currentRecord : int := 1
+
+for i : 1 .. 50
+    data (i).name := ""
+    data (i).address := ""
+    data (i).age := ""
+end for
+
+procedure ChooseRecord (recordNumber : int)
+    % Save the current data
+    data (currentRecord).name := GUI.GetText (nameTextField)
+    data (currentRecord).address := GUI.GetText (addressTextField)
+    data (currentRecord).age := GUI.GetText (ageTextField)
+
+    % Place the new current record in the text fields
+    currentRecord := recordNumber
+    GUI.SetText (nameTextField, data (currentRecord).name)
+    GUI.SetText (addressTextField, data (currentRecord).address)
+    GUI.SetText (ageTextField, data (currentRecord).age)
+
+    % Set the label to indicate the current record
+    GUI.SetLabel (recordLabel, "Record " + intstr (recordNumber) + " of " +
+	intstr (numRecords))
+	
+    % Set the selections to cover all the text in each of the text fields
+    GUI.SetSelection (nameTextField, -1, -1)
+    % Make the name field the active text field
+    GUI.SetActive (nameTextField)
+    GUI.SetSelection (addressTextField, -1, -1)
+    GUI.SetSelection (ageTextField, -1, -1)
+end ChooseRecord
+
+procedure AddRecord
+    numRecords += 1
+    GUI.SetSliderMinMax (scrollBar, 1, numRecords)
+    % GUI.SetSliderValue calls ChooseRecord automatically
+    GUI.SetSliderValue (scrollBar, numRecords)
+end AddRecord
+
+procedure NameEntered (text : string)
+    GUI.SetSelection (addressTextField, -1, -1)
+    GUI.SetActive (addressTextField)
+end NameEntered
+
+procedure AddressEntered (text : string)
+    GUI.SetSelection (ageTextField, -1, -1)
+    GUI.SetActive (ageTextField)
+end AddressEntered
+
+procedure AgeEntered (text : string)
+    if currentRecord = numRecords then
+	AddRecord
+    else
+	GUI.SetSliderValue (scrollBar, currentRecord + 1)
+	% GUI.SetSliderValue calls ChooseRecord automatically
+    end if
+end AgeEntered
+
+GUI.SetBackgroundColour (grey)
+recordLabel := GUI.CreateLabelFull (50, 130, "Record 1 of 1", 100, 0,
+    GUI.CENTER, 0)
+nameTextField := GUI.CreateTextFieldFull (50, 100, 100, "", NameEntered,
+    GUI.INDENT, 0, 0)
+addressTextField := GUI.CreateTextFieldFull (50, 70, 100, "", AddressEntered,
+    GUI.INDENT, 0, 0)
+ageTextField := GUI.CreateTextFieldFull (50, 40, 100, "", AgeEntered,
+    GUI.INDENT, 0, 0)
+var nameLabel := GUI.CreateLabelFull (45, 100, "Name", 0, 0, GUI.RIGHT, 0)
+var addressLabel := GUI.CreateLabelFull (45, 70, "Address", 0, 0, GUI.RIGHT,
+    0)
+var ageLabel := GUI.CreateLabelFull (45, 40, "Age", 0, 0, GUI.RIGHT, 0)
+
+var addRecord := GUI.CreateButton (52, 5, 100, "Add Record", AddRecord)
+
+scrollBar := GUI.CreateVerticalScrollBarFull (170, 5, 130, 1, 1, 1,
+    ChooseRecord, 1, 5, 0)
+GUI.SetSliderReverse (scrollBar)
+
+loop
+    exit when GUI.ProcessEvent
+end loop
+

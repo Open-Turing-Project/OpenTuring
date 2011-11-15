@@ -1,0 +1,10 @@
+% File "palrec.ti".  Recursive function to check if a string is a palindrome.
+function palindrome (s : string) r : boolean
+    % pre initialized (s) and s contains only lower case letters
+    % post r = (s is a palindrome)
+    if length (s) > 1 then
+        result s (1) = s (*) and palindrome (s (2 .. * - 1))
+    else
+        result true
+    end if
+end palindrome

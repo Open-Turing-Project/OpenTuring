@@ -1,0 +1,126 @@
+% The "Paint" program
+import GUI in "%oot/support/lib/GUI"
+
+View.Set ("graphics:640;425")
+
+var canvas : int % The canvas to be drawn on.
+var radius : int := 20 % The initial radius of the item to be drawn.
+var kind : int % What to draw.
+var maple, star, box, oval : int % The different radio buttons.
+
+% We don't want to do anything when the mouse is dragged or released,
+% so we make this the MouseDrag and MouseUp routine for the canvas.
+procedure DoNothing (mx, my : int)
+end DoNothing
+
+% This procedure is called whenever the user clicks the mouse in the
+% canvas.  It draws the picture centered on the location where the button
+% was clicked.
+procedure MouseDown (mx, my : int)
+    if kind = maple then
+	GUI.DrawFillMapleLeaf (canvas, mx - radius, my - radius,
+	    mx + radius, my + radius, brightred)
+    elsif kind = star then
+	GUI.DrawFillStar (canvas, mx - radius, my - radius,
+	    mx + radius, my + radius, brightgreen)
+    elsif kind = box then
+	GUI.DrawFillBox (canvas, mx - radius, my - radius,
+	    mx + radius, my + radius, brightblue)
+    elsif kind = oval then
+	GUI.DrawFillOval (canvas, mx, my, radius, radius, purple)
+    end if
+end MouseDown
+
+% This procedure draws a black and white example of the picture.  Pass it a
+% parameter of colourbg to erase the previous picture and colourfg
+% to draw a new picture.
+procedure DrawExample (clr : int)
+    if kind = maple then
+	Draw.FillMapleLeaf (500 - radius, 180 - radius,
+	    500 + radius, 180 + radius, clr)
+    elsif kind = star then
+	Draw.FillStar (500 - radius, 180 - radius,
+	    500 + radius, 180 + radius, clr)
+    elsif kind = box then
+	Draw.FillBox (500 - radius, 180 - radius,
+	    500 + radius, 180 + radius, clr)
+    elsif kind = oval then
+	Draw.FillOval (500, 180, radius, radius, clr)
+    end if
+end DrawExample
+
+% This procedure is called whenever the slider changes value.  We
+% erase the old example picture, change the size of the picture and
+% draw the new example.
+procedure Slide (sliderValue : int)
+    DrawExample (colourbg)
+    radius := sliderValue
+    DrawExample (colourfg)
+end Slide
+
+% This procedure is called whenever one of the radio buttons is selected.
+% We erase the old example picture, change the kind of picture and
+% draw the new example.
+procedure SelectKind
+    DrawExample (colourbg)
+    kind := GUI.GetEventWidgetID
+    DrawExample (colourfg)
+end SelectKind
+
+% This procedure is called whenever the clear button is pressed.
+procedure Clear
+    GUI.DrawCls (canvas)
+end Clear
+
+% Create the drawing canvas
+canvas := GUI.CreateCanvasFull (10, 10, 300, 300, 0, MouseDown,
+    DoNothing, DoNothing)
+
+% Create the canvas label
+var canvasLabel := GUI.CreateLabelFull (10, 310, "Click in the Canvas",
+    300, 0, GUI.CENTER, 0)
+
+% Create the vertical slider
+var sizer := GUI.CreateVerticalSlider (350, 10, 300, 20, 100, 20, Slide)
+
+% Create the slider label
+var sizerLabel := GUI.CreateLabel (340, 315, "Size")
+
+% Create the four radio buttons
+maple := GUI.CreateRadioButton (20, maxy - 20, "Maple Leaf", 0, SelectKind)
+star := GUI.CreateRadioButton ( - 1, - 1, "Star", maple, SelectKind)
+box := GUI.CreateRadioButton ( - 1, - 1, "Box", star, SelectKind)
+oval := GUI.CreateRadioButton ( - 1, - 1, "Oval", box, SelectKind)
+
+% Create the clear button
+var clear := GUI.CreateButton (200, maxy - 30, 0, "Clear", Clear)
+
+% Create the quit button
+var quitButton := GUI.CreateButton (200, maxy - 70, 0, "Quit", GUI.Quit)
+
+% Set the initial picture kind
+kind := maple
+
+% Draw the initial example
+DrawExample (colourfg)
+
+% Process events
+loop
+    exit when GUI.ProcessEvent
+end loop
+
+% Hide everything but the canvas
+DrawExample (colourbg)
+GUI.Hide (maple)
+GUI.Hide (star)
+GUI.Hide (box)
+GUI.Hide (oval)
+GUI.Hide (clear)
+GUI.Hide (quitButton)
+GUI.Hide (sizer)
+GUI.Hide (sizerLabel)
+GUI.Hide (canvasLabel)
+
+% Move the canvas to the center of the screen
+GUI.SetPosition (canvas, (maxx - 300) div 2, (maxy - 300) div 2)
+

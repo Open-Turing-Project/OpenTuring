@@ -1,0 +1,6 @@
+% File "ohcanada.ti". Play "Oh Canada".
+process PlayOhCanada
+    loop
+	Music.Play ("")
+    end loop
+end PlayOhCanada

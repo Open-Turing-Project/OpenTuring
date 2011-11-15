@@ -1,0 +1,9 @@
+% File "strnum.ti".  Procedure to find the value n
+% of the representation s in the base b.
+procedure strnum (s : string, b : int, var n : int)
+    const digits := "0123456789ABCDEF"
+    n := 0
+    for i : 1 .. length (s)
+        n := n * b + index (digits, s(i)) - 1
+    end for
+end strnum

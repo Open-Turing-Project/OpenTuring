@@ -1,0 +1,16 @@
+% File "pie.dem". Demonstrate the use of the Pie class.
+import Pie in "pie.tu"
+
+var p1 : ^Pie
+new p1
+
+loop
+    p1 -> SetCenter (maxx div 2, maxy div 2)
+    p1 -> SetRadius (100)
+    var value : int
+    put "Enter value (-1 to exit)" ..
+    get value
+    exit when value < 0
+    p1 -> AddSegment (value)
+    p1 -> ShowPie
+end loop

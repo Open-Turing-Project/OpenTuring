@@ -1,0 +1,14 @@
+% File "clean.ti".
+% Clean the punctuation and white space out of a string.
+function clean (s : string) r : string
+    % pre initialized (s)
+    % post r contains only letters
+    const dirt := " ,.;:()!'"
+    var t := ""
+    for i : 1 .. length (s)
+        if index (dirt, s (i)) = 0 then
+            t += s (i)
+        end if
+    end for
+    result t
+end clean

@@ -1,0 +1,55 @@
+% The "TextBoxes.dem" program
+% This demonstrates the Text Box widget along with the GUI routines
+% that use Text Box widgets.
+
+import GUI % Must be included in a programs using the GPL
+
+View.Set ("graphics:300;300,nobuttonbar") % Shrink the window to the minimum size
+
+% The Text Field IDs
+var textBox : int
+
+% The label for the title
+var title : int
+
+% The name of the file to be viewed
+const fileNameToBeViewed : string := "%oot\\support\\lib\\GUI"
+
+% Attempt to open the file.  Put an error message if open fails
+var f : int
+open : f, fileNameToBeViewed, get
+if f = 0 then
+    put "Unable to open '" + fileNameToBeViewed + "' : ", Error.LastMsg
+    return
+end if
+
+% We opened the file successfully.  Now create the widgets.
+GUI.SetBackgroundColour (grey)
+
+% Create the title label
+title := GUI.CreateLabelFull (20, 280, fileNameToBeViewed, 250, 0, 
+    GUI.CENTER, 0)
+    
+% Create the text box
+textBox := GUI.CreateTextBoxFull (10, 10, 280, 265, GUI.INDENT, 0)
+
+%GUI.Hide (textBox)
+% Read the file and place it in the text box.
+var line : string
+% GUI.SetScrollOnAdd (textBox, false)
+GUI.Hide (textBox)
+loop
+    exit when eof (f)
+    get : f, line : *
+    GUI.AddLine (textBox, line)
+end loop
+GUI.SetTopLine (textBox, 20)
+GUI.Show (textBox)
+
+close : f % Close the file
+
+% Process Events
+loop
+    exit when GUI.ProcessEvent
+end loop
+

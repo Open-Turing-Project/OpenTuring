@@ -1,0 +1,29 @@
+% The "Canvas1.dem" program.
+% Create a canvas and draw four circles on it.
+import GUI
+
+View.Set ("graphics:200;200,nobuttonbar")
+
+% Necessary for a 3-D look for the canvas
+GUI.SetBackgroundColour (grey)
+
+% This procedure is needed as an argument to CreateCanvasFull.
+procedure DoNothing (mx, my : int)
+end DoNothing
+
+% Create a label for the canvas.  We could use CreateLabelFull for more
+% precise alignment.
+var label1 := GUI.CreateLabel (70, 182, "Four Circles")
+
+% Create the canvas.  We need to use CreateCanvasFull in order to
+% specify the type of border.
+var canvas := GUI.CreateCanvasFull (20, 20, 160, 160, GUI.INDENT, DoNothing,
+    DoNothing, DoNothing)
+
+% Draw the four ovals.  Notice that they don't extend off the canvas
+% and the co-ordinates they use are relative to the canvas, not the window.
+const radius := 70 % Half the width - 10
+GUI.DrawFillOval (canvas, 0, 0, radius, radius, brightred)
+GUI.DrawFillOval (canvas, 160, 0, radius, radius, brightgreen)
+GUI.DrawFillOval (canvas, 0, 160, radius, radius, brightblue)
+GUI.DrawFillOval (canvas, 160, 160, radius, radius, brightpurple)

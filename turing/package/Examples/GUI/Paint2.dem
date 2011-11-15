@@ -1,0 +1,115 @@
+% The "Paint2" program
+import GUI in "%oot/support/lib/GUI"
+
+View.Set ("graphics:400;425")
+
+var canvas : int % The canvas to be drawn on.
+var radius : int := 20 % The initial radius of the item to be drawn.
+var kind : int % What to draw.
+var maple, star, box, oval : int % The different radio buttons.
+var originalX, originalY, lastX, lastY : int
+var picture : int
+
+% We don't want to do anything when the mouse is dragged or released,
+% so we make this the MouseDrag and MouseUp routine for the canvas.
+procedure DoNothing (mx, my : int)
+end DoNothing
+
+% This procedure is called whenever the user clicks the mouse in the
+% canvas.  It draws the picture centered on the location where the button
+% was clicked.
+procedure MouseDown (mx, my : int)
+    originalX := mx
+    originalY := my
+    lastX := mx
+    lastY := my
+    picture := GUI.PicNew (canvas, mx, my, mx, my)
+
+end MouseDown
+
+procedure MouseDrag (mx, my : int)
+    % To reduce flickering, only redraw if the mouse position has changed.
+    if mx not= lastX or my not= lastY then
+	% Restore the background
+	GUI.PicDraw (canvas, picture, min (originalX, lastX),
+	    min (originalY, lastY), picCopy)
+	Pic.Free (picture)
+
+	% Take a picture of the new background
+	lastX := mx
+	lastY := my
+	picture := GUI.PicNew (canvas, min (originalX, lastX),
+	    min (originalY, lastY),
+	    max (originalX, lastX), max (originalY, lastY))
+
+	if kind = maple then
+	    GUI.DrawFillMapleLeaf (canvas, originalX, originalY,
+		lastX, lastY, brightred)
+	elsif kind = star then
+	    GUI.DrawFillStar (canvas, originalX, originalY,
+		lastX, lastY, brightgreen)
+	elsif kind = box then
+	    GUI.DrawFillBox (canvas, originalX, originalY,
+		lastX, lastY, brightblue)
+	elsif kind = oval then
+	    GUI.DrawFillOval (canvas, (originalX + lastX) div 2,
+		(originalY + lastY) div 2, abs (originalX - lastX) div 2,
+		abs (originalY - lastY) div 2, purple)
+	end if
+    end if
+end MouseDrag
+
+
+% This procedure is called whenever one of the radio buttons is selected.
+% We erase the old example picture, change the kind of picture and
+% draw the new example.
+procedure SelectKind
+    kind := GUI.GetEventWidgetID
+end SelectKind
+
+% This procedure is called whenever the clear button is pressed.
+procedure Clear
+    GUI.DrawCls (canvas)
+end Clear
+
+% Create the drawing canvas
+canvas := GUI.CreateCanvasFull (10, 10, 300, 300, 0, MouseDown,
+    MouseDrag, DoNothing)
+
+% Create the canvas label
+var canvasLabel := GUI.CreateLabelFull (10, 310, "Click in the Canvas",
+    300, 0, GUI.CENTER, 0)
+
+% Create the four radio buttons
+maple := GUI.CreateRadioButton (20, maxy - 20, "Maple Leaf", 0,
+    SelectKind)
+star := GUI.CreateRadioButton ( - 1, - 1, "Star", maple, SelectKind)
+box := GUI.CreateRadioButton ( - 1, - 1, "Box", star, SelectKind)
+oval := GUI.CreateRadioButton ( - 1, - 1, "Oval", box, SelectKind)
+
+% Create the clear button
+var clear := GUI.CreateButton (200, maxy - 30, 0, "Clear", Clear)
+
+% Create the quit button
+var quitButton := GUI.CreateButton (200, maxy - 70, 0, "Quit", GUI.Quit)
+
+% Set the initial picture kind
+kind := maple
+
+% Process events
+loop
+    exit when GUI.ProcessEvent
+end loop
+
+% Hide everything but the canvas
+GUI.Hide (maple)
+GUI.Hide (star)
+GUI.Hide (box)
+GUI.Hide (oval)
+GUI.Hide (clear)
+GUI.Hide (quitButton)
+GUI.Hide (canvasLabel)
+
+% Move the canvas to the center of the screen
+GUI.SetPosition (canvas, (maxx - 300) div 2, (maxy - 300) div 2)
+

@@ -774,11 +774,13 @@ BOOL	EdRun_Execute (HWND pmWindow, const char *pmDummy1,
     RunArgs		myRunArgs;
     MMRESULT		myTimer;
 
+	// PROFILING - work in progress
+	// Needs to be exposed through an API (in turing)
 	// hashmap to store timing data for profiling
 	// only allocated if profiling is enabled (by checking trace execution)
-	map_t myProfileMap = NULL; 
+	/*map_t myProfileMap = NULL; 
 	LARGE_INTEGER myTickFreq,myTime1,myTime2;
-	double myProfElapsed;
+	double myProfElapsed;*/
     
     stExecutingWindow = EdGUI_GetTopWindow (pmWindow);
     stAllRunWindowsClosed = TRUE;
@@ -932,7 +934,7 @@ BOOL	EdRun_Execute (HWND pmWindow, const char *pmDummy1,
 	     (!stTracing  || (stTraceSpeed == 0) ||
 	      (EdGUI_GetTicks () >= stTraceDelayTimer))))
 		{
-			if(stTracing) {
+			/*if(stTracing) { // profiling, work in progress
 				if(myProfileMap == NULL) {
 					myProfileMap = hashmap_new();
 					QueryPerformanceFrequency(&myTickFreq);
@@ -942,7 +944,7 @@ BOOL	EdRun_Execute (HWND pmWindow, const char *pmDummy1,
 					}
 				}
 				QueryPerformanceCounter(&myTime1); // start the clock
-			}
+			}*/
 
     	    MyExecuteQuantum (&myNumErrors, pmWindow);
 
@@ -954,7 +956,7 @@ BOOL	EdRun_Execute (HWND pmWindow, const char *pmDummy1,
     	    	Sleep (gProperties.executionDelay);
     	    }
 
-			if(stTracing) {
+			/*if(stTracing) { // profiling, work in progress
 				double **myResult;
 				double myCurVal = 0.0;
 				char *myKey;
@@ -972,7 +974,7 @@ BOOL	EdRun_Execute (HWND pmWindow, const char *pmDummy1,
 				if(myOk == MAP_OK) myCurVal = **myResult; // this should point to a double if it worked
 
 				//hashmap_put(myProfileMap,myKey,
-			}
+			}*/
         }
 
 	// We are waiting for a certain amount of time to pass.  We do this by

@@ -103,7 +103,7 @@ STRINGTABLE
     IDS_SUPPORT_DIR			"Support\"
     IDS_READY_BIN    			"Support\Bin\"
     IDS_INI_DIR				"Support\Ini\"
-    IDS_HELP_DIR			"Support\Help\"
+    IDS_HELP_DIR			"support\help\"
     IDS_JAVA_BIN_131			"Support\jre131_09\bin\hotspot\"
     IDS_JAVA_BIN_BUILT_IN		"Support\jre142_01\bin\client\"
     IDS_JAVA_JRE_USER_INSTALLED		"Support\jre"

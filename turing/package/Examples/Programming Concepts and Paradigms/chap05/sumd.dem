@@ -1,0 +1,7 @@
+% File "sumd.dem".  Demonstrate the procedure computeSum.
+include "sum.ti"
+var sum : int
+for i : 1 .. 10
+    computeSum (i, sum)
+    put "Sum of numbers from 1 to ", i : 3, " is ", sum
+end for

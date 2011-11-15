@@ -1,0 +1,13 @@
+% File "occurs.ti".  Function to count occurrences of a character in a string.
+function occurs (c : string(1), s : string) r : int
+    % Value of function is number of occurrences of c in s.
+    pre length (c) = 1 % and initialized (s)
+    % post r = number of occurrences of c in s
+    var count := 0  % Initialize count to zero.
+    for i : 1 .. length (s)
+        if s (i) = c then
+            count += 1
+        end if
+    end for
+    result count
+end occurs

@@ -1,0 +1,90 @@
+% File "merge.dem".
+% Generate a random list of 10 elements and sort by merge sort.
+
+procedure swap (var list : array 1 .. * of string (*), i, j : int)
+    const temp := list (i)
+    list (i) := list (j)
+    list (j) := temp
+end swap
+
+procedure shift (var list : array 1 .. * of string (*), i, j : int)
+    const temp := list (j)
+    for decreasing k : j .. i + 1
+        list (k) := list (k - 1)
+    end for
+    list (i) := temp
+end shift
+
+procedure fakeData (var list : array 1 .. * of string (*),
+        numberOfElements : int)
+    for i : 1 .. numberOfElements
+        list (i) := "" % Null string.
+        for letterIndex : 1 .. 4 % Pick four letters at random.
+            list (i) += chr (Rand.Int (ord ("a"), ord ("z")))
+        end for
+    end for
+end fakeData
+
+procedure printList10 (list : array 1 .. * of string (*))
+    for i : 1 .. 10
+        put list (i), " " ..
+    end for
+    put ""
+end printList10
+
+% Sort list of strings by merging.
+procedure merge (var list : array 1 .. * of string (*),
+        first, middle, last : int)
+    % Merges two sorted lists of strings.
+    pre 1 <= first and first <= middle and middle <= last and
+        last <= upper (list)
+    % pre: list going from first to middle is sorted.
+    % pre: list going from middle + 1 to last is sorted.
+    % post: list (first .. last) is a permutation of original file.
+    % post: list (first .. last) is sorted in alphabetic order of name.
+    var temp : array 1 .. last of string
+    % Initialize pointers to the two sorted lists.
+    var point1 := first
+    var point2 := middle + 1
+    var point3 := first % Initialize pointer to merged list.
+    loop
+        exit when point3 > last
+        % point3 locates item in merged list.
+        if point1 < middle + 1 and (point2 > last or
+                list (point1) < list (point2)) then
+            % Before the first half string is compared with the second
+            % half string a check is made to see whether either half
+            % has already been finished.
+            % Move string from first half.
+            temp (point3) := list (point1)
+            point1 := point1 + 1
+        else
+            % Move string from second half.
+            temp (point3) := list (point2)
+            point2 := point2 + 1
+        end if
+        point3 += 1
+    end loop
+    % Copy merged array back to original place.
+    for i : first .. last
+        list (i) := temp (i)
+    end for
+    % Temporary statements to trace execution.
+    put first : 3, middle : 3, last : 3, " " ..
+    printList10 (list)
+end merge
+
+procedure mergeSort (var list : array 1 .. * of string (*),     first, last : int)
+        if last > first then
+                const middle := (first + last) div 2
+                mergeSort (list, first, middle)
+                mergeSort (list, middle + 1, last)
+                merge (list, first, middle, last)
+        end if
+end mergeSort
+
+var list : array 1 .. 10 of string (4)
+fakeData (list, 10)
+printList10 (list)
+mergeSort (list, 1, 10)
+printList10 (list)

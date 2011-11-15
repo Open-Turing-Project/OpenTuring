@@ -1,0 +1,13 @@
+% File "numstrd.dem".  Demonstrate the procedure numstr.
+include "numstr.ti"
+var rep : string
+numstr (27, 10, rep)
+put  rep
+numstr (27, 2, rep)
+put rep
+numstr (27, 16, rep)
+put rep
+numstr (0, 13, rep)
+put rep
+numstr (123, 10, rep)
+put rep

@@ -1,0 +1,15 @@
+% File "occurs2.ti".  Recursive function to count occurrences of
+% a character in a string.
+function occurs (c, s : string) r : int
+    pre length (c) = 1 % and initialized (s)
+    % post r = number of occurrences of c in s
+    if length (s) = 0 then
+        result 0
+    else
+        var count := 0
+        if c = s (1) then
+            count += 1
+        end if
+        result count + occurs (c, s (2 .. *))
+    end if
+end occurs

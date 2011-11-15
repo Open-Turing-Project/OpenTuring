@@ -1,0 +1,10 @@
+% File "revers2.ti".  Function to find the reverse of a string.
+function reverse (s : string) r : string
+    % pre initialized (s)
+    % post forall i, r (i) = s (* + 1 - i)
+    if length (s) <= 1 then
+        result s
+    else
+        result reverse (s (2 .. *)) + s (1)
+    end if
+end reverse

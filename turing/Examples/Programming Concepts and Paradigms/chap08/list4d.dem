@@ -1,0 +1,40 @@
+% File "list4d.dem".  Demonstrate class to maintain a list of names.
+import FastSortedList in "list4.tu"
+
+% Give name of instructions.
+procedure printHelp
+    put "Commands you can give after the prompt >"
+    put "  h  help (print these instructions)"
+    put "  i  insert a name into the list"
+    put "  d  delete a name from the list"
+    put "  p  print the list of names"
+    put "  q  quit"
+end printHelp
+
+var names : ^FastSortedList
+new names
+printHelp
+loop
+    var command : string
+    put ">" .. % Prompt for a command.
+    get command
+    exit when command = "q"
+    if command = "h" then
+        printHelp
+    elsif command = "i" then
+        var newName : string
+        put "Enter name to insert: " ..
+        get newName : *
+        names -> Insert (newName)
+    elsif command = "d" then
+        var oldName : string
+        put "Enter name to delete: " ..
+        get oldName : *
+        names -> Delete (oldName)
+    elsif command = "p" then
+        names -> PrintList
+    else
+        put "Invalid command ", command
+        printHelp
+    end if
+end loop

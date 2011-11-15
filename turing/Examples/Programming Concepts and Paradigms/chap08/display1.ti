@@ -1,0 +1,6 @@
+% File "display1.ti".  A procedure to print the values in an array.
+procedure printArray (a : array 1 .. maxSize of int, size : int)
+    for i : 1 .. size
+        put a (i)
+    end for
+end printArray
