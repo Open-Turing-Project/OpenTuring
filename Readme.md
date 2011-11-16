@@ -3,8 +3,6 @@
 #####Download: https://github.com/downloads/Open-Turing-Project/OpenTuring/package.zip
 
 
-
-
 Open Turing is an open-source implementation of Turing for Windows.
 I (Tristan Hume) acquired the source code from Tom West, the last maintainer of the project.
 This version is backwards-compatible with normal turing.
@@ -23,7 +21,7 @@ Look at the "How to Learn About New Features" section for more info.
 ###To Get/Download It:
 * Download the zip: https://github.com/downloads/Open-Turing-Project/OpenTuring/package.zip
 * Or look in the downloads tab
-* If you want the development release, click the zip button, download it and look in the /turing/test folder.
+* If you want the development release, click the "master" button and switch to the dev branch, click the zip button, download it and look in the /turing/test folder.
 
 ###How to Learn About New Features
 
@@ -74,7 +72,8 @@ To get a fully working release with your changes you must compile both of these.
 
 ###How to Submit Contributions:
 1. Get github! (Seriously, it's awesome.)
-2. Fork the project
+2. Look at some turorials on using github
+2. Fork the **development** branch
 3. Commit changes to your fork.
 4. Send a pull request with your changes.
 5. If your changes are any good they will be included in the main distribution.
