@@ -1,4 +1,4 @@
-#Open Turing 1.0
+#Open Turing 1.0 - Development Branch (fork this one)
 ####Current lead maintainer: Tristan Hume
 #####Download: https://github.com/downloads/Open-Turing-Project/OpenTuring/package.zip
 
@@ -73,7 +73,7 @@ To get a fully working release with your changes you must compile both of these.
 ###How to Submit Contributions:
 1. Get github! (Seriously, it's awesome.)
 2. Look at some turorials on using github
-2. Fork the **development** branch
+2. Fork the **development** branch (this is the right one)
 3. Commit changes to your fork.
 4. Send a pull request with your changes.
 5. If your changes are any good they will be included in the main distribution.
