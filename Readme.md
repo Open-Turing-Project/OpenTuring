@@ -1,6 +1,7 @@
 #Open Turing 1.0
-####Current lead maintainer: Tristan Hume
-#####Download: https://github.com/downloads/Open-Turing-Project/OpenTuring/package.zip
+####Download: https://github.com/downloads/Open-Turing-Project/OpenTuring/package.zip
+#####Current lead maintainer: Tristan Hume
+
 
 
 Open Turing is an open-source implementation of Turing for Windows.
