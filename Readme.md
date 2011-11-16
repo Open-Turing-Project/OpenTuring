@@ -2,6 +2,8 @@
 Current lead maintainer: Tristan Hume
 * * *
 
+
+
 Open Turing is an open-source implementation of Turing for Windows.
 I (Tristan Hume) acquired the source code from Tom West, the last maintainer of the project.
 This version is backwards-compatible with normal turing.
@@ -27,7 +29,7 @@ Look in the support/predefs folder of the distribution. If you see an interestin
 
 Read the functions in the module. I.E the Hashmap.tu module has the functions for using hashmaps. The GL.tu file has OpenGL functions.
 
-For usage examples (helpful!) look in the Examples/openTuring folder. These may not exist for every feature.
+For usage examples (helpful!) look in the Examples/Open Turing folder. These may not exist for every feature.
 
 ###Support policy (Or lack thereof)
 * If the editor crashes it will show an email. Send panic.log to the email and describe how the crash happened.
