@@ -1,5 +1,5 @@
 unit
-module pervasive HashMap
+module pervasive IntHashMap
     export New,Free,Put,Get,Remove
     
     external "hashmap_new" fcn New () : int
@@ -8,4 +8,4 @@ module pervasive HashMap
     external "hashmap_put" proc Put (id : int,key:string,val:int)
     external "hashmap_get" fcn Get (id : int,key:string,var res : int) : int
     external "hashmap_remove" proc Remove (id : int,key:string)
-end HashMap
+end IntHashMap

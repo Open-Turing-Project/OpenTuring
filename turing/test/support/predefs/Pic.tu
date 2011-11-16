@@ -162,15 +162,15 @@ module pervasive Pic
 	var picID : int
     
 	if cache = 0 then
-	    cache := HashMap.New()
+	    cache := IntHashMap.New()
 	end if
 	
-	var wasStored := HashMap.Get(cache,fileStr,picID)
+	var wasStored := IntHashMap.Get(cache,fileStr,picID)
 	
 	if wasStored = 0 then % not cached
 	    picID := Pic.FileNew (fileStr)
 	    if picID not= 0 then
-		HashMap.Put(cache,fileStr,picID)
+				IntHashMap.Put(cache,fileStr,picID)
 	    end if
 	end if
 	
