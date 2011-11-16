@@ -1,6 +1,7 @@
 #Open Turing 1.0
-Current lead maintainer: Tristan Hume
-* * *
+####Current lead maintainer: Tristan Hume
+#####Download: https://github.com/downloads/Open-Turing-Project/OpenTuring/package.zip
+
 
 
 
@@ -19,8 +20,9 @@ Look at the "How to Learn About New Features" section for more info.
 * Command line invocation with turing.exe -run file.t
 * New splash and logo
 
-###To Get It:
-* If you want the main stable release, click the download tab near the top and download the latest zip.
+###To Get/Download It:
+* Download the zip: https://github.com/downloads/Open-Turing-Project/OpenTuring/package.zip
+* Or look in the downloads tab
 * If you want the development release, click the zip button, download it and look in the /turing/test folder.
 
 ###How to Learn About New Features
