@@ -73,7 +73,7 @@ xxx
 
 extern void	MIOHashmap_Free (OOTint pmMapID)
 {
-    map_t myMap;
+    hashmap *myMap;
 
 	if (MIO_IDGetCount (pmMapID, HASHMAP_ID) > 1)
     {
@@ -84,24 +84,24 @@ extern void	MIOHashmap_Free (OOTint pmMapID)
     else
     {
 		// The font has been free'd once for each 'new'.  Now get rid of it.
-		myMap = MIO_IDGet (pmMapID, HASHMAP_ID);
-		hashmap_free (myMap);
+		myMap = (hashmap*)MIO_IDGet (pmMapID, HASHMAP_ID);
+		deleteHashmap (myMap);
 		MIO_IDRemove (pmMapID, HASHMAP_ID);
     }
 }
 extern OOTint MIOHashmap_New (SRCPOS *pmSrcPos)
 {
-	map_t newmap;
+	hashmap *newmap;
 	OOTint myID;
 
-	newmap = hashmap_new();
+	newmap = newHashmap(32); // arbitrary size hint
 
 	myID = MIO_IDAdd (HASHMAP_ID, newmap, pmSrcPos, "Hashmap", NULL); //comparison bit is set to "Hasmap" just because
 
     // Couldn't allocate an identifier.  Return the default font ID.
     if (myID == 0)
     {
-		hashmap_free(newmap);
+		deleteHashmap(newmap);
     }
         	    
     return myID;
@@ -109,24 +109,24 @@ extern OOTint MIOHashmap_New (SRCPOS *pmSrcPos)
 
 extern void	MIOHashmap_Put (OOTint pmMapID, OOTstring key,OOTint value)
 {
-	map_t myMap;
+	hashmap *myMap;
 	OOTint *putval;
 
 	putval	= (OOTint*)malloc(sizeof(OOTint));
 	*putval = value;
 
-	myMap = MIO_IDGet (pmMapID, HASHMAP_ID);
+	myMap = (hashmap *)MIO_IDGet (pmMapID, HASHMAP_ID);
 
-	hashmap_put (myMap,key,(any_t)putval);
+	hashmapSet(myMap,putval,key);
 }
 extern OOTint	MIOHashmap_Get (OOTint pmMapID, OOTstring key, OOTint *result)
 {
-	map_t myMap = MIO_IDGet (pmMapID, HASHMAP_ID);
+	hashmap *myMap = (hashmap*)MIO_IDGet (pmMapID, HASHMAP_ID);
 
 	OOTint *retrieved;
-	int status = hashmap_get (myMap,key,(any_t*)&retrieved);
+	retrieved = (OOTint*)hashmapGet (myMap,key);
 
-	if(status == MAP_MISSING) {
+	if(retrieved == NULL) {
 		*result = 0;
 		return 0; // 0 if not found
 	} else {
@@ -138,13 +138,12 @@ extern OOTint	MIOHashmap_Get (OOTint pmMapID, OOTstring key, OOTint *result)
 }
 extern void	MIOHashmap_Remove (OOTint pmMapID, OOTstring key)
 {
-	map_t myMap = MIO_IDGet (pmMapID, HASHMAP_ID);
+	hashmap *myMap = (hashmap*)MIO_IDGet (pmMapID, HASHMAP_ID);
 	OOTint *retrieved;
 
-	int status = hashmap_get (myMap,key,(any_t*)&retrieved);
+	retrieved = (OOTint*)hashmapRemove (myMap,key);
 
-	if(status != MAP_MISSING) {
-		hashmap_remove (myMap,key);
+	if(retrieved != NULL) {
 		free(retrieved);
 	}
 	
