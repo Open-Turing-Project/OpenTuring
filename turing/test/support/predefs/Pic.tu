@@ -158,7 +158,7 @@ module pervasive Pic
 
     external "pic_settransclr" procedure SetTransparentColor (picId, clr : int)
 
-    /*procedure ScreenLoad (fileStr : string, x, y, mode : int)
+    procedure ScreenLoad (fileStr : string, x, y, mode : int)
 	var picID : int
     
 	if cache = 0 then
@@ -177,16 +177,7 @@ module pervasive Pic
 	if picID > 0 then
 	    Pic.Draw (picID, x, y, mode)
 	end if
-    end ScreenLoad*/
-
-		procedure ScreenLoad (fileStr : string, x, y, mode : int)
-	var picID : int
-	picID := Pic.FileNew (fileStr)
-	if picID > 0 then
-	    Pic.Draw (picID, x, y, mode)
-	    Pic.Free (picID)
-	end if
-    end ScreenLoadNoCache
+    end ScreenLoad
     
     procedure ScreenLoadNoCache (fileStr : string, x, y, mode : int)
 	var picID : int
