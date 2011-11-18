@@ -80,8 +80,5 @@ To get a fully working release with your changes you must compile both of these.
 5. If your changes are any good they will be included in the main distribution.
 
 ###How Can I Help?
-* If you understand how the code works write about it on the project wiki (It's a tab up top.) This helps other people get started quicker.
-* Write documentation for new features
-* Write examples for new features.
-* Profile the bytecode VM and make it faster. This is hard because the VM is compiled to C from Turing Plus.
-* Write new features!
+
+Look in the issues tab. Either fix things or add new features listed there.
