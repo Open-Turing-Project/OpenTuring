@@ -188,7 +188,11 @@ int WINAPI	WinMain (HINSTANCE pmApplicationInstance,
         ((GetKeyState (VK_CONTROL) & 0x8000) != 0))
     {
     	stLogging = TRUE;
-    }        
+		debugModeEnabled = TRUE;
+    } else {
+		stLogging = FALSE;
+		debugModeEnabled = FALSE;
+	}
 
     // If the program is started up with the Alt and Ctrl keys both pressed,
     // then start the allow more than one copy of Turing.  Mostly used to

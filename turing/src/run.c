@@ -1,4 +1,11 @@
 #include "cinterface"
+
+// TRY NOT TO ENABLE THIS
+// this allows tracing of executed instructions but
+// it also causes slowdown
+
+//#define ENABLE_INSTRUCTION_TRACE
+
 typedef	TLnat2	FileManager_FileNoType;
 typedef	TLnat4	FileManager_FileTimeStamp;
 typedef	TLint2	FileManager_ResultCode;
@@ -976,6 +983,7 @@ struct Language_Execute_RunDescriptor	*runDesc;
 	    TLASSERT (((unsigned long) Language_Execute_globalPC & (1)) == 0);
 	    op = (* (Language_Opcode *) Language_Execute_globalPC);
 	    Language_Execute_globalPC += Language_codeOprSize;
+#ifdef ENABLE_INSTRUCTION_TRACE
 	    if (Language_debug) {
 		if ((unsigned long) (Language_Execute_RQHead->name) != 0) {
 		    TL_TLI_TLISS ((TLint4) 0, (TLint2) 2);
@@ -1031,6 +1039,7 @@ struct Language_Execute_RunDescriptor	*runDesc;
 		TL_TLI_TLIPS ((TLint4) 0, ")", (TLint2) 0);
 		TL_TLI_TLIPK ((TLint2) 0);
 	    };
+#endif // ENABLE_INSTRUCTION_TRACE
 	    switch (op) {
 		case 0:
 		case 1:
@@ -2477,6 +2486,7 @@ struct Language_Execute_RunDescriptor	*runDesc;
 		case 125:
 		    {
 			Language_Execute_RQHead->srcPos.lineNo += 1;
+#ifdef ENABLE_INSTRUCTION_TRACE
 			if (Language_debug) {
 			    {
 				TLstring	__x3074;
@@ -2490,6 +2500,7 @@ struct Language_Execute_RunDescriptor	*runDesc;
 				TL_TLI_TLIPK ((TLint2) 0);
 			    };
 			};
+#endif
 			if (((Language_Execute_RQHead->stepSpec) != 0) && ((unsigned long) (Language_Execute_RQHead->stepFP) == 0)) {
 			    (*runDesc).state = 4;
 			    goto __x3763;
@@ -3318,6 +3329,7 @@ struct Language_Execute_RunDescriptor	*runDesc;
 			    newLineNo = (* (TLnat2 *) (((unsigned long) Language_Execute_globalSP + 4) + 2));
 			    Language_Execute_globalPC = (TLaddressint) ((* (TLaddressint *) (((unsigned long) Language_Execute_globalSP + 4) + (2 * 2))));
 			    Language_Execute_globalSP += 12;
+#ifdef ENABLE_INSTRUCTION_TRACE
 			    if (Language_debug) {
 				{
 				    TLstring	__x3304;
@@ -3331,6 +3343,7 @@ struct Language_Execute_RunDescriptor	*runDesc;
 				    TL_TLI_TLIPK ((TLint2) 0);
 				};
 			    };
+#endif
 			    if ((unsigned long) Language_Execute_savedInitPC == (unsigned long) Language_Execute_globalPC) {
 				Language_Execute_savedInitPC = (TLaddressint) 0;
 				Language_Execute_savedInitFP = (TLaddressint) 0;
@@ -3474,6 +3487,7 @@ struct Language_Execute_RunDescriptor	*runDesc;
 			Language_Execute_globalPC += Language_codeInt2Size;
 			newLineNo = (* (TLnat2 *) Language_Execute_globalPC);
 			Language_Execute_globalPC += Language_codeInt2Size;
+#ifdef ENABLE_INSTRUCTION_TRACE
 			if (Language_debug) {
 			    {
 				TLstring	__x3332;
@@ -3487,6 +3501,7 @@ struct Language_Execute_RunDescriptor	*runDesc;
 				TL_TLI_TLIPK ((TLint2) 0);
 			    };
 			};
+#endif
 			if ((newFileNo != (Language_Execute_RQHead->srcPos.fileNo)) || (newLineNo != (Language_Execute_RQHead->srcPos.lineNo))) {
 			    Language_Execute_RQHead->srcPos.fileNo = newFileNo;
 			    Language_Execute_RQHead->srcPos.lineNo = newLineNo;
@@ -3503,6 +3518,7 @@ struct Language_Execute_RunDescriptor	*runDesc;
 			TLASSERT (((unsigned long) Language_Execute_globalPC & (1)) == 0);
 			newLineNo = (* (TLnat2 *) Language_Execute_globalPC);
 			Language_Execute_globalPC += Language_codeInt2Size;
+#ifdef ENABLE_INSTRUCTION_TRACE
 			if (Language_debug) {
 			    {
 				TLstring	__x3334;
@@ -3516,6 +3532,7 @@ struct Language_Execute_RunDescriptor	*runDesc;
 				TL_TLI_TLIPK ((TLint2) 0);
 			    };
 			};
+#endif
 			if (newLineNo != (Language_Execute_RQHead->srcPos.lineNo)) {
 			    Language_Execute_RQHead->srcPos.lineNo = newLineNo;
 			    if (((Language_Execute_RQHead->stepSpec) != 0) && ((unsigned long) (Language_Execute_RQHead->stepFP) == 0)) {
@@ -5047,6 +5064,7 @@ struct Language_Execute_RunDescriptor	*runDesc;
 			    Language_Execute_savedInitFP = (TLaddressint) 0;
 			};
 			Language_Execute_SetActive(&(me->activeStream));
+#ifdef ENABLE_INSTRUCTION_TRACE
 			if (Language_debug) {
 			    {
 				TLstring	__x3762;
@@ -5060,6 +5078,7 @@ struct Language_Execute_RunDescriptor	*runDesc;
 				TL_TLI_TLIPK ((TLint2) 0);
 			    };
 			};
+#endif
 			Language_Execute_quantaCount = 20;
 			if (wasStepping) {
 			    (*runDesc).state = 5;
