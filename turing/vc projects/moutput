@@ -1,0 +1,602 @@
+
+
+*** START NEW UNIT (<No file>) ***
+     0: u-boolean (1)
+     0: 311
+     2: u-int (4)
+     2: 1067
+     4: u-pointer (8)
+     4: 2115
+     6: u-nat (4)
+     6: 1071
+     8: u-real (8)
+     8: 2099
+    10: u-string (256)
+    10: 62
+    12: 256
+    14: u-string (2)
+    14: 575
+    16: u-nat (4)
+    16: 1071
+
+--- CODE ADDRESS = 0x9091618
+--- MANIFEST ADDRESS = 0x9091A40
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\anyclass.tu) ***
+     0: "anyclass"
+    10: 0 (fill byte)
+    11: 0 (fill byte)
+    12: 0
+    16: 0
+    20: 0
+    24: 4
+    28: 0
+    32: 68
+    36: 0
+
+--- CODE ADDRESS = 0x90F8B18
+--- MANIFEST ADDRESS = 0x90F8F40
+    12: patch to	0x90F8F40 + 12
+    28: patch to	0x90F8F40 + 0
+    32: patch to	0x90F8B18 + 68
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\HashMap.tu) ***
+
+--- CODE ADDRESS = 0x90FA430
+--- MANIFEST ADDRESS = 0x90FA858
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Concurrency.tu) ***
+
+--- CODE ADDRESS = 0x90FC010
+--- MANIFEST ADDRESS = 0x90FC438
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Config.tu) ***
+
+--- CODE ADDRESS = 0x90FD8D8
+--- MANIFEST ADDRESS = 0x90FDD00
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Cryptography.tu) ***
+
+--- CODE ADDRESS = 0x90FF848
+--- MANIFEST ADDRESS = 0x90FFC70
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Dialog.tu) ***
+
+--- CODE ADDRESS = 0x9101660
+--- MANIFEST ADDRESS = 0x9101A88
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Dir.tu) ***
+
+--- CODE ADDRESS = 0x9102F28
+--- MANIFEST ADDRESS = 0x9103350
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Errno.tu) ***
+
+--- CODE ADDRESS = 0x9105F58
+--- MANIFEST ADDRESS = 0x9106380
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Error.tu) ***
+
+--- CODE ADDRESS = 0x911B7D8
+--- MANIFEST ADDRESS = 0x911BC00
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Excepts.tu) ***
+
+--- CODE ADDRESS = 0x911D400
+--- MANIFEST ADDRESS = 0x911D828
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\File.tu) ***
+
+--- CODE ADDRESS = 0x9124520
+--- MANIFEST ADDRESS = 0x9124948
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Font.tu) ***
+
+--- CODE ADDRESS = 0x9127850
+--- MANIFEST ADDRESS = 0x9127C78
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Input.tu) ***
+     0: 0
+     4: 1
+     8: 0
+    12: 0
+    16: 0
+    20: 256
+     0: patch to	256
+     8: patch to	256
+    12: patch to	1
+
+--- CODE ADDRESS = 0x912A8C8
+--- MANIFEST ADDRESS = 0x912ACF0
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Joystick.tu) ***
+     0: begin (0)
+     0: 4
+     2: u-nat (4)
+     2: 1071
+     4: u-nat (4)
+     4: 1071
+     6: u-nat (4)
+     6: 1071
+     8: u-nat (4)
+     8: 1071
+    10: u-nat (4)
+    10: 1071
+    12: u-nat (4)
+    12: 1071
+    14: skip (4)
+    14: 1027
+    16: u-nat (4)
+    16: 1071
+    18: u-nat (4)
+    18: 1071
+    20: end (0)
+    20: 8
+    22: begin (0)
+    22: 4
+    24: u-nat (4)
+    24: 1071
+    26: u-nat (4)
+    26: 1071
+    28: u-nat (4)
+    28: 1071
+    30: u-nat (4)
+    30: 1071
+    32: u-nat (4)
+    32: 1071
+    34: u-nat (4)
+    34: 1071
+    36: u-nat (4)
+    36: 1071
+    38: u-nat (4)
+    38: 1071
+    40: u-nat (4)
+    40: 1071
+    42: u-nat (4)
+    42: 1071
+    44: u-nat (4)
+    44: 1071
+    46: u-nat (4)
+    46: 1071
+    48: u-nat (4)
+    48: 1071
+    50: u-nat (4)
+    50: 1071
+    52: u-nat (4)
+    52: 1071
+    54: u-nat (4)
+    54: 1071
+    56: u-nat (4)
+    56: 1071
+    58: end (0)
+    58: 8
+
+--- CODE ADDRESS = 0x91321E8
+--- MANIFEST ADDRESS = 0x912C888
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Keyboard.tu) ***
+
+--- CODE ADDRESS = 0x91309A0
+--- MANIFEST ADDRESS = 0x9134200
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Limits.tu) ***
+
+--- CODE ADDRESS = 0x9149238
+--- MANIFEST ADDRESS = 0x9149660
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Math.tu) ***
+
+--- CODE ADDRESS = 0x914EE50
+--- MANIFEST ADDRESS = 0x914B3C8
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Mouse.tu) ***
+
+--- CODE ADDRESS = 0x914CE38
+--- MANIFEST ADDRESS = 0x914D260
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Music.tu) ***
+     0: "PlayFileLoopProc"
+    18: "PlayFileReturnProc"
+
+--- CODE ADDRESS = 0x914D9A8
+--- MANIFEST ADDRESS = 0x9153E78
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Net.tu) ***
+     0: "%net(C:"
+     8: ":"
+    10: ")"
+    12: "%net(C:"
+    20: ":"
+    22: ")"
+    24: "%net(A:"
+    32: ")"
+    34: "%net(U:"
+    42: ")"
+
+--- CODE ADDRESS = 0x9157B98
+--- MANIFEST ADDRESS = 0x9155CE8
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\PC.tu) ***
+     0: "PC.InPortWord"
+    14: "PC.OutPortWord"
+    30: "PC.Interrupt"
+    44: "PC.InterruptSegs"
+    62: "PC.SerialGet"
+    76: "PC.SerialHasch"
+    92: "PC.SerialPut"
+
+--- CODE ADDRESS = 0x915C940
+--- MANIFEST ADDRESS = 0x915CD68
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Pic.tu) ***
+     0: "creating new cache"
+    20: "not cached"
+    32: "fail"
+    38: "DrawSpecialProcess"
+    58: "DrawFramesProcess"
+
+--- CODE ADDRESS = 0x9169F10
+--- MANIFEST ADDRESS = 0x9160F28
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Rand.tu) ***
+
+--- CODE ADDRESS = 0x9167690
+--- MANIFEST ADDRESS = 0x916BFC8
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\RGB.tu) ***
+
+--- CODE ADDRESS = 0x916E460
+--- MANIFEST ADDRESS = 0x916E888
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Sprite.tu) ***
+
+--- CODE ADDRESS = 0x9171638
+--- MANIFEST ADDRESS = 0x9171A60
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Str.tu) ***
+     0: ""
+     2: "A"
+     4: "Z"
+     6: "a"
+     8: "A"
+    10: ""
+    12: "a"
+    14: "z"
+    16: "A"
+    18: "a"
+    20: " "
+    22: "	"
+    24: "
+"
+    26: ""
+    28: " "
+    30: "	"
+    32: "
+"
+    34: " "
+    36: " "
+    38: " "
+    40: " "
+    42: "	"
+    44: " "
+    46: "	"
+    48: ""
+    50: ","
+    52: ""
+    54: ""
+    56: ""
+    58: ""
+    60: ""
+
+--- CODE ADDRESS = 0x9177958
+--- MANIFEST ADDRESS = 0x9173610
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Stream.tu) ***
+
+--- CODE ADDRESS = 0x91740F8
+--- MANIFEST ADDRESS = 0x9175940
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Sys.tu) ***
+
+--- CODE ADDRESS = 0x917CC00
+--- MANIFEST ADDRESS = 0x9175D68
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Time.tu) ***
+     0: ""
+     2: "%"
+     4: "Illegal character '"
+    24: "' in format string"
+
+--- CODE ADDRESS = 0x9380068
+--- MANIFEST ADDRESS = 0x917E060
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Typeconv.tu) ***
+
+--- CODE ADDRESS = 0x917F930
+--- MANIFEST ADDRESS = 0x9382080
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\View.tu) ***
+     0: "View.GetActivePage"
+    20: "View.GetObsoletePage"
+    42: "View.SetActivePage"
+    62: "View.SetVisiblePage"
+
+--- CODE ADDRESS = 0x9384518
+--- MANIFEST ADDRESS = 0x9384940
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Window.tu) ***
+     0: "%window("
+    10: ")"
+
+--- CODE ADDRESS = 0x9387288
+--- MANIFEST ADDRESS = 0x93876B0
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Obsolete.tu) ***
+     0: "palette"
+     8: "whatpalette"
+    20: "whattextchar"
+    34: " "
+    36: "whattextcolor"
+    50: "whattextcolour"
+    66: "whattextcolorback"
+    84: "whattextcolourback"
+   104: "serialget"
+   114: "serialput"
+   124: "randnext"
+   134: "Rand.Next"
+   144: "randseed"
+   154: "Rand.Seed"
+   164: "getenv"
+   172: "Sys.GetEnv"
+   184: ""
+   186: "getpid"
+   194: "Sys.GetPid"
+   206: "drawtext"
+   216: "Font.Draw"
+   226: "drawtext"
+   236: "Font.New"
+   246: "flushstreams"
+   260: "Stream.FlushAll"
+   276: "setactive"
+   286: "Window.Select"
+
+--- CODE ADDRESS = 0x938D228
+--- MANIFEST ADDRESS = 0x938B7B0
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Student.tu) ***
+
+--- CODE ADDRESS = 0x938FAA8
+--- MANIFEST ADDRESS = 0x938FED0
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Draw.tu) ***
+
+--- CODE ADDRESS = 0x9398C20
+--- MANIFEST ADDRESS = 0x9399048
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\IniFile.tu) ***
+     0: begin (0)
+     0: 4
+     2: u-string (256)
+     2: 62
+     4: 256
+     6: u-string (256)
+     6: 62
+     8: 256
+    10: u-boolean (1)
+    10: 311
+    12: u-boolean (1)
+    12: 311
+    14: skip (2)
+    14: 515
+    16: u-pointer (8)
+    16: 2115
+    18: end (0)
+    18: 8
+    20: begin (0)
+    20: 4
+    22: u-string (256)
+    22: 62
+    24: 256
+    26: u-pointer (8)
+    26: 2115
+    28: u-pointer (8)
+    28: 2115
+    30: end (0)
+    30: 8
+    32: ""
+    34: "S: "
+    38: "   P: "
+    46: " (C)"
+    52: "   P: "
+    60: "."
+    62: ".ini"
+    68: ""
+    70: ""
+    72: "["
+    74: "]"
+    76: "Bad Section on line "
+    98: " of '"
+   104: "'"
+   106: "="
+   108: "Missing '=' on line "
+   130: " of '"
+   136: "'"
+   138: """
+   140: """
+   142: ""
+   144: ""
+   146: "default"
+   154: "No '"
+   160: "' section in '"
+   176: "'"
+   178: "No '"
+   184: "' property in '"
+   200: "' section of '"
+   216: "'"
+   218: ""
+   220: "true"
+   226: "false"
+   232: "Value of '"
+   244: "' property is not 'true' or "
+   274: "'false' (value is '"
+   294: "')"
+   298: "[xxx]"
+   304: "[xxx]"
+   310: "Value of '"
+   322: "' property is not integer "
+   350: "(value is '"
+   362: "')"
+   366: "[xxx]"
+   372: "[xxx]"
+   378: "Value of '"
+   390: "' property is not real "
+   414: "(value is '"
+   426: "')"
+   430: "."
+   432: ""
+   434: 0 (fill byte)
+   435: 0 (fill byte)
+   436: 1
+   440: repeat (0)
+   440: 12
+   442: u-string (256)
+   442: 62
+   444: 256
+   446: "true"
+   452: "false"
+   458: "Value of '"
+   470: "."
+   472: "' property is not 'true' or "
+   502: "'false' (value is '"
+   522: "')"
+   526: 0 (fill byte)
+   527: 0 (fill byte)
+   528: 1
+   532: repeat (0)
+   532: 12
+   534: u-string (256)
+   534: 62
+   536: 256
+   538: "Value of '"
+   550: "."
+   552: "' property is not integer "
+   580: "(value is '"
+   592: "')"
+   596: 1
+   600: repeat (0)
+   600: 12
+   602: u-string (256)
+   602: 62
+   604: 256
+   606: "Value of '"
+   618: "."
+   620: "' property is not integer "
+   648: "(value is '"
+   660: "')"
+   664: ""
+   666: ""
+   668: "["
+   670: "]"
+   672: "=""
+   676: """
+   678: "="
+   680: ""
+   682: ""
+   684: "default"
+   692: "No '"
+   698: "' section in '"
+   714: "'"
+   716: "No '"
+   722: "' property in '"
+   738: "' section of '"
+   754: "'"
+   756: ""
+   758: "default"
+   766: "default"
+   774: ""
+   776: "true"
+   782: "false"
+   788: "."
+   790: "."
+   792: "true"
+   798: "."
+   800: "false"
+   806: "."
+   808: "."
+   810: ""
+   812: "default"
+   820: ""
+   822: ""
+   824: "default"
+   832: "No '"
+   838: "' section in '"
+   854: "'"
+   856: ""
+   858: ""
+   860: "true"
+   866: "false"
+   872: "boolean"
+   880: "int"
+   884: "real"
+   890: "string"
+
+--- CODE ADDRESS = 0x93AA4E8
+--- MANIFEST ADDRESS = 0x939E1D8
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Text.tu) ***
+     0: "Text.WhatChar"
+
+--- CODE ADDRESS = 0x93B3470
+--- MANIFEST ADDRESS = 0x93B3898
+
+
+*** START NEW UNIT (X:\dev\turing\Debug\support\predefs\Future.tu) ***
+
+--- CODE ADDRESS = 0x93A87C0
+--- MANIFEST ADDRESS = 0x93A8BE8
+
+
+*** START NEW UNIT (X:\dev\turing\test\BasicTest.t) ***
+     0: "YAY!!!!"
+     8: "up"
+    12: "DONE!"
+
+--- CODE ADDRESS = 0x93B7088
+--- MANIFEST ADDRESS = 0x93A2A40

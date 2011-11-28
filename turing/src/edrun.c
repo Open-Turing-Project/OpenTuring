@@ -277,7 +277,7 @@ BOOL	EdRun_Init (void)
     	return FALSE;
     }
     stMinimumPeriod = myTimeCaps.wPeriodMin;
-    stMinimumEventPeriod = max (MSECS_BETWEEN_EVENT_CHECK / 10, 
+    stMinimumEventPeriod = max (MSECS_BETWEEN_EVENT_CHECK / 4, 
     				stMinimumPeriod);
     stMaximumPeriod = myTimeCaps.wPeriodMax;
     
@@ -417,6 +417,9 @@ BOOL	EdRun_Compile (HWND pmTextDisplayWindow, const char *dummy,
     
     // Clear all previous errors
     EdErr_ClearErrors ();
+
+	// dump bytecode if debugging (Shift + Ctrl at launch)
+	Language_Debugging(debugModeEnabled);
 
     // Free any previously allocated memory.  This could take a while if 
     // someone allocated a huge amount

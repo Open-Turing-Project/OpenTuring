@@ -71,6 +71,8 @@ typedef struct Examples
 /* External variables */
 /**********************/
 
+BOOL debugModeEnabled;
+
 /***********************/
 /* External procedures */
 /***********************/
