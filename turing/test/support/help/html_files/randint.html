@@ -1,0 +1,23 @@
+<html>
+<head><title>randint</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>randint</b></font></td><td align="right"><font size="+1"><b>random integer procedure</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>randint</b> ( <b>var</b> <i>i</i> : <b>int</b>, <i>low</i>,<i> high</i> : <b>int</b> )<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>randint</b> statement is used to create a pseudo-random integer in the range <i>low</i> to <i>high</i>, inclusive. For example, if <i>i</i> is an integer, after <b>randint</b>(<i>i</i>,1, 10), <i>i</i> would have a value such as 7 or 2 or 10.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program simulates the repeated rolling of a six sided die.<p>
+<pre><tt>        <b>var</b> <i>roll</i> : int
+        <b>loop</b>
+            <b>randint</b> ( <i>i</i>,<i> </i>1, 6 )
+            <b>put</b> "Rolled ",<i> i</i>
+        <b>end</b> <b>loop</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The <b>randint</b> statement sets its parameter to the next value of a sequence of pseudo-random integers that approximates a uniform distribution over the range <i>low</i> =<i>i</i> = <i>high</i>. It is required that <i>low</i> = <i>high</i>.<p>
+Each time a program runs, <b>randint</b> uses the same pseudo-random number sequence. To get a different sequence (actually, to start the sequence at a different point), use the <b>randomize</b> procedure.<p>
+To use several sequences of repeatable pseudo-random number sequences, use the <b>randseed</b> and <b>randnext</b> procedures.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="rand.html">rand</a></b>, <b><a href="randomize.html">randomize</a></b>, <b><a href="randseed.html">randseed</a></b> and <b><a href="randnext.html">randnext</a></b>.<p>
+</table></body>
+</html>

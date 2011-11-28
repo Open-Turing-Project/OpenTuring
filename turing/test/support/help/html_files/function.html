@@ -1,0 +1,44 @@
+<html>
+<head><title>function</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>function</b></font></td><td align="right"><font size="+1"><b>declaration</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>functionDeclaration</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>function</b> <i>id </i>[ ( [<i>paramDeclaration </i>{, <i>paramDeclaration</i> } ] ) ]</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="2"><font size="+1">: <i>typeSpec</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1"><i>statementsAndDeclarations</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>end</b> <i>id</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A function declaration creates (but does not run) a new function. The name of the function (<i>id</i>) is given in two places, just after <b>function</b> and just after <b>end</b>.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>function</b> <i>doubleIt</i> ( <i>x</i> : <b>real</b> ) : <b>real</b>
+            <b>result</b> 2.0 *<i> x</i>
+        <b>end</b> <i>doubleIt</i>
+        
+        <b>put</b> <i>doubleIt</i> ( 5.3 )        <i>% This outputs 10.6</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The set of parameters declared with the function are called <i>formal</i> parameters. For example, in the <i>doubleIt</i> function, <i>x</i> is a formal parameter. A function is called (invoked) by a <i>function call </i>which consists of the function's name followed by the parenthesized list of <i>actual </i>parameters (if any). For example, <i>doubleIt </i>(5.3) is a call having 5.3 as an actual parameter. If there are no parameters and no parentheses, the call does not have parentheses. The keyword <b>function</b> can be abbreviated to <b>fcn</b>. See also <i>functionCall </i>and <i>procedureDeclaration</i>.<p>
+Each actual non-<b>var</b> parameter must be assignable to the type of its corresponding formal parameter. See also <i>assignability</i>.<p>
+A function must finish by executing a <b>result</b> statement, which produces the function's value. In the above example, the <b>result</b> statement computes and returns the value 2.0 * <i>x</i>.<p>
+In principle, a function (1) should not change any variables outside of itself (global variables) or (2) should not have <b>var</b> parameters. In other words, it should have no <i>side effects</i>. The original implementation prevented (1) and (2) and thereby prevented function side effects. Current implementations of Turing do not enforce this restriction.<p>
+The upper bounds of arrays and strings that are parameters may be declared to be an asterisk (<b>*</b>), meaning the bound is that of the actual parameter. See <i>paramDeclaration</i> for details about parameters.<p>
+Procedures and functions cannot be declared inside other procedures and functions.<p>
+The syntax of a <i>functionDeclaration</i> presented above has been simplified by leaving out the optional result identifier, <b>import</b> list, <b>pre</b> condition, <b>init</b> clause, <b>post</b> condition and exception handler. The full syntax<i> </i>is<p>
+<pre><tt>        <b>function</b> [ <b>pervasive</b> ] <i>id</i>
+            [ ( [ <i>paramDeclaration</i> {,<i>paramDeclaration</i> } ] ) ] 
+                [ <i>resultId</i> ] : <i>typeSpec</i>
+            [ <b>pre</b> <i>trueFalseExpn</i> ]
+            [ <b>init</b> <i>id</i> := <i>expn</i> {, <i>id</i> := <i>expn</i> } ]
+            [ <b>post</b> <i>trueFalseExpn</i> ]
+            [ <i>exceptionHandler</i> ]
+            <i>statementsAndDeclarations</i>
+        <b>end</b> <i>id</i></tt></pre>
+The <i>resultId</i> is the name of the result of the function and can be used only in the <b>post</b> condition.<p>
+A function must be declared before being called; to allow for mutually recursive procedures and functions, there are <b>forward</b> declarations with later declaration of the procedure or function <b>body</b>. See <b>forward</b> and <b>body</b> declarations for explanations.<p>
+You declare parameterless functions using an empty parameter list. When this is done, a call to the function must include an empty parameter list.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="import.html">import</a></b> list, <b><a href="pre.html">pre</a></b> <a href="condition.html">condition</a>, <b><a href="init.html">init</a></b> clause, <b><a href="post.html">post</a></b> <a href="condition.html">condition</a> and <i>exceptionHandler</i> for explanations of these additional features.<p>
+See also <b><a href="pervasive.html">pervasive</a></b>. <p>
+</table></body>
+</html>

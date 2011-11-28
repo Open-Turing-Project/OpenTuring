@@ -1,0 +1,41 @@
+<html>
+<head><title>process</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>process</b></font></td><td align="right"><font size="+1"><b>declaration</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>processDeclaration</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>process</b> <i>id</i> [ ( [ <i>paramDeclaration</i> {,<i>paramDeclaration</i> } ] )]</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1"><i>statementsAndDeclarations</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>end</b> <i>id</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A process declaration is much like a procedure declaration, but is activated by a <b>fork</b> statement rather than by a call. The <b>fork</b> statement starts concurrent (parallel) execution of the process while the statements following the <b>fork</b> continue to execute.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program initiates (forks) two concurrent processes, one of which repeatedly outputs <i>Hi</i> and the other <i>Ho</i>. The resulting output is an unpredictable sequence of <i>Hi</i>'s and <i>Ho</i>'s as <i>greetings</i> executes twice concurrently, one instance with <i>word</i> set to <i>Hi</i> and the other with <i>word</i> set to <i>Ho</i>.<p>
+<pre><tt>        <b>process</b> <i>greetings </i>( <i>word</i> : <b>string</b> )
+            <b>loop</b>
+                <b>put</b> <i>word</i>
+            <b>end</b> loop
+        <b>end</b> <i>greetings</i>
+        
+        <b>fork</b><i> greetings </i>( "Hi" )
+        <b>fork</b><i> greetings </i>( "Ho" )</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The <b>process</b> declaration creates a template for a process (a concurrent activity), which is activated by a <b>fork</b> statement.<p>
+A process declaration can appear wherever a module declaration is allowed except that a process declaration is not allowed in a class. The declarations and statements in a process declaration are the same as those in a procedure.<p>
+See <i>paramDeclaration</i> for details about parameters. There is an anomaly in parameters to processes, that can lead to errors. In particular, non-<b>var</b> parameters that are non-scalars (such as strings and arrays) are passed by reference. The result is that the target of the reference may change value while the process is executing, which in turn means that the seemingly constant parameter is not really constant. For example, if the string variable <i>s</i> were passed to the <i>greetings</i> process and subsequently changed, the value of <i>greetings</i>' formal parameter would change.<p>
+The syntax of a <i>processDeclaration</i> presented above has been simplified by leaving out the optional stack size (<i>compileTimeExpn</i>), <b>import</b> list, <b>pre</b> condition, <b>init</b> clause, <b>post</b> condition and exception handler. <p>
+The full syntax<i> </i>is:<p>
+<pre><tt>        <b>process</b> [ <b>pervasive</b> ] <i>id</i>
+                [ ( [ <i>paramDeclaration </i>{,<i>paramDeclaration</i> } ] )]
+                [ : <i>compileTimeExpn </i>]
+            [ <b>pre</b> <i>trueFalseExpn</i> ]
+            [ <b>init</b> <i>id</i> := <i>expn</i> {, <i>id</i> := <i>expn</i> } ]
+            [ <b>post</b> <i>trueFalseExpn</i> ]
+            [ <i>exceptionHandler</i> ]
+            <i>statementsAndDeclarations</i>
+        <b>end</b> <i>id</i></tt></pre>
+See <b>pervasive</b> for information on <b>pervasive</b> processes. The optional <i>compileTimeExpn </i>following the parameter list (if any) is used to specify the number of bytes for the process' stack.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="import.html">import</a></b> list, <b><a href="pre.html">pre</a></b> <a href="condition.html">condition</a>, <b><a href="init.html">init</a></b> clause, <b><a href="post.html">post</a></b> <a href="condition.html">condition</a> and <i>exceptionHandler</i> for explanations of these additional features.<p>
+</table></body>
+</html>

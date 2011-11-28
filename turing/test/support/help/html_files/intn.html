@@ -1,0 +1,24 @@
+<html>
+<head><title>intn</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>int<i>n</i></b></font></td><td align="right"><font size="+1"><b>n-byte integer type</b></font></td></table><p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dirty<p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td><p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(a)</font></td><td colspan="7"><font size="+1"><b>int1</b></td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="-2"><font size="+1"><i>% 1-byte integer</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(b)</font></td><td colspan="7"><font size="+1"><b>int2</b></td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="-2"><font size="+1"><i>% 2-byte integer</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(c)</font></td><td colspan="7"><font size="+1"><b>int4</b></td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="-2"><font size="+1"><i>% 4-byte integer</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>int<i>n</i></b> (<i>n</i>-byte integer) types are machine-dependent types that occupy a specified number of bytes. By contrast, the <b>int</b> type is in principle a machine-independent and mathematical type (it overflows, however, when the value is too large or small, that is, when the value does not fit into 4 bytes).<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>var</b> <i>counter1</i> : <b>int1</b> <i>% Range is -128 .. 127</i>
+        <b>var</b> <i>counter2</i> : <b>int2</b> <i>% Range is -32768 .. 32767</i>
+        <b>var</b> <i>counter4</i> : <b>int4</b> <i>% Range is -2147483648 .</i>. <i>2147483647</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> In current implementations of Turing, the range of the <b>int</b> is -2147483647 to 2147483647, which means that the <b>int4</b> type allows one more value, -2147483648. This extra value is used in <b>int</b> to represent the state of being initialized. The <b>int<i>n</i></b> types allow use of all possible values that fit into <i>n</i> bytes and thereby cannot check for initialization.<p>
+The <b>int<i>n</i></b> types are like the C language types <i>short int</i>, <i>int</i>, and <i>long int</i>, except that the number of bytes occupied by the C types depends on the particular C compiler.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> the <b><a href="nat.html">nat</a></b><i>n </i>types which are <i>n</i> byte natural (non-negative) values. See also <b><a href="int.html">int</a></b> and <b><a href="nat.html">nat</a></b>.<p>
+</table></body>
+</html>

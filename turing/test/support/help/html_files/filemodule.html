@@ -1,0 +1,35 @@
+<html>
+<head><title>File</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>File</b></font></td></table><p>
+<table><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> This unit contains the predefined subprograms that deal with file manipulation on a whole-file basis (as opposed to manipulating the data in the file using <b>open</b> and <b>close</b>, etc.). These routines allow you to rename, copy and delete files, as well as get information about a file and get the free space on disk available for a file.<p>
+All routines in the File module are exported qualified (and thus must be prefaced with "<b>File.</b>").<p>
+<tr valign="top"><td><b>Entry Points&nbsp;&nbsp;</b></td>
+<td><table>
+<tr valign="top"><td><a href="file_exists.html"><b>Exists</b></a></td><td width="20">&nbsp;</td><td>Returns whether a file exists.</td></tr>
+<tr valign="top"><td><a href="file_fullpath.html"><b>FullPath</b></a></td><td width="20">&nbsp;</td><td>Returns the full absolute path name of a file.</td></tr>
+<tr valign="top"><td><a href="file_parent.html"><b>Parent</b></a></td><td width="20">&nbsp;</td><td>Returns the parent directory of a file or directory.</td></tr>
+<tr valign="top"><td><a href="file_status.html"><b>Status</b></a></td><td width="20">&nbsp;</td><td>Gets information about a file such as size, modification date, etc.</td></tr>
+<tr valign="top"><td><a href="file_copy.html"><b>Copy</b></a></td><td width="20">&nbsp;</td><td>Copies a file to another location.</td></tr>
+<tr valign="top"><td><a href="file_rename.html"><b>Rename</b></a></td><td width="20">&nbsp;</td><td>Renames a file or directory.</td></tr>
+<tr valign="top"><td><a href="file_delete.html"><b>Delete</b></a></td><td width="20">&nbsp;</td><td>Deletes a file.</td></tr>
+<tr valign="top"><td><a href="file_diskfree.html"><b>DiskFree</b></a></td><td width="20">&nbsp;</td><td>Gets the free space on the disk upon which a file or directory resides.</td></tr>
+</table><p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> On the PC, a path name of a file or a directory can use either the forward slash or backward slash to separate directory names. The drive must be followed by a colon. Thus the following are legal path names:<p>
+<pre><tt>        x:\students\west\example.t
+        c:/turing/test.t
+        /west/binary.t  (uses the default drive).
+        </tt></pre>
+On the Macintosh, a path name of a file or directory can use the standard Macintosh format of Volume Name:Directory Name:Directory Name:File Name or the Unix format of /Volume Name/Directory Name/Directory Name/File Name.  Note that the names can have spaces in them.<p>
+<pre><tt>        HSA:Applications:Turing Files:example.t
+        /HSA/Applications/Turing Files/example.t
+        </tt></pre>
+On UNIX systems, the path name must correspond to the UNIX standard of using a forward slash between parts of the path.<p>
+<pre><tt>        /export/home/west/turing/example.t
+        </tt></pre>
+In general, you can achieve the greatest portability by using the UNIX standard for use in path names, as all Turing systems support it.<p>
+<p>
+</table></body>
+</html>

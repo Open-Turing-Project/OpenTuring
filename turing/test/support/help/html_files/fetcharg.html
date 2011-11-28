@@ -1,0 +1,32 @@
+<html>
+<head><title>fetcharg</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>fetcharg</b></font></td><td align="right"><font size="+1"><b>fetch argument function</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>fetcharg</b> ( <i>i </i>: <b>int</b> ) : <b>string</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>fetcharg</b> function is used to access the <i>i</i>-th argument that has been passed to a program from the command line. For example, if the program is run from the Turing environment using<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>:r file1 file2</td></tr>
+</table><p>
+then <b>fetcharg</b>(2) will return "file2". If a program called <i>prog.x </i>is run under UNIX using this command:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>prog.x file1 file2</td></tr>
+</table><p>
+the value of <b>fetcharg</b>(2) will similarly be "file2".<p>
+The <b>nargs</b> function, which gives the number of arguments passed to the program, is usually used together with the <b>fetcharg</b> function. Parameter <i>i</i> passed to <b>fetcharg</b> must be in the range 0 .. <b>nargs</b>.<p>
+The 0-th argument is the name of the running program.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program lists its own name and its arguments.<p>
+<pre><tt>        <b>put</b> "The name of this program is : ", <b>fetcharg</b> ( 0 )
+        <b>for</b> <i>i</i> : 1 .. <b>nargs</b>
+            <b>put</b> "Argument ", <i>i</i>, " is ", <b>fetcharg</b> ( <i>i</i> )
+        <b>end</b> <b>for</b></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,fetcharg.t;fetcharg Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="nargs.html">nargs</a></b><p>
+</table></body>
+</html>

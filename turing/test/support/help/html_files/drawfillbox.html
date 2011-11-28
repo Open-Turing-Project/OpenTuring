@@ -1,0 +1,29 @@
+<html>
+<head><title>drawfillbox</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>drawfillbox</b></font></td><td align="right"><font size="+1"><b>graphics procedure</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>drawfillbox</b> (<i>x1</i>, <i>y1</i>, <i>x2</i>, <i>y2</i>, <i>Color</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>drawfillbox</b> procedure is used to draw a filled box on the screen with bottom left and top right corners of (<i>x1</i>, <i>y1</i>) to (<i>x2</i>, <i>y2</i>) filled using the specified <i>Color</i>. To get a box outlined in a different color, use <b>drawfillbox</b> with the <i>Color</i> parameter set to the fill color and then call <b>drawbox</b>  with the <i>Color</i> parameter set to the border color.<p>
+
+<center><img src="drawfillbox01.gif"></center>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program will fill the bottom half of the screen with color 1 and then outline it in color 2. The <b>maxx</b> and <b>maxy</b> functions are used to determine the maximum x and y values on the screen. The point (0,0) is the left bottom of the screen and (<b>maxx</b>, <b>maxy</b>) is the right top.<p>
+<pre><tt>        <b>setscreen</b> ("graphics")
+        <b>drawfillbox</b> (0, 0, <b>maxx</b>, <b>maxy</b> div 2, 1)
+        <b>drawbox</b> (0, 0, <b>maxx</b>, <b>maxy</b> div 2, 2)</tt></pre>
+    <tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+        <PARAM name="Command" value="TCard">
+        <PARAM name="Button" value="Text: Launch Example Program">
+        <PARAM name="Item1" value="-1,drawfillbox.t;drawfillbox Example">
+      </OBJECT><p></td>
+    </tr>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The meaning of the <i>Color</i> number depends on the current palette. See the <b>palette</b> statement.<p>
+The screen should be in a "<i>graphics</i>" mode. See the <b>setscreen</b> procedure for details. If the screen is not in a "<i>graphics</i>" mode, it will automatically be set to "<i>graphics</i>" mode.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="setscreen.html">setscreen</a></b>, <b><a href="maxx.html">maxx</a></b>, <b><a href="maxy.html">maxy</a></b> and the various <b>draw…</b> procedures. <p>
+</table></body>
+</html>

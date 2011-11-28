@@ -1,0 +1,66 @@
+<html>
+<head><title>Pic.Mirror</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Pic.Mirror</b></font></td><td align="right">Part of <a href="picmodule.html">Pic</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Pic.Mirror</b> (<i>picID</i> : <b>int</b>) : <b>int</b><p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td><b>Pic.Mirror</b> is used to create a new picture by flipping the 
+          picture horizontally. The resulting picture is exactly the same size 
+	  as the original, except it appears as a “mirror image”. <p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>Note that the mirror-imaged picture is a newly created picture. 
+          When it is no longer needed, its memory should be released by 
+	  using <b>Pic.Free</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>The program draws a crescent on the screen, takes a picture of 
+          it and then creates a second picture by mirror-imaging the 
+	  crescent. It then draws both the original picture and the 
+	  mirror-imaged version.<p>
+<pre><tt>        <b>View.Set</b> ("graphics:210;125,nobuttonbar")
+        
+        % Get the original picture
+        <b>var</b> <i>pic</i>, <i>newPic</i> : <b>int</b>
+        <b>Draw.FillOval</b> (50, 50, 50, 50, <i>brightred</i>)
+        <b>Draw.FillOval </b>(70, 50, 50, 50, <i>colorbg</i>)
+        <b>Draw.Text </b>("BLUE", 40, 60, <i>defFontID, brightblue</i>)
+        <b>Draw.Text</b> ("MOON", 40, 40, <i>defFontID, brightblue</i>)
+        <i>pic</i> := <b>Pic.New</b> (0, 0, 100, 100)
+        <i>newPic</i> := <b>Pic. Mirror</b> (<i>pic</i>)
+        <b>cls</b>
+        
+        % Draw the two images: original and flipped
+        <b>Pic.Draw</b> (<i>pic</i>, 10, 20, <i>picCopy</i>)
+        <b>Draw.Text</b> ("Original", 10, 5, <i>defFontID</i>, <i>black</i>) 
+        <b>Pic.Draw</b> (<i>newPic</i>, 110, 20, <i>picCopy</i>)
+        <b>Draw.Text </b>("Flipped", 140, 5, <i>defFontID</i>, <i>black</i>) 
+        </tt></pre>
+	  <center><img src="pic_mirror01.gif"></center>
+	  <center><b>Output from the Program</b></center><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+	    <PARAM name="Command" value="TCard">
+	    <PARAM name="Button" value="Text: Launch Example Program">
+	    <PARAM name="Item1" value="-1,Pic.Mirror.t;Pic.Mirror Example">
+	  </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+	  This means that you can only call the function by calling 
+	  <b>Pic.Mirror</b>, not by calling <b>Mirror</b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

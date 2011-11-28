@@ -1,0 +1,26 @@
+<html>
+<head><title>and</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>and</b></font></td><td align="right"><font size="+1"><b>operator</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><i>A</i> <b>and</b> <i>B</i><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>and</b> (boolean) operator yields a result of true if, and only if, both operands are true. The <b>and</b> operator is a short circuit operator. For example, if <i>A</i> is false in <i>A </i><b>and</b><i> B</i> then <i>B </i>is not evaluated.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>var</b> <i>success</i> : <b>boolean</b> := <b>false</b>
+        <b>var</b> <i>continuing</i> := <b>true</b>      <i>% The type is boolean</i>
+        …
+        <i>continuing</i> := <i>continuing</i> <b>and</b> <i>success</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The <i>continuing</i> variable is set to <b>true</b> if, and only if, both <i>continuing</i> and <i>success</i> are <b>true</b>. Since Turing uses short circuit operators, once <i>continuing</i> is <b>false</b>, <i>success</i> will not be looked at.<p>
+The <b>and</b> operator can also be applied to natural numbers. The result is the natural number that is the bit-wise <b>and</b> of the operands. See <b>nat</b> (natural number).<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This masks out the everything but the lower two bytes of <i>number</i>.<p>
+<pre><tt>        <b>var</b> <i>number</i> : <b>nat</b> := 16#ABCD
+        <b>var</b> <i>mask</i> : <b>nat</b> := 16#FF
+        <b>put</b> <i>number</i> <b>and</b> <i>mask</i>     <i>% Outputs 205 (CD16)</i></tt></pre>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="boolean.html">boolean</a></b> (which discusses true/false values), <i><a href="explicittruefalseconstant.html">explicitTrueFalseConstant</a></i> (which discusses the values <b><a href="true.html">true</a></b> and <b><a href="false.html">false</a></b>), <i><a href="precedence.html">precedence</a></i> and <i><a href="expn.html">expn</a></i> (expression).<p>
+</table></body>
+</html>

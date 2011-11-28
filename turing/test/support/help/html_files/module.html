@@ -1,0 +1,99 @@
+<html>
+<head><title>module</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>module</b></font></td><td align="right"><font size="+1"><b>declaration</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>moduleDeclaration</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>module</b> <i>id</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1">[ <b>implement</b> <i>implementItem </i>]</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1">[ <b>implement</b> <b>by</b> <i>implementByItem </i>]</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1">[ <b>import</b> [ <b>var</b> ] <i>importItem</i> </td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="4"><font size="+1">{,<i> </i>[ <b>var</b> ]<i> importItem</i> } ]</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1">[ <b>export</b> [ <i>howExport</i> ] <i>id</i> {,[<i>howExport</i> ]<i> id</i> }]</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1"><i>statementsAndDeclarations</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>end</b> <i>id</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A module declaration creates a package of variables, constants, types, subprograms, etc. The name of the module (<i>id</i>) is given in two places, just after <b>module</b> and just after <b>end</b>. Items declared inside the module can be accessed outside of the module only if they are exported. Items from outside the module that are to be used in the module need to be imported (unless they are predefined or pervasive).<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This module implements a stack of strings.<p>
+<pre><tt>        <b>module</b> <i>stack</i>            <i>% Implements a LIFO list of strings</i>
+            <b>export</b> <i>push</i>, <i>pop</i>
+        
+            <b>var</b> <i>top</i> : <b>int</b> := 0
+            <b>var</b> <i>contents</i> : <b>array</b> 1 .. 100 <b>of</b> <b>string</b>
+        
+            <b>procedure</b> <i>push</i> ( <i>s</i> : <i>string</i> )
+                <i>top</i> := <i>top</i> <b>+</b> 1
+                <i>contents</i> ( <i>top</i> ) := s
+            <b>end</b> <i>push</i>
+        
+            <b>procedure</b> <i>pop</i> ( <b>var</b> <i>s</i> : <b>string</b> )
+                <i>s</i> := <i>contents</i> ( <i>top</i> )
+                <i>top</i> := <i>top</i> <b>-</b> 1
+            <b>end</b> <i>pop</i>
+        <b>end</b> <i>stack</i>
+        
+        <i>stack</i> . <i>push</i> ( "Harvey" )
+        <b>var</b> <i>name</i> : <b>string</b>
+        <i>stack</i> . <i>pop</i> ( <i>name</i> )        <i>% This sets name to Harvey</i></tt></pre>
+Outside of the <i>stack</i> module, the procedures <i>push</i> and <i>pop</i> can be called using the notation <i>stack.push </i>and <i>stack.pop</i>. This access is allowed because <i>push</i> and <i>pop</i> are <i>exported</i> from the module. Other items declared in the module (<i>top</i> and <i>contents</i>) cannot be accessed from outside because they are not exported.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> In some other programming languages, a module is called a <i>package</i>,<i> cluster </i>or <i>object</i>.<p>
+A module declaration is executed (it is initialized) by executing its declarations and statements. For example, the <i>stack</i> module is initialized by setting the <i>top </i>variable to 0. This initialization executes all the statements and declarations in the module that are not contained in procedures or functions. The initialization is completed before any procedure or function of the module can be called from outside the module. An exported subprogram must not be called until initialization of the module is complete.<p>
+A call to an exported procedure or function from outside the module executes the body of that procedure or function (the module is <i>not </i>initialized with each such call). See also <b>monitor</b> and <b>class</b> declarations.<p>
+The <b>import</b> list gives the names of items declared outside the module that can be accessed inside the module. Since <i>stack </i>has no <b>import</b> list, it is not allowed to access any names declared outside of it. See also <b>import</b> lists. Separately-compiled units that are imported are initialized before the importing unit.<p>
+The <b>export</b> list is used to implement <i>information hiding</i>, which isolates implementation details inside the module. The <b>export</b> list gives the names of items declared inside the module that can be used outside the module. For example, <i>push </i>and <i>pop</i> are exported from <i>stack</i>. Each such use of an exported item must be preceded by the module name and a dot, for example, <i>stack.push</i>. (See <b>unqualified</b> for advice on how to avoid using the prefix "<i>stack.</i>"). Names that are not exported, such as <i>top </i>and <i>contents</i>, cannot be accessed outside the module.<p>
+Procedures, functions, variables, constants and types can be exported; modules, monitors or classes cannot be exported.<p>
+A class is essentially a template for creating individual modules (objects). See <b>class</b> for details. A <b>monitor</b> is essentially a module in which only one process can be active at a time. See <b>monitor</b> and <b>process</b> for details.<p>
+The <b>opaque</b> keyword is used (only) in export lists to precede exported type names that have declarations in the module. Outside of the module, the type will be distinct from all others types. This means, for example, that if the opaque type is a record, its fields cannot be accessed outside of the module. Opaque types are used to guarantee that certain items are inspected and manipulated in only one place, namely, inside the module. These types are sometimes called <i>abstract data types</i>. See also <b>export</b> lists, which also describes <b>unqualified</b> and <b>pervasive</b> exports.<p>
+<b>Implement</b> and i<b>mplement-by</b> lists are used to separate a module's interface from its body. This allows only a part of a module (its interface) to be visible to its users (its importers), while hiding its implementation. See <b>implement</b> and <b>implement</b> <b>by</b> lists.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Use an <b>opaque</b> type to implement complex arithmetic.<p>
+<pre><tt>        <b>module</b> <i>complex</i>
+            <b>export</b> <b>opaque</b> <i>value</i>, <i>constant</i>, <i>add</i>,
+                            <i>… other operations …</i>
+            <b>type</b> <i>value</i> :
+                <b>record</b>
+                    <i>realPt</i>, <i>imagPt</i> : <b>real</b>
+                <b>end</b> <b>record</b>
+        
+            <b>function</b> <i>constant</i> (<i>realPt</i>, <i>imagPt</i>: <b>real</b> ) : <i>value</i>
+                <b>var</b> <i>answer</i> : <i>value</i>
+                <i>answer</i> . <i>realPt</i> := <i>realPt</i>
+                <i>answer</i> . <i>imagPt</i> := <i>imagPt</i>
+                <b>result</b> <i>answer</i>
+            <b>end</b> <i>constant</i>
+        
+            <b>function</b> <i>add</i> (<i>L</i>, <i>R</i> : <i>value</i> ) : <i>value</i>
+                <b>var</b> <i>answer</i> : <i>value</i>
+                <i>answer</i> . <i>realPt</i> := <i>L</i> . <i>realPt</i> <b>+</b> <i>R</i> . <i>realPt</i>
+                <i>answer</i> . <i>imagPt</i> := <i>L</i> . <i>imagPt</i> <b>+</b> <i>R</i> . <i>imagPt</i>
+                <b>result</b> <i>answer</i>
+            <b>end</b> <i>add</i>
+        
+        <i>… other operations for complex arithmetic go here …</i>
+        <b>end</b> <i>complex</i>
+        
+        <b>var</b> <i>c</i>,<i>d</i> : <i>complex</i> .<i>value</i> :=<i>complex</i>.<i>constant</i> ( 1, 5 ) 
+                <i>% c and d become the complex number (1</i>,<i>5)</i>
+        <b>var</b> <i>e</i> : <i>complex</i> .<i>value</i> := <i>complex</i>.<i>add</i> (<i>c</i>, <i>d</i> )
+                <i>% e becomes the complex number (2</i>,<i>10)</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Module declarations can be nested inside other modules but cannot be nested inside procedures or functions. A module must not contain a <b>bind</b> as one of its (outermost) declarations. A <b>return</b> statement cannot be used as one of the (outermost) statements in a module.<p>
+The syntax of a <i>moduleDeclaration</i> presented above has been simplified by leaving out <b>pre</b>, <b>invariant</b> and <b>post</b> clauses; the full syntax<i> </i>is:<p>
+<pre><tt>        <b>module</b> <i>id</i>
+            [ <b>implement</b> <i>implementItem </i>]
+            [ <b>implement</b> <b>by</b> <i>implementByItem </i>]
+            [ <b>import</b> [ <b>var</b> ] <i>importItem </i>{,<i> </i>[ <b>var</b> ]<i> importItem</i> } ]
+            [ <b>export</b> [ <i>howExport</i> ] <i>id </i>{,<i> </i>[ <i>howExport</i> ]<i> id</i> } ]
+            [ <b>pre</b> <i>trueFalseExpn</i> ]
+            <i>statementsAndDeclarations</i>
+            [ <b>invariant</b> <i>trueFalseExpn</i> ]
+            <i>statementsAndDeclarations</i>
+            [ <b>post</b> <i>trueFalseExpn</i> ]
+        <b>end</b> <i>id</i></tt></pre>
+The true/false expression in the <b>pre</b> and <b>post</b> clauses must be true when initialization reaches each of them. After that, these have no effect. The true/false expression in the <b>invariant</b> must be true any time the module is exited (when finishing initialization or when returning from an external call to an exported subprogram) or called (via an exported subprogram). These clauses (<b>pre</b>,<b>post</b> and <b>invariant</b>) are not inherited by expansions. For example, if module <i>B </i>inherits <i>A</i>,<i> </i>the subprograms of <i>B</i> are bound by <i>B</i>'s clauses and not by <i>A</i>'s.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="unit.html">unit</a></b>, <b><a href="monitor.html">monitor</a></b> and <b><a href="class.html">class</a></b>. See also <b><a href="export.html">export</a></b> list, <b><a href="import.html">import</a></b> list, <b><a href="implement.html">implement</a></b> list, i<b>mplement by</b> list, <b><a href="inherit.html">inherit</a></b> list and <b><a href="deferred.html">deferred</a></b> subprogram.<p>
+</table></body>
+</html>

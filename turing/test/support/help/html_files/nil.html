@@ -1,0 +1,23 @@
+<html>
+<head><title>nil</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>nil</b></font></td><td align="right"><font size="+1"><b>pointer to a collection</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>nil</b> [ (<i>collectionOrClassId</i> ) ]<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>nil</b> pointer does not locate any element (object). Pointers locate items in collections, classes and types. The <i>collectionOrClassId</i> is optional.<p>
+This <b>nil</b> pointer is distinct from pointers to actual elements, and it can be compared to these pointers. It is also distinct from the uninitialized pointer value.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> In this example, the pointer called <i>first</i> is set to the nil pointer of collection <i>c</i>, that is, to <b>nil</b>(c).<p>
+<pre><tt>        <b>var</b> <i>c</i> : <b>collection</b> <b>of</b>
+            <b>record</b>
+                <i>name</i> : <b>string</b> ( 50 )
+                <i>next</i> : <b>pointer</b> <b>to</b><i> c</i>
+            <b>end</b> record
+        <b>var</b> <i>first</i> : <b>pointer</b> <b>to</b> <i>c</i> := <b>nil</b> ( <i>c</i> )</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> See also collection, class and pointer. When nil is written without the <i>collectionOrClassId</i>, it can be assigned to a pointer to any collection, class or type.<p>
+The type of <b>nil</b> without the <i>collectionOrClassId</i> is effectively a pointer to <i>everyClass</i>, an imaginary class that has no objects and is the descendant of all classes. This implies that it can be assigned to any other class pointer, because it is a descendant of all classes.<p>
+Turing allows you to write <b>nil</b> (<i>id</i>) after a forward declaration of <i>id</i> (the name of a collection, class or type) before (and after) the resolution of the <i>id</i>.<p>
+</table></body>
+</html>

@@ -1,0 +1,20 @@
+<html>
+<head><title>time</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>time</b></font></td><td align="right"><font size="+1"><b>time of day as a string procedure</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>time</b> ( <b>var</b><i> t</i>  : <b>string</b> )<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>time</b> statement is used to determine the current time of day. Variable <i>t </i>is assigned a string in the format "<i>hh:mm:ss</i>". For example, if the time is two minutes and 47 seconds after nine A.M., <i>t </i>will be set to "<i>09:02:47</i>". Twenty-four hour time is used. For example, eleven thirty P.M. gives the string "<i>23:30:00</i>".<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program greets you and tells you the time of day.<p>
+<pre><tt>        <b>var</b> <i>timeOfDay</i> : <b>string</b>
+        <b>time</b> ( <i>timeOfDay</i> )
+        <b>put</b> "Greetings!!  The time is ",<i> timeOfDay</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Be warned that on some computers such as IBM PC compatibles or Apple Macintoshes, the time may not be set correctly in the operating system. In this case, the <b>time</b> procedure will give incorrect results.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="delay.html">delay</a></b>, <b><a href="clock.html">clock</a></b>, <b><a href="sysclock.html">sysclock</a></b>, <b><a href="wallclock.html">wallclock</a></b> and <b><a href="date.html">date</a></b> statements.<p>
+See also predefined unit <b><a href="timemodule.html">Time</a></b>.<p>
+</table></body>
+</html>

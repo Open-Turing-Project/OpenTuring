@@ -1,0 +1,75 @@
+<html>
+<head><title>Music.PlayFileStop</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Music.PlayFileStop</b></font></td><td align="right">Part of <a href="musicmodule.html">Music</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Music.PlayFileStop</b><p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>The <b>Music.PlayFileStop</b> procedure is used to to stop all 
+          music files currently playing. This includes processes that are
+	  executing the <b>Music.PlayFile</b> procedure (they exit immediately
+	  and start executing the next statement in the process), and the
+	  <b>Music.PlayFileReturn</b> and <b>Music.PlayFileLoop</b>
+	  statements, which simply stop playing the music.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>In Turing, a program will not halt execution until all processes 
+          have terminated. This means that if you are playing background 
+	  music, the program will not terminate, even if execution returns 
+	  from the main program unless the background music is halted.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program plays the background music for 30 seconds and then 
+          terminates. Note that it is important to set the flag 
+	  (<i>finished</i>) before calling <b>Music.PlayFileStop</b>. 
+	  If <b>Music.PlayFileStop</b> comes first, it is possible for 
+	  the process to return from <b>Music.PlayFile</b>, loop around, 
+	  skip over the <b>exit when</b>, and call <b>Music.PlayFile</b> 
+	  again before the <i>finished</i> flag is set.<p>
+<pre><tt>        <b>var</b> <i>finished</i> : <b>boolean</b> := <b>false</b>
+
+	<i>% Loop playing background music until 'finished' is true.</i>
+        <b>process</b> <i>BackgroundMusic</i>
+            <b>loop</b>
+                <b>exit when</b> <i>finished</i>
+                <b>Music.PlayFile</b> ("background.mid")
+            <b>end loop</b>
+        <b>end</b> <i>BackgroundMusic</i>
+        
+        <b>fork</b> <i>BackgroundMusic    % Start the background music</i>
+        <b>Time.Delay</b> (30000)  <i>% Wait for 30 seconds</i>
+        
+        <i>% Stop the background music.</i>
+        <i>finished</i> := <b>true        </b><i>% The flag must be set first</i>
+        <b>Music.PlayFileStop  </b><i>% Music.PlayFile will return immediately</i>
+        </tt></pre>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+	    <PARAM name="Command" value="TCard">
+	    <PARAM name="Button" value="Text: Launch Example Program">
+	    <PARAM name="Item1" value="-1,Music.PlayFileStop.t;Music.PlayFileStop Example">
+	  </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="music_playfile.html">Music.PlayFile</a></b> for playing 
+	  music files and a larger example.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+	  This means that you can only call the function by calling 
+	  <b>Music.PlayFileStop</b>, not by calling <b>PlayFileStop</b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

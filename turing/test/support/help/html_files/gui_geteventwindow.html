@@ -1,0 +1,37 @@
+<html>
+<head><title>GUI.GetEventWindow</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.GetEventWindow</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>GUI.GetEventWindow</b> : <b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Returns the window ID of the window in which the event (mouse button or keystroke) took place. This function should only be called in an <i>action procedure</i> or in a default mouse or keystroke event handler, as it will return 1 when there is no event being processed.<p>
+This function is commonly used when several windows share the same layout. The same buttons in each window point to the same <i>action procedures</i>. To determine which button was actually pressed, the function is called to get the window.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program creates four windows in a row, each with a button that, when pressed, causes a star to be drawn in that window.<p>
+<pre><tt>        <b>import</b> <i>GUI</i> <b>in</b> "%oot/lib/GUI" 
+        
+        <b>procedure</b> <i>DrawStar</i>
+            <b>var</b> <i>windowID</i> : <b>int</b> := <b>GUI.GetEventWindow</b>
+            <b>Window.Select</b><i> </i>(<i>windowID</i>)
+            <b>Draw.FillStar </b>(25, 40, 175, 190, <b>Rand.Int</b> (10, 15))
+        <b>end</b> <i>DrawStar</i>
+        
+        <b>for</b> <i>i</i> : 0 .. 3
+            <b>var</b> <i>window</i> : <b>int</b> := <b>Window.Open </b>("graphics:200;200") 
+            % Place window above task bar, across from previous one.
+            <b>Window.SetPosition</b> (<i>window</i>, 220 * <i>i</i>, 27) 
+            <b>var</b> <i>button</i> : <b>int</b> := <b>GUI.CreateButton</b> (5, 5, 190, "Draw Star", 
+                <i>DrawStar</i>) 
+        <b>end</b> <b>for</b>
+        
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>GUI.GetEventWindow</b>, not by calling <b>GetEventWindow</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="gui_processevent.html">GUI.ProcessEvent</a></b>.<p>
+</table></body>
+</html>

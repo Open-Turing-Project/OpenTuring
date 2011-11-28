@@ -1,0 +1,27 @@
+<html>
+<head><title>string</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>string</b></font></td><td align="right"><font size="+1"><b>comparison</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>stringComparison</i> is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(a)</font></td><td colspan="7"><font size="+1"><i>stringExpn</i> = <i>stringExpn</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(b)</font></td><td colspan="7"><font size="+1"><i>stringExpn</i> <b>not=</b> <i>stringExpn</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(c)</font></td><td colspan="7"><font size="+1"><i>stringExpn</i> <b>&gt;</b> <i>stringExpn</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(d)</font></td><td colspan="7"><font size="+1"><i>stringExpn</i> <b>&lt;</b> <i>stringExpn</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(e)</font></td><td colspan="7"><font size="+1"><i>stringExpn</i> <b>&gt;</b>= <i>stringExpn</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(f)</font></td><td colspan="7"><font size="+1"><i>stringExpn</i> <b>&lt;</b>= <i>stringExpn</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Strings (<i>stringExpns</i>) can be compared for equality (= and <b>not=</b>) and for ordering (&gt;, &lt;, &gt;= and &lt;=).<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>var</b> <i>name </i>: <b>string</b><i> </i>:= "Nancy"
+        <b>var</b> <i>licenceNumber</i> : <b>string</b> ( 6 )
+        <i>licenceNumber</i> := "175AJN"</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Two strings are considered to be equal (=) if they have the same length and are made up, character by character, of the same characters. If they differ,  they are considered to be unequal (<b>not=</b>).<p>
+Ordering among strings is essentially alphabetic order. String <i>S</i> is considered to come before string <i>T</i>, that is <i>S</i> <b>&lt;</b> <i>T</i>, if the two are identical up to a certain position and after that position, either the next character of <i>S</i> comes before the next character of <i>T</i>, or else there are no more characters in <i>S</i> while <i>T</i> contains more characters.<p>
+<i>S </i>&gt; <i>T</i> (<i>S</i> comes after <i>T </i>) means the same thing as <i>T </i>&lt; <i>S</i>. <i>S </i>&gt;= <i>T </i>means the same thing as <i>S </i>&gt; <i>T </i><b>or</b> <i>S </i>= <i>T</i>. <i>S </i>&lt;= <i>T</i> means the same thing as <i>S </i>&lt; <i>T </i><b>or</b> <i>S</i>=<i>T</i>.<p>
+ASCII gives the ordering among individual characters. It specifies, among other things, that letter capital <i>L</i>  comes alphabetically before capital letter <i>M</i> and similarly for small (lower case) letters.<p>
+On IBM mainframe computers, the EBCDIC specification of characters may be used instead of ASCII.<p>
+</table></body>
+</html>

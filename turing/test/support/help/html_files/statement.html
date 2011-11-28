@@ -1,0 +1,52 @@
+<html>
+<head><title>statement</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>statement</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>statement</i> is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(a)</font></td><td colspan="7"><font size="+1"><i>assignmentStatement</i></td><td width="40">&nbsp;</td><td colspan="-1"><font size="+1"><i>% variableReference := expn</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(b)</font></td><td colspan="7"><font size="+1"><i>openStatement</i></td><td width="40">&nbsp;</td><td colspan="-1"><font size="+1"><i>% <b>open</b> …</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(c)</font></td><td colspan="7"><font size="+1"><i>closeStatement</i></td><td width="40">&nbsp;</td><td colspan="-1"><font size="+1"><i>% <b>close</b> …</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(d)</font></td><td colspan="7"><font size="+1"><i>putStatement</i></td><td width="40">&nbsp;</td><td colspan="-1"><font size="+1"><i>% <b>put</b> …</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(e)</font></td><td colspan="7"><font size="+1"><i>getStatement</i></td><td width="40">&nbsp;</td><td colspan="-1"><font size="+1"><i>% <b>get</b> …</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(f)</font></td><td colspan="7"><font size="+1"><i>readStatement</i></td><td width="40">&nbsp;</td><td colspan="-1"><font size="+1"><i>% <b>read</b> …</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(g)</font></td><td colspan="7"><font size="+1"><i>writeStatement</i></td><td width="40">&nbsp;</td><td colspan="-1"><font size="+1"><i>% <b>write</b> …</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(h)</font></td><td colspan="7"><font size="+1"><i>seekStatement</i></td><td width="40">&nbsp;</td><td colspan="-1"><font size="+1"><i>% <b>seek</b> …</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(i)</font></td><td colspan="7"><font size="+1"><i>tellStatement</i></td><td width="40">&nbsp;</td><td colspan="-1"><font size="+1"><i>% <b>tell</b> …</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(j)</font></td><td colspan="7"><font size="+1"><i>forStatement</i></td><td width="40">&nbsp;</td><td colspan="-1"><font size="+1"><i>% <b>for</b> … <b>end for</b></i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(k)</font></td><td colspan="7"><font size="+1"><i>loopStatement</i></td><td width="40">&nbsp;</td><td colspan="-1"><font size="+1"><i>% <b>loop</b> … <b>end loop</b></i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(l)</font></td><td colspan="7"><font size="+1"><b>exit</b> [ <b>when</b> <i>trueFalseExpn</i> ]</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(m)</font></td><td colspan="7"><font size="+1"><i>ifStatement</i></td><td width="40">&nbsp;</td><td colspan="-1"><font size="+1"><i>%<b> if</b> …<b> end if</b></i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(n)</font></td><td colspan="7"><font size="+1"><i>caseStatement</i></td><td width="40">&nbsp;</td><td colspan="-1"><font size="+1"><i>% <b>case</b> … <b>end case</b></i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(o)</font></td><td colspan="7"><font size="+1"><b>assert</b> <i>trueFalseExpn</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(p)</font></td><td colspan="7"><font size="+1"><b>begin</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="6"><font size="+1"><i>statementsAndDeclarations</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1"><b>end</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(q)</font></td><td colspan="7"><font size="+1"><i>procedureCall</i></td><td width="40">&nbsp;</td><td colspan="-1"><font size="+1"><i>% procedureId [(parameters)]</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(r)</font></td><td colspan="7"><font size="+1"><b>return</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(s)</font></td><td colspan="7"><font size="+1"><b>result</b> <i>expn</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(t)</font></td><td colspan="7"><font size="+1"><b>new</b> [ <i>collectionId</i> , ] <i>pointerVariableReference</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(u)</font></td><td colspan="7"><font size="+1"><b>free</b> [ <i>collectionId</i> , ] <i>pointerVariableReference</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(v)</font></td><td colspan="7"><font size="+1"><b>tag</b> <i>unionVariableReference</i> , <i>expn</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(w)</font></td><td colspan="7"><font size="+1"><i>forkStatement</i></td><td width="40">&nbsp;</td><td colspan="-1"><font size="+1"><i>% <b>fork</b> …</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(x)</font></td><td colspan="7"><font size="+1"><b>signal</b> <i>variableReference</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(y)</font></td><td colspan="7"><font size="+1"><b>wait</b> <i>variableReference</i> [ , <i>expn</i> ]</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(z)</font></td><td colspan="7"><font size="+1"><b>pause</b> <i>expn</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(aa)</font></td><td colspan="7"><font size="+1"><b>quit</b> [ <i>guiltyParty</i> ] [ : <i>quitReason</i> ]</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(bb)</font></td><td colspan="7"><font size="+1"><b>unchecked</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(cc)</font></td><td colspan="7"><font size="+1"><b>checked</b></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A <i>statement</i> (or <i>command</i>) causes a particular action, for example, the <i>putStatement</i>:<p>
+<pre><tt>        <b>put</b> "Hello"</tt></pre>
+outputs <i>Hello</i>. See the descriptions of the individual statements for explanations of their actions. Each statement can optionally by followed by a semicolon (;).<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <i>width</i> := 24         <i>% Assignment statement</i>
+        <b>put</b> "Hello world"   <i>% Put statement</i>
+        <b>exit</b> <b>when</b> <i>i</i> = 100       <i>% Exit statement</i>
+        <b>assert</b> <i>width</i> &lt; 320  <i>% Assert statement</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> You can use a <b>result</b> statement only in a function. You can use a <b>return</b> statement only to terminate a procedure or the main program (but not to terminate the initialization of a module). See also <b>result</b> and <b>return</b>.<p>
+There are a number of predefined procedures, such as <i>drawline</i>, which are not listed as statements above. These are considered  procedure calls, which is one form of statement.<p>
+</table></body>
+</html>

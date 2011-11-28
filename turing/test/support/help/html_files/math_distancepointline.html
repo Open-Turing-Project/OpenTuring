@@ -1,0 +1,40 @@
+<html>
+<head><title>Math.DistancePointLine</title></head>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Math.DistancePointLine</b></font></td><td align="right">Part of <a href="mathmodule.html">Math</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <b>Math.DistancePointLine</b> (<i>xp</i>, <i>yp</i>, <i>x1</i>, <i>y1</i>, <i>x2</i>, <i>y2</i> : <b>real</b>) : <b>real</b><p>
+<tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> <b>Math.DistancePointLine </b>is used to calculate the distance between a point and a line segment.
+It is often used in games to determine if a collision has occurred. (<i>xp</i>, <i>yp</i>) is the location
+between the point. (<i>x1</i>, <i>y1</i>) and (<i>x2</i>, <i>y2</i>) are the end points of the line segment.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td>The parameters to <b>Math.DistancePointLine</b> are real, but you can pass integer variables and constants. The parameters
+are in the same order as the subprogram name (that is point, then line).<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td>This progam draws a line segment and a circle with radius 75 on the screen and outputs whether they touch.<p>
+<pre><tt>        <b>var</b> <i>xp</i>, <i>yp</i>, <i>x1</i>, <i>y1</i>, <i>x2</i>, <i>y2</i> : <b>int</b>
+        <b>const</b> <i>RADIUS</i> : <b>int</b> := 75
+        <i>xp</i> := <b>Rand.Int</b> (<i>RADIUS</i>, <b>maxx</b> - <i>RADIUS</i>)
+        <i>yp</i> := <b>Rand.Int</b> (<i>RADIUS</i>, <b>maxy</b> - <i>RADIUS</i>)
+        <i>x1</i> := <b>Rand.Int</b> (0, <b>maxx</b>)
+        <i>y1</i> := <b>Rand.Int</b> (0, <b>maxy</b>)
+        <i>x2</i> := <b>Rand.Int</b> (0, <b>maxx</b>)
+        <i>y2</i> := <b>Rand.Int</b> (0, <b>maxy</b>)
+        <b>Draw.FillOval</b> (<i>xp</i>, <i>yp</i>, <i>RADIUS</i>, <i>RADIUS</i>, <b>brightred</b>)
+        <b>Draw.Line</b> (<i>x1</i>, <i>y1</i>, <i>x2</i>, <i>y2</i>, <b>brightgreen</b>)
+        <b>if</b> <b>Math.DistancePointLine</b> (<i>xp</i>, <i>yp</i>, <i>x1</i>, <i>y1</i>, <i>x2</i>, <i>y2</i>) &lt; <i>RADIUS</i><b>then</b>
+            <b>put</b> "The circle touches the line"
+        <b>else</b>
+            <b>put</b> "The circle does not touch the line"
+        <b>end if</b></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,Math.DistancePointLine.t;Math.DistancePointLine Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Math.DistancePointLine</b>, not by calling <b>DistancePointLine</b>.<p>
+</table></body>
+</html>

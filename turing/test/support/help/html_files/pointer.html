@@ -1,0 +1,69 @@
+<html>
+<head><title>pointer</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>pointer</b></font></td><td align="right"><font size="+1"><b>type</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax</b></td><td width="10">&nbsp;</td><td>A <i>pointerType</i> is one of:</td></tr>
+</table><p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(a)</font></td><td colspan="7"><font size="+1">[<b>unchecked</b>] <b>pointer</b> <b>to</b> <i>collectionId</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="6"><font size="+1"><i>% Short form: ^ collectionId</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(b)</font></td><td colspan="7"><font size="+1">[<b>unchecked</b>] <b>pointer</b> <b>to</b> <i>classId</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="6"><font size="+1"><i>% Short form: ^ classId</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(c)</font></td><td colspan="7"><font size="+1">[<b>unchecked</b>] <b>pointer</b> <b>to</b> <i>typeSpec</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="6"><font size="+1"><i>% Short form: ^ typeSpec</i></td></tr>
+</table><p><table><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A variable declared as a pointer type is used to locate an element of a collection or class or a value of a type. The <b>new</b> statement creates a new element (or value) and places the element's location in a pointer variable. The <b>free</b> statement destroys an element located by a pointer variable.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Using a collection, declare a list or records and allocate one record.<p>
+<pre><tt>        <b>var</b> <i>list</i> : <b>collection</b> <b>of</b>
+            <b>record</b>
+                <i>contents</i> : <b>string</b> ( 10 )
+                <i>next</i> : <b>pointer</b> <b>to</b> <i>list</i>
+            <b>end</b> <b>record</b>
+        <b>var</b> <i>first </i>: <b>pointer</b> <b>to</b> <i>list</i>
+        <b>new</b> <i>list</i>, <i>first</i></tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Create a collection that will represent a binary tree.<p>
+<pre><tt>        <b>var</b> <i>tree</i> : <b>collection</b> <b>of</b>
+            <b>record</b>
+                <i>name</i> : <b>string</b> ( 10 )
+                <i>left</i>, <i>right </i>: <b>pointer</b> <b>to</b> <i>tree</i>
+            <b>end</b> <b>record</b>
+        
+        <b>var</b> <i>root</i> : <b>pointer</b> <b>to</b> <i>tree</i>
+        <b>new</b> <i>tree</i>, <i>root</i>
+        <i>tree</i> ( <i>root </i>).<i>name</i> := "Adam"</tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Using a class, create an object of that class. The object is located by the <i>start</i> pointer. The <i>name</i> field of the object is set to <i>Ed</i>. <p>
+<pre><tt>        <b>class</b> <i>node</i>
+            <b>export</b> <b>var</b><i> next</i>, <b>var</b><i> name</i>
+            <i>name</i> : <b>string</b> ( 25 )
+            <i>next </i>: <b>pointer</b> <b>to</b><i> node</i>  <i>% Short form: next : ^ node</i>
+        <b>end</b> <i>node</i>
+        <b>var</b> <i>start </i>: <b>pointer</b> <b>to</b> <i>node</i> <i>% Short form: <b>var</b> start : ^ node</i>
+        <b>new</b> <i>node</i>,<i> start</i>         <i>% Short form: <b>new</b> start</i>
+        <i>node</i> ( <i>start</i> ) . <i>name</i> := "Ed"   <i>% Short form: start-&gt;name:=</i>"<i>Ed</i>"</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> For collections and classes, a pointer is effectively a subscript (an index) for that collection or class. Pointers can be assigned, compared for equality and passed as parameters.<p>
+The keywords <b>pointer</b> <b>to</b> can be replaced by the short form ^, as in<p>
+<pre><tt>        <b>var</b> <i>first</i> : <b>^</b> <i>item</i></tt></pre>
+Given a pointer <i>p</i> that locates an object of class or collection <i>C</i>, the object is referenced as <i>C(p) </i>or as the short form<i> ^ p</i>. A field <i>f</i> of the object is referenced as <i>C(p).f</i> or <i>^p.f </i>or as the short form <i>p</i>-&gt;<i>f</i>. For example, in the class given above, the <i>name</i> field of the object located by the <i>start </i>pointer can be set to <i>Alice</i> by:<p>
+<pre><tt>        <i>start</i> -&gt; <i>name</i> := "Alice"</tt></pre>
+Pointers to types use the same notation, except that pointers to types are not allowed to use the form <i>typeSpec(p)</i>. See <b>class</b> for an example of the use of a class with pointers.<p>
+The carat ^ is called the <i>dereferencing operator  </i>and has the highest precedence. For example, in <i>^ p.a</i>, the carat applies to <i>p</i> and not to <i>p.a</i>. To apply ^ to all of <i>p.a</i>, use parentheses: ^(<i>p.a</i>). Several carats can appear in a row, for example,<p>
+<pre><tt>        <b>var</b> <i>r</i> : ^ ^ <b>int</b></tt></pre>
+declares a pointer to a pointer to an integer and <i>^ ^ r</i> is the notation for referencing the integer.<p>
+A reference cannot begin with a left parenthesis, but can be surrounded by ^(…), as in <i>^ (q.b)</i>. If <i>f</i> is a parameterless function declared without parentheses that returns a pointer, the form <i>^ f</i> calls <i>f</i> before dereferencing the pointer.<p>
+By default, all pointers are checked. This means there is a run time test to make sure that references such as <i>C(p)</i> actually locate elements, i.e., that <i>p</i> is initialized, is not <b>nil</b> and is not <i>dangling</i> (locating an object that has been freed). This checking requires extra space (the implementation attaches a <i>time stamp</i> to each pointer and object) and time. In high-performance programs in which this extra space and time are not acceptable, the pointer can be declared to be <b>unchecked</b>. When this is done, the program becomes <i>dangerous</i> and it is the programmer's responsibility to make sure that all pointer usage is valid.<p>
+If this is not the case, the program becomes susceptible to uncontrolled crashes.<p>
+Checked pointers cannot be assigned to unchecked pointers nor vice versa. However, you may, at your peril, use an implementation-dependent <i>type cheat</i>, to convert a checked pointer to a unchecked pointer, as in:<p>
+<pre><tt>        <b>type</b> <i>checkedPtr</i> : ^ <i>R</i>
+        <b>type</b> <i>uncheckedPtr</i> : <b>unchecked</b> ^ <i>R</i>
+        <b>var</b> <i>c</i> : <i>checkedPtr</i>          <i>% c is an <b>checked</b> <b>pointer</b></i>
+        <b>var</b> <i>u</i> : <i>uncheckedPtr</i>        <i>% u is an <b>unchecked</b> <b>pointer</b></i>
+        …
+        <i>u</i> := <b>cheat</b> (<i>uncheckedPtr</i>, <i>d</i>)    <i>% This is a type <b>cheat</b></i></tt></pre>
+Unchecked pointers are equivalent to the pointers of the C language, which are inherently error prone and cause difficult to locate bugs. An entire collection (but not a class) can be declared unchecked, in which case all of its pointers are implicitly unchecked. See <b>collection</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="inherit.html">inherit</a></b> lists for a description of the <a href="assignability.html">assignability</a> rules for pointers. See <b>classes</b><i> </i>and<i> </i><b><a href="collection.html">collection</a></b>s for more details about the use of pointers. See also <b><a href="new.html">new</a></b> and <b><a href="free.html">free</a></b> statements. See also <b><a href="nil.html">nil</a></b>, <b><a href="objectclass.html">objectclass</a></b> and <b><a href="anyclass.html">anyclass</a></b>.<p>
+</table></body>
+</html>

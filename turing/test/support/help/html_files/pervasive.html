@@ -1,0 +1,19 @@
+<html>
+<head><title>pervasive</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>pervasive</b></font></td><td align="right"><font size="+1"><b>declaration modifier</b></font></td></table><p>
+<table><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> When a variable, constant, type or subprogram is declared, you can specify that it is to be <b>pervasive</b>, which means that it does not need to be explicitly imported into modules, monitors or classes in the current scope. The keyword <b>pervasive</b> can be abbreviated as an asterisk (*).<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>var</b> <b>pervasive</b> <i>counter</i> : <b>int</b> <i>% Short form: var * count : int</i>
+        <b>const</b> * <i>maxCounter</i> : <b>int</b> := 100
+        <b>procedure</b> * <i>p</i> ( <i>x</i> : <b>real</b> )
+            …
+        <b>end</b> <i>p</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The keyword <b>pervasive</b> is also used in <b>export</b> lists along with the keyword <b>unqualified</b>. See <b>export</b> list for details.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="var.html">var</a></b> <a href="declaration.html">declaration</a>, <b><a href="const.html">const</a></b> <a href="declaration.html">declaration</a>, <b><a href="procedure.html">procedure</a></b> <a href="declaration.html">declaration</a>, <b><a href="function.html">function</a></b> <a href="declaration.html">declaration</a>, <b>subprogram</b> header and <b><a href="export.html">export</a></b> list for uses of <b><a href="pervasive.html">pervasive</a></b>.<p>
+</table></body>
+</html>

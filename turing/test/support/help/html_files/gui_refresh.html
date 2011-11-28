@@ -1,0 +1,16 @@
+<html>
+<head><title>GUI.Refresh</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.Refresh</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>GUI.Refresh</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> This routine redraws all the widgets in the currently-selected window. This is used when some form of drawing may have overwritten the widgets in a window. <p>
+It is often used when there is some possibility that the widgets may have been drawn over. For example, a program that places buttons on top of a background image should call <b>GUI.Refresh</b> when the image is changed.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> <b>GUI.Refresh</b> is used by the GUI Library to redraw all the widgets when the background colour of a window has changed.<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the procedures by calling <b>GUI.Refresh</b>, not by calling <b>Refresh</b>.<p>
+</table></body>
+</html>

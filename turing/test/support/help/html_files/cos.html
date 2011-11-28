@@ -1,0 +1,27 @@
+<html>
+<head><title>cos</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>cos</b></font></td><td align="right"><font size="+1"><b>cosine function (radians)</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>cos</b> (<i>r</i> : <b>real</b>) : <b>real</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>cos</b> function is used to find the cosine of an angle given in radians. For example, <b>cos</b> (0) is 1.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program prints out the cosine of <font face="symbol">p</font>/6, 2<font face="symbol">p</font>/6, 3<font face="symbol">p</font>/6, up to 12<font face="symbol">p</font>/6 radians.<p>
+<pre><tt>        <b>const</b><i> pi</i> := 3.14159
+        <b>for</b><i> i</i> : 1 .. 12
+            <b>const</b> <i>angle</i> :=<i> i </i>* <i>pi</i> / 6
+            <b>put</b> "Cos of ", <i>angle</i>, " is ", <b>cos</b> (<i>angle</i>)
+        <b>end</b> <b>for</b></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,cos.t;cos Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td>the <b><a href="sin.html">sin</a></b> and <b><a href="tan.html">tan</a></b> functions for calculating sine and tangent.<p>
+the <b><a href="cosd.html">cosd</a></b> function which finds the cosine of an angle given in degrees. (2<font face="symbol">p</font> radians are the same as 360 degrees.)<p>
+See also predefined unit <b><a href="mathmodule.html">Math</a></b>.<p>
+</table></body>
+</html>

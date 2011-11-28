@@ -1,0 +1,69 @@
+<html>
+<head><title>Keyboard</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Keyboard</b></font></td></table><p>
+<table><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> This unit contains all the constants representing both the characters and their ordinal values for all possible keystrokes that can be read by Turing.<p>
+Constants beginning with “KEY_” are <b>char</b> values. These are the values returned by <b>getch</b> and used as an index into the<b> Input.KeyDown</b> array. The constants that the constants KEY_KEYPAD_5, KEY_SHIFT, KEY_CTRL and KEY_ALT can only be used in conjunction with <b>Input.KeyDown</b>. The <b>getch</b> and <b>getchar</b> subprograms do not return these values. All other constants with with SHIFT, CTRL and ALT as part of the name cannot be checked for in the <b>Input.KeyDown </b>array. <p>
+Constants beginning with “ORD_”  are <b>int</b> values and represent the ordinal values (values returned by the <b>ord</b> function) for all the possible keystrokes.<p>
+Here is a list of most of the constants<p>
+<table><tr valign="top"><td>KEY_F1 .. KEY_F12 </td><td width="10">&nbsp;</td><td>KEY_CTRL_A .. KEY_CTRL_Z</td></tr>
+<tr valign="top"><td>KEY_SHIFT_F1 .. KEY_SHIFT_F12</td><td width="10">&nbsp;</td><td>KEY_ALT_A .. KEY_ALT_Z</td></tr>
+<tr valign="top"><td>KEY_CTRL_F1 .. KEY_CTRL_F12</td><td width="10">&nbsp;</td><td>KEY_ALT_1 .. KEY_ALT_0</td></tr>
+</table><p>
+KEY_ALT_F1 .. KEY_ALT_F12<p>
+<table><tr valign="top"></tr>
+<td>KEY_HOME</td><td width="10">&nbsp;</td><td>KEY_CTRL_HOME</td></tr>
+<tr valign="top"><td>KEY_UP_ARROW</td><td width="10">&nbsp;</td><td>KEY_CTRL_UP_ARROW</td></tr>
+<tr valign="top"><td>KEY_PGUP</td><td width="10">&nbsp;</td><td>KEY_CTRL_PGUP</td></tr>
+<tr valign="top"><td>KEY_LEFT_ARROW</td><td width="10">&nbsp;</td><td>KEY_CTRL_LEFT_ARROW</td></tr>
+<tr valign="top"><td>KEY_RIGHT_ARROW</td><td width="10">&nbsp;</td><td>KEY_CTRL_RIGHT_ARROW</td></tr>
+<tr valign="top"><td>KEY_END</td><td width="10">&nbsp;</td><td>KEY_CTRL_END</td></tr>
+<tr valign="top"><td>KEY_DOWN_ARROW</td><td width="10">&nbsp;</td><td>KEY_CTRL_DOWN_ARROW</td></tr>
+<tr valign="top"><td>KEY_PGDN</td><td width="10">&nbsp;</td><td>KEY_CTRL_PGDN</td></tr>
+<tr valign="top"><td>KEY_INSERT</td><td width="10">&nbsp;</td><td>KEY_CTRL_INSERT</td></tr>
+<tr valign="top"><td>KEY_DELETE</td><td width="10">&nbsp;</td><td>KEY_CTRL_DELETE</td></tr>
+<tr valign="top"></tr>
+<td>KEY_BACKSPACE</td><td width="10">&nbsp;</td><td>KEY_KEYPAD_5 *</td></tr>
+<tr valign="top"><td>KEY_TAB</td><td width="10">&nbsp;</td><td>KEY_SHIFT *</td></tr>
+<tr valign="top"><td>KEY_ENTER</td><td width="10">&nbsp;</td><td>KEY_CTRL *</td></tr>
+<tr valign="top"><td>KEY_ESC</td><td width="10">&nbsp;</td><td>KEY_ALT *</td></tr>
+<tr valign="top"></tr>
+<td>KEY_CTRL_OPEN_BRACKET</td><td width="10">&nbsp;</td><td>KEY_CTRL_BACKSLASH</td></tr>
+<tr valign="top"><td>KEY_CTRL_CLOSE_BRACKET</td><td width="10">&nbsp;</td><td>KEY_CTRL_CARET</td></tr>
+<tr valign="top"><td>KEY_CTRL_UNDERSCORE</td><td width="10">&nbsp;</td><td>KEY_CTRL_BACKSPACE</td></tr>
+<tr valign="top"><td>KEY_ALT_MINUS</td><td width="10">&nbsp;</td><td>KEY_ALT_EQUALS</td></tr>
+<tr valign="top"><td>KEY_BACK_TAB</td><td width="10">&nbsp;</td><td>KEY_SHIFT_TAB</td></tr>
+</table><p>
+<p>
+Above constants with “ORD_” instead of  “KEY_” <p>
+<table><tr valign="top"></tr>
+<td>ORD_A .. ORD_Z </td><td width="10">&nbsp;</td><td>ORD_0 .. ORD_9</td></tr>
+<tr valign="top"><td>ORD_LOWER_A .. ORD_LOWER_Z </td><td width="40">&nbsp;</td></tr>
+<tr valign="top"></tr>
+<td>ORD_SPACE</td><td width="10">&nbsp;</td><td>ORD_EXCALAMATION_MARK</td></tr>
+<tr valign="top"><td>ORD_QUOTATION_MARK</td><td width="10">&nbsp;</td><td>ORD_HAS_MARK</td></tr>
+<tr valign="top"><td>ORD_DOLLAR_SIGN</td><td width="10">&nbsp;</td><td>ORD_PERCENT_SIGN</td></tr>
+<tr valign="top"><td>ORD_AMPERSAND</td><td width="10">&nbsp;</td><td>ORD_SINGLE_QUOTE</td></tr>
+<tr valign="top"><td>ORD_OPEN_PARENTHESIS</td><td width="10">&nbsp;</td><td>ORD_CLOSE_PARENTHESIS</td></tr>
+<tr valign="top"><td>ORD_ASTERISK</td><td width="10">&nbsp;</td><td>ORD_PLUS</td></tr>
+<tr valign="top"><td>ORD_COMMA</td><td width="10">&nbsp;</td><td>ORD_MINUS</td></tr>
+<tr valign="top"><td>ORD_PERIOD</td><td width="10">&nbsp;</td><td>ORD_DOT</td></tr>
+<tr valign="top"><td>ORD_SLASH</td><td width="10">&nbsp;</td><td>ORD_COLON</td></tr>
+<tr valign="top"><td>ORD_SEMICOLON</td><td width="10">&nbsp;</td><td>ORD_LESS_THAN</td></tr>
+<tr valign="top"><td>ORD_EQUALS</td><td width="10">&nbsp;</td><td>ORD_GREATER_THAN</td></tr>
+<tr valign="top"><td>ORD_QUESTION_MARK</td><td width="10">&nbsp;</td><td>ORD_AT_SIGN</td></tr>
+<tr valign="top"><td>ORD_OPEN_BRACKET</td><td width="10">&nbsp;</td><td>ORD_BACKSLASH</td></tr>
+<tr valign="top"><td>ORD_CLOSE_BRACKET</td><td width="10">&nbsp;</td><td>ORD_CARET</td></tr>
+<tr valign="top"><td>ORD_UNDERSCORE</td><td width="10">&nbsp;</td><td>ORD_APOSTROPHE</td></tr>
+<tr valign="top"><td>ORD_OPEN_BRACE</td><td width="10">&nbsp;</td><td>ORD_BAR</td></tr>
+<tr valign="top"><td>ORD_CLOSE_BRACE</td><td width="10">&nbsp;</td><td>ORD_TILDE</td></tr>
+</table><p>
+<p>
+Characters marked with an asterisk (*) are keys that can only be detected using<b> Input.KeyDown</b>.<p>
+<p>
+All constants in the Keyboard module are exported unqualified. (This means you can use the constants directly without having to use the qualifier "<b>Keyboard.</b>".)<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="getch.html">getch</a></b>, <b><a href="getchar.html">getchar</a></b>, and <b><a href="input_keydown.html">Input.KeyDown</a></b>.<p>
+</table></body>
+</html>

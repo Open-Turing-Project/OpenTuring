@@ -1,0 +1,25 @@
+<html>
+<head><title>Net.TokenAvailable</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Net.TokenAvailable</b></font></td><td align="right">Part of <a href="netmodule.html">Net</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Net.TokenAvailable </b>(<i>netStream</i> : <b>int</b>) : <b>boolean</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Returns <b>true</b> if a line of input is waiting to be read from the net stream specified by the <i>netStream</i> parameter. If <b>Net.TokenAvailable</b> returns <b>true</b>, then a single token (character surrounded by whitespace) can be read from the stream without blocking.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The <b>Net</b> module requires a TCP/IP stack to be installed and operating in order to function. It does not communicate using any other protocols<p>
+It is possible for Firewalls to interfere with the actions of the <b>Net</b> module, preventing connections from taking place.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program fragment reads a character from <i>netStream</i> only if there is one waiting to be read.<p>
+<pre><tt>        <b>if Net.TokenAvailable </b>(<i>netStream</i>)<b> then</b>
+            <b>var</b> <i>token</i> : <b>string</b>
+            <b>get</b> : <i>netStream</i>, <i>token</i>
+            <b>put</b> <i>token</i>
+        <b>end if</b></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Net.TokenAvailable</b>, not by calling <b>TokenAvailable</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="net_bytesavailable.html">Net.BytesAvailable</a></b>, <b><a href="net_charavailable.html">Net.CharAvailable</a></b>, and <b><a href="net_lineavailable.html">Net.LineAvailable</a></b>.<p>
+</table></body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+<head><title>Dir</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Dir</b></font></td></table><p>
+<table><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> This unit contains the predefined subprograms that deal with directories. You can use these subprograms to list the contents of directories, create directories, change directories and return the current directory.<p>
+All routines in the Dir module are exported qualified (and thus must be prefaced with "<b>Dir.</b>").<p>
+<tr valign="top"><td><b>Entry Points&nbsp;&nbsp;</b></td>
+<td><table>
+ <tr valign="top"><td><a href="dir_open.html"><b>Open</b></a></td><td width="20">&nbsp;</td><td>Opens a directory stream in order to get a listing of the directory contents.</td></tr>
+<tr valign="top"><td><a href="dir_get.html"><b>Get</b></a></td><td width="20">&nbsp;</td><td>Gets the next file name in the directory listing.</td></tr>
+<tr valign="top"><td><a href="dir_getlong.html"><b>GetLong</b></a></td><td width="20">&nbsp;</td><td>Gets the next file name and other information in the directory listing.</td></tr>
+<tr valign="top"><td><a href="dir_close.html"><b>Close</b></a></td><td width="20">&nbsp;</td><td>Closes the directory stream.</td></tr>
+<tr valign="top"><td><a href="dir_create.html"><b>Create</b></a></td><td width="20">&nbsp;</td><td>Creates a new directory.</td></tr>
+<tr valign="top"><td><a href="dir_delete.html"><b>Delete</b></a></td><td width="20">&nbsp;</td><td>Deletes a directory (must be empty).</td></tr>
+<tr valign="top"><td><a href="dir_change.html"><b>Change</b></a></td><td width="20">&nbsp;</td><td>Changes the current execution directory.</td></tr>
+<tr valign="top"><td><a href="dir_current.html"><b>Current</b></a></td><td width="20">&nbsp;</td><td>Returns the current execution directory.</td></tr>
+<tr valign="top"><td><a href="dir_exists.html"><b>Exists</b></a></td><td width="20">&nbsp;</td><td>Returns  whether a directory exists.</td></tr>
+</table><p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td>Path names in Turing can be expressed using either forward slashes or backslashes. For example, 
+<b>Dir.Change&nbsp;("d:\\turing&nbsp;files\\assignment&nbsp;3")</b> or <b>Dir.Change&nbsp;("d:/turing&nbsp;files/assignment&nbsp;3")</b>
+are both legal. Note that backslashes must be doubled in string literals. The "." directory represent the current 
+directory (as in <b>Dir.Open&nbsp;(".")</b>), and the ".." directory represents the parent directory. For example,
+if the current execution directory is "d:/turing&nbsp;files/assignment&nbsp;3", then <b>Dir.Change&nbsp;("..")</b> changes
+the current execution directory to "d:/turing&nbsp;files".
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <a href="filemodule.html"><b>File</b></a> unit for more explanation of the different ways of specifying a path name of a file or directory under the different operating systems.<p>
+</table></body>
+</html>

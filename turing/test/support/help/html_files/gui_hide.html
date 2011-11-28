@@ -1,0 +1,18 @@
+<html>
+<head><title>GUI.Hide</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.Hide</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>GUI.Hide</b> (<i>widgetID</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Hides a widget specified by <i>widgetID</i>. Used in conjunction with <i>Show</i> to hide and show widgets. Hidden widgets cannot get events (i.e. respond to keystrokes or mouse clicks). If an active text field (see text field) is hidden, then any keystrokes in the window will be ignored.<p>
+In most cases where a widget is to appear, then disappear, then appear again, it is advised to create the widget once and hide it until it is to appear, whereupon <b>GUI.Show</b> is called. When the user is finished with the widget, the widget is hidden using <b>GUI.Hide</b>. This saves the overhead of creating and disposing of the same widget several times.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> See <b>GUI.SetDisplayWhenCreated</b> for an example of <b>GUI.Hide</b>.<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>GUI.Hide</b>, not by calling <b>Hide</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="gui_show.html">GUI.Show</a></b>.<p>
+</table></body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+<head><title>explicitIntegerConstant</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>explicitIntegerConstant</b></font></td><td align="right"><font size="+1"><b>integer literal</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> An <i>explicitIntegerConstant</i> is a sequence of one or more decimal digits (0 to 9) optionally preceded by a plus or minus sign. This is an alternate form that specifies a number base (such as base 2 or base 16).<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> In the following, the explicit integer constants are 0, 115 and 5.<p>
+<pre><tt>        <b>var</b> <i>count</i> : <b>int</b> :=<i> </i>0
+        <b>const</b> <i>height</i> := 115
+        …
+        <i>count</i> := <i>height</i> - 5</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> In current implementations of Turing, the range of the <b>int</b> (<b>integer</b>) type is from -2147483647 to 2147483647. In other words, the maximum size of integer is 2**31 - 1. This is the range that fits into four bytes, with one pattern left over (the largest negative 4-byte number) to represent the uninitialized value. See <b>maxint</b>.<p>
+Values can be written in base 2 or 16 or any other base in the range 2 to 36 (36 because there are 10 digits and 26 letters). This form begins with the base, such as 16, then #, and then the value written in that base, for example, 16#A has the value 10. The letters a, b, c … represent the digit values 10, 11, 12 … Capital letters A, B, C … can be used instead of lower case. Here are some examples.<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>2#1</td><td width="10">&nbsp;</td><td width="10">&nbsp;</td><td>= 1</td><td width="10">&nbsp;</td><td width="10">&nbsp;</td><td>(Base 2)</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>2#11</td><td width="10">&nbsp;</td><td width="10">&nbsp;</td><td>= 3</td><td width="10">&nbsp;</td><td width="10">&nbsp;</td><td>(Base 2)</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>16#a</td><td width="10">&nbsp;</td><td width="10">&nbsp;</td><td>= 10</td><td width="10">&nbsp;</td><td width="10">&nbsp;</td><td>(Base 16)</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>16#FF</td><td width="10">&nbsp;</td><td width="10">&nbsp;</td><td>= 255</td><td width="10">&nbsp;</td><td width="10">&nbsp;</td><td>(Base 16)</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>16#FFFF</td><td width="10">&nbsp;</td><td>= 32767</td><td width="10">&nbsp;</td><td>(Base 16)</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>8#10</td><td width="10">&nbsp;</td><td width="10">&nbsp;</td><td>= 8</td><td width="10">&nbsp;</td><td width="10">&nbsp;</td><td>(Base 8)</td></tr>
+</table><p>
+Here is an example of using these:<p>
+<pre><tt>        <b>const</b> <i>maxnat1</i> := 16#FF      <i>% Largest 1-byte natural number</i>
+        <b>const</b> <i>maxint2</i> := 16#7FFF    <i>% Largest 2-byte integer</i></tt></pre>
+You should be careful to avoid confusion about patterns such as 16#FFFF. It is tempting to think that this is the value 1, because the bit pattern (2-byte two's complement internal representation) for 1 is the same as the bit pattern for 16#FFFF = 32767. However, the value (as opposed to the internal representation) of 1 and 32767 are different.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="int.html">int</a></b>, <b><a href="maxint.html">maxint</a></b> (the largest integer value), <b><a href="nat.html">nat</a></b> (positive values  only) and <b><a href="int.html">int</a><i>n</i></b> (<i><b>n</b></i><b>-</b>byte integers). See also <b><a href="intstr.html">intstr</a></b> and <b><a href="natstr.html">natstr</a></b> which convert integer and natural number values to corresponding character strings in any base, for example <b><a href="intstr.html">intstr</a> </b>(4, 0, 2) = "100".<p>
+</table></body>
+</html>

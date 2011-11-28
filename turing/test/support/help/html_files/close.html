@@ -1,0 +1,28 @@
+<html>
+<head><title>close</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>close</b></font></td><td align="right"><font size="+1"><b>file statement</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>closeStatement</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>close</b> : <i>fileNumber</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> In Turing, files are read and written using a <i>fileNumber</i>. In most cases, this number is given a value using the <b>open</b> statement, which translates a file name, such as "Master", to a file number, such as 5. When the program is finished using the file, it disconnects from the file using the <b>close</b> statement.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program illustrates how to open, read and then close a file.<p>
+<pre><tt>        <b>var</b> <i>fileName</i> : <b>string</b> := "Master"   <i>% Name of file</i>
+        <b>var</b> <i>fileNo</i> : <b>int</b>                <i>% Number of file</i>
+        <b>var</b> <i>inputVariable</i> : <b>string</b> (100)
+        <b>open</b> : <i>fileNo</i>, <i>fileName</i>,<i> </i><b>read</b>
+        …
+        <b>read</b> : <i>fileNo</i>, <i>inputVariable</i>
+        …
+        <b>close</b> : <i>fileNo</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> In a Turing implementation, there will generally be a limit on the number of currently open files. This limit will typically be around 20. To avoid exceeding this limit, a program that uses many files one after another should close files that are no longer in use.<p>
+If a program does not close a file, the file will be automatically closed when the program finishes.<p>
+There is an older and still acceptable version of <b>close</b> that has this syntax:<p>
+<pre><tt>        <b>close</b> (<i>fileNumber</i> : <b>int</b>)</tt></pre>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> the <b><a href="open.html">open</a></b>, <b><a href="get.html">get</a></b>, <b><a href="put.html">put</a></b>, <b><a href="read.html">read</a></b>, <b><a href="write.html">write</a></b>, <b><a href="seek.html">seek</a></b> and <b><a href="tell.html">tell</a></b> statements.<p>
+</table></body>
+</html>

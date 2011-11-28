@@ -1,0 +1,35 @@
+<html>
+<head><title>File.FullPath</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>File.FullPath</b></font></td><td align="right">Part of <a href="filemodule.html">File</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <b>File.FullPath</b> (<i>pathName</i>) : <b>string</b>) : <b>string</b><p>
+<tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> <b>File.FullPath </b>returns a string representing the full absolute path name in Turing format (forward slashes) of the path that
+is passed to the function. The path name passed in does not have to describe an existing file or directory.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td>The full path name will be in Turing format and include the drive name (for example "d:/turing/examples/games/SpaceGame.t")<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td>This program obtains a path from the user and then outputs a full path name based on the path.<p>
+<pre><tt>        <b>var</b> <i>pathName</i> : <b>string</b>
+        <b>get</b> <i>pathName</i>
+	<b>put</b> "Full path = ", <b>File.FullPath</b> (<i>pathName</i>)</tt></pre><p>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,File.FullPath.t;File.FullPath Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td>Another example is available that checks whether a file and all of the directories in the path to the file exist.
+This program illustrates the use of <b>File.FullPath</b>, <b>File.Parent</b>, <b>File.Exists</b>, and <b>Dir.Exists</b>.<p>
+  <OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Path Name Testing Program">
+  <PARAM name="Item1" value="-1,TestPathName.t;Path Name Testing Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>File.FullPath</b>, not by calling <b>FullPath</b>.<p>
+</table></body>
+</html>

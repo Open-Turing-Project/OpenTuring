@@ -1,0 +1,128 @@
+<html>
+<head><title>GUI.CreateCanvas[Full]</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.CreateCanvas[Full]</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+  
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>GUI.CreateCanvas</b> (<i>x</i>, <i>y</i>, <i>width</i>, <i>height</i> : <b>int</b>) : <b>int</b><p>
+          <b>GUI.CreateCanvasFull</b> (<i>x</i>, <i>y</i>, <i>width</i>, <i>height</i> : <b>int</b>,<br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;<i>border</i> : <b>int</b>,<br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;<i>mouseDown</i> : <b>procedure</b> <i>x</i> (<i>mx</i>, <i>my</i> : int),<br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;<i>mouseDrag</i> : <b>procedure</b> <i>x</i> (<i>mx</i>, <i>my</i> : int),<br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;<i>mouseUp</i> : <b>procedure</b> <i>x</i> (<i>mx</i>, <i>my</i> : int)) : <b>int</b><p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>Creates a canvas and returns the canvas' widget ID.<p>
+          A canvas is a drawing surface for use by the program. It differs 
+          from just using the window surface to draw on in that (0, 0) 
+          represents the lower-left corner of the canvas and all drawing is 
+          clipped to the canvas. (This means that if you accidently attempt 
+          to draw outside of the canvas, it will not actually draw beyond 
+          the border of the canvas.)<p>
+          Canvases have procedures that emulate all the procedures in the 
+          Draw module as well as a procedure to emulate Font.Draw, Pic.Draw, 
+          Pic.New, Pic.ScreenLoad and Pic.ScreenSave.<p>
+          You can get mouse feedback from a canvas. Using the 
+          <i>CreateCanvasFull</i> method, you can specify three routines 
+          that are called when the mouse button is depressed while pointing 
+          in a canvas. One routine will be called when the user presses the 
+          mouse button down in a canvas. Another routine will be called while 
+          the user drags the mouse with the mouse button down. This routine 
+          is repeatedly called whenever the mouse changes position while 
+          the mouse button is down. The last routine is called when the 
+          mouse button is released. All three routines take an <i>x</i> 
+          and <i>y</i> parameter, which is the location of the mouse with 
+          respect to the canvas (i.e. (0, 0) is the lower-left corner of 
+          the canvas).<p>
+	  <center><img src="gui_createcanvas_full01.gif"></center>
+	  <center><b>Output of Canvases.dem</b></center><p>
+	  The <i>x</i> and <i>y</i> parameters specify the lower-left corner 
+	  of the canvas. The <i>width</i> and <i>height </i>parameters specify 
+	  the width and height of the canvas. <p>
+	  For <b>GUI.CreateCanvasFull</b>, the <i>border</i> parameter specifies 
+	  the type of border that surrounds the canvas and is one of 0, 
+	  <i>GUI.LINE</i>, <i>GUI.INDENT</i> or <i>GUI.EXDENT</i>. A border 
+	  of 0 is the default and is the same as <i>GUI.LINE</i>. 
+	  <i>GUI.INDENT</i> and <i>GUI.EXDENT</i> only display properly if the 
+	  background colour has been set to <i>gray</i> using 
+	  <b>GUI.SetBackgroundColor</b>. <i>GUI.INDENT</i> makes the canvas 
+	  appear indented or recessed. <i>GUI.EXDENT</i> makes the canvas 
+	  appear to stand out from the window.<p>
+          The <i>mouseDown</i> parameter is a procedure called when the user 
+          presses the mouse button in the canvas. The <i>mouseDrag</i> 
+          parameter is a procedure called when the user drags the mouse 
+          while the mouse button is still pressed. The <i>mouseUp</i> parameter 
+          is a procedure called when the user releases the mouse button. The 
+          parameters to all three are the x and y location of the mouse where 
+          the button was pressed (dragged/released). The coordinates are given 
+          with respect to the canvas (i.e. (0, 0) is the lower-left corner of 
+          the canvas). <p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>The following program draws 10 random stars in the canvas.<p>
+<pre><tt>        <b>import</b> <i>GUI</i>
+        <b>var</b> <i>canvas</i> : <b>int</b> := <b>GUI.CreateCanvas </b>(10, 10, <b>maxx</b> - 20, <b>maxy</b> - 20)
+        <b>for</b> i : 1 .. 10
+            <b>var</b> <i>x</i> : <b>int</b> := <b>Rand.Int</b> (0, <b>maxx</b> - 20)
+            <b>var</b> <i>y</i> : <b>int</b> := <b>Rand.Int</b><i> </i>(0, <b>maxy</b> - 20)
+            <b>var</b> <i>c</i> : <b>int</b> := <b>Rand.Int</b><i> </i>(0, <b>maxcolor</b>)
+            <b>GUI.DrawFillOval</b><i> </i>(<i>canvas</i>, <i>x</i>, <i>y</i>, 20, 20, <i>c</i>)
+        <b>end</b> <b>for</b></tt></pre><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,GUI.CreateCanvas.t;GUI.CreateCanvas Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>When <b>GUI.CreateCanvas</b> or <b>GUI.CreateCanvasFull</b> is called, 
+      the newly created canvas will be displayed immediately unless 
+      <b>GUI.DisplayWhenCreated</b> has been called with the <i>display</i> 
+      parameter set to false. <p>
+      The border of the canvas is just outside the drawing surface, so 
+      <b>GUI.GetWidth</b><i> </i>and<i> </i><b>GUI.GetHeight </b>will return 
+      slight larger values than <i>width</i> and <i>height</i>.<p>
+      When the canvas is disabled, clicking the mouse in the canvas does not 
+      call any of the <i>mouseDown</i>, <i>mouseDrag</i>, or <i>mouseUp</i> 
+      procedures. The appearance of the canvas does not change.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The following GUI subprograms can be called with a button as the 
+          <i>widgetID</i> parameter:<p>
+          <table>
+            <tr valign="top">
+              <td width="40">&nbsp;</td><td><b>GUI.Show</b>, <b>GUI.Hide</b>,
+              <b>GUI.Enable</b>, <b>GUI.Disable</b>, <b>GUI.Dispose</b>,
+              <b>GUI.GetX</b>, <b>GUI.GetY</b>, <b>GUI.GetWidth</b>,
+              <b>GUI.GetHeight</b>, <b>GUI.SetPosition</b>, <b>GUI.SetSize</b>,
+              <b>GUI.SetPositionAndSize</b>, <b>GUI.Draw…</b>,
+              <b>GUI.FontDraw</b>, <b>GUI.Pic…</b>, <b>GUI.SetXOR</b></td>
+            </tr>
+          </table><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+          <b>GUI.CreateCanvas</b>, not by calling <b>CreateCanvas</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="gui_draw.html">GUI.Draw…</a></b>, 
+          <b><a href="gui_fontdraw.html">GUI.FontDraw</a></b>,
+          <b><a href="gui_pic.html">GUI.Pic…</a></b>, and 
+          <b><a href="gui_setxor.html">GUI.SetXOR</a></b> for drawing on a canvas.<p>
+    </tr>
+  </table>
+</body>
+</html>

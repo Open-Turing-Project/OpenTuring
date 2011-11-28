@@ -1,0 +1,36 @@
+<html>
+<head><title>Font.Name</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Font.Name</b></font></td><td align="right">Part of <a href="fontmodule.html">Font</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Font.Name</b> (<i>fontID</i> : <b>int</b>) <i>fontName</i> : <b>string</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> <b>Font.Name</b> is used to get the name of a font that is being used. The string that is returned can be used to determine which font is actually being used for the default fonts “serif”, “sans serif” and “mono”.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The program prints out the fonts used for “serif”, “sans serif” and “mono”.<p>
+<pre><tt>        <b>var </b><i>serifFont</i>, <i>sansSerifFont</i>, <i>monoFont</i> : <b>int</b>
+        <i>serifFont</i> := <b>Font.New</b> ("serif:12")
+        <b>assert </b><i>serifFont</i> &gt; 0
+        <i>sansSerifFont</i> := <b>Font.New</b> ("sans serif:12")
+        <b>assert </b><i>sansSerifFont </i>&gt; 0
+        <i>monoFont</i> := <b>Font.New</b> ("mono:12")
+        <b>assert </b><i>monoFont </i>&gt; 0
+        <b>put</b> "serif = ", <b>Font.Name</b> (<i>serifFont</i>)
+        <b>put</b> "sans serif = ", <b>Font.Name</b> (<i>sansSerifFont</i>)
+        <b>put</b> "mono = ", <b>Font.Name</b> (<i>monoFont</i>)
+        <b>Font.Free</b> (<i>serifFont</i>)
+        <b>Font.Free</b> (<i>sansSerifFont</i>)
+        <b>Font.Free</b> (<i>monoFont</i>)</tt></pre><p>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,Font.Name.t;Font.Name Example">
+          </OBJECT><p></td>
+    </tr>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Font.Name</b>, not by calling <b>Name</b>.<p>
+</table></body>
+</html>

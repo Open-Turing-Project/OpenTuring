@@ -1,0 +1,28 @@
+<html>
+<head><title>Rand.Real</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Rand.Real</b></font></td><td align="right">Part of <a href="randmodule.html">Rand</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Rand.Real</b> : <b>real</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Rand.Real </b>function returns a pseudo-random number in the range zero to one. For example, if <i>x</i> is a real number, after <i>x</i> := <b>Rand.Real</b>, <i>x</i> would have a value such as 0.729548 or 0.352879.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program repeatedly and randomly prints out <i>Hi ho</i>,<i> hi ho</i> or <i>It's off to work we go</i>.<p>
+<pre><tt>        <b>loop</b>
+            <b>if</b> <b>Rand.Real </b>&gt; 0.5 <b>then</b>
+                <b>put</b> "Hi ho, hi ho"
+            <b>else</b>
+                <b>put</b> "It's off to work we go"
+            <b>end</b> <b>if</b>
+        <b>end loop</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The <b>Rand.Real </b>function<b> </b>sets its parameter to the next value of a sequence of pseudo-random real numbers that approximates a uniform distribution over the range 0&lt;<i>r</i> &lt;1.<p>
+Each time a program runs, <b>Rand.Real</b> uses a different pseudo-random number sequence. To always get the same sequence (actually, to start the sequence at the same point), use the <b>Rand.Set</b> procedure.<p>
+To use several sequences of repeatable pseudo-random number sequences, use the <b>Rand.Seed </b>and <b>Rand.Next</b> procedures.<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Rand.Real</b>, not by calling <b>Real</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="rand_int.html">Rand.Int</a></b>, <b><a href="rand_set.html">Rand.Set</a></b>, <b><a href="rand_seed.html">Rand.Seed</a></b> and <b><a href="rand_next.html">Rand.Next</a></b>.<p>
+</table></body>
+</html>

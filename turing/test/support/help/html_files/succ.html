@@ -1,0 +1,27 @@
+<html>
+<head><title>succ</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>succ</b></font></td><td align="right"><font size="+1"><b>successor function</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>succ</b> ( <i>expn</i> )<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>succ</b> function accepts an integer, character or an enumerated value and returns the integer plus one, the next character, or the next value in the enumeration. For example, <b>succ</b> (7) is 8. <p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This part of a Turing program fills up array <i>a </i>with the enumerated values <i>green</i>,<i> yellow</i>,<i> red</i>,<i> green</i>,<i> yellow</i>,<i> red</i>,<i> </i>etc.<p>
+<pre><tt>        <b>type</b> <i>colors</i> : <b>enum</b> ( <i>green</i>, <i>yellow</i>, <i>red</i>  )
+        <b>var</b> <i>a</i> : <b>array</b> 1 .. 100 <b>of</b> <i>colors</i>
+        <b>var</b> <i>c</i> : <i>colors</i> := <i>colors</i> .<i>green</i>
+        <b>for</b> <i>i</i> : 1 .. 100
+            <i>a</i> ( <i>i</i> ) := c
+            <b>if</b> <i>c</i> = <i>colors</i> . <i>red</i> <b>then</b>
+                <i>c</i> := <i>colors</i> . <i>green</i>
+            <b>else</b>
+                <i>c</i> := <b>succ</b> ( <i>c</i> )
+            <b>end</b> <b>if</b>
+        <b>end</b> <b>for</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> You cannot  apply <b>succ</b> to the last value of an enumeration.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> the <b><a href="pred.html">pred</a></b>, <b><a href="lower.html">lower</a></b> and <b><a href="upper.html">upper</a></b> functions.<p>
+</table></body>
+</html>

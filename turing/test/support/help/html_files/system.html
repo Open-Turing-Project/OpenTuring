@@ -1,0 +1,70 @@
+<html>
+<head><title>system</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>system</b></font></td><td align="right"><font size="+1"><b>statement</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>system</b> ( <i>command</i> : <b>string</b>, <b>var</b> <i>ret</i> : <b>int</b> )<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>system</b> statement is used to execute the shell (operating system) <i>command</i>, as if it were typed at the terminal. The return code is in <i>ret</i>. A return code of 0 (zero) means no detected errors. A return code of 127 means the command processor could not be accessed. A return code of 126 means the command processor did not have room to run on the PC.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program creates a directory listing when run under DOS on an IBM PC compatible computer. The same program will run under UNIX by changing "<i>dir</i>" to "<i>ls</i>".<p>
+<pre><tt>        <b>var</b> <i>success</i> : <b>int</b>
+        <b>system</b> ( "dir", <i>success </i>)
+        <b>if</b> <i>success</i> <b>not=</b> 0 <b>then</b>
+            <b>if</b> <i>success</i>= 127 <b>then</b>
+                <b>put</b> "Sorry, can't find 'command.com'"
+            <b>elsif</b> <i>success</i> = 126 <b>then</b>
+                <b>put</b> "Sorry, no room to run 'dir'"
+            <b>else</b>
+                <b>put</b> "Sorry, 'dir' did not work"
+            <b>end</b> <b>if</b>
+        <b>end</b> <b>if</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> When the <b>system</b> procedure is used, the executing program usually remains in memory while the system command is executing, and once execution of the system command is finished, control returns to the original program. However, on the PC, there is variant of the <b>system</b> procedure that allows "chaining". This means that when the system command is executed, the originally running program is "thrown away" (i.e. removed from memory). When the executed program terminates, one is returned to DOS.<p>
+To chain another program, one prepends "chain:" to the start <i>command</i>.<p>
+<pre><tt>        i.e.    <b>system</b> ("chain:myprog.exe", <i>retCode</i>)</tt></pre>
+Note that this command is "hazardous". Specifically, if you call it from Turing (as opposed to a program compiled with TComp) and you have not saved your source file, <b>you</b> <b>will</b> <b>lose</b> <b>it!</b>  Turing will be removed from memory without any warning when the <b>system</b> procedure is executed. Likewise any open files will be closed instantly. This means there is a danger if all files were not properly closed before the <b>system</b> procedure was called. <p>
+The "chain:" command is often used for starting menu programs, where the user selects a program to run and doesn't want Turing to remain in memory. It can also be used with extraordinarily large Turing programs that can be split into different parts. By using TComp and compiling each part separately, one can have each program call the other and never have all parts in memory at once.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program uses chaining to launch one of several possible programs based on user choice. It gives an error if for some reason the <b>system</b> command fails to work. It assumes that c:\chemistry.exe, c:\math.exe, c:\english.exe and c:\history.exe already exist.<p>
+<pre><tt>        <b>var</b> <i>choice</i>, <i>success</i> : <b>int</b>
+        <b>put</b> "Enter the subject (1-4): "..
+        <b>get</b> <i>choice</i>
+        <b>var</b> <i>command</i> : <b>string</b>
+        <b>case</b> <i>choice </i><b>of</b>
+            <i>% Note the use of the double backslash in the file name</i>. <i>This</i>
+            <i>% is because the backslash is a special character in Turing (as</i>
+            <i>% in \t for tab and \n for a newline). To get a single backslash</i>, 
+            <i>% one uses \\.</i>
+            <b>label</b> 1 :   <i>command</i> := "c:\\chemistry.exe"
+            <b>label</b> 2 :   <i>command</i> := "c:\\math.exe"
+            <b>label</b> 3 :   <i>command</i> := "c:\\english.exe"
+            <b>label</b> 4 :   <i>command</i> := "c:\\history.exe"
+            <b>label</b> :     <b>put</b> "Choice must be from 1-4."
+                    <b>assert</b> <b>false</b>    <i>% Wasn't a 1-4</i>. <i>Terminate.</i>
+        <b>end</b> <b>case</b>
+        <b>system</b> ( "chain:" + <i>command</i>, <i>success</i>)
+        <i>% If I reach this line</i>,<i> the <b>system</b> command failed and one should give</i>
+        <i>% an error message.</i>
+        <b>put</b> "System called failed."
+        <b>put</b> "Program \"", <i>command</i>, "\"  couldn't be run."
+        <b>assert</b> <b>false</b>    <i>% Terminate the program</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Here are the possible errors under PC-Turing<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>-1</td><td width="10">&nbsp;</td><td>Not enough memory to load COMMAND.COM</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>-2</td><td width="10">&nbsp;</td><td>Not enough memory to run command</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>-3</td><td width="10">&nbsp;</td><td>Argument list greater than 128 bytes or environment info<br>
+</table>
+<table><tr valign="top"></td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td>is greater than 32k</td></tr>
+</table>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>-4</td><td width="10">&nbsp;</td><td>Couldn't find COMMAND.COM</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>-5</td><td width="10">&nbsp;</td><td>COMMAND.COM corrupt</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>-6</td><td width="10">&nbsp;</td><td>-noshell option is selected, the system procedure is<br>
+</table>
+<table><tr valign="top"></td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td>disallowed</td></tr>
+</table><p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="nargs.html">nargs</a></b>, <b><a href="fetcharg.html">fetcharg</a></b> and <b><a href="getenv.html">getenv</a></b> functions.<p>
+See also predefined unit <b><a href="sysmodule.html">Sys</a></b>.<p>
+</table></body>
+</html>

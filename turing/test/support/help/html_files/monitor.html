@@ -1,0 +1,81 @@
+<html>
+<head><title>monitor</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>monitor</b></font></td><td align="right"><font size="+1"><b>declaration</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>monitorDeclaration</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>monitor</b> <i>id</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1">[ <b>implement</b> <i>implementItem </i>]</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1">[ <b>implement</b> <b>by</b> <i>implementByItem </i>]</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1">[ <b>import</b> [ <b>var</b> ] <i>importItem</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="4"><font size="+1"><i> </i>{,<i> </i>[ <b>var</b> ]<i> importItem</i> } ]</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1">[ <b>export</b> [ <i>howExport</i> ] <i>id </i>{,[<i>howExport</i> ]<i> id</i> }]</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1"><i>statementsAndDeclarations</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>end</b> <i>id</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A monitor is a special purpose module (see <b>module</b>) that is used with concurrent processes (see <b>process</b>). At most, one concurrent process (see <b>process</b>) can be active in a monitor at a time. This means that a process will be blocked if it calls a monitor that is already active. The process will not be allowed to proceed until the monitor is inactive. The monitor provides <i>mutually exclusive </i>access to the monitor's internal data.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This monitor controls access to the <i>count</i> variable so it can be updated by two processes (the <i>observer</i> and the <i>reporter</i>) without being corrupted by this concurrent access. Generally, it is not safe to have one process update a variable that other processes are simultaneously accessing. The <i>observer</i> process repeatedly increments the <i>counter</i> when it observes an event. The <i>reporter</i> process repeatedly writes out the number of events that have occurred since the last report, resetting the <i>counter</i> to zero.<p>
+<pre><tt>        <b>monitor</b> <i>controller</i>
+            <b>export</b> <i>observe</i>, <i>report</i>
+        
+            <b>var</b> <i>counter</i> : <b>int</b> := 0
+        
+            <b>procedure</b> <i>observe</i>
+                <i>counter</i> := <i>counter</i> <b>+</b> 1
+            <b>end</b> <i>observe</i>
+        
+            <b>procedure</b> <i>report</i> (<b>var</b> <i>n</i> : <b>int</b> )
+                <i>n</i> := <i>counter</i>
+                <i>counter</i> := 0
+            <b>end</b> <i>report</i>
+        <b>end</b> <i>controller</i>
+        <b>process</b> <i>observer</i>
+            <b>loop</b>
+                <i>… observe one event …</i>
+                <i>controller</i> . <i>observe</i>
+            <b>end</b> <b>loop</b>
+        <b>end</b> <i>observer</i>
+        
+        <b>process</b> <i>reporter</i>
+            <b>var</b> <i>n</i> : <b>int</b>
+            <b>loop</b>
+                <i>controller</i>.<i>report</i> ( <i>n</i> )
+                <i>… report n events …</i>
+            <b>end</b> <b>loop</b>
+        <b>end</b> <i>reporter</i>
+        
+        <b>fork</b> <i>observer</i>       <i>% Activate the observer</i>
+        <b>fork</b> <i>reporter</i>       <i>% Activate the reporter</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> A <b>monitor</b> is essentially a module in which only one process can be active at a time. See <b>module</b> declarations for details about initialization. Initialization is the same for modules and monitors.<p>
+A monitor can contain <b>wait</b> statements (that put processes to sleep) and <b>signal</b> statements (that wake them up again). These statements operate on <b>condition</b> variables, which are essentially queues of sleeping processes.<p>
+A class is essentially a template for creating individual modules (objects). See <b>class</b> for details. If the class declaration is preceded by the keyword <b>monitor</b>, the created modules are actually monitors. Monitor classes can only inherit (inherit from) other monitor classes.<p>
+The body of a monitor has the same form as that of a module, except that modules, monitors and processes cannot be declared inside monitors, and certain statements (<b>wait</b> and <b>signal</b>) are allowed in monitors.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The syntax of a <i>monitorDeclaration</i> presented above has been simplified by leaving out <b>pre</b>, <b>invariant</b> and <b>post</b> clauses. See <b>module</b> for an explanation of these extra features. There is also an optional <i>compilerTimeIntegerExpression</i> in the first line, which is explained below. The full syntax<i> </i>is:<p>
+<pre><tt>        <b>monitor</b> <i>id</i> [ : <i>compileTimeIntegerExpn</i> ]
+            [ <b>implement</b> <i>implementItem</i> ]
+            [ <b>implement</b> <b>by</b> <i>implementByItem</i> ]
+            [ <b>import</b> [ <b>var</b> ] <i>importItem</i> {, [ <b>var</b> ] <i>importItem</i> } ]
+            [ <b>export</b> [ <i>howExport</i> ] id {, [ <i>howExport</i> ] <i>id</i> } ]
+            [ <b>pre</b> <i>trueFalseExpn</i> ]
+            <i>statementsAndDeclarations</i>
+            [ <b>invariant</b> <i>trueFalseExpn</i> ]
+            <i>statementsAndDeclarations</i>
+            [ <b>post</b> <i>trueFalseExpn</i> ]
+        <b>end</b> <i>id</i></tt></pre>
+If the optional <i>compileTimeIntegerExpression</i> is present, this is a <i>device monitor</i>. Its exclusive access is enforced by an implementation-dependent trick, such as executing it at a hardware priority level given by the expression. A device monitor is restricted from calling monitors (directly or indirectly). This restriction is imposed to eliminate the possibility of blocking a process with a non-zero hardware priority (as this would inadvertently allow multiple entry into a device monitor). It is the programmer's responsibility to meet this restriction; the compiler will not in general enforce the restriction. The current (1999) implementation ignores this <i>compileTimeIntegerExpression</i>.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> An unexported parameterless procedure in a monitor can be specified to be an <i>interrupt handling procedure</i> by specifying a device in its header, using the form:<p>
+<pre><tt>        <b>procedure</b> <i>id</i> [ : <i>deviceSpecification</i> ]</tt></pre>
+The <i>deviceSpecification</i> is a compile time natural number that designates, to the implementation, the class of interrupts that effectively call this procedure. Interrupt handling procedures cannot be called explicitly within the program.<p>
+There are two restrictions that the programmer must follow when using interrupt handling procedures; these restrictions will not necessarily be enforced by the software. The first is that an interrupt handling procedure must not execute a <b>wait</b>, either directly or indirectly, by calling another procedure. The second is that the interrupt handling procedure must not directly or indirectly cause an exception, unless the exception will be caught by an exception handler that is activated directly or indirectly by the interrupt handling procedure.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Declarations of monitors within monitors are disallowed. This would be  redundant anyway, as only one process can be inside the outer monitor, so the inner monitor is guaranteed to be successful.<p>
+Declarations of classes within monitors are also disallowed.<p>
+Any subprogram declared within a subprogram is now allowed to be assigned to a subprogram variable, nor passed as a parametric subprogram.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="unit.html">unit</a></b>, <b><a href="module.html">module</a></b> and <b><a href="class.html">class</a></b>. See also <b><a href="export.html">export</a></b> list, <b><a href="import.html">import</a></b> list, <b><a href="implement.html">implement</a></b> list, <b><a href="implement_by.html">implement by</a></b> list and <b><a href="deferred.html">deferred</a></b> subprogram.<p>
+</table></body>
+</html>

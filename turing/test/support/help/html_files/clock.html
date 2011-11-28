@@ -1,0 +1,26 @@
+<html>
+<head><title>clock</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>clock</b></font></td><td align="right"><font size="+1"><b>millisecs used procedure</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>clock</b><i> </i>(<b>var</b><i> c </i>: <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>clock</b> statement is used to determine the amount of time since a program (process) started running. Variable <i>c </i>is assigned the number of milliseconds since the program started running.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program tells you how much time it has used.<p>
+<pre><tt>        <b>var</b> <i>timeRunning</i> : <b>int</b>
+        <b>clock</b> (<i>timeRunning</i>)
+        <b>put</b> "This program has run ", <i>timeRunning</i>, " milliseconds"</tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,clock.t;clock Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> On Apple Macintoshes, the hardware resolution of duration is in units of 17 milliseconds (1/60-th of a second).<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="delay.html">delay</a></b>, <b><a href="time.html">time</a></b>, <b><a href="sysclock.html">sysclock</a></b>, <b><a href="wallclock.html">wallclock</a></b> and <b><a href="date.html">date</a></b> statements.<p>
+See also predefined unit <b><a href="timemodule.html">Time</a></b>.<p>
+</table></body>
+</html>

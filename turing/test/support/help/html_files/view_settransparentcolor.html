@@ -1,0 +1,80 @@
+<html>
+<head><title>View.SetTransparentColor</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>View.SetTransparentColor</b></font></td><td align="right">Part of <a href="viewmodule.html">View</a> module</td></table><p>
+  
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>View.SetTransparentColor</b> (<i>colorNumber</i> : <b>int</b>)<p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>The <b>View.SetTransparentColor</b> procedure sets the color in the 
+          Run window that should be considered transparent when a picture is 
+          drawn on the window using the <tt>picUnderMerge</tt> mode. 
+          If no color is specified, then the default background color 
+          (<b>colorbg</b>, usually <b>white</b>) is used as the transparent 
+          color. You can change this background color using <b>RGB.SetColor</b>
+          on color 0.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details</b></td>
+      <td>This call is often used when you want the Run window to have a
+          background color other than color 0.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program displays two images loaded from the same file. In the 
+          second image,the transparent color has been set to bright red (that
+          is, the parts of the image that are meant to be transparent are in
+          bright red).
+          <p>
+<pre><tt>        <b>const</b> <i>SIZE</i> : <b>int</b> := 20
+        <b>procedure</b> <i>DrawCheckerBoard</i>
+            <b>cls</b>
+            <b>for</b> <i>x</i> : 0 .. <b>maxx by</b> <i>SIZE</i>
+                <b>for</b> <i>y</i> : 0 .. <b>maxy by</b> <i>SIZE</i>
+                    <b>if</b> ((<i>x</i> + <i>y</i>) <b>div</b> <i>SIZE</i>) <b>mod</b> 2 = 0 <b>then</b>
+                        <b>Draw.FillBox</b> (<i>x</i>, <i>y</i>, <i>x</i> + <i>SIZE</i>, <i>y</i> + <i>SIZE</i>, <b>brightgreen</b>)
+                    <b>end if</b>
+                <b>end for</b>
+            <b>end for</b>
+        <b>end</b> <i>DrawCheckerBoard</i>
+
+        <b>var</b> pic : <b>int</b> := <b>Pic.FileNew</b> ("data files/airplane.bmp")
+        <b>Pic.SetTransparentColor</b> (<i>pic</i>, <b>brightred</b>)
+        <b>RGB.SetColor</b> (0, 1., 0., 0.)
+        <i>DrawCheckerBoard</i>
+        <b>Pic.Draw </b>(<i>pic</i>, 100, 100, <b>picUnderMerge</b>)
+        <b>View.SetTransparentColor</b> (<b>brightgreen</b>)
+        <b>Pic.Draw</b> (<i>pic</i>, 400, 100, <b>picUnderMerge</b>)</tt></pre>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,View.SetTransparentColor.t;View.SetTransparentColor Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Details</b></td>
+      <td><b>View.SetTransparentColour</b> is an alternate spelling for 
+          <b>View.SetTransparentColor</b>.<p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+          <b>View.SetTransparentColor</b>, not by calling 
+          <b>SetTransparentColor</b>.<p>
+    </tr>          
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="pic_settransparentcolor.html">Pic.SetTransparentColor</a></b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

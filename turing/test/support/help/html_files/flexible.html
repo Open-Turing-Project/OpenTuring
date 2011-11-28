@@ -1,0 +1,27 @@
+<html>
+<head><title>flexible</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>flexible</b></font></td><td align="right"><font size="+1"><b>array initialization</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>flexible array</b> <i>indexType</i> { , <i>indexType</i> } <b>of</b> <i>typeSpec</i><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>flexible</b> keyword allows an array to be resized using <b>new</b> at a later point in time. The indices may have compile-time or run-time upper bounds (the lower bound must be compile-time). The upper bounds can be changed by using:<p>
+<pre><tt>        <b>new</b> <i>name</i> , <i>newUpper1 {,newUpper2}</i></tt></pre>
+The existing array entries will retain their values, except that any index made smaller will have the corresponding array entries lost. Any index made larger will have the new array entries uninitialized (if applicable).<p>
+Additionally, the upper bound (both in the declaration and the <b>new</b> statement) can be made one less than the lower bound. This effectively makes an array that contains 0 elements. It can later be increased in size with another <b>new</b>.<p>
+In the current implementation (1999), with a multi-dimensional array with a non-zero number of total elements, it is a run-time error to change any but the first dimension (unless one of the new upper bounds is one less than the corresponding lower bound, giving 0 elements in the array) as the algorithm to rearrange the element memory locations has not yet been implemented.<p>
+Currently, only variables can be declared in this form. There is no flexible array parameter type, although a flexible array can be passed to an array parameter with “<b>*</b>” as the upper bound.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> See <b>array</b> for an example of <b>flexible</b>.<p>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,array4.t;Flexible Array Example">
+          </OBJECT><p></td>
+    </tr>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="array.html">array</a></b> and <b><a href="new.html">new</a></b>.<p>
+</table></body>
+</html>

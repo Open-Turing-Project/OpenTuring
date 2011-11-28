@@ -1,0 +1,25 @@
+<html>
+<head><title>Font</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Font</b></font></td></table><p>
+<table><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> This unit contains the predefined subprograms that deal with fonts. Using these routines, you can display text in a selected font name, size and style on the screen. Note that output in a particular font is treated as graphics output.<p>
+All routines in the Font module are exported qualified (and thus must be prefaced with "<b>Font</b>.").<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> There is a default font. You can draw in and obtain information about the default font by passing <i>fontDefaultID</i> to <b>Font.Draw</b>, <b>Font.Width</b> and <b>Font.Sizes</b>. The default font is the same font as is used by <b>put</b> in the output window. <p>
+<tr valign="top"><td><b>Entry Points&nbsp;&nbsp;</b></td>
+<td><table>
+ <tr valign="top"><td><a href="font_new.html"><b>New</b></a></td><td width="20">&nbsp;</td><td>Selects a particular font name, size and style for a new font.</td></tr>
+<tr valign="top"><td><a href="font_free.html"><b>Free</b></a></td><td width="20">&nbsp;</td><td>Frees up the font created by using <b>New</b>.</td></tr>
+<tr valign="top"><td><a href="font_draw.html"><b>Draw</b></a></td><td width="20">&nbsp;</td><td>Draws text in a given font.</td></tr>
+<tr valign="top"><td><a href="font_width.html"><b>Width</b></a></td><td width="20">&nbsp;</td><td>Gets the width in pixels of a particular piece of text in a specified font.</td></tr>
+<tr valign="top"><td><a href="font_sizes.html"><b>Sizes</b></a></td><td width="20">&nbsp;</td><td>Gets the height and various leadings of a specified font.</td></tr>
+<tr valign="top"><td><a href="font_name.html"><b>Name</b></a></td><td width="20">&nbsp;</td><td>Returns the name of the specified font.</td></tr>
+<tr valign="top"><td><a href="font_startname.html"><b>StartName</b></a></td><td width="20">&nbsp;</td><td>Prepares to list all available fonts,</td></tr>
+<tr valign="top"><td><a href="font_getname.html"><b>GetName</b></a></td><td width="20">&nbsp;</td><td>Gets the next font name.</td></tr>
+<tr valign="top"><td><a href="font_getstyle.html"><b>GetStyle</b></a></td><td width="20">&nbsp;</td><td>Gets all the available styles for a specified font.</td></tr>
+<tr valign="top"><td><a href="font_startsize.html"><b>StartSize</b></a></td><td width="20">&nbsp;</td><td>Prepares to list all available sizes for a specified font and style.</td></tr>
+<tr valign="top"><td><a href="font_getsize.html"><b>GetSize</b></a></td><td width="20">&nbsp;</td><td>Gets the next font size.</td></tr>
+</table></table><p>
+</body>
+</html>

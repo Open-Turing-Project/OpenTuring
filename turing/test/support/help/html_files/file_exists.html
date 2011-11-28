@@ -1,0 +1,41 @@
+<html>
+<head><title>File.Exists</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>File.Exists</b></font></td><td align="right">Part of <a href="filemodule.html">File</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <b>File.Exists</b> (<i>pathName</i> : <b>string</b>) : <b>boolean</b><p>
+<tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> <b>File.Exists </b>returns <b>true</b> if a file by the name of <i>pathName</i> exists. It will return <b>false</b> if <i>pathName</i> is a directory.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> If the <b>File.Exists</b> returns <b>false</b>, you can examine <b>Error.Last</b> or <b>Error.LastMsg</b> for more information (i.e. whether the path failed or the file was simply not found).<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program loops until the user types in a path name that either doesn't already exist or is allowed to be overwritten.<p>
+<pre><tt>        <b>var</b> <i>pathName</i> : <b>string</b>
+        <b>var</b> <i>choice</i> : <b>string</b>
+        <b>loop</b>
+            <b>put </b>"Enter file name to write results to" ..
+            <b>get</b> <i>pathName</i>
+            <b>if</b> <b>File.Exists</b> (<i>pathName</i>) <b>then</b>
+                <b>put</b> "Overwrite ", <i>pathName</i>, "?" ..
+                <b>get</b> <i>choice</i>
+                <b>exit</b> <b>when</b> <i>choice</i> = "y"
+            <b>else</b>
+                <b>exit</b>
+            <b>end if</b>
+        <b>end loop</b></tt></pre>
+  <tr valign="top">
+    <td><b>Execute&nbsp;&nbsp;</b></td>
+    <td>An example program is available that creates a file in the current 
+        directory, tests for its existence using <b>File.Exists</b> and 
+        deletes the file using <b>File.Delete</b>.<p>
+        <OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+          <PARAM name="Command" value="TCard">
+          <PARAM name="Button" value="Text: Launch Example Program">
+          <PARAM name="Item1" value="-1,File.Exists.t;File.Exists Example">
+        </OBJECT><p></td>
+  </tr>        
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>File.Exists</b>, not by calling <b>Exists</b>.<p>
+</table></body>
+</html>

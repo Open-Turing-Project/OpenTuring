@@ -1,0 +1,27 @@
+<html>
+<head><title>delay</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>delay</b></font></td><td align="right"><font size="+1"><b>procedure</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>delay</b> (<i>duration</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>delay</b> statement is used to cause the program to pause for a given time. The time duration is in milliseconds.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program prints the integers 1 to 10 with a second delay between each.<p>
+<pre><tt>        <b>for</b><i> i</i> : 1 .. 10
+            <b>put</b> <i>i</i>
+            <b>delay</b> (1000)    <i>% Pause for 1 second</i>
+        <b>end</b> <b>for</b></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,delay.t;delay Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> On Apple Macintoshes, the hardware resolution of duration is in units of 17 milliseconds (1/60th of a second). For example, <b>delay</b>(500) will delay the program by about half a second, but may be off by as much as 17 milliseconds.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="sound.html">sound</a></b>, <b><a href="clock.html">clock</a></b>, <b><a href="sysclock.html">sysclock</a></b>, <b><a href="wallclock.html">wallclock</a></b>, <b><a href="time.html">time</a></b> and <b><a href="date.html">date</a></b> statements.<p>
+See also predefined unit <b><a href="timemodule.html">Time</a></b>.<p>
+</table></body>
+</html>

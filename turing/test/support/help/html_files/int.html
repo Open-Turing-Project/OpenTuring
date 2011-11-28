@@ -1,0 +1,25 @@
+<html>
+<head><title>int</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>int</b></font></td><td align="right"><font size="+1"><b>integer type</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>int</b> (integer) type has the values … 2, 1, 0, 1, 2 … Integers can be combined by various operators such as addition (+) and multiplication (*). Integers can also be combined with <b>real</b> numbers, in which case the result is generally a real number. An integer can always be assigned to a real variable, with implicit conversion to <b>real</b>.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>var</b> <i>counter</i>, <i>i</i> : <b>int</b>
+        <b>var</b> <i>j</i> : <b>int</b> := 9
+        <b>var</b> <i>tax</i> := 0        <i>% The type is implicitly <b>int</b> because 0 is an integer</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> See also <i>explicitIntegerConstant</i>. The <b>real</b> type is used instead of <b>int</b> when values have fractional parts as in 16.837. See the <b>real</b> type for details.<p>
+The operators on integers are +, -, * (multiply), <b>div</b> (truncating integer division), <b>mod</b> (integer remainder), ** (exponentiation), as well as comparisons (+, <b>not=</b>, &gt;, &gt;=, &lt;, &lt;=). The operators <b>and</b>, <b>or</b> and <b>xor</b> can be applied to non-negative integer values. The bit-wise boolean result is produced as an integer (actually, as a natural number). The <b>shr</b> (shift right) and <b>shl</b> (shift left) operators are also introduced.<p>
+Real numbers can be converted to integers using <b>ceil</b> (ceiling), <b>floor</b>, and <b>round</b><i> </i>(see descriptions of these functions). Integers can be converted to real numbers using <b>intreal</b>, but in practice this is rarely used, because an integer value used in place of a real value will be automatically converted to real.<p>
+Integers can be converted to strings and back using <b>intstr</b> and <b>strint</b>. Integers can be converted to corresponding ASCII (or EBCDIC) characters using <b>chr</b> and <b>ord</b>. See the descriptions of these functions.<p>
+Pseudo-random sequences of integers can be generated using <b>randint</b>. See <b>randint</b>.<p>
+In current implementations of Turing, the range of integers is from -2147483647 to 2147483647. In other words, the maximum size of integer is 2**31 - 1. See <b>maxint</b>. This range exists because integers are stored in 4 bytes. The remaining negative value, -2147483648 records uninitialization. The types <b>int1</b>, <b>int2</b> and <b>int4</b> specify integers that fit into 1, 2 or 4 bytes. The <b>int</b><i>n</i> types (<b>int1</b>, <b>int2</b> and <b>int4</b>) are not checked for initialization and allow all their bit patterns as numbers.<p>
+The natural number type <b>nat</b><i> </i>allows only the non-negative values: 0,1,2,3,… Natural number values can be used whenever integer values are expected and vice versa, given that the value does not exceed the range of the expected type.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="nat.html">nat</a></b> and <b><a href="int.html">int</a></b><i>n</i>.<p>
+</table></body>
+</html>

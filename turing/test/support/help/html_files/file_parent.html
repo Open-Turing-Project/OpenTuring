@@ -1,0 +1,40 @@
+<html>
+<head><title>File.Parent</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>File.Parent</b></font></td><td align="right">Part of <a href="filemodule.html">File</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <b>File.Parent</b> (<i>pathName</i> : <b>string</b>) : <b>string</b><p>
+<tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> <b>File.Parent </b>returns a string representing the parent directory in Turing format (forward slashes) of the path passed as
+a parameter. The path name passed in does not have to describe an existing file or directory.<br>
+Attempting to obtain the parent directory of a root directory (for example "c:/") will return the same
+root directory and will set the value returned by <b>Error.Last</b> to a non-zero value.
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program obtains a path from the user and then lists all the parent directories until it reaches the root directory.<p>
+<pre><tt>        <b>var</b> <i>pathName</i> : <b>string</b>
+        <b>put</b> "Enter a path: " ..
+        <b>get</b> <i>pathName</i>
+        <b>loop</b>
+            <i>pathName</i> := <b>File.Parent</b> (<i>pathName</i>)
+            <b>exit when</b> <b>Error.Last</b> <b>not=</b> <b>eNoError</b>
+            <b>put</b> pathName
+        <b>end loop</b></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,File.Parent.t;File.Parent Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td>Another example is available that checks whether a file and all of the directories in the path to the file exist.
+This program illustrates the use of <b>File.FullPath</b>, <b>File.Parent</b>, <b>File.Exists</b>, and <b>Dir.Exists</b>.<p>
+  <OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,TestPathName.t;Path Name Testing Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>File.Parent</b>, not by calling <b>Parent</b>.<p>
+</table></body>
+</html>

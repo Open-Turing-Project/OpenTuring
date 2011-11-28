@@ -1,0 +1,65 @@
+<html>
+<head><title>char</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>char</b></font></td><td align="right"><font size="+1"><b>type</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>char</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Each variable whose type is a <b>char</b> contains a single character, such as the letter <i>A</i>, the digit <i>3</i> or the special character &amp;.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Count characters until a period is found. Character <i>c</i> is read using a <b>get</b> statement and is compared to the explicit character constant '.'.<p>
+<pre><tt>        <b>var</b> <i>c </i>: <b>char</b>
+        <b>var</b> <i>counter</i> := 0
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>eof</b>
+            <b>get</b> <i>c</i>           <i>% Read a single character</i>
+            <b>exit</b> <b>when</b> <i>c</i> = <i>'.'</i>   <i>% Single quotes for char constant</i>
+            <i>counter</i> := <i>counter</i> + 1
+        <b>end</b> <b>loop</b>
+        <b>put</b> <i>counter</i>, " characters before the period"</tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,char.t;char Data Type Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Count capital letters. This example illustrates the use of the <b>char</b> type as the subscript type for the <i>frequency</i> array, the use of character variable <i>c</i> as a subscript, and the use of <i>d</i> as a <b>for</b> counter that ranges across the letters A to Z.<p>
+<pre><tt>        <b>var</b> <i>frequency</i> : <b>array</b> 'A' .. 'Z' <b>of</b> <b>nat</b>
+        <b>for</b> <i>d</i> : 'A' .. 'Z'
+            <i>frequency</i> (<i>d</i>) := 0
+        <b>end</b> <b>for</b>
+        <b>loop</b>                <i>% Tabulate use of capital letters</i>
+            <b>exit</b> <b>when</b> <b>eof</b>
+            <b>var</b> <i>c</i> : <b>char</b>
+            <b>get</b> <i>c</i>           <i>% Read one character</i>
+            <b>if</b> <i>c</i> &gt;= 'A' <b>and</b> <i>c</i> &lt;= 'Z' <b>then</b>
+                <i>frequency</i> (<i>c</i>) := <i>frequency</i> (<i>c</i>) + 1
+            <b>end</b> <b>if</b>
+        <b>end</b> <b>loop</b>
+        <b>for</b> <i>d</i> : 'A' .. 'Z'      <i>% Print frequency of capital letters</i>
+            <b>put</b> <i>d</i>, " ", <i>frequency</i> (<i>d</i>)
+        <b>end</b> <b>for</b></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,char2.t;char Data Type Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The type <b>string</b> (or <b>char</b>(<i>n</i>)) is used instead of <b>char</b> when more than one character needs to be stored, such as the string of characters <i>Henry</i>. Unless the program needs to be quite efficient, it is usually easier to use the <b>string</b> type. See also the <b>char</b>(<i>n</i>) type, which always stores exactly<i> n </i>characters.<p>
+The <b>char</b> type differs from the <b>string</b>(1) type in the following way: <b>char</b> always represents exactly one character, while <b>string</b>(1) can represent either the null string or a string containing one character. The <b>char</b> type is similar to the <b>char</b>(1) type in that both contain at most one character.<p>
+The <b>char</b> type is an index type and can be used, for example, as subscripts, <b>for</b> ranges and <b>case</b> labels. For example, this declaration<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td><b>var</b> <i>charCounts</i> : a<b>rray</b> <b>char</b> <b>of</b> <b>int</b></td></tr>
+</table><p>
+creates an array whose subscripts are characters.<p>
+The <b>char</b> type is a scalar type, which implies that its parameters are passed by value, instead of by reference (which is the case for <b>char</b>(<i>n</i>) and <b>string</b>).<p>
+Values of the <b>char</b> type can be assigned and they can be compared for both equality and ordering. Explicit <b>char</b> constants are written as a character surrounded by single quotes, for example, 'A'. For details, including how to write control characters, see <i>explicitCharConstant</i>.<p>
+Characters can be read and written by <b>get</b> and <b>put</b> statements.<p>
+There are 256 <b>char</b> values, corresponding to the distinct patterns in an 8-bit byte. This allows the patterns <i>eos</i> (internal value 0) and <i>uninitchar</i> (internal value 128) to be <b>char</b> values (these patterns are not allowed in the <b>string</b> type; see the <b>string</b> type). All 256 patterns are used, so there is no pattern left to be the "uninitialized value". Uninitialized checking is not done for the <b>char</b> type.<p>
+The <b>ord</b> and <b>chr</b> functions convert between the <b>char</b> values and their corresponding numeric representation in a byte. See <b>ord</b> and <b>chr</b>.<p>
+In general, you can freely intermix the values of the types <b>char</b>, <b>char</b>(<i>n</i>) and <b>string</b>. This means that catenation (+), comparisons, <b>length</b> and substrings can be applied to any of these types. See <b>char</b>(<i>n</i>) for details about conversions between <b>char</b>, <b>char</b>(<i>n</i>) and <b>string</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="string1.html">string</a></b> and <b><a href="char_n.html">char(<i>n</i>)</a></b> for related types. See <b><a href="ord.html">ord</a></b> and <b><a href="chr.html">chr</a></b> functions for conversion from and to ASCII values. See <i><a href="explicitcharconstant.html">explicitCharConstant</a></i> for information on special characters like caret (^) and backslash (\).<p>
+</table></body>
+</html>

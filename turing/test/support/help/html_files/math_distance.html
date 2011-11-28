@@ -1,0 +1,37 @@
+<html>
+<head><title>Math.Distance</title></head>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Math.Distance</b></font></td><td align="right">Part of <a href="mathmodule.html">Math</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <b>Math.Distance</b> (<i>x1</i>, <i>y1</i>, <i>x2</i>, <i>y2</i> : <b>real</b>) : <b>real</b><p>
+<tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> <b>Math.Distance </b>is used to calculate the distance between two points.
+(<i>x1</i>, <i>y1</i>) is the location of the first point, and (<i>x2</i>, <i>y2</i>) is the location of the 
+second point.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td>The parameters to <b>Math.Distance</b> are real, but you can pass integer variables and constants.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td>This progam draws two circles with radius 75 on the screen and outputs whether they touch.<p>
+<pre><tt>        <b>var</b> <i>x1</i>, <i>y1</i>, <i>x2</i>, <i>y2</i> : <b>int</b>
+        <b>const</b> <i>RADIUS</i> : <b>int</b> := 75
+        <i>x1</i> := <b>Rand.Int</b> (<i>RADIUS</i>, <b>maxx</b> - <i>RADIUS</i>)
+        <i>y1</i> := <b>Rand.Int</b> (<i>RADIUS</i>, <b>maxy</b> - <i>RADIUS</i>)
+        <i>x2</i> := <b>Rand.Int</b> (<i>RADIUS</i>, <b>maxx</b> - <i>RADIUS</i>)
+        <i>y2</i> := <b>Rand.Int</b> (<i>RADIUS</i>, <b>maxy</b> - <i>RADIUS</i>)
+        <b>Draw.FillOval</b> (<i>x1</i>, <i>y1</i>, <i>RADIUS</i>, <i>RADIUS</i>, <b>brightred</b>)
+        <b>Draw.FillOval</b> (<i>x2</i>, <i>y2</i>, <i>RADIUS</i>, <i>RADIUS</i>, <b>brightgreen</b>)
+        <b>if</b> <b>Math.Distance</b> (<i>x1</i>, <i>y1</i>, <i>x2</i>, <i>y2</i>) &lt; <i>RADIUS</i> * 2 <b>then</b>
+            <b>put</b> "The two circles touch"
+        <b>else</b>
+            <b>put</b> "The two circles do not touch"
+        <b>end if</b></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,Math.Distance.t;Math.Distance Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Math.Distance</b>, not by calling <b>Distance</b>.<p>
+</table></body>
+</html>

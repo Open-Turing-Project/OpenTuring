@@ -1,0 +1,61 @@
+<html>
+<head><title>chr</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>chr</b></font></td><td align="right"><font size="+1"><b>integer-to-character function</b></font></td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>chr</b> (<i>i</i> : <b>int</b>) : <b>char</b><p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>The <b>chr</b> function is used to convert an integer to a character.
+	      The character is the <i>i</i>-th character of the ASCII sequence of 
+		  characters (except on the IBM mainframe, which uses the EBCDIC 
+		  sequence.)  For example, <b>chr</b> (65) is "A".<p>
+          The <b>ord</b> function is the inverse of <b>chr</b>, so for any 
+		  character<i> c</i>,:<p>
+          <table>
+		    <tr valign="top">
+			  <td width="40">&nbsp;</td>
+			  <td><b>chr</b>(<b>ord</b> (<i>c</i>)) = <i>c</i>.</td>
+			</tr>
+          </table><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,chr.t;chr Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>There are two sets of characters representing values 128-255: the 
+	      ANSI values (the default values for Windows), and the MS-DOS OEM
+          character set, which contains various line drawing characters. To 
+		  use the MS-DOS character set, you must use the 
+		  <b><tt>setscreen&nbsp;("msdos")</tt></b> command.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>Another example is available that displays the entire characters 
+	  set, both the regular ANSI character set and the MS_DOS OEM
+          character set.<p>
+          <OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Character Set Example">
+            <PARAM name="Item1" value="-1,CharSet.t;Character Set Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="ord.html">ord</a></b>, 
+	  <b><a href="intstr.html">intstr</a></b> and 
+	  <b><a href="strint.html">strint</a></b> functions.<p>
+    </tr>
+  </table>
+</body>
+</html>

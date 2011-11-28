@@ -1,0 +1,22 @@
+<html>
+<head><title>Sprite</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Sprite</b></font></td></table><p>
+<table><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Sprites are a way of doing animation in Turing bypassing the <b>Pic</b> module. A sprite is essentially a picture with a specific location and "depth". You create a sprite by calling <b>Sprite.New</b> with a picID received from <b>Pic.New</b>. You can then move the sprite around by calling <b>Sprite.SetPosition</b>. When you are finished with the sprite, you call <b>Sprite.Free</b>.<p>
+Note that sprites work best when they are moderately small. If you have large sprites, you will continue to have flashing. <p>
+All subprograms in the <b>Sprite </b>unit are exported qualified (and thus must be prefaced with "<b>Sprite.</b>").<p>
+<tr valign="top"><td><b>Entry Points&nbsp;&nbsp;</b></td>
+<td><table>
+ <tr valign="top"><td><a href="sprite_new.html"><b>New</b></a></td><td width="20">&nbsp;</td><td>Creates a new sprite from a picture.</td></tr>
+<tr valign="top"><td><a href="sprite_free.html"><b>Free</b></a></td><td width="20">&nbsp;</td><td>Disposes of a sprite and free up its memory.</td></tr>
+<tr valign="top"><td><a href="sprite_setheight.html"><b>SetHeight</b></a></td><td width="20">&nbsp;</td><td>Sets the height of a sprite. Sprites with a greater height appear above sprites with a lesser height. The background is considered height 0. The height may be negative.</td></tr>
+<tr valign="top"><td><a href="sprite_setposition.html"><b>SetPosition</b></a></td><td width="20">&nbsp;</td><td>Sets the location of the sprite. Can specify the center of the sprite or the lower-left corner.</td></tr>
+<tr valign="top"><td><a href="sprite_setframerate.html"><b>SetFrameRate</b></a></td><td width="20">&nbsp;</td><td>Sets the maximum number of times a second the sprites will be moved on screen.</td></tr>
+<tr valign="top"><td><a href="sprite_changepic.html"><b>ChangePic</b></a></td><td width="20">&nbsp;</td><td>Changes the picture associated with a sprite.</td></tr>
+<tr valign="top"><td><a href="sprite_animate.html"><b>Animate</b></a></td><td width="20">&nbsp;</td><td>Changes the location and the picture associated with a sprite. Used for animating a moving changing image.</td></tr>
+<tr valign="top"><td><a href="sprite_show.html"><b>Show</b></a></td><td width="20">&nbsp;</td><td>Shows a previously hidden sprite.</td></tr>
+<tr valign="top"><td><a href="sprite_hide.html"><b>Hide</b></a></td><td width="20">&nbsp;</td><td>Hides a visible sprite.</td></tr>
+</table></table><p>
+</body>
+</html>

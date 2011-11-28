@@ -1,0 +1,118 @@
+% The "Pictures.dem" program.
+% This demonstrates the Picture widget along with the GUI routines
+% that use Picture widgets. [Show, Hide, SetPosition, CreatePicture, Quit,
+% ProcessEvent, Dispose]
+
+import GUI % Must be included in a programs using the GPL
+
+View.Set ("graphics:340;210") % Shrink the window to the minimum size
+
+% The picture IDs
+var picture1, picture2 : int
+
+% The label IDs
+var label1, label2 : int
+
+% The button IDs
+var showHideButton, moveButton, quitButton : int
+
+% Variables used by the button routines
+var hide := true % Whether to hide or show the pictures
+var right := true % Whether to move the picture right or left
+
+% We'll need a picture for our Picture widget.  Most likely
+% you would normally have it saved in an external file and
+% use Pic.FileNew to read it into a picture.  For the example
+% program we'll construct it by hand.
+Draw.FillOval (50, 50, 50, 50, blue)
+Draw.FillBox (17, 17, 83, 83, brightred)
+Draw.FillStar (17, 17, 83, 83, brightgreen)
+Draw.FillMapleLeaf (37, 37, 63, 63, brightpurple)
+var pic := Pic.New (0, 0, 100, 100)
+
+% The background must be grey for indented and exdented
+% items to be visible.
+GUI.SetBackgroundColour (grey)
+
+% Called when show/hide button is pressed
+procedure ShowHidePressed
+    if hide then
+	GUI.Hide (picture1) % Hide Picture 1
+	#if not _DOS_ then
+	    GUI.Hide (picture2) % Hide Picture 2
+	#end if
+	hide := false
+	GUI.SetLabel (showHideButton, "Show Pictures")
+    else
+	GUI.Show (picture1) % Show Picture 1
+	#if not _DOS_ then
+	    GUI.Show (picture2) % Hide Picture 2
+	#end if
+	hide := true
+	GUI.SetLabel (showHideButton, "Hide Pictures")
+    end if
+end ShowHidePressed
+
+% Called when move button is pressed
+procedure MovePressed
+    if right then
+	#if not _DOS_ then
+	    GUI.SetPosition (picture2, 230, 105) % Move Picture Right
+	    GUI.SetPosition (label2, 230, 85) % Move Picture Right
+	#end if
+	GUI.SetPosition (picture1, 120, 105) % Move Picture Right
+	GUI.SetPosition (label1, 120, 85) % Move Picture Right
+	right := false
+	GUI.SetLabel (moveButton, "Move Pictures Left")
+    else
+	GUI.SetPosition (picture1, 10, 105) % Move Picture Left
+	GUI.SetPosition (label1, 10, 85) % Move Picture Left
+	#if not _DOS_ then
+	    GUI.SetPosition (picture2, 120, 105) % Move Picture Left
+	    GUI.SetPosition (label2, 120, 85) % Move Picture Left
+	#end if
+	right := true
+	GUI.SetLabel (moveButton, "Move Pictures Right")
+    end if
+end MovePressed
+
+% Called when quit button is pressed.
+procedure QuitPressed
+    GUI.Quit
+end QuitPressed
+
+% The main program
+% Place the picture
+label1 := GUI.CreateLabel (10, 85, "Picture (no merge)")
+picture1 := GUI.CreatePicture (10, 105, pic, false)
+
+#if not _DOS_ then
+    label2 := GUI.CreateLabel (120, 85, "Picture (merge)")
+    picture2 := GUI.CreatePicture (120, 105, pic, true)
+#end if
+
+% Create the dividing line
+var line := GUI.CreateLine (0, maxy - 135, maxx, maxy - 135, 0)
+
+% Create the buttons
+showHideButton := GUI.CreateButton (10, maxy - 170, 150, "Hide Pictures",
+    ShowHidePressed)
+moveButton := GUI.CreateButton (180, maxy - 170, 150,
+    "Move Pictures Right",
+    MovePressed)
+quitButton := GUI.CreateButton (95, maxy - 200, 150, "Quit", QuitPressed)
+
+% Process events, exit loop when GUI.QUIT called
+loop
+    exit when GUI.ProcessEvent
+end loop
+
+% Do the clean up.  Dispose of all but the main buttons.
+GUI.Dispose (showHideButton)
+GUI.Dispose (moveButton)
+GUI.Dispose (quitButton)
+
+% Create a label to indicate we're finished
+var quitMessage := GUI.CreateLabelFull (0, 0, "Execution Terminated",
+    maxx, maxy - 135, GUI.CENTER + GUI.MIDDLE, 0)
+

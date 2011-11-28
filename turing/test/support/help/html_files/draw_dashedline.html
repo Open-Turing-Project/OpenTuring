@@ -1,0 +1,39 @@
+<html>
+<head><title>Draw.DashedLine</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Draw.DashedLine</b></font></td><td align="right">Part of <a href="drawmodule.html">Draw</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Draw.DashedLine</b> (<i>x1</i>, <i>y1</i>, <i>x2</i>, <i>y2</i>, <i>lineStyle</i>, <i>Color</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Draw.DashedLine </b>procedure is used to draw a dotted or dashed line on the screen from (<i>x1</i>, <i>y1</i>) to (<i>x2</i>, <i>y2</i>) using the specified <i>Color</i>.<p>
+There are five possible line styles:
+drawSolid Draws a solid line (same as Draw.Line)
+drawDash Draws a dashed line
+drawDot Draws a dotted line
+drawDashDot Draws a line that alternates dashes and dots
+drawDashDotDot Draws a line that alternates dash and dot-dot
+<center><img src="draw_line01.gif"></center>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program draws a large X, reaching to each corner of the screen in two different colors. The <b>maxx</b> and <b>maxy </b>functions are used to determine the maximum x and y values on the screen. The point (0,0) is the left bottom of the screen, (<b>maxx</b>, <b>maxy</b>) is the right top, etc.<p>
+<pre><tt>        <b>View.Set</b> ("graphics")
+        <i>% Draw a line in each of the styles.</i>
+        <b>Draw.DashedLine</b> (0, 50, <b>maxx</b>, 50, drawSolid, brightred) 
+        <b>Draw.DashedLine</b> (0, 100, <b>maxx</b>, 100, drawDash, brightred) 
+        <b>Draw.DashedLine</b> (0, 150, <b>maxx</b>, 150, drawDot, brightred) 
+        <b>Draw.DashedLine</b> (0, 200, <b>maxx</b>, 200, drawDashDot, brightred) 
+        <b>Draw.DashedLine</b> (0, 250, <b>maxx</b>, 250, drawDashDotDot, brightred)</tt></pre><p> 
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,Draw.DashedLine.t;Draw.DashedLine Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The screen must be in a "<i>graphics</i>" mode. See the <b>View.Set</b> procedure for details. If the screen is not in a "<i>graphics</i>"<i> </i>mode, an error will occur.<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Draw.DashedLine</b>, not by calling <b>DashedLine</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="view_set.html">View.Set</a></b>, <b><a href="maxx.html">maxx</a></b>, <b><a href="maxy.html">maxy</a></b> and the various procedures in the <b><a href="drawmodule.html">Draw</a></b> unit.<p>
+</table></body>
+</html>

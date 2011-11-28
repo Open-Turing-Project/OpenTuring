@@ -1,0 +1,28 @@
+<html>
+<head><title>enum</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>enum</b></font></td><td align="right"><font size="+1"><b>    enumerated type</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> An <i>enumeratedType</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>enum</b> (<i>id </i>{ , <i>id </i>} )</td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The values of an enumerated type are distinct and increasing. They can be thought of as the values 0, 1, 2 and so on, but arithmetic is not allowed with these values.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>type</b> <i>color</i> : <b>enum</b> (<i>red</i>, <i>green</i>, <i>blue</i>)
+        <b>var</b> <i>c</i> : <i>color</i> := <i>color</i> . <i>red</i>
+        <b>var</b> <i>d</i> : <i>color</i> := <b>succ</b> (<i>c)</i>       <i>% d becomes green</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Each value of an enumerated type is the name of the type followed by a dot followed by the element's name, for example, <i>color</i>.<i>red</i>. Enumerated values can be compared for equality and for ordering. The <b>succ</b> and <b>pred</b> functions can be used to find the value following or preceding a given enumerated value. The <b>ord</b> function can be used to find the enumeration position of a value, for example, <b>ord</b> (<i>color</i>.<i>red</i>) is 0.<p>
+Enumerated types cannot be combined with integers or with other enumerated types.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> It is illegal to declare an "anonymous" enum. The only legal declaration for an enum is in a type declaration. For example, the following is now illegal:<p>
+<pre><tt>        <b>var</b> <i>a</i> : <b>array</b> <b>enum</b> (<i>red</i>, <i>green</i>, <i>blue</i>) <b>of</b> <b>int</b></tt></pre>
+Given that there is no (easy) way of generating an enum value without it being a named type, this should not impact any but the most bizarre code.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The "put" and "get" statement semantics have been expanded to allow put's and get's of enum values. The values printed and input are the element names themselves, case sensitive. For example, for<p>
+<pre><tt>        <b>type</b> <i>colors</i> : <b>enum</b> (<i>red</i>, <i>green</i>, <i>blue</i>)
+        <b>var</b> <i>c</i> : <i>colors</i> := <i>colors</i> . <i>red</i>
+        <b>put</b> <i>c</i>       <i>% outputs </i>"red" <i>(without the quotes)</i></tt></pre>
+</table></body>
+</html>

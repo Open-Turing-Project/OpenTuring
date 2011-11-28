@@ -1,0 +1,21 @@
+<html>
+<head><title>whatrow</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>whatrow</b></font></td><td align="right"><font size="+1"><b>cursor position function</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>whatrow</b> : <b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>whatrow</b> function is used to determine the cursor position's row.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program outputs <i>The current row is 5</i>,<i> the current column is 15</i>.<p>
+<pre><tt>        <b>locate</b>  ( 5, 10 )
+        <b>put</b> "12345"..
+        <b>put</b> "The current row is", <b>whatrow</b>
+        <b>put</b> "The current column is", <b>whatcol</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The screen should be in a "<i>screen</i>" or<i> </i>"<i>graphics</i>" mode. <b>whatrow</b> functions properly even if the cursor is invisible.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> the <b><a href="whatcol.html">whatcol</a></b> function, which is used to <a href="set.html">set</a> the determine the cursor column. See also the <b><a href="locate.html">locate</a></b>, <b><a href="maxrow.html">maxrow</a></b> and <b><a href="maxcol.html">maxcol</a></b> <a href="procedure.html">procedure</a>.<p>
+See also predefined unit <b><a href="textmodule.html">Text</a></b>.<p>
+</table></body>
+</html>

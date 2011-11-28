@@ -1,0 +1,28 @@
+<html>
+<head><title>set</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>set</b></font></td><td align="right"><font size="+1"><b>type</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>setType</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>set</b> <b>of</b> <i>typeSpec</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Each value of a <b>set</b> type consists of a set of elements. The <i>typeSpec</i>,<i> </i>which is restricted to being a subrange or an enumerated type, gives the type of these elements.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The <i>smallSet </i>type is declared so that it can contain any and all of the values 0, 1 and 2. Variable <i>s</i> is initialized to be the set containing 1 and 2.<p>
+<pre><tt>        <b>type</b> <i>smallSet</i> : <b>set</b> <b>of</b> 0 .. 2
+        <b>var</b> <i>s</i> : <i>smallSet</i> := <i>smallSet</i> ( 0, 1 )
+        …
+        <b>if</b> 2 <b>in</b> <i>s</i> <b>then</b> …</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> In classical mathematics, the set consisting of 0 and 1 is written as {0,1}. This is written in Turing using a <i>set constructor</i> consisting of the name of the set type followed by a parenthesized list of elements, which in this example is <i>smallInt</i> (0,1). The empty set is written, for example, as <i>smallInt </i>(). The full set is written as <i>smallInt </i>(<b>all</b>), so <i>smallInt </i>(<b>all</b>) = <i>smallInt </i>(0,1,2).<p>
+Sets can be assigned as a whole (to sets of an equivalent type). See also <i>equivalence</i> of types.<p>
+The operators to combine two sets are union (+), intersection (*), set subtraction (-), equality (=), inequality (<b>not=</b>), subset (&lt;=), strict subset (&lt;), superset (&gt;=), strict superset (&gt;), and <b>xor</b> ("exclusive or" also known as symmetric difference). Only sets with equivalent types (equal bounds on their index types) can be combined by these operators. The operators which determine if an element is, or is not, in a set are <b>in</b> and <b>not</b> <b>in</b>. For example, the test to see if 2 is in set <i>s</i> is written in the above example as: 2 <b>in</b> <i>s</i>.<p>
+The <i>indexType</i> of a <b>set</b> type must contain at least one element. For example, the range 1 .. 0 would not be allowed. See also <i>indexType</i>. In Turing, sets are limited to at most 31 elements. OOT allows a very large number of elements.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> It is illegal to declare an "anonymous" set. The only legal declaration for an <b>set</b> is in a type declaration. For example, the following is now illegal:<p>
+<pre><tt>        <b>var</b> <i>a</i> : <b>array</b> 1 .. 10 <b>of</b> <b>set of</b> 0 .. 3</tt></pre>
+Given that there is no (easy) way of generating a set value without it being a named type, this should not impact any but the most bizarre code.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <i><a href="precedence.html">precedence</a></i> of operators for the order of applying <a href="set.html">set</a> operations.<p>
+</table></body>
+</html>

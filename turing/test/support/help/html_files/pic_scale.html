@@ -1,0 +1,109 @@
+<html>
+<head><title>Pic.Scale</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Pic.Scale</b></font></td><td align="right">Part of <a href="picmodule.html">Pic</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Pic.Scale</b> (<i>picID</i>, <i>newWidth</i>, <i>newHeight</i> : <b>int</b>) : <b>int</b><p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td><b>Pic.Scale </b>is used to create a new picture by scaling (resizing) 
+	  an already existing picture. Rotation can either be around a specific 
+	  point in the picture (often used for rotating a picure in place) or 
+	  just a general rotation.<p>
+	  The <i>newWidth</i> and <i>newHeight</i> parameters are the desired 
+	  width and height of the new picture. The <i>newWidth</i> and 
+	  <i>newHeight</i> parameters may be negative, in which case 
+	  the picture is mirror image (<i>newWidth</i> is negative) or 
+	  upside-down (<i>newHeight</i> is negative) and the absolute 
+	  values are used for the new width and height values.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The <b>Pic.Scale</b> command can fail, in which case it 
+          returns 0. The <b>Error.LastMsg</b> function can then be 
+	  used to obtain more information about the failure.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>Creating a larger picture by scaling a smaller picture 
+          will result in a "grainy" image with each pixel being 
+	  scaled up into 2 or 3 pixels. In general image quality 
+	  is better if a large picture is scaled down. However, 
+	  when a large picture is scaled down, thin one-pixel wide 
+	  lines can "disappear".<p>
+	  In order to scale a picture while retaining its original 
+	  aspect ratio, scale with multiples of the original width 
+	  and height. The width and height of a picture can be obtained 
+	  using <b>Pic.Width</b> and <b>Pic.Height</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>Scaling can be slow on older machines. Programs that are using 
+          animation should create and store all the scaled images that may 
+	  be needed. Often pictures of an object at various sizes are stored 
+	  in an array. <p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>Note that the scaled picture is a newly created picture. When it is 
+          no longer needed, its memory should be released by using 
+	  <b>Pic.Free</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program draws a set of stars scaled at 50%, 100% and 150% on 
+          different axes. Note how some single-pixel lines are removed when 
+	  the picture is scaled down..<p>
+<pre><tt>        % The "Pic.Scale Example" program.
+        <b>const</b> <i>STAR_SIZE</i> : <b>int</b> := 70
+        
+        <b>var</b> <i>pic</i> : <b>int</b>
+        <b>var</b> <i>newPic</i> : <b>int</b>
+        <b>var</b> <i>picWidth</i>, <i>picHeight</i> : <b>int</b>
+        
+        % Get the original picture
+        <b>Draw.FillStar</b> (0, 0, <i>STAR_SIZE</i>, <i>STAR_SIZE</i>, <i>brightred</i>)
+        <b>Draw.Box</b> (0, 0, <i>STAR_SIZE</i>, <i>STAR_SIZE</i>, <i>green</i>)
+        <i>pic</i> := <b>Pic.New</b> (0, 0, <i>STAR_SIZE</i>, <i>STAR_SIZE</i>)
+        <b>cls</b>
+        
+        <i>picWidth</i> := <b>Pic.Width</b> (<i>pic</i>)
+        <i>picHeight</i> := <b>Pic.Height</b> (<i>pic</i>)
+        
+        <b>for</b> <i>x</i> : 1 .. 3
+            <b>for</b> <i>y</i> : 1 .. 3
+                <i>newPic</i> := <b>Pic.Scale</b> (<i>pic</i>, <i>x</i> * <i>picWidth</i> <b>div</b> 2, 
+                    <i>y</i> * <i>picHeight</i> <b>div</b> 2)
+                <b>Pic.Draw</b> (<i>newPic</i>, (<i>x</i> - 1) * <b>maxx</b> <b>div</b> 3 + 5, 
+                    (<i>y</i> - 1) * <b>maxy div</b> 3 + 20, <i>picCopy</i>)
+                <b>Pic.Free</b> (<i>newPic</i>)
+                <b>Draw.Text</b> (<b>realstr</b> (<i>x</i> / 2, 0) + " x " + <b>realstr</b> (<i>y</i> / 2, 0),
+                            (<i>x</i> - 1) * <b>maxx div</b> 3 + 5, (<i>y</i> - 1) * <b>maxy div</b> 3 + 5, 
+                    <i>defFontID</i>, <i>black</i>)
+            <b>end for</b>
+        <b>end for</b>
+        </tt></pre>
+	  <center><img src="pic_scale01.gif"></center>
+	  <center><b>Output from Program</b></center><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+	    <PARAM name="Command" value="TCard">
+	    <PARAM name="Button" value="Text: Launch Example Program">
+	    <PARAM name="Item1" value="-1,Pic.Scale.t;Pic.Scale Example">
+	  </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+	  This means that you can only call the function by calling 
+	  <b>Pic.Scale</b>, not by calling <b>Scale</b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

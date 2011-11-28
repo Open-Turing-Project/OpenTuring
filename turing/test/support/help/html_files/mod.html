@@ -1,0 +1,34 @@
+<html>
+<head><title>mod</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>mod</b></font></td><td align="right"><font size="+1"><b>modulo operator</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>mod</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>mod</b> (<i>modulo</i>) operator produces the modulo of one number with another. In other words, the result is always a number between 0 and the second operand. If both operands are positive, the result is identical to the remainder operator. For example, 7 <b>mod</b> 2 produces 1 and 12 <b>mod</b> 5 produces 3.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> In this example, <i>hours</i> is the current time. It is moved back and forth by a random amount, but the final result must always be between 1 and 12 (the mod operation produces a number between 0 and 11 and then 0 becomes 12).<p>
+<pre><tt>        <b>var</b> <i>hours</i> : <b>int</b> := 12
+        <b>var</b> <i>hoursPassed</i> : <b>int</b>
+        <b>put</b> "The time is now ", <i>hours</i>, " o'clock"
+        <b>loop</b>
+            <b>randint</b> (<i>hoursPassed</i>, -12, 12)
+            <b>exit</b> <b>when</b> <i>hoursPassed</i> = 0
+            <b>if</b> <i>hoursPassed</i> &lt; 0 <b>then</b> 
+                <b>put</b> <i>hoursPassed</i>, " hours before " ..
+            <b>else</b>
+                <b>put</b> <i>hoursPassed</i>, " hours later " ..
+            <b>end</b> <b>if</b>
+            <b>put</b> <i>hours</i>, " o'clock" ..
+            <i>hours</i> := (<i>hours</i> + <i>hoursPassed</i>) <b>mod</b> 12
+            <b>if</b> <i>hours</i> = 0 <b>then</b> 
+                <i>hours</i> = 12
+            <b>end</b> <b>if</b>
+            <b>put</b> " it was ", <i>hours</i>, " o'clock"
+        <b>end</b> <b>loop</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> If the second operand is positive, then the result is always non-negative. Likewise, if the second operand is negative, then the result is always non-positive. If both  operands are negative, the result is the same as the remainder operator.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <i><a href="infix.html">infix</a> operators</i>, <i><a href="precedence.html">precedence</a> </i>of operators and the <b><a href="rem.html">rem</a></b> and <b><a href="div.html">div</a></b> operators.<p>
+</table></body>
+</html>

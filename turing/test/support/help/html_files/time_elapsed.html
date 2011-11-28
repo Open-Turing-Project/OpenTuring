@@ -1,0 +1,23 @@
+<html>
+<head><title>Time.Elapsed</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Time.Elapsed</b></font></td><td align="right">Part of <a href="timemodule.html">Time</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Time.Elapsed</b> : <b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Time.Elapsed </b>function returns the amount of time since a program (process) started running. The number of milliseconds since the program started running is returned.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program tells you how much time it has used.<p>
+<pre><tt>        <b>var </b><i>timeRunning</i> <b>:</b> <b>int</b>
+        <i>timeRunning</i> := <b>Time.Elapsed</b>
+        <b>put</b> "This program has run ", <i>timeRunning</i>, " milliseconds"</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> On IBM PC compatibles, this is the total time since the Turing system was started up. The hardware resolution of duration is in units of 55 milliseconds. For example, <b>Time.Elapsed </b>may be off by as much as 55 milliseconds.<p>
+On Apple Macintoshes, this is the total time since the machine was turned on. The hardware resolution of duration is in units of 17 milliseconds (1/60-th of a second).<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Time.Elapsed</b>, not by calling <b>Elapsed</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="time_elapsedcpu.html">Time.ElapsedCPU</a> </b>and <b><a href="time_delay.html">Time.Delay</a></b> subprograms.<p>
+</table></body>
+</html>

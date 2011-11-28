@@ -1,0 +1,19 @@
+<html>
+<head><title>minint</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>minint</b></font></td><td align="right"><font size="+1"><b>minimum integer function</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>minint</b> : <b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>minint</b> function is used to determine the smallest integer (<b>int</b>) that can be used in a program.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program outputs the maximum integer.<p>
+<pre><tt>        <b>put</b> "The smallest integer that can be used is ", <b>minint</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> In current  implementations, <b>int</b> values are stored in 4 bytes, i.e., 32 bits. This determines the minimum <b>int</b> value, which is -2**31-1, equaling -2147483647.<p>
+There is an anomaly in computer arithmetic in that the absolute value of the largest negative integer is one larger than <b>maxint</b>. Turing reserves this extra value to represent the uninitialized integer. This value can be computed but any attempt to assign it to an <b>int</b> variable is detected as an overflow. You can use this extra value by using the <b>int4</b> type instead of <b>int</b>, but this type has no initialization checking.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="minnat.html">minnat</a></b> and <b><a href="maxint.html">maxint</a></b>.<p>
+See also predefined unit <b><a href="limitsmodule.html">Limits</a></b>.<p>
+</table></body>
+</html>

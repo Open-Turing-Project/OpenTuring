@@ -1,0 +1,21 @@
+<html>
+<head><title>explicitCharConstant</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>explicitCharConstant</b></font></td><td align="right"><font size="+1"><b>character literal</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> An <i>explicitCharConstant</i> is a sequence of characters surrounded by single quotation marks, for example, 'Renzo'.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> In the following, the explicit character constants are 'H' and 'Hi'.<p>
+<pre><tt>        <b>var</b> <i>c</i> : <b>char</b> := 'H'
+        <b>var</b> <i>d</i> : <b>char</b> (2) := 'Hi'</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> An explicit character constant must contain at least one character. If it contains exactly one character, as in 'A', its type is <b>char</b>. If it contains two or more characters (<i>n</i> characters), as 'Width', its type is <b>char</b>(<i>n</i>). The difference between the <b>char</b> and <b>char</b>(1) types is rarely of significance, but does make a difference in declarations without an explicit type, for example:<p>
+<pre><tt>        <b>var</b> <i>c</i> := 'H'        <i>% Type is char</i>
+        <b>var</b> <i>d</i> := 'Hi'   <i>% Type is char (2)</i>
+        <b>var</b> <i>e</i> := "H"    <i>% Type is string</i></tt></pre>
+The backslash \ is used in explicit string and char(n) constants to specify special values, for example, '\T' is the tab character. Similarly, the carat ^ is used to specify ASCII control characters, for example, '^H' is the ASCII backspace. See <i>explicitStringConstants</i> for details.<p>
+Explicit character constants cannot cross line boundaries. To represent a constant that is longer than a line, break it into two or more strings on separate lines and use + (catenation) to join the individual strings. See <b>catenation</b>.<p>
+An explicit character constant may be limited in length by the implementation. We recommend that this limitation be at least 32767.<p>
+Explicit character constants, but not strings, are allowed to contain the character internal values 0 (called <i>eos </i>for end of string) and 128 (called <i>uninitchar</i>, used as the uninitialized string value).<p>
+</table></body>
+</html>

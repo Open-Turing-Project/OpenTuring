@@ -1,0 +1,24 @@
+<html>
+<head><title>div</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>div</b></font></td><td align="right"><font size="+1"><b>integer truncating division operator</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>div</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>div</b> operator divides one number by another and produces the integer result, truncated in the direction of zero. For example, 7 <b>div</b> 2 produces 3 and -7 <b>div</b> 2 produces -3.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> In this example, <i>eggCount</i> is the total number of eggs. The first <b>put</b> statement determines how many dozen eggs there are. The second <b>put</b> statement determines how many extra eggs there are beyond the last dozen.<p>
+<pre><tt>        <b>var</b> <i>eggCount</i> : <b>int</b>
+        <b>get</b> <i>eggCount</i>
+        <b>put</b> "You have ", <i>eggCount</i> <b>div</b> 12, " dozen eggs"
+        <b>put</b> "You have ", <i>eggCount</i> <b>mod</b> 12, " left over"</tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,div.t;div Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <i><a href="infix.html">infix</a> operators</i>, <i><a href="precedence.html">precedence</a> </i>of operators and the <b><a href="mod.html">mod</a></b> operator.<p>
+</table></body>
+</html>

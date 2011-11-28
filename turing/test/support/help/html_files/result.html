@@ -1,0 +1,30 @@
+<html>
+<head><title>result</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>result</b></font></td><td align="right"><font size="+1"><b>statement</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>resultStatement</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>result</b> <i>expn</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A <b>result</b> statement, which must appear only in a <b>function</b>, is used to provide the value of the function.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This function doubles its parameter.<p>
+<pre><tt>        <b>function</b> <i>double</i> ( <i>x</i> : <b>real</b> ) : <b>real</b>
+            <b>result</b> 2 * <i>x</i>
+        <b>end</b> <i>double</i>
+        <b>put</b> <i>double</i> ( 5.3 )      <i>% This outputs 10.6</i></tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This function finds the position of a name in a list.<p>
+<pre><tt>        <b>function</b> <i>find</i> ( <i>a</i> : <b>array</b> 1 .. 100 <b>of</b> <b>string</b> )<i> </i>: <b>int</b>
+            <b>for</b> <i>i</i> : 1 .. 100
+                <b>if</b> <i>a</i> ( <i>i</i> ) = <i>name then</i>
+                    <b>result</b> <i>i</i>
+                <b>end</b> <b>if</b>
+            <b>end</b> <b>for</b>
+        <b>end</b> <i>find</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The execution of a <b>result</b> statement computes the value of the expression (<i>expn</i>) and terminates the function, returning the value as the value of the function.<p>
+The expression must be assignable to the result type of the function, for example, in <i>double</i>, 2*<i>x</i> is assignable to <b>real</b>. (See the <i>assignmentStatement</i> for the definition of assignable.)<p>
+A function must terminate by executing a <b>result</b> statement and not by reaching the end of the function.<p>
+</table></body>
+</html>

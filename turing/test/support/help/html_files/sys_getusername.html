@@ -1,0 +1,21 @@
+<html>
+<head><title>Sys.GetUserName</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Sys.GetUserName</b></font></td><td align="right">Part of <a href="sysmodule.html">Sys</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Sys.GetUserName</b> : <b>string</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Sys.GetUserName </b>function is used to determine the name of the current user. It returns “Unknown” if a name could not be determined.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program outputs a greeting to the user .<p>
+<pre><tt>        <b>var </b><i>computerName</i>, <i>userName</i> : <b>string</b>
+        <i>computerName</i> := <b>Sys.GetComputerName</b>
+        <i>userName</i> :=<b> Sys.GetUserName</b>
+        <b>put</b> "Hello ", <i>userName</i>, " on ", <i>computerName</i></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Sys.GetUserName</b>, not by calling<b> GetUserName</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="sys_getcomputername.html">Sys.GetComputerName</a></b> to obtain the name of the computer.<p>
+</table></body>
+</html>

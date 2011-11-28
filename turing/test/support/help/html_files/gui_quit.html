@@ -1,0 +1,59 @@
+<html>
+<head><title>GUI.Quit</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.Quit</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>GUI.Quit</b><p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>This procedure causes <b>GUI.ProcessEvent</b> to return <b>true</b>. 
+          If the program is structured properly with a<p>
+<pre><tt>        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b></tt></pre>
+          at the end of the program, then the program will exit the loop after 
+	  finishing the current <i>action procedure</i>. This procedure is 
+	  usually called from the <i>action procedure</i> of a Quit button 
+	  or Exit menu item. <p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>Here is program that does nothing but wait for the user to press 
+          the quit button or type the letter 'Q', 'q', 'X', or 'x'.<p>
+<pre><tt>        <b>import</b> <i>GUI</i>
+        
+        <b>procedure </b><i>KeyHandler</i> (<i>ch</i> : <b>char</b>)
+            <b>if</b> ch = 'Q' or <i>ch</i> = 'q' or <i>ch</i> = 'X' or <i>ch</i> = 'x' <b>then</b>
+                <b>GUI.Quit</b>
+            <b>end if</b>
+        <b>end</b><i> KeyHandler</i>
+        
+        <b>var </b><i>quitButton</i> : <b>int</b> := <b>GUI.CreateButton </b>(10, 10, 0, "Quit", <b>GUI.Quit</b>)
+        <b>GUI.SetKeyEventHandler</b> (<i>KeyHandler</i>)
+        
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b>
+        
+        <b>put </b>"Done!"</tt></pre>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+	  This means that you can only call the procedures by calling 
+	  <b>GUI.Quit</b>, not by calling <b>Quit</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="gui_processevent.html">GUI.ProcessEvent</a></b>.
+          See also <a href="gui_resetquit.html">GUI.ResetQuit</a></b>
+	  for resetting the "quit" flag, so that a second event loop
+	  can be used in the same program.<p>
+    </tr>
+  </table>
+</body>
+</html>

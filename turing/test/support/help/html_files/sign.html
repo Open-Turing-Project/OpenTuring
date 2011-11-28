@@ -1,0 +1,21 @@
+<html>
+<head><title>sign</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>sign</b></font></td><td align="right"><font size="+1"><b>function</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>sign</b> ( <i>r</i> : <b>real</b> ) : -1 .. 1<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>sign</b> function is used to determine whether a number is positive, zero or negative. It returns 1 if <i>r</i> &gt; 0, 0 if <i>r</i> = 0, and -1 if <i>r</i> &lt; 0. For example, <b>sign</b> (5) is 1 and <b>sign</b> (-23) is -1.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program reads in numbers and determines if they are positive, zero or negative:<p>
+<pre><tt>        <b>var</b> <i>x</i> : <b>real</b>
+        <b>get</b> <i>x</i>
+        <b>case</b> <b>sign</b> ( <i>x</i> ) <b>of</b>
+            <b>label</b> 1 : <b>put</b> "Positive"
+            <b>label</b> 0 : <b>put</b> "Zero"
+            <b>label</b> -1 : <b>put</b><i> </i>"Negative"
+        <b>end</b> <b>case</b></tt></pre>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> See also predefined unit <b><a href="mathmodule.html">Math</a></b>.<p>
+</table></body>
+</html>

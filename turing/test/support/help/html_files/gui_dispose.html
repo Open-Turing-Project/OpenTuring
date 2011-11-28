@@ -1,0 +1,30 @@
+<html>
+<head><title>GUI.Dispose</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.Dispose</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>GUI.Dispose</b> (<i>widgetID</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Eliminates the widget specified by <i>widgetID</i>. <p>
+If the widget is visible, it is immediately made invisible before being deleted. It should be called in order to free up any memory that the widget might have allocated. Note that you cannot use the widget after it has been disposed of. If you wish to temporarily get rid of a widget, consider using the <i>Hide</i> method and then the <i>Show</i> method when you want to use it again.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program waits for the Quit button to be pressed. When it is, the Quit button is deleted and a message is displayed in the center of the screen.<p>
+<pre><tt>        <b>import</b> <i>GUI</i> <b>in</b> "%oot/lib/GUI" 
+        <b>View.Set</b> ("graphics:150;100") 
+        
+        <b>var</b> <i>button</i>, <i>message</i> : <b>int</b>
+        
+        <i>button</i> := <b>GUI.CreateButton</b> (20, 40, 0, "Quit", <b>GUI.Quit</b>)
+        
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b>
+        
+        <b>GUI.Dispose</b> (<i>button</i>)
+        <i>message</i> := <b>GUI.CreateLabelFull</b><i> </i>(0, 0, "Done", <b>maxx</b>, <b>maxy</b>, 
+            <i>GUI.CENTER </i>+ <i>GUI.MIDDLE</i>, 0)</tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the procedure by calling <b>GUI.Dispose</b> , not by calling <b>Dispose</b> .<p>
+</table></body>
+</html>

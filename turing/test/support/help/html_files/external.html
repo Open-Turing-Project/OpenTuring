@@ -1,0 +1,31 @@
+<html>
+<head><title>external</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>external</b></font></td><td align="right"><font size="+1"><b>declaration</b></font></td></table><p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dangerous<p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> An <i>externalDeclaration</i> is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1">(a) <b>external</b> [ <i>overrideName</i> ] <i>subprogramHeader</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1">(b) <b>external</b> [ <i>addressSpec</i> ] <b>var</b> <i>id</i> [ : <i>typeSpec</i> ] [ :=<i>expn</i> ]</td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> An external declaration is used to access variables or subprograms that are written in other languages or which require special linkage. This feature is implementation-dependent and dangerous and may cause arbitrary data or program corruption. From an interpretive environment such as Turing, this provides linkage to items that are part of the Turing system. For compiled versions of Turing, the linkage would be by means of a standard, operating system-specific linkage editor.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> In form (a) the optional <i>overrideName</i> must be an explicit string constant, such as "<i>printf</i>". If it is omitted, the external name is the name in the <i>subprogramHeader</i>. See <i>subprogramHeader</i>.<p>
+The current implementation does not support form (b). This form is documented here in case a future version supports it. The <i>addressSpec </i>is a compile time expression (its value must fit in the range of the <b>addressint</b> type) or is a compile time string value. If the <i>addressSpec</i> is omitted, the identifier is the name of an external variable. This name represents an implementation-dependent method of locating a variable. At least one of <i>typeSpec</i> or <i>expn</i> must be present.<p>
+Declaring variables at absolute addresses is useful for device management in computer architectures with memory mapped device registers. External variables declared to be <b>int</b> or <b>nat</b> will by default be checked for initialization. To avoid this check, declare them to be <b>int4</b> or <b>nat4</b>.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Place variable <i>ttyData</i> at hexadecimal location 9001 and assign it the character A.<p>
+<pre><tt>        <b>external</b> 16#9001 <b>var</b> <i>ttyData</i> : <b>char</b>
+        <i>ttyData</i> := 'A'  <i>% Character A is assigned to hex location 9001</i></tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Access an external integer variable named ERRFLAG.<p>
+<pre><tt>        <b>external</b> <b>var</b> <i>ERRFLAG</i> : <b>int</b>
+        <b>if</b> <i>ERRFLAG</i> = 0 <b>then</b> …</tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Access an integer variable which is called <i>y</i> in this program but is called <i>x</i> externally.<p>
+<pre><tt>        <b>external</b> "<i>x</i>" <b>var</b> <i>y</i> : <b>int</b></tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Declare <i>drawcircle</i> to be a procedure that is externally known as <i>circle</i>.<p>
+<pre><tt>        <b>external</b> "<i>circle</i>" <b>procedure</b> <i>drawcircle</i> (<i>x</i>,<i> y</i>,<i> r</i>,<i> Color</i> : <b>int</b>)</tt></pre>
+</table></body>
+</html>

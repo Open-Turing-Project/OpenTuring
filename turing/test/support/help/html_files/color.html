@@ -1,0 +1,43 @@
+<html>
+<head><title>color</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>color</b></font></td><td align="right"><font size="+1"><b>text color graphics procedure</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>color</b> (<i>Color</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>color</b> procedure is used to change the currently active color. This is the color of characters that are to be <b>put</b> on the screen. The alternate spelling is <b>colour</b>.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program prints out the message "Bravo" three times, each in a different color.<p>
+<pre><tt>        <b>setscreen</b> ("graphics")
+        <b>for</b> <i>i </i>: 1 .. 3
+            <b>color</b> (<i>i</i>)
+            <b>put</b> "Bravo"
+        <b>end</b> <b>for</b></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,color.t;color Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program prints out a message. The color of each letter is different from the preceding letter. For letter number <i>i</i> the color number is <i>i </i>mod maxcolor + 1. This cycles repeatedly through all the available colors.<p>
+<pre><tt>        <b>setscreen</b> ("graphics")
+        <b>const</b> <i>message</i> := "Happy New Year!!"
+        <b>for</b> <i>i </i>: 1 .. <b>length</b> (<i>message</i>)
+            <b>color</b> (<i>i</i>  <b>mod</b> <b>maxcolor</b> + 1)
+            <b>put</b> <i>message</i> (<i>i</i>) ..
+        <b>end</b> <b>for</b></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,color2.t;color Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> See <b>maxcolor</b> for the number of colors available in the various "<i>graphics</i>"<i> </i>modes. The background color that text appears upon can be set using the <b>colorback</b> procedure.<p>
+The screen must be in a "<i>graphics</i>" mode to use the <b>color</b> procedure. See <b>setscreen</b> for details.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="colorback.html">colorback</a></b>, <b><a href="whatcolor.html">whatcolor</a></b> and <b><a href="maxcolor.html">maxcolor</a></b>.<p>
+See also predefined unit <b><a href="textmodule.html">Text</a></b>.<p>
+</table></body>
+</html>

@@ -1,0 +1,76 @@
+<html>
+<head><title>Pic.SetTransparentColor</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Pic.SetTransparentColor</b></font></td><td align="right">Part of <a href="picmodule.html">Pic</a> module</td></table><p>
+  
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Pic.SetTransparentColor</b> (<i>colorNumber</i> : <b>int</b>)<p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>The <b>Pic.SetTransparentColor</b> procedure sets the color in the 
+          picture that should be considered transparent when the picture is 
+          drawn using the <tt>picMerge</tt> or <tt>picUnderMerge</tt> modes. 
+          If no color is specified, then the default background color 
+          (<b>colorbg</b>, usually <b>white</b>) is used as the transparent 
+          color.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details</b></td>
+      <td>This call is often used when displaying images that were 
+          originally stored as GIFs and translated into another format. 
+          Many GIFs have a transparent color that can be non-white. To use 
+          this call, you must know the color number that represents the color 
+          in the image that is to be transparent.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program displays two images loaded from the same file. In the 
+          second image,the transparent color has been set to bright red (that
+          is, the parts of the image that are meant to be transparent are in
+          bright red).
+          <p>
+<pre><tt>        <b>var</b> <i>pic1</i> : <b>int</b> := <b>Pic.FileNew</b> ("airplane.bmp")
+        <b>var</b> <i>pic2</i> : <b>int</b> := <b>Pic.FileNew</b> ("airplane.bmp")
+        <b>Pic.SetTransparentColor</b> (<i>pic2</i>, <b>brightred</b>)
+        <b>setscreen</b> ("offscreenonly")
+        <b>for</b> <i>x</i> : 100 .. <b>maxx</b> - 100
+            <b>cls</b>
+            <b>put</b> "The lower image has the transparent color set to bright red"
+            <b>Pic.Draw</b> (<i>pic1</i>, <i>x</i>, 150, <b>picMerge</b>)
+            <b>Pic.Draw</b> (<i>pic2</i>, <i>x</i>, 50, <b>picMerge</b>)
+            <b>View.Update</b>
+            <b>delay</b> (5)
+        <b>end for</b></tt></pre><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,Pic.SetTransparentColor.t;Pic.SetTransparentColor Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Details</b></td>
+      <td><b>Pic.SetTransparentColour</b> is an alternate spelling for 
+          <b>Pic.SetTransparentColor</b>.<p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+          <b>Pic.SetTransparentColor</b>, not by calling 
+          <b>SetTransparentColor</b>.<p>
+    </tr>          
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="pic_draw.html">Pic.Draw</a></b> and 
+          <b><a href="pic_filenew.html">Pic.FileNew</a></b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

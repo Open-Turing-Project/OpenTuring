@@ -1,0 +1,39 @@
+<html>
+<head><title>GUI.SetLabel</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.SetLabel</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>GUI.SetLabel</b> (<i>widgetID</i> : <b>int</b>, <i>text</i> : <b>string</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Changes the text of a widget specified by <i>widgetID</i> to <i>text</i>. This procedure can accept a button, check box, radio button, label, or a labelled frame widget as the <i>widgetID</i> parameter.<p>
+In most cases, if the text will not fit in the widget's current size, the widget will be resized to fit the text. If the widget was made larger to fit the text and then the text is changed, the widget will be resized as appropriate for the original <i>width</i> specified and the new text.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program changes the text in the button whenever a keystroke occurs. When the text is changed back to "Quit", the button assumes a width of 100 again.<p>
+<pre><tt>        <b>import</b> <i>GUI</i> <b>in</b> "%oot/lib/GUI"
+        <b>View.Set</b> ("graphics:220;50")
+        
+        <b>var</b> <i>short</i> : <b>boolean</b> := <b>true</b>
+        <b>var</b> <i>button</i> : <b>int</b>
+        
+        <b>procedure</b> <i>KeyHandler</i> (<i>ch</i> : <b>char</b>)
+            <b>if</b> <i>short</i> <b>then</b>
+                <b>GUI.SetLabel </b>(<i>button</i>, "Press This Button to Quit")
+            <b>else</b>
+                <b>GUI.SetLabel </b>(<i>button</i>, "Quit")
+            <b>end if</b>
+            <i>short</i> := <b>not</b> <i>short</i>
+        <b>end</b> <i>KeyHandler</i>
+        
+        <b>GUI.SetKeyEventHandler</b> (<i>KeyHandler</i>)
+        <i>button</i> := <b>GUI.CreateButton </b>(10, 5, 100, "Quit", <b>GUI.Quit</b>)
+        
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>GUI.SetLabel</b>, not by calling <b>SetLabel</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b>GUI.CreateButton</b>, <b>GUI.CreateCheckBox</b>, <b>GUI.CreateRadioButton</b>, <b>GUI.CreateLabel</b>, and <b><a href="gui_createlabelledframe.html">GUI.CreateLabelledFrame</a></b>.<p>
+</table></body>
+</html>

@@ -1,0 +1,186 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Turing Teacher/Administrator Quick Start Guide</TITLE>
+</head>
+<body>
+<h1>Turing Teacher/Administrator Quick Start Guide</h1>
+This guide is designed to be the minimal information that you should read if
+you are teaching courses using Turing 4.0 or are in charge of administering 
+Turing 4.0
+<p>
+This guide provides information on the Turing environment (the editor, the
+run windows, etc.)  It does <b>not</b> provide any information on the Turing
+programming language itself.
+<p>
+<b>Note, if you have any questions not answered here, please check with the 
+<a href="turing_admin.html">Turing Teacher/Administrator's Complete Guide</a>
+for more information.</b>
+
+<h2>Table of Contents</h2>
+<ol>
+  <li><a href="#1">Making Certain You Have the Lastest Version</a>
+  <li><a href="#2">Mandatory Administration Issues</a>
+  <li><a href="#3">Using the Parallel Ports in Turing 4</a>
+  <li><a href="#4">Student Distribution</a>
+  <li><a href="#5">Technical Support</a>
+</ol>
+
+<h2><a name="1"></a>1. Making Certain You Have the Lastest Version</h2>
+  Turing 4.0 is updated regularly.  To find out what version you
+  are currently running, click the <b>About Turing</b> menu item in the 
+  <b>Help</b> menu.  To find out the current version of Turing, go to
+  <a href="http://www.holtsoft.com/turing/support/#currentversion">
+  http://www.holtsoft.com/turing/support/#currentversion</a>. This lists the
+  current version of the software.
+  <p>
+  This page also lists which bugs have been fixed and when new features have
+  been added.  The page also contains a section 
+  (<a href="http://www.holtsoft.com/turing/support/#turing4patches">
+  http://www.holtsoft.com/turing/support/#turing4patches</a>)
+  where a file can be downloaded that will update most versions of Turing to 
+  the latest version.  
+  <p>
+  If you are a teacher or an administrator at a school and require a complete 
+  installation file (as opposed to the publically available patch), contact Tom
+  West at (416) 978-8363.
+
+<h2><a name="2"></a>2. Mandatory Administration Issues</h2>
+  Turing 4.0 has been designed to run on either a network or installed on 
+  individual stand-alone machines.  Running on a network is often preferred
+  because of ease of administration. However, Turing, like any other application
+  will load somewhat faster when it is launched if it is stored locally.
+  <p>
+  There are only two administration issues that must be addressed to configure 
+  Turing properly.
+  <ol>
+    <li><b>Set the start-in (often called the "working") directory properly.</b>
+    	<p>
+        It is important that the <b>start-in</b> directory for Turing be 
+        set to the student's home directory.  This is done by setting the
+        <b>start-in</b> (or <b>working</b>) directory of the shortcut or 
+        menu item used to launch Turing to the drive mapped to the student's 
+        home directory.
+        <p>
+  	The shortcut's working directory can be modified by
+	changing it's start-in or working directory property. (To display the
+	<b>Properties</b> dialog box, right click on the shortcut or menu item 
+	and select Properties from the pop-up menu.)
+	<p> 
+  	<center>
+    	  <img src="turing_admin03.gif"><br>
+  	  <b>Properties for a Shortcut under Windows 2000</b>
+  	</center>
+	<p> 
+	This requires that you have write 
+	access to the shortcut.  Note that commercial menu front-ends have
+	their own way of setting the start-in directory of applications.
+	<p>
+	If there is no drive mapped to the student's home directory, or this 
+	method is not applicable to your system setup, please check with the 
+        <a href="turing_admin.html#working_dir">Turing Teacher/Administrator's Complete Guide</a>
+	for more information.
+	<p>
+    <li><b>Set either Beginner or Regular Mode for Students.</b>
+    	<p>
+        Turing can be set to <b>Beginner</b> mode, in which case only one
+	file is open at a time.  Opening up another file closes the first one.
+	When the program is running, the Editor window minimizes. In this way,
+	only one window is usually visible at a time. In this fashion, 
+	<b>Beginner</b> mode is similar to the old DOS Turing.<p>
+	In <b>Regular</b> mode, any number of files can be opened and each
+	appears in its own editor window.
+	<p>
+	In general, we suggest <b>Beginner</b> mode for grade 9 and 10 and
+	<b>Regular</b> mode for all others.  If you are using <b>Beginner</b>
+	mode, we suggest that you point out to the students that they can use
+	the Prefences to change to <b>Regular</b> mode when they feel 
+	comfortable with the environment.
+	<p>
+	To change the mode (or to make any other change to the system 
+	preferences), you must open a DOS window, <b>cd</b> to the directory 
+	in which the Turing executable (<b>turing.exe</b>) is located and 
+	issue the command:
+	<p>
+	<center><b>turing&nbsp;&nbsp;-admin</b></center>
+	<p>
+	This will cause Turing to start in <b>Administrator mode</b>, 
+	displaying the following dialog box:
+	<p> 
+  	<center>
+    	  <img src="turing_admin01.gif"><br>
+  	  <b>Administration Mode Notification</b>
+  	</center>
+	<p> 
+  	Selecting <b>Preferences</b> from the <b>File</b> menu will display 
+  	a tabbed dialog box of all the Turing preferences.  
+	<p> 
+	<center>
+  	  <img src="turing_quick_admin01.gif"><br>
+  	  <b>Preferences in Administrator Mode</b>
+  	</center>
+	<p> 
+  	Set (or unset) the <b>Beginner Mode</b> preference, click the <b>OK</b>
+  	button and quit Turing.  Of course, you can change any other preferences
+  	that you would like.  Any changes that you make here will affect all 
+  	those using Turing.
+  </ol>
+
+<h2><a name="3"></a>3. Using the Parallel Ports in Turing 4</h2>
+  Turing 4.0 supports the <b>parallelput</b> and <b>parallelget</b> commands
+  to allow you to set the pins on the parallel port low and high.  If you are
+  running under Windows NT, 2000 or XP, you will need to install a device
+  driver on each machine.  Instructions for doing so can be found 
+  <a href="turing_admin.html#parallel">here</a>.  If <b>parallelput</b> and 
+  <b>parallelget</b> do not seem to function, you may need to change their
+  BIOS settings.  You can get information on how to do that 
+  <a href="turing_admin.html#parallel">here</a>.
+  
+<h2><a name="4"></a>4. Student Distribution of Turing 4.0</h2>
+  The Ontario Ministry license does not include the right to redistribute the 
+  software to students. If you wish to give the software to students, a 
+  separate license must be obtained directly from Holt Software. 
+  <p>
+  If your school does not have such a license, students can purchase the 
+  software for home use by printing and then mailing an order form found
+  <a href="http://www.holtsoft.com/studentbuy">http://www.holtsoft.com/studentbuy</a>.  
+  This order form can also be used to allow interested students to purchase 
+  textbooks.
+  <p>
+  If your school has purchased a redistribution license (almost 200 schools have
+  done so), then you may redistribute the Turing software to your students. 
+  You can either burn copies of the CD to distribute to students or place the 
+  Turing installer file onto your school Internet server and give your students 
+  the URL. 
+  <p>
+  <b>If you place this file on your school internet server, you must not make 
+  any links from your web pages to the software.</b>
+  <p>
+  This will prevent other users of the web from downloading your software. If 
+  you place links from your school's web site, then at some point a web search 
+  engine will find the software and post its location to the internet at large, 
+  allowing for large scale piracy (and a very overloaded school web server). 
+  If there are no links to the software, then only those who have been told 
+  the exact URL will be able to download the software.
+  <p>
+  Note that if you are copying a number of different programs onto a single 
+  CD for redistribution, you may rename the Turing installer program to 
+  something more descriptive.
+  <p>
+  Permanent student redistribution licenses can be purchased for $500-$750 
+  for most schools. If you are interested in purchasing a student 
+  redistribution license, contact Chris Stephenson at (416) 978-6476 or 
+  <a href="mailto:chris@hsa.on.ca">chris@hsa.on.ca</a>
+  
+<h2><a name="5"></a>5. Technical Support</h2>
+  If you have problems, questions or suggestions about the Turing software, 
+  contact technical support at:
+  <center>
+  <table><tr><td>Telephone:<td width="20">&nbsp;<td>(416) 978-8363
+         <tr><td>Toll free:<td><td>1-800-361-8324
+         <tr><td>Fax:<td><td>(416) 978-1509
+         <tr><td>E-mail:<td><td><a href="mailto:west@hsa.on.ca">west@hsa.on.ca</a>
+  </table>
+  </center>
+</BODY>
+</HTML>

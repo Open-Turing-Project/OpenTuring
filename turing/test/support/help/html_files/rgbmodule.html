@@ -1,0 +1,88 @@
+<html>
+<head><title>RGB</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>RGB</b></font></td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>This unit contains the predefined constants for the basic colors 
+          and the subprograms to change the color palette.<p>
+          All subprograms in the <b>RGB</b> unit are exported qualified 
+	  (and thus must be prefaced with "<b>RGB.</b>"). All the color 
+	  constants are exported unqualified and thus do not need the 
+	  <b>RGB</b> prefix.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>For a program that displays the 256 predefined colors (and their 
+          associated color numbers) in Turing, run the "Colors.t" program.<p>
+	  <OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+	    <PARAM name="Command" value="TCard">
+	    <PARAM name="Button" value="Text: Launch Colors.t">
+	    <PARAM name="Item1" value="-1,Colors.t;Turing Colors Example">
+	  </OBJECT><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The following names can be used for colors.  They represent
+          color numbers and thus will not be accurate if <b>RGB.SetColor</b>
+	  has been used to change color numbers 0 through 15.<p>
+          <b>black</b>, <b>blue</b>, <b>green</b>, <b>cyan</b>, <b>red</b>, 
+	  <b>magenta</b>, <b>purple</b>, <b>brown</b>, <b>white</b>, 
+	  <b>gray</b>, <b>grey</b>, <b>brightblue</b>, <b>brightgreen</b>, 
+	  <b>brightcyan</b>, <b>brightred</b>, <b>brightmagenta</b>, 
+	  <b>brightpurple</b>, <b>yellow</b>, <b>brightwhite</b>, 
+	  <b>darkgray</b>, <b>darkgrey</b><p>
+	  The remaining four colors represent the foreground color (black
+	  on Windows or the Macintosh, white on a DOS system) and the 
+	  background color (white on Windows or Macintosh, black on a DOS
+	  system).  Using these four colors allows you to write programs
+	  that work on both Windows and DOS versions of Turing.<p>
+	  <b>colorfg</b>, <b>colourfg</b>, <b>colorbg</b>, <b>colourbg</b><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>Turing uses a <i>palette</i> to access colors for display.  This
+          palette is a list of color numbers and their associated actual color.
+          The Turing palette starts with 256 entries (the color numbers from 0 
+          to 255). With 16, 24, and 32-bit color displays, however, a Turing 
+          program can display thousands of colors at once. These colors, 
+          however, will all have color numbers associated with them. For 
+          example, if a Turing program loads a JPEG image, there may be
+          thousands of colors on the screen, but the number of color numbers
+          will stay at 256. Likewise, 16, 24, and 32-bit color displays, if 
+          you load a picture in GIF format that has a 256 colors that are 
+          different from the initial Turing color palette, they will appear 
+          in the run window.  However, they will not be added to Turing's 
+          color palette.<p>
+          If you attempt to determine the color number of a particular pixel 
+          that does not match any of the colors in Turing's color palette,
+          then Turing will return the color number of the color in the 
+          Turing palette that most closely matches that color of the pixel.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Entry Points&nbsp;&nbsp;</b></td>
+      <td><table>
+	    <tr valign="top">
+	      <td><a href="rgb_getcolor.html"><b>GetColor</b></a><br>
+	          <a href="rgb_getcolor.html"><b>GetColour</b></a></td>
+	      <td width="20">&nbsp;</td>
+	      <td>Gets the current red, green and blue values of a specified color number.</td>
+	    </tr>
+	    <tr valign="top">
+	      <td><a href="rgb_setcolor.html"><b>SetColor</b></a><br>
+	          <a href="rgb_setcolor.html"><b>SetColour</b></a></td>
+	      <td width="20">&nbsp;</td>
+	      <td>Sets the red, green and blue values of a specified color number.</td>
+	    </tr>
+	    <tr valign="top">
+	      <td><a href="rgb_addcolor.html"><b>AddColor</b></a><br>
+	          <a href="rgb_addcolor.html"><b>AddColour</b></a></td>
+	      <td width="20">&nbsp;</td>
+	      <td>Creates a new color number with a specified red, green and blue value.</td>
+	    </tr>
+          </table>
+  </table>
+</body>
+</html>

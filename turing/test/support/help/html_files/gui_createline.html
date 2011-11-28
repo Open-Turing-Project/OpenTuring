@@ -1,0 +1,73 @@
+<html>
+<head><title>GUI.CreateLine</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.CreateLine</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>GUI.CreateLine</b> (<i>x1</i>, <i>y1</i>, <i>x2</i>, <i>y2</i>, <i>kind</i> : <b>int</b>) : <b>int</b><p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>Creates a line and returns the line's widget ID.<p>
+	  Lines are generally used to separate parts of a window. A line is used to make the window look better and help organize the GUI elements. <p>
+	  <center><img src="gui_createline01.gif"></center>
+	  <center><b>Three Types of Lines</b></center><p>
+	  Lines are passive widgets, meaning that they do not respond to button clicks or keystrokes.<p>
+	  The <i>x1</i> and <i>y1</i> parameters specify one end-point of the line and the <i>x2</i> and <i>y2</i> parameters specify the other end point. The line must either be horizontal or vertical (i.e. x1 must equal x2 or y1 must equal y2). The <i>kind</i> parameter specifies the type of line. This is one of 0, <i>GUI.LINE</i>, <i>GUI.INDENT</i> or <i>GUI.EXDENT</i>. A <i>kind</i> of 0 is the default and is the same as <i>GUI.LINE</i>. <p>
+	  <i>GUI.INDENT</i> and <i>GUI.EXDENT</i> only display properly if the background colour has been set to <i>gray</i> using <b>GUI.SetBackgroundColor</b>. <i>GUI.INDENT</i> makes the line appear indented or recessed. <i>GUI.EXDENT</i> makes the line appear to stand out from the window.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>The following program draws three lines with three labels in the window.<p>
+<pre><tt>        <b>import</b> <i>GUI</i>
+        <b>View.Set</b> ("graphics:180;100,nobuttonbar") 
+        <b>GUI.SetBackgroundColor</b><i> </i>(<i>gray</i>)
+        <b>var</b> <i>line</i>, <i>indentLine</i>, <i>exdentLine</i> : <b>int</b>
+        <b>var</b> <i>lineLabel</i>, <i>indentLabel</i>, <i>exdentLabel</i> : <b>int</b>
+        
+        <i>line</i> := <b>GUI.CreateLine</b> (30, 20, 30, 90, 0)
+        <i>indentLine</i> := <b>GUI.CreateLine</b> (90, 20, 90, 90, <i>GUI.INDENT</i>)
+        <i>exdentLine</i> := <b>GUI.CreateLine</b> (150, 20, 150, 90, <i>GUI.EXDENT</i>)% Label the lines.
+        <i>lineLabel</i> := <b>GUI.CreateLabelFull</b> (30, 15, "Line", 0, 0,
+            <i>GUI.CENTER</i> + <i>GUI.TOP</i>, 0)
+        <i>indentLabel</i> := <b>GUI.CreateLabelFull</b><i> </i>(90, 15, "Indent", 0, 0, 
+            <i>GUI.CENTER </i>+ <i>GUI.TOP</i>, 0)
+        <i>exdentLabel</i> := <b>GUI.CreateLabelFull</b> (150, 15, "Exdent", 0, 0, 
+            <i>GUI.CENTER </i>+ <i>GUI.TOP</i>, 0)</tt></pre><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,GUI.CreateLine.t;GUI.CreateLine Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>When <b>GUI.CreateLine</b><i> </i>is called, the newly created line will be displayed immediately unless <b>GUI.DisplayWhenCreated</b> has been called with the <i>display</i> parameter set to false. <p>
+  	  A line widget is a passive widget and cannot be enabled or disabled.<p>
+    </tr>	
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The following GUI subprograms can be called with a line as the <i>widgetID</i> parameter:<p>
+          <table>
+            <tr valign="top">
+              <td width="40">&nbsp;</td>
+              <td><b>GUI.Show</b>, <b>GUI.Hide</b>, <b>GUI.Dispose</b>,
+		  <b>GUI.GetX</b>, <b>GUI.GetY</b>, <b>GUI.GetWidth</b>,
+		  <b>GUI.GetHeight</b>, <b>GUI.SetPosition</b>, 
+		  <b>GUI.SetSize</b>, <b>GUI.SetPositionAndSize</b></td>
+	    </tr>		  
+	  </table><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+	  This means that you can only call the function by calling <b>GUI.CreateLine</b>, not by calling <b>CreateLine</b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<html>
+<head><title>drawdot</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>drawdot</b></font></td><td align="right"><font size="+1"><b>graphics procedure</b></font></td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>drawdot</b> (<i>x</i>, <i>y</i>, <i>Color</i> : <b>int</b>)<p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>The <b>drawdot</b> procedure is used to color the dot (pixel) at 
+          location (<i>x</i>, <i>y</i>) using the specified <i>Color</i>.<p>
+		<center><img src="drawdot01.gif"></center>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program randomly draws dots with random colors. The <b>maxx</b>, 
+          <b>maxy</b> and <b>maxcolor</b> functions give the maximum x, y and 
+          color values.<p>
+<pre><tt>        <b>setscreen</b> ("graphics")
+        <b>var</b> <i>x</i>, <i>y</i>, <i>c</i> : <b>int</b>
+        <b>loop</b>
+            <b>randint</b> (<i>x</i>, 0, <b>maxx</b>)        <i>% Random x</i>
+            <b>randint</b> (<i>y</i>, 0, <b>maxy</b>)        <i>% Random y</i>
+            <b>randint</b> (<i>c</i>, 0, <b>maxcolor</b>)    <i>% Random color</i>
+            <b>drawdot</b> (<i>x</i>, <i>y</i>, <i>c</i>)
+        <b>end</b> <b>loop</b></tt></pre>
+    </tr>
+    <tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+        <PARAM name="Command" value="TCard">
+        <PARAM name="Button" value="Text: Launch Example Program">
+        <PARAM name="Item1" value="-1,drawdot.t;drawdot Example">
+      </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The screen should be in a "<i>graphics</i>" mode. If the screen is 
+          not in a "<i>graphics</i>" mode,  it will automatically be set to 
+          "<i>graphics</i>" mode. See <b>setscreen</b> for details.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program draws a line of dots that bounce off the “sides” of the 
+          screen. It also demonstrates that you can use real coordinates to
+          store position (<i>x</i>, <i>y</i>), as long as you convert the 
+          coordinates to <b>int</b> values using <b>round</b> in the 
+          <b>drawdot</b> call.<p>
+<pre><tt>        <b>var</b> <i>x</i>, <i>y</i> : <b>real</b>
+        <b>var</b> <i>dx</i>, <i>dy</i> : <b>real</b>
+        <b>var</b> <i>clr</i> : <b>int</b> := 1
+        <i>x</i> := <b>Rand.Int</b> (1, <b>maxx</b> - 1)
+        <i>y</i> := <b>Rand.Int</b> (1, <b>maxy</b> - 1)
+        <i>dx</i> := <b>Rand.Real</b> - 0.5
+        <i>dy</i> := <b>Rand.Real</b> - 0.5
+        <b>loop</b>
+            <b>drawdot</b> (<b>round</b> (<i>x</i>), <b>round</b> (<i>y</i>), <i>clr</i>)
+            <i>clr</i> := (<i>clr</i> + 1) <b>mod</b> <b>maxcolor</b>
+            <i>x</i> := <i>x</i> + <i>dx</i>
+            <i>y</i> := <i>y</i> + <i>dy</i>
+            <b>if</b> <i>x</i> &lt;= 0<b> or </b><i>x</i> &gt;= <b>maxx</b> <b>then</b>
+                <i>dx</i> := -<i>dx</i>
+            <b>end</b> <b>if</b>
+            <b>if</b> <i>y</i> &lt;= 0 <b>or</b> <i>y</i> &gt;= <b>maxy</b> <b>then</b>
+                <i>dy</i> := -<i>dy</i>
+            <b>end</b> <b>if</b>
+        <b>end</b> <b>loop</b></tt></pre>
+    <tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+        <PARAM name="Command" value="TCard">
+        <PARAM name="Button" value="Text: Launch Example Program">
+        <PARAM name="Item1" value="-1,drawdot2.t;drawdot Example">
+      </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="setscreen.html">setscreen</a></b>, 
+          <b><a href="maxx.html">maxx</a></b>, 
+          <b><a href="maxy.html">maxy</a></b> and the various 
+          <b>draw…</b> procedures. <p>
+    </tr>
+  </table>
+</body>
+</html>

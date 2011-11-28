@@ -1,0 +1,48 @@
+<html>
+<head><title>import</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>import</b></font></td><td align="right"><font size="+1"><b>list</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td>  An <i>importList</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>import</b> [ <i>howImport</i> ] <i>importItem</i> </td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="5"><font size="+1">{, [<i>howImport</i>] <i>importItem</i> }</td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> An <b>import</b> list is used to specify those items that a procedure, function, module, monitor, or a class uses from outside of itself. Note that a function or procedure is not allowed to have an import list and thus automatically imports whichever functions or procedures are used by the function or procedure. The compiler determines the list automatically by looking to see what items are actually used.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> In this example, the type <i>T </i>is imported into the <i>stack </i><b>module</b> and used as the type that can be pushed onto or popped off the stack. Since no other items are imported, the only identifiers from outside of <i>stack </i>that can be used in it must be predefined, such as <b>sqrt</b>, or declared to be <b>pervasive</b>.<p>
+<pre><tt>        <b>type</b> <i>T</i> : <b>string</b>
+        <i>…</i>
+        <b>module</b> <i>stack</i>
+            <b>import</b> <i>T</i>
+            <b>export</b> <i>push</i>, <i>pop</i>
+            <b>var</b> <i>top</i> : <b>int</b> := 0
+            <b>var</b> <i>contents</i> : <b>array</b> 1..100 <b>of</b> <i>T</i>
+            <b>procedure</b> <i>push</i> … <b>end</b> <i>push</i>
+            <b>procedure</b> <i>pop</i> … <b>end</b> <i>pop</i>
+        <b>end</b> <i>stack</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The <i>importItem </i>is one of<i>:</i><p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>(a) <i>id</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(b) <i>id </i><b>in</b><i> fileName</i></td></tr>
+</table><p>
+The second form is used in OOT when the list is the import list  for a separate <b>unit</b> (or the main program), and the imported item is in a file whose name is different from the item's name, for example:<p>
+<pre><tt>        <b>import</b> <i>ledger </i><b>in</b> "newledg.t"</tt></pre>
+The <i>fileName</i> must be an explicit character string. See also <b>unit</b>.<p>
+Parentheses are allowed around the items in an import lists, as in:<p>
+<pre><tt>        <b>import</b> ( <i>ledger </i><b>in</b> "newledg.t" )</tt></pre>
+There are various ways to import items, as determined by <i>howImport</i>. The form of <i>howImport</i> is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>(a) <b>var</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(b) <b>const</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(c) <b>forward</b></td></tr>
+</table><p>
+Commonly the <i>howImport </i>is omitted, which means the default access for the item is the same access as the item has. In other words, a read-write item that is imported without a <i>howImport</i> is imported read-write. A read-only symbol that is imported without a <i>howImport</i> is imported read-only.<p>
+If the <i>importItem </i>is <b>forward</b>, the import list is part of a <b>forward</b> procedure or function declaration and the imported item is itself necessarily a procedure or function. See <b>forward</b> declarations for details and an example.<p>
+If the <b>import</b> list of a <b>module</b>, <b>monitor</b> or <b>class</b> is omitted, the implementation assumes that the list is <b>import</b>( ), meaning that no items are imported. For example, a <b>module</b> must explicitly import any global identifiers that are not predefined or <b>pervasive</b>.<p>
+Circular (recursive) imports are not allowed. For example, if unit <i>A</i> imports <i>B</i> then <i>B</i> cannot import <i>A</i>. However, circular usage of separately compiled units is possible by separating the units into interfaces and bodies and having the bodies import the interfaces. For example, if <i>C</i> is the parent class of <i>D</i>, <i>D</i> can import <i>C</i>, but not vice versa.<p>
+In an expansion (or implementation), the import list of the expansion augments the import list of the parent.<p>
+An overriding subprogram (in an expansion) ignores the import list of the target subprogram and uses its own import list.<p>
+Turing initializes modules and monitors  in order of importation. Initialization begins with the main program, which first initializes its imports in the order given in its <b>import</b> list, and then initializes itself.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="unit.html">unit</a></b>, <b><a href="module.html">module</a></b>, <b><a href="monitor.html">monitor</a></b> and <b><a href="class.html">class</a></b>. See also <b><a href="export.html">export</a></b> list, <b><a href="inherit.html">inherit</a></b> clause, <b><a href="implement.html">implement</a></b> clause and <b><a href="implement_by.html">implement by</a></b> clause.<p>
+</table></body>
+</html>

@@ -1,0 +1,34 @@
+<html>
+<head><title>Text.Color</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Text.Color</b></font></td><td align="right">Part of <a href="textmodule.html">Text</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Text.Color</b> ( <i>Color</i> : <b>int</b> )<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Text.Color</b> procedure is used to change the currently-active color. This is the color of characters that are to be <b>put</b> on the screen. The alternate spelling is <b>Text.Colour</b>.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program prints out the message "Bravo" three times, each in a different color.<p>
+<pre><tt>        <b>View.Set</b> ( "graphics" )
+        <b>for</b> <i>i </i>: 1 .. 3
+            <b>Text.Color</b> (<i> i</i> )
+            <b>put</b> "Bravo"
+        <b>end for</b></tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program prints out a message. The color of each letter is different from the preceding letter. For letter number <i>i</i> the color number is <i>i </i>mod maxcolor + 1. This cycles repeatedly through all the available colors.<p>
+<pre><tt>        <b>View.Set</b> ( "screen" )
+        <b>const</b> <i>message</i> := "Happy New Year!!"
+        <b>for</b> <i>i </i>: 1 .. <b>length</b> ( <i>message</i> )
+            <b>Text.Color</b> (<i> i</i> <b>mod</b> <b>maxcolor</b> + 1 )
+            <b>put</b> <i>message</i> ( <i>i</i> ) ..
+        <b>end for</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> In "<i>screen</i>" mode on the IBM PC, the color specified can actually range from 0 - 31. The upper 16 colors (16-31) are the same as the lower 16, except that they blink.<p>
+See <b>View.Set</b> for the number of colors available in the various "<i>graphics</i>"<i> </i>modes.<p>
+The screen should be in a "<i>screen</i>" or "<i>graphics</i>" mode. If the screen mode has not been set, it will automatically be set to "<i>screen</i>" mode. See <b>View.Set </b>for details.<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Text.Color</b>, not by calling <b>Color</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="text_colorback.html">Text.ColorBack</a></b>, <b><a href="text_whatcolor.html">Text.WhatColor</a></b>, <b>Text.WhatChar</b> and <b><a href="view_maxcolor.html">View.maxcolor</a></b>.<p>
+</table></body>
+</html>

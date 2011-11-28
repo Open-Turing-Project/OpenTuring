@@ -1,0 +1,22 @@
+<html>
+<head><title>Dir.Exists</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Dir.Exists</b></font></td><td align="right">Part of <a href="dirmodule.html">Dir</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Dir.Exists</b> (<i>directoryPathName</i> : <b>string</b>) : <b>boolean</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> <b>Dir.Exists </b>returns <b>true</b> if a directory by the name of <i>directoryPathName</i> exists. It will return <b>false</b> if <i>directoryPathName</i> is a file.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> If the <b>Dir.Exists</b> returns <b>false</b>, you can examine <b>Error.Last</b> or <b>Error.LastMsg</b> for more information (i.e. whether the path failed or the directory was simply not found).<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td>The following program determines if the directory "d:/usr/west" exists, and outputs an error message if it does not.
+<pre><tt>        <b>if Dir.Exists</b> ("d:/usr/west") then
+            <b>put</b> "Directory exists"
+        <b>else</b>
+            <b>put</b> "Directory does not exists: ", <b>Error.LastMsg</b>
+        <b>end if</b>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Dir.Exists</b>, not by calling <b>Exists</b>.<p>
+</table></body>
+</html>

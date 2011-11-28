@@ -1,0 +1,28 @@
+<html>
+<head><title>GUI.OpenFileFull</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.OpenFileFull</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>GUI.OpenFileFull</b> (<i>title</i>, <i>filter</i>: <b>string</b>,<br>
+<i>startDir</i> : <b>string</b>) : <b>string</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Displays an "Open File" dialog box to obtain the name of an already existing file. The caption (a window title under MS Windows, a string in a Macintosh dialog box) is specified by the <i>title</i> parameter. The list of files shown is specified by the <i>filter</i> parameter. The initial directory to be displayed is specified by the <i>startDir</i> parameter. The function uses a dialog box specific to the operating system the program is being run on.<p>
+The <i>filter</i> parameter is a file name suffix that should be displayed. Multiple suffixes can be specified by separating them with commas. If the user specifies the empty string for <i>filter</i>, then all the files in the directory are displayed. If the <i>startDir</i> parameter is empty, or if it specifies a non-existent directory, then the current directory is displayed in the "Open File" dialog box.<p>
+If the user did not choose a file (i.e. hit the <i>Cancel</i> button in the dialog), the function returns "" (the empty string).<p>
+<b>Note</b>: This function is <b>not</b> available in the current version of the GUI Procedure Library (shipping with Turing 4.0 and MacOOT 1.5). It is documented here for use with future shipping version of Turing. It is likely to be implemented in the version of Turing released in September 2002. Check the release notes that are found in the on-line help to find out if this function is now available.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program asks the user to select a file ending in ".txt". The initial directory is the root directory of the C drive.<p>
+<pre><tt>        <b>import</b> <i>GUI</i> <b>in</b> "%oot/lib/GUI"
+        
+        <b>var</b> <i>fileName</i> : <b>string</b>
+        <i>fileName</i> := <b>GUI.OpenFileFull</b> ("Choose a Text File", "txt", "C:\\")</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> If a suffix is placed in single quotes, it will be ignored on all but the Apple Macintosh, where it will specify a Macintosh file type. <p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The example makes the dialog box display all files ending in ".txt" or ".text" on all systems but the Macintosh. On the Apple Macintosh, only files of file type 'TEXT' will be displayed.<p>
+<pre><tt>        <i>fileName</i> := <b>GUI.OpenFileFull</b> ("Open", "txt,text,'TEXT'", "")</tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>GUI.OpenFileFull</b>, not by calling <b>OpenFileFull</b>.<p>
+</table></body>
+</html>

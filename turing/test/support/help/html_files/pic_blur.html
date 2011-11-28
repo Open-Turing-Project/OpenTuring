@@ -1,0 +1,95 @@
+<html>
+<head><title>Pic.Blur</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Pic.Blur</b></font></td><td align="right">Part of <a href="picmodule.html">Pic</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Pic.Blur</b> (<i>picID</i>, <i>blurAmount</i> : <b>int</b>) : <b>int</b><p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td><b>Pic.Blur</b> is used to create a new picture by blurring an
+          existing picture. The resulting picture is created by mixing pixels
+          in a picture with pixels adjacent to it.  As the <i>blurAmount</i>
+          increases, the image grows more and more blurry.<p>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>Note that the blurred picture is a newly created picture. 
+          When it is no longer needed, its memory should be released by 
+	  using <b>Pic.Free</b>.<p>
+	  Note that this is a fairly CPU intensive routine.  On slow machines, 
+	  it can take up to a second or more when <i>blurAmount</i> is large.  
+	  In such cases, it is better to precompute the pictures before 
+	  starting the program.  The second example shows this being done.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>The program creates a picture and then progressively blurs it.
+<pre><tt>        <b>View.Set</b> ("graphics:270;120,nobuttonbar")
+        % Create the original picture
+        <b>var</b> <i>f</i> := <b>Font.New</b> ("serif:60:bold,italic,noantialias")
+	<b>Font.Draw</b> ("Turing", 10, 30, <i>f</i>, <b>red</b>)
+        <b>Draw.FillStar</b> (70, 80, 90, 100, <i>brightgreen</i>)
+        <b>Draw.FillBox </b>(240, 5, 270, 35, <i>brightblue</i>)
+
+        <b>var</b> <i>oldPic</i> : <b>int</b>
+        <i>oldPic</i> := <b>Pic.New</b> (0, 0, <b>maxx</b>, <b>maxy</b>)
+        <b>loop</b>
+                <b>var</b> <i>newPic</i> : <b>int</b>
+                % Create the new picture by blurring the old picture
+        	<i>newPic</i> := <b>Pic.Blur</b> (<i>oldPic</i>, 10)
+        	% Free the old picture so we don't run out of memory
+    		<b>Pic.Free</b> (<i>oldPic</i>)
+                <b>Pic.Draw</b> (<i>newPic</i>, 0, 0, <i>picCopy</i>)
+                <b>delay</b> (300)
+                <i>oldPic</i> := <i>newPic</i>
+        <b>end loop</b><p>
+
+        </tt></pre>
+          <table>
+            <tr>
+              <td>
+	  	<center><img src="pic_blur01.gif"></center>
+	  	<center><b>Output at start</b></center><p>
+	      </td>
+              <td>
+	  	<center><img src="pic_blur02.gif"></center>
+	  	<center><b>After several loops</b></center><p>
+	      </td>
+	     </tr>
+	   </table>
+	      
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+	    <PARAM name="Command" value="TCard">
+	    <PARAM name="Button" value="Text: Launch Example Program">
+	    <PARAM name="Item1" value="-1,Pic.Blur.t;Pic.Blur Example">
+	  </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td>By precalculating and saving the results of the blurred picture, you
+          can produce a visual effect where an object seems to come into focus.
+          <br>
+          The program below blurs an image, saving each step.  It then 
+          draws the images in reverse order, making it appear as if the image
+          is becoming successively sharper.<p>
+      	  <OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+	    <PARAM name="Command" value="TCard">
+	    <PARAM name="Button" value="Text: Launch Example Program">
+	    <PARAM name="Item1" value="-1,Pic.Blur1.t;Pic.Blur1 Example">
+	  </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+	  This means that you can only call the function by calling 
+	  <b>Pic.Blur</b>, not by calling <b>Blur</b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<html>
+<head><title>index</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>index</b></font></td><td align="right"><font size="+1"><b>find pattern in string function</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>index</b> (<i>s </i>, <i>patt</i> : <b>string</b> ) : <b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>index</b> function is used to find the position of <i>patt </i>within string <i>s</i>. For example, <b>index</b> ( "chair", "air" ) is 3.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program outputs 2, because "ill" is a substring of "willing", starting at the second character of "willing".<p>
+<pre><tt>        <b>var</b> <i>word</i> : <b>string</b> := "willing"
+        <b>put</b> <b>index</b> ( <i>word</i>, "ill" )</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> If the pattern (<i>patt</i>) does not appear in the string (<i>s</i>), <b>index</b> returns 0 (zero). For example, here is an <b>if</b> statement that checks to see if string <i>s</i> contains a blank:<p>
+<pre><tt>        <b>if</b> <b>index</b> ( <i>s</i>,<i> </i>" "<i> </i>) <b>not=</b> 0 <b>then</b> …</tt></pre>
+The <b>index</b> is sometimes used to efficiently determine if a character is one of a given set of characters. For example, here is an <b>if</b> statement that checks to see if <i>ch</i>,<i> </i>which is declared using <b>var</b> <i>ch </i>: <b>string</b> (1), is a digit:<p>
+<pre><tt>        <b>if</b> <b>index</b> ( "0123456789",<i> ch</i>) <b>not=</b> 0 <b>then</b> …</tt></pre>
+If a string contains more that one occurrence of the pattern, the leftmost location is returned. For example, <b>index</b> ("pingpong", "ng") returns 3.<p>
+If <i>patt</i> is the null string, the result is 1.<p>
+</table></body>
+</html>

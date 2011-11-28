@@ -1,0 +1,21 @@
+<html>
+<head><title>realn</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>real<i>n</i></b></font></td><td align="right"><font size="+1"><b>n-byte real number type</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td><p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(a)</font></td><td colspan="7"><font size="+1"><b>real4</b></td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="-2"><font size="+1"><i>% 4-byte real number</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(b)</font></td><td colspan="7"><font size="+1"><b>real8</b></td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="-2"><font size="+1"><i>% 8-byte real number</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>real<i>n</i></b> (<i>n</i>-byte real number) types are machine-dependent types that occupy a specified number of bytes. By contrast, the <b>real</b> type is, in principle, a machine-independent and mathematical type (however, it overflows when the exponent of the value is too large or small and it has only a limited amount of precision).<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>var</b><i> width</i> : <b>real4</b>
+        <b>var</b><i> height</i> : <b>real8</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Turing implements the type <b>real</b>  using 8 byte floating point representation. This provides 14 to 16 decimal digits of precision and an exponent range of at least -38 .. 38. The PC and Macintosh versions of Turing have 16 decimal digits of accuracy because they use IEEE standard floating point representation.<p>
+This implies that <b>real8</b> and <b>real</b> are essentially the same type, so in practice there is no advantage to using <b>real8</b> rather than <b>real</b>. However, <b>real4</b> has the advantage of occupying half as much space (with correspondingly reduced precision).<p>
+Arithmetic for all real types (<b>real</b>, <b>real4</b> and <b>real8</b>) is carried out with the accuracy and exponent range of 8-byte reals.<p>
+The type <b>real4</b> is sometimes called <i>single precision</i> (because it occupies a single 4-byte word) and <b>real8</b> is sometimes called <i>double precision</i>.<p>
+</table></body>
+</html>

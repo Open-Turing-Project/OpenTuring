@@ -1,0 +1,72 @@
+<html>
+<head><title>Input.KeyDown</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Input.KeyDown</b></font></td><td align="right">Part of <a href="inputmodule.html">Input</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Input.KeyDown</b> (<b>var</b> <i>chars</i> : <b>array char of boolean</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Input.Keydown</b> procedure allows a program to read which keys are currently being pressed. This procedure is different from <b>getch</b> in that it allows a program to detect when a user presses and releases a button. As such, it is not to be used in conjunction with <b>getch</b>.<p>
+The procedure can be used in games where an action takes place while a key is depressed.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Determine if the T key is pressed. Note that we check for the lower case letter.<p>
+<pre><tt>        <b>var</b> <i>chars</i> : <b>array char of boolean</b>
+        <b>Input.KeyDown</b> (<i>chars</i>)
+        <b>if</b> <i>chars</i> ('t') <b>then</b>
+            put "The T key is pressed"
+        <b>end if</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The array returned is a list of all the characters. A key is currently pressed if the array element with the corresponding character is <b>true.</b> For example, the <i>a</i> key is pressed is <i>chars</i> ('a') is <b>true</b>. Note that each key is individually represented, so if the user has pressed Shift+a to get a 'A', then <b>Input.KeyDown</b> would register Shift and 'a' as pressed, but not 'A'.<p>
+A full list of all the possible characters that can be set with Input.KeyDown can be found in the <b>Key Codes</b> appendix.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The array returned is a list of all the characters. A key is currently pressed if the array element with the corresponding character is <b>true.</b> For example, the <i>a</i> key is pressed is <i>chars</i> ('a') is <b>true</b>. Note that each key is individually represented, so if the user has pressed Shift+a to get a 'A', then <b>Input.KeyDown</b> would register Shift and 'a' as pressed, but not 'A'.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The number of keys that can be pressed simultaneously is hardware dependent. Most keyboards can detect a minimum of two keys + Shift + Control + Alt. This means that if you are designing a two player game to be played at a single keyboard and you wish to make certain that players cannot “hog the keyboard” by holding down keys, you should not use more than 6 different keys and three of them should be the Shift, Control and Alt keys.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The program reads the keyboard and displays a message while the arrow keys are pressed. It can detect up to all four arrow keys pressed at once.<p>
+<pre><tt>        <b>var</b> <i>chars</i> : <b>array char of boolean</b>
+        <b>loop</b>
+            <b>Input.KeyDown</b> (<i>chars</i>)
+            <b>locate</b> (1, 1)
+            <b>if</b> <i>chars</i> (<i>KEY_UP_ARROW</i>) <b>then</b>
+                <b>put</b> "Up Arrow Pressed  " ..
+            <b>else</b>
+                <b>put</b> "                  " ..
+            <b>end if</b>
+            <b>if</b> <i>chars</i> (<i>KEY_RIGHT_ARROW</i>) <b>then</b>
+                <b>put</b> "Right Arrow Pressed  " ..
+            <b>else</b>
+                <b>put</b> "                     " ..
+            <b>end if</b>
+            <b>if</b> <i>chars</i> (<i>KEY_LEFT_ARROW</i>) <b>then</b>
+                <b>put</b> "Left Arrow Pressed  " ..
+            <b>else</b>
+                <b>put</b> "                    " ..
+            <b>end if</b>
+            <b>if</b> <i>chars</i> (<i>KEY_DOWN_ARROW</i>) then
+                <b>put</b> "Down Arrow Pressed  " ..
+            <b>else</b>
+                <b>put</b> "                  " ..
+            <b>end if</b>
+        <b>end loop</b></tt></pre><p>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,Input.KeyDown.t;Input.KeyDown Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>Another example is available that checks for all possible keys.<p>
+          <OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,Input.KeyDown2.t;Input.KeyDown Example">
+          </OBJECT><p></td>
+    </tr>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Input.KeyDown</b>, not by calling <b>KeyDown</b>.<p>
+</table></body>
+</html>

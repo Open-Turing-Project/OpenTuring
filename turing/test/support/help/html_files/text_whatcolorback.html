@@ -1,0 +1,23 @@
+<html>
+<head><title>Text.WhatColorBack</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Text.WhatColorBack</b></font></td><td align="right">Part of <a href="textmodule.html">Text</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Text.WhatColorBack</b> :<i> </i><b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Text.WhatColorBack</b> function is used to<b> </b>determine the current text background color. The alternate spelling is <b>whatcolourback</b>.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program outputs the currently-active background color number. The background color of the message is determined by this number.<p>
+<pre><tt>        <b>View.Set</b> ("screen")
+        …
+        <b>put</b> "The background of this writing"
+        <b>put</b> <i> </i>"is in color number ", <b>Text.WhatColorBack</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The screen should be in a "<i>screen</i>" or<i> </i>"<i>graphics</i>" mode. Beware that the meaning of background color is different in these two modes. See <b>Text.ColorBack </b>for details.<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Text.WhatColorBack</b>, not by calling <b>WhatColorBack</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="text_color.html">Text.Color</a> </b>and <b><a href="text_whatcolor.html">Text.WhatColor</a></b>.<p>
+</table></body>
+</html>

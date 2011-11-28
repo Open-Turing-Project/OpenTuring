@@ -1,0 +1,58 @@
+<html>
+<head><title>if</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>if</b></font></td><td align="right"><font size="+1"><b>statement</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> An <i>ifStatement</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>if</b> <i>trueFalseExpn</i> <b>then</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1"><i>statementsAndDeclarations</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1">{ <b>elsif</b> <i>trueFalseExpn</i> <b>then</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1"><i>statementsAndDeclarations</i> }</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1">[ <b>else</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1"><i>statementsAndDeclarations</i> ]</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>end</b> <b>if</b></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> An <b>if</b> statement is used to choose among a set of statements (and declarations). One set (at most) is chosen and executed and then execution continues just beyond <b>end</b> <b>if</b>.<p>
+The expressions (the <i>trueFalseExpressions</i>) following the keyword <b>if</b> and each <b>elsif</b> are checked one after the other until one of them is found to be true, in which case the statements (and declarations) following the corresponding <b>then</b> are executed. If none of these expressions evaluates to true, the statements following <b>else</b> are executed. If no <b>else</b> is present and none of the expressions are true, no statements are executed and execution continues following the <b>end</b> <b>if</b>.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Output a message based on value of mark.<p>
+<pre><tt>        <b>if</b> <i>mark</i> &gt;= 50 <b>then</b>
+            <b>put</b> "<i>You pass</i>"
+        <b>else</b>
+            <b>put</b> "<i>You fail</i>"
+        <b>end</b> <b>if</b></tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Output A, B, C, D or F depending on mark.<p>
+<pre><tt>        <b>if</b> <i>mark</i> &gt;= 80 <b>then</b>
+            <b>put</b> "<i>A</i>"
+        <b>elsif</b> <i>mark</i> &gt;= 70 <b>then</b>
+            <b>put</b> "<i>B</i>"
+        <b>elsif</b> <i>mark</i> &gt;= 60 <b>then</b>
+            <b>put</b> "<i>C</i>"
+        <b>elsif</b> <i>mark</i> &gt;= 50 <b>then</b>
+            <b>put</b> "<i>D</i>"
+        <b>else</b>
+            <b>put</b> "<i>F</i>"
+        <b>end</b> <b>if</b></tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> If <i>x </i>is negative, change its sign.<p>
+<pre><tt>        <b>if</b> <i>x</i> &lt; 0 <b>then</b>
+            <i>x</i> := - <i>x</i>
+        <b>end</b> <b>if</b></tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> If <i>x </i>is less than zero or greater than maxx, put a message.<p>
+<pre><tt>        <b>if</b> <i>x</i> &lt; 0 <b> or</b> <i>x</i> &gt; <b>maxx</b> <b>then</b>
+            <b>put</b> "<i>Out of bounds!</i>"
+        <b>end</b> <b>if</b></tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> If the boolean <i>flag</i> is true and <i>name</i> is “stop”, put a message and return.<p>
+<pre><tt>        <b>if</b> <i>flag</i> <b> and</b> <i>name</i> = "<i>stop</i>" <b>then</b>
+            <b>put</b> "<i>Exiting routine</i>"
+            <b>return</b>
+        <b>end</b> <b>if</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Several statements and declarations can appear after a particular <b>then</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="case.html">case</a></b> statements for another way to select among statements.<p>
+</table></body>
+</html>

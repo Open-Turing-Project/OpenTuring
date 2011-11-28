@@ -1,0 +1,29 @@
+<html>
+<head><title>getchar</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>getchar</b></font></td><td align="right"><font size="+1"><b>get character function</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>getchar</b> : <b>char</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>getchar</b> function is used to input a single character without waiting for the end of a line. The next character in the keyboard buffer (the oldest not-yet-read character) is returned.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program contains a procedure called <i>getKey </i>which causes the program to wait until a key is pressed.<p>
+<pre><tt>        <b>setscreen</b> ("graphics")
+        
+        <b>procedure</b> <i>getKey</i>
+            <b>var</b> <i>ch</i> : <b>char</b>
+            <i>ch</i> := <b>getchar</b>
+        <b>end</b> <i>getKey</i>
+        
+        <b>for</b> <i>i</i> : 1 .. 1000
+            <b>put</b> <i>i </i>: 4, " Pause till a key is pressed"
+            <i>getKey</i>
+        <b>end</b> <b>for</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The screen should be in a "<i>screen</i>"<i> </i>or "<i>graphics</i>" mode. See the <b>setscreen</b> procedure for details. If the screen is not in one of these modes, it will automatically be set to "<i>screen</i>" mode.<p>
+On IBM PC's some keys, such as the left arrow key, insert key, delete key, and function keys do not produce ordinary character values. These keystrokes are returned by <b>getchar</b> as their "scan code" with 128 added to it, unless the scan code already has a value of 128 or greater. This provides a unique value for every key on the keyboard. See Appendix D for these codes.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="hasch.html">hasch</a></b> (has character) which is used to see if a character has been typed but <a href="not.html">not</a> yet <a href="read.html">read</a>.<p>
+See also predefined unit <b><a href="inputmodule.html">Input</a></b>.<p>
+</table></body>
+</html>

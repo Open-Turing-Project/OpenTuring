@@ -1,0 +1,30 @@
+<html>
+<head><title>loop</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>loop</b></font></td><td align="right"><font size="+1"><b>statement</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>loopStatement</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>loop</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1"><i>statementsAndDeclarations</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>end</b> <b>loop</b></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A <b>loop</b> statement causes the statements (and declarations) in it to be repeatedly executed. This continues until terminated by one of its enclosed <b>exit</b> statements (or by an enclosed <b>return</b> or <b>result</b> statement).<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Output on separate lines: Happy, Happy, Happy, etc.<p>
+<pre><tt>        <b>loop</b>
+            <b>put</b> "Happy"
+        <b>end</b> <b>loop</b></tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Read words up to the word Stop.<p>
+<pre><tt>        <b>var</b> <i>word</i> : <b>string</b>
+        <b>loop</b>
+            <b>get</b> <i>word</i>
+            <b>exit</b> <b>when</b> <i>word</i> = "Stop"
+        <b>end</b> <b>loop</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> A <b>loop</b> statement can contain more than one <b>exit</b>, or none at all (in which case it is an infinite loop). When the <b>exit</b> <b>when</b> is at the beginning of the loop, the loop works like Pascal's <b>do</b> <b>while</b>; when at the end, the loop works like Pascal's <b>repeat</b> <b>until</b>.<p>
+Just preceding the statements and declarations, you are allowed to write an "invariant clause" of the form:<p>
+<pre><tt>        <b>invariant</b> <i>trueFalseExpn</i></tt></pre>
+This clause is equivalent to: <b>assert</b> <i>trueFalseExpn</i>.<p>
+</table></body>
+</html>

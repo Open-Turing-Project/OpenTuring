@@ -1,0 +1,53 @@
+<html>
+<head><title>Font.GetStyle</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Font.GetStyle</b></font></td><td align="right">Part of <a href="fontmodule.html">Font</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Font.GetStyle</b> (<i>fontName</i> : <b>string</b>, <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>var</b> <i>bold</i>, <i>italic</i>, <i>underline</i> : <b>boolean</b>) : <b>string</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> <b>Font.GetStyle</b> is used to get the styles available on the system for a specified font. <i>bold</i>, <i>italic</i> and <i>underline</i> are set to <b>true</b> if bold, italic or underline versions of the font are available. Once the styles available for a font are known, it's possible to get the sizes available for each style by using <b>Font.StartSize</b> and <b>Font.GetSize</b>.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The program lists all the fonts and their styles available on the system.<p>
+<pre><tt>        <b>var</b> <i>fontName</i> : <b>string</b>
+        <b>var</b> <i>bold</i>, <i>italic</i>, <i>underline</i> : <b>boolean</b>
+        <b>Font.StartName</b>
+        <b>loop</b>
+            <i>fontName</i> := <b>Font.GetName</b>
+            <b>exit</b> <b>when</b> <i>fontName</i> = ""
+            <b>Font.GetStyle</b> (<i>fontName</i>, <i>bold</i>, <i>italic</i>, <i>underline</i>)
+            <b>put</b> <i>fontName</i> : 30 ..
+            <b>if</b> <i>bold</i> <b>then</b>
+                <b>put</b> "bold  " ..
+            <b>end if</b>
+            <b>if</b> <i>italic</i> <b>then</b>
+                <b>put</b> "italic  " ..
+            <b>end if</b>
+            <b>if</b> <i>underline</i> <b>then</b>
+                <b>put</b> "underline  " ..
+            <b>end if</b>
+            <b>put</b> ""
+        <b>end loop</b></tt></pre><p>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,Font.GetStyle.t;Font.GetStyle Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>An example is available that displays full information about
+          the fonts including name, styles, and point sizes.<p>
+          <OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Font Listing Example">
+            <PARAM name="Item1" value="-1,FontList.t;Font Listing Example">
+          </OBJECT><p></td>
+    </tr>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Font.GetStyle</b>, not by calling <b>GetStyle</b>.<p>
+</table></body>
+</html>

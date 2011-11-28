@@ -1,0 +1,23 @@
+<html>
+<head><title>false</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>false</b></font></td><td align="right"><font size="+1"><b>boolean value (not true)</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>false</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A <b>boolean</b> (<b>true</b>/<b>false</b>) variable can be either <b>true</b> or <b>false</b> (see <b>boolean</b> type).<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>var</b> <i>found</i> : <b>boolean</b> := <b>false</b>
+        <b>var</b> <i>word</i> : <b>int</b>
+        <b>for</b> <i>i</i> : 1 .. 10
+            <b>get</b> <i>word</i>
+            <i>found</i> := <i>found</i> <b>or</b> <i>word</i> = "gold"
+        <b>end</b> <b>for</b>
+        <b>if</b> <i>found</i> = <b>true</b> <b>then</b>
+            <b>put</b> "Found 'gold' in the ten words"
+        <b>end</b> <b>if</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The line <b>if</b> <i>found</i>=<b>true</b> <b>then</b> can be simplified to <b>if</b> <i>found </i><b>then</b> with no change to the meaning of the program.<p>
+</table></body>
+</html>

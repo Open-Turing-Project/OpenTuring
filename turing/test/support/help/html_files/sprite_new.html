@@ -1,0 +1,49 @@
+<html>
+<head><title>Sprite.New</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Sprite.New</b></font></td><td align="right">Part of <a href="spritemodule.html">Sprite</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Sprite.New</b> (<i>picID</i> : <b>int</b>) : <b>int</b><p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>Creates a new sprite from a picture specified by <i>picID</i>. The 
+          sprite starts invisible and should be given a <i>depth</i> using 
+          <b>Sprite.SetHeight</b> and a position, given <b>Sprite.SetPosition</b> 
+          before being made visible using <b>Sprite.Show</b>. When you are 
+          finished using the sprite, the sprite should be freed using 
+          <b>Sprite.Free</b>.
+          <p>
+          Sprites work best when they are of moderate size. Large sprites will 
+          cause flashing when moved across the screen.
+          <p>
+          Anything that is is color 0 in the picture will not appear when the 
+          sprite is drawn. In other words, color 0 is transparent. (This is by
+          default. You can set the transparent color for a sprite by setting
+          the picture's transparent colour using
+          <b><a href="pic_settransparentcolor.html">Pic.SetTransparentColor</a></b>.
+          <p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>See <b>Sprite.Animate</b> for an example of <b>Sprite.New</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+	  <b>Sprite.New</b>, not by calling <b>New</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="sprite_setheight.html">Sprite.SetHeight</a></b>, 
+	  <b><a href="sprite_setposition.html">Sprite.SetPosition</a></b>, 
+	  <b><a href="sprite_show.html">Sprite.Show</a></b> and 
+	  <b><a href="sprite_free.html">Sprite.Free</a></b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

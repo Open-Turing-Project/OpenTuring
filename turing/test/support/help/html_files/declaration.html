@@ -1,0 +1,36 @@
+<html>
+<head><title>declaration</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>declaration</b></font></td><td align="right"><font size="+1"><b>create a variable</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>declaration</i> is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(a)</font></td><td colspan="7"><font size="+1"><i>variableDeclaration</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(b)</font></td><td colspan="7"><font size="+1"><i>constantDeclaration</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(c)</font></td><td colspan="7"><font size="+1"><i>typeDeclaration</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(d)</font></td><td colspan="7"><font size="+1"><i>bindDeclaration</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(e)</font></td><td colspan="7"><font size="+1"><i>procedureDeclaration</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(f)</font></td><td colspan="7"><font size="+1"><i>functionDeclaration</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(g)</font></td><td colspan="7"><font size="+1"><i>moduleDeclaration</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(h)</font></td><td colspan="7"><font size="+1"><i>classDeclaration</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(i)</font></td><td colspan="7"><font size="+1"><i>processDeclaration</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(j)</font></td><td colspan="7"><font size="+1"><i>monitorDeclaration</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(k)</font></td><td colspan="7"><font size="+1"><i>conditionDeclaration</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A <i>declaration</i> creates a new name (or names) for a variable, constant, type, procedure, function, module, class, process, monitor, or condition. These names are called <i>identifiers</i>,<i> </i>where <i>id</i> is the abbreviation for <i>identifier</i>.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>var</b> width : <b>int</b>         % Variable declaration
+        <b>const</b> pi := 3.14159     % Constant declaration
+        <b>type</b> range : 0 .. 150       % Type declaration
+        
+        <b>procedure</b> greet         % Procedure declaration
+            <b>put</b> "Hello  world"
+        <b>end</b> greet</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Ordinarily, each new name must be distinct from names that are already visible; that is, redeclaration is not allowed. There are certain exceptions to this rule, for example, names of parameters and fields of records can be the same as existing visible variables. Variables declared inside a subprogram (a procedure and function) are allowed to be the same as variables global to (outside of) the subprogram.<p>
+The effect of a declaration (its <i>scope</i>) lasts to the end of the construct in which the declaration occurs; this will be the end of the program, the <b>end</b> of the surrounding procedure, function or module, the <b>end</b> of a <b>loop</b>, <b>for</b>, <b>case</b> or <b>begin</b> statement, or the end of the <b>then</b>, <b>elsif</b>, or <b>else</b> clause of an <b>if</b> statement, or the end of the <b>case</b> statement alternative.<p>
+A name must be declared before it can be used; this is called the <i>DBU </i>(<i>Declaration Before Use</i>) rule. The exceptions to this rule use the keyword <b>forward</b>, as in <b>import</b> lists and in <b>collection</b> declarations.<p>
+A <i>declaration</i> can appear any place a <i>statement</i> can appear. This differs from the Pascal language, in which declarations are allowed only at the beginning of the program or at the beginning of a procedure or function. Each declaration can optionally be followed by a semicolon (;).<p>
+There are certain restrictions on the placement of declarations. Procedures and functions cannot be declared inside other procedures and functions nor inside statements (for example, not inside an <b>if</b> statement). A <b>bind</b> declaration cannot appear at the outer level of either the main program or a module. A <b>condition</b> declaration can appear only inside a monitor. Processes cannot be declared inside procedures, functions, monitors or classes. Classes cannot be declared inside classes. However, modules and monitors can be declared inside classes and vice versa. Monitors can be declared inside modules, not vice versa.<p>
+</table></body>
+</html>

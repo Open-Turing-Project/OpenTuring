@@ -1,0 +1,17 @@
+<html>
+<head><title>realstr</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>realstr</b></font></td><td align="right"><font size="+1"><b>real-to-string function</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>realstr</b> ( <i>r</i> : <b>real</b>, <i>width</i> : <b>int</b> ) : <b>string</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>realstr</b> function is used to convert a <b>real</b> number to a string. For example, <b>realstr</b> (2.5e1, 4)="<i>bb25</i>" where <i>b</i> represents a blank. The string is an approximation to <i>r</i>, padded on the left with blanks as necessary to a length of <i>width</i>.<p>
+The <i>width</i> parameter must be non-negative. If the <i>width</i> parameter is not large enough to represent the value of <i>r</i> it is implicitly increased as needed. The displayed value is rounded to the nearest decimal equivalent with this accuracy. In the case of a tie, the display value is rounded to the next larger value.<p>
+The string <b>realstr</b> (<i>r</i>,<i> width</i> ) is the same as the string <b>frealstr</b> (<i>r</i>,<i> width</i>,<i> defaultfw</i> ) when <i>r</i> =0 or when 1e-3 &lt; <i>abs</i> (<i>r</i> ) &lt; 1e6, otherwise the same as <b>erealstr</b> (<i>r</i>,<i> width</i>,<i> defaultfw</i>,<i> defaultew</i>), with the following exceptions. With <i>realstr</i>, trailing fraction zeroes are omitted, and the decimal point is omitted if the entire fraction is zero. (These omissions take place even if the exponent part is printed.) If an exponent is printed, any plus sign and leading zeroes are omitted. Thus, whole number values are in general displayed as integers.<p>
+<i>Defaultfw</i> is an implementation-defined number of fractional digits to be displayed. For most implementations, <i>defaultfw</i> will be 6. <p>
+<i>Defaultew</i> is an implementation-defined number of exponent digits to be displayed. For most implementations, <i>defaultew</i> will be 2.<p>
+The <b>realstr</b> function approximates the inverse of <b>strreal</b>, although round-off errors keep these from being exact inverses.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> the <b><a href="erealstr.html">erealstr</a></b>, <b><a href="frealstr.html">frealstr</a></b>, <b><a href="strreal.html">strreal</a></b>, <b><a href="intstr.html">intstr</a></b> and <b><a href="strint.html">strint</a></b> functions.<p>
+</table></body>
+</html>

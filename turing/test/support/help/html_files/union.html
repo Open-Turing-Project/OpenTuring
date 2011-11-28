@@ -1,0 +1,42 @@
+<html>
+<head><title>union</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>union</b></font></td><td align="right"><font size="+1"><b>type</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>unionType</i> is:<p>
+<pre><tt>        <b>union</b> [ <i>id</i> ] : <i>indexType</i> <b>of</b>
+            <b>label</b> <i>labelExpn</i> { , <i>labelExpn </i>} :
+                        { <i>id</i> {, <i>id</i> } : <i>typeSpec</i> }
+            { <b>label</b> <i>labelExpn</i> { , <i>labelExpn </i>} :
+                        { <i>id</i> {, <i>id</i> } : <i>typeSpec</i> } }
+            [ <b>label</b> :       { <i>id</i> {, <i>id</i> } : <i>typeSpec</i> } ]
+        <b>end</b> <b>union</b></tt></pre>
+<tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A union type (also called a variant record) is like a record in which there is a run time choice among sets of accessible fields. This choice is made by the <b>tag</b> statement, which deletes the current set of fields and activates a new set.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This union type keeps track of various information about a vehicle, depending on the kind of vehicle.<p>
+<pre><tt>        <b>const</b> <i>passenger</i> := 0
+        <b>const</b> <i>farm</i>  := 1
+        <b>const</b> <i>recreational</i>  := 2
+        
+        <b>type</b> <i>vehicleInfo</i> :
+            <b>union</b> <i>kind</i> : <i>passenger</i> .. <i>recreational</i> <b>of</b>
+                <b>label</b> <i>passenger</i> :
+                    <i>cylinders</i> : 1..16
+                <b>label</b> <i>farm</i> :
+                    <i>farmClass </i>:<b>string</b> ( 10 )
+                <b>label</b> :     <i>% No fields for </i>"<i>otherwise</i>"<i> clause</i>
+            <b>end</b> <b>union</b>
+        <b>var</b> <i>v</i> : <i>vehicleInfo</i>
+        …
+        <b>tag</b> <i>v</i>, <i>passenger</i>    <i>% Activate passenger part v.cylinders </i>:= 6</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The optional identifier following the keyword <b>union</b> is the name of the <i>tag</i> of the union type. If the identifier is omitted, the tag is still considered to exist, although its value cannot be accessed. The tag must be of an index type, for example 1..7. You should limit the range of this index type, as the compiler may have a limit (at least 255) on the maximum range it can handle.<p>
+Each <i>labelExpn</i> must be known at compile time and must lie within the range of the tag's type. The fields, including the tag, of a union value are referenced using the dot operator, as in <i>v.cylinders </i>and these can be used as variables or constants. A field can be accessed only when the tag matches one of the label expressions corresponding to the field. The tag can be changed by the <b>tag</b> statement  but it cannot be assigned to, passed to a <b>var</b> parameter, or bound to using <b>var</b>.<p>
+In a union, <i>id'</i>s of fields, including the tag, must be distinct. However, these need not be distinct from identifiers outside the union. Unions can be assigned as a whole (to unions of an equivalent type), but they cannot be compared. A semicolon can optionally follow each <i>typeSpec</i>.<p>
+Any array contained in a union must have bounds that are known at compile time.<p>
+The notation &gt; can be used to access union fields. For example, if <i>p</i> is a pointer to <i>vehicleRecord</i>, <i>p</i>&gt;<i>farmClass</i> locates the <i>farmClass</i> field.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="pointer.html">pointer</a></b>.<p>
+</table></body>
+</html>

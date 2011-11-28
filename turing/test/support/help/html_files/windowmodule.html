@@ -1,0 +1,51 @@
+<html>
+<head><title>Window</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Window</b></font></td></table><p>
+  
+  
+  
+  <table>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>This unit contains the predefined subprograms that handle windows. There are routines to open, close, hide, show and select windows.<p>
+	  All routines in the <b>Window</b> unit are exported qualified (and thus must be prefaced with "<b>Window.</b>").<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The predefined subprograms of the <b>Window</b> module all use
+          window identifiers to indicate which window to act upon.  The 
+	  default Run window can be specified by using <b>defWinID</b>.
+	  For example, the following code causes the main Run window to
+	  appear and then blink on and off three times.<p>
+<pre><tt>        % Output some data to make the Run window appear.
+        <b>put</b> "Hello, World!"
+        <b>for</b> <i>i</i> : 1 .. 3
+            <b>delay</b> (1000)
+            <b>Window.Hide</b> (<b>defWinID</b>)
+            <b>delay</b> (1000)
+            <b>Window.Show</b> (<b>defWinID</b>)
+        <b>end for</b>
+        <b>put</b> "How are you?"</tt></pre>
+    </tr>
+    <tr valign="top">
+      <td><b>Entry Points&nbsp;&nbsp;</b></td>
+      <td>
+        <table>
+	  <tr valign="top"><td><a href="window_open.html"><b>Open</b></a></td><td width="20">&nbsp;</td><td>Opens a new execution window.</td></tr>
+	  <tr valign="top"><td><a href="window_close.html"><b>Close</b></a></td><td width="20">&nbsp;</td><td>Closes an execution window.</td></tr>
+	  <tr valign="top"><td><a href="window_select.html"><b>Select</b></a></td><td width="20">&nbsp;</td><td>Selects an execution window for output.</td></tr>
+	  <tr valign="top"><td><a href="window_getselect.html"><b>GetSelect</b></a></td><td width="20">&nbsp;</td><td>Returns the currently-selected execution window.</td></tr>
+	  <tr valign="top"><td><a href="window_setactive.html"><b>SetActive</b></a></td><td width="20">&nbsp;</td><td>Selects and activate (make front-most) an execution window.</td></tr>
+	  <tr valign="top"><td><a href="window_getactive.html"><b>GetActive</b></a></td><td width="20">&nbsp;</td><td>Gets the current active window.</td></tr>
+	  <tr valign="top"><td><a href="window_getposition.html"><b>GetPosition</a></td><td width="20">&nbsp;</td><td></b>Get the screen position of an execution window.</td></tr>
+	  <tr valign="top"><td><a href="window_setposition.html"><b>SetPosition</b></a></td><td width="20">&nbsp;</td><td>Set the screen position of an execution window.</td></tr>
+	  <tr valign="top"><td><a href="window_hide.html"><b>Hide</b></a></td><td width="20">&nbsp;</td><td>Hides an execution window.</td></tr>
+	  <tr valign="top"><td><a href="window_show.html"><b>Show</b></a></td><td width="20">&nbsp;</td><td>Shows the current execution window.</td></tr>
+	  <tr valign="top"><td><a href="window_set.html"><b>Set</b></a></td><td width="20">&nbsp;</td><td>Sets the configuration of the execution window.</td></tr>
+	  <tr valign="top"><td><a href="window_update.html"><b>Update</a></td><td width="20">&nbsp;</td><td></b>Updates the onscreen window from the offscreen bitmap.</td></tr>
+	</table>
+    </tr>
+  </table><p>
+</body>
+</html>

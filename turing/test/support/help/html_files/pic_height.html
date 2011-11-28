@@ -1,0 +1,64 @@
+<html>
+<head><title>Pic.Height</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Pic.Height</b></font></td><td align="right">Part of <a href="picmodule.html">Pic</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Pic.Height</b> (<i>picID</i> : <b>int</b>) : <b>int</b><p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td><b>Pic.Height </b>returns the width in pixels of the picture 
+	  represented by <i>picID</i>.<p>
+	  This function is often used in conjunction with <b>Pic.Width</b> 
+	  to obtain the dimensions of a picture loaded using 
+	  <b>Pic.FileNew</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>The program draws loads a picture from the file <i>lighthouse.jpg</i> 
+          and proceeds to tile the entire run window with copies of the 
+	  picture.<p>
+<pre><tt>        <b>var</b> <i>pic</i> : <b>int</b> := <b>Pic.FileNew</b> ("lighthouse.jpg")
+        <b>var </b><i>width</i><b> </b>: <b>int</b> := <b>Pic.Width</b> (<i>pic</i>)
+        <b>var </b><i>height</i><b> </b>: <b>int</b> := <b>Pic.Height</b> (<i>pic</i>)
+        <b>var </b><i>x</i>, <i>y</i><b> </b>: <b>int</b> := 0
+        <b>loop</b>
+            <b>exit when </b><i>y</i> &gt; <b>maxy</b>
+            <b>loop</b>
+                <b>exit when</b> <i>x</i> &gt; <b>maxx</b>
+                <b>Pic.Draw</b> (<i>pic</i>, <i>x</i>, <i>y</i>, <i>picCopy</i>)
+                <i>x</i> := <i>x</i> + <i>width</i>
+            <b>end loop</b>
+            <i>x</i> := 0
+            <i>y </i>:= <i>y</i> + <i>height</i>
+        <b>end loop</b>
+        </tt></pre>
+          <center><img src="pic_height01.gif"></center>
+	  <center><b>Output of Example Program</b></center><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+	    <PARAM name="Command" value="TCard">
+	    <PARAM name="Button" value="Text: Launch Example Program">
+	    <PARAM name="Item1" value="-1,Pic.Height.t;Pic.Height Example">
+	  </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+	  This means that you can only call the function by calling 
+	  <b>Pic.Height</b>, not by calling <b>Height</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="pic_width.html">Pic.Width</a></b> to obtain a picture's 
+          width and <b><a href="pic_filenew.html">Pic.FileNew</a></b> to load 
+	  a picture from a graphics file.<p>
+    </tr>
+  </table>
+</body>
+</html>

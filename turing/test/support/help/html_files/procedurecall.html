@@ -1,0 +1,37 @@
+<html>
+<head><title>procedureCall</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>procedureCall</b></font></td><td align="right"><font size="+1"><b>statement</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>procedureCall</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><i>procedureId</i> [ ( [ <i>expn</i> { , <i>expn</i> } ] ) ]</td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A procedure call is a statement that calls (invokes or activates) a <b>procedure</b>. If the procedure has parameters, a parenthesized list of expressions (<i>expns</i>) must follow the procedure's name (<i>procedureId</i>).<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>procedure</b> <i>greet</i>
+            <b>put</b> "Hello"
+        <b>end</b> <i>greet</i>
+        
+        <i>greet</i>       <i>% This is a call to the greet procedure</i>
+        
+        <b>procedure</b> <i>times</i> ( <b>var</b> <i>i </i>: <b>int</b>, <i>factor</i> : <b>int</b>)
+            <i>i</i> := <i>factor</i> * <i>i</i>
+        <b>end</b> <i>times</i>
+        
+        <b>var</b> <i>j </i>: <b>int</b>
+        <i>times</i> (<i> j</i>, 4 )      <i>% Multiply j by 4</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> A parameter declared in the header of a procedure is a <i>formal</i> parameter. For example, <i>i </i>and <i>factor</i> above are formal parameters. Each expression in the call is an <i>actual</i> parameter. For example, <i>j </i>and 4 above are actual parameters.<p>
+If a formal parameter is declared using <b>var</b>, then the expression passed to that parameter must be a variable reference (so its value can potentially be changed by the procedure). This means, for example, that it would be illegal to pass <i>j</i>+3 as the first parameter to <i>times</i>. The variable reference and the formal parameter must have equivalent types (see <i>equivalence</i> for details).<p>
+Each actual parameter passed to a non-<b>var</b> formal parameter must be assignable to that parameter (see <i>assignability </i>for details). See also <i>procedureDeclaration</i>.<p>
+In this explanation of <i>procedureCall</i>, we have up to this point ignored the possibility of procedures exported from modules, monitors and classes. If the procedure is being called from outside of a module or monitor <i>M </i>from which it has been exported, the syntax of the <i>procedureCall </i>is:<p>
+<pre><tt>        <i>M</i> . <i>procedureId</i> [ ( [ <i>expn</i> {, <i>expn</i> } ] ) ]</tt></pre>
+In other words, the module or monitor name and a dot must precede the procedure's name. If the procedure is being called from outside of a class from which it has been exported, the syntax of the <i>procedureCall </i>is one of:<p>
+<pre><tt>        (a) <i>classId</i> (p) . <i>procedureId</i> [ ( [ <i>expn</i> {, <i>expn</i> } ] ) ]
+        (b) <i>p</i> -&gt; <i>procedureId</i> [ ( [ <i>expn</i> {, <i>expn</i> } ] ) ]</tt></pre>
+In these, <i>p</i> must the a pointer value that locates an object in the class. Form (b) is a short form for form (a).<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="class.html">class</a></b>.<p>
+</table></body>
+</html>

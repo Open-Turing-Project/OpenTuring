@@ -1,0 +1,42 @@
+<html>
+<head><title>precedence</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>precedence</b></font></td><td align="right"><font size="+1"><b>of operators</b></font></td></table><p>
+<table><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Turing's <i>precedence </i>rules determine the order of applying operators in an expression such as 3 + 4 * 5. These rules state, for example, that multiplication is done before addition, so this expression is equivalent to 3+ (4 * 5).<p>
+Parenthesized parts of an expression are evaluated before being used. For example, in (1 + 2) * 3, the addition is done before the multiplication.<p>
+The precedence rules are defined by this table, in which operators appearing earlier in the table are applied first. For example,  multiplication is applied before addition:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>(1)</td><td width="10">&nbsp;</td><td>**,  ^,  #</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(2)</td><td width="10">&nbsp;</td><td><i>prefix</i> + and -</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(3)</td><td width="10">&nbsp;</td><td>*, /, <b>div</b>, <b>mod</b>, <b>rem</b>, <b>shr</b>, <b>shl</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(4)</td><td width="10">&nbsp;</td><td><i>infix </i>+, -, <b>xor</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(5)</td><td width="10">&nbsp;</td><td>&lt;, &gt;, =, &lt;=, &gt;=, <b>not=</b>, <b>in</b>, <b>not</b> <b>in</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(6)</td><td width="10">&nbsp;</td><td><b>not</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(7)</td><td width="10">&nbsp;</td><td><b>and</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(8)</td><td width="10">&nbsp;</td><td><b>or</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(9)</td><td width="10">&nbsp;</td><td>=&gt;</td><td width="10">&nbsp;</td><td width="10">&nbsp;</td><td>( <i>boolean</i> <i>implication</i>)</td></tr>
+</table><p>
+Operators appearing on a single line in this table are applied from left to right. For example, <i>abc </i>is the same is (<i>ab</i>)<i>c</i>.<p>
+Here are some examples illustrating precedence, in which the left and right expressions are equivalent:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>1**2</td><td width="10">&nbsp;</td><td width="10">&nbsp;</td><td width="10">&nbsp;</td><td>(1**2)</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td><i>a</i>+<i>b</i>*<i>c</i></td><td width="10">&nbsp;</td><td width="10">&nbsp;</td><td width="10">&nbsp;</td><td><i>a</i>+(<i>b</i>*<i>c</i>)</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td><i>a</i>*<i>b/c</i></td><td width="10">&nbsp;</td><td width="10">&nbsp;</td><td width="10">&nbsp;</td><td>(<i>a</i>*<i>b</i>)<i>/c</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td><i>b </i><b>or</b> <i>c</i> <b>and</b> <i>d</i></td><td width="10">&nbsp;</td><td width="10">&nbsp;</td><td><i>b </i><b>or</b> (<i>c </i><b>and</b> <i>d</i>)</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td><i>x</i> &lt; <i>y </i><b>and</b> <i>y &lt; z</i></td><td width="10">&nbsp;</td><td width="10">&nbsp;</td><td>(<i>x</i> &lt;<i> y</i>) <b>and</b><i> </i>(<i>y</i> &lt; <i>z</i>)</td></tr>
+</table><p>
+The final example illustrates the fact that in Turing, parentheses are not required when combining comparisons using <b>and</b> and <b>or</b>. These would be required in the Pascal language.<p>
+The type cheat operator # is applied after subscripting, subprogram calling, dotting, and &gt;. For example, in each of the following, # applies to the entire reference to the right.<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>#<i>a</i>(<i>i</i>)</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>#<i>r</i>.<i>y</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>#<i>p</i>-&gt;<i>x</i></td></tr>
+</table><p>
+The pointer following operator ^ is applied before subscripting, subprogram calling, dotting, and -&gt;. For example, in the following, ^ applies to a, r and p.<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>^<i>a</i>(<i>i</i>)</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>^<i>r.y</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>^<i>p</i>-&gt;<i>x</i></td></tr>
+</table><p>
+Use parentheses to force ^ to apply to more of the reference. For example, in ^(a(i)), the ^ applies to a(i).<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <i><a href="infix.html">infix</a></i> and <i><a href="prefix.html">prefix</a> </i>operators. See the <b><a href="int.html">int</a></b>, <b><a href="real.html">real</a></b>, <b><a href="string1.html">string</a></b>, <b><a href="boolean.html">boolean</a></b>, <b><a href="set.html">set</a></b>, <b><a href="enum.html">enum</a></b>, <b><a href="char.html">char</a></b> and <b><a href="char.html">char</a></b>(<i>n</i>) types.<p>
+</table></body>
+</html>

@@ -1,0 +1,21 @@
+<html>
+<head><title>Net.LocalAddress</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Net.LocalAddress</b></font></td><td align="right">Part of <a href="netmodule.html">Net</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Net.LocalAddress</b> : <b>string</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Returns<b> </b>the TCP/IP numeric address of the machine the program is running on. The numeric address is of the form <i>xxx</i>.<i>yyy</i>.<i>zzz</i>.<i>www</i> where each segment is a number from 0 to 255.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The <b>Net</b> module requires a TCP/IP stack to be installed and operating in order to function. It does not communicate using any other protocols<p>
+It is possible for Firewalls to interfere with the actions of the <b>Net</b> module, preventing connections from taking place.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program prints out the TCP/IP numeric address of the current machine.<p>
+<pre><tt>        <b>put</b> "Your machine address is ", <b>Net.LocalAddress</b></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Net.LocalAddress</b>, not by calling <b>LocalAddress</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="net_localname.html">Net.LocalName</a></b>.<p>
+</table></body>
+</html>

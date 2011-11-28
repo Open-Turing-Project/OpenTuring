@@ -1,0 +1,62 @@
+<html>
+<head><title>GUI.SetEchoChar</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.SetEchoChar</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>GUI.SetEchoChar</b> (<i>widgetID</i> : <b>int</b>, <i>echoChar</i> : <b>char</b>)<p></font>
+    </tr>
+    <tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+      <td>The <b>GUI.SetEchoChar</b> procedure is used with text fields,
+          especially when using a text field to input a password.
+          When the <b>GUI.SetEchoChar</b> is called with a text field, 
+	  any character entered into the text field will appear as the
+	  character specified by <i>inputChar</i>.<p>
+	  This allows you to use the text field to enter a password.
+	  The characters that the user types will be echoed with the
+	  character specified by <i>inputChar</i> (often an asterisk).<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program displays a text field.  As the user enters
+          characters, each character is represented as a '*'.  When
+	  the user enters return, the program exits after displaying
+	  the actual text entered into the text field.<p>
+<pre><tt>        <b>import</b> <i>GUI</i>
+
+        <b>procedure</b> <i>EchoString</i> (s : <b>string</b>)
+            <b>put</b> "You entered \"", s, "\""
+            <b>GUI.Quit</b>
+        <b>end</b> <i>EchoString</i>
+
+        <b>var</b> <i>tf</i> := <b>GUI.CreateTextField</b> (10, 100, 100, "", <i>EchoString</i>)
+        <b>GUI.SetEchoChar</b> (<i>tf</i>, '*')
+        <b>loop</b>
+            <b>exit when GUI.ProcessEvent</b>
+        <b>end loop</b></tt></pre><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,GUI.SetEchoChar.t;GUI.SetEchoChar Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+      <td>Note that the <i>echoChar</i> argument to <b>GUI.SetEchoChar</b>
+          must be a character, not a string. This means the character
+	  should be enclosed in single quote marks ('), not double
+	  quotes (").<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+	  <b>GUI.SetEchoChar</b>, not by calling <b>SetEchoChar</b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

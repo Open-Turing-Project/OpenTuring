@@ -1,0 +1,2431 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+    <meta name="GENERATOR" content="Turing MakeTOC.t">
+    <!-- Sitemap 1.0 -->
+</HEAD>
+<BODY>
+<UL>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="abs - absolute value function">
+		         <param name="Local" value="html_files/abs.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="addr - address of a variable">
+		         <param name="Local" value="html_files/addr.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="addressint - type">
+		         <param name="Local" value="html_files/addressint.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="all - all members of a set">
+		         <param name="Local" value="html_files/all.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="and - boolean and bit-wise operator">
+		         <param name="Local" value="html_files/and.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="anyclass - the ancestor of all classes">
+		         <param name="Local" value="html_files/anyclass.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="arccos - arccosine function (radians)">
+		         <param name="Local" value="html_files/arccos.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="arccosd - arccosine function (degrees)">
+		         <param name="Local" value="html_files/arccosd.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="arcsin - arcsine function (radians)">
+		         <param name="Local" value="html_files/arcsin.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="arcsind - arcsine function (degrees)">
+		         <param name="Local" value="html_files/arcsind.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="arctan - arctangent function (radians)">
+		         <param name="Local" value="html_files/arctan.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="arctand - arctangent function (degrees)">
+		         <param name="Local" value="html_files/arctand.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="array - data type">
+		         <param name="Local" value="html_files/array.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="assert - statement">
+		         <param name="Local" value="html_files/assert.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="assignability - of expression to variable">
+		         <param name="Local" value="html_files/assignability.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="assignment - statement">
+		         <param name="Local" value="html_files/assignment.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="begin - statement">
+		         <param name="Local" value="html_files/begin.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="bind - declaration">
+		         <param name="Local" value="html_files/bind.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="bits - extraction">
+		         <param name="Local" value="html_files/bits.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="body - declaration">
+		         <param name="Local" value="html_files/body.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="boolean - true-false type">
+		         <param name="Local" value="html_files/boolean.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="break - debugger pause statement">
+		         <param name="Local" value="html_files/break.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="buttonchoose - switch mouse modes">
+		         <param name="Local" value="html_files/buttonchoose.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="buttonmoved - has a mouse event occurred">
+		         <param name="Local" value="html_files/buttonmoved.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="buttonwait - get a mouse event procedure">
+		         <param name="Local" value="html_files/buttonwait.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="case - selection statement">
+		         <param name="Local" value="html_files/case.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="catenation (+) - joining together strings">
+		         <param name="Local" value="html_files/catenation.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="ceil - real-to-integer function">
+		         <param name="Local" value="html_files/ceil.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="char(n) - single character data type">
+		         <param name="Local" value="html_files/char_n.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="char - multiple character data type">
+		         <param name="Local" value="html_files/char.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="cheat - type cheating">
+		         <param name="Local" value="html_files/cheat.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="checked - compiler directive">
+		         <param name="Local" value="html_files/checked.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="chr - integer-to-character function">
+		         <param name="Local" value="html_files/chr.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="class - declaration">
+		         <param name="Local" value="html_files/class.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="clock - millisecs used procedure">
+		         <param name="Local" value="html_files/clock.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="close - file statement">
+		         <param name="Local" value="html_files/close.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="cls - clear screen graphics procedure">
+		         <param name="Local" value="html_files/cls.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="collection - declaration">
+		         <param name="Local" value="html_files/collection.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="color - set text color graphics procedure">
+		         <param name="Local" value="html_files/color.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="colorback - set text background color procedure">
+		         <param name="Local" value="html_files/colorback.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="colour - set text color graphics procedure">
+		         <param name="Local" value="html_files/color.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="colourback - set text background color procedure">
+		         <param name="Local" value="html_files/colorback.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="comment - remark statement">
+		         <param name="Local" value="html_files/comment.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="comparisonOperator">
+		         <param name="Local" value="html_files/comparisonoperator.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Concurrency - concurrency subprogram module">
+		         <param name="Local" value="html_files/concurrencymodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Concurrency.empty - condition function">
+		         <param name="Local" value="html_files/concurrency_empty.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Concurrency.getpriority - get priority of a process function">
+		         <param name="Local" value="html_files/concurrency_getpriority.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Concurrency.setpriority - set priority of a process function">
+		         <param name="Local" value="html_files/concurrency_setpriority.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Concurrency.simutime - simulated time function">
+		         <param name="Local" value="html_files/concurrency_simutime.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="condition - declaration">
+		         <param name="Local" value="html_files/condition.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Config - system information module">
+		         <param name="Local" value="html_files/configmodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Config.Display - display information function">
+		         <param name="Local" value="html_files/config_display.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Config.Lang - language information function">
+		         <param name="Local" value="html_files/config_lang.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Config.Machine - machine information function">
+		         <param name="Local" value="html_files/config_machine.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="const - constant declaration">
+		         <param name="Local" value="html_files/const.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="constantReference - use of a constant">
+		         <param name="Local" value="html_files/constantreference.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="cos - cosine function (radians)">
+		         <param name="Local" value="html_files/cos.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="cosd - cosine function (degrees)">
+		         <param name="Local" value="html_files/cosd.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="date - current date as string procedure">
+		         <param name="Local" value="html_files/date.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="declaration - create a variable">
+		         <param name="Local" value="html_files/declaration.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="deferred - subprogram declaration">
+		         <param name="Local" value="html_files/deferred.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="delay - wait specified time procedure">
+		         <param name="Local" value="html_files/delay.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Dir - directory manipulation module">
+		         <param name="Local" value="html_files/dirmodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Dir.Change - change current directory procedure">
+		         <param name="Local" value="html_files/dir_change.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Dir.Close - close a directory stream procedure">
+		         <param name="Local" value="html_files/dir_close.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Dir.Create - create a directory procedure">
+		         <param name="Local" value="html_files/dir_create.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Dir.Current - get current directory function">
+		         <param name="Local" value="html_files/dir_current.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Dir.Delete - delete directory procedure">
+		         <param name="Local" value="html_files/dir_delete.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Dir.Exists - determine if directory exists function">
+		         <param name="Local" value="html_files/dir_exists.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Dir.Get - list directory contents function">
+		         <param name="Local" value="html_files/dir_get.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Dir.GetLong - list directory contents function">
+		         <param name="Local" value="html_files/dir_getlong.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Dir.Open - open directory stream function">
+		         <param name="Local" value="html_files/dir_open.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="div - integer truncating division operator">
+		         <param name="Local" value="html_files/div.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Draw - draw graphics module">
+		         <param name="Local" value="html_files/drawmodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Draw.Arc - draw an arc procedure">
+		         <param name="Local" value="html_files/draw_arc.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Draw.Box - draw a rectangle procedure">
+		         <param name="Local" value="html_files/draw_box.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Draw.Cls - clear screen to color 0 procedure">
+		         <param name="Local" value="html_files/draw_cls.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Draw.DashedLine - draw a dashed/dotted line procedure">
+		         <param name="Local" value="html_files/draw_dashedline.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Draw.Dot - draw a dot procedure">
+		         <param name="Local" value="html_files/draw_dot.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Draw.Fill - flood fill an area procedure">
+		         <param name="Local" value="html_files/draw_fill.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Draw.FillArc - draw a filled arc procedure">
+		         <param name="Local" value="html_files/draw_fillarc.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Draw.FillBox - draw a filled rectangle procedure">
+		         <param name="Local" value="html_files/draw_fillbox.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Draw.FillMapleLeaf - draw a filled maple leaf procedure">
+		         <param name="Local" value="html_files/draw_fillmapleleaf.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Draw.FillOval - draw a filled ellipse procedure">
+		         <param name="Local" value="html_files/draw_filloval.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Draw.FillPolygon - draw a filled polygon procedure">
+		         <param name="Local" value="html_files/draw_fillpolygon.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Draw.FillStar - draw a filled star procedure">
+		         <param name="Local" value="html_files/draw_fillstar.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Draw.Line - draw a line procedure">
+		         <param name="Local" value="html_files/draw_line.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Draw.MapleLeaf - draw a maple leaf procedure">
+		         <param name="Local" value="html_files/draw_mapleleaf.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Draw.Oval - draw an oval procedure">
+		         <param name="Local" value="html_files/draw_oval.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Draw.Polygon - draw a polygon procedure">
+		         <param name="Local" value="html_files/draw_polygon.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Draw.Star - draw a star procedure">
+		         <param name="Local" value="html_files/draw_star.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Draw.Text - draw text in a font procedure">
+		         <param name="Local" value="html_files/draw_text.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Draw.ThickLine - draw a thick line procedure">
+		         <param name="Local" value="html_files/draw_thickline.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="drawarc - draw an arc procedure">
+		         <param name="Local" value="html_files/drawarc.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="drawbox - graphics procedure">
+		         <param name="Local" value="html_files/drawbox.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="drawdot - draw a dot procedure">
+		         <param name="Local" value="html_files/drawdot.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="drawfill - flood fill an area procedure">
+		         <param name="Local" value="html_files/drawfill.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="drawfillarc - draw a filled arc procedure">
+		         <param name="Local" value="html_files/drawfillarc.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="drawfillbox - draw a filled rectangle procedure">
+		         <param name="Local" value="html_files/drawfillbox.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="drawfillmapleleaf - draw a filled maple leaf procedure">
+		         <param name="Local" value="html_files/drawfillmapleleaf.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="drawfilloval - draw a filled oval procedure">
+		         <param name="Local" value="html_files/drawfilloval.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="drawfillpolygon - draw a filled polygon procedure">
+		         <param name="Local" value="html_files/drawfillpolygon.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="drawfillstar - draw a filled star procedure">
+		         <param name="Local" value="html_files/drawfillstar.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="drawline - draw a line procedure">
+		         <param name="Local" value="html_files/drawline.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="drawmapleleaf - draw a maple leaf procedure">
+		         <param name="Local" value="html_files/drawmapleleaf.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="drawoval - draw an oval procedure">
+		         <param name="Local" value="html_files/drawoval.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="drawpic - draw a saved picture procedure">
+		         <param name="Local" value="html_files/drawpic.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="drawpolygon - draw a polygon procedure">
+		         <param name="Local" value="html_files/drawpolygon.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="drawstar - draw a star procedure">
+		         <param name="Local" value="html_files/drawstar.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="empty - condition function">
+		         <param name="Local" value="html_files/empty.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="enum - enumerated type">
+		         <param name="Local" value="html_files/enum.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="enumeratedValue - enumerated value">
+		         <param name="Local" value="html_files/enumeratedvalue.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="eof - end-of-file function">
+		         <param name="Local" value="html_files/eof.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="equivalence - of types">
+		         <param name="Local" value="html_files/equivalence.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="erealstr - real-to-string function">
+		         <param name="Local" value="html_files/erealstr.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Error - error handling/setting module">
+		         <param name="Local" value="html_files/errormodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Error.Halt - halt execution with a message procedure">
+		         <param name="Local" value="html_files/error_halt.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Error.Last - return last integer error code function">
+		         <param name="Local" value="html_files/error_last.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Error.LastMsg - return last string error message function">
+		         <param name="Local" value="html_files/error_lastmsg.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Error.LastStr - return last string error constant function">
+		         <param name="Local" value="html_files/error_laststr.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Error.Msg - return error message for a code function">
+		         <param name="Local" value="html_files/error_msg.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Error.Str - return string error constant for a code function">
+		         <param name="Local" value="html_files/error_str.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Error.Trip - set error code procedure">
+		         <param name="Local" value="html_files/error_trip.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Error.TripMsg - set error code and message procedure">
+		         <param name="Local" value="html_files/error_tripmsg.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="ErrorNum - list of error codes modules">
+		         <param name="Local" value="html_files/errornummodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Exceptions - list of exceptions module">
+		         <param name="Local" value="html_files/exceptionsmodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="exit - statement">
+		         <param name="Local" value="html_files/exit.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="exp - exponentiation function">
+		         <param name="Local" value="html_files/exp.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="explicitCharConstant - character literal">
+		         <param name="Local" value="html_files/explicitcharconstant.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="explicitConstant - literal">
+		         <param name="Local" value="html_files/explicitconstant.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="explicitIntegerConstant - integer literal">
+		         <param name="Local" value="html_files/explicitintegerconstant.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="explicitRealConstant - real literal">
+		         <param name="Local" value="html_files/explicitrealconstant.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="explicitStringConstant - string literal">
+		         <param name="Local" value="html_files/explicitstringconstant.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="explicitTrueFalseConstant - boolean literal">
+		         <param name="Local" value="html_files/explicittruefalseconstant.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="expn - expression">
+		         <param name="Local" value="html_files/expn.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="export - list">
+		         <param name="Local" value="html_files/export.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="external - declaration">
+		         <param name="Local" value="html_files/external.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="false - boolean value (not true)">
+		         <param name="Local" value="html_files/false.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="fetcharg - fetch argument function">
+		         <param name="Local" value="html_files/fetcharg.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="File - File manipulation module">
+		         <param name="Local" value="html_files/filemodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="File.Copy - copy a file procedure">
+		         <param name="Local" value="html_files/file_copy.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="File.Delete - delete a file procedure">
+		         <param name="Local" value="html_files/file_delete.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="File.DiskFree - obtain free disk space function">
+		         <param name="Local" value="html_files/file_diskfree.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="File.Exists - determine if a file exists function">
+		         <param name="Local" value="html_files/file_exists.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="File.FullPath - obtain absolute path function">
+		         <param name="Local" value="html_files/file_fullpath.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="File.Parent - obtain parent directory of a file or directory function">
+		         <param name="Local" value="html_files/file_parent.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="File.Rename - rename a file procedure">
+		         <param name="Local" value="html_files/file_rename.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="File.Status - information about a file procedure">
+		         <param name="Local" value="html_files/file_status.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="flexible - array initialization">
+		         <param name="Local" value="html_files/flexible.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="floor - real-to-integer function">
+		         <param name="Local" value="html_files/floor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Font - font manipulation module">
+		         <param name="Local" value="html_files/fontmodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Font.Draw - draw text in a font procedure">
+		         <param name="Local" value="html_files/font_draw.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Font.Free - free an allocated font procedure">
+		         <param name="Local" value="html_files/font_free.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Font.GetName - font listing procedure">
+		         <param name="Local" value="html_files/font_getname.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Font.GetSize - font listing procedure">
+		         <param name="Local" value="html_files/font_getsize.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Font.GetStyle - font listing procedure">
+		         <param name="Local" value="html_files/font_getstyle.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Font.Name - font listing procedure">
+		         <param name="Local" value="html_files/font_name.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Font.New - allocate a font for use procedure">
+		         <param name="Local" value="html_files/font_new.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Font.Sizes - size of font procedure">
+		         <param name="Local" value="html_files/font_sizes.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Font.StartName - font listing procedure">
+		         <param name="Local" value="html_files/font_startname.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Font.StartSize - font listing procedure">
+		         <param name="Local" value="html_files/font_startsize.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Font.Width - width of text in a font function">
+		         <param name="Local" value="html_files/font_width.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="for - statement">
+		         <param name="Local" value="html_files/for.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="fork - statement">
+		         <param name="Local" value="html_files/fork.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="forward - subprogram declaration">
+		         <param name="Local" value="html_files/forward.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="frealstr - real-to-string function">
+		         <param name="Local" value="html_files/frealstr.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="free - statement">
+		         <param name="Local" value="html_files/free.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="function - declaration">
+		         <param name="Local" value="html_files/function.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="functionCall">
+		         <param name="Local" value="html_files/functioncall.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="get - file statement">
+		         <param name="Local" value="html_files/get.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="getch - get character procedure">
+		         <param name="Local" value="html_files/getch.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="getchar - get character function">
+		         <param name="Local" value="html_files/getchar.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="getenv - get environment function">
+		         <param name="Local" value="html_files/getenv.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="getpid - get process id function">
+		         <param name="Local" value="html_files/getpid.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="getpriority - function">
+		         <param name="Local" value="html_files/getpriority.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI">
+		         <param name="Local" value="html_files/guimodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.AddLine">
+		         <param name="Local" value="html_files/gui_addline.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.AddText">
+		         <param name="Local" value="html_files/gui_addtext.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.Alert">
+		         <param name="Local" value="html_files/gui_alert_2,3,full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.Alert2">
+		         <param name="Local" value="html_files/gui_alert_2,3,full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.Alert3">
+		         <param name="Local" value="html_files/gui_alert_2,3,full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.AlertFull">
+		         <param name="Local" value="html_files/gui_alert_2,3,full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.Choose">
+		         <param name="Local" value="html_files/gui_choose_full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.ChooseFull">
+		         <param name="Local" value="html_files/gui_choose_full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.ClearText">
+		         <param name="Local" value="html_files/gui_cleartext.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CloseWindow">
+		         <param name="Local" value="html_files/gui_closewindow.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateButton">
+		         <param name="Local" value="html_files/gui_createbutton_full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateButtonFull">
+		         <param name="Local" value="html_files/gui_createbutton_full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateCanvas">
+		         <param name="Local" value="html_files/gui_createcanvas_full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateCanvasFull">
+		         <param name="Local" value="html_files/gui_createcanvas_full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateCheckBox">
+		         <param name="Local" value="html_files/gui_createcheckbox_full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateCheckBoxFull">
+		         <param name="Local" value="html_files/gui_createcheckbox_full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateFrame">
+		         <param name="Local" value="html_files/gui_createframe.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateHorizontalScrollBar">
+		         <param name="Local" value="html_files/gui_createhorizontalscrollbar_full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateHorizontalScrollBarFull">
+		         <param name="Local" value="html_files/gui_createhorizontalscrollbar_full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateHorizontalSlider">
+		         <param name="Local" value="html_files/gui_createhorizontalslider.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateLabel">
+		         <param name="Local" value="html_files/gui_createlabel_full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateLabelFull">
+		         <param name="Local" value="html_files/gui_createlabel_full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateLabelledFrame">
+		         <param name="Local" value="html_files/gui_createlabelledframe.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateLine">
+		         <param name="Local" value="html_files/gui_createline.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateMenu">
+		         <param name="Local" value="html_files/gui_createmenu.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateMenuItem">
+		         <param name="Local" value="html_files/gui_createmenuitem_full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateMenuItemFull">
+		         <param name="Local" value="html_files/gui_createmenuitem_full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreatePicture">
+		         <param name="Local" value="html_files/gui_createpicture.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreatePictureButton">
+		         <param name="Local" value="html_files/gui_createpicturebutton_full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreatePictureButtonFull">
+		         <param name="Local" value="html_files/gui_createpicturebutton_full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreatePictureRadioButton">
+		         <param name="Local" value="html_files/gui_createpictureradiobutton_full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreatePictureRadioButtonFull">
+		         <param name="Local" value="html_files/gui_createpictureradiobutton_full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateRadioButton">
+		         <param name="Local" value="html_files/gui_createradiobutton_full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateRadioButtonFull">
+		         <param name="Local" value="html_files/gui_createradiobutton_full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateTextBox">
+		         <param name="Local" value="html_files/gui_createtextbox_full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateTextBoxChoice">
+		         <param name="Local" value="html_files/gui_createtextboxchoice.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateTextBoxFull">
+		         <param name="Local" value="html_files/gui_createtextbox_full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateTextField">
+		         <param name="Local" value="html_files/gui_createtextfield_full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateTextFieldFull">
+		         <param name="Local" value="html_files/gui_createtextfield_full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateVerticalScrollBar">
+		         <param name="Local" value="html_files/gui_createverticalscrollbar_full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateVerticalScrollBarFull">
+		         <param name="Local" value="html_files/gui_createverticalscrollbar_full.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.CreateVerticalSlider">
+		         <param name="Local" value="html_files/gui_createverticalslider.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.Disable">
+		         <param name="Local" value="html_files/gui_disable.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.Dispose">
+		         <param name="Local" value="html_files/gui_dispose.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.Draw...">
+		         <param name="Local" value="html_files/gui_draw.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.Enable">
+		         <param name="Local" value="html_files/gui_enable.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.FontDraw">
+		         <param name="Local" value="html_files/gui_fontdraw.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.GetCheckBox">
+		         <param name="Local" value="html_files/gui_getcheckbox.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.GetEventTime">
+		         <param name="Local" value="html_files/gui_geteventtime.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.GetEventWidgetID">
+		         <param name="Local" value="html_files/gui_geteventwidgetid.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.GetEventWindow">
+		         <param name="Local" value="html_files/gui_geteventwindow.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.GetHeight">
+		         <param name="Local" value="html_files/gui_getheight.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.GetMenuBarHeight">
+		         <param name="Local" value="html_files/gui_getmenubarheight.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.GetScrollBarWidth">
+		         <param name="Local" value="html_files/gui_getscrollbarwidth.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.GetSliderValue">
+		         <param name="Local" value="html_files/gui_getslidervalue.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.GetText">
+		         <param name="Local" value="html_files/gui_gettext.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.GetVersion">
+		         <param name="Local" value="html_files/gui_getversion.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.GetWidth">
+		         <param name="Local" value="html_files/gui_getwidth.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.GetX">
+		         <param name="Local" value="html_files/gui_get_x,y.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.GetY">
+		         <param name="Local" value="html_files/gui_get_x,y.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.Hide">
+		         <param name="Local" value="html_files/gui_hide.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.HideMenuBar">
+		         <param name="Local" value="html_files/gui_hidemenubar.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.HideWindow">
+		         <param name="Local" value="html_files/gui_hidewindow.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.OpenFile">
+		         <param name="Local" value="html_files/gui_openfile.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.OpenFileFull">
+		         <param name="Local" value="html_files/gui_openfilefull.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.Pic...">
+		         <param name="Local" value="html_files/gui_pic.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.ProcessEvent">
+		         <param name="Local" value="html_files/gui_processevent.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.Quit">
+		         <param name="Local" value="html_files/gui_quit.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.Refresh">
+		         <param name="Local" value="html_files/gui_refresh.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.ResetQuit">
+		         <param name="Local" value="html_files/gui_resetquit.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SaveFile">
+		         <param name="Local" value="html_files/gui_savefile.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SaveFileFull">
+		         <param name="Local" value="html_files/gui_savefilefull.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SelectRadio">
+		         <param name="Local" value="html_files/gui_selectradio.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SetActive">
+		         <param name="Local" value="html_files/gui_setactive.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SetBackgroundColor">
+		         <param name="Local" value="html_files/gui_setbackgroundcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SetBackgroundColour">
+		         <param name="Local" value="html_files/gui_setbackgroundcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SetCheckBox">
+		         <param name="Local" value="html_files/gui_setcheckbox.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SetColor">
+		         <param name="Local" value="html_files/gui_setcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SetColour">
+		         <param name="Local" value="html_files/gui_setcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SetDefault">
+		         <param name="Local" value="html_files/gui_setdefault.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SetDisplayWhenCreated">
+		         <param name="Local" value="html_files/gui_setdisplaywhencreated.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SetEchoChar">
+		         <param name="Local" value="html_files/gui_setechochar.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SetKeyEventHandler">
+		         <param name="Local" value="html_files/gui_setkeyeventhandler.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SetLabel">
+		         <param name="Local" value="html_files/gui_setlabel.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SetMouseEventHandler">
+		         <param name="Local" value="html_files/gui_setmouseeventhandler.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SetNullEventHandler">
+		         <param name="Local" value="html_files/gui_setnulleventhandler.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SetPosition">
+		         <param name="Local" value="html_files/gui_setposition.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SetPositionAndSize">
+		         <param name="Local" value="html_files/gui_setpositionandsize.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SetScrollAmount">
+		         <param name="Local" value="html_files/gui_setscrollamount.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SetScrollOnAdd">
+		         <param name="Local" value="html_files/gui_setscrollonadd.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SetSelection">
+		         <param name="Local" value="html_files/gui_setselection.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SetSize">
+		         <param name="Local" value="html_files/gui_setsize.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SetSliderMinMax">
+		         <param name="Local" value="html_files/gui_setsliderminmax.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SetSliderReverse">
+		         <param name="Local" value="html_files/gui_setsliderreverse.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SetSliderSize">
+		         <param name="Local" value="html_files/gui_setslidersize.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SetSliderValue">
+		         <param name="Local" value="html_files/gui_setslidervalue.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SetText">
+		         <param name="Local" value="html_files/gui_settext.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SetTopLine">
+		         <param name="Local" value="html_files/gui_settopline.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.SetXOR">
+		         <param name="Local" value="html_files/gui_setxor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.Show">
+		         <param name="Local" value="html_files/gui_show.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.ShowMenuBar">
+		         <param name="Local" value="html_files/gui_showmenubar.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="GUI.ShowWindow">
+		         <param name="Local" value="html_files/gui_show.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="handler - exception handler">
+		         <param name="Local" value="html_files/handler.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="hasch - has character function">
+		         <param name="Local" value="html_files/hasch.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="id - (identifier) name of an item in a program">
+		         <param name="Local" value="html_files/id.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="#if - used for conditional compilation">
+		         <param name="Local" value="html_files/_if.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="if - statement">
+		         <param name="Local" value="html_files/if.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="implement by - clause">
+		         <param name="Local" value="html_files/implement_by.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="implement - clause">
+		         <param name="Local" value="html_files/implement.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="import - list">
+		         <param name="Local" value="html_files/import.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="in - member of a set">
+		         <param name="Local" value="html_files/in.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="include - source files">
+		         <param name="Local" value="html_files/include.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="index - find pattern in string function">
+		         <param name="Local" value="html_files/index.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="indexType">
+		         <param name="Local" value="html_files/indextype.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="indirection - operator (@)">
+		         <param name="Local" value="html_files/indirection.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="infix - operator">
+		         <param name="Local" value="html_files/infix.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="inherit - inheritance clause">
+		         <param name="Local" value="html_files/inherit.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="init - array initialization">
+		         <param name="Local" value="html_files/init.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Input">
+		         <param name="Local" value="html_files/inputmodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Input.getch">
+		         <param name="Local" value="html_files/input_getch.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Input.getchar">
+		         <param name="Local" value="html_files/input_getchar.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Input.hasch">
+		         <param name="Local" value="html_files/input_hasch.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Input.Flush - empty keyboard buffer">
+		         <param name="Local" value="html_files/input_flush.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Input.KeyDown - get keyboard state">
+		         <param name="Local" value="html_files/input_keydown.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Input.Pause - pause for keystroke">
+		         <param name="Local" value="html_files/input_pause.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="int - integer type">
+		         <param name="Local" value="html_files/int.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="intn - n-byte integer type">
+		         <param name="Local" value="html_files/intn.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="intreal - integer-to-real function">
+		         <param name="Local" value="html_files/intreal.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="intstr - integer-to-string function">
+		         <param name="Local" value="html_files/intstr.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="invariant - assertion">
+		         <param name="Local" value="html_files/invariant.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Joystick">
+		         <param name="Local" value="html_files/joystickmodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Joystick.GetInfo">
+		         <param name="Local" value="html_files/joystick_getinfo.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Keyboard">
+		         <param name="Local" value="html_files/keyboardmodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="length - of a string function">
+		         <param name="Local" value="html_files/length.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Limits">
+		         <param name="Local" value="html_files/limitsmodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="ln - natural logarithm function">
+		         <param name="Local" value="html_files/ln.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="locate - procedure">
+		         <param name="Local" value="html_files/locate.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="locatexy - graphics procedure">
+		         <param name="Local" value="html_files/locatexy.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="loop - statement">
+		         <param name="Local" value="html_files/loop.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="lower - bound">
+		         <param name="Local" value="html_files/lower.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Math">
+		         <param name="Local" value="html_files/mathmodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Math.Distance">
+		         <param name="Local" value="html_files/math_distance.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Math.DistancePointLine">
+		         <param name="Local" value="html_files/math_distancepointline.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="max - maximum function">
+		         <param name="Local" value="html_files/max.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="maxcol - maximum column function">
+		         <param name="Local" value="html_files/maxcol.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="maxcolor - graphics function">
+		         <param name="Local" value="html_files/maxcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="maxcolour - graphics function">
+		         <param name="Local" value="html_files/maxcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="maxint - maximum integer function">
+		         <param name="Local" value="html_files/maxint.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="maxnat - maximum natural number function">
+		         <param name="Local" value="html_files/maxnat.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="maxrow - maximum row function">
+		         <param name="Local" value="html_files/maxrow.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="maxx - graphics function">
+		         <param name="Local" value="html_files/maxx.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="maxy - graphics function">
+		         <param name="Local" value="html_files/maxy.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="min - minimum function">
+		         <param name="Local" value="html_files/min.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="minint - minimum integer function">
+		         <param name="Local" value="html_files/minint.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="minnat - minimum natural number function">
+		         <param name="Local" value="html_files/minnat.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="mod - modulo operator">
+		         <param name="Local" value="html_files/mod.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="module - declaration">
+		         <param name="Local" value="html_files/module.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="monitor - declaration">
+		         <param name="Local" value="html_files/monitor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Mouse">
+		         <param name="Local" value="html_files/mousemodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Mouse.ButtonChoose">
+		         <param name="Local" value="html_files/mouse_buttonchoose.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Mouse.ButtonMoved">
+		         <param name="Local" value="html_files/mouse_buttonmoved.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Mouse.ButtonWait">
+		         <param name="Local" value="html_files/mouse_buttonwait.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Mouse.Where">
+		         <param name="Local" value="html_files/mouse_where.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="mousewhere">
+		         <param name="Local" value="html_files/mousewhere.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Music">
+		         <param name="Local" value="html_files/musicmodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Music.Play">
+		         <param name="Local" value="html_files/music_play.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Music.PlayFile">
+		         <param name="Local" value="html_files/music_playfile.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Music.PlayFileLoop">
+		         <param name="Local" value="html_files/music_playfileloop.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Music.PlayFileReturn">
+		         <param name="Local" value="html_files/music_playfilereturn.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Music.PlayFileStop">
+		         <param name="Local" value="html_files/music_playfilestop.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Music.Sound">
+		         <param name="Local" value="html_files/music_sound.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Music.SoundOff">
+		         <param name="Local" value="html_files/music_soundoff.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="named - type">
+		         <param name="Local" value="html_files/named.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="nargs - number of arguments">
+		         <param name="Local" value="html_files/nargs.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="nat - natural number type">
+		         <param name="Local" value="html_files/nat.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="natn - n-byte natural number type">
+		         <param name="Local" value="html_files/natn.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="natreal - natural number to real function">
+		         <param name="Local" value="html_files/natreal.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="natstr - natural-number-to-string function">
+		         <param name="Local" value="html_files/natstr.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Net">
+		         <param name="Local" value="html_files/netmodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Net.BytesAvailable">
+		         <param name="Local" value="html_files/net_bytesavailable.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Net.CharAvailable">
+		         <param name="Local" value="html_files/net_charavailable.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Net.CloseConnection">
+		         <param name="Local" value="html_files/net_closeconnection.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Net.HostAddressFromName">
+		         <param name="Local" value="html_files/net_hostaddressfromname.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Net.HostNameFromAddress">
+		         <param name="Local" value="html_files/net_hostnamefromaddress.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Net.LineAvailable">
+		         <param name="Local" value="html_files/net_lineavailable.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Net.LocalAddress">
+		         <param name="Local" value="html_files/net_localaddress.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Net.LocalName">
+		         <param name="Local" value="html_files/net_localname.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Net.OpenConnection">
+		         <param name="Local" value="html_files/net_openconnection.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Net.OpenURLConnection">
+		         <param name="Local" value="html_files/net_openurlconnection.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Net.TokenAvailable">
+		         <param name="Local" value="html_files/net_tokenavailable.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Net.WaitForConnection">
+		         <param name="Local" value="html_files/net_waitforconnection.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="new - statement">
+		         <param name="Local" value="html_files/new.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="nil - pointer to a collection">
+		         <param name="Local" value="html_files/nil.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="not - true/false (boolean) operator">
+		         <param name="Local" value="html_files/not.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="objectclass - of a pointer">
+		         <param name="Local" value="html_files/objectclass.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="opaque - type">
+		         <param name="Local" value="html_files/opaque.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="open - file statement">
+		         <param name="Local" value="html_files/open.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="or - operator">
+		         <param name="Local" value="html_files/or.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="ord - character-to-integer function">
+		         <param name="Local" value="html_files/ord.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="parallelget - parallel port function">
+		         <param name="Local" value="html_files/parallelget.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="parallelput - parallel port procedure">
+		         <param name="Local" value="html_files/parallelput.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="paramDeclaration - parameter declaration">
+		         <param name="Local" value="html_files/paramdeclaration.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="pause - statement">
+		         <param name="Local" value="html_files/pause.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="PC">
+		         <param name="Local" value="html_files/pcmodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="PC.ParallelGet">
+		         <param name="Local" value="html_files/pc_parallelget.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="PC.ParallelPut">
+		         <param name="Local" value="html_files/pc_parallelput.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="pervasive - declaration modifier">
+		         <param name="Local" value="html_files/pervasive.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Pic">
+		         <param name="Local" value="html_files/picmodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Pic.Blend">
+		         <param name="Local" value="html_files/pic_blend.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Pic.Blur">
+		         <param name="Local" value="html_files/pic_blur.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Pic.Draw">
+		         <param name="Local" value="html_files/pic_draw.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Pic.DrawFrames">
+		         <param name="Local" value="html_files/pic_drawframes.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Pic.DrawFramesBack">
+		         <param name="Local" value="html_files/pic_drawframesback.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Pic.DrawSpecial">
+		         <param name="Local" value="html_files/pic_drawspecial.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Pic.DrawSpecialBack">
+		         <param name="Local" value="html_files/pic_drawspecialback.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Pic.FileNew">
+		         <param name="Local" value="html_files/pic_filenew.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Pic.FileNewFrames">
+		         <param name="Local" value="html_files/pic_filenewframes.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Pic.Flip">
+		         <param name="Local" value="html_files/pic_flip.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Pic.Frames">
+		         <param name="Local" value="html_files/pic_frames.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Pic.Free">
+		         <param name="Local" value="html_files/pic_free.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Pic.Height">
+		         <param name="Local" value="html_files/pic_height.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Pic.Mirror">
+		         <param name="Local" value="html_files/pic_mirror.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Pic.New">
+		         <param name="Local" value="html_files/pic_new.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Pic.Rotate">
+		         <param name="Local" value="html_files/pic_rotate.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Pic.Save">
+		         <param name="Local" value="html_files/pic_save.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Pic.Scale">
+		         <param name="Local" value="html_files/pic_scale.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Pic.ScreenLoad">
+		         <param name="Local" value="html_files/pic_screenload.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Pic.ScreenSave">
+		         <param name="Local" value="html_files/pic_screensave.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Pic.SetTransparentColor">
+		         <param name="Local" value="html_files/pic_settransparentcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Pic.SetTransparentColour">
+		         <param name="Local" value="html_files/pic_settransparentcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Pic.Width">
+		         <param name="Local" value="html_files/pic_width.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="play - procedure">
+		         <param name="Local" value="html_files/play.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="playdone - function">
+		         <param name="Local" value="html_files/playdone.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="pointer - type">
+		         <param name="Local" value="html_files/pointer.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="post - assertion">
+		         <param name="Local" value="html_files/post.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="pre - assertion">
+		         <param name="Local" value="html_files/pre.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="precedence - of operators">
+		         <param name="Local" value="html_files/precedence.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="pred - predecessor function">
+		         <param name="Local" value="html_files/pred.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="prefix - operator">
+		         <param name="Local" value="html_files/prefix.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="procedure - declaration">
+		         <param name="Local" value="html_files/procedure.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="procedureCall - statement">
+		         <param name="Local" value="html_files/procedurecall.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="process - declaration">
+		         <param name="Local" value="html_files/process.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="program - a (main) program">
+		         <param name="Local" value="html_files/program.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="put - statement">
+		         <param name="Local" value="html_files/put.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="quit - fail statement">
+		         <param name="Local" value="html_files/quit.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Rand">
+		         <param name="Local" value="html_files/randmodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Rand.Int">
+		         <param name="Local" value="html_files/rand_int.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Rand.Next">
+		         <param name="Local" value="html_files/rand_next.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Rand.Real">
+		         <param name="Local" value="html_files/rand_real.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Rand.Reset">
+		         <param name="Local" value="html_files/rand_reset.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Rand.Seed">
+		         <param name="Local" value="html_files/rand_seed.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Rand.Set">
+		         <param name="Local" value="html_files/rand_set.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="rand - random real number procedure">
+		         <param name="Local" value="html_files/rand.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="randint - random integer procedure">
+		         <param name="Local" value="html_files/randint.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="randnext - procedure">
+		         <param name="Local" value="html_files/randnext.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="randomize - procedure">
+		         <param name="Local" value="html_files/randomize.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="randseed - procedure">
+		         <param name="Local" value="html_files/randseed.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="read - file statement">
+		         <param name="Local" value="html_files/read.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="real - the real number type">
+		         <param name="Local" value="html_files/real.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="realn - n-byte real number type">
+		         <param name="Local" value="html_files/realn.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="realstr - real-to-string function">
+		         <param name="Local" value="html_files/realstr.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="record - type">
+		         <param name="Local" value="html_files/record.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="register - use machine register">
+		         <param name="Local" value="html_files/register.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="rem - remainder operator">
+		         <param name="Local" value="html_files/rem.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="repeat - make copies of string:function">
+		         <param name="Local" value="html_files/repeat.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="result - statement">
+		         <param name="Local" value="html_files/result.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="return - statement">
+		         <param name="Local" value="html_files/return.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="RGB">
+		         <param name="Local" value="html_files/rgbmodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="RGB.AddColor">
+		         <param name="Local" value="html_files/rgb_addcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="RGB.AddColour">
+		         <param name="Local" value="html_files/rgb_addcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="RGB.GetColor">
+		         <param name="Local" value="html_files/rgb_getcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="RGB.GetColour">
+		         <param name="Local" value="html_files/rgb_getcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="RGB.maxcolor">
+		         <param name="Local" value="html_files/rgb_maxcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="RGB.maxcolour">
+		         <param name="Local" value="html_files/rgb_maxcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="RGB.SetColor">
+		         <param name="Local" value="html_files/rgb_setcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="RGB.SetColour">
+		         <param name="Local" value="html_files/rgb_setcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="round - real-to-integer function">
+		         <param name="Local" value="html_files/round.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="scalar - type">
+		         <param name="Local" value="html_files/scalar.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="seek - (file) statement">
+		         <param name="Local" value="html_files/seek.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="self - pointer to current object">
+		         <param name="Local" value="html_files/self.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="separator - between tokens in a program">
+		         <param name="Local" value="html_files/separator.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="set - type">
+		         <param name="Local" value="html_files/set.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="setConstructor">
+		         <param name="Local" value="html_files/setconstructor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="setpriority - procedure">
+		         <param name="Local" value="html_files/setpriority.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="setscreen - graphics procedure">
+		         <param name="Local" value="html_files/setscreen.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="shl - shift left operator">
+		         <param name="Local" value="html_files/shl.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="shr - shift right operator">
+		         <param name="Local" value="html_files/shr.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="sign - function">
+		         <param name="Local" value="html_files/sign.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="signal - wake up a process statement">
+		         <param name="Local" value="html_files/signal.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="simutime - simulated time function">
+		         <param name="Local" value="html_files/simutime.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="sin - sine function (radians)">
+		         <param name="Local" value="html_files/sin.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="sind - sine function (degrees)">
+		         <param name="Local" value="html_files/sind.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="sizeof - size of a type">
+		         <param name="Local" value="html_files/sizeof.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="sizepic - graphics function">
+		         <param name="Local" value="html_files/sizepic.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="skip - used in get statement">
+		         <param name="Local" value="html_files/skip1.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="skip - used in put statement">
+		         <param name="Local" value="html_files/skip.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="sound - statement">
+		         <param name="Local" value="html_files/sound.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Sprite">
+		         <param name="Local" value="html_files/spritemodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Sprite.Animate">
+		         <param name="Local" value="html_files/sprite_animate.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Sprite.ChangePic">
+		         <param name="Local" value="html_files/sprite_changepic.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Sprite.Free">
+		         <param name="Local" value="html_files/sprite_free.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Sprite.Hide">
+		         <param name="Local" value="html_files/sprite_hide.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Sprite.New">
+		         <param name="Local" value="html_files/sprite_new.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Sprite.SetFrameRate">
+		         <param name="Local" value="html_files/sprite_setframerate.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Sprite.SetHeight">
+		         <param name="Local" value="html_files/sprite_setheight.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Sprite.SetPosition">
+		         <param name="Local" value="html_files/sprite_setposition.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Sprite.Show">
+		         <param name="Local" value="html_files/sprite_show.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="sqrt - square root function">
+		         <param name="Local" value="html_files/sqrt.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="standardType">
+		         <param name="Local" value="html_files/standardtype.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="statement">
+		         <param name="Local" value="html_files/statement.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="statementsAndDeclarations">
+		         <param name="Local" value="html_files/statementsanddeclarations.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Str">
+		         <param name="Local" value="html_files/strmodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Str.Lower - convert to lower case">
+		         <param name="Local" value="html_files/str_lower.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Str.Trim - remove leading/trailing spaces">
+		         <param name="Local" value="html_files/str_trim.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Str.Upper - convert to upper case">
+		         <param name="Local" value="html_files/str_upper.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Stream">
+		         <param name="Local" value="html_files/streammodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Stream.eof">
+		         <param name="Local" value="html_files/stream_eof.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Stream.Flush">
+		         <param name="Local" value="html_files/stream_flush.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Stream.FlushAll">
+		         <param name="Local" value="html_files/stream_flushall.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="string - type">
+		         <param name="Local" value="html_files/string1.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="string - comparison">
+		         <param name="Local" value="html_files/string.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="strint - string-to-integer:function">
+		         <param name="Local" value="html_files/strint.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="strintok - string-to-integer:function">
+		         <param name="Local" value="html_files/strintok.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="strnat - string to natural number function">
+		         <param name="Local" value="html_files/strnat.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="strnatok - string to natural number function">
+		         <param name="Local" value="html_files/strnatok.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="strreal - string-to-real function">
+		         <param name="Local" value="html_files/strreal.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="strrealok - string-to-real function">
+		         <param name="Local" value="html_files/strrealok.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="subprogramHeader">
+		         <param name="Local" value="html_files/subprogramheader.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="subprogramType">
+		         <param name="Local" value="html_files/subprogramtype.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="subrangeType">
+		         <param name="Local" value="html_files/subrangetype.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="substring - of another string">
+		         <param name="Local" value="html_files/substring.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="succ - successor function">
+		         <param name="Local" value="html_files/succ.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Sys">
+		         <param name="Local" value="html_files/sysmodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Sys.Exec">
+		         <param name="Local" value="html_files/sys_exec.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Sys.FetchArg">
+		         <param name="Local" value="html_files/sys_fetcharg.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Sys.GetComputerName">
+		         <param name="Local" value="html_files/sys_getcomputername.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Sys.GetEnv">
+		         <param name="Local" value="html_files/sys_getenv.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Sys.GetPid">
+		         <param name="Local" value="html_files/sys_getpid.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Sys.GetUserName">
+		         <param name="Local" value="html_files/sys_getusername.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Sys.Nargs">
+		         <param name="Local" value="html_files/sys_nargs.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="sysclock - millisecs used procedure">
+		         <param name="Local" value="html_files/sysclock.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="system - statement">
+		         <param name="Local" value="html_files/system.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="tag - statement">
+		         <param name="Local" value="html_files/tag.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="takepic - graphics procedure">
+		         <param name="Local" value="html_files/takepic.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="tan - tangent function (radians)">
+		         <param name="Local" value="html_files/tan.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="tand - tangent function (degrees)">
+		         <param name="Local" value="html_files/tand.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="tell - file statement">
+		         <param name="Local" value="html_files/tell.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Text">
+		         <param name="Local" value="html_files/textmodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Text.Cls">
+		         <param name="Local" value="html_files/text_cls.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Text.Color">
+		         <param name="Local" value="html_files/text_color.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Text.ColorBack">
+		         <param name="Local" value="html_files/text_colorback.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Text.Colour">
+		         <param name="Local" value="html_files/text_color.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Text.ColourBack">
+		         <param name="Local" value="html_files/text_colorback.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Text.Locate">
+		         <param name="Local" value="html_files/text_locate.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Text.LocateXY">
+		         <param name="Local" value="html_files/text_locatexy.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Text.maxcol">
+		         <param name="Local" value="html_files/text_maxcol.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Text.maxrow">
+		         <param name="Local" value="html_files/text_maxrow.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Text.WhatCol">
+		         <param name="Local" value="html_files/text_whatcol.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Text.WhatColor">
+		         <param name="Local" value="html_files/text_whatcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Text.WhatColorBack">
+		         <param name="Local" value="html_files/text_whatcolorback.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Text.WhatColour">
+		         <param name="Local" value="html_files/text_whatcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Text.WhatColourBack">
+		         <param name="Local" value="html_files/text_whatcolorback.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Text.WhatRow">
+		         <param name="Local" value="html_files/text_whatrow.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Time">
+		         <param name="Local" value="html_files/timemodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Time.Date">
+		         <param name="Local" value="html_files/time_date.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Time.DateSec">
+		         <param name="Local" value="html_files/time_datesec.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Time.Delay">
+		         <param name="Local" value="html_files/time_delay.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Time.DelaySinceLast">
+		         <param name="Local" value="html_files/time_delaysincelast.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Time.Elapsed">
+		         <param name="Local" value="html_files/time_elapsed.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Time.ElapsedCPU">
+		         <param name="Local" value="html_files/time_elapsedcpu.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Time.PartsSec">
+		         <param name="Local" value="html_files/time_partssec.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Time.Sec">
+		         <param name="Local" value="html_files/time_sec.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Time.SecDate">
+		         <param name="Local" value="html_files/time_secdate.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Time.SecParts">
+		         <param name="Local" value="html_files/time_secparts.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Time.SecStr">
+		         <param name="Local" value="html_files/time_secstr.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="time - time of day as a string procedure">
+		         <param name="Local" value="html_files/time.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="token - in input">
+		         <param name="Local" value="html_files/token.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="true - boolean value (not false)">
+		         <param name="Local" value="html_files/true.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="type - declaration">
+		         <param name="Local" value="html_files/type.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="TypeConv">
+		         <param name="Local" value="html_files/typeconvmodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="typeSpec - type specification">
+		         <param name="Local" value="html_files/typespec.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="unchecked - compiler directive">
+		         <param name="Local" value="html_files/unchecked.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="union - type">
+		         <param name="Local" value="html_files/union.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="unit - file containing module, monitor, or class">
+		         <param name="Local" value="html_files/unit.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="unqualified - export">
+		         <param name="Local" value="html_files/unqualified.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="upper - bound">
+		         <param name="Local" value="html_files/upper.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="var - declaration">
+		         <param name="Local" value="html_files/var.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="variableReference - use of a variable">
+		         <param name="Local" value="html_files/variablereference.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="View">
+		         <param name="Local" value="html_files/viewmodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="View.ClipAdd">
+		         <param name="Local" value="html_files/view_clipadd.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="View.ClipAddOval">
+		         <param name="Local" value="html_files/view_clipaddoval.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="View.ClipOff">
+		         <param name="Local" value="html_files/view_clipoff.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="View.ClipSet">
+		         <param name="Local" value="html_files/view_clipset.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="View.maxcolor">
+		         <param name="Local" value="html_files/view_maxcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="View.maxcolour">
+		         <param name="Local" value="html_files/view_maxcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="View.maxx">
+		         <param name="Local" value="html_files/view_maxx.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="View.maxy">
+		         <param name="Local" value="html_files/view_maxy.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="View.Set">
+		         <param name="Local" value="html_files/view_set.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="View.SetTransparentColor">
+		         <param name="Local" value="html_files/view_settransparentcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="View.SetTransparentColour">
+		         <param name="Local" value="html_files/view_settransparentcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="View.Update - flicker-free animation">
+		         <param name="Local" value="html_files/view_update.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="View.UpdateArea - flicker-free animation">
+		         <param name="Local" value="html_files/view_updatearea.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="View.WhatDotColor">
+		         <param name="Local" value="html_files/view_whatdotcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="View.WhatDotColour">
+		         <param name="Local" value="html_files/view_whatdotcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="wait - block a process statement">
+		         <param name="Local" value="html_files/wait.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="wallclock - seconds since 1/1/1970 procedure">
+		         <param name="Local" value="html_files/wallclock.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="whatcol - cursor position function">
+		         <param name="Local" value="html_files/whatcol.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="whatcolor - text color graphics function">
+		         <param name="Local" value="html_files/whatcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="whatcolorback - color of background function">
+		         <param name="Local" value="html_files/whatcolorback.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="whatcolour - text color graphics function">
+		         <param name="Local" value="html_files/whatcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="whatcolourback - color of background function">
+		         <param name="Local" value="html_files/whatcolorback.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="whatdotcolor - graphics function">
+		         <param name="Local" value="html_files/whatdotcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="whatdotcolour - graphics function">
+		         <param name="Local" value="html_files/whatdotcolor.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="whatrow - cursor position function">
+		         <param name="Local" value="html_files/whatrow.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Window">
+		         <param name="Local" value="html_files/windowmodule.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Window.Close">
+		         <param name="Local" value="html_files/window_close.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Window.GetActive">
+		         <param name="Local" value="html_files/window_getactive.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Window.GetPosition">
+		         <param name="Local" value="html_files/window_getposition.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Window.GetSelect">
+		         <param name="Local" value="html_files/window_getselect.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Window.Hide">
+		         <param name="Local" value="html_files/window_hide.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Window.Open">
+		         <param name="Local" value="html_files/window_open.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Window.Select">
+		         <param name="Local" value="html_files/window_select.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Window.Set">
+		         <param name="Local" value="html_files/window_set.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Window.SetActive">
+		         <param name="Local" value="html_files/window_setactive.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Window.SetPosition">
+		         <param name="Local" value="html_files/window_setposition.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Window.Show">
+		         <param name="Local" value="html_files/window_show.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="Window.Update">
+		         <param name="Local" value="html_files/window_update.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="write - file statement">
+		         <param name="Local" value="html_files/write.html">
+         </OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+		         <param name="Name" value="xor - exclusive "or" operator">
+		         <param name="Local" value="html_files/xor.html">
+         </OBJECT>
+</UL>
+</BODY>
+</HTML>

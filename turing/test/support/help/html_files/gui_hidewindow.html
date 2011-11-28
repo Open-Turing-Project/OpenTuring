@@ -1,0 +1,85 @@
+<html>
+<head><title>GUI.HideWindow</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.HideWindow</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>GUI.HideWindow</b> (<i>window</i> : <b>int</b>)<p></font>
+    </tr>
+    <tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+      <td>Hides a window with widgets in it. This procedure makes certain 
+          that the GUI Library recognizes that the window no longer visible. 
+	  This procedure will call <i>Window.Hide</i>, so there is no need 
+	  for the user to do so.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>The program opens up a window with two buttons. If the button 
+          labelled "Close and Open" is pressed, the window is closed and 
+	  a new window with two buttons is opened in a random location on 
+	  the screen.<p>
+<pre><tt>        <b>import</b> <i>GUI</i>
+
+        <b>var</b> <i>windowA</i>, <i>windowB</i> : <b>int</b>
+        <b>var</b> <i>buttonA</i>, <i>buttonB</i>, <i>buttonQuit</i> : <b>int</b>
+	<b>var</b> <i>backToMainA</i>, <i>backToMainB</i> : <b>int</b>
+
+        <b>procedure</b> <i>ShowWindowA</i>
+            <b>GUI.HideWindow</b> (<b>defWinID</b>)
+            <b>GUI.ShowWindow</b> (<i>windowA</i>)
+        <b>end</b> <i>ShowWindowA</i>
+
+        <b>procedure</b> <i>ShowWindowB</i>
+            <b>GUI.HideWindow</b> (<b>defWinID</b>)
+            <b>GUI.ShowWindow</b> (<i>windowB</i>)
+        <b>end</b> <i>ShowWindowB</i>
+
+        <b>procedure</b> <i>ShowMain</i>
+            <b>GUI.HideWindow</b> (<b>Window.GetActive</b>)
+            <b>GUI.ShowWindow</b> (<b>defWinID</b>)
+        <b>end</b> <i>ShowMain</i>
+
+        <b>View.Set</b> ("graphics:280;100,nobuttonbar")
+        % Place the buttons in the main window
+        <i>buttonA</i> := <b>GUI.CreateButton</b> (10, 10, 0, "Show Window A", <i>ShowWindowA</i>)
+        <i>buttonB</i> := <b>GUI.CreateButton</b> (150, 10, 0, "Show Window B", <i>ShowWindowB</i>)
+        <i>buttonQuit</i> := <b>GUI.CreateButton</b> (100, 60, 0, "Quit", <b>GUI.Quit</b>)
+
+        <i>windowA</i> := <b>Window.Open </b> ("title:Window A,graphics:150;100,position:bottom;left")
+        <i>backToMainA</i> := <b>GUI.CreateButton</b> (20, 20, 0, "Back to Main", <i>ShowMain</i>)
+        <b>Window.Hide</b> (<i>windowA</i>)
+        <i>windowB</i> := <b>Window.Open </b> ("title:Window B,graphics:150;100,position:bottom;right")
+        <i>backToMainB</i> := <b>GUI.CreateButton</b> (20, 20, 0, "Back to Main", <i>ShowMain</i>)
+        <b>Window.Hide</b> (<i>windowB</i>)
+
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b>
+</tt></pre><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,GUI.ShowWindow.t;GUI.HideWindow Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+	  <b>GUI.HideWindow</b>, not by calling <b>HideWindow</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="gui_showwindow.html">GUI.ShowWindow</a></b>
+          for showing a window with widgets in it.
+	  See also <b><a href="gui_closewindow.html">GUI.CloseWindow</a></b>
+	  for closing a window with widgets in it.<p>
+    </tr>
+  </table>
+</body>
+</html>

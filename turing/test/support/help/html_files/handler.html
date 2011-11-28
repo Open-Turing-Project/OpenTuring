@@ -1,0 +1,61 @@
+<html>
+<head><title>handler</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>handler</b></font></td><td align="right"><font size="+1"><b>exception handler</b></font></td></table><p>
+Dirty<p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>exceptionHandler</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>handler</b> ( <i>id </i>)</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1"><i>statementsAndDeclarations</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>end</b> <b>handler</b></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> An exception handler  is an optional block of statements and declarations in a subprogram (or process). It is activated when the program (or process) fails. This occurs, for example when dividing by zero.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program parses the input stream using a stack. If the stack overflows (its top exceeds its maximum), a <b>quit</b> statement in the <i>push</i> procedure aborts the parsing and gives control to the exception handler in the <i>parse</i> procedure. The <i>parse</i> procedure calls <i>parseExpn</i> which calls <i>push</i>. If <i>push</i> overflows the stack, it executes a <b>quit</b> and control is passed to the exception handler in the <i>parse </i>procedure. The interrupted procedures (<i>parseExpn</i> and <i>push</i>) are terminated and their local variables are deleted.<p>
+<pre><tt>        <b>const</b> <i>stackOverflow</i> := 500
+        <b>const</b> <i>maxTop</i> := 100
+        <b>var</b> <i>top</i> : 0 .. <i>maxTop</i> := 0
+        <b>var</b> <i>stack</i> : <b>array</b> 1 .. <i>maxTop</i> <b>of</b> <b>int</b>
+        
+        <b>procedure</b> <i>push</i> ( <i>i</i> : <b>int</b> )
+            <b>if</b> <i>top</i> = <i>maxTop</i> <b>then</b>
+                <b>quit</b> : <i>stackOverflow</i>
+            <b>end</b> <b>if</b>
+            <i>top</i> := <i>top</i> <b>+</b> 1
+            <i>stack</i> ( <i>top</i> ) := <i>i</i>
+        <b>end</b> <b>push</b>
+        …
+        <b>procedure</b> <i>parse</i>
+            <b>handler</b> ( <i>exceptionNumber</i> )
+                <b>put</b> "Failure number ", <i>exceptionNumber</i>
+                <b>case</b><i> exceptionNumber </i><b>of</b>
+                <b>label</b> <i>stackOverflow</i> :
+                    <b>put</b> "Stack has overflowed!!"
+                <b>…</b> <i>other exceptions handled here</i> <b>…</b>
+                <b>label</b> :         <i>% Unexpected failures</i>
+                    <b>quit</b> <b>&gt;</b>      <i>% Pass exception further</i>
+                <b>end</b> <b>case</b>
+            <b>end</b> <b>handler</b>
+            <i>parseExpn</i>           <i>% Eventually push is called</i>
+        <b>end</b> <i>parse</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> See the <b>quit</b> statement for an explanation of its <i>quitReason</i> (<i>stackOverflow</i> in the first <b>quit</b> statement above) and its <i>guiltyParty </i>(&gt; in the second <b>quit</b> statement, meaning the exception is due to causes outside of this handler).<p>
+An exception handler can appear only in the body of a subprogram (or process), just preceding the declarations and statements. The form of a procedure is:<p>
+<pre><tt>        <b>procedure</b> [ <b>pervasive</b> ] <i>id</i>
+            [ ( [ <i>paramDeclaration </i>{,<i>paramDeclaration</i> } ] ) ]
+            [ <b>import</b> [ [<b>var</b>] <i>id</i> {, [var] <i>id</i> } ] ]
+            [ <b>pre</b> <i>trueFalseExpn</i> ]
+            [ <b>init</b> <i>id</i> := <i>expn</i> {, <i>id</i> := <i>expn</i> } ]
+            [ <b>post</b> <i>trueFalseExpn</i> ]
+            [ <i>exceptionHandler</i> ]
+            <i>statementsAndDeclarations</i>
+        <b>end</b> <i>id</i></tt></pre>
+Exactly the same declarations and statements can appear in a handler as can appear in the subprogram body following the handler. In the absence of exceptions, handlers have no observable effect. A particular handler is activated (it becomes ready to handle an exception) when it is encountered during execution. It remains active until the subprogram (or process) containing it has completed, or the handler is given control. Activation of a handler when a previous handler is already active will cause exceptions to be passed to the newly-activated handler. In other words, handlers have a dynamic scope that begins when the exception handler is encountered and ends when the subprogram (or process) containing the handler has terminated or the handler is given control.<p>
+When a handler is given control, it becomes, in effect, a replacement for the declarations and statements following it. If the handler is in a function, it must terminate with a <b>result</b> statement or with a <b>quit</b>. If the handler is in a procedure (or process), the handler must terminate with a <b>return</b>, a <b>quit</b>, or by encountering the end of the handler (which is equivalent to a <b>return</b>).<p>
+When a handler terminates with a <b>result</b> or <b>return</b> statement (or by reaching the end of a procedure's handler), the subprogram's <b>post</b> condition (if any) must be true. A <b>quit</b> statement does not need to establish the <b>post</b> condition.<p>
+Programming with exception handlers easily leads to incomprehensible software, due to the difficulty of keeping track of the flow of control. One of the most insidious situations is when an exception occurs in a module, class or monitor and is propagated outside of the unit. This can leave the contained data in an inconsistent state; in the case of a monitor, it is left locked forever. To avoid this possibility, you can use a handler in each exported subprogram. If an exception in a process is not handled, the entire program is aborted. If an implementation allocates dynamic arrays on the heap, an exception may prevent the deallocation of such an array.<p>
+Without exception handling, a program executes according to the language definition or else is aborted. If an exception handler is active, instead of aborting, control is given to the handler. The <i>quitNumber</i> for a system-detected failure is implementation-dependent. There is a file "<i>%exceptions</i>"<i> </i>which lists these numbers. The user program can simulate a system exception by doing a <b>quit</b> with the corresponding number.<p>
+If the user turns off checking  explicitly, the system may not detect failures. In some cases the failure may yield incorrect data or arbitrary behavior.<p>
+Some exceptions are unpredictable or implementation-dependent. For example, in <i>x</i> := 24 div <i>i</i> + 24 / <i>i</i>, if <i>i</i> is zero, the exception could be either an integer or a real division by zero, because the order or evaluation is implementation-dependent.<p>
+</table></body>
+</html>

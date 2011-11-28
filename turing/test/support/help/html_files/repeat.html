@@ -1,0 +1,18 @@
+<html>
+<head><title>repeat</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>repeat</b></font></td><td align="right"><font size="+1"><b>make copies of string</b></font></td></table><p>
+ <td align="right"><font size="+1"><b>function</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>repeat</b> ( <i>s</i> : <b>string</b>, <i>i</i> : <b>int</b> ) : <b>string</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>repeat</b> function returns <i>i </i>copies of string <i>s </i>catenated together. For example, <b>repeat</b> ("X", 4) is <i>XXXX</i>.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program outputs <i>HoHoHo</i>.<p>
+<pre><tt>        <b>var</b> <i>word</i> : <b>string</b> := "Ho"
+        <b>put</b> <b>repeat</b> ( <i>word</i>, 3 )</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> If <i>i</i> is less than or equal to zero, the null string "" is returned. The <b>repeat</b> function is often used for spacing of output. For example, this statement skips 20 blanks before outputting <i>x</i>.<p>
+<pre><tt>        <b>put</b> <b>repeat</b> (" ", 20), <i>x</i></tt></pre>
+</table></body>
+</html>

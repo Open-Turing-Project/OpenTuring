@@ -1,0 +1,31 @@
+<html>
+<head><title>var</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>var</b></font></td><td align="right"><font size="+1"><b>declaration</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>variableDeclaration</i> is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(a)</font></td><td colspan="7"><font size="+1"><b>var</b> <i>id</i> { ,<i>id</i> } [ :<i>typeSpec</i>] [:=<i>initializingValue</i>]</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(b)</font></td><td colspan="7"><font size="+1"><i>collectionDeclaration</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A variable declaration creates a new variable (or variables). Only form (a) will be explained here. See <i>collectionDeclaration </i>for explanation of form (b). The <i>typeSpec </i>of form (a) can be omitted only if the initializing value is present.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>var</b> <i>j</i>, <i>k</i> : <b>int</b> := 1     <i>% j and k are assigned value 1</i>
+        <b>var</b> <i>t</i> := "Sample"       <i>% The type of t is <b>string</b></i>
+        <b>var</b> <i>v</i> : <b>array</b> 1 .. 3 <b>of</b> <b>string</b> ( 6 ) :=
+                <b>init</b> ( "George", "Fred", "Alice" )</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The initializing value, if present, must be an expression or else a list of items separated by commas inside <b>init</b> ( … ). The syntax of <i>initializingValue </i>is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>(a)</td><td width="10">&nbsp;</td><td>expn</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(b)</td><td width="10">&nbsp;</td><td><b>init</b> ( initializingValue {, initializingValue } )</td></tr>
+</table><p>
+Each <b>init</b> ( … ) corresponds to an array, record or union value that is being initialized. These must be nested for initialization of nested types.<p>
+If the <i>typeSpec</i> is omitted, the variable's type is taken to be the (root) type of the initializing expression, for example, <b>int</b> or <b>string</b>. The <i>typeSpec</i> cannot be omitted for dynamic arrays or when the initializing value is of the form <b>init</b> ( … ). The values inside <b>init</b> ( … ) must be known at compile time.<p>
+The keyword <b>pervasive</b> can be inserted just after <b>var</b>. When this is done, the variable is visible inside all subconstructs of the variable's scope. Without <b>pervasive</b>, the variable is not visible inside modules unless explicitly imported. Pervasive variables need not be imported. You can abbreviate <b>pervasive</b> as an asterisk (<b>*</b>).<p>
+OOT extends Turing in the following way. OOT changes form (a) to allow the optional use of the <b>register</b> keyword to request that the variable be placed in a machine register. The OOT syntax for form (a) is actually:<p>
+<pre><tt>        <b>var</b> [<b>pervasive</b>] [<b>register</b>] <i>id</i> { , <i>id</i> } [ : <i>typeSpec</i> ] [ := <i>initializingValue</i> ]</tt></pre>
+In the current (1994) OOT implementation, programs are run interpretively using pseudo-code, which has no machine registers, and the <b>register</b> keyword is ignored. See <b>register</b> for restrictions on the use of register variables.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="collection.html">collection</a></b>, <b><a href="bind.html">bind</a></b>, <b><a href="procedure.html">procedure</a></b> and <b><a href="function.html">function</a></b> declarations, parameter declarations, <b><a href="export.html">export</a></b> lists and <b><a href="import.html">import</a></b> lists for other uses of the keyword <b><a href="var.html">var</a></b>.<p>
+</table></body>
+</html>

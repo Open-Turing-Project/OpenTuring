@@ -1,0 +1,115 @@
+<html>
+<head><title>GUI.SetScrollAmount</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.SetScrollAmount</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>GUI.SetScrollAmount</b> (<i>widgetID</i> : <b>int</b>,<br>
+<i>arrowInc</i>, <i>pageInc</i>, <i>thumbSize</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Sets a scroll bar's arrow increment, page increment and thumb size. Redraws the scroll bar to take into account the new thumb size. The <i>widgetID</i> specifies the scroll bar to be changed. The <i>arrowInc</i> parameter is the new arrow increment (the amount the scroll bar's value is changed when the scroll arrows are pressed). A value of 1 means to use the previously-defined arrow increment value. The <i>pageInc</i> parameter specifies the new page increment (the amount the scroll bar's value is changed when the user clicks in the page up/down section of the scroll bar). A value of 1 means to use the previously-defined page increment value. The <i>thumbSize</i> parameter specifies he new thumb size. See the scroll bar explanation for more detail on a scroll bar's thumb size. A value of 1 means to use the previously-defined thumb size.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program displays an image in a canvas in a window. If the image is larger than the canvas, scroll bars to the bottom and left are used to allow the user to see the entire image. A text field allows users to load additional images whenever the "Load File" button is pressed.<p>
+<pre><tt>        % The "ScrollPic2" program.
+        <b>import</b> <i>GUI</i> <b>in</b> "%oot/lib/GUI"
+        
+        % The maximum width/height of the canvas.
+        <b>const</b> <i>maxSize</i> : <b>int</b> := 220 
+        <b>const</b> <i>leftBorder</i> : <b>int</b> := 15    % Left margin.
+        <b>const</b> <i>bottomBorder</i> : <b>int</b> := 25  % Bottom margin.
+        
+        <b>var</b> <i>h</i>, <i>v</i> : <b>int</b>          % The scroll bars.
+        <b>var</b> <i>canvas</i> : <b>int</b>            % The canvas.
+        <b>var</b> <i>pic</i> : <b>int</b>               % The picture.
+        <b>var</b> <i>fileNameField</i> : <b>int</b>     % The file name text field.
+        <b>var</b> <i>errorLabel</i> : <b>int</b>        % The error message label.
+        <b>var</b> <i>loadButton</i> : <b>int</b>        % The "Load Picture" button.
+        
+        <b>procedure</b> <i>ScrollPic</i> (<i>ignore</i> : <b>int</b>)
+            % Get the current value of the scroll bars.
+            <b>var</b> <i>x</i> : <b>int</b> := <b>GUI.GetSliderValue</b> (<i>h</i>)
+            <b>var</b> <i>y</i> : <b>int</b> := <b>GUI.GetSliderValue</b> (<i>v</i>)
+            <b>GUI.PicDraw</b> (<i>canvas</i>, <i>pic</i>, <i>x</i>, <i>y</i>, <i>picCopy</i>)
+        <b>end</b> <i>ScrollPic</i>
+        
+        <b>procedure</b> <i>LoadFile</i> (<i>fileName</i> : <b>string</b>)
+            <b>var</b> <i>picWidth</i>, <i>picHeight</i>, <i>canvasWidth</i>, <i>canvasHeight</i> : <b>int</b>
+            <b>var</b> <i>newPic</i> : <b>int</b> := <b>Pic.FileNew</b> (<i>fileName</i>)
+            <b>if</b> <i>newPic</i> &lt;= 0 <b>then</b>
+                <b>GUI.SetLabel </b>(<i>errorLabel</i>, 
+                    "Error loading picture: " + <b>Error.LastMsg</b>)
+                <b>GUI.SetSelection</b> (<i>fileNameField</i>, 1, 1)
+                <b>return</b>
+            <b>else</b>
+                <b>GUI.SetLabel </b>(<i>errorLabel</i>, "")
+                <i>pic</i> := <i>newPic</i>
+            <b>end if</b>
+            <i>picWidth</i> := <b>Pic.GetWidth</b> (<i>pic</i>)
+            <i>picHeight</i> := <b>Pic.GetHeight </b>(<i>pic</i>)
+            <i>canvasWidth</i> := <b>min</b> (<i>picWidth</i>, <i>maxSize</i>)
+            <i>canvasHeight</i> := <b>min</b> (<i>picHeight</i>, <i>maxSize</i>)
+            % Hide the canvas and the three items, readjust them 
+            % and then show them.
+            <b>GUI.Hide</b> (<i>canvas</i>)
+            <b>GUI.Hide</b> (<i>h</i>)
+            <b>GUI.Hide</b> (<i>v</i>)
+            <b>GUI.SetSize</b> (<i>canvas</i>, <i>canvasWidth</i>, <i>canvasHeight</i>)
+            <b>GUI.SetSliderSize</b> (<i>h</i>, <i>canvasWidth</i> + 1)
+            <b>GUI.SetPosition</b> (<i>v</i>, 15 + <i>canvasWidth</i>,
+                <i>bottomBorder</i> + <b>GUI.GetScrollBarWidth</b> - 1)
+            <b>GUI.SetSliderSize</b> (<i>v</i>, <i>canvasHeight</i> + 1)
+            <b>GUI.SetSliderMinMax</b> (<i>h</i>, 0, <i>picWidth</i>  1)
+            <b>GUI.SetSliderMinMax</b> (<i>v</i>, 0, <i>picHeight</i>  1)
+            <b>GUI.SetScrollAmount</b> (<i>h</i>, 3, 100, <i>canvasWidth</i>)
+            <b>GUI.SetScrollAmount</b> (<i>v</i>, 3, 100, <i>canvasHeight</i>)
+            <b>GUI.SetSliderValue</b> (<i>h</i>, 0)
+            <b>GUI.SetSliderValue</b> (<i>v</i>, <i>picHeight</i>)
+            <b>GUI.Show</b> (<i>canvas</i>)
+            <b>GUI.Show</b> (<i>h</i>)
+            <b>GUI.Show</b> (<i>v</i>)
+            <i>ScrollPic</i> (0)
+        <b>end</b> <i>LoadFile</i>
+        
+        <b>procedure</b> <i>LoadFileButton</i>
+            <b>var</b> <i>fileName</i> : <b>string</b> := <b>GUI.GetText</b> (<i>fileNameField</i>)
+            <i>LoadFile</i> (<i>fileName</i>)
+        <b>end</b> <i>LoadFileButton</i>
+        
+        <b>View.Set</b> ("graphics:265;295")
+        
+        % We place the canvas first and everything else is placed 
+        % relative to the canvas.
+        <i>canvas</i> := <b>GUI.CreateCanvas</b> (<i>leftBorder</i>, 
+            <i>bottomBorder</i> + <b>GUI.GetScrollBarWidth</b>, <i>maxSize</i>, <i>maxSize</i>)<i>h</i> := <b>GUI.CreateHorizontalScrollBarFull</b> (<b>GUI.GetX</b> (<i>canvas</i>),
+            <b>GUI.GetY</b> (<i>canvas</i>)  <b>GUI.GetScrollBarWidth</b>,
+            <b>GUI.GetWidth</b> (<i>canvas</i>), 0, 100, 0, <i>ScrollPic</i>, 3, 100, <i>maxSize</i>)
+        <i>v</i> := <b>GUI.CreateVerticalScrollBarFull</b> (
+            <b>GUI.GetX</b> (<i>canvas</i>) + <b>GUI.GetWidth</b> (<i>canvas</i>),
+            <b>GUI.GetY</b> (<i>canvas</i>), <b>GUI.GetHeight </b>(<i>canvas</i>), 0, 100,
+            100, <i>ScrollPic</i>, 3, 100, <i>maxSize</i>)
+        <i>fileNameField</i> := <b>GUI.CreateTextField</b> (<b>GUI.GetX </b>(<i>canvas</i>),
+            <b>GUI.GetY</b> (<i>canvas</i>) + <b>GUI.GetHeight</b> (<i>canvas</i>) + 10, 150, "", 
+            <i>LoadFile</i>)
+        <i>loadButton</i> := <b>GUI.CreateButton</b> (<b>GUI.GetX</b> (<i>fileNameField</i>) +
+            <b>GUI.GetWidth</b> (<i>fileNameField</i>) + 20, 
+            <b>GUI.GetY</b> (<i>fileNameField</i>), 0, "Load File", <i>LoadFileButton</i>)
+        <i>errorLabel</i> := <b>GUI.CreateLabel</b> (<b>GUI.GetX</b> (<i>canvas</i>), 5, "")
+        
+        % Set the initial picture and return if it is not found.
+        <b>GUI.SetText </b>(<i>fileNameField</i>, "Forest.bmp")
+        <i>LoadFileButton</i>
+        <b>if</b> <i>pic</i> = 0 <b>then</b>
+            <b>return</b>
+        <b>end if</b>
+        
+        <b>loop</b>
+            <b>exit when</b> <b>GUI.ProcessEvent</b>
+        <b>end loop</b>
+        
+        </tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>GUI.SetScrollAmount</b>, not by calling <b>SetScrollAmount</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b>GUI.CreateHorizontalScrollBar</b> and <b>GUI.CreateVerticalScrollBar</b><p>
+</table></body>
+</html>

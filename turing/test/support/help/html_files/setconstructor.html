@@ -1,0 +1,24 @@
+<html>
+<head><title>setConstructor</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>setConstructor</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>setConstructor</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><i>setTypeId</i> ( <i>membersOfSet</i> )</td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Each value of a <b>set</b> type consists of a set of elements. In classical mathematics, the set consisting of 0 and 1 is written as {0,1}. This is written in Turing using a <i>set constructor</i> consisting of the name of the set type (<i>setTypeId</i>) followed by a parenthesized list of elements.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The <i>smallSet </i>type is declared so that it can contain any and all of the values 0, 1 and 2. Variable <i>s</i> is initialized to be the set containing 1 and 2. The set {0,1} is written in this Turing example as <i>smallInt</i> (0,1).<p>
+<pre><tt>        <b>type</b> <i>smallSet</i> : <b>set</b> <b>of</b> 0 .. 2
+        <b>var</b> <i>s</i> : <i>smallSet</i> := <i>smallSet</i> ( 0, 1 )
+        …
+        <b>if</b> 2 <b>in</b> <i>s</i> <b>then</b> …</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The form of <i>membersOfSet</i> is one of:<p>
+<pre><tt>        (a) <i>expn</i> { , <i>expn</i>}  <i>% List of members of set</i>
+        (b) <b>all</b>         <i>% All member of index type of set</i>
+        (c)             <i>% Nothing</i>,<i> meaning the empty set</i></tt></pre>
+The empty set is written, for example, as <i>smallInt </i>(). The full set is written as <i>smallInt </i>(<b>all</b>), so <i>smallInt </i>(<b>all</b>) = <i>smallInt </i>(0,1,2). See also the <b>set</b> type.<p>
+The syntax of <i>setConstructor</i> as given above has been simplified by ignoring the fact that <b>set</b> types can be exported from modules. When a <b>set</b> type is exported and used outside of a module, you must write the module name, a dot and then the type name. For example, the set constructor above would be written as <i>m.smallSet</i>(1,2), where <i>m</i> is the module name.<p>
+</table></body>
+</html>

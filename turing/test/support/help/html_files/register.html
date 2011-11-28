@@ -1,0 +1,19 @@
+<html>
+<head><title>register</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>register</b></font></td><td align="right"><font size="+1"><b>use machine register</b></font></td></table><p>
+Dirty<p>
+<table><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> When a variable, constant or parameter is declared, you can request that the item be placed in a machine register. This should be done only for programs requiring considerable efficiency.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>var</b> <b>register</b> <i>counter</i> : <b>int</b>
+        <b>const</b> <b>register</b> <i>maxCounter</i> : <b>int</b> := 100
+        <b>procedure</b> <i>p</i> ( <b>register</b> <i>x</i> : <b>real</b> )
+            …
+        <b>end</b> <i>p</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Items can be requested to be in registers only if they are local to a subprogram (not global variables, declared in the main program, a module, monitor or class). Items requested to be in registers cannot be bound to, passed to reference parameters, have their address taken by <b>addr</b>, or  have certain type cheats applied to them (since a machine register has no address).<p>
+The request to use a register may be ignored. For example, the current (1999) interpretive implementation uses pseudo-code, which has no machine registers, and so ignores the <b>register</b> keyword. For the syntax of using this keyword, see <b>var</b> declaration, <b>const</b> declaration and <b>paramDeclaration</b>.<p>
+</table></body>
+</html>

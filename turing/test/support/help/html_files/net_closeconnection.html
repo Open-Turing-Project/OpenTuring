@@ -1,0 +1,27 @@
+<html>
+<head><title>Net.CloseConnection</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Net.CloseConnection</b></font></td><td align="right">Part of <a href="netmodule.html">Net</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Net.CloseConnection</b> (<i>netStream</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Closes a network connection made with <b>Net.OpenConnection</b> or <b>Net.WaitForConnection</b>. After the connection is closed, the net stream cannot be used for any purpose on either side of the connection.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The <b>Net</b> module requires a TCP/IP stack to be installed and operating in order to function. It does not communicate using any other protocols<p>
+It is possible for Firewalls to interfere with the actions of the <b>Net</b> module, preventing connections from taking place.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program fragment connects to port 5300 on the machine specified by <i>netAddress</i>, sends the work OK to it and closes the connection.<p>
+<pre><tt>        <i>netStream</i> := <b>Net.OpenConnection</b> (<i>netAddress</i>, <i>chatPort</i>)
+        <b>if</b> <i>netStream</i> &lt;= 0 <b>then</b>
+            <b>put</b> "Unable to connect to ", <i>netAddress</i>
+            <b>return</b>
+        <b>end if</b>
+        <b>put</b> : <i>netStream</i>, "OK"
+        <b>Net.CloseConnection </b>(<i>netStream</i>)</tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Net.CloseConnection</b>, not by calling <b>CloseConnection</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="net_openconnection.html">Net.OpenConnection</a></b> and <b><a href="net_waitforconnection.html">Net.WaitForConnection</a></b>.<p>
+</table></body>
+</html>

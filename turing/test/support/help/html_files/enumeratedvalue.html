@@ -1,0 +1,20 @@
+<html>
+<head><title>enumeratedValue</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>enumeratedValue</b></font></td><td align="right"><font size="+1"><b>enumerated value</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> An enumeratedValue is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><i>enumeratedTypeId</i> . <i>enumeratedId</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The values of an enumerated type are written as the type name (<i>enumeratedTypeId</i>) followed by a dot followed by one of the enumerated values of the type (<i>enumeratedId</i>).<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> In this example, <i>color</i>.<i>red</i> is an <i>enumeratedValue</i>.<p>
+<pre><tt>        <b>type</b> <i>color</i> : <b>enum</b> (<i>red</i>, <i>green</i>, <i>blue</i>)
+        <b>var</b> <i>c</i> : <i>color</i> := <i>color</i> . <i>red</i>
+        <b>var</b> <i>d</i> : <i>color</i> := <b>succ</b> (<i>c</i>)       <i>% d becomes green</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The above description has been simplified by ignoring the possibility that the <b>enum</b> type can be exported from a <b>module</b>. If this is the case, each use of one of the enumerated values outside of module <i>M</i> must be preceded by the module name and a dot, as in <i>M</i>.<i>color</i>.<i>red</i>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> the <b><a href="enum.html">enum</a></b> type and <i><a href="explicitconstant.html">explicitConstant</a></i>.<p>
+</table></body>
+</html>

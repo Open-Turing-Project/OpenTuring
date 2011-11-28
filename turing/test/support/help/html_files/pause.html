@@ -1,0 +1,13 @@
+<html>
+<head><title>pause</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>pause</b></font></td><td align="right"><font size="+1"><b>statement</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>pauseStatement</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>pause</b> <i>expn</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>pause</b> statement blocks the program (or just the process in the case of a concurrent program) for a given number of simulated time units. The <i>expn</i> must be a non-negative <b>int</b> value giving the number of time units. This is analogous to the <b>delay</b> statement, which causes blocking for a given amount of real time (actual physical time).<p>
+The interpreter maintains a counter which it considers to be simulated time. The only execution that causes this counter to increase is the <b>pause</b> statement. The process executing the <b>pause</b> is blocked until the counter has counted forward the number of units given by <i>expn</i>. All other statements (except <b>wait</b>) are considered to be infinitely fast. Several processes can be executing <b>pause</b> statements simultaneously.<p>
+The use of simulated time allows Turing to be used as a simulation language in which the <b>pause</b> statement simulates the passage of time in the simulated system.<p>
+</table></body>
+</html>

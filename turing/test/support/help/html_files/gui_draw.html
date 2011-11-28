@@ -1,0 +1,48 @@
+<html>
+<head><title>GUI.Draw...</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.Draw...</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>GUI.DrawArc</b> (<i>widgetID</i>, <i>x</i>, <i>y</i>, <i>xRadius</i>, <i>yRadius</i> : <b>int</b>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<i>initialAngle</i>, <i>finalAngle</i>, <i>Color</i> : <b>int</b> )<p>
+<b>GUI.DrawBox</b> (<i>widgetID</i>, <i>x1</i>, <i>y1</i>, <i>x2</i>, <i>y2</i>, <i>Color</i> : <b>int</b> )<p>
+<b>GUI.DrawCls</b> (<i>widgetID</i> : <b>int</b> )<p>
+<b>GUI.DrawDot</b> (<i>widgetID</i>, <i>x</i>, <i>y</i>, <i>Color</i> : <b>int</b> )<p>
+<b>GUI.DrawFill</b> (<i>widgetID</i>, <i>x</i>, <i>y</i> : <b>int</b>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<i>fillColor</i>, <i>borderColor</i> : <b>int</b>)<p>
+<b>GUI.DrawFillArc</b> (<i>widgetID</i>, <i>x</i>, <i>y </i>: <b>int</b>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<i>xRadius,</i> <i>yRadius</i> : <b>int</b>, <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<i>initialAngle</i>, <i>finalAngle,</i> <i>Color</i> : <b>int</b>)<p>
+<b>GUI.DrawFillBox</b> (<i>widgetID</i>, <i>x1</i>, <i>y1</i>, <i>x2</i>, <i>y2</i> : <b>int</b>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<i>Color</i> : <b>int</b> )<p>
+<b>GUI.DrawFillMapleLeaf</b> (<i>widgetID</i>, <i>x1</i>, <i>y1</i> : <b>int</b>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<i>x2</i>, <i>y2</i>, <i>Color</i> : <b>int</b> )<p>
+<b>GUI.DrawFillOval</b> (<i>widgetID</i>, <i>x</i>, <i>y</i> : <b>int</b>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<i>xRadius</i>, <i>yRadius</i> : <b>int</b>, <i>Color</i> : <b>int</b>)<p>
+<b>GUI.DrawFillPolygon</b> (<i>widgetID</i> : <b>int</b>, <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<i>x</i>, <i>y</i> : <b>array</b> 1 .. * <b>of</b> <b>int</b>, <i>n</i> : <b>int</b>, <i>Color</i> : <b>int</b>)<p>
+<b>GUI.DrawFillStar</b> (<i>widgetID</i>, <i>x1</i>, <i>y1</i>, <i>x2</i>, <i>y2</i> : <b>int</b>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<i>Color</i> : <b>int</b>)<p>
+<b>GUI.DrawLine</b> (<i>widgetID</i>, <i>x1</i>, <i>y1</i>, <i>x2</i>, <i>y2</i>, <i>Color</i> : <b>int</b>)<p>
+<b>GUI.DrawMapleLeaf</b> (<i>widgetID</i>, <i>x1</i>, <i>y1</i>, <i>x2</i>, <i>y2</i> : <b>int</b>,<br>
+<i>Color</i> : <b>int</b>)<p>
+<b>GUI.DrawOval</b> (<i>widgetID</i>, <i>x</i>, <i>y</i> : <b>int</b>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<i>xRadius</i>, <i>yRadius</i>, <i>Color</i> : <b>int</b>)<p>
+<b>GUI.DrawPolygon</b> (<i>widgetID</i> : <b>int</b>, <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<i>x</i>, <i>y</i> : <b>array</b> 1 .. * <b>of</b> <b>int</b>, <i>n</i> : <b>int</b>, <i>Color</i> : <b>int</b>)<p>
+<b>GUI.DrawStar</b> (<i>widgetID</i>, <i>x1</i>, <i>y1</i>, <i>x2</i>, <i>y2</i>, <i>Color</i> : <b>int</b> )<p>
+<b>GUI.DrawText</b> (<i>widgetID</i> : <b>int</b>, <i>textStr</i> : <b>string</b>, <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<i>x</i>, <i>y</i> : <b>int</b>, <i>fontID</i>, <i>Color</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Performs a <i>Draw</i>… command to the canvas specified by <i>widgetID</i>.<p>
+All of these routines are essentially the same as the similarly-named procedures in the <i>Draw</i> module. All coordinates are based on the canvas and all drawing is clipped to the canvas drawing surface. If the canvas is in "xor mode", all the drawing will be done with "xor" set. (See <b>View.Set</b><i> </i>for more information about "xor".)<p>
+The <i>widgetID</i> must specify a canvas widget.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> See <b>GUI.CreateCanvas</b> for an example of <b>GUI.DrawFillOval</b>.<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the procedures by calling <b>GUI.Draw…</b>, not by calling <b>Draw…</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b>GUI.CreateCanvas</b>.<p>
+</table></body>
+</html>

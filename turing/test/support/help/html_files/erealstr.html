@@ -1,0 +1,19 @@
+<html>
+<head><title>erealstr</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>erealstr</b></font></td><td align="right"><font size="+1"><b>real-to-string function</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>erealstr</b> (<i>r </i>: <b>real</b>, <br>
+</font><table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><i>width</i>, <i>fractionWidth</i>, <i>exponentWidth</i> : <b>int</b>) :<b>string</b></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>erealstr</b> function is used to convert a <b>real</b> number to a string; for example, <b>erealstr</b> (2.5e1, 10, 3, 2)="<i>b2</i>.<i>500e+01</i>" where <i>b</i> represents a blank. The string (including exponent) is an approximation to <i>r</i>, padded on the left with blanks as necessary to a length of <i>width</i>.<p>
+The <i>width</i> must be a non-negative <b>int</b> value. If the <i>width</i> parameter is not large enough to represent the value of <i>r</i>, it is implicitly increased as needed.<p>
+The <i>fractionWidth</i> parameter is the non-negative number of fractional digits to be displayed. The displayed value is rounded to the nearest decimal equivalent with this accuracy. In the case of a tie, the value is rounded to the larger of the two values.<p>
+The <i>exponentWidth</i> parameter must be non-negative and give the number of exponent digits to be displayed. If <i>exponentWidth</i> is not large enough to represent the exponent, more space is used as needed. The string returned by <i>erealstr</i> is of the form:<p>
+<pre><tt>        {blank}[-]digit.{digit}e sign digit {digit}</tt></pre>
+where <i>sign</i> is a plus or minus sign. The leftmost digit is non-zero, unless all the digits are zeros.<p>
+The <b>erealstr</b> function approximates the inverse of <b>strreal</b>, although round-off errors keep these from being exact inverses.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="frealstr.html">frealstr</a></b>, <b><a href="realstr.html">realstr</a></b>, <b><a href="strreal.html">strreal</a></b>, <b><a href="intstr.html">intstr</a></b> and <b><a href="strint.html">strint</a></b> functions.<p>
+</table></body>
+</html>

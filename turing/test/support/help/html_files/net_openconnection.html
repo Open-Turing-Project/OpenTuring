@@ -1,0 +1,91 @@
+<html>
+<head><title>Net.OpenConnection</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Net.OpenConnection</b></font></td><td align="right">Part of <a href="netmodule.html">Net</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Net.OpenConnection</b> (<i>netAddr</i> : <b>string</b>, <br>
+<i>port</i> : <b>int</b>) : <b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Attempts to open a connection to port specified by the <i>port</i> parameter on the machine specified by <i>netAddr</i> parameter. There must be a program listening to that port for the connection to be made. In OOT, this is done using the <b>Net.WaitForConnection</b> function.<p>
+If successful, <b>Net.OpenConnection</b> returns a network stream descriptor which can be used with the <b>put</b>, <b>get</b>, <b>read</b>, and <b>write</b> statements and <b>eof</b> function to send and receive data to the listening program. It is also the parameter used for the <b>Net.CloseConnection</b>, <b>Net.BytesAvailable</b>, <b>Net.CharAvailable</b>, <b>Net.LineAvailable</b>, and <b>Net.TokenAvailable</b> functions.<p>
+The <i>netAddr</i> parameter is a string specifying the net address of the machine to be connected to. This can either be the full hostname or the numerical address.<p>
+In general, system program listen in on ports with numbers below 1024. Port numbers above 1024 are generally available for use by user created programs.<p>
+The program will wait for an indeterminate amount of time to make the connection. If it fails, it will return a non-positive value.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The <b>Net</b> module requires a TCP/IP stack to be installed and operating in order to function. It does not communicate using any other protocols<p>
+It is possible for Firewalls to interfere with the actions of the <b>Net</b> module, preventing connections from taking place.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program implements a "Chat" program. One user runs the program on their machine as a server, which waits for another machine to connect to it. The second user specifies the machine to connect to and then connects. The two can then type at each other.<p>
+<pre><tt>        % The "Chat" program
+        <b>const</b> <i>chatPort</i> : <b>int</b> := 5055
+        <b>var</b> <i>choice</i> : <b>int</b>
+        <b>loop</b>
+            <b>put</b> "Enter 1 to run chat server"
+            <b>put</b> "Enter 2 to run chat session"
+            <b>put</b> "Choice: " ..
+            <b>get</b> <i>choice</i>
+            <b>exit when</b> <i>choice</i> = 1 <b>or</b> <i>choice</i> = 2
+        <b>end loop</b>
+        <b>var</b> <i>netStream</i> : <b>int</b>
+        <b>var</b> <i>netAddress</i> : <b>string</b>
+        
+        <b>if</b> <i>choice</i> = 1 <b>then</b>
+            <i>netStream</i> := <b>Net.WaitForConnection</b> (<i>chatPort</i>, <i>netAddress</i>)
+        <b>else</b>
+            <b>put</b> "Enter the address to connect to: " ..
+            <b>get</b> <i>netAddress</i>
+            <i>netStream</i> := <b>Net.OpenConnection</b> (<i>netAddress</i>, <i>chatPort</i>)
+            <b>if</b> <i>netStream</i> &lt;= 0 <b>then</b>
+                <b>put</b> "Unable to connect to ", <i>netAddress</i>
+                <b>return</b>
+            <b>end if</b>
+        <b>end if</b>
+        <b>Draw.Cls</b>
+        <b>put</b> "Connected to ", <i>netAddress</i>
+        
+        <b>var</b> <i>localRow</i> : <b>int</b> := 2
+        <b>var</b> <i>localCol</i> : <b>int</b> := 1
+        <b>var</b> <i>remoteRow</i> := <b>maxrow</b> <b>div</b> 2
+        <b>var</b> <i>remoteCol</i> : <b>int</b> := 1
+        <b>var</b> <i>ch</i> : <b>char</b>
+        
+        <b>View.Set </b>("noecho")
+        <b>loop</b>
+            <b>if hasch then</b>
+                <i>ch</i> := <b>getchar</b>
+                <b>put</b> : <i>netStream</i>, <i>ch</i>
+                <b>if</b> <i>ch</i> = '\n' <b>then</b>
+                    <i>localRow</i> := <i>localRow</i> <b>mod</b> (<b>maxrow</b> <b>div</b> 2) + 1
+                    <i>localCol</i> := 1
+                    <b>Text.Locate </b>(<i>localRow</i>, <i>localCol</i>)
+                    <b>put</b> "" % Clear to end of line
+                    <b>Text.Locate</b> (<i>localRow</i>, <i>localCol</i>)
+                <b>else</b>
+                    <b>Text.Locate</b> (<i>localRow</i>, <i>localCol</i>)
+                    <b>put</b> <i>ch</i> ..
+                    <i>localCol</i> += 1
+                <b>end if</b>
+            <b>end if</b>
+        
+            <b>if Net.CharAvailable</b> (<i>netStream</i>) <b>then</b>
+                <b>get</b> : <i>netStream</i>, <i>ch</i>
+                <b>if</b> <i>ch</i> = '\n' <b>then</b>
+                    <i>remoteRow</i> := <i>remoteRow</i> <b>mod</b> (<b>maxrow div</b> 2) +
+                        1 + (maxrow div 2)
+                    <i>remoteCol</i> := 1
+                    <b>Text.Locate </b>(<i>remoteRow</i>, <i>remoteCol</i>)            <b>put</b> ""  % Clear to end of line
+                    <b>Text.Locate </b>(<i>remoteRow</i>, <i>remoteCol</i>)
+                <b>else</b>
+                    <b>Text.Locate</b> (<i>remoteRow</i>, <i>remoteCol</i>)
+                    <b>put</b> <i>ch</i> ..
+                    <i>remoteCol</i> += 1
+                <b>end if</b>
+            <b>end if</b>
+        <b>end loop</b></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Net.OpenConnection</b>, not by calling <b>OpenConnection</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="net_waitforconnection.html">Net.WaitForConnection</a></b> and <b><a href="net_closeconnection.html">Net.CloseConnection</a></b>.<p>
+</table></body>
+</html>

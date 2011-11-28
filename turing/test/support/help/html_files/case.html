@@ -1,0 +1,48 @@
+<html>
+<head><title>case</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>case</b></font></td><td align="right"><font size="+1"><b>selection statement</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>caseStatement</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>case</b> <i>expn</i> <b>of</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1">{ <b>label</b> <i>compileTimeExpn </i>{, <i>compileTimeExpn </i>} :</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="6"><font size="+1"><i>statementsAndDeclarations</i> }</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1">[ <b>label</b> :</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="6"><font size="+1"><i>statementsAndDeclarations</i> ]</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>end</b> <b>case</b></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A <b>case</b> statement is used to choose among a set of statements (and declarations). One set is chosen and executed and then execution continues just beyond <b>end</b> <b>case</b>.<p>
+The expression (<i>expn</i>) following the keyword <b>case</b> is evaluated and used to select one of the alternatives (sets of declarations and statements) for execution. The selected alternative is the one having a label value equaling the case expression. If none are equal and there is a final <b>label</b> with no expression, that alternative is selected.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Output a message based on value of mark.<p>
+<pre><tt>        <b>case</b> <i>mark</i> <b>of</b>
+            <b>label</b> 9, 10 :   <b>put</b> "Excellent"
+            <b>label</b> 7, 8 :        <b>put</b> "Good"
+            <b>label</b> 6 :       <b>put</b> "Fair"
+            <b>label</b> :     <b>put</b> "Poor"
+        <b>end</b> <b>case</b></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,case.t;case Statement Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Output a message based on value of name.<p>
+<pre><tt>        <b>case</b> <i>name</i> <b>of</b>
+            <b>label</b> "horse", "cow" :  <b>put</b> "Farm animal"
+            <b>label</b> "tiger", "lion" : <b>put</b> "Jungle animal"
+            <b>label</b> "cat", "dog" :    <b>put</b> "Pet"
+            <b>label</b> :         <b>put</b> "Unknown animal"
+        <b>end</b> <b>case</b></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,case2.t;case Statement Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The case expression is required to match one of the labels. If it does not, there must be a final <b>label</b> with no expression. Label expressions must have values known at compile time. All label values must be distinct. The case expression and the label values must have the same equivalent type, which must be an integer, <b>char</b>, <b>boolean</b>, an <b>enum</b> type or strings.<p>
+Note that there is no way to express a range of values (for example from 5 to 10) in a label. Each individual value must be expressed in the label.<p>
+</table></body>
+</html>

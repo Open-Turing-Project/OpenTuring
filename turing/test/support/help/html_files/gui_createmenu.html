@@ -1,0 +1,89 @@
+<html>
+<head><title>GUI.CreateMenu</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.CreateMenu</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>GUI.CreateMenu</b> (<i>name</i> : <b>string</b>) : <b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Creates a menu and returns the menu's widget ID. The menu will be added after the other menus in the menu bar. If there are no previous menus, then a menu bar is automatically created and the menu added.<p>
+The <i>name</i> parameter specifies the text that appears in the menu bar.<p>
+
+<center><img src="gui_createmenu01.gif"></center>
+<center><b>A Menu With an Item Selected</b></center><p>
+Menus are used in most modern interfaces. In order to create a full set of menus, you must create the menu and then create the menu items in that menu. The menus are automatically added to the menu bar of the selected menu.<p>
+As of the v1.0 release of the GUI Library, it is an error to create a menu item without having created a menu first. In future releases it will be possible to create menus and attach and remove them from menu bars when desired.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program creates a series of menus with menu items in them. It then disables the second menu.<p>
+<pre><tt>        <b>import</b> <i>GUI</i> <b>in</b> "%oot/lib/GUI"
+        
+        <b>View.Set</b> ("graphics:250;150,nobuttonbar")
+        <b>var</b> <i>first</i>, <i>second</i> : <b>int</b>     % The menus.
+        <b>var</b> <i>item</i> : <b>array</b> 1 .. 12 <b>of</b> <b>int</b> % The menu items.
+        <b>var</b> <i>name</i> : <b>array</b> 1 .. 12 <b>of</b> <b>string</b> (20) := 
+            <b>init</b> ("Quit", "---", "A", "B", "---", "C", "D", 
+            "Disable B Menu Item", "Enable B Menu Item", "---", 
+            "Disable Second Menu", "Enable Second Menu")
+        
+        <b>procedure</b> <i>MenuSelected</i>
+            <b>for</b> i : 1 .. 12
+                <b>if</b> <i>item</i> (i) = <b>GUI.GetEventWidgetID then</b>
+                    <b>Text.Locate</b> (<i>maxrow</i>, 1)
+                    <b>put</b> <i>name</i> (i) + " selected               " ..
+                <b>end if</b>
+            <b>end for</b>
+        <b>end</b> <i>MenuSelected</i>
+        
+        <b>procedure</b> <i>DisableB</i>
+            <b>GUI.Disable</b> (<i>item</i> (4))
+        <b>end</b> <i>DisableB</i>
+        
+        <b>procedure</b> <i>EnableB</i>
+            <b>GUI.Enable</b> (<i>item</i> (4))
+        <b>end</b> <i>EnableB</i>
+        
+        <b>procedure</b> <i>DisableFirst</i>
+            <b>GUI.Disable</b> (<i>first</i>)
+        <b>end</b> <i>DisableFirst</i>
+        
+        <b>procedure</b> <i>EnableFirst</i>
+            <b>GUI.Enable</b> (<i>first</i>)
+        <b>end</b> <i>EnableFirst</i>
+        
+        % Create the menus
+        <i>first</i> := <b>GUI.CreateMenu</b> ("First")
+        <i>item</i> (1) := <b>GUI.CreateMenuItem</b> (<i>name</i> (1), <b>GUI.Quit</b>)
+        <b>for</b> <i>cnt</i> : 2 .. 7
+            <i>item</i> (<i>cnt</i>) := <b>GUI.CreateMenuItem</b> (<i>name</i> (<i>cnt</i>), 
+                <i>MenuSelected</i>)
+        <b>end for</b>
+        
+        <i>second</i> := <b>GUI.CreateMenu</b> ("Second")
+        <i>item</i> (8) := <b>GUI.CreateMenuItem</b> (<i>name</i> (8), <i>DisableB</i>)
+        <i>item</i> (9) := <b>GUI.CreateMenuItem</b> (<i>name</i> (9), <i>EnableB</i>)
+        <i>item</i> (10) := <b>GUI.CreateMenuItem</b> (<i>name</i> (10), <i>MenuSelected</i>)
+        <i>item</i> (11) := <b>GUI.CreateMenuItem</b> (<i>name</i> (11), <i>DisableFirst</i>)
+        <i>item</i> (12) := <b>GUI.CreateMenuItem</b> (<i>name</i> (12), <i>EnableFirst</i>)
+        
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b></tt></pre><p>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,GUI.CreateMenu.t;GUI.CreateMenu Example">
+          </OBJECT><p></td>
+    </tr>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> When a menu is not enabled, the text in the menu bar is grayed out and clicking on the menu does not cause the menu to appear.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The following GUI subprograms can be called with a menu as the <i>widgetID</i> parameter:<p>
+<b>GUI.Show</b>,<b> GUI.Hide</b>,<b> GUI.Dispose</b>,<b> GUI.Enable</b>,<b> GUI.Disable</b><p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>GUI.CreateMenu</b>, not by calling <b>CreateMenu</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="gui_createmenuitem_full">GUI.CreateMenuItem</a></b> for adding items to a menu. See also <b><a href="gui_showmenubar.html">GUI.ShowMenuBar</a></b> and <b><a href="gui_hidemenubar.html">GUI.HideMenuBar</a></b> for showing and hiding the menu bar.<p>
+</table></body>
+</html>

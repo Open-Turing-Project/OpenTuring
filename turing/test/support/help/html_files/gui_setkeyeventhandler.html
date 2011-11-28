@@ -1,0 +1,42 @@
+<html>
+<head><title>GUI.SetKeyEventHandler</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.SetKeyEventHandler</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>GUI.SetKeyEventHandler</b> (<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<i>keyEventHandler</i> : <b>procedure</b> <i>x</i> (<i>ch</i> : <b>char</b>))<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Sets the new default keystroke event handler. The <i>keyEventHandler</i> parameter is the name of a procedure that is called every time <b>GUI.ProcessEvent</b> is called and there is a keystroke which is not handled by any widget. The <i>ch</i> parameter in the <i>keyEventHandler</i> is the keystroke typed by the user.<p>
+This procedure is often used to allow for more than one shortcut character for a given button.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program draws a star or quits depening on the button. The Draw Star button can be activated by clicking on it or typing 'D', 'd', 'S', 's' or Ctrl+S. The Quit button can be activate by typing 'Q', 'q' or Ctrl+Q. The Draw Star button is also the default button. It is activated whenever the user presses ENTER.<p>
+<pre><tt>        <b>import</b> <i>GUI</i>
+        <b>View.Set</b> ("graphics:220;200")
+        <b>procedure</b> <i>DrawStar</i>
+            <b>Draw.FillStar</b> (25, 40, 175, 190, <b>Rand.Int</b> (10, 15))
+        <b>end</b> <i>DrawStar</i>
+        
+        <b>procedure</b> <i>KeyHandler</i> (<i>ch</i> : <b>char</b>)
+            <b>if</b> <i>ch</i> = 'q' <b>or</b> <i>ch</i> = '^Q' <b>then</b>
+                <b>Draw.Cls</b>
+                <b>GUI.Quit</b>
+            <b>elsif</b> <i>ch</i> = 'd' <b>or</b> <i>ch</i> = '^d' <b>or</b> <i>ch</i> = 'S' <b>or</b> <i>ch</i> = 's' <b>or</b> <i>ch</i> = '^s' <b>then</b>
+                <i>DrawStar</i>
+            <b>end if</b>
+        <b>end</b> <i>KeyHandler</i>
+        
+        <b>GUI.SetKeyEventHandler</b> (<i>KeyHandler</i>)
+        <b>var</b> <i>button</i> : <b>int</b> := <b>GUI.CreateButtonFull </b>(5, 5, 100, "Draw Star",
+            <i>DrawStar</i>, 0, 'D', <b>true</b>)
+        <b>var</b> <i>quitButton</i> : <b>int</b> := <b>GUI.CreateButtonFull</b> (115, 5, 100, "Quit", 
+            <b>GUI.Quit</b>, 0, 'Q', <b>false</b>)
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>GUI.SetKeyEventHandler</b>, not by calling <b>SetKeyEventHandler</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="gui_processevent.html">GUI.ProcessEvent</a></b>.<p>
+</table></body>
+</html>

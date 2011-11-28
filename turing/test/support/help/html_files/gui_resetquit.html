@@ -1,0 +1,108 @@
+<html>
+<head><title>GUI.ResetQuit</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.ResetQuit</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>GUI.ResetQuit</b><p></font>
+    </tr>
+    <tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+      <td>The <b>GUI.ResetQuit</b> procedure resets the "quitting" flag that
+          is set by the <b>GUI.Quit</b> program. The <b>GUI.ResetQuit</b>
+	  can be used whenever you want to have a program that exits
+	  from the main processing loop, does some work, and then 
+	  reenters the processing loop.<p>
+	  Without <b>GUI.ResetQuit</b>, the program will exit the second
+	  loop immediately because <b>GUI.ProcessEvent</b> will return
+	  <b>true</b>.
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program allows the user to select the color that
+          stars are to be drawn in.  When the user presses the button,
+	  the program exits the first event loop and draws the stars.
+	  Before creating another button and entering a second event
+	  loop, it calls <b>GUI.ResetQuit</b>.<p>
+<pre><tt>        <b>import</b> <i>GUI</i>
+        <b>var</b> <i>radio</i> : <b>array</b> 1 .. 4 <b>of int</b>
+        <b>var</b> <i>button</i> : <b>int</b>
+        <b>var</b> <i>starColor</i> : <b>int</b> := <b>red</b>
+
+        % Action procedures for the radio buttons
+        <b>procedure</b> <i>Red</i>
+            <i>starColor</i> := <b>brightred</b>
+        <b>end</b> <i>Red</i>
+
+        <b>procedure</b> <i>Green</i>
+            <i>starColor</i> := <b>brightgreen</b>
+        <b>end</b> <i>Green</i>
+
+        <b>procedure</b> <i>Blue</i>
+            <i>starColor</i> := <b>brightblue</b>
+        <b>end</b> <i>Blue</i>
+
+        <b>procedure</b> <i>Cyan</i>
+            <i>starColor</i> := <b>brightcyan</b>
+        <b>end</b> <i>Cyan</i>
+
+        % Create the radio buttons
+        <i>radio</i> (1) := <b>GUI.CreateRadioButton</b> (15, <b>maxy</b> - 35, "Red", 0, <i>Red</i>)
+        <i>radio</i> (2) := <b>GUI.CreateRadioButton</b> (-1, -1, "Green", <i>radio</i> (1), <i>Red</i>)
+        <i>radio</i> (3) := <b>GUI.CreateRadioButton</b> (-1, -1, "Blue", <i>radio</i> (2), <i>Blue</i>)
+        <i>radio</i> (4) := <b>GUI.CreateRadioButton</b> (-1, -1, "Cyan", <i>radio</i> (3), <i>Cyan</i>)
+
+        % Create the push button
+        <i>button</i> := <b>GUI.CreateButton</b> (100, <b>maxy</b> - 70, 0, "Draw Stars", <b>GUI.Quit</b>)
+
+        % Process events until the "Draw Stars" button is pressed
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end loop</b>
+
+        % Dispose of all the radio buttons and the push button
+        <b>for</b> <i>i</i> : 1 .. 4
+            <b>GUI.Dispose</b> (<i>radio</i> (i))
+        <b>end for</b>
+        <b>GUI.Dispose</b> (<i>button</i>)
+
+        % Draw a bunch of stars - No more handling of events or widgets
+        <b>for</b> <i>i</i> : 1 .. 100
+            <b>var</b> x : int := Rand.Int (0, maxx - 20)
+            <b>var</b> y : int := Rand.Int (0, maxy - 20)
+            <b>Draw.FillStar</b> (x, y, x + 20, y + 20, starColor)
+        <b>end for</b>
+
+        % Create a new button
+        <i>button</i> := <b>GUI.CreateButton</b> (300, 10, 0, "Quit", <b>GUI.Quit</b>)
+
+        % Reset the quit flag. Without this statement, the loop following would
+        % exit immediately because the quit flag was set in the previous loop
+        <b>GUI.ResetQuit</b>
+
+        % Process events until the "Quit" button is pressed
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end loop</b>
+
+        % Close the window
+        <b>GUI.CloseWindow</b> (<b>defWinID</b>)</tt></pre><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,GUI.ResetQuit.t;GUI.ResetQuit Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+	  <b>GUI.ResetQuit</b>, not by calling <b>ResetQuit</b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

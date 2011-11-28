@@ -1,0 +1,112 @@
+<html>
+<head><title>GUI.CreateTextBox[Full]</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.CreateTextBox[Full]</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+  
+  
+  <table>
+    <tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>GUI.CreateTextBox</b> (<i>x</i>, <i>y</i>, <i>width</i>, <i>height</i> : <b>int</b>) : <b>int</b><p>
+          <b>GUI.CreateTextBoxFull</b> (<i>x</i>, <i>y</i>, <i>width</i>, <i>height</i> : <b>int</b>,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<i>border</i>, <i>fontID</i> : <b>int</b>) : <b>int</b><p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>Creates a text box and returns the text box's widget ID. <p>
+	  A text box is a box used for displaying text. It has scroll bars that activate when text appears outside the border of the text box. The user cannot directly select, edit or modify the text in the text box.<p>
+	  The <i>x</i> and<i> y</i> parameters specify the lower-left corner of the area in which the text will be drawn. The <i>width</i> and <i>height</i> parameters specify the width and height of the text drawing area The text box border is just outside the text drawing area. Because of this, <b>GUI.GetX</b> and <b>GUI.GetY</b> will return a value slightly smaller than <i>x</i> and <i>y</i> and <b>GUI.GetWidth</b><i> </i>and <b>GUI.GetHeight</b> will return values slightly larger than <i>width</i> and <i>height</i>.<p>
+	  For <b>GUI.CreateTextBox</b>, the border around the text box is always a line. For <b>GUI.CreateTextBoxFull</b>, the type of border is specified by the <i>border</i> parameter. The <i>border</i> parameter is one of 0, <i>GUI.LINE</i>, <i>GUI.INDENT</i>, or <i>GUI.EXDENT</i>. A border of 0 is the default and is the same as <i>GUI.LINE</i>. <i>GUI.INDENT</i> and <i>GUI.EXDENT</i> only display properly if the background colour has been set to <i>gray</i> using <b>GUI.SetBackgroundColor</b>. <i>GUI.INDENT</i> makes the text box appear indented or recessed. <i>GUI.EXDENT</i> makes the text box appear to stand out from the window. The <i>fontID</i> parameter specifies the font ID of the font to be used in the text box. The font ID is received from a <i>Font.New</i> call. Do not call <i>Font.Free</i> for this font ID until the label has been disposed of by calling <b>GUI.Dispose</b>.<p>
+	  By using the <i>fondID</i> parameter, text boxes can have any size or typeface.<p>
+	  <center><img src="gui_createtextbox_full01.gif"></center>
+	  <center><b>A text box displaying the contents of a file.</b></center><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>The following program displays the contents of a file in a text box.<p>
+<pre><tt>        <b>import</b> <i>GUI</i> 
+        <b>View.Set</b> ("graphics:300;300") 
+        
+        <b>const</b> <i>fileNameToBeViewed</i> : <b>string</b> := "TextBxs.DEM"
+        <b>var</b> <i>textBox</i> : <b>int</b>       % The Text Field ID.
+        <b>var</b> <i>title</i> : <b>int</b>     % The label for the title.
+        <b>var</b> <i>f</i> : <b>int</b>         % The stream number of the file.
+        <b>var</b> <i>line</i> : <b>string</b>       % Lines to be read from the file.
+        
+        % Open the file.
+        <b>open</b> : <i>f</i>, <i>fileNameToBeViewed</i>, <b>get</b>
+        <b>if</b> <i>f </i>= 0 <b>then</b>
+            <b>put</b> "Unable to open " + <i>fileNameToBeViewed</i> + " : ", <i>Error.LastMsg</i>
+            <b>return</b>
+        <b>end if</b>
+        
+        % Set background color to gray for indented text box.
+        <b>GUI.SetBackgroundColor</b><i> </i>(<i>gray</i>)
+        
+        % Create the title label and text box.
+        <i>title</i> := <b>GUI.CreateLabelFull</b><i> </i>(20, 280, <i>fileNameToBeViewed</i>, 250, 0, 
+            <i>GUI.CENTER</i>, 0)
+        <i>textBox</i> := <b>GUI.CreateTextBoxFull</b> (10, 10, 280, 265, 
+            <i>GUI.INDENT</i>, 0)
+        
+        % Read the file and place it in the text box.
+        <b>loop</b>
+            <b>exit when </b><i>eof</i> (<i>f</i>)
+            <b>get</b> : <i>f</i>, <i>line</i> : *
+            <b>GUI.AddLine</b><i> </i>(<i>textBox</i>, <i>line</i>)
+        <b>end loop</b>
+        
+        <b>close</b> : <i>f   </i>% Close the file.
+        
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b></tt></pre><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,GUI.CreateTextBoxFull.t;GUI.CreateTextBoxFull Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>When <b>GUI.CreateTextBox </b>or <b>GUI.CreateTextBoxFull</b><i> </i>is called, the newly created picture will be displayed immediately unless <b>GUI.DisplayWhenCreated</b> has been called with the <i>display</i> parameter set to false. <p>
+	  A text box widget is a passive widget and cannot be enabled or disabled.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The following GUI subprograms can be called with a text box as the <i>widgetID</i> parameter:<p>
+	  <table>
+	    <tr valign="top">
+	      <td width="40">&nbsp;</td>
+	      <td><b>GUI.Show</b>, <b>GUI.Hide</b>, <b>GUI.Dispose</b>,
+		  <b>GUI.GetX</b>, <b>GUI.GetY</b>, <b>GUI.GetWidth</b>,
+		  <b>GUI.GetHeight</b>, <b>GUI.SetPosition</b>,
+		  <b>GUI.SetSize</b>, <b>GUI.SetPositionAndSize</b>,
+		  <b>GUI.AddLine</b>, <b>GUI.AddText</b>, 
+		  <b>GUI.ClearText</b>, <b>GUI.SetTopLine</b>, 
+		  <b>GUI.SetScrollOnAdd</b> </td>
+	    </tr>
+	  </table>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+	  This means that you can only call the function by calling <b>GUI.CreateTextBox</b>, not by calling <b>CreateTextBox</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="gui_addline.html">GUI.AddLine</a></b>, 
+          <b><a href="gui_addtext.html">GUI.AddText</a></b> 
+          for adding text to the text box.
+	  See also <b><a href="gui_settopline.html">GUI.SetTopLine</a></b>
+	  to set the top line of text in the text box.
+	  See also <b><a href="gui_setscrollonadd.html">GUI.SetScrollOnAdd</a></b>
+	  to set stop the text box from scrolling when text 
+	  is added to the text box.
+	  See also <b><a href="gui_cleartext.html">GUI.ClearText</a></b> 
+	  for clearing the text box.<p>
+    </tr>
+</table></body>
+</html>

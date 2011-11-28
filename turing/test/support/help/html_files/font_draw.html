@@ -1,0 +1,94 @@
+<html>
+<head><title>Font.Draw</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Font.Draw</b></font></td><td align="right">Part of <a href="fontmodule.html">Font</a> module</td></table><p>
+  
+  
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Font.Draw</b> (<i>txtStr</i> : <b>string</b>, <i>x</i>, <i>y</i>, <i>fontID</i>, <i>Color</i> : <b>int</b>)<p></font>
+    </tr>      
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td><b>Font.Draw </b>is used to actually draw text in a specified font. 
+          The <i>textStr</i> parameter contains the string to be drawn. The 
+          <i>x</i> and <i>y</i> parameters are the location of the lower left 
+          hand corner of the text to be displayed. The <i>fontID</i> parameter 
+          is the number of the font in which the text is to be drawn. The 
+          <i>Color</i> parameter is used to specify the color in which the 
+          text is to appear.<p>
+          Note that the text that appears is completely unrelated to the text 
+          that appears using <b>put</b>. <b>Font.Draw</b> is a graphics command 
+          and thus does not use or affect the cursor location.<p>
+          The text drawn by the <b>Font.Draw</b> procedure does not erase the 
+          background.<p>
+    </tr>      
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>If <b>Font.Draw</b> is passed an invalid font ID, a fatal error 
+          occurs. If the <b>Font.Draw</b> call fails for other (non-fatal) 
+          reasons, then <b>Error.Last</b> will return a non-zero value 
+          indicating the reason for the failure. <b>Error.LastMsg</b> will 
+          return a string which contains the textual version of the error.<p>
+    </tr>      
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>The program prints out several phrases in a variety of fonts.<p>
+<pre><tt>        <b>var </b><i>font1</i>, <i>font2</i>, <i>font3</i>, <i>font4</i> : <b>int</b>
+        <i>font1</i> := <b>Font.New</b> ("serif:12")
+        <b>assert </b><i>font1</i> &gt; 0
+        <i>font2</i> := <b>Font.New</b> ("sans serif:18:bold")
+        <b>assert </b><i>font2 </i>&gt; 0
+        <i>font3</i> := <b>Font.New</b> ("mono:9")
+        <b>assert </b><i>font3 </i>&gt; 0
+        <i>font4</i> := <b>Font.New</b> ("Palatino:24:bold,italic")
+        <b>assert </b><i>font4 </i>&gt; 0
+        <b>Font.Draw</b> ("This is in a serif font", 50, 30, <i>font1, red</i>)
+        <b>Font.Draw</b> ("This is in a sans serif font", 50, 80, <i>font2, brightblue</i>)
+        <b>Font.Draw</b> ("This is in a mono font", 50, 130, <i>font3, colorfg</i>)
+        <b>Font.Draw</b> ("This is in Palatino (if available)", 50, 180, <i>font4, green</i>)
+        <b>Font.Free</b> (<i>font1</i>)
+        <b>Font.Free</b> (<i>font2</i>)
+        <b>Font.Free</b> (<i>font3</i>)
+        <b>Font.Free</b> (<i>font4</i>)</tt></pre><p>
+    </tr>      
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,Font.Draw.t;Font.Draw Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>To use the same font as is used by the <b>put</b> statement, use 
+          <b>defFontID</b> for the font number.  This font does not have to 
+          be created or freed by the user, and allows a program to quickly 
+          place text in any location on the screen.
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>The program draws two strings in the default font (<b>defFontID</b>).<p>
+<pre><tt>        <b>Font.Draw</b> ("Drawing Here", 100, 120, <b>defFontID</b>, <b>brightred</b>)
+        <b>Font.Draw</b> ("and Here", 180, 90, <b>defFontID</b>, <b>brightgreen</b>)</tt></pre>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+        <PARAM name="Command" value="TCard">
+        <PARAM name="Button" value="Text: Launch Example Program">
+        <PARAM name="Item1" value="-1,Font.Draw2.t;Font.Draw with defFontID Example">
+      </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+          <b>Font.Draw</b>, not by calling <b>Draw</b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

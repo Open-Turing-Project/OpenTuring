@@ -1,0 +1,80 @@
+<html>
+<head><title>GUI.CloseWindow</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.CloseWindow</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>GUI.CloseWindow</b> (<i>window</i> : <b>int</b>)<p></font>
+    </tr>
+    <tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+      <td>Closes a window with widgets in it. This procedure automatically 
+          disposes of any widgets in the window and makes certain that the 
+	  GUI Library recognizes that the window no longer exists. This 
+	  procedure will call <i>Window.Close</i>, so there is no need for 
+	  the user to do so.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>The program opens up a window with two buttons. If the button 
+          labelled "Close and Open" is pressed, the window is closed and 
+	  a new window with two buttons is opened in a random location on 
+	  the screen.<p>
+<pre><tt>        <b>import</b> <i>GUI</i>
+        
+        <b>const</b> <i>screenWidth</i> : <b>int</b> := <b>Config.Display </b>(<i>cdScreenWidth</i>)
+        <b>const</b> <i>screenHeight</i> : <b>int</b> := <b>Config.Display </b>(<i>cdScreenHeight</i>)
+        <b>const</b> <i>titleBarHeight</i> : <b>int</b> := 32
+        <b>const</b> <i>windowEdgeSize</i> : <b>int</b> := 13
+        <b>const</b> <i>windowWidth</i> : <b>int</b> := 150
+        <b>const</b> <i>windowHeight</i> : <b>int</b> := 100
+        <b>var</b> <i>windowID</i>, <i>windowNumber</i>, <i>closeButton</i>, <i>quitButton</i> : <b>int</b> := 0
+        
+        <b>procedure</b> <i>CloseAndOpen</i>
+            <b>if</b> <i>windowID</i> <b>not</b>= 0 <b>then</b>
+                <i>GUI</i>.<i>CloseWindow</i> (<i>windowID</i>)
+            <b>end</b> <b>if</b>
+            <i>windowNumber</i> += 1
+            <b>var</b> <i>xPos</i> : <b>int</b> := <b>Rand.Int</b> (0, <i>screenWidth</i> - <i>windowWidth</i> -
+                <i>windowEdgeSize</i>)
+            <b>var</b> <i>yPos</i> : <b>int</b> := <b>Rand.Int </b>(0, <i>screenHeight</i> - <i>windowHeight</i> - 
+                <i>titleBarHeight</i>)
+            <i>windowID</i> := <b>Window.Open </b>("title:Window #" + 
+                <i>intstr</i> (<i>windowNumber</i>) + ",graphics:" + 
+                <i>intstr</i> (<i>windowWidth</i>) + ";" + <i>intstr</i> (<i>windowHeight</i>) +
+                ",position:" + <i>intstr</i> (<i>xPos</i>) + ";" + <i>intstr</i> (<i>yPos</i>))
+            <i>closeButton</i> := <b>GUI.CreateButton </b>(10, 60, 130, 
+                "Close And Open", <i>CloseAndOpen</i>)
+            <i>quitButton</i> := <b>GUI.CreateButton </b>(10, 10, 130, "Quit", <b>GUI.Quit</b>)
+        <b>end</b> <i>CloseAndOpen</i>
+        
+        <i>CloseAndOpen</i>
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b>
+        <b>GUI.CloseWindow </b>(<i>windowID</i>)</tt></pre><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,GUI.CloseWindow.t;GUI.CloseWindow Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+	  <b>GUI.CloseWindow</b>, not by calling <b>CloseWindow</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="gui_showwindow.html">GUI.ShowWindow</a></b> and
+          <b><a href="gui_hidewindow.html">GUI.HideWindow</a></b>, 
+          for showing and hiding windows with widgets in them.<p>
+    </tr>
+  </table>
+</body>
+</html>

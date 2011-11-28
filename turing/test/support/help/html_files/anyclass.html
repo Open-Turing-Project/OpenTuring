@@ -1,0 +1,30 @@
+<html>
+<head><title>anyclass</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>anyclass</b></font></td><td align="right"><font size="+1"><b>the ancestor of all classes</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>anyclass</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> There is a predefined class called <b>anyclass</b>, which is the root of the expansion tree. All classes that do not have <b>inherit</b> lists are considered to be expansions of <b>anyclass</b>. The main purpose of <b>anyclass</b> is to allow pointers that can locate objects of any class.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Here is the declaration of a pointer <i>p </i>that can locate an object of any class.<p>
+<pre><tt>        <b>var</b> <i>p</i> : <b>pointer</b> <b>to</b> <b>anyclass</b>     <i>% Short form: var p : ^ anyclass</i>
+        <b>var</b> <i>q</i> : <b>pointer</b> <b>to</b> <i>stack</i>        <i>% Short form: var q : ^ stack</i>
+        <b>new</b> <i>q</i>               <i>% Create a stack object</i>
+        <i>p</i> := <i>q</i>              <i>% Legal because p's class</i>
+                            <i>% is an ancestor of q's class</i></tt></pre>
+Assuming <i>stack</i> is a class, this creates a <i>stack</i> object and places its location in <i>q </i>and <i>p</i>. The compiler will not allow a call to <i>stack</i>'s exported subprograms using <i>p</i> directly, as in:<p>
+<pre><tt>        <i>p</i> -&gt; <i>push</i> (14)      <i>% ILLEGAL!  <b>anyclass</b> has no operations</i></tt></pre>
+An assignment from <i>p</i> to <i>q</i> is legal, as in:<p>
+<pre><tt>        <i>q</i> := <i>p</i>  <i>% Checks that p locates a stack object (or descendant)</i></tt></pre>
+This implies a run time check to make sure that <i>p</i> locates an object that is a <i>stack</i> (or a descendant of a <i>stack</i>).<p>
+Here is a way to call a subprogram exported from <i>stack</i> using <i>p</i>:<p>
+<pre><tt>        <i>stack</i> (<i>p</i>) . <i>push</i> (14)   <i>% Checks that p locates a stack object</i></tt></pre>
+This checks to see that <i>p</i> locates a <i>stack</i> object (or a descendant) before calling the <i>stack</i> operation <i>push</i>.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> It is legal to create objects of the class called <b>anyclass</b>, but this is not of much use, because there is nothing you can do with these objects (they have no operations). It is legal to assign these objects to other objects of the same class (<b>anyclass</b>), although this accomplishes nothing.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="objectclass.html">objectclass</a></b>, which takes a class pointer and produces the class of the object located by the pointer. This is used for testing to determine the class of the object located by a pointer.<p>
+See also <b><a href="class.html">class</a></b>. See also <b><a href="export.html">export</a></b> list, <b><a href="import.html">import</a></b> list, <b><a href="inherit.html">inherit</a></b> list, <b><a href="implement.html">implement</a></b> list and <b><a href="implement_by.html">implement by</a></b> list.<p>
+</table></body>
+</html>

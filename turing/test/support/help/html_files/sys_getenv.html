@@ -1,0 +1,20 @@
+<html>
+<head><title>Sys.GetEnv</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Sys.GetEnv</b></font></td><td align="right">Part of <a href="sysmodule.html">Sys</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Sys.GetEnv</b> ( <i>symbol</i> : <b>string</b> ) : <b>string</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Sys.GetEnv </b>function is used to<b> </b>access the environment string whose name is <i>symbol</i>. These strings are determined by the shell (command processor) or the program that caused your program to run. See also the <b>Sys.Nargs</b> and <b>Sys.FetchArg</b> functions.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> On a PC, this retrieves the environment variable USERLEVEL<b> </b>and prints extra instructions if USERLEVEL had been set to NOVICE. USERLEVEL can be set to NOVICE with the command <b>SET USERLEVEL = NOVICE</b> in the <b>autoexec.bat</b> file or in any batch file.<p>
+<pre><tt>        <b>const</b> <i>userLevel</i> : <b>string</b>
+        <i>userLevel</i> := <b>Sys.GetEnv </b>("USERLEVEL")
+            <b>if</b> <i>userLevel</i> = "NOVICE" <b>then</b>
+            …           <i>% put a set of instructions</i>
+        <b>end if</b></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Sys.GetEnv</b>, not by calling <b>GetEnv</b>.<p>
+</table></body>
+</html>

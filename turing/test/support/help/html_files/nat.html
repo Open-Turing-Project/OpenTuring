@@ -1,0 +1,30 @@
+<html>
+<head><title>nat</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>nat</b></font></td><td align="right"><font size="+1"><b>natural number type</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>nat</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>nat</b> (natural number) type has the values 0, 1, 2, 3 … Natural numbers can be combined by various operators, such as addition (+) and multiplication (*). Natural numbers can be combined with integers (type <b>int</b>), in which case the result is an integer. Natural numbers can also be combined with <b>real</b> numbers, in which case the result is generally a real number. Natural numbers can always be assigned to real variables, with implicit conversion to <b>real</b>.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>var</b> <i>counter</i> : <b>nat</b>
+        <b>var</b> <i>j</i> : <b>nat</b> := 9</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> See also <i>explicitIntegerConstant</i>. The <b>nat</b> type is used instead of <b>int</b> when the values are known to be non-negative.<p>
+The Turing operators on natural numbers are the same as those for integers: +, -, * (multiply), <b>div</b> (truncating integer division), <b>mod</b> (integer remainder), ** (exponentiation), as well as comparisons (+, <b>not=</b>, &gt;, &gt;=, &lt;, &lt;=). The operators <b>and</b>, <b>or</b> and <b>xor</b> to be applied to natural number values. The bit-wise boolean result is produced as a natural number. The <b>shr</b> (shift right) and <b>shl</b> (shift left) operators are also introduced.<p>
+In the current implementation, the range of natural numbers is from 0 to 4294967294. In other words, the maximum value of a natural number is 2**32 - 2. This range exists because natural numbers are stored in 4 bytes. The types <b>nat1</b>, <b>nat2</b> and <b>nat4</b> specify natural numbers that fit into 1, 2 or 4 bytes.<p>
+Explicit constants such as 213 and 0 are considered to be integers. As a result the type of <i>tax</i> in this declaration is <b>int</b>:<p>
+<pre><tt>        <b>var</b> <i>tax</i> := 0    <i>% The type is <b>int</b></i></tt></pre>
+Natural number values can be used whenever integer values are expected and vice versa, given that the value does not exceed the range of the expected type.<p>
+When integer and natural numbers are combined using a binary operator such as +, the result is an integer. This means, for example, that if <i>counter</i> is a natural number, <i>counter </i>+ 1 is considered to be an integer. As long as the result fits into the range that is the intersection of the ranges of <b>int</b> and <b>nat</b>, the result will be as expected. Anomalies occur when the result is (or would be) greater than the largest integer (<b>maxint</b>=2147483647). For example, if natural number <i>n</i> is greater than <b>maxint</b>, the expression <i>n</i> + 1 will overflow, because its result is an <b>int</b> (because 1 is an <b>int</b>). To avoid this problem, you must be careful that both operands are natural numbers. <p>
+Suppose we have this declaration:<p>
+<pre><tt>        <b>const</b> <i>natOne</i> : <b>nat</b> := 1</tt></pre>
+We can safely compute <i>n</i> + <i>natOne</i> because both operands have type <b>nat</b>.<p>
+Natural numbers can be converted to real numbers using <b>natreal</b>, but in practice this is rarely used, because a natural value used in place of a real value will be automatically converted to real.<p>
+Natural numbers can be converted to strings and back using <b>natstr</b> and <b>strnat</b>.<p>
+In the C language, a natural number is said to be "unsigned".<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="maxnat.html">maxnat</a></b>, <b><a href="int.html">int</a></b>, <b><a href="nat.html">nat</a></b><i>n</i>, <b><a href="int.html">int</a></b><i>n</i>, <b><a href="natstr.html">natstr</a></b>, <b><a href="strnat.html">strnat</a></b> and <b><a href="natreal.html">natreal</a></b>.<p>
+</table></body>
+</html>

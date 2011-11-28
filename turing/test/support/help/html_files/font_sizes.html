@@ -1,0 +1,39 @@
+<html>
+<head><title>Font.Sizes</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Font.Sizes</b></font></td><td align="right">Part of <a href="fontmodule.html">Font</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Font.Sizes</b> (<i>fontID</i> : <b>int</b>, <b>var</b> <i>height</i>, <i>ascent</i>, <i>descent</i>, <br>
+</font><table><tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="4"><font size="+1"><i>internalLeading</i> : <b>int</b>)</td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> <b>Font.Sizes </b>is used to get the metrics of a particular font. The various parts of the metric are illustrated below. Note that you can calculate the external leading by subtracting the ascent and descent from the height.<p>
+
+<center><img src="font_sizes01.gif"></center>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> If <b>Font.Sizes</b> is passed an invalid font ID, a fatal error occurs. If the <b>Font.Sizes</b> call fails for other (non-fatal) reasons, the metrics for the default font will be returned. As well, <b>Error.Last</b> will return a non-zero value indicating the reason for the failure. <b>Error.LastMsg</b> will return a string which contains the textual version of the error.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The program gets information about 24pt Bold Italic Palatino.<p>
+<pre><tt>        <b>var</b> <i>fontID</i>, <i>height</i>, <i>ascent</i>, <i>descent</i>, <i>internalLeading, </i> : <b>int</b>
+        <b>var</b> <i>externalLeading</i>: <b>int</b>
+        <i>fontID</i> := <b>Font.New</b> ("Palatino:24:bold,italic")
+        <b>Font.Sizes</b> (<i>fontID</i>, <i>height</i>, <i>ascent</i>, <i>descent</i>, <i>internalLeading</i>)
+        <i>externalLeading</i> := <i>height</i>  <i>ascent</i>  <i>descent</i>
+        <b>put</b> "The height of the font is ", <i>height</i>, " pixels"
+        <b>put</b> "The ascent of the font is ", <i>ascent</i>, " pixels"
+        <b>put</b> "The descent of the font is ", <i>descent</i>, " pixels"
+        <b>put</b> "The internal leading of the font is ", <i>internalLeading</i>, " pixels"
+        <b>put</b> "The external leading of the font is ", <i>externalLeading</i>, " pixels"
+        <b>Font.Free</b> (<i>fontID</i>)</tt></pre><p>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,Font.Sizes.t;Font.Sizes Example">
+          </OBJECT><p></td>
+    </tr>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Font.Sizes</b>, not by calling <b>Sizes</b>.<p>
+</table></body>
+</html>

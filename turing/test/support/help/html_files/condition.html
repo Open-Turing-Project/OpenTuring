@@ -1,0 +1,66 @@
+<html>
+<head><title>condition</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>condition</b></font></td><td align="right"><font size="+1"><b>declaration</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A conditionDeclaration is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>var</b> <i>id </i>{ , <i>id </i>} : [ <b>array</b> <i>indexType</i> {, <i>indexType</i> } <b>of</b> ]</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1">[ <i>conditionOption</i> ] <b>condition</b></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A condition is essentially a queue of sleeping processes. It is used in a concurrent program to allow processes to block themselves (by the <b>wait</b> statement) and later to be awakened (by the <b>signal</b> statement). A condition variable, which can occur only inside a monitor (a special kind of module that handles concurrency) or monitor class, is used by the <b>wait</b> and <b>signal</b> statements for putting processes to sleep and later waking them up.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The processes use this monitor to gain exclusive access to a resource. A process wanting to use the resource calls the <i>request</i> entry point and is blocked until the resource is free. When the process is finished with the resource, it calls the <i>release</i> entry point. This monitor is essentially a binary <i>semaphore</i> in which the semaphore's <i>P</i> operation is the <i>request</i> and the <i>V</i> is the <i>release</i>.<p>
+<pre><tt>        <b>monitor</b> <i>resource</i>
+            <b>export</b> <i>request</i>, <i>release</i>
+        
+            <b>var</b> <i>available</i> : <b>boolean</b> := <b>true</b>
+            <b>var</b> <i>nowAvailable</i> : <b>condition</b>
+        
+            <b>procedure</b> <i>request</i>
+                <b>if</b> <b>not</b> <i>available</i> <b>then</b>
+                    <b>wait</b> <i>nowAvailable</i>   <i>% Go to sleep</i>
+                <b>end</b> <b>if</b>
+                <b>assert</b> <i>available</i>
+                <i>available</i> := <b>false</b>      <i>% Allocate resource</i>
+            <b>end</b> <i>request</i>
+        
+            <b>procedure</b> <i>release</i>
+                <b>assert</b> <b>not</b> <i>available</i>    <i>% Resource is allocated</i>
+                <i>available</i> := <b>true</b>       <i>% Free the resource</i>
+                <b>signal</b> <i>nowAvailable</i> <i>% Wake up one process</i>
+                                <i>% If any are sleeping</i>
+            <b>end</b> <i>release</i>
+        
+        <b>end</b> <i>resource</i>
+        <b>process</b> <i>worker</i>
+            <b>loop</b>
+                …
+                <i>resource</i>.<i>request</i>        <i>% Block until available</i>
+                <i>… use resource …</i>
+                <i>resource</i>.<i>release</i>
+            <b>end</b> <b>loop</b>
+        <b>end</b> <i>worker</i>
+        
+        <b>fork</b> <i>worker</i>             <i>% Activate one worker</i>
+        <b>fork</b> <i>worker</i>             <i>% Activate another worker</i></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,condition.t;condition Data Type Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> A <i>conditionOption </i>is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>(a)</td><td width="10">&nbsp;</td><td><b>priority</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(b)</td><td width="10">&nbsp;</td><td><b>deferred</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(c)</td><td width="10">&nbsp;</td><td><b>timeout</b></td></tr>
+</table><p>
+The <b>priority</b> option requires that the corresponding <b>wait</b> statements include priorities. Options (b) and (c) declare <i>deferred</i> conditions. A signal to a deferred condition causes the signaled process to become ready to enter the monitor when the monitor becomes inactive. The signaling process continues running in the monitor. A signal to an <i>immediate</i> (non deferred) condition causes the signaled process to begin running in the monitor immediately. The signaling process waits to re-enter the monitor when the monitor becomes inactive. All conditions in a device monitor must be deferred (or <b>timeout</b>).<p>
+A <b>timeout</b> option means the signaling is deferred and that an extra parameter to the <b>wait</b> statement must give a <i>timeout</i> <i>interval</i>. If a process waits longer than its interval, it is automatically signaled. Beware that the <i>empty</i> function can be non-repeatable when applied to timeout conditions. For example, <b>empty</b>(<i>c</i>)<i> </i>may not be equal to <b>empty</b>(<i>c</i>) in a single expression. In the current (1999) version of Turing, the time for time outs is measured in simulation time rather than real time. See the <b>pause</b> statement.<p>
+Conditions cannot be named as types, cannot be contained in records, unions or collections and cannot be declared in statements (such as <b>begin</b> or <b>loop</b>) or in subprograms. They can only be declared in monitors and monitor classes.<p>
+There is no guaranteed order of progress among awakened deferred processes, processes signaling immediate conditions, and processes attempting to enter an active monitor.<p>
+Note that <i>conditionOption</i> must precede the keyword <b>condition</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="wait.html">wait</a></b> and <b><a href="signal.html">signal</a></b>. See also <b><a href="monitor.html">monitor</a></b> and <b><a href="fork.html">fork</a></b>. See also <b><a href="empty.html">empty</a></b>. See also <b><a href="pause.html">pause</a></b>.<p>
+</table></body>
+</html>

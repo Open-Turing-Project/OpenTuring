@@ -1,0 +1,32 @@
+<html>
+<head><title>RGB.AddColor</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>RGB.AddColor</b></font></td><td align="right">Part of <a href="rgbmodule.html">RGB</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <b>RGB.AddColor</b> (<i>redComp</i>, <i>greenComp</i>, <i>blueComp</i> : <b>real</b>) : <b>int</b><p>
+<tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>RGB.AddColor</b> function attempts to create a new color with the red, green and blue components specified. If successful, the function returns a new color number (usually one greater than <b>maxcolor</b>)<b> </b>and<b> maxcolor </b>is updated by adding 1 to it. If it is unsuccessful, the function returns 1 and <b>Error.Last</b> and <b>Error.LastMsg</b> can be used to determine the cause of the problem. <p>
+The red, green and blue values must normalized to be between 0 and 1. Thus to add the pure red to the color palette, you would call:<p>
+<pre><tt>        <i>newColor</i> := <b>RGB.AddColor</b> (1.0, 0.0, 0.0)</tt></pre>
+<i>newColor</i> would be set to the color added, or 1 if the attempt to add a color failed.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program adds a palette of 16 blues to the end of the color palette.<p>
+<pre><tt>        <b>var</b> <i>clr</i> : <b>int</b>
+        <b>for</b> <i>blueShade</i> : 0 .. 15
+            <b> </b><i>clr</i> = <b>RGB.AddColor </b>(0, 0, <i>blueShade</i> / 15)
+            <b> if </b><i>clr</i> = 1 <b>then</b>
+                <b>put</b> "Color add failed on shade number ", <i>blueShade</i>
+                <b>exit</b>
+            <b>else</b>
+                <b>put</b> "Added color number ", <i>clr</i>
+            <b>end if</b>
+        <b>end for</b></tt></pre>
+<table><tr valign="top"><td><b>Details</b></td><td width="10">&nbsp;</td><td><b>RGB.AddColour</b> is an alternate spelling for <b>RGB.AddColor</b>.</td></tr>
+</table><p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>RGB.AddColor</b>, not by calling <b>AddColor</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="rgb_getcolor.html">RGB.GetColor</a></b>and <b><a href="rgb_setcolor.html">RGB.SetColor</a></b>.<p>
+</table></body>
+</html>

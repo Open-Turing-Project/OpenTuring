@@ -1,0 +1,44 @@
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Developer Studio">
+<META HTTP-EQUIV="Content-Type" content="text/html; charset=iso-8859-1">
+<TITLE>Control Constructs</TITLE>
+</HEAD>
+<BODY>
+<h1>Control Constructs</h1>
+<table>
+<tr><td valign="top"><h2>FOR</h2><td width="50">&nbsp;<td><table><tr><td colspan="2"><b>for</b> [ <b>decreasing</b> ] <i>variable</i> : <i>startValue</i> .. <i>endValue</i>
+		                                            <tr><td width="40"><td>... <i>statements</i> ...
+													<tr><td width="40"><td><b>exit when</b>  <i>expn</i>
+		                                            <tr><td width="40"><td>... <i>statements</i> ...
+												    <tr><td colspan="2"><b>end for</b></table>
+<tr><td>&nbsp;
+<tr><td valign="top"><h2>LOOP</h2><td width="50">&nbsp;<td><table><tr><td colspan="2"><b>loop</b>
+		                                            <tr><td width="40"><td>... <i>statements</i> ...
+													<tr><td width="40"><td><b>exit when</b>  <i>expn</i>
+		                                            <tr><td width="40"><td>... <i>statements</i> ...
+												    <tr><td colspan="2"><b>end loop</b></table>
+<tr><td>&nbsp;
+<tr><td valign="top"><h2>IF</h2><td width="50">&nbsp;<td><table><tr><td colspan="2"><b>if</b> <i>condition</i> <b>then</b>
+		                                            <tr><td width="40"><td>... <i>statements</i> ...
+													<tr><td width="40"><td>{ <b>elsif</b> <i>condition</i> <b>then</b>
+		                                            <tr><td width="40"><td>... <i>statements</i> ... }
+													<tr><td width="40"><td>[ <b>else</b>
+		                                            <tr><td width="40"><td>... <i>statements</i> ... ]
+												    <tr><td colspan="2"><b>end if</b></table>
+<tr><td>&nbsp;
+<tr><td valign="top"><h2>CASE</h2><td width="50">&nbsp;<td><table><tr><td colspan="2"><b>case</b> <i>expn</i> <b>of</b>
+		                                            <tr><td width="40"><td>... <i>statements</i> ...
+													<tr><td width="40"><td>{ <b>label</b> <i>expn</i> {, <i>expn</i>
+		                                            <tr><td width="40"><td>... <i>statements</i> ... }
+													<tr><td width="40"><td>[ <b>label :</b>
+		                                            <tr><td width="40"><td>... <i>statements</i> ... ]
+												    <tr><td colspan="2"><b>end case</b></table>
+<tr><td>&nbsp;
+</table>
+<p>
+Any number of <b>exit</b> and <b>exit when</b> statements can appear at any place inside 
+<b>for</b> .. <b>end for</b> constructs and <b>loop</b> .. <b>end loop</b> constructs.
+
+</BODY>
+</HTML>

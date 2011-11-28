@@ -1,0 +1,34 @@
+<html>
+<head><title>collection</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>collection</b></font></td><td align="right"><font size="+1"><b>declaration</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>collectionDeclaration</i> is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(a)</font></td><td colspan="7"><font size="+1"><b>var</b> <i>id </i>{ , <i>id </i>} : <b>collection</b> <b>of</b> <i>typeSpec</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(b)</font></td><td colspan="7"><font size="+1"><b>var</b> <i>id </i>{ , <i>id </i>} : <b>collection</b> <b>of</b> <b>forward</b> <i>typeId</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A collection declaration creates a new collection (or collections). A collection can be thought of as an array whose elements are dynamically created (by <b>new</b>) and deleted (by <b>free</b>). Elements of a collection are referred to by the collection's name subscripted by a pointer. See also <b>new</b>, <b>free</b> and <b>pointer</b>.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Create a collection that will represent a binary tree.<p>
+<pre><tt>        <b>var</b> <i>tree </i>: <b>collection</b> <b>of</b>
+            <b>record</b>
+                <i>name</i> : <b>string</b> (10)
+                <i>left</i>, <i>right </i>: <b>pointer</b> <b>to</b> <i>tree</i>
+            <b>end</b> <b>record</b>
+        
+        <b>var</b> <i>root</i> : <b>pointer</b> <b>to</b> <i>tree</i>
+        <b>new</b> <i>tree</i>, <i>root</i>
+        <i>tree</i> (<i>root</i>) . <i>name</i> := "Adam"</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The statement "<b>new</b> <i>C</i>,<i>p</i>" creates a new element in collection <i>C</i> and sets <i>p</i> to point at <i>i</i>. If there is no more memory space for the element, though, <i>p</i> is set to <i>nil</i> (<i>C</i>), which is the null pointer for collection <i>C</i>. The statement "<b>free</b> <i>C</i>,<i>p</i>" deletes the element of <i>C</i> pointed to by <i>p</i> and sets <i>p</i> to <i>nil</i> (<i>C</i>). In each case, <i>p</i> is passed as a <b>var</b> parameter and must be a variable of the pointer type of <i>C</i>.<p>
+The keyword <b>forward</b> (form b above) is used to specify that the <i>typeId</i> of the collection elements will be given later in the collection's scope. The later declaration must appear at the same level (in the same list of declarations and statements) as the original declaration. This allows cyclic collections, for example, when a collection contains pointers to another collection, which in turn contains pointers to the first collection. In this case, the <i>typeId</i> is the name of the type that has not yet been declared; <i>typeId</i> cannot be used until its declaration appears. A collection whose element type is <b>forward</b> can be used only to declare pointers to it until the type's declaration is given.<p>
+Suppose pointer <i>q</i> is equal to pointer <i>p</i> and the element they point to is deleted by "<b>free</b> <i>C</i>,<i>p</i>". We say <i>q</i> is a <i>dangling pointer</i> because it seems to locate an element, but the element no longer exists. A dangling pointer is considered to be an uninitialized value. It cannot be assigned, compared, used as a collection subscript, or passed to <b>free</b>.<p>
+Collections cannot be assigned, compared, passed as parameters, bound to, or named by a <b>const</b> declaration. Collections must not be declared in procedures, functions, records or unions.<p>
+The same short forms for classes can be also used for collections. These include omission of the collection name in <b>new</b>, <b>free</b> and <b>nil</b> together with the ^ and -&gt; notations. Pointers to types (see <b>pointer</b>) can also be used, which are often more convenient to use than collections.<p>
+The syntax of a <i>collectionDeclaration</i> presented above has been simplified by leaving out <b>unchecked</b> collections. With this feature, a <i>collectionDeclaration</i> is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>(a) <b>var</b> <i>id </i>{ , <i>id </i>} : [ <b>unchecked</b> ] <b>collection</b> <b>of</b> <i>typeSpec</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(b)<i> </i><b>var</b> <i>id </i>{ , <i>id </i>} : [ <b>unchecked</b> ] <b>collection</b> <b>of</b> <b>forward</b> <i>typeId</i></td></tr>
+</table><p>
+When <b>unchecked</b> is specified, the checking to verify that pointers actually locate elements is removed. This checking is done using a "time stamp" attached to each element and  pointer, and making sure that these match with each other. When <b>unchecked</b> is specified, the execution is dangerous, but faster and smaller, and the pointers become simply machine addresses (as in C).<p>
+</table></body>
+</html>

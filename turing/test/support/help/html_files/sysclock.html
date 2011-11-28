@@ -1,0 +1,19 @@
+<html>
+<head><title>sysclock</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>sysclock</b></font></td><td align="right"><font size="+1"><b>millisecs used procedure</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>sysclock</b> ( <b>var</b> <i>c</i> : <b>int</b> )<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>sysclock</b> statement is used on a multitasking system such as UNIX to determine the amount of time that has been used by this program (process). Variable <i>c </i>is assigned the number of central processor milliseconds assigned to this program. This is of little use on a personal computer, where <b>sysclock</b> returns the same value as <b>clock</b>.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> On a UNIX system, this program tells you how much time it has used.<p>
+<pre><tt>        <b>var</b> <i>timeUsed</i> : <b>int</b>
+        <b>sysclock</b> ( <i>timeUsed</i> )
+        <b>put</b> "This program has used ",<i> timeUsed</i>,
+                " milliseconds of CPU time"</tt></pre>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="delay.html">delay</a></b>, <b><a href="time.html">time</a></b>, <b><a href="clock.html">clock</a></b>, <b><a href="wallclock.html">wallclock</a></b> and <b><a href="date.html">date</a></b> statements.<p>
+See also predefined unit <b><a href="timemodule.html">Time</a></b>.<p>
+</table></body>
+</html>

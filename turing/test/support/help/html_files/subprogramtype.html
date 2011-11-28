@@ -1,0 +1,30 @@
+<html>
+<head><title>subprogramType</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>subprogramType</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>subprogramType</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><i>subprogramHeader</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A variable or constant can contain a reference to a subprogram. The type of the variable or constant is a <i>subprogramType</i>. See also <i>subprogramHeader</i>.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> In the following <i>t</i> is a subprogram type, and <i>u</i> is a variable of type <i>t</i> initialized to refer to procedure <i>rnd</i>.<p>
+<pre><tt>        <b>procedure</b> <i>rnd</i> ( <b>var</b> <i>i </i>: <b>int</b>, <i>x</i> : <b>real</b>)
+            <i>i</i> := <b>round</b> ( <i>x</i> )
+        <b>end</b> <i>rnd</i>
+        
+        <b>type</b> <i>t</i> : <b>procedure</b> <i>q</i> ( <b>var</b> <i>j</i> : <b>int</b>, <i>y</i> : <b>real</b> )
+        <b>var</b> <i>u</i> : <i>t</i> := <i>rnd</i>    <i>% Procedure variable u refers to rnd</i>
+        …
+        <b>var</b> <i>j</i> : <b>int</b>
+        <i>u </i>( <i>j</i>, 24.6 )       <i>% Call procedure u referring to rnd</i>
+        …
+        <b>var</b> <i>v</i> := <i>u</i>      <i>% Subprogram variable v initialized to u</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The name of the subprogram, for example <i>q</i>, and the parameters, for example <i>i</i> and <i>x</i>, have no meaning in a subprogram type. They are present only because of the form of subprogram headers.<p>
+If <i>v</i> is a variable or constant that refers to a subprogram, <i>v </i>can be called, compared for equality to other subprogram variables, assigned and passed as a parameter. Variable <i>v</i> is not an integer, string or pointer and cannot participate in their corresponding operations.<p>
+A reference to a subprogram, rather that the code of the subprogram, is contained in a variable <i>v</i> whose type is a subprogram type. This implies that <b>addr</b> (<i>v</i>) is the address of the reference to subprogram, rather than the address of the subprogram. The address of the code is given by #<i>v</i>. See <b>cheat</b> for an explanation of the # operator.<p>
+You cannot assign a reference to a subprogram exported from a class. This restriction exists because  these subprograms are meaningless without an accompanying reference to an object.<p>
+Many potential uses of subprogram variables are better programmed using classes and overriding exported subprograms. See <b>class</b>.<p>
+</table></body>
+</html>

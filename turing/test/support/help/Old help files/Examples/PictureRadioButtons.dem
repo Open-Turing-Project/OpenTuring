@@ -1,0 +1,250 @@
+% The "PictureRadioButtons.dem" program.
+% This demonstrates the Picture Radio Button widget along with the GUI
+% routines that use Picture Radio Button widgets. [Enable,
+% Disable, Show, Hide, SetPosition, Refresh, SetPositionAndSize, Select,
+% Quit, CreatePictureRadioButton, CreatePictureRadioButtonFull, ProcessEvent,
+% Dispose]
+
+import GUI % Must be included in a programs using the GPL
+
+View.Set ("graphics:400;270,nobuttonbar") % Shrink the window to the minimum size
+
+% The buttons size
+const size : int := 25
+const border : int := 3
+
+% The picture buttons IDs
+var starButton, mapleButton, circleButton, squareButton : int
+var colourButton : array 1 .. 4 of int
+
+% The button IDs
+var enableDisableButton, showHideButton : int
+var moveButton, resizeButton, refreshButton, quitButton : int
+
+% The picture for the buttons
+var starPic, mapleLeafPic, circlePic, squarePic : int
+var colourButtonPic : array 1 .. 4 of int
+
+% Variables used by the button routines
+var enable := false % Whether to enable or disable the button
+var hide := true % Whether to hide or show the button
+var left := true % Whether to move the button right or left
+var big := true % Whether to make the button big or small
+
+% The routines the widgets call when pressed
+% Called when the star button pressed
+proc StarPressed
+    locate (1, 1)
+    put "Star Pressed          " ..
+end StarPressed
+
+% Called when the maple leaf button pressed
+proc MaplePressed
+    locate (1, 1)
+    put "Maple Pressed         " ..
+end MaplePressed
+
+% Called when the circle button pressed
+proc CirclePressed
+    locate (1, 1)
+    put "Circle Pressed        " ..
+end CirclePressed
+
+% Called when the square button pressed
+proc SquarePressed
+    locate (1, 1)
+    put "Square Pressed        " ..
+end SquarePressed
+
+% Called when the colour button pressed
+proc ColourPressed
+    locate (1, 1)
+    put "Colour Button Pressed    " ..
+end ColourPressed
+
+% Called when enable/disable button is pressed
+procedure EnableDisablePressed
+    locate (1, 1)
+    if enable then
+	put "Buttons Enabled       " ..
+	GUI.Enable (starButton) % Enable Buttons
+	GUI.Enable (mapleButton)
+	GUI.Enable (circleButton)
+	GUI.Enable (squareButton)
+	enable := false
+	GUI.SetLabel (enableDisableButton, "Disable Buttons")
+    else
+	put "Buttons Disabled      " ..
+	GUI.Disable (starButton) % Disable Buttons
+	GUI.Disable (mapleButton)
+	GUI.Disable (circleButton)
+	GUI.Disable (squareButton)
+	enable := true
+	GUI.SetLabel (enableDisableButton, "Enable Buttons")
+    end if
+end EnableDisablePressed
+
+% Called when show/hide button is pressed
+procedure ShowHidePressed
+    locate (1, 1)
+    if hide then
+	put "Star Hidden           " ..
+	GUI.Hide (starButton) % Hide Star
+	hide := false
+	GUI.SetLabel (showHideButton, "Show Star")
+    else
+	put "Star Shown            " ..
+	GUI.Show (starButton) % Show Star
+	hide := true
+	GUI.SetLabel (showHideButton, "Hide Star")
+    end if
+end ShowHidePressed
+
+% Called when move button is pressed
+procedure MovePressed
+    locate (1, 1)
+    if left then
+	put "Star Moved Left      " ..
+	GUI.SetPosition (starButton, 30, maxy - 130) % Move Star Right
+	left := false
+	GUI.SetLabel (moveButton, "Move Star Back")
+    else
+	put "Star Moved Back       " ..
+	GUI.SetPosition (starButton, 200, maxy - 40) % Move Star Left
+	left := true
+	GUI.SetLabel (moveButton, "Move Star Left")
+    end if
+end MovePressed
+
+% Called when refresh button is pressed
+procedure RefreshPressed
+    Draw.FillBox (0, 0, maxx, maxy, GUI.GetBackgroundColour) % Clear the screen
+    GUI.Refresh % Redraw all the widgets on the screen
+end RefreshPressed
+
+% Called when resize button is pressed
+procedure ResizePressed
+    locate (1, 1)
+    if big then
+	put "Star Made Large       " ..
+	% Resize and Move Star
+	GUI.SetPositionAndSize (starButton, 30, maxy - 130, 100, 100)
+	big := false
+	GUI.SetLabel (resizeButton, "Make Star Small")
+    else
+	put "Star Made Small       " ..
+	% Resize and Move Star
+	GUI.SetPositionAndSize (starButton, 200, maxy - 40, 0, 0)
+	big := true
+	GUI.SetLabel (resizeButton, "Make Star Large")
+    end if
+end ResizePressed
+
+% Called when quit button is pressed.
+procedure QuitPressed
+    GUI.Quit
+end QuitPressed
+
+% The main program.
+% Create the pictures.
+% The star
+Draw.FillBox (0, 0, 2 * border + size, 2 * border + size, white)
+Draw.Star (border, border, border + size, border + size, black)
+Draw.Star (border + 1, border + 1, border + size - 1,
+    border + size - 1, black)
+Draw.FillStar (border + 2, border + 2, border + size - 2,
+    border + size - 2, brightred)
+starPic := Pic.New (0, 0, 2 * border + size, 2 * border + size)
+
+% The mapleleaf
+Draw.FillBox (border, border, border + size, border + size, white)
+Draw.MapleLeaf (border, border, border + size, border + size, black)
+Draw.MapleLeaf (border + 1, border + 1, border + size - 1,
+    border + size - 1, black)
+Draw.FillMapleLeaf (border + 2, border + 2, border + size - 2,
+    border + size - 2, brightred)
+mapleLeafPic := Pic.New (0, 0, 2 * border + size, 2 * border + size)
+
+% The circle
+const radius : int := size div 2
+Draw.FillBox (border, border, border + size, border + size, white)
+Draw.Oval (border + radius, border + radius, radius, radius, black)
+Draw.Oval (border + radius, border + radius, radius - 1, radius - 1,
+    black)
+Draw.FillOval (border + radius, border + radius, radius - 2,
+    radius - 2, brightred)
+circlePic := Pic.New (0, 0, 2 * border + size, 2 * border + size)
+
+% The square
+Draw.FillBox (border, border, border + size, border + size, white)
+Draw.Box (border, border, border + size, border + size, black)
+Draw.Box (border + 1, border + 1, border + size - 1,
+    border + size - 1, black)
+Draw.FillBox (border + 2, border + 2, border + size - 2,
+    border + size - 2, brightred)
+squarePic := Pic.New (0, 0, 2 * border + size, 2 * border + size)
+
+% The colour buttons
+for i : 1 .. 4
+    Draw.FillBox (0, 0, 30, 30, 10 + i)
+    colourButtonPic (i) := Pic.New (0, 0, 30, 30)
+    Draw.FillBox (0, 0, 30, 30, white)
+end for
+
+% Create the picture buttons
+starButton := GUI.CreatePictureRadioButton (200, maxy - 40, starPic, 0,
+    StarPressed)
+mapleButton := GUI.CreatePictureRadioButton ( - 1, - 1, mapleLeafPic,
+    starButton, MaplePressed)
+circleButton := GUI.CreatePictureRadioButton (200 +
+    GUI.GetWidth (starButton), maxy - 40, circlePic, mapleButton,
+    CirclePressed)
+squareButton := GUI.CreatePictureRadioButton ( - 1, - 1, squarePic,
+    circleButton, SquarePressed)
+colourButton (1) := GUI.CreatePictureRadioButtonFull (300, maxy - 28,
+    colourButtonPic (1), 0, ColourPressed, 20, 20, GUI.NONE, false)
+colourButton (2) := GUI.CreatePictureRadioButtonFull ( - 1, - 1,
+    colourButtonPic (2), colourButton (1), ColourPressed, 20, 20, GUI.NONE,
+    false)
+colourButton (3) := GUI.CreatePictureRadioButtonFull ( - 1, - 1,
+    colourButtonPic (3), colourButton (2), ColourPressed, 20, 20, GUI.NONE,
+    false)
+colourButton (4) := GUI.CreatePictureRadioButtonFull ( - 1, - 1,
+    colourButtonPic (4), colourButton (3), ColourPressed, 20, 20, GUI.NONE,
+    false)
+
+% Create the dividing line
+var line := GUI.CreateLine (0, maxy - 135, maxx, maxy - 135, 0)
+
+% Create the buttons
+enableDisableButton := GUI.CreateButton (33, maxy - 170, 150,
+    "Disable Buttons", EnableDisablePressed)
+showHideButton := GUI.CreateButton (216, maxy - 170, 150, "Hide Star",
+    ShowHidePressed)
+moveButton := GUI.CreateButton (33, maxy - 200, 150, "Move Star Left",
+    MovePressed)
+refreshButton := GUI.CreateButton (216, maxy - 200, 150, "Refresh",
+    RefreshPressed)
+resizeButton := GUI.CreateButton (33, maxy - 230, 150, "Make Star Large",
+    ResizePressed)
+quitButton := GUI.CreateButton (125, maxy - 260, 150, "Quit",
+    QuitPressed)
+
+% Process events, exit loop when GUI.QUIT called
+loop
+    exit when GUI.ProcessEvent
+end loop
+
+% Do the clean up.  Dispose of all but the picture buttons
+GUI.Dispose (enableDisableButton)
+GUI.Dispose (showHideButton)
+GUI.Dispose (moveButton)
+GUI.Dispose (refreshButton)
+GUI.Dispose (resizeButton)
+GUI.Dispose (quitButton)
+
+% Create a label to indicate we're finished
+var quitMessage := GUI.CreateLabelFull (0, 0, "Execution Terminated",
+    maxx, maxy - 135, GUI.CENTER + GUI.MIDDLE, 0)
+
+

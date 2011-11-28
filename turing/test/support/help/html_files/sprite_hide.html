@@ -1,0 +1,85 @@
+<html>
+<head><title>Sprite.Hide</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Sprite.Hide</b></font></td><td align="right">Part of <a href="spritemodule.html">Sprite</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Sprite.Hide</b> (<i>spriteID</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Hides a previously visible sprite. <b>Sprite.Hide</b> has no effect if the sprite is already invisible.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program animates four balls on the screen. When the balls are close to each other or to a wall, they appear, otherwise they are hidden.<p>
+<pre><tt>        <b>var</b> <i>pic</i>, <i>sprite</i>, <i>x</i>, <i>y</i>, <i>dx</i>, <i>dy</i>, <i>radius</i> : <b>array</b> 1 .. 6 <b>of</b> <b>int</b>
+        <b>var</b> <i>visible</i> : <b>array</b> 1 .. 6 <b>of</b> <b>boolean</b>
+        
+        <i>setscreen</i> ("nocursor")
+        
+        % Create all the sprites.
+        <b>for</b> <i>i</i> : 1 .. 6
+            <i>radius</i> (<i>i</i>) := <b>Rand.Int </b>(10, 25)
+            <b>Draw.FillOval </b>(25, 25, <i>radius</i> (<i>i</i>), <i>radius</i> (<i>i</i>), 8 + <i>i</i>)
+            <b>Font.Draw </b>(<b>intstr</b> (<i>i</i>), 20, 20, 0, <i>black</i>)
+            <i>pic</i> (<i>i</i>) := <b>Pic.New</b> (0, 0, 50, 50)
+            <b>Draw.FillBox </b>(0, 0, 50, 50, 0)
+            <i>x</i> (<i>i</i>) := <b>Rand.Int </b>(<i>radius</i> (<i>i</i>), <i>maxx</i> ‹ <i>radius</i> (<i>i</i>))
+            <i>y</i> (<i>i</i>) := <b>Rand.Int </b>(<i>radius</i> (<i>i</i>), <i>maxy</i> ‹ <i>radius</i> (<i>i</i>))
+            <i>dx</i> (<i>i</i>) := <b>Rand.Int </b>(3, 3)
+            <i>dy</i> (<i>i</i>) := <b>Rand.Int </b>(3, 3)
+            <i>sprite</i> (<i>i</i>) := <b>Sprite.New</b> (<i>pic</i> (<i>i</i>))
+            <b>Sprite.SetPosition </b>(<i>sprite</i> (<i>i</i>), <i>x</i> (<i>i</i>), <i>y</i> (<i>i</i>), <b>true</b>)
+            <b>Sprite.SetHeight </b>(<i>sprite</i> (<i>i</i>), <i>i</i>)
+            <i>visible</i> (<i>i</i>) := <b>false</b>
+        <b>end</b> <b>for</b>
+        
+        % Now move all the sprites around the screen.
+        <b>loop</b>
+            <b>for</b> <i>i</i> : 1 .. 6
+                <b>if</b> <i>x</i> (<i>i</i>) + <i>dx</i> (<i>i</i>) &lt; <i>radius</i> (<i>i</i>) <b>or</b>
+                        <i>x</i> (<i>i</i>) + <i>dx</i> (<i>i</i>) &gt; <b>maxx</b>  <i>radius</i> (<i>i</i>) <b>then</b>
+                    <i>dx</i> (<i>i</i>) := <i>dx</i> (<i>i</i>)
+                <b>end</b> <b>if</b>
+                <i>x</i> (<i>i</i>) := <i>x</i> (<i>i</i>) + <i>dx</i> (<i>i</i>)
+                <b>if</b> <i>y</i> (<i>i</i>) + <i>dy</i> (<i>i</i>) &lt; <i>radius</i> (<i>i</i>) <b>or</b>
+                        <i>y</i> (<i>i</i>) + <i>dx</i> (<i>i</i>) &gt; <b>maxy</b>  <i>radius</i> (<i>i</i>) <b>then</b>
+                    <i>dy</i> (<i>i</i>) := <i>dy</i> (<i>i</i>)
+                <b>end</b> <b>if</b>
+                <i>y</i> (<i>i</i>) := <i>y</i> (<i>i</i>) + <i>dy</i> (<i>i</i>)
+            <b>end</b> <b>for</b>
+            <b>for</b> <i>i</i> : 1 .. 6
+                <b>var</b> <i>near</i> : <b>boolean</b> := <b>false</b>
+                <b>if</b> (<i>x</i> (<i>i</i>) &lt; 50) <b>or</b> (<i>x</i> (<i>i</i>) &gt; <b>maxx</b>  50) <b>or</b>
+                        (<i>y</i> (<i>i</i>) &lt; 50) <b>or</b> (<i>y</i> (<i>i</i>) &gt; <b>maxy</b>  50) <b>then</b>
+                    <i>near</i> := <b>true</b>
+                <b>end</b> <b>if</b>
+                <b>if</b> <b>not</b> <i>near</i> <b>then</b>
+                    <b>for</b> <i>j</i> : 1 .. 6
+                        <b>if</b> <i>i</i> <b>not</b>= <i>j</i> <b>then</b>
+                            <b>if</b> <i>sqrt</i> ( (<i>x</i> (<i>i</i>) ‹ <i>x</i> (<i>j</i>)) ** 2 +
+                                (<i>y</i> (<i>i</i>) ‹ <i>y</i> (<i>j</i>)) ** 2) &lt; 100 <b>then</b>
+                                <i>near</i> := <b>true</b>
+                                <b>exit</b>
+                            <b>end</b> <b>if</b>
+                        <b>end</b> <b>if</b>
+                    <b>end</b> <b>for</b>
+                <b>end</b> <b>if</b>
+                <b>if</b> <i>near</i> <b>and</b> <b>not</b> <i>visible</i> (<i>i</i>) <b>then</b>
+                    <b>Sprite.Show </b>(<i>sprite</i> (<i>i</i>))
+                    <i>visible</i> (<i>i</i>) := <b>true</b>
+                <b>elsif</b> <b>not</b> <i>near</i> <b>and</b> <i>visible</i> (<i>i</i>) <b>then</b>
+                    <b>Sprite.Hide</b> (<i>sprite</i> (<i>i</i>))
+                    <i>visible</i> (<i>i</i>) := <b>false</b>
+                <b>end</b> <b>if</b>
+                <b>Sprite.SetPosition</b> (<i>sprite</i> (<i>i</i>), <i>x</i> (<i>i</i>), <i>y</i> (<i>i</i>), <b>true</b>)
+            <b>end</b> <b>for</b>
+            <b>Time.Delay</b> (40)
+            <b>exit</b> <b>when</b> <b>hasch</b>
+        <b>end</b> <b>loop</b>
+        <b>for</b> <i>i</i> : 1 .. 6
+            <b>Sprite.Free </b>(<i>sprite</i> (<i>i</i>))
+        <b>end for</b></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Sprite.Hide</b>, not by calling <b>Hide</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="sprite_show.html">Sprite.Show</a></b>.<p>
+</table></body>
+</html>

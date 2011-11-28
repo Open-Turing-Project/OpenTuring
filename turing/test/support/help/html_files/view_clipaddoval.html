@@ -1,0 +1,80 @@
+<html>
+<head><title>View.ClipAddOval</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>View.ClipAddOval</b></font></td><td align="right">Part of <a href="viewmodule.html">View</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>View.ClipAddOval</b> (<i>x</i>, <i>y</i>, <i>xradius</i>, <i>yradius</i> : <b>int</b>)<p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>The <b>View.ClipAddOval</b> procedure adds another oval specified by 
+          (<i>x</i>, <i>y</i>) and <i>xradius</i> and <i>yradius</i>) to the 
+          clipping region. If no clipping region has been specified, then the 
+          oval becomes the complete clipping region.<p>
+          A clipping region is the region that the output will appear in. If 
+          the rectangle is specified as the clipping region, any drawing done 
+          outside the oval will not appear.<p>
+          To set the initial clipping, or remove the old region and replace it 
+          with a new rectangle, use <b>View.ClipSet</b>. To set the clipping 
+          region back to the entire screen or window, use <b>View.ClipOff</b>.<p>
+          These commands only work in "<i>graphics</i>" mode.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program sets the clipping region to five circles and then draws 
+          random squares. The squares will only appear (or partially appear) 
+          in the ovals.<p>
+<pre><tt>        <b>const </b><i>c1</i> : <i>int</i> := <b>maxy div 4</b>
+        <b>const </b><i>c2</i> : <i>int</i> := 3* <b>maxy div 4</b>
+        <b>const </b><i>radius</i> : <i>int</i> := <b>maxy div 4</b>
+        <b>View.ClipAddOval</b> (<i>c1</i>, <i>c1</i>, <i>radius</i>, <i>radius</i>)
+        <b>View.ClipAddOval</b> (<i>c1</i>, <i>c2</i>, <i>radius</i>, <i>radius</i>)
+        <b>View.ClipAddOval</b> (<i>c2</i>, <i>c1</i>, <i>radius</i>, <i>radius</i>)
+        <b>View.ClipAddOval</b> (<i>c2</i>, <i>c2</i>, <i>radius</i>, <i>radius</i>)
+
+        % Draw the random squares in the box
+        <b>var</b> x, y, clr : <b>int</b>
+        <b>loop</b>
+            <i>x</i> := <b>Rand.Int</b> (0, <b>maxx</b> - 30)     <i>% Random x</i>
+            <i>y</i> := <b>Rand.Int</b> (0, <b>maxy</b> - 30)     <i>% Random y</i>
+            <i>clr</i> := <b>Rand.Int</b> (0, <b>maxcolor</b>)    <i>% Random color</i>
+            <b>Draw.FillBox</b> (<i>x</i>, <i>y</i>, <i>x</i> + 30, <i>y</i> + 30, <i>clr</i>)
+        <b>end loop</b></tt></pre>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,View.ClipAddOval.t;View.ClipAddOval Example">
+          </OBJECT><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td>By combining animation using <b>View.Update</b> and 
+          <b>View.ClipAddOval</b>, you can achieve a moving spotlight effect.<p>
+          <OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch SpotLight Example">
+            <PARAM name="Item1" value="-1,SpotLight.t;View.Moving SpotLight Example">
+          </OBJECT><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+          <b>View.ClipAddOval</b>, not by calling <b>ClipAddOval</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>See also</b></td>
+      <td><a href="view_clipset"><b>View.ClipSet</b></a>, 
+          <a href="view_clipadd"><b>View.ClipAdd</b></a> and 
+          <a href="view_clipoff"><b>View.ClipOff</b></a> 
+          functions.</td>
+    </tr>
+  </table>
+</body>
+</html>

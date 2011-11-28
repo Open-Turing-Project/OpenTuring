@@ -1,0 +1,108 @@
+<html>
+<head><title>Font.New</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Font.New</b></font></td><td align="right">Part of <a href="fontmodule.html">Font</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Font.New</b> (<i>fontSelectStr</i> : <b>string</b>) : <b>int</b><p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td><b>Font.New </b>is used to obtain a font for drawing. The 
+          <i>fontSelectStr</i>parameter specifies the name, size and 
+          style of the font. <b>Font.New</b> returns a font identifier 
+          which is then used by the <b>Font.Draw</b> procedure to draw 
+          text in the selected font.<p>
+          The format for the <i>fontSelectStr</i>parameter is 
+          "<i>Family</i>:<i>Size</i>:<i>Style</i>". Each element is separated 
+          by a colon. The ":<i>Style</i>" is optional. If left out, the text 
+          appears in the standard face for the font.<p>
+          <i>Family</i> is the name of the font, such as "Times", "Helvetica", 
+          etc. The name must match an existing font on the system. Because 
+          one does not necessarily know which fonts will be available and 
+          names for the same font change between different systems 
+          (i.e Times, Times-Roman, etc.), Turing defines three family names 
+          that will be mapped as closely as possible to fonts that exist on 
+          the system.<p>
+          <table>
+            <tr valign="top">
+              <td width="40">&nbsp;</td>
+              <td>"serif" is used for a serifed body font. This will usually 
+                  be mapped to Times-Roman.
+            </tr>
+            <tr valign="top">
+              <td width="40">&nbsp;</td>
+              <td>"sans serif" is used for a non-serifed display font. This 
+                  will usually be mapped to Arial.</td>
+            </tr>
+            <tr valign="top">
+              <td width="40">&nbsp;</td>
+              <td>"mono" is used for a mono spaced font. This will usually be 
+                  mapped to Courier.</td>
+            </tr>
+          </table><p>
+          <i>Size</i> is the point size in which the text should appear. If 
+          the number is larger or smaller than can be created on a given 
+          system, the system will return the font of the largest or smallest 
+          size available and set <b>Error.Last</b>.<p>
+          Under Turing, the <i>size</i> parameter may also have the form 
+          <i>height </i>x <i>width</i> where <i>height</i> and <i>width</i> 
+          are the pixel height and width desired. What is returned is the 
+          font scaled in order to fit into the <i>width</i> and <i>height</i> 
+          requested. The font name must be a scaleable font for this to 
+          succeed.<p>
+          <pre><tt>        example <i>fontID</i> := <b>Font.New</b> ("<i>Ariel</i>:<i>18x12</i>:<i>Italic</i>")</tt></pre>
+          <i>Style</i> is the font style in which the text should appear. It 
+          can be one of "bold", "italic" or "underline". You can also have 
+          "bold,italic" and any other combination.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>If the <b>Font.New</b> call fails, then it returns 0. Also 
+          <b>Error.Last</b> will return a non-zero value indicating the 
+          reason for the failure. <b>Error.LastMsg</b> will return a 
+          string which contains the textual version of the error.<p>
+          It is quite possible for <b>Error.Last</b> to be set, even if 
+          the call succeeds. <b>Font.New</b> will report success even if 
+          unable to successfully match the requested font with the available 
+          resources. A font will be set that matches as closely as possible 
+          the requested font and <b>Last.Error</b> will be set to indicate 
+          that some substitutions were required.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>The program prints out several phrases in a variety of fonts.<p>
+<pre><tt>        <b>var </b><i>font1</i>, <i>font2</i>, <i>font3</i>, <i>font4</i> : <b>int</b>
+        <i>font1</i> := <b>Font.New</b> ("serif:12")
+        <i>font2</i> := <b>Font.New</b> ("sans serif:18:bold")
+        <i>font3</i> := <b>Font.New</b> ("mono:9")
+        <i>font4</i> := <b>Font.New</b> ("Palatino:24:Bold,Italic")
+        <b>assert </b><i>font1</i> &gt; 0 <b>and</b> <i>font2 </i>&gt; 0 <b>and</b> <i>font3 </i>&gt; 0 <b>and</b> <i>font4 </i>&gt; 0
+        <b>Font.Draw</b> ("This is in a serif font", 50, 30, <i>font1, red</i>)
+        <b>Font.Draw</b> ("This is in a sans serif font", 50, 80, <i>font2, brightblue</i>)
+        <b>Font.Draw</b> ("This is in a mono font", 50, 130, <i>font3, colorfg</i>)
+        <b>Font.Draw</b> ("This is in Palatino (if available)", 50, 180, <i>font4, green</i>)
+        <b>Font.Free</b> (<i>font1</i>)
+        <b>Font.Free</b> (<i>font2</i>)
+        <b>Font.Free</b> (<i>font3</i>)
+        <b>Font.Free</b> (<i>font4</i>)</tt></pre>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,Font.Draw.t;Font.Draw Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+          <b>Font.New</b>, not by calling <b>New</b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

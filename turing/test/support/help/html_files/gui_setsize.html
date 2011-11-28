@@ -1,0 +1,31 @@
+<html>
+<head><title>GUI.SetSize</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.SetSize</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>GUI.SetSize</b> (<i>widgetID</i>, <i>width</i>, <i>height</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Changes the size of the widget specified by <i>widgetID</i>. If the widget is visible, its size is changed immediately, otherwise the widget will appear in its new size when the widget is next made visible. Note that the <i>width</i> and <i>height</i> parameters are no necessarily the actual width and height of the widget. For example, the <i>TextField</i> widget ignores the <i>height</i> parameter, calculating the widget's actual height from the height of the text in the <i>TextField</i>.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program resizes the button every time the button is pressed.<p>
+<pre><tt>        <b>import</b> <i>GUI</i> <b>in</b> "%oot/lib/GUI"
+        
+        <b>var</b> <i>button</i> : <b>int</b>
+        
+        <b>procedure</b> <i>ResizeButton</i>
+            <b>var </b><i>newWidth</i>, <i>newHeight</i>  : <b>int</b>
+            <i>newWidth</i> := <b>Rand.Int</b> (0, 200)
+            <i>newHeight</i> := <b>Rand.Int</b> (0, 200)
+            <b>GUI.SetSize</b> (<i>button</i>, <i>newWidth</i>, <i>newHeight</i>)
+        <b>end</b> <i>ResizeButton</i>
+        
+        <i>button</i> := <b>GUI.CreateButton</b> (100, 100, 0, "Resize Button", 
+            <i>ResizeButton</i>)
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>GUI.SetSize</b>, not by calling <b>SetSize</b>.<p>
+</table></body>
+</html>

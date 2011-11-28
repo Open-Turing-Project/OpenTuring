@@ -1,0 +1,106 @@
+<html>
+<head><title>GUI.CreateRadioButton[Full]</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.CreateRadioButton[Full]</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+  
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>GUI.CreateRadioButton</b> (<i>x</i>, <i>y</i> : <b>int</b>, <i>text</i> : <b>string</b>,<br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;<i>joinID</i> : <b>int</b>, <i>actionProc</i> : <b>procedure</b> <i>x</i> ()) : <b>int</b><p>
+	  <b>GUI.CreateRadioButtonFull</b> (<i>x</i>, <i>y</i> : <b>int</b>, <i>text</i> : <b>string</b>,<br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;<i>joinID</i> : <b>int</b>, <i>actionProc</i> : <b>procedure</b> <i>x</i> (), <i>alignment</i> : <b>int</b>, <i>shortCut</i> : <b>char</b>) : <b>int</b><p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>Creates a radio button and returns the radio button's widget ID. <p>
+	  A slider is a widget that allows the user to select one of a set of values. It has a real-life equivalent in the old car stereos where a single station is selected at a time. That is, one of the buttons in the radio group is always selected, and if another button in the group is selected, the previously selected button is unselected. <p>
+	  <center><img src="gui_createradiobutton_full01.gif"></center>
+	  <center><b>Six Radio Buttons in Two Groups</b></center><p>
+	  A radio group is created by first creating a single radio button. To add another button to the group, a second radio button is created specifying the first radio button in the <i>joinID</i> parameter. Subsequent radio buttons are added, each specifying a previous member of the group in the <i>joinID</i> parameter. <p>
+	  The <i>x</i> and <i>y</i> parameters specify the lower-left corner of the radio button (unless <i>alignment</i> is set to <i>GUI.RIGHT</i>, in which case they specify the lower-right corner of the radio button). If these are both 1 and <i>joinID</i> is not zero, then the button will be placed directly below the previous radio button in the group. The <i>text</i> parameter specifies the text (or label) beside the radio button. The <i>joinID</i> parameter specifies a member of the radio group that this widget should join. A <i>joinID</i> of 0 sepecifies this radio button is not a member of any group. The <i>actionProc</i> parameter is the name of a procedure that is called when the radio button is selected. In <b>GUI.CreateRadioButton</b>, the radio button's text is always to the right of the actual radio button. In <b>GUI.CreateRadioButtonFull</b>, the text can be set to the right or left of the radio button with the <i>alignment</i> parameter.<p>
+	  For <b>GUI.CreateRadioButtonFull</b>, the <i>alignment</i> parameter specifies the position of the radio button in relation to the text as well as the meaning of the <i>x</i> and <i>y</i> parameters. The <i>alignment</i> parameter is one of 0, <i>GUI.LEFT</i>, or <i>GUI.RIGHT</i>. An <i>alignment</i> of 0 is the default and is the same as <i>GUI.LEFT</i>. <i>GUI.LEFT</i> means the actual box in the check box appears to the left of the check box's label and (<i>x</i>, <i>y</i>) specify the lower-left corner. An <i>alignment</i> of <i>GUI.RIGHT</i> means that the actual box appears to the right of the radio button's label and (<i>x</i>, <i>y</i>) specify the lower-right corner of the radio button. The <i>shortcut </i>parameter is the keystroke to be used as the button's shortcut. <p>
+	  A radio button's size is not specified during creation. It is determined based on the size of the text. Instead the user specifies the lower-left corner of the radio button (or the lower-right if the radio button is right justified).<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>The following program creates six radio buttons in two groups.<p>
+<pre><tt>        <b>import</b> <i>GUI</i>
+        <b>View.Set</b> ("graphics:350;80") 
+        
+        <b>var</b> <i>radio</i> : <b>array</b> 1 .. 6 <b>of int</b> % The radio button IDs.
+        
+        <b>procedure</b> <i>RadioPressed</i>
+            <b>Text.Locate</b> (1, 1)
+            <b>put</b> "Radio Button " ..
+            <b>for</b> i : 1 .. 6
+                <b>if</b> <i>radio</i> (<i>i</i>) = <b>GUI.GetEventWidgetID</b> <b>then</b>
+                    <b>put</b> <i>i</i> ..
+                <b>end if</b>
+            <b>end for</b>
+            <b>put</b> " Selected"
+        <b>end</b> <i>RadioPressed</i>
+        
+        <i>radio</i> (1) := <b>GUI.CreateRadioButton </b>(15, <b>maxy</b>  35, 
+            "Radio Button 1", 0, <i>RadioPressed</i>)
+        <i>radio</i> (2) := <b>GUI.CreateRadioButton</b> ( 1, 1, "Radio Button 2", 
+            <i>radio</i> (1), <i>RadioPressed</i>)
+        <i>radio</i> (3) := <b>GUI.CreateRadioButton</b> ( 1, 1, "Radio Button 3",
+            <i>radio</i> (2), <i>RadioPressed</i>)
+        <i>radio</i> (4) := <b>GUI.CreateRadioButtonFull</b> (<b>maxx</b>  15, <b>maxy</b>  35,
+            "Radio Button A (Shortcut: 'a')", 0, <i>RadioPressed</i>, 
+            <i>GUI.RIGHT</i>, 'a')
+        <i>radio</i> (5) := <b>GUI.CreateRadioButtonFull</b><i> </i>( 1, 1,
+            "Radio Button B (Shortcut: 'b')", radio (4), <i>RadioPressed</i>,
+            <i>GUI.RIGHT</i>, 'b')
+        <i>radio</i> (6) := <b>GUI.CreateRadioButtonFull</b> ( 1, 1,
+            "Radio Button C (Shortcut: 'c')", radio (5), <i>RadioPressed</i>,
+            <i>GUI.RIGHT</i>, 'c')
+        
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b></tt></pre>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,GUI.CreateRadioButton.t;GUI.CreateRadioButton Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>When a group of radio buttons is selected, the first radio button created in the group will be the selected one. You can change this by using the <b>GUI.SelectRadio </b>procedure to select a different one.<p>
+	  When <b>GUI.CreateRadioButton</b> or <b>GUI.CreateRadioButtonFull</b><i> </i>is called, the newly created picture will be displayed immediately unless <b>GUI.DisplayWhenCreated</b> has been called with the <i>display</i> parameter set to false. <p>
+	  When a radio button is not enabled, the radio button is grayed out and the radio button no longer responds to any mouse clicks or keystrokes until the button is enabled again.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The following GUI subprograms can be called with a radio button as the <i>widgetID</i> parameter:<p>
+	  <table>
+	    <tr valign="top">
+	      <td width="40">&nbsp;</td>
+	      <td><b>GUI.Show</b>, <b>GUI.Hide</b>, <b>GUI.Enable</b>, 
+	          <b>GUI.Disable</b>, <b>GUI.Dispose</b>, <b>GUI.GetX</b>,
+	          <b>GUI.GetY</b>, <b>GUI.GetWidth</b>, <b>GUI.GetHeight</b>, 
+	          <b>GUI.SetPosition</b>, <b>GUI.SetSize</b>, 
+	          <b>GUI.SetPositionAndSize</b>, <b>GUI.SetLabel</b>, 
+	          <b>GUI.SelectRadio</b></td></tr>
+	  </table><p>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+	  This means that you can only call the function by calling <b>GUI.CreateRadioButton</b>, not by calling <b>CreateRadioButton</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="gui_selectradio.html">GUI.SelectRadio</a></b> for 
+          selecting a radio button in a program. 
+          See also <b><a href="gui_setlabel.html">GUI.SetLabel</a></b> for 
+          changing the radio button's text.<p>
+    </tr>
+  </table>
+</body>
+</html>

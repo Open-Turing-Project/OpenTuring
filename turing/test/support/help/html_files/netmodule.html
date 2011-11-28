@@ -1,0 +1,26 @@
+<html>
+<head><title>Net</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Net</b></font></td></table><p>
+<table><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The Net module allows TCP/IP equipped machines to communicate. In the current implementation (WinOOT 3.0), this is available only under Win32 (Windows 95, 98, NT and later).<p>
+To allow two machines to communicate, there must be a server (which calls <b>Net,WaitForConnection</b>) and a client (which calls <b>Net.OpenConnection</b>). The server waits until a client connects and then starts communication between the two. When a connection is established, a net stream is returned that can be used in the same fashion as a file stream (i.e. using <b>put</b>s and <b>get</b>s<b>)</b>.  Once the connection is finished, the programs call <b>Net.CloseConnection</b>.<p>
+For ease of reading web pages, the <b>Net.OpenURLConnection</b> opens up a URL for reading with the <b>get</b> statement. It is up to the user program to interpret the HTML or file located at the URL.<p>
+All subprograms in the <b>Net </b>unit are exported qualified (and thus must be prefaced with "<b>Net.</b>").<p>
+<tr valign="top"><td><b>Entry Points&nbsp;&nbsp;</b></td>
+<td><table>
+ <tr valign="top"><td><a href="net_waitforconnection.html"><b>WaitForConnection</b></a></td><td width="20">&nbsp;</td><td>Waits until a client connects to a specified port.</td></tr>
+<tr valign="top"><td><a href="net_openconnection.html"><b>OpenConnection</b></a></td><td width="20">&nbsp;</td><td>Opens a connection to a specified machine.</td></tr>
+<tr valign="top"><td><a href="net_openurlconnection.html"><b>OpenURLConnection</b></a></td><td width="20">&nbsp;</td><td>Opens a connection to a file specified by a URL.</td></tr>
+<tr valign="top"><td><a href="net_closeconnection.html"><b>CloseConnection</b></a></td><td width="20">&nbsp;</td><td>Closes a specified connection.</td></tr>
+<tr valign="top"><td><a href="net_bytesavailable.html"><b>BytesAvailable</b></a></td><td width="20">&nbsp;</td><td>Returns the number of bytes available to be read from a net stream.</td></tr>
+<tr valign="top"><td><a href="net_charavailable.html"><b>CharAvailable</b></a></td><td width="20">&nbsp;</td><td>Returns true if there is a character available to be read from a net stream.</td></tr>
+<tr valign="top"><td><a href="net_lineavailable.html"><b>LineAvailable</b></a></td><td width="20">&nbsp;</td><td>Returns true if there is a line of text available to be read from a net stream.</td></tr>
+<tr valign="top"><td><a href="net_tokenavailable.html"><b>TokenAvailable</b></a></td><td width="20">&nbsp;</td><td>Returns true if there is a token available to be read from a net stream.</td></tr>
+<tr valign="top"><td><a href="net_hostaddressfromname.html"><b>HostAddressFromName</b></a></td><td width="20">&nbsp;</td><td>Returns a host's address given its host name.</td></tr>
+<tr valign="top"><td><a href="net_hostnamefromaddress.html"><b>HostNameFromAddress</b></a></td><td width="20">&nbsp;</td><td>Returns a host's name given its address.</td></tr>
+<tr valign="top"><td><a href="net_localaddress.html"><b>LocalAddress</b></a></td><td width="20">&nbsp;</td><td>Returns the host name of the local machine.</td></tr>
+<tr valign="top"><td><a href="net_localname.html"><b>LocalName</a></td><td width="20">&nbsp;</td><td></b>Returns the TCP/IP address of the local machine.</td></tr>
+</table></table><p>
+</body>
+</html>

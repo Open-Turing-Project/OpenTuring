@@ -1,0 +1,28 @@
+<html>
+<head><title>seek</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>seek</b></font></td><td align="right"><font size="+1"><b>(file) statement</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>seekStatement</i> is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(a)</font></td><td colspan="7"><font size="+1"><b>seek</b> : <i>fileNumber </i>, <i>filePosition</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(b)</font></td><td colspan="7"><font size="+1"><b>seek</b> : <i>fileNumber</i> , *</td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Random access of both source (ASCII or EBCDIC) and internal form (binary) files is provided by the <b>seek</b> and <b>tell</b> statements. The <b>seek</b> statement repositions the specified file so that the next input/output operation will begin at the specified point (<i>filePosition</i>) in the file.<p>
+The <i>fileNumber</i> must specify a file that is open with <b>seek</b> capability. The <i>filePosition</i> is a non-negative integer offset in bytes from the beginning of the file. Usually, this is a number returned by the <b>tell</b> statement. (The first position in the file is position zero.)<p>
+Form (b) specifies that the next operation is to begin at the position immediately following the current end of the file. A <i>filePosition</i> of zero specifies that the next operation is to start at the beginning of the file. Seeking to a position beyond the current end of the file and then writing, automatically fills the intervening positions with the internal representation of zero.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This example shows how to use <b>seek</b> to append to the end of a file.<p>
+<pre><tt>        <b>var</b> <i>employeeRecord</i> :
+            <b>record</b>
+                <i>name</i> : <b>string</b> ( 30 )
+                <i>pay</i> : <b>int</b>
+            <b>end</b> <b>record</b>
+        <b>var</b> <i>fileNo</i> : <b>int</b>
+        <b>open</b> : <i>fileNo</i>, "payroll", <b>write</b>, <b>seek</b>, <b>mod</b>
+        <b>seek</b> : <i>fileNo</i>, *        <i>% Seek to the end of the file</i>
+        <b>write</b> : <i>fileNo</i>, <i>employeeRecord</i>
+                        <i>% This record is added to the end of the file</i></tt></pre>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="read.html">read</a></b>, <b><a href="write.html">write</a></b>, <b><a href="open.html">open</a></b>, <b><a href="close.html">close</a></b>, <b><a href="tell.html">tell</a></b>, <b><a href="get.html">get</a></b> and <b><a href="put.html">put</a></b> statements. Another example use of <b><a href="seek.html">seek</a></b> is given with the explanation of the <b><a href="tell.html">tell</a></b> <a href="statement.html">statement</a>.<p>
+</table></body>
+</html>

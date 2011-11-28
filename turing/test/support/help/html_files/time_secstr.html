@@ -1,0 +1,83 @@
+<html>
+<head><title>Time.SecStr</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Time.SecStr</b></font></td><td align="right">Part of <a href="timemodule.html">Time</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Time.SecStr</b> (<i>timeInSecs</i> : <b>int</b>, <i>formatString</i> : <b>string</b>) : <b>string</b><p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>The <b>Time.SecStr</b> function is used to convert the number of 
+          seconds since 00:00:00 GMT Jan 1, 1970 into a date and time string.<p>
+          If <i>timeInSecs</i> is incorrect or can't be interpreted, then 
+          <b>Time.SecStr</b> will return the empty string and <b>Error.Last</b> 
+          and <b>Error.LastMsg</b> will be set to the appropriate error.<p>
+    <tr valign="top">
+      <td><b>Detailsn&nbsp;&nbsp;</b></td>
+      <td>The <i>formatString</i> parameter specifies how the output string
+          will look. The formatString consists of different letters specifying
+          the different formats and spaces or commas between these letters. 
+          The different letters can be combined to provide different date 
+          formats.<p>
+          &nbsp;&nbsp;&nbsp;Here are the letters:<p>
+          <table border="1">
+            <tr><td align="center"><b>a</b><td>&nbsp;Abbreviated weekday name
+            <tr><td align="center"><b>A</b><td>&nbsp;Full weekday name
+            <tr><td align="center"><b>b</b><td>&nbsp;Abbreviated month name
+            <tr><td align="center"><b>B</b><td>&nbsp;Full month name
+            <tr><td align="center"><b>c</b><td>&nbsp;Date and time representation appropriate for locale
+            <tr><td align="center"><b>d</b><td>&nbsp;Day of month as decimal number (01 - 31)
+            <tr><td align="center"><b>H</b><td>&nbsp;Hour in 24-hour format (00 - 23)
+            <tr><td align="center"><b>I</b><td>&nbsp;Hour in 12-hour format (01 - 12)
+            <tr><td align="center"><b>j</b><td>&nbsp;Day of year as decimal number (001 - 366)
+            <tr><td align="center"><b>m</b><td>&nbsp;Month as decimal number (01 - 12)
+            <tr><td align="center"><b>M</b><td>&nbsp;Minute as decimal number (00 - 59)
+            <tr><td align="center"><b>p</b><td>&nbsp;Current locale’s A.M./P.M. indicator for 12-hour clock
+            <tr><td align="center"><b>S</b><td>&nbsp;Second as decimal number (00 - 59)
+            <tr><td align="center"><b>U</b><td>&nbsp;Week of year as decimal number, with Sunday as first day of week (00 - 53)
+            <tr><td align="center"><b>w</b><td>&nbsp;Weekday as decimal number (0 - 6; Sunday is 0)
+            <tr><td align="center"><b>W</b><td>&nbsp;Week of year as decimal number, with Monday as first day of week (00 - 53)
+            <tr><td align="center"><b>x</b><td>&nbsp;Date representation for current locale
+            <tr><td align="center"><b>X</b><td>&nbsp;Time representation for current locale
+            <tr><td align="center"><b>y</b><td>&nbsp;Year without century, as decimal number (00 - 99)
+            <tr><td align="center"><b>Y</b><td>&nbsp;Year with century, as decimal number
+            <tr><td align="center"><b>&nbsp;z,Z&nbsp;</b><td>&nbsp;Time-zone name
+          </table><p>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program outputs the current date and the day number in the year.<br>
+          Example output: <b><tt>Thursday November 13, 2003 is day number 317 of 2003</tt></b><p>
+<pre><tt>        <b>put Time.SecStr</b> (<b>Time.Sec</b>, "A B d, Y"), " is day number ",
+            <b>Time.SecStr</b> (<b>Time.Sec</b>, "j"), " of ", <b>Time.SecStr</b> (<b>Time.Sec</b>, "Y")</tt></pre>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,Time.SecStr.t;Time.SecStr Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td>This example demonstrates each of the formatting letters.<p>
+          <OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Time.SecStr Formatting Letters Program">
+            <PARAM name="Item1" value="-1,Time.SecStr2.t;Time.SecStr2 Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling <b>Time.SecStr</b>, not by calling <b>SecStr</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="time_sec.html">Time.Sec</a></b> and <b><a href="time_secparts.html">Time.SecParts</a></b> functions.<p>
+    </tr>
+  </table>
+</body>
+</html>

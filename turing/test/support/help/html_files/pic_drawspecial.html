@@ -1,0 +1,302 @@
+<html>
+<head><title>Pic.DrawSpecial</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Pic.DrawSpecial</b></font></td><td align="right">Part of <a href="picmodule.html">Pic</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Pic.DrawSpecial</b> (<i>picID</i>, <i>x</i>, <i>y</i>, <i>mode</i>, <i>transition</i>, <i>duration</i>  : <b>int</b>)<p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td><b>Pic.DrawSpecial</b> is used to draw a picture on the screen with a
+          special effect such as a wipe, a slide, or a fade-in. 
+          The picture is drawn with the lower left corner at 
+          (<i>x</i>, <i>y</i>). The <i>duration</i> specifies how long the
+          transition should take in milliseconds.  For example, a fade-in could
+          be specified to last 1/2 a second by using a duration of 500.<p>
+	  The <i>mode</i> parameter is the same as in <b>Pic.New</b> and has 
+	  one of the following values:<p>
+	  <table>
+	    <tr valign="top">
+	      <td><i>picCopy</i></td>
+	      <td width="10">&nbsp;</td>
+	      <td>This draws the picture on top of what was underneath, 
+	          obscuring it completely.</td>
+	    </tr>
+	    <tr valign="top">
+	      <td><i>picXor</i></td>
+	      <td width="10">&nbsp;</td>
+	      <td>This draws the picture XORing it with the background. 
+	          In DOS, you can use this function to do animation. 
+		  Drawing an object on top of itself with XOR erases 
+		  it and restores the background.</td>
+	    </tr>
+	    <tr valign="top">
+	      <td><i>picMerge</i></td>
+	      <td width="10">&nbsp;</td>
+	      <td>This draws the picture like <i>picCopy</i> except 
+	          that any occurrence of the background color in the 
+		  picture is not drawn to the screen. This allows you 
+		  to draw an irregularly-shaped object and draw it to 
+		  the screen.</td>
+	    </tr>
+	    <tr valign="top">
+	      <td><i>picUnderMerge</i></td>
+	      <td width="10">&nbsp;</td>
+	      <td>This draws the picture, but only where the background 
+	          color was displayed underneath it. The effect of this 
+		  is to make the picture appear to be displayed behind 
+		  the background.</td>
+	    </tr>
+	  </table><p>
+	  The <i>transition</i> parameter indicates the special effect and has
+	  one of the following values:<p>
+	  <table border="1">
+	    <tr valign="top">
+	      <td><i>picWipeLeftToRight</i></td>
+	      <td>The picture appears as a solid black bar sweeps from left to
+	          right, "revealing" the new picture as the screen underneath
+	          the picture is replaced.<p>
+			  In the picture below, "to Turing" is replacing the "Welcome"
+			  underneath as the bar sweeps from left to right.
+	  	  <center><img src="pic_drawspecial01.gif"></center>
+	          <center><b>picWipeLeftToRight - half way through transition</b></center><p></td>
+	    </tr>
+	    <tr valign="top">
+	      <td><i>picWipeRightToLeft</i>, <i>picWipeTopToBottom</i>, 
+	          <i>picWipeBottomToTop</i></td>
+	      <td>As <i>picWipeLeftToRight</i>, except the bar sweeps in 
+	          different directions.</td>
+	    </tr>
+	    <tr valign="top">
+	      <td><i>picWipeUpperLeftToLowerRight</i></td>
+	      <td>The picture appears as a solid black bar sweeps from the upper
+		      left corner down to the lower right, "revealing" the new picture 
+			  as the screen underneath the picture is replaced.<p>
+			  In the picture below "to Turing" is replacing the "Welcome"
+			  underneath as the bar sweeps from upper-left to lower-right.
+	  	  <center><img src="pic_drawspecial05.gif"></center>
+	          <center><b>picWipeUpperLeftToLowerRight - half way through transition</b></center><p></td>
+	    </tr>
+	    <tr valign="top">
+	      <td><i>picWipeUpperRightToLowerLeft</i>, <i>picWipeLowerLeftToUpperRight</i>, 
+	          <i>picWipeLowerRightToUpperLeft</i></td>
+	      <td>As <i>picWipeLeftToRight</i>, except the bar sweeps in 
+	          different directions.</td>
+	    </tr>
+	    <tr valign="top">
+	      <td><i>picWipeCentreToEdge</i>, <i>picWipeCenterToEdge</i></td>
+	      <td>The picture appears inside an expanding black outlined box as it 
+		      sweeps from the centre out to the edges, "revealing" the new 
+			  picture as the screen underneath the picture is replaced.<p>
+			  In the picture below, "to Turing" is replacing the "Welcome"
+			  underneath as the box expands from the centre out.
+	  	  <center><img src="pic_drawspecial06.gif"></center>
+	          <center><b>picWipeCentreToEdge - half way through transition</b></center><p></td>
+	    </tr>
+	    <tr valign="top">
+	      <td><i>picWipeLeftToRightNoBar</i>, <i>picWipeRightToLeftNoBar</i>, 
+	          <i>picWipeTopToBottomNoBar</i>, <i>picWipeBottomToTopNoBar</i>
+	          <i>picWipeUpperLeftToLowerRightNoBar</i>, <i>picWipeUpperRightToLowerLeftNoBar</i>, 
+	          <i>picWipeLowerLeftToUpperRightNoBar</i>, <i>picWipeLowerRightToUpperLeftNoBar</i>,
+			  <i>picWipeCentreToEdgeNoBar</i>, <i>picWipeCenterToEdgeNoBar</i></td>
+	      <td>As the constants above, expect there is no bar to mark the
+	          sweep across. The bar generally looks better when displaying
+	          an image over top of a similar one. No bar is usually
+	          preferable when the images are completely different (as in
+	          two photographs, and so on).</td>
+	    </tr>
+	    <tr valign="top">
+	      <td><i>picSlideLeftToRight</i></td>
+	      <td>The picture "slides in" from the left as a solid black bar 
+	          sweeps from left to right, "pushing" the screen underneath
+	          off the right edge of the drawing area.<p>
+			  In the picture below "to Turing" is replacing the "Welcome"
+			  originally present, "pushing" the "Welcome" to the right
+			  as "to Turing" slides in from the left.
+	  	  <center><img src="pic_drawspecial02.gif"></center>
+	          <center><b>picSlideLeftToRight - half way through transition</b></center><p></td>
+	    </tr>
+	    <tr valign="top">
+	      <td><i>picSlideRightToLeft</i>, <i>picSlideTopToBottom</i>, 
+	          <i>picSlideBottomToTop</i></td>
+	      <td>As <i>picSlideLeftToRight</i>, except the bar sweeps in 
+	          different directions.</td>
+	    </tr>
+	    <tr valign="top">
+	      <td><i>picSlideLeftToRightNoBar</i>, <i>picSlideRightToLeftNoBar</i>, 
+	          <i>picSlideTopToBottomNoBar</i>, <i>picSlideBottomToTopNoBar</i></td>
+	      <td>As the constants above, expect there is no bar to mark the
+	          sweep across. The bar generally looks better when displaying
+	          an image over top of a similar one. No bar is often
+	          preferable when the images are completely different (as in
+	          two photographs, and so on).</td>
+	    </tr>
+	    <tr valign="top">
+	      <td><i>picGrowLeftToRight</i></td>
+	      <td>The picture "grows" from the left as a solid black bar 
+	          sweeps from left to right, "squeezing" the screen underneath
+	          off the right edge of the drawing area.<p>
+			  In the picture below "to Turing" is replacing the "Welcome"
+			  originally present, "squeezing" the "Welcome" to the right
+			  as "to Turing" "grows" from the left.
+	  	  <center><img src="pic_drawspecial07.gif"></center>
+	          <center><b>picGrowLeftToRight - half way through transition</b></center><p></td>
+	    </tr>
+	    <tr valign="top">
+	      <td><i>picGrowRightToLeft</i>, <i>picGrowTopToBottom</i>, 
+	          <i>picGrowBottomToTop</i></td>
+	      <td>As <i>picGrowLeftToRight</i>, except the bar sweeps in 
+	          different directions.</td>
+	    </tr>
+	    <tr valign="top">
+	      <td><i>picGrowCentreToEdge</i>, <i>picGrowCenterToEdge</i></td>
+	      <td>The picture "grows" from the centre as a outlined black box
+	          sweeps from outward, replacing the screen underneath.<p>
+			  In the picture below "to Turing" is replacing the "Welcome"
+			  originally present, as "to Turing" grows for the centre.
+	  	  <center><img src="pic_drawspecial08.gif"></center>
+	          <center><b>picGrowCentreToEdge - half way through transition</b></center><p></td>
+	    </tr>
+	    <tr valign="top">
+	      <td><i>picGrowLowerLeftToUpperRight</i></td>
+	      <td>The picture "grows" from the lower-left corner as a outlined
+		      black box sweeps right and upward, replacing the screen 
+			  underneath.<p>
+			  In the picture below "to Turing" is replacing the "Welcome"
+			  originally present, as "to Turing" "grows" from the lower-left.
+	  	  <center><img src="pic_drawspecial09.gif"></center>
+	          <center><b>picGrowLowerLeftToUpperRight - half way through transition</b></center><p></td>
+	    </tr>
+	    <tr valign="top">
+	      <td><i>picGrowUpperLeftToLowerRight</i>, <i>picGrowLowerRightToUpperLeft</i>, 
+	          <i>picGrowUpperRightToLowerLeft</i></td>
+	      <td>As <i>picGrowLowerLeftToUpperRight</i>, except the box sweeps in 
+	          different directions.</td>
+	    </tr>
+	    <tr valign="top">
+	      <td><i>picGrowLeftToRightNoBar</i>, <i>picGrowRightToLeftNoBar</i>, 
+	          <i>picGrowTopToBottomNoBar</i>, <i>picGrowBottomToTopNoBar</i>
+	          <i>picGrowUpperLeftToLowerRightNoBar</i>, <i>picGrowLowerLeftToUpperRightNoBar</i>, 
+	          <i>picGrowUpperRightToLowerLeftNoBar</i>, <i>picGrowLowerRightToUpperLeftNoBar</i>,
+			  <i>picGrowCentreToEdgeNoBar</i>, <i>picGrowCenterToEdgeNoBar</i></td>
+	      <td>As the constants above, expect there is no bar to mark the
+	          sweep across. The bar generally looks better when displaying
+	          an image over top of a similar one. No bar is usually
+	          preferable when the images are completely different (as in
+	          two photographs, and so on).</td>
+	    </tr>
+	    <tr valign="top">
+	      <td><i>picFadeIn</i></td>
+	      <td>The picture "fades in" over top of the image underneath it.
+	          At the end of the transition, the new image completely 
+	          replaces the image underneath it.<p>
+	  	  <center><img src="pic_drawspecial03.gif"></center>
+	          <center><b>picFadeIn - half way through transition</b></center><p></td>
+	    </tr>
+	    <tr valign="top">
+	      <td><i>picBlend</i></td>
+	      <td>This transition is somewhat different because it doesn't take
+	          any time to execute.  Instead, <i>picBlend</i> causes the
+	          new image to be blended with the background.  The 
+	          <i>picBlend</i> constant can be used by itself, in which case,
+	          the final image is 70% the new image, 30% the old image.  You
+	          can also add a number from 1 to 100 to <i>picBlend</i>, in 
+	          which case, the blend is whatever was added from (1-100) of
+	          the new image over top of the old image.  (i.e. a transition
+	          of <i>picBlend</i> + 15 would display an image that is 
+	          composed of 15% the new image and 85% the old image.)<p>
+	  	  <center><img src="pic_drawspecial04.gif"></center>
+	          <center><b>picBlend - red star blended with blue circle</b></center><p></td>
+	    </tr>
+	  </table><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+	    <PARAM name="Command" value="TCard">
+	    <PARAM name="Button" value="Text: Launch Drawing Transitions Program">
+	    <PARAM name="Item1" value="-1,Pic.DrawSpecial.t;Drawing Transitions Example">
+	  </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The <b>Pic.DrawSpecial</b> requires a moderately fast machine to 
+          operate successfully (Pentium III or higher). The <i>picFadeIn</i>
+          and <i>picBlend</i> transitions do not work well on 8-bit (256 color)
+	  displays.  On Microsoft Windows machines, you can determine the 
+	  bit-depth of the display (the number of colors available) by 
+	  selecting the <i>Display</i> control panel from the <i>Start</i> 
+	  menu.  You can also use the<p>
+	  <tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  <b>Config.Display</b> (<b>cdNumMaxColors</b>)</tt><p>
+	  function to determine the bit-depth of the display (anything 
+	  <b>over</b> 256 colors will produce acceptable results).<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>If the <b>Pic.DrawSpecial</b> call fails, <b>Error.Last</b> will return a 
+          non-zero value indicating the reason for the failure. 
+	  <b>Error.LastMsg</b> will return a string which contains the textual 
+	  version of the error.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>The program draws a blue star on the screen, then a red circle, then
+          proceeds to have to have the two replace each other with a variety of
+          transitions.<p>
+<pre><tt>        <b>var</b> <i>redID</i>, <i>blueID</i>: <b>int</b>
+        <b>var</b> <i>x</i>, <i>y</i> : <b>int</b>
+        <b>Draw.FillStar</b> (50, 50, 150, 150, <i>brightred</i>)
+        <i>redID</i> := <b>Pic.New</b> (50, 50, 150, 150)
+        <b>cls</b>
+        <b>Draw.FillOval</b> (100, 100, 50, 50, <i>brightblue</i>)
+        <i>blueID</i> := <b>Pic.New</b> (50, 50, 150, 150)
+	<b>Pic.DrawSpecial</b> (<i>redID</i>, 50, 50, <i>picCopy</i>, <i>picWipeLeftToRight</i>, 500)
+	<b>Pic.DrawSpecial</b> (<i>blueID</i>, 50, 50, <i>picCopy</i>, <i>picWipeTopToBottom</i>, 500)
+	<b>Pic.DrawSpecial</b> (<i>redID</i>, 50, 50, <i>picCopy</i>, <i>picSlideLeftToRight</i>, 500)
+	<b>Pic.DrawSpecial</b> (<i>blueID</i>, 50, 50, <i>picCopy</i>, <i>picSlideTopToBottom</i>, 500)
+	<b>Pic.DrawSpecial</b> (<i>redID</i>, 50, 50, <i>picCopy</i>, <i>picFadeIn</i>, 1000)
+	<b>Pic.DrawSpecial</b> (<i>blueID</i>, 50, 50, <i>picCopy</i>, <i>picBlend</i> + 50, 0)
+        <b>Pic.Free</b> (<i>redID</i>)
+        <b>Pic.Free</b> (<i>blueID</i>)</tt></pre><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+	    <PARAM name="Command" value="TCard">
+	    <PARAM name="Button" value="Text: Launch Example Program">
+	    <PARAM name="Item1" value="-1,Pic.DrawSpecial1.t;Pic.DrawSpecial1 Example">
+	  </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>      
+      <td>The following program demonstrates each of the different special 
+          effects, first using pictures containing text, then pictures
+          loaded from photographs, then both at once.<p>
+          <OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+	    <PARAM name="Command" value="TCard">
+	    <PARAM name="Button" value="Text: Launch Example Program">
+	    <PARAM name="Item1" value="-1,Pic.DrawSpecial2.t;Pic.DrawSpecial2 Example">
+	  </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+	  This means that you can only call the function by calling 
+	  <b>Pic.DrawSpecial</b>, not by calling <b>DrawSpecial</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="pic_draw.html">Pic.Draw</a></b> for information on the meaning
+          of the <i>mode</i> argument.<p>
+          <b><a href="pic_drawspecialback.html">Pic.DrawSpecialBack</a></b> for 
+          information on how to continue executing the program while a special
+          effect is occurring.  This allows one to produce several special
+          effects at once.<p>
+    </tr>
+  </table>
+</body>
+</html>

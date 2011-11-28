@@ -1,0 +1,27 @@
+<html>
+<head><title>string</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>string</b></font></td><td align="right"><font size="+1"><b>type</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>stringType</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>string</b> [ ( <i>maximumLength</i> ) ]</td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Each variable whose type is a <i>stringType</i> can contain a sequence (a string ) of characters. The length of this sequence must not exceed the <i>stringType'</i>s maximum length.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>var</b> <i>name </i>: <b>string</b>
+        <i>name</i> := "Nancy"
+        <b>var</b> <i>licenceNumber</i> : <b>string</b> ( 6 )
+        <i>licenceNumber</i> := "175AJN"</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Strings can be assigned and they can be compared for both equality and for ordering. See also <i>string comparison </i>and <i>assignment statement</i>.<p>
+Strings can be catenated (joined together) using the + operator and separated into substrings. See<i> catenation </i>and<i> substring</i>. String functions are provided to find the length of a string, to find where one string appears inside another, and to make repeated copies of a string all joined together. See <i>length</i>, <i>index</i>, and <i>repeat</i>.<p>
+A string type written without a maximum length is limited to holding a maximum of 255 characters.<p>
+The <i>maximumLength</i> of a string, if given as a part of the type, must be known at compile time, and must be at least 1 and at most 255. The maximum length of a string is given by <i>upper</i>, for example, <i>upper</i>(<i>licenceNumber</i>) is 6. See also <i>upper</i>.<p>
+In the declaration of a string that is a <b>var</b> formal parameter of a procedure or function, the <i>maximumLength </i>can be written as an asterisk (*). Here, the maximum length is taken to be that of the corresponding actual parameter, as in:<p>
+<pre><tt>        <b>procedure</b> <i>deblank </i>(<b>var</b> <i>s </i>: <b>string</b> (*) ).</tt></pre>
+The star can also be used when the parameter is an array of strings.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <i>explicitStringConstants</i> for exact rules for writing string values such as "Nancy". See also <b><a href="char.html">char</a></b>(<i>n</i>) and <b><a href="char.html">char</a></b> types.<p>
+</table></body>
+</html>

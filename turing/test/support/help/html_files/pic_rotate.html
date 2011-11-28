@@ -1,0 +1,135 @@
+<html>
+<head><title>Pic.Rotate</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Pic.Rotate</b></font></td><td align="right">Part of <a href="picmodule.html">Pic</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Pic.Rotate</b> (<i>picID</i>, <i>angle</i>, <i>x</i>, <i>y</i> : <b>int</b>) : <b>int</b><p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td><b>Pic.Rotate </b>is used to create a new picture by rotating an 
+	  already existing picture. Rotation can either be around a specific 
+	  point in the picture (often used for rotating a picure in place) or 
+	  just a general rotation.<p>
+	  The <i>angle</i> is specified in degrees. The rotation is done in a 
+	  counter-clockwise direction. The original picture is not modified by 
+	  the call to <b>Pic.Rotate</b> and must still be freed when no longer 
+	  used. The picture produced by <b>Pic.Rotate</b> may be a different 
+	  size than the original picture.<p>
+	  The (<i>x</i>, <i>y</i>) point is the point around which the rotation 
+	  is to take place and is relative to the picture being rotated. If it 
+	  is not important to rotate the picture in place, <i>x</i> and <i>y</i> 
+	  should be set to -1, which make the new picture the minimum size 
+	  required to fit the rotated image.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The <b>Pic.Rotate</b> command can fail, in which case it returns 0. 
+          The <b>Error.LastMsg</b> function can then be used to obtain more 
+	  information about the failure.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>If <i>x</i> and <i>y</i> are set to a point in the picture (rather 
+          than 1), it is possible for parts of the original picture to be 
+	  rotated off the left and bottom edge of the new picture. This occurs 
+	  because <b>Pic.Rotate</b> guarantees that the point specified by  
+	  (<i>x</i>,&nbsp;<i>y</i>) in the original picture will be located at  
+	  (<i>x</i>,&nbsp;<i>y</i>) in the rotated picture. You can avoid losing
+	  parts of the picture by making certain there is a margin of background
+	  color on the left and bottom sides of the picture.<p>
+	  <center><img src="pic_rotate01.gif"></center>
+	  As well, any pixels in the rotated picture that were not part of the 
+	  original picture are set to the background color.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>Rotation can be slow on older machines. Programs that are using 
+          animation should create and store all the rotated images that may 
+	  be needed. Often pictures of an object at various angles are stored 
+	  in an array. <p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program draws “Hello” on the screen rotated at 0, 45 and 90 
+          degrees.<p>
+<pre><tt>        <b>View.Set</b> ("graphics:200;150,nobuttonbar")
+        <b>var</b> <i>f</i> : <b>int</b> := <b>Font.New</b> ("Serif:36")
+        <b>Font.Draw</b> ("Hello", 10, 10, f, black)
+        <b>var</b> <i>pic</i> : int := <b>Pic.New</b> (5, 5, 120, 45)
+        <b>var</b> <i>pic45</i> : int :=<b> Pic.Rotate</b> (pic, 45, -1, -1)
+        <b>var</b> <i>pic90</i> : int := <b>Pic.Rotate</b> (pic, 90, -1, -1)
+        <b>Pic.Draw</b> (<i>pic45</i>, 5, 50, <i>picCopy</i>)
+        <b>Pic.Draw</b> (<i>pic90</i>, 150, 5, <i>picCopy</i>)
+        </tt></pre>
+	  <center><img src="pic_rotate02.gif"></center>
+	  <center><b>Output from Program</b></center><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+	    <PARAM name="Command" value="TCard">
+	    <PARAM name="Button" value="Text: Launch Example Program">
+	    <PARAM name="Item1" value="-1,Pic.Rotate.t;Pic.Rotate Example">
+	  </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program moves a spinning “Hello” around the screen, bouncing it off the edges of the output window. Notice that the original picture contains adequate space on the left and bottom sides to contain the rotation.<p>
+<pre><tt>        <b>View.Set</b> ("graphics:300;250,nobuttonbar")
+        <b>var</b> <i>pic</i> : <b>array</b> 0 .. 35<b> of int</b>
+        <b>var</b> <i>f</i> : <b>int</b> :=<b> Font.New </b>("Serif:36")
+        <b>const</b> <i>CTR</i> : <b>int</b> := 57
+        <b>Font.Draw</b> ("Hello", 5, 45, <i>f</i>, black)
+        <b>Draw.FillOval</b> (<i>CTR</i>, <i>CTR</i>, 3, 3, brightred)
+        <i>pic</i> (0) := <b>Pic.New</b> (0, 0, 115, 115)
+        <b>cls</b>
+        <b>for</b> <i>angle</i> : 1 .. 35
+            <i>pic</i> (<i>angle</i>) := <b>Pic.Rotate</b> (<i>pic</i> (0), <i>angle</i> * 10, <i>CTR</i>, <i>CTR</i>)
+        <b>end for</b>
+        
+        <b>var</b> <i>x</i> : <b>int</b> := <i>CTR</i>
+        <b>var</b> <i>y</i> : <b>int</b> := <i>CTR</i>
+        <b>var</b> <i>dx</i> : <b>int</b> := 1
+        <b>var</b> <i>dy</i> : <b>int</b> := 1
+        <b>loop</b>
+            <b>for</b> <i>angle</i> : 0 .. 35
+                <b>Pic.Draw</b> (<i>pic</i> (<i>angle</i>), <i>x </i> - <i>CTR</i>, <i>y</i> - <i>CTR</i>, picCopy)
+                <b>if</b> <i>x</i> + <i>dx</i> &lt; <i>CTR</i> or <i>x</i> + <i>dx</i> &gt; maxx - <i>CTR</i> <b>then</b>
+                    <i>dx</i> := <i>dx</i>
+                <b>end if</b>
+                <b>if</b> <i>y</i> + <i>dy</i> &lt; <i>CTR</i> or <i>y</i> + <i>dy</i> &gt; maxy - <i>CTR</i> <b>then</b>
+                    <i>dy</i> := <i>dy</i>
+                <b>end if</b>
+                <i>x</i> += <i>dx</i>
+                <i>y</i> += <i>dy</i>
+                <b>delay</b> (50)
+            <b>end for</b>
+        <b>end loop</b></tt></pre>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+	    <PARAM name="Command" value="TCard">
+	    <PARAM name="Button" value="Text: Launch Example Program">
+	    <PARAM name="Item1" value="-1,Pic.Rotate2.t;Pic.Rotate Example">
+	  </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>Note that the rotated picture is a newly created picture. When it 
+          is no longer needed, its memory should be released by using 
+	  <b>Pic.Free</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+	  This means that you can only call the function by calling 
+	  <b>Pic.Rotate</b>, not by calling <b>Rotate</b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

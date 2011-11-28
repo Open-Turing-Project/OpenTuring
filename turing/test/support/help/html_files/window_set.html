@@ -1,0 +1,24 @@
+<html>
+<head><title>Window.Set</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Window.Set</b></font></td><td align="right">Part of <a href="windowmodule.html">Window</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Window.Set</b> (<i>windowID</i> : <b>int</b>, <i>setUpString</i> : <b>string</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Window.Set</b> procedure sets the configuration of the window specified by the <i>windowID</i> parameter. See <b>View.Set</b> for a complete list of available options. The <i>setUpString</i> parameter can be any combination options, separated by commas. Here is a selection of the available options.<p>
+<b>text:<i>&lt;rows&gt;</i>;<i>&lt;cols&gt;</i> - </b>Sets the output window to <b>text</b> mode and changes the window size to be <i>&lt;rows&gt;</i> rows by <i>&lt;cols&gt;</i> columns in size.<p>
+<b>graphics:<i>&lt;xsize&gt;</i>;<i>&lt;ysize</i>&gt; - </b>Sets the output window to <b>graphics</b> mode and changes the window size to be <i>&lt;xsize&gt;</i> pixels across and <i>&lt;ysize&gt;</i> pixels in height.<p>
+<b>visible</b> | <b>invisible</b> | <b>popup</b> - Sets the screen to be visible, invisible or popup. A popup window is hidden until output is sent to that window. The main <b>Run</b> window is a popup window. If you never send any output to it, it never appears. <p>
+<b>noxor</b> |<b> xor</b> - Sets whether all drawing operations draw using XOR.<p>
+<b>nocursor </b>|<b> cursor</b> - Sets whether the cursor is visible or not.<p>
+<b>noecho </b>|<b> echo</b> - Sets whether the input from the keyboard is echoed to the screen. <p>
+<b>title:<i>&lt;text&gt;</i></b> - Sets the window title bar to <i>&lt;text&gt;</i>.<p>
+<b>position:<i>&lt;x&gt;</i>;<i>&lt;y&gt;</i></b> - Sets the position of the top left corner of the window to be (<i>&lt;x&gt;</i>,<i>&lt;y&gt;</i>). <p>
+<b>offscreenonly </b>|<b> nooffscreenonly</b> - Sets whether output to the window goes to offscreen window alone, or both the onscreen and offscreen window.<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Window.Set</b>, not by calling <b>Set</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="view_set.html">View.Set</a></b> for a complete list of the options available with<b> <a href="window_set.html">Window.Set</a></b>. See <b><a href="window_open.html">Window.Open</a></b> for how to create a <a href="new.html">new</a> window.<p>
+</table></body>
+</html>

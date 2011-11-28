@@ -1,0 +1,27 @@
+<html>
+<head><title>subprogramHeader</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>subprogramHeader</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>subprogramHeader </i>is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(a)</font></td><td colspan="7"><font size="+1"><b>procedure</b> [ <b>pervasive</b> ] <i>id</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="6"><font size="+1">[ ([ <i>paramDeclaration</i> {, <i>paramDeclaration</i>} ])]</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(b)</font></td><td colspan="7"><font size="+1"><b>function</b> [ <b>pervasive</b> ] <i>id</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="6"><font size="+1">[ ([ <i>paramDeclaration</i> {, <i>paramDeclaration</i>} ])]</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="6"><font size="+1">[ <i>id</i> ] : <i>typeSpec</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A subprogram header is used to describe the interface to a subprogram. Subprogram headers are used within other language features such as subprogram types and external declarations.<p>
+Parameterless subprograms may use parentheses (with nothing between them), as is required in the C programming language. These parentheses can be used to disambiguate between the call to the subprogram (parentheses present) and a reference the subprogram (parentheses missing).<p>
+Suppose <i>f</i> is a parameterless subprogram declared without parentheses and <i>g</i> is a parameterless subprogram declared with parentheses. Their headers are:<p>
+<pre><tt>        <b>procedure</b> <i>f</i>
+        <b>procedure</b> <i>g</i> ()</tt></pre>
+In a program, <i>f</i> and <i>g</i>() are calls to these functions, while <i>g</i> is a reference to (not a call to) the procedure. There is no way to write a reference to <i>f</i>. When in doubt, use parentheses in the declaration, as in the case for <i>g</i>, so that calls always have parentheses and references always do not. A reference to a subprogram can be assigned to a subprogram variable. See subprogram type.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Specify that <i>t</i> is the type of procedure with a <b>var</b> integer parameter and a real parameter. See also <i>subprogramType</i>.<p>
+<pre><tt>        <b>type</b> <i>t</i> : <b>procedure</b> <i>q</i> ( <b>var</b> <i>j</i> : <b>int</b>, <i>y</i> : <b>real</b> )</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The keyword <b>pervasive</b> can be inserted just after <b>procedure</b> or <b>function</b>. When this is done, the subprogram is visible inside all subconstructs of the subprogram's scope. Without <b>pervasive</b>, the subprogram is not visible inside modules unless explicitly imported. Pervasive subprograms need not be imported. You can abbreviate <b>pervasive</b> as an asterisk (<b>*</b>).<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="pervasive.html">pervasive</a></b>.<p>
+</table></body>
+</html>

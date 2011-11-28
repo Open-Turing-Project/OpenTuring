@@ -1,0 +1,43 @@
+<html>
+<head><title>GUI.SetSliderReverse</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.SetSliderReverse</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>GUI.SetSliderReverse</b> (<i>widgetID</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Sets a slider or scroll bar specified by <i>widgetID</i> into (or out of, if already into) "reverse mode". Normally, a slider or scroll bar is at its minimum value when the thumb is on the left hand side (bottom for a vertical slider). This reverses it, so the minimum value is when the thumb is at the right hand side (top for vertical sliders) of the track. Calling this routine a second time reverses it back to normal. This procedure redraws the slider to move the thumb to its new location.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program creates two sliders, one of which is reversed.<p>
+<pre><tt>        <b>import</b> <i>GUI</i> <b>in</b> "%oot/lib/GUI"
+        
+        <b>View.Set</b> ("graphics:300;70")
+        <b>var</b> <i>sBar</i>, <i>sBarLabel</i>, <i>reverseSBar</i>, <i>reverseSBarLabel</i> : <b>int</b>
+        
+        <b>procedure</b> <i>SBarMoved</i> (<i>value</i> : <b>int</b>)
+            <b>GUI.SetLabel </b>(<i>sBarLabel</i>, <b>intstr</b> (<i>value</i>))
+        <b>end</b> <i>SBarMoved</i>
+        
+        <b>procedure</b> <i>ReverseSBarMoved</i> (<i>value</i> : <b>int</b>)
+            <b>GUI.SetLabel </b>(<i>reverseSBarLabel</i>, <b>intstr</b> (<i>value</i>))
+        <b>end</b> <i>ReverseSBarMoved</i>
+        
+        <i>sBar</i> := <b>GUI.CreateHorizontalScrollBar</b> (10, 10, 250,
+            50, 150, 50, <i>SBarMoved</i>)
+        <i>sBarLabel</i> := <b>GUI.CreateLabel </b>(
+            <b>GUI.GetX</b> (<i>sBar</i>) + <b>GUI.GetWidth </b>(<i>sBar</i>) + 10, 10, "50")
+        
+        <i>reverseSBar</i> := <b>GUI.CreateHorizontalScrollBar</b> (10, 40, 250,
+            50, 150, 50, <i>ReverseSBarMoved</i>)
+        <b>GUI.SetSliderReverse </b>(<i>reverseSBar</i>)
+        <i>reverseSBarLabel</i> := <b>GUI.CreateLabel </b>( <b>GUI.GetX</b> (<i>reverseSBar</i>) + 
+            <b>GUI.GetWidth</b> (<i>reverseSBar</i>) + 10, 40, "50")
+        <b>loop</b>
+            <b>exit when GUI.ProcessEvent</b>
+        <b>end loop</b></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>GUI.SetSliderReverse</b>, not by calling <b>SetSliderReverse</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b>GUI.CreateHorizontalScrollBar</b>, <b>GUI.CreateVerticalScrollBar</b>, <b><a href="gui_createhorizontalslider.html">GUI.CreateHorizontalSlider</a></b>, and <b><a href="gui_createverticalslider.html">GUI.CreateVerticalSlider</a></b>.<p>
+</table></body>
+</html>

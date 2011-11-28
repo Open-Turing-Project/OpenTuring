@@ -1,0 +1,29 @@
+<html>
+<head><title>indirection</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>indirection</b></font></td><td align="right"><font size="+1"><b>operator (@)</b></font></td></table><p>
+Dangerous<p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><i>targetType</i> <b>@</b> ( <i>expn</i> )<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The indirection operator @ is used to access values that lie at absolute machine addresses in the computer's memory. This is dangerous and implementation-dependent and can cause arbitrary corruption of data and programs.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Copy the byte value at memory location 246 into <i>b </i>and then set that memory byte to zero.<p>
+<pre><tt>        <b>var</b> <i>b</i> : <b>nat1</b>            <i>% One byte natural number</i>
+        <i>b</i> := <b>nat1</b> <b>@</b> (246)
+        <b>nat1</b> <b>@</b> (246) := 0</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The form of <i>targetType</i> must be one of:<p>
+<pre><tt>        (a) [ <i>id</i> . ] <i>typeId</i>
+        (b) <b>int</b>, <b>int1</b>, <b>int2</b> or <b>int4</b>
+        (c) <b>nat</b>, <b>nat1</b>, <b>nat2</b> or <b>nat4</b>
+        (d) <b>boolean</b>
+        (e) <b>char</b> [ ( <i>numberOfCharacters</i> ) ]
+        (f) <b>string</b> [ ( <i>maximumLength</i> ) ]
+        (g) <b>addressint</b></tt></pre>
+In form (a) the beginning identifier <i>id</i> must be the name of a module, monitor or class that exports the <i>typeId</i>. Each of <i>numberOfCharacters</i> and <i>maximumLength</i> must be compile time integer expressions. These are the same target types as in type cheats.<p>
+The indirection operator @ takes an integer as an address. This value must fit in the range of <b>addressint</b>. See <b>addressint</b>. See also <b>pointer</b> types and the ^ operator (which accesses objects located by pointers).<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="cheat.html">cheat</a></b>. See also <i><a href="explicitintegerconstant.html">explicitIntegerConstant</a></i> (which explains how to write hexadecimal constants, which are often used for addresses).<p>
+</table></body>
+</html>

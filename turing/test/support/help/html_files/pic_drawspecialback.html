@@ -1,0 +1,155 @@
+<html>
+<head><title>Pic.DrawSpecialBack</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Pic.DrawSpecialBack</b></font></td><td align="right">Part of <a href="picmodule.html">Pic</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Pic.DrawSpecialBack</b> (<i>picID</i>, <i>x</i>, <i>y</i>, <i>mode</i>, <i>transition</i>, <i>duration</i>  : <b>int</b>)<p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td><b>Pic.DrawSpecialBack</b> is very similar to 
+          <b><a href="pic_drawspecial.html">Pic.DrawSpecial</a></b>.  The only
+          difference is that <b>Pic.DrawSpecialBack</b> returns immediately
+          after being called and program execution continues while the special
+          effect continues.  This allows you to continue to draw other graphics
+          while the special effect is continuing.<p>
+          For example, this procedure is necessary if you want to have two 
+          pictures being drawn using special effects simultaneously.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>If you are wish to have several images displayed at the same time
+          using special effects, you must use <b>Pic.DrawSpecialBack</b> to 
+          display all the images but the last and then use 
+          <b>Pic.DrawSpecial</b> to display the last image so that Turing will 
+          wait until the special effects are completed before continuing 
+          execution.<p>
+          If you want to draw the several special effects continuously over
+          the same location, do not use <b>Pic.DrawSpecialBack</b>.<p>  
+          <tt><b>Pic.DrawSpecial</b> (<i>pic1</i>, 10, 10, <i>picCopy</i>, <i>picWipeLeftToRight</i>, 500)<br>
+          <b>Pic.DrawSpecial</b> (<i>pic2</i>, 10, 10, <i>picCopy</i>, <i>picFadeIn</i>, 1000)</tt><p>
+          If you do, Turing will attempt to run each of the calls at the same
+          time, and most of the special effects will not be seen.<p>
+    </tr>          
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td><b>Pic.DrawSpecialBack</b> is used to draw a picture on the screen
+          with a special effect such as a wipe, a slide, or a fade-in. Note that 
+          all the parameters are identical to the parameters of
+          <b><a href="pic_drawspecial.html">Pic.DrawSpecial</a></b>.
+          The picture is drawn with the lower left corner at 
+          (<i>x</i>, <i>y</i>). The <i>duration</i> specifies how long the
+          transition should take in milliseconds.  For example, a fade-in could
+          be specified to last 1/2 a second by using a duration of 500.<p>
+	  The <i>mode</i> parameter is the same as in <b>Pic.New</b> and has 
+	  one of the following values:<p>
+	  <table>
+	    <tr valign="top">
+	      <td><i>picCopy</i></td>
+	      <td width="10">&nbsp;</td>
+	      <td>This draws the picture on top of what was underneath, 
+	          obscuring it completely.</td>
+	    </tr>
+	    <tr valign="top">
+	      <td><i>picXor</i></td>
+	      <td width="10">&nbsp;</td>
+	      <td>This draws the picture XORing it with the background. 
+	          In DOS, you can use this function to do animation. 
+		  Drawing an object on top of itself with XOR erases 
+		  it and restores the background.</td>
+	    </tr>
+	    <tr valign="top">
+	      <td><i>picMerge</i></td>
+	      <td width="10">&nbsp;</td>
+	      <td>This draws the picture like <i>picCopy</i> except 
+	          that any occurrence of the background color in the 
+		  picture is not drawn to the screen. This allows you 
+		  to draw an irregularly-shaped object and draw it to 
+		  the screen.</td>
+	    </tr>
+	    <tr valign="top">
+	      <td><i>picUnderMerge</i></td>
+	      <td width="10">&nbsp;</td>
+	      <td>This draws the picture, but only where the background 
+	          color was displayed underneath it. The effect of this 
+		  is to make the picture appear to be displayed behind 
+		  the background.</td>
+	    </tr>
+	  </table><p>
+	  See <b><a href="pic_drawspecial.html">Pic.DrawSpecial</a></b> for the
+	  list of possible values for the <i>transition</i> parameter.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The <b>Pic.DrawSpecialBack</b> requires a moderately fast machine to 
+          operate successfully (Pentium III or higher). The <i>picFadeIn</i>
+          and <i>picBlend</i> transitions do not work well on 8-bit (256 color)
+	  displays.  On Microsoft Windows machines, you can determine the 
+	  bit-depth of the display (the number of colors available) by 
+	  selecting the <i>Display</i> control panel from the <i>Start</i> 
+	  menu.  You can also use the<p>
+	  <tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  <b>Config.Display</b> (<b>cdNumMaxColors</b>)</tt><p>
+	  function to determine the bit-depth of the display (anything 
+	  <b>over</b> 256 colors will produce acceptable results).<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>If the <b>Pic.DrawSpecialBack</b> call fails, <b>Error.Last</b> will return a 
+          non-zero value indicating the reason for the failure. 
+	  <b>Error.LastMsg</b> will return a string which contains the textual 
+	  version of the error.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>The program draws a blue star on the screen, then a red circle, then
+          proceeds to have to have the two replace each simultaneously, 
+          side-by-side.<p>
+<pre><tt>        <b>var</b> <i>redID</i>, <i>blueID</i>: <b>int</b>
+        <b>Draw.FillStar</b> (0, 0, 100, 100, <i>brightred</i>)
+        <i>redID</i> := <b>Pic.New</b> (0, 0, 100, 100)
+        <b>cls</b>
+        <b>Draw.FillOval</b> (50, 50, 50, 50, <i>brightblue</i>)
+        <i>blueID</i> := <b>Pic.New</b> (0, 0, 100, 100)
+        <b>cls</b>
+	<b>Pic.DrawSpecialBack</b> (<i>redID</i>, 10, 10, <i>picCopy</i>, <i>picWipeLeftToRightNoBar</i>, 1000)
+	<b>Pic.DrawSpecial</b> (<i>blueID</i>, 160, 10, <i>picCopy</i>, <i>picWipeRightToLeftNoBar</i>, 1000)
+	<b>Pic.DrawSpecialBack</b> (<i>blueID</i>, 10, 10, <i>picCopy</i>, <i>picSlideLeftToRightNoBar</i>, 1000)
+	<b>Pic.DrawSpecial</b> (<i>redID</i>, 160, 10, <i>picCopy</i>, <i>picSlideRightToLeftNoBar</i>, 1000)
+	<b>Pic.DrawSpecialBack</b> (<i>redID</i>, 10, 10, <i>picCopy</i>, <i>picGrowRightToLeftNoBar</i>, 1000)
+	<b>Pic.DrawSpecial</b> (<i>blueID</i>, 160, 10, <i>picCopy</i>, <i>picGrowLeftToRightNoBar</i>, 1000)
+	<b>Pic.DrawSpecialBack</b> (<i>blueID</i>, 10, 10, <i>picCopy</i>, <i>picWipeTopToBottomNoBar</i>, 1000)
+	<b>Pic.DrawSpecial</b> (<i>redID</i>, 160, 10, <i>picCopy</i>, <i>picWipeTopToBottomNoBar</i>, 1000)
+	<b>Pic.DrawSpecialBack</b> (<i>redID</i>, 10, 10, <i>picCopy</i>, <i>picFadeIn</i>, 1000)
+	<b>Pic.DrawSpecial</b> (<i>blueID</i>, 160, 10, <i>picCopy</i>, <i>picFadeIn</i>, 1000)
+        <b>Pic.Free</b> (<i>redID</i>)
+        <b>Pic.Free</b> (<i>blueID</i>)</tt></pre><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+	    <PARAM name="Command" value="TCard">
+	    <PARAM name="Button" value="Text: Launch Example Program">
+	    <PARAM name="Item1" value="-1,Pic.DrawSpecialBack.t;Pic.DrawSpecialBack Example">
+	  </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+	  This means that you can only call the function by calling 
+	  <b>Pic.DrawSpecialBack</b>, not by calling <b>DrawSpecialBack</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="pic_draw.html">Pic.Draw</a></b> for information on the meaning
+          of the <i>mode</i> argument.<p>
+          <b><a href="pic_drawspecial.html">Pic.DrawSpecial</a></b> for 
+          information on how to draw special effects and wait for completion
+          of the effect.<p>
+    </tr>
+  </table>
+</body>
+</html>

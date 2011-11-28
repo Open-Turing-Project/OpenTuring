@@ -1,0 +1,45 @@
+<html>
+<head><title>Error.TripMsg</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Error.TripMsg</b></font></td><td align="right">Part of <a href="errormodule.html">Error</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Error.TripMsg</b> (<i>errorCode</i> : <b>int</b>, <i>errorMessage</i> : <b>string</b>)<p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td><b>Error.TripMsg</b> is a procedure that sets the error number and
+          error message that is returned by <b>Error.Last</b> and 
+          <b>Error.LastMsg</b>. It does not halt the program.<p>
+          You can find a list of constants for the legal error codes in the 
+          module <b>ErrorNum</b>. Any call to <b>Error.TripMsg</b> should use a 
+          constant found in the <b>ErrorNum</b> module or zero, if the error
+          code is not relevant (i.e. only the error message is relevant).<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program sets an error code. The program outputs 201 for the error
+          number and "File *really* not found" for the message.<p>
+<pre><tt>        <b>Error.TripMsg</b> (<i>eFsysFileNotFound</i>, "File *really* not found")
+        <b>put</b> "Error code = ", <b>Error.Last</b>
+        <b>put</b> "Error message = ", <b>Error.LastMsg</b></tt></pre>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,Error.TripMsg.t;Error.TripMsg Example">
+          </OBJECT><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+          <b>Error.TripMsg</b>, not by calling <b>TripMsg</b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

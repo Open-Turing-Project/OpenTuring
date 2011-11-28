@@ -1,0 +1,28 @@
+<html>
+<head><title>tand</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>tand</b></font></td><td align="right"><font size="+1"><b>tangent function (degrees)</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>tand</b> ( <i>r</i> : <b>real</b> ) : <b>real</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>tand</b> function is used to find the tangent of an angle given in degrees. For example, <b>tand</b> (45) is 1.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program prints out the tangent of 0, 30, 60, 90, up to 360 degrees.<p>
+<pre><tt>        <b>for</b> <i>i</i> : 0 .. 12
+            <b>const</b> <i>angle</i> := <i>i</i> * 30
+            <b>put</b> "<i>Tan of </i>", <i>angle</i>, "<i> is </i>", <b>tand</b> ( <i>angle</i> )
+        <b>end</b> <b>for</b></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,tand.t;tand Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td><td>An argument to <b>tan</b> of 90, 270, etc. may result in an overflow (and halt of the program) as the result is technically <font face="symbol">&#165;</font>. 
+(It may not cause an overflow due to rounding, in which case the result will simply be a very large number.)</td>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td>the <b><a href="sind.html">sind</a></b> and <b><a href="cosd.html">cosd</a></b> functions for calculating sine and cosine.<p>
+the <b><a href="tan.html">tan</a></b> function which finds the tangent of an angle given in radians. (2<font face="symbol">p</font> radians are the same as 360 degrees.)<p>
+See also predefined unit <b><a href="mathmodule.html">Math</a></b>.<p>
+</table></body>
+</html>

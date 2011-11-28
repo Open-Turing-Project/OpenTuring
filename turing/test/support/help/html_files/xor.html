@@ -1,0 +1,28 @@
+<html>
+<head><title>xor</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>xor</b></font></td><td align="right"><font size="+1"><b>exclusive "or" operator</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><i>A</i> <b>xor</b> <i>B</i><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> When applied to set values, <b>xor</b> (symmetric difference) yields a set which includes element <i>e</i> if and only if <i>e</i> is contained in exactly one of the operands. When applied to non-negative integer values, <b>xor</b> yields a natural number whose bits are the xor of the corresponding bits of the operands. Both operands <i>A</i> and <i>B </i>are evaluated.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Status <i>s3</i> will contain elements that are in <i>s1</i> or <i>s2</i> but not both. Here <b>xor</b> is a set operator. See <b>enum</b> and <b>set</b> types for explanations of these types.<p>
+<pre><tt>        <b>type</b> <i>status</i> : <b>enum</b> (<i>ready</i>, <i>sending</i>, <i>repeating</i>)
+        <b>type</b> <i>statusSet</i> : <b>set</b> <b>of</b> <i>status</i>
+        <b>var</b> <i>s1</i>, <i>s2</i>, <i>s3</i> : <i>statusSet</i>
+        <i>s1</i> := statusSet ( <i>status</i>.<i>read</i>, <i>status</i>.<i>sending</i> )
+        <i>s2</i> := statusSet ( <i>status</i>.<i>read</i>, <i>status</i>.<i>repeating</i> )
+        …
+        <i>s3</i> := <i>s1</i> <b>xor</b> <i>s2</i>     <i>% Same as (s1 + s2) - (s1 * s2)</i></tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Each bit of natural number <i>n3</i> will be 1 if exactly one of the corresponding bits of <i>n1</i> and <i>n2</i> are 1. For example, if <i>n1</i> = 2#110 (6) and <i>n2</i> = 2#010 (2), <i>n3</i> will be set to 2#100 (4). Here <b>xor</b> is an integer operator.<p>
+<pre><tt>        <b>var</b> <i>n1</i>, <i>n2</i>, <i>n3</i> : <b>nat</b>
+        …
+        <i>n3</i> := <i>n1</i> <b>xor</b> <i>n2</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The <b>xor</b> operator is not a short circuit operator; in other words, both of its operands are always evaluated. The precedence of <b>xor</b> is the same as that of plus (+).<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="set.html">set</a></b>. See also <i><a href="explicitintegerconstant.html">explicitIntegerConstant</a></i> which describes values such as 2<b>#</b>110.<p>
+</body>
+</html>

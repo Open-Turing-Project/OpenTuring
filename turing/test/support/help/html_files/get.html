@@ -1,0 +1,102 @@
+<html>
+<head><title>get</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>get</b></font></td><td align="right"><font size="+1"><b>file statement</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>getStatement</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>get</b> [ : <i>streamNumber</i> , ] <i>getItem</i> { , <i>getItem</i> }</td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>get</b> statement inputs each of the <i>getItems</i>. Ordinarily, the output comes from the keyboard. However, if the <i>streamNumber </i>is present, the input comes from the file specified by the stream number (see the <b>open</b> statement for details). Also, input can be redirected so it is taken from a file rather than the keyboard. Check the documentation on the environment for instructions on doing so.<p>
+The syntax of a <i>getItem</i> is one of:<p>
+<pre><tt>        (a) <i>variableReference</i>
+        (b) <b>skip</b>
+        (c) <i>variableReference</i> : *
+        (d) <i>variableReference</i> : <i>widthExpn</i></tt></pre>
+These items are used to support three kinds of input:<p>
+(1) token and character oriented input: supported by forms (a) and (b),<p>
+(2) line oriented input: supported by form (c), and<p>
+(3) character oriented input: supported by form (d).<p>
+Examples of these will be given, followed by detailed explanations.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Token-oriented input.<p>
+<pre><tt>        <b>var</b> <i>name</i>,<i> title </i>: <b>string</b>
+        <b>var</b> <i>weight </i>: <b>real</b>
+        <b>get</b> <i>name</i>        <i>% If input is </i>Alice,<i> it is input</i> <i>into name</i>
+        <b>get</b> <i>title</i>       <i>% If input is </i>"A lady",<i> </i>A lady <i>is input</i>
+        <b>var</b> <i>weight</i>      <i>% If input is 9.62</i>,<i> it is input into weight</i></tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Line-oriented input.<p>
+<pre><tt>        <b>var</b> <i>query</i> : <b>string</b>
+        <b>get</b> <i>query</i> : <b>*</b>   <i>% Entire line is input into query</i></tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Character-oriented input.<p>
+<pre><tt>        <b>var</b> <i>code</i> : <b>string</b>
+        <b>get</b> <i>code</i> : 2        <i>% Next 2 characters are input into code.</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> A <i>token</i> is a sequence of characters surrounded by <i>white space</i>, where <i>white space </i>is defined as the characters: blank, tab, form feed, new line, and carriage return as well as end-of-file. The sequence of characters making up the token are either all non-white space or else the token must be a quoted string (an explicit string constant). When the <i>variableReference</i> in form (a) is a string, integer, real, <b>int</b><i>n</i>, <b>nat</b><i>n</i>, or <b>real</b><i>n</i>. Turing<i> </i>skips white space, reads a token into the <i>variableReference</i>, and then skips white space (stopping at the beginning of the next line). <p>
+If the <i>variableReference</i> is a string, the token is assigned to the variable (if the token is quoted, the quotation marks are first removed). See the examples involving <i>name </i>and <i>title</i> above. If the <i>variableReference</i> is an integer or a real, the token is converted to be numeric before being assigned to the variable. See the example involving <i>weight</i> above.<p>
+When the input is coming from the keyboard, no input is done until Return is typed. The line that is input may contain more than one token. Any tokens that are not input by one <b>get</b> statement will remain to be input by the next <b>get</b> statement.<p>
+Turing has been modified so that token-oriented input now also skips white space following the token, but does not skip beyond the beginning of the next line. This change implies that  form (b) is usually not needed, as <b>skip</b> was used to skip white space after the token.<p>
+Form (a) supports <b>char</b> and <b>char</b>(<i>n</i>). If the type is <b>char</b>, exactly one character is read, with no skipping of white space before or after. This character may be, for example, a blank or a carriage return. If the type is <b>char</b>(<i>n</i>), exactly <i>n</i> characters are read, with no skipping of white space.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Inputting <b>char</b> and <b>char</b>(<i>n</i>) types using form (a). The statement <i>get c:1</i> is not legal, because length specification is not allowed with character variables.<p>
+<pre><tt>        <b>var</b> <i>c</i> : <b>char</b>
+        <b>var</b> <i>d</i> : <b>char</b> ( 3 )
+        <b>get</b> <i>c</i>           <i>% Read one character.</i>
+        <b>get</b> <i>d</i>           <i>% Read three characters</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Form (a) supports enumerated types. If the type is an enumerated type, then the token read in must be one of the elements of the enumerated type.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Inputting an enumerated type using form (a). The statement <i>get c:1</i> is not legal, because length specification is not allowed with enumerated variables.<p>
+<pre><tt>        <b>type</b> <i>colors</i> : <b>enum</b> (<i>red</i>, <i>blue</i>,<i> green)</i>
+        <b>var</b> <i>c </i>: <i>colors</i>
+        <b>get</b> <i>c</i>           <i>% Read one of </i>red,<i> </i>green<i> or </i>blue</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Form (a) supports <b>boolean</b>. If the type is an <b>boolean</b> type, then the token read in must be one of "true" or "false"<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Inputting a <b>boolean</b> type using form (a). The statement <i>get c:1</i> is not legal, because length specification is not allowed with <b>boolean</b> variable.<p>
+<pre><tt>        <b>var</b> <i>tf</i> : <b>boolean</b>
+        <b>get</b> <i>tf</i>          <i>% Read one of </i>true<i> or </i>false</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> In form (b) of <i>getItem</i>, <b>skip</b> causes white space in the input to be skipped until non-white space (a token) or the end-of-file is reached. This is used when the program needs to determine if there are more tokens to be input. To determine if there are more tokens to be read, the program should first <b>skip</b> over any possible white space (such as a final new line character) and then test to see if <b>eof</b> (end-of-file) is true. This is illustrated in this example:<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Using token-oriented input, input and then output all tokens. This example gives what used to be the standard way of reading tokens up to end of file. With the new meaning of form (a) for reading tokens, the <b>get</b> <b>skip</b> line can be omitted. This omission is possible because the line <b>get</b><i> word</i> now automatically skips white space following the input value, up to the beginning of the next line.<p>
+<pre><tt>        <b>var</b> <i>word</i> : <b>string</b>
+        <b>loop</b>
+            <b>get</b> <b>skip</b>        <i>% Skip over any white space</i>
+            <b>exit</b> <b>when</b> <b>eof</b>   <i>% Are there more characters?</i>
+            <b>get</b> <i>word</i>        <i>% Input next token</i>
+            <b>put</b> <i>word</i>        <i>% Output the token</i>
+        <b>end</b> <b>loop</b></tt></pre>
+In the above and the next example, if the input has been redirected so that it is from a file, <b>eof</b> becomes true exactly when there are no more characters to be read. If the input is coming from the keyboard, you can signal <b>eof</b> by typing control-Z (on a PC) or control-D (on UNIX).<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> In form (c) of <i>getItem</i>, the <i>variableReference </i>is followed by :<b>*</b> which implies line-oriented input. This form causes the entire line (or the remainder of the current line) to be read. In this case the variable must be a string (not an integer or real). The new line character at the end of the line is discarded. It is an error to try to read another line when you are already at the end of the file. The following example shows how to use line-oriented input to read all lines in the input.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Using line-oriented input, input and then output all lines.<p>
+<pre><tt>        <b>var</b><i> line</i> : <b>string</b>
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>eof</b>   <i>% Are there more characters?</i>
+            <b>get</b> <i>line </i>: *    <i>% Read entire line</i>
+            <b>put</b> <i>line</i>
+        <b>end</b> <b>loop</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> In form (d) of <i>getItem</i>, the <i>variableReference </i>is followed by<p>
+<pre><tt>        : <i>widthExpn</i> </tt></pre>
+which specifies character-oriented input. This form causes the specified number (<i>widthExpn</i>) of characters to be input (or all of the remaining characters if not enough are left). If no characters remain, the null string is read and no warning is given. In this form, the new line character is actually input into the <i>variableReference </i>(this differs from line-oriented input which discards new line characters). The following example shows how to use character-oriented input to read each character of the input. Form (d) can be used with <b>string</b> and <b>char</b>(<i>n</i>) variables, but not with <b>char</b>, <b>int</b> or any other type.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Using character-oriented input, input and then output all characters.<p>
+<pre><tt>        <b>var</b><i> ch</i> : <b>string</b> ( 1 )
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>eof</b>   <i>% Are there more characters?</i>
+            <b>get</b> <i>ch </i>: 1      <i>% Read one character</i>
+            <b>put</b> <i>ch </i>..       <i>% Output the character</i>,<i> which</i>
+                        <i>% may be a new line character</i>
+        <b>end</b> <b>loop</b></tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Using character-oriented input, input two characters.<p>
+<pre><tt>        <b>var</b><i> d</i> : <b>char</b> ( 3 ) := 'abc'
+        <b>get</b> <i>d</i> : 2           <i>% Read two character (replace 'ab')</i></tt></pre>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="read.html">read</a></b> <a href="statement.html">statement</a>, which provides binary file input.<p>
+</table></body>
+</html>

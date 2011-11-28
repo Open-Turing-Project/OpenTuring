@@ -1,0 +1,31 @@
+<html>
+<head><title>bits</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>bits</b></font></td><td align="right"><font size="+1"><b>extraction</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>bits</b> (<i>expn</i>, <i>subrange</i>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>bits</b><i> </i>operator is used to extract a sequence of bits from a natural (non-negative) number expression. The bits are numbered from right to left as 0, 1, 2 …<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Set bits 2 and 1 (third and second from the right) in the variable <i>d</i> to be 01. We first set <i>b</i> to be the bit string 1100.<p>
+<pre><tt>        <b>type</b> <i>T12</i> : 1 .. 2           <i>% Use to specify bit range</i>
+        <b>var</b> <i>d</i> : <b>nat2</b> := 2#1100      <i>% Two byte natural number</i>
+        <i>% At this point bits(d</i>,<i> T12) = 2#10</i>
+        <b>bits</b> (<i>d</i>, <i>T12</i>) := 2#01
+        <i>% At this point d = 2#1010</i></tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Set bit 7 in variable <i>n</i> to be 1. As a result, <i>n</i> will equal 2#10000000.<p>
+<pre><tt>        <b>var</b> <i>n</i> : <b>nat1</b> := 0       <i>% A one byte variable set to zero</i>
+        <b>bits</b> (<i>n</i>, 7) := 1        <i>% n now contains the pattern 10000000</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The form of <i>subrange</i> must be one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>(a)</td><td width="10">&nbsp;</td><td><i>typeSpec</i></td><td width="10">&nbsp;</td><td><i>% Subrange type</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(b)</td><td width="10">&nbsp;</td><td><i>compileTimeIntegerExpression</i></td></tr>
+</table><p>
+In form (a) the subrange type specifies a range from <i>L</i> to <i>M</i> (for <i>least</i> and <i>most</i> significant). This is a little confusing because the subrange is written <i>L</i> .. <i>M</i> with <i>L</i> on the left and <i>M</i> on the right, but in a number, the least significant bit is on the right and the most significant is on the left. The subrange type can be either the name of a type, for example <i>T12</i>, or an explicit subrange, for example 3 .. 7. The values in the explicit subrange must be compile time values.<p>
+Form (b) represents the range <i>n</i> .. <i>n</i> where <i>n</i> is the non-negative value of the expression. In other words, both <i>L</i> and <i>M</i> equal <i>n</i>. The expression can be any non-negative integer value or natural number value.<p>
+If the expression <i>expn</i> is a variable reference, the <b>bits</b> operation can be assigned to, but cannot be passed to, a <b>var</b> parameter. For example, in the above, <b>bits</b> (<i>d</i>, <i>T12</i>) has the value 2#01 assigned to it. For this assignment to be allowed, the expression <i>expn</i> must be a natural number type (<b>nat</b>, <b>nat1</b>, <b>nat2</b> or <b>nat4</b>).<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <i><a href="explicitintegerconstant.html">explicitIntegerConstant</a></i> (for description of constants such as 16#FFFF) and the following functions that convert one type to another in a machine-independent manner: <b><a href="ord.html">ord</a></b>, <b><a href="chr.html">chr</a></b>, <b><a href="intstr.html">intstr</a></b>, <b><a href="strint.html">strint</a></b>, <b><a href="natstr.html">natstr</a></b>, and <b><a href="strnat.html">strnat</a></b>. See also <b><a href="shr.html">shr</a></b> and <b><a href="shl.html">shl</a></b> (shift right and left).<p>
+</table></body>
+</html>

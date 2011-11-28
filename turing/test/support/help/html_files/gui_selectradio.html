@@ -1,0 +1,55 @@
+<html>
+<head><title>GUI.SelectRadio</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.SelectRadio</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>GUI.SelectRadio</b> (<i>widgetID</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Selects a radio button specified by <i>widgetID</i>. The previously-selected radio button is "de-selected". The <i>action procedure</i> of the radio button is called.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program creates siz radio buttons. Selecting one of the buttons cause the bottom two radio buttons to become selected.<p>
+<pre><tt>        <b>import</b> <i>GUI</i> <b>in</b> "%oot/lib/GUI" 
+        <b>View.Set</b> ("graphics:350;110") 
+        
+        <b>var</b> <i>radio</i> : <b>array</b> 1 .. 6 <b>of int</b>     % The radio button IDs.
+        
+        <b>procedure</b> <i>RadioPressed</i>
+            <b>Text.Locate</b> (1, 1)
+            <b>for</b> i : 1 .. 6
+                <b>if</b> <i>radio</i> (<i>i</i>) = <b>GUI.GetEventWidgetID</b> <b>then</b>
+                    <b>put</b> "Radio Button " , <i>i</i>, " Selected"
+                <b>end if</b>
+            <b>end for</b>
+        <b>end</b> <i>RadioPressed</i>
+        
+        <b>procedure</b> <i>Select</i>
+            <b>GUI.SelectRadio</b> (<i>radio</i> (3))
+            <b>GUI.SelectRadio</b> (<i>radio</i> (6))
+        <b>end</b> <i>Select</i>
+        
+        <i>radio</i> (1) := <b>GUI.CreateRadioButton </b>(15, <b>maxy</b>  35, 
+            "Radio Button 1", 0, <i>RadioPressed</i>)
+        <i>radio</i> (2) := <b>GUI.CreateRadioButton</b> ( 1, 1, "Radio Button 2", 
+            <i>radio</i> (1), <i>RadioPressed</i>)
+        <i>radio</i> (3) := <b>GUI.CreateRadioButton</b> ( 1, 1, "Radio Button 3",
+            <i>radio</i> (2), <i>RadioPressed</i>)
+        <i>radio</i> (4) := <b>GUI.CreateRadioButtonFull</b> (<b>maxx</b>  15, <b>maxy</b>  35,
+            "Radio Button 4", 0, <i>RadioPressed</i>, <i>GUI.RIGHT</i>, <i>GUI.NONE</i>)
+        <i>radio</i> (5) := <b>GUI.CreateRadioButtonFull</b><i> </i>( 1, 1, "Radio Button 5", 
+            radio (4), <i>RadioPressed</i>, <i>GUI.RIGHT</i>, <i>GUI.NONE</i>)
+        <i>radio</i> (6) := <b>GUI.CreateRadioButtonFull</b> ( 1, 1, "Radio Button 6",
+            radio (5), <i>RadioPressed</i>, <i>GUI.RIGHT</i>, <i>GUI.NONE</i>)
+        
+        <b>var</b> <i>selectButton</i> : <b>int</b> := <b>GUI.CreateButton</b> (15, 10, 100, 
+            "Select Bottom Buttons", Select)
+        <b>var</b> <i>quitButton</i> : <b>int</b> := <b>GUI.CreateButton</b> (<b>maxx</b>  15  100, 10, 100,  
+            "Quit", <b>GUI.Quit</b>)<b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the procedures by calling <b>GUI.SelectRadio</b>, not by calling <b>SelectRadio</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b>GUI.CreateRadioButton</b> and <b>GUI.CreatePictureRadioButton</b>.<p>
+</table></body>
+</html>

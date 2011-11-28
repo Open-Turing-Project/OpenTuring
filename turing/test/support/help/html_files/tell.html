@@ -1,0 +1,31 @@
+<html>
+<head><title>tell</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>tell</b></font></td><td align="right"><font size="+1"><b>file statement</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> An <i>tellStatement</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>tell</b> : <i>fileNumber</i> , <i>filePositionVar</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>tell</b> statement sets <i>filePositionVar</i>, whose type must be <b>int</b>, to the current offset in bytes from the beginning of the specified file. The <i>fileNumber</i> must specify a file that is open with <b>seek</b> capability (or else a program argument file that is implicitly opened). The <b>tell</b> statement is useful for recording the file position of a certain piece of data for later access using <b>seek</b>.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This example shows how to use <b>tell</b> to record the location of a record in a file. This location is later used by <b>seek</b> to allow the record to be read.<p>
+<pre><tt>        <b>var</b> <i>employeeRecord</i> :
+            <b>record</b>
+                <i>name</i> : <b>string</b> ( 30 )
+                <i>pay</i> : <b>int</b>
+                <i>dept</i> : 0 .. 9
+            <b>end</b> <b>record</b>
+        <b>var</b> <i>fileNo</i> : <b>int</b>
+        <b>var</b> <i>location</i> : <b>int</b>
+        <b>open</b> : <i>fileNo</i>, "payroll", <b>write</b>, <b>seek</b>
+        …
+        <b>tell</b> : <i>fileNo</i>, <i>location</i>         <i>% Make note of this location</i>
+        <b>write</b> : <i>fileNo</i>, <i>employeeRecord</i>  <i>% Write record at this location</i>
+        …
+        <b>seek</b> : <i>fileNo</i>, <i>location</i>     <i>% Go back to location</i>
+        <b>read</b> : <i>fileNo</i>, <i>employeeRecord</i>   <i>% Read the record</i>
+                            <i>% that was previously written</i></tt></pre>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> the <b><a href="read.html">read</a></b>, <b><a href="write.html">write</a></b>, <b><a href="open.html">open</a></b>, <b><a href="close.html">close</a></b>, <b><a href="seek.html">seek</a></b>, <b><a href="get.html">get</a></b> and <b><a href="put.html">put</a></b> statements.<p>
+</table></body>
+</html>

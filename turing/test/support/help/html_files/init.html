@@ -1,0 +1,31 @@
+<html>
+<head><title>init</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>init</b></font></td><td align="right"><font size="+1"><b>array initialization</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>init</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>init</b> (initialization) keyword is used for two different purposes in Turing. The most common is for initializing arrays, records and unions. The less common is for recording parameter values in subprograms for later use in <b>post</b> conditions.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>var</b><i> mensNames </i>: <b>array</b> 1 .. 3 <b>of</b> <b>string</b> :=
+            <b>init</b> ( "Tom", "Dick",<i> </i>"Harry" )
+        <b>put</b> <i>mensNames</i> ( 2 )             <i>% This outputs</i> Dick
+        <b>var</b><i> names </i>: <b>array</b> 1 .. 2, 1 .. 3 <b>of</b> <b>string</b> :=
+            <b>init</b> ( "Tom", "Dick", "Harry",
+                 "Alice", "Barbara", "Cathy")
+        <b>put</b> names ( 2, 1 )  % This outputs Alice</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The order of initializing values for multi-dimensional arrays is based on varying the right subscripts (indexes) most rapidly. This is called <i>row major order</i>. Initialization of records and unions is analogous to initializing arrays. Values are listed in the order in which they appear in the type. See <b>array</b>, <b>record</b>, and <b>union</b> types.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This procedure is supposed to set integer variable <i>i</i> to an integer approximation of its square root. The <b>init</b> clause records the initial value of <i>i </i>as <i>j </i>so it can be used in the <b>post</b> condition to make sure that the approximation is sufficiently accurate. The name <i>j </i>can be used only in the post condition and nowhere else in the procedure.<p>
+<pre><tt>        <b>procedure</b> <i>intSqrt</i> ( <b>var</b> <i>i</i> : <b>int</b> )
+            <b>pre</b> <i>i</i> &gt;= 0
+            <b>init</b> <i>j</i> := <i>i</i>
+            <b>post</b> <i>abs</i> ( <i>i</i> - <i>sqrt </i>(<i> j </i>) ) &lt;= 1
+            <i>… statements to approximate square root…</i>
+        <b>end</b> <b>intSqrt</b></tt></pre>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="pre.html">pre</a></b> and <b><a href="post.html">post</a></b> assertions and <b><a href="procedure.html">procedure</a></b> and <b><a href="process.html">process</a></b> declarations.<p>
+</table></body>
+</html>

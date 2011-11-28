@@ -1,0 +1,41 @@
+<html>
+<head><title>Error.Halt</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Error.Halt</b></font></td><td align="right">Part of <a href="errormodule.html">Error</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Error.Halt</b> (<i>errorMessage</i> : <b>string</b>)<p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td><b>Error.Halt</b> is a procedure that immediately halts execution of
+          the program and shows the specified error message on the line in the
+          program that calls <b>Error.Halt</b>.<p>
+          This procedure is useful for allowing a quick halt to a program
+          while indicating an error condition.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program halts on the first line with an error message stating
+          "Execution terminated by the program."<p>
+<pre><tt>        <b>Error.Halt</b> ("Execution terminated by the program.")</tt></pre>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,Error.Halt.t;Error.Halt Example">
+          </OBJECT><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+          <b>Error.Halt</b>, not by calling <b>Halt</b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

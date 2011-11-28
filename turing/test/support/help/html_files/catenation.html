@@ -1,0 +1,29 @@
+<html>
+<head><title>catenation (+)</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>catenation (+)</b></font></td><td align="right"><font size="+1"><b>joining together strings</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>catenation </i>is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><i>stringExpn</i> <b>+</b> <i>stringExpn</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Two strings (<i>stringExpns</i>), <b>char</b> or <b>char</b>(<i>n</i>) values can be joined together (catenated) using the + operator. <p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>var</b> <i>lastName</i>, <i>wholeName</i> : <b>string</b>
+        <i>lastName</i> := "Austere"
+        <i>wholeName</i> := "Nancy" <b>+</b> "  " <b>+</b> <i>lastName</i>
+                <i>% The three strings Nancy</i>,<i> a blank and Austere</i>
+                <i>% catenated together to make the string</i>
+                <i>% </i>"<i>Nancy  Austere</i>". <i>This string becomes the</i>
+                <i>% value of wholeName</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The length of a string catenation is limited to 255 characters.<p>
+Catenation is sometimes called <i>concatenation</i>.<p>
+Catenation can also be applied to <b>char</b> and <b>char</b>(<i>n</i>) values. See <b>char</b> and <b>char</b>(<i>n</i>). If either operand, <i>s</i> or <i>t</i> in <i>s</i> + <i>t</i>, is a <b>string</b> or a dynamic <b>char</b>(<i>n</i>) (length not known at compile time), the result type is <b>string</b>. Otherwise (when both <i>s</i> and <i>t</i> are <b>char</b> or non-dynamic <b>char</b>(<i>n</i>)) the result type is <b>char</b>(<i>n</i>).<p>
+The result of catenation is considered to be a compile time value if both operands are compile time values.<p>
+If both operands have the type <b>char</b> or <b>char</b>(<i>n</i>) neither of which is a dynamic <b>char</b>(<i>n</i>), the result is of type <b>char</b>(<i>n</i>), which is also of a non dynamic type. This allows the creation of very long <b>char</b>(<i>n</i>) values that can effectively span line boundaries using catenation to join lines. If either operand is a dynamic type or a string type, the catenation produces a string, whose length is limited to 255 characters.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <i>substrings</i> (for separating a strings into parts), <b><a href="repeat.html">repeat</a></b><i> </i>(for making repeated catenations), <b><a href="string1.html">string</a></b><i> </i>type, <b><a href="length.html">length</a></b>, and <b><a href="index.html">index</a></b> (to determine where one string is located inside another).<p>
+See also <b><a href="string1.html">string</a></b>, <b><a href="char.html">char</a></b>, <b><a href="char.html">char</a></b>(<i>n</i>), <i><a href="explicitstringconstant.html">explicitStringConstant</a>,</i> <i><a href="explicitcharconstant.html">explicitCharConstant</a>,</i> <a href="substring.html">substring</a> and <b><a href="length.html">length</a></b>.<p>
+</table></body>
+</html>

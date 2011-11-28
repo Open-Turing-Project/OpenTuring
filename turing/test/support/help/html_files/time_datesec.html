@@ -1,0 +1,29 @@
+<html>
+<head><title>Time.DateSec</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Time.DateSec</b></font></td><td align="right">Part of <a href="timemodule.html">Time</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Time.DateSec</b> (<i>dateString</i> : <b>string</b>) : <b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Time.DateSec</b> function is used to<b> </b>convert a date and time string into a number, specifically, the number of seconds since 00:00:00 GMT Jan 1, 1970.<p>
+The function can also convert just the date ("<i>dd mmm yy</i>"), in which case it returns the number of seconds since 00:00:00 GMT Jan 1, 1970 from midnight of the entered day. It will also convert a time without the date ("<i>hh:mm:ss</i>"), in which case it returns the number of seconds that have passed since midnight of that day.<p>
+If the format is incorrect or can't be interpreted, then <b>Time.DateSec</b> will return 1 and <b>Error.Last </b>and<b> Error.LastMsg</b> will be set to the appropriate error.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program gives the number of seconds since 00:00:00 GMT Jan 1, 1970.<p>
+<pre><tt>        <b>var</b> <i>theDateTime</i>, <i>theDate</i>, <i>theTime</i> : <b>string</b>
+        <i>theDateTime</i> := <b>Time.Date</b>
+        <i>theDate</i> := <i>theDateTime</i> (1 .. 9)
+        <i>theTime</i> := <i>theDateTime</i> (11 .. *)
+        <b>put</b> "The number of seconds from 00:00:00 GMT Jan 1, 1970",
+            "from midnight ", <i>theDate</i>, "is ", <b>Time.DateSec</b> (<i>theDate<b>)</b></i>
+        <b>put</b> "The number of seconds from midnight to ", <i>theTime</i> "is ", 
+            <b>Time.DateSec</b> (<i>theTime<b>)</b></i>
+        <b>put</b> "The number of seconds from 00:00:00 GMT Jan 1, 1970",
+            "from ", <i>theDateTime</i>, "is ", <b>Time.DateSec</b> (<i>theDateTime<b>)</b></i></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Time.DateSec</b>, not by calling <b>DateSec</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="time_sec.html">Time.Sec</a></b>, <b><a href="time_date.html">Time.Date</a></b> and <b><a href="time_secdate.html">Time.SecDate</a></b> functions.<p>
+</table></body>
+</html>

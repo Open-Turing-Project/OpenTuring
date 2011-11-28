@@ -1,0 +1,218 @@
+% The "Sliders.dem" program.
+% This demonstrates the Slider widget along with the GUI routines
+% that use Slider widgets. [Enable, Disable, Show, Hide,
+% SetPosition, SetSize, Refresh, SetSliderValue, Quit, SetSliderReverse,
+% SetSliderMinMax, CreateHorizontalSlider, CreateVerticalSlider,
+% ProcessEvent, Dispose]
+
+import GUI % Must be included in a programs using the GPL
+
+View.Set ("graphics:400;300,nobuttonbar") % Shrink the window to the minimum size
+
+% The slider IDs
+var verticalSlider, horizontalSlider : int
+
+% The label ID
+var minMaxLabel : int
+
+% The button IDs
+var reverseButton, enableDisableButton, showHideButton : int
+var moveButton, resizeButton, refreshButton, setPositionButton : int
+var setMinMaxButton, quitButton : int
+
+% Variables used by the button routines
+var enable := false % Whether to enable or disable the slider
+var hide := true % Whether to hide or show the slider
+var newValue := 50 % Value to set slider to
+var minMax := 1 % Setting for min/max
+var up := true % Whether to move the slider up or down
+var big := false % Whether to make the slider big or small
+
+% The routines the widgets call when pressed
+% Called when vertical slider moved
+procedure VerticalSliderMoved (value : int)
+    locate (1, 1)
+    put "Vertical Slider: ", value : 4 ..
+end VerticalSliderMoved
+
+% Called when horizontal slider moved
+procedure HorizontalSliderMoved (value : int)
+    locate (2, 1)
+    put "Horizontal Slider: ", value : 4 ..
+end HorizontalSliderMoved
+
+% Called when enable/disable button is pressed
+procedure EnableDisablePressed
+    locate (3, 1)
+    if enable then
+	put "Horizontal Slider Enabled            " ..
+	GUI.Enable (horizontalSlider) % Enable Horizontal Slider
+	enable := false
+	GUI.SetLabel (enableDisableButton, "Disable Horizontal Slider")
+    else
+	put "Horizontal Slider Disabled           " ..
+	GUI.Disable (horizontalSlider) % Disable Horizontal Slider
+	enable := true
+	GUI.SetLabel (enableDisableButton, "Enable Horizontal Slider")
+    end if
+end EnableDisablePressed
+
+% Called when show/hide button is pressed
+procedure ShowHidePressed
+    locate (3, 1)
+    if hide then
+	put "Horizontal Slider Hidden             " ..
+	GUI.Hide (horizontalSlider) % Hide Horizontal Slider
+	hide := false
+	GUI.SetLabel (showHideButton, "Show Horizontal Slider")
+    else
+	put "Horizontal Slider Shown              " ..
+	GUI.Show (horizontalSlider) % Show Horizontal Slider
+	hide := true
+	GUI.SetLabel (showHideButton, "Hide Horizontal Slider")
+    end if
+end ShowHidePressed
+
+% Called when move button is pressed
+procedure MovePressed
+    locate (3, 1)
+    if up then
+	put "Horizontal Slider Moved Up           " ..
+	GUI.SetPosition (horizontalSlider, 60, maxy - 60)
+	% Move Horizontal Slider Right
+	up := false
+	GUI.SetLabel (moveButton, "Move Slider Down")
+    else
+	put "Horizontal Slider Moved Down         " ..
+	GUI.SetPosition (horizontalSlider, 60, maxy - 110)
+	% Move Horizontal Slider Left
+	up := true
+	GUI.SetLabel (moveButton, "Move Slider Up")
+    end if
+end MovePressed
+
+% Called when refresh button is pressed
+procedure RefreshPressed
+    Draw.FillBox (0, 0, maxx, maxy, GUI.GetBackgroundColour) % Clear the screen
+    GUI.Refresh % Redraw all the widgets on the screen
+end RefreshPressed
+
+% Called when set position button is pressed
+procedure SetPositionPressed
+    locate (3, 1)
+    put "Horizontal Slider Set to ", newValue, "   " ..
+    GUI.SetSliderValue (horizontalSlider, newValue)
+    newValue += 50
+    if newValue > 200 then
+	newValue := 50
+    end if
+    GUI.SetLabel (setPositionButton, "Set Slider To " + intstr (newValue))
+end SetPositionPressed
+
+% Called when set min/max is pressed
+procedure SetMinMaxPressed
+    var newMin, newMax : int
+    case minMax of
+	label 0 :
+	    newMin := - 100
+	    newMax := 200
+	label 1 :
+	    newMin := 0
+	    newMax := 300
+	label 2 :
+	    newMin := 50
+	    newMax := 250
+	label 3 :
+	    newMin := 100
+	    newMax := 200
+    end case
+    GUI.SetSliderMinMax (horizontalSlider, newMin, newMax)
+    GUI.SetLabel (minMaxLabel, "Min: " + intstr (newMin) + "  Max: " +
+	intstr (newMax))
+    minMax := (minMax + 1) mod 4
+end SetMinMaxPressed
+
+% Called when resize button is pressed
+procedure ResizePressed
+    locate (3, 1)
+    if big then
+	put "Horizontal Slider Made Large         " ..
+	% Move and Resize Horizontal Slider
+	GUI.SetSize (horizontalSlider, 250, 0)
+	big := false
+	GUI.SetLabel (resizeButton, "Make Slider Small")
+    else
+	put "Horizontal Slider Made Small         " ..
+	% Move and Resize Horizontal Slider
+	GUI.SetSize (horizontalSlider, 150, 0)
+	big := true
+	GUI.SetLabel (resizeButton, "Make Slider Large")
+    end if
+end ResizePressed
+
+% Called when reverse button is pressed
+procedure ReversePressed
+    locate (3, 1)
+    put "Sliders Direction Reversed           " ..
+    GUI.SetSliderReverse (horizontalSlider)
+    GUI.SetSliderReverse (verticalSlider)
+end ReversePressed
+
+% Called when quit button is pressed.
+procedure QuitPressed
+    GUI.Quit
+end QuitPressed
+
+% The main program
+% Create the buttons
+horizontalSlider := GUI.CreateHorizontalSlider (60, maxy - 110, 250, 50,
+    150, 50, HorizontalSliderMoved)
+verticalSlider := GUI.CreateVerticalSlider (350, maxy - 110, 100, 50, 150,
+    50, VerticalSliderMoved)
+
+% Create a label specifying the min/max of vertical slider
+minMaxLabel := GUI.CreateLabelFull (60, maxy - 110, "Min: 50  Max: 150",
+    250, 50, GUI.CENTER + GUI.MIDDLE, 0)
+
+% Create the dividing line
+var line := GUI.CreateLine (0, maxy - 135, maxx, maxy - 135, 0)
+
+% Create the buttons
+enableDisableButton := GUI.CreateButton (20, maxy - 170, 170,
+    "Disable Horizontal Slider", EnableDisablePressed)
+showHideButton := GUI.CreateButton (210, maxy - 170, 170,
+    "Hide Horizontal Slider", ShowHidePressed)
+moveButton := GUI.CreateButton (20, maxy - 200, 170, "Move Slider Up",
+    MovePressed)
+refreshButton := GUI.CreateButton (210, maxy - 200, 170, "Refresh",
+    RefreshPressed)
+setPositionButton := GUI.CreateButton (20, maxy - 230, 170,
+    "Set Slider To 50", SetPositionPressed)
+setMinMaxButton := GUI.CreateButton (210, maxy - 230, 170,
+    "Change Min/Max of Slider", SetMinMaxPressed)
+resizeButton := GUI.CreateButton (20, maxy - 260, 170, "Make Slider Small",
+    ResizePressed)
+reverseButton := GUI.CreateButton (210, maxy - 260, 170,
+    "Reverse Sliders Ends", ReversePressed)
+quitButton := GUI.CreateButton (125, maxy - 290, 150, "Quit", QuitPressed)
+
+% Process events, exit loop when GUI.QUIT called
+loop
+    exit when GUI.ProcessEvent
+end loop
+
+% Do the clean up.  Dispose of all but the main buttons.
+GUI.Dispose (enableDisableButton)
+GUI.Dispose (showHideButton)
+GUI.Dispose (moveButton)
+GUI.Dispose (refreshButton)
+GUI.Dispose (setPositionButton)
+GUI.Dispose (setMinMaxButton)
+GUI.Dispose (resizeButton)
+GUI.Dispose (reverseButton)
+GUI.Dispose (quitButton)
+
+% Create a label to indicate we're finished
+var quitMessage := GUI.CreateLabelFull (0, 0, "Execution Terminated",
+    maxx, maxy - 135, GUI.CENTER + GUI.MIDDLE, 0)
+

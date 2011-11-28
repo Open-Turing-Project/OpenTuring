@@ -1,0 +1,62 @@
+<html>
+<head><title>GUI.Get{X,Y}</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.Get{X,Y}</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+  
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>GUI.GetX </b>(<i>widgetID</i> : <b>int</b>) : <b>int</b><p>
+          <b>GUI.GetY </b>(<i>widgetID</i> : <b>int</b>) : <b>int</b><p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>Returns the x coordinate of the left edge of a widget. Note that 
+          this may be different from the x coordinate specified in the 
+          widget's <i>Create</i> call. For example, if a radio button is 
+          created with right justification, the x coordinate in the 
+          <i>Create</i> method specifies the right edge while <b>GUI.GetX</b> 
+          will return the x coordinate of the left edge.<p>
+	  This function is used in conjunction with <b>GUI.GetWidth</b> and 
+	  <b>GUI.GetHeight</b> to determine the bounds of a widget. The entire 
+	  widget should always fit in the box 
+	  (<b>GUI.GetX</b>,&nbsp;<b>GUI.GetY</b>) - 
+	  (<b>GUI.GetX</b>&nbsp;+&nbsp;<b>GUI.GetWidth</b> - 1, 
+	  <b>GUI.GetY</b>&nbsp;+&nbsp;<b>GUI.GetHeight</b> - 1)<p>
+          The position and size of a widget is known only after it has been 
+          drawn to the screen. Attempting to get the location or dimesions of 
+          the widget may cause an uninitialized variable error.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>The following procedure draws a red box around the widget specified 
+          by <i>widgetID</i>.<p>
+<pre><tt>        <b>import</b> <i>GUI</i> <b>in</b> "%oot/lib/GUI"
+        <b>procedure</b> <i>BoxWidget</i> (<i>widgetID</i> : <b>int</b>)
+            <b>var</b> <i>x</i>, <i>y</i>, <i>width</i>, <i>height</i> : <b>int</b>
+            <i>x</i> := <b>GUI.GetX</b><i> </i>(<i>widgetID</i>)
+            <i>y</i> := <b>GUI.GetY</b> (<i>widgetID</i>)
+            <i>width</i> := <b>GUI.GetWidth</b><i> </i>(<i>widgetID</i>)
+            <i>height</i> := <b>GUI.GetHeight</b> (<i>widgetID</i>)
+            <b>Draw.Box</b> (<i>x</i>  1, <i>x</i>  1, <i>x</i> + <i>width</i>, <i>y</i> + <i>height</i>, <i>red</i>)
+            <b>Draw.Box</b> (<i>x</i>  2, <i>x</i>  2, <i>x</i> + <i>width</i> + 1, <i>y</i> + <i>height</i> + 1, <i>red</i>)
+        <b>end</b> <i>BoxWidget</i>
+        
+        <b>var</b> <i>title</i> : <b>int</b> := <b>GUI.CreateLabel</b> (20, 20, "Frame This!")
+        <i>BoxWidget</i> (<i>title</i>)</tt></pre>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+	  This means that you can only call the function by calling 
+	  <b>GUI.GetX</b>, not by calling <b>GetX</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="gui_getheight.html">GUI.GetHeight</a></b> and 
+          <b><a href="gui_getwidth.html">GUI.GetWidth</a></b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+<head><title>Mouse.Where</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Mouse.Where</b></font></td><td align="right">Part of <a href="mousemodule.html">Mouse</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Mouse.Where </b>(<b>var</b> <i>x</i>, <i>y</i>, <i>button</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Mouse.Where</b> procedure is used to get current information about the status of the mouse. The parameters <i>x</i> and <i>y</i> are set to the current location of the mouse cursor. If the program is running on a system using windows, the cursor may be outside the window. This means that <i>x</i> and <i>y</i> may be set to values outside of the bounds of 0 to <b>maxx</b> and 0 to <b>maxy</b>.<p>
+The parameter <i>button</i> is set depending on the current mode. In "<i>single-button mode</i>" (where the mouse is treated like a one-button mouse), <i>button</i> is set to 0 if all the mouse buttons are up, and 1 if any of the mouse buttons are down. In "<i>multi-button mode</i>", <i>button</i><b> </b>is assigned the sum of 1 if the left button is down, 10 if the middle button is down, and 100 if the right button is down. Thus if <i>button</i> has the value of 101, then it means that the left and right mouse buttons were depressed.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> A program that displays the status of the mouse at the top left corner of the screen.<p>
+<pre><tt>        <b>var</b> <i>x</i>, <i>y</i>, <i>button</i> : <b>int</b>
+        <b>loop</b>
+            <b>Mouse.Where</b> (<i>x</i>, <i>y</i>, <i>button</i>)
+            <b>Text.Locate </b>(1, 1)
+            <b>if </b><i>button</i> = 0<b> then</b>
+                <b>put</b> <i>x</i> : 4, "  ", <i>y</i> : 4, "  button up"
+            <b>else</b>
+                <b>put</b> <i>x</i> : 4, "  ", <i>y</i> : 4, "  button down"
+            <b>end if</b>
+        <b>end loop</b></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Mouse.Where</b>, not by calling <b>Where</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="mouse_buttonmoved.html">Mouse.ButtonMoved</a></b> and <b><a href="mouse_buttonwait.html">Mouse.ButtonWait</a></b> to get mouse events saved in a queue. See also <b><a href="mouse_buttonchoose.html">Mouse.ButtonChoose</a></b> to switch between "<i>single-button mode</i>" and "<i>multi-button mode</i>".<p>
+</table></body>
+</html>

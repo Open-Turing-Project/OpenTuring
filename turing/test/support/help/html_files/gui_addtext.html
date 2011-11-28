@@ -1,0 +1,37 @@
+<html>
+<head><title>GUI.AddText</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.AddText</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>GUI.AddText</b> (<i>widgetID</i> : <b>int</b>, <i>text</i> : <b>string</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> <b>GUI.AddText </b>adds text to the current line of the text box specified by <i>widgetID</i>. It does not add a newline after the text. It is essentially equivalent to <b>put</b> <i>text</i><b> </b>... in the text box. <b>GUI.AddLine</b><i> </i>scrolls the text box (if necessary) so that the added text is now visible. The <i>widgetID</i> parameter must be the widget id of a text box. The <i>text</i> parameter is the text to be added to the text box.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> To force a text box to scroll to the end of the text without adding any extra text, call <b>GUI.AddText</b> with "" (the null string) for the <i>text</i> parameter.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following creates a text box and puts the numbers from 1 to 26 followed by the appropriate letter of the alphabet in it.<p>
+<pre><tt>        <b>import</b> <i>GUI</i>
+        <b>var</b> <i>boxID</i> : <b>int</b> := <b>GUI.CreateTextBox </b>(50, 50, 200, 200)
+        <b>for</b> i : 1 .. 26
+            <b>GUI.AddText </b>(<i>boxID</i>, <i>intstr</i> (i))
+            <b>GUI.AddText</b> (<i>boxID</i>, " ")
+            <b>GUI.AddLine </b>(<i>boxID</i>, <i>chr</i> (64 + i))
+        <b>end for</b>
+        <b>loop</b>
+            <b>exit when</b> <b>GUI.ProcessEvent</b>
+        <b>end loop</b></tt></pre><p>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,GUI.AddText.t;GUI.AddText Example">
+          </OBJECT><p></td>
+    </tr>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>GUI.AddText</b>, not by calling <b>AddText</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b>GUI.CreateTextBox</b>.<p>
+</table></body>
+</html>

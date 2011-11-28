@@ -1,0 +1,47 @@
+<html>
+<head><title>Sprite.SetHeight</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Sprite.SetHeight</b></font></td><td align="right">Part of <a href="spritemodule.html">Sprite</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Sprite.SetHeight</b> (<i>spriteID</i>, <i>newHeight</i> : <b>int</b>)<p></font>
+    </tr>  
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>Sets the height of the sprite specified by <i>spriteID</i> to the 
+          value specified by <i>newHeight</i>.<p>
+          The height of a sprite determines which sprite appears above another 
+          when they overlap. The "higher" sprite (the one with the greater 
+          height) will appear on top of the sprite with the lower height, even 
+          if the lower sprite is drawn second.<p>
+          The background (i.e. any non-sprite) is considered to be in height 0. 
+          Sprites with a negative height will appear "behind" the background. 
+          Note that if two sprites have the same height, the one drawn last 
+          will appear above the first one.<p>
+    </tr>  
+    <tr valign="top">
+       <td><b>Example&nbsp;&nbsp;</b></td>
+       <td>See <b>Sprite.Hide</b> for an example of <b>Sprite.SetHeight</b>.<p>
+    </tr>  
+    <tr valign="top">
+       <td><b>Details&nbsp;&nbsp;</b></td>
+       <td>It should be noted that a lot more computation must be done to 
+           display sprites with a negative height.  If you are on a slower
+           machine and performance is not sufficient, consider trying to
+           eliminate the use of sprites moving behind the background.<p>
+    </tr>  
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+          <b>Sprite.SetPosition</b>, not by calling <b>SetPosition</b>.<p>
+    </tr>  
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="sprite_new.html">Sprite.New</a></b>.<p>
+    </tr>  
+  </table>
+</body>
+</html>

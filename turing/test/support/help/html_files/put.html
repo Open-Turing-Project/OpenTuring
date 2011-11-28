@@ -1,0 +1,55 @@
+<html>
+<head><title>put</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>put</b></font></td><td align="right"><font size="+1"><b>statement</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>putStatement</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>put</b> [ : <i>fileNumber</i> , ] <i>putItem</i> { , <i>putItem</i> } [ .. ]</td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>put</b> statement outputs each of the <i>putItems</i>. Usually, a new line is started in the output after the final <i>putItem</i>. If the optional dot-dot (..) is present, though, subsequent output will be continued on the current output line. With character graphics, the omission of dot-dot causes the remainder of the output line to be cleared to blanks.<p>
+Ordinarily, the output goes to the screen. However, if the <i>fileNumber </i>is present, the output goes to the file specified by the file number (see the <b>open</b> statement for details). Also, output can be redirected from the screen to a file, in which case all <b>put</b> statements without a file number are sent to the file instead of the screen.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>            <b>var</b> <i>n</i> : <b>int</b> := 5
+            <b>put</b> "Alice owes me $", n
+                    <i>% Output is: </i>Alice owes me $5
+                    <i>% Note that no extra space is</i>
+                    <i>% output before an integer such as n.</i></tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        Statement           Output      Notes
+        
+        <b>put</b> 24          24
+        <b>put</b> 1/10            0.1     <i>% Trailing zeros omitted</i>
+        <b>put</b> 100/10          10      <i>% Decimal point omitted</i>
+        <b>put</b> 5/3         1.666667    <i>% 6 fraction digits</i>
+        <b>put</b> <i>sqrt</i> (2)            1.414214    <i>% 6 fraction digits</i>
+        <b>put</b> 4.86 * 10**9        4.86e9  <i>% Exponent for</i> <i>= 1e6</i>
+        <b>put</b> 121 : 5         bb121   <i>% Width 5; b is blank</i>
+        <b>put</b> 1.37 : 6 : 3        b1.370  <i>% Fraction width of 3</i>
+        <b>put</b> 1.37 : 11 : 3 : 2   bb1.370e+00<i>% Exponent width of 2</i>
+        <b>put</b> "Say \"Hello\"" Say "Hello"
+        <b>put</b> "XX" : 4, "Y"       XX<i>bb</i>Y   <i>% Blank shown as b</i>
+        <b>put</b> true <b>and</b> false  false       <i>% Put out a boolean value</i>
+        <b>put</b> 1 &lt; 2           true        <i>% Put out a boolean value</i></tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> A single blank line is output this way:<p>
+<pre><tt>        <b>put</b> ""  <i>% Output null string then new line</i></tt></pre>
+This <b>put</b> statement is sometimes used to close off a line that has been output piece by piece using <b>put</b> with dot-dot.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The general form of a <i>putItem</i> is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>(a)</td><td width="10">&nbsp;</td><td><i>expn</i> [:<i>widthExpn</i> [:<i>fractionWidth</i> [:<i>exponentWidth</i> ] ] ]</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(b) </td><td width="10">&nbsp;</td><td><b>skip</b></td></tr>
+</table><p>
+See the above examples for uses of <i>widthExpn</i>, <i>fractionWidth</i> and <i>exponentWidth</i>. For the exact meaning of these three widths, see the definitions of the functions <i>realstr</i>, <i>frealstr</i> and <i>erealstr</i>. The <b>skip</b> item is used to end the current output line and start a new line.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The <b>put</b> semantics allow put's of enum values. The values printed are the element names themselves, case sensitive. For example:<p>
+<pre><tt>        <b>type</b> <i>colors</i> : <b>enum</b> ( <i>red</i>, <i>green</i>, <i>blue</i> )
+        <b>var</b> <i>c</i> : <i>colors</i> := <i>colors</i> . <i>red</i>
+        <b>put</b> <i>c</i>       <i>% outputs </i>"red" <i>(without the quotes)</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The <b>put</b> semantics allow put's of <b>boolean</b> values. The values printed are either “true” or “false” (without the quotes). For example:<p>
+<pre><tt>        <b>var</b> <i>c</i> : <b>boolean</b> := <b>true or false</b>
+        <b>put</b> <i>c</i>       <i>% outputs </i>"true" <i>(without the quotes)</i></tt></pre>
+</table></body>
+</html>

@@ -1,0 +1,60 @@
+<html>
+<head><title>GUI.CreateHorizontalSlider</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.CreateHorizontalSlider</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>GUI.CreateHorizontalSlider</b> (<i>x</i>, <i>y</i>, <i>length</i> : <b>int</b>,<br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;<i>min</i>, <i>max</i>, <i>start</i> : <b>int</b>, <i>actionProc</i> : <b>procedure</b> <i>x</i> (<i>value</i> : <b>int</b>)) : <b>int</b><p></font>
+    </tr>	  
+    <tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Creates a horizontal (left-right) slider and returns the slider's widget ID. <p>
+A slider is a widget that allows the user to set a continuous set of values. It has a real-life equivalent in things such as a stereo volume control.<p>
+
+<center><img src="gui_createhorizontalslider01.gif"></center>
+<center><b>A Horizontal Slider</b></center><p>
+To control a slider, the user clicks on the slider box and drags it back and forth. Every time the value changes, a procedure is called with the new value as a parameter.<p>
+The range of values that the slider will give is determined by the <i>min</i> and <i>max</i> parameters in the <i>Create</i> call. The left side of the slider represents the minimum value, while the right represents the maximum value. <p>
+The <i>x</i> and <i>y</i> parameters specify the lower-left corner of the slider track. This means that the slider actually extends above and below this point (and slightly to the left of it to take into account the rounded end of the track). The <i>length</i> parameter specifies the length of the track in pixels. (You can use <b>GUI.GetX</b><i>, </i><b>GetY</b><i>, </i><b>GetWidth</b>, and <b>GetHeight</b> to get the exact dimensions of the slider.) The <i>min</i> and <i>max</i> parameters are the minimum and maximum values returned by the slider. The <i>start</i> parameter is the initial value of the slider and should be between <i>min</i> and <i>max</i> inclusive. The <i>actionProc </i>parameter<i> </i>is the name of a procedure that is called when the value of the slider is changed. The parameter to the <i>action procedure </i>is the current value of the slider.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program creates a horizontal slider. Whenever the slider's value is changed, a message is displayed in the window.<p>
+<pre><tt>        <b>import</b> <i>GUI</i> 
+        
+        <b>View.Set</b> ("graphics:300;60,nobuttonbar") 
+        <b>var</b> <i>slider</i> : <b>int</b>
+        <b>procedure</b> <i>SliderMoved</i> (<i>value</i> : <b>int</b>)
+            <b>Text.Locate</b> (2, 3)
+            <b>put</b> "Horizontal Slider: ", <i>value</i> : 4
+        <b>end</b> <i>SliderMoved</i> 
+        
+        <i>slider</i> := <b>GUI.CreateHorizontalSlider</b> (10, 10, 250,
+            50, 150, 50, <i>SliderMoved</i> )
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b></tt></pre><p>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,GUI.CreateHorizontalSlider.t;GUI.CreateHorizontalSlider Example">
+          </OBJECT><p></td>
+    </tr>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> In some instances, you will want the the minimum and maximum values of the slider to be reversed (right is minimum). In that case, call the <b>GUI.SetSliderReverse</b> procedure to flip the values of the slider.<p>
+Sliders always have a fixed height (for horizontal sliders) or width (for vertical sliders). <p>
+When <b>GUI.CreateHorizontalSlider</b>or <b>GUI.CreateHorizontalSliderFull</b><i> </i>is called, the newly created slider will be displayed immediately unless <b>GUI.DisplayWhenCreated</b> has been called with the <i>display</i> parameter set to false. <p>
+When a slider is not enabled, the appearance does not change. However, the slider no longer responds to any mouse clicks until it is enabled again.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The following GUI subprograms can be called with a slider as the <i>widgetID</i> parameter:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td><b>GUI.Show</b>,<b> GUI.Hide</b>,<b> GUI.Enable</b>,<b> GUI.Disable</b>,<b> GUI.Dispose</b>, <b> GUI.GetX</b>,<b> GUI.GetY</b>,<b> GUI.GetWidth</b>,<b> GUI.GetHeight</b>,<b> GUI.SetPosition</b>,<b> GUI.SetSize</b>,<b> GUI.SetPositionAndSize</b>,<b> GUI.GetSliderValue</b>,<b> GUI.SetSliderValue</b>,<b> GUI.SetSliderMinMax</b>,<b> GUI.SetSliderSize</b>,<b> GUI.SetSliderReverse</b></td></tr>
+</table><p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>GUI.CreateHorizontalSlider</b>, not by calling <b>CreateHorizontalSlider</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="gui_getslidervalue.html">GUI.GetSliderValue</a></b> and <b><a href="gui_setslidervalue.html">GUI.SetSliderValue</a> </b>for reading and setting the value of a slider, <b><a href="gui_setsliderminmax.html">GUI.SetSliderMinMax</a></b> for changing the minimum and maximum values of a slider. See also <b><a href="gui_setslidersize.html">GUI.SetSliderSize</a> </b>for setting the length of a slider and <b><a href="gui_setsliderreverse.html">GUI.SetSliderReverse</a></b> for reversing the sense of a slider.<p>
+</table></body>
+</html>

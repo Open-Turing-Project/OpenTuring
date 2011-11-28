@@ -1,0 +1,42 @@
+<html>
+<head><title>Joystick.GetInfo</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Joystick.GetInfo</b></font></td><td align="right">Part of <a href="joystickmodule.html">Joystick</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Joystick.GetInfo </b>(<i>joystick</i> : <b>int</b>, <b>var</b><i> xPos</i>, <i>yPos</i> : <b>int</b>,<br>
+<i>btn1Pressed</i>, <i>btn2Pressed</i> : <b>boolean</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Reads the position and button status of the joystick specified by the <i>joystack</i> parameter. The <i>x</i> and <i>y</i> parameter are returned in the <i>xPos</i> and <i>yPos</i> parameters. If button 1 or button 2 on the joystick are currently pressed, <i>btn1Pressed</i> and <i>btn2Pressed</i> will be set to <b>true</b>. The <i>joystick</i> parameter can be either <b>joystick1</b> or <b>joystick2</b>.<p>
+The x and y positions vary from <b>joyMin</b> to <b>joyMax</b>. To use them with respect to a screen, the coordinates returned from <b>Joystick.GetInfo </b>must be translated into screen coordinates. The following formula can be used:<p>
+<pre><tt>        <i>screenX</i> = <b>round</b> (<b>maxx</b> * (<i>xPos</i>  <b>joyMin</b>) / (<b>joyMax</b>  <b>joyMin</b>))
+        <i>screenY</i> = <b>round</b> (<b>maxy</b> * (<i>yPos</i>  <b>joyMin</b>) / (<b>joyMax</b>  <b>joyMin</b>))</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The <b>Joystick</b> module contains undocumented subprograms for those who need to access more than two buttons or axes on a joystick. Contact Holt Software if you need more information.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program outputs the current location of joystick #1 and draws a cursor on the screen to point out where it is showing.<p>
+<pre><tt>        <b>var</b> <i>jx</i>, <i>jy</i>, <i>x</i>, <i>y</i>, <i>ox</i>, <i>oy</i> : <b>int</b> := 1
+        <b>var</b> <i>b1</i>, <i>b2</i>, <i>oB1</i>, <i>oB2</i> : <b>boolean</b> := false
+        <b>loop</b>
+            <b>Joystick.GetInfo</b> (<b>joystick1</b>, <i>jx</i>, <i>jy</i>, <i>b1</i>, <i>b2</i>)
+            % Convert joystick coordinates into screen coordinates.
+            <i>x</i> = <b>round</b> (<b>maxx</b> * (<i>jx</i>  <b>joyMin</b>) / (<b>joyMax</b>  <b>joyMin</b>))
+            <i>y</i> = <b>round</b> (<b>maxy</b> * (<i>jy</i>  <b>joyMin</b>) / (<b>joyMax</b>  <b>joyMin</b>))
+            <b>if</b> <i>x</i> <b>not</b>= <i>ox</i> <b>or</b> <i>y</i> <b>not</b>= <i>oy</i> <b>or</b>  <i>b1</i> <b>not</b>= <i>oB1</i> <b>or</b> <i>b2</i> <b>not</b>= <i>oB2</i> <b>then</b>
+                <b>Text.Locate</b> (1, 1)
+                <b>put</b> "x = ", <i>x</i>, "  y = ", <i>y</i>, "  b1 = ", <i>b1</i>, "  b2 = ", <i>b2</i>
+                <b>View.Set</b> ("xor")
+                <b>Draw.Line</b> (<i>ox</i>  10, <i>oy</i>, <i>ox</i> + 10, <i>oy</i>, <b>brightred</b>)
+                <b>Draw.Line</b> (<i>ox</i> , <i>oy</i>  10, <i>ox</i> , <i>oy</i> + 10, <b>brightred</b>)
+                <b>Draw.Line</b> (<i>x</i>  10, <i>y</i>, <i>x</i> + 10, <i>y</i>, <b>brightred</b>)
+                <b>Draw.Line</b> (<i>x</i>, <i>y</i>  10, <i>x</i>, <i>y</i> + 10, <b>brightred</b>)
+                <i>ox</i> := x
+                <i>oy</i> := y
+                <i>oB1</i> := b1
+                <i>oB2</i> := b2
+            <b>end if</b>
+        <b>end loop</b></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Joystick.GetInfo</b>, not by calling <b>GetInfo</b>.<p>
+</table></body>
+</html>

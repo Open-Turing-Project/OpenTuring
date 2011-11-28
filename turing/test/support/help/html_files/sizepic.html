@@ -1,0 +1,22 @@
+<html>
+<head><title>sizepic</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>sizepic</b></font></td><td align="right"><font size="+1"><b>graphics function</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>sizepic</b> ( <i>x1</i>, <i>y1</i>, <i>x2</i>, <i>y2</i> : <b>int</b>) : <b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>sizepic</b> function is used to determine the size buffer needed to record a picture from the screen (see description of <b>takepic</b> ). This gives the minimum number of elements of the int array used by <b>takepic</b>. The buffer is used by <b>drawpic</b> to make copies of the picture on the screen.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program outputs the size of array needed to hold a picture with left bottom corner at x=10, y=20 and right top corner at x=50, y=60.<p>
+<pre><tt>        <b>setscreen</b> ("graphics")
+        …
+        <b>put</b> "The size of the array needs to be",
+            <b>sizepic</b> ( 10, 20, 50, 60 )</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> See <b>takepic</b> for an example of the use of <b>sizepic</b> and for further information about buffers for drawing pictures.<p>
+The screen should be in a "<i>graphics</i>" mode. See the <b>setscreen</b> procedure for details. If the screen is not in a "<i>graphics</i>" mode, it will automatically be set to "<i>graphics</i>" mode.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="drawpic.html">drawpic</a></b>. See also <b><a href="setscreen.html">setscreen</a></b>, <b><a href="maxx.html">maxx</a></b>, <b><a href="maxy.html">maxy</a></b>, <b><a href="drawdot.html">drawdot</a></b>, <b><a href="drawline.html">drawline</a></b>, <b><a href="drawbox.html">drawbox</a></b>, and <b><a href="drawoval.html">drawoval</a></b>.<p>
+See also predefined unit <b><a href="picmodule.html">Pic</a></b>.<p>
+</table></body>
+</html>

@@ -1,0 +1,18 @@
+<html>
+<head><title>Window.SetActive</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Window.SetActive</b></font></td><td align="right">Part of <a href="windowmodule.html">Window</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Window.SetActive</b> (<i>windowID</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Window.SetActive</b> procedure activates the window specified by the <i>windowID</i> parameter.<p>
+An active window is defined as the window that has the input focus. This means that any typing will be sent to the active window. Under most systems an active window is indicated by a change in the appearance of the window.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> In general, it is unwise to change the active window. If the user is working on another program at the same time the program is running and the program executes the <b>Window.SetActive</b> procedure, she or he will suddenly be returned to OOT without warning.<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Window.SetActive</b>, not by calling <b>SetActive</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="window_getactive.html">Window.GetActive</a></b> and <b><a href="window_select.html">Window.Select</a>.</b><p>
+</table></body>
+</html>
