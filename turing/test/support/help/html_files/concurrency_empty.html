@@ -1,0 +1,15 @@
+<html>
+<head><title>Concurrency.empty</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Concurrency.empty</b></font></td><td align="right">Part of <a href="concurrencymodule.html">Concurrency</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>empty</b> (<i>variableReference</i>) : <b>boolean</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>empty</b> function is used in a concurrent program.  It returns <b>true</b> if the <i>variableReference</i>, which must be a condition variable, has no processes waiting for it.  Processes join the queue of a condition variable by executing the <b>wait</b> statement, and are awakened by the <b>signal</b> statement.<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Part of the language and only conceptually part of the <b>Concurrency</b> unit. <p>
+This means that you can only call the function by calling <b>empty</b>, not by calling <b>Concurrency.empty</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="condition.html">condition</a></b>, <b><a href="wait.html">wait</a></b>, <b><a href="signal.html">signal</a></b>, <b><a href="fork.html">fork</a></b> and <b><a href="monitor.html">monitor</a></b>.<p>
+</table></body>
+</html>

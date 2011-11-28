@@ -1,0 +1,25 @@
+<html>
+<head><title>Config.Machine</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Config.Machine</b></font></td><td align="right">Part of <a href="configmodule.html">Config</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Config.Machine</b> (<i>machineCode</i> : <b>int</b>) : <b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> <b>Config.Machine</b> returns information about the machine that the program is currently running on. The parameter <i>machineCode</i> determines what sort of information is passed back. <i>machineCode</i> has a number of possible values, all summarized by a set of predefined constants.<p>
+At the time of this writing, the following constants were defined:<p>
+<table><tr valign="top"><td><i>cmProcessor</i></td><td width="10">&nbsp;</td><td>return an encoding of the processor number.</td></tr>
+<tr valign="top"><td><i>cmFPU</i></td><td width="10">&nbsp;</td><td>return 1 if there is an FPU installed, 0 if not.</td></tr>
+<tr valign="top"><td><i>cmOS</i></td><td width="10">&nbsp;</td><td>return the current version number of the operating system (e.g. 6.07 = 607).</td></tr>
+</table><p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program prints whether the machine has an FPU or not.<p>
+<pre><tt>        <b>if Config.Machine</b> (<i>cmFPU</i>) = 1 <b>then</b>
+            <b>put</b> "The machine has an FPU installed"
+        <b>else</b>
+            <b>put</b> "The machine does not have an FPU installed"
+        <b>end if</b></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Config.Machine</b>, not by calling <b>Machine</b>.<p>
+</table></body>
+</html>

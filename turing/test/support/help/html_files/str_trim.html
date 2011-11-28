@@ -1,0 +1,53 @@
+<html>
+<head><title>Str.Trim</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Str.Trim</b></font></td><td align="right">Part of <a href="strmodule.html">Str</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Str.Trim</b> (<i>str</i> : <b>string</b>) : <b>string</b><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>The <b>Str.Trim</b> function takes the string <i>str</i> and returns
+          a string in all the leading and trailing spaces (the spaces at the
+          beginning and the end) are deleted. For example, 
+          <tt>Str.Trim ("   This is a test ")</tt> returns
+          <tt>"This is a test"</tt>. If <i>str</i> only has spaces in it, then
+          <b>Str.Trim</b> will return an empty string.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program obtains input from the user until the user enters a line
+      with non-whitespace characters in it.
+<pre><tt>        <b>var</b> <i>line</i> : <b>string</b>
+        <b>loop</b>
+            <b>put</b> "Enter a non-empty line of text: " ..
+            <b>get</b> <i>line</i> : *
+            <b>exit when</b> <b>Str.Trim</b> (<i>line</i>) not= ""
+        <b>end loop</b>
+        <b>put</b> "You entered ", <i>line</i></tt><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,Str.Trim.t;Str.Trim Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+          <b>Str.Trim</b>, not by calling <b>Trim</b>.<p>
+    </tr>          
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="str_lower.html">Str.Lower</a></b> and 
+          <b><a href="str_upper.html">Str.Upper</a></b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

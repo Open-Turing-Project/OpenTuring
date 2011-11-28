@@ -1,0 +1,33 @@
+<html>
+<head><title>Sprite.ChangePic</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Sprite.ChangePic</b></font></td><td align="right">Part of <a href="spritemodule.html">Sprite</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Sprite.ChangePic</b> (<i>spriteID</i>, <i>picID</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Changes the picture associated with a sprite while maintaining the sprites height and visibility status. A typical use <b>Sprite.ChangePic</b> would be to animate a sprite that stays in position.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Here is a program that t that loads six images from files <i>Pic1.bmp<b> </b></i>through<i><b> </b>Pic6.bmp</i> and then displays them sequentially in the center of the screen.<p>
+<pre><tt>        <b>var</b> <i>pics</i> : <b>array</b> 0 .. 5 <b>of int</b>
+        <b>var</b> <i>sprite</i>: <b>int</b>
+        <b>for</b> <i>i</i> : 1 .. 6
+            <i>pics</i> (<i>i</i>  1) := <b>Pic.FileNew</b> ("Pic" + intstr (<i>i</i>) + ".bmp")
+            <b>if</b> <b>Error.Last</b> <b>not</b>= 0 <b>then</b>
+                <b>put</b> "Error loading image: ", <b>Error.LastMsg</b>
+                <b>return</b>
+            <b>end if</b>
+        <b>end for</b>
+        <i>figure</i> := <b>Sprite.New</b> (<i>pics</i> (0))
+        <b>Sprite.SetPosition</b> (<i>sprite</i>, <b>maxx div </b>2, <b>maxy div</b> 2, <b>true</b>)
+        <b>Sprite.Show</b> (<i>sprite</i>)
+        <b>for</b> <i>i</i> : 1 .. 100
+            <b>Sprite.ChangePic</b> (<i>sprite</i>, <i>pics</i> (<i>i</i> <b>mod</b> 6))
+        <b>end for</b>
+        <b>Sprite.Free</b> (<i>sprite</i>)</tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Sprite.ChangePic</b>, not by calling <b>ChangePic</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="sprite_new.html">Sprite.New</a></b>.<p>
+</table></body>
+</html>

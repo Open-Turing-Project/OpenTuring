@@ -1,0 +1,19 @@
+<html>
+<head><title>natstr</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>natstr</b></font></td><td align="right"><font size="+1"><b>natural-number-to-string function</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>natstr</b> ( <i>n </i>: <b>nat</b> [<i> </i>,<i> width</i> : <b>int</b> [, <i>base</i> : <b>int</b> ] ] ) : <b>string</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>natstr</b> function is used to convert a natural number to a string. The string is equivalent to <i>n</i>, padded on the left with blanks as necessary to a length of <i>width</i>,<i> </i>written in the given number<i> base</i>. For example, <b>natstr</b> (14, 4, 10)="<i>bb</i>14" where <i>b</i> represents a blank. The <i>width</i> and <i>base </i>parameters are both optional. It they are omitted, the string is made just long enough to hold the value and the number base is 10. For example, <b>natstr</b> (23) = "23".<p>
+The <i>width</i> parameter must be non-negative. If <i>width</i> is not large enough to represent the value of <i>i</i>, the length is automatically increased as needed.<p>
+The string returned by <b>natstr</b> is of the form:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>{blank}digit{digits}</td></tr>
+</table><p>
+where {blank} means zero or more blanks and digit{digit} means one or more digits. The leftmost digit is either non-zero, or a single zero digit; in other words, leading zeros are suppressed.<p>
+The letters A, B, C … are used to represent the digit values 10, 11, 12, … The <i>base </i>must be in the range 2 to 36 (36 because there are ten digits and 26 letters). For example, <b>natstr</b> (255, 0, 16) = "FF".<p>
+The <b>natstr</b> function is the inverse of <b>strnat</b>, so for any natural number <i>n</i>, <b>strnat</b> ( <b>natstr</b>(<i>n</i>) ) = <i>n</i>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="chr.html">chr</a></b>, <b><a href="ord.html">ord</a></b> and <b><a href="strnat.html">strnat</a></b> functions. See also the <b><a href="intstr.html">intstr</a></b> and <b><a href="strint.html">strint</a></b> functions. See also <i><a href="explicitintegerconstant.html">explicitIntegerConstant</a></i> for the way to write values in base 2 and base 16 in a <a href="program.html">program</a>.<p>
+</table></body>
+</html>

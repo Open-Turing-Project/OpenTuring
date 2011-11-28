@@ -1,0 +1,49 @@
+<html>
+<head><title>Input.Pause</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Input.Pause</b></font></td><td align="right">Part of <a href="inputmodule.html">Input</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Input.Pause</b><p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>The <b>Input.Pause</b> procedure simply waits for a key to be 
+          pressed and then returns. It echoes the key pressed if <b>echo</b> 
+          mode is set. (See <b>View.Set</b> for setting <b>echo</b> mode)<p>
+          This subprogram helps avoid having to declare a variable declaration 
+          and then make a call to <b>getch</b>or <b>getchar</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program pauses after every name read from the file.<p>
+<pre><tt>        <b>var</b> <i>f</i> : <b>int</b>
+        <b>var</b> <i>line</i> : <b>string</b>
+        <b>open</b> : <i>f</i>, "data.txt", <b>get</b>
+        <b>loop</b>
+            <b>exit when eof</b> (<i>f</i>)
+            <b>get</b> : <i>f</i>, <i>line</i> : *
+            <b>put</b><i> name</i>
+            <b>Input.Pause</b>
+        <b>end loop</b>
+        <b>close</b> : <i>f</i></tt></pre><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,Input.Pause.t;Input.Pause Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+          <b>Input.Pause</b>, not by calling <b>Pause</b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<html>
+<head><title>bind</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>bind</b></font></td><td align="right"><font size="+1"><b>declaration</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>bindDeclaration</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>bind</b> [<b>var</b>] <i>id</i> <b>to</b> <i>variableReference</i> </td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1">{ , [<b>var</b>] <i>id</i> <b>to</b> <i>variableReference</i> }</td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>bind</b> declaration creates a new name (or names) for a variable reference (or references). You are allowed to change the named item only if you specify <b>var</b>. You can also bind to named non scalar constants.<p>
+While <i>variableReference</i> is bound it does not disappear in the scope.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Rename the <i>n</i>-th element of array <i>A</i> so it is called <i>item</i> and then change this element to 15.<p>
+<pre><tt>        <b>bind</b> <b>var</b> <i>item</i> <b>to</b> <i>A </i>(<i>n)</i>
+        <i>item</i> := 15</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The scope of the identifier (<i>item </i>above) begins with the <b>bind</b> declaration and lasts to the <b>end</b> of the surrounding program or statement (or to the end of the surrounding part of a <b>case</b> or <b>if</b> statement). During this scope, a change to a subscript (<i>n </i>above) that occurs in the variable reference does not change the element to which the identifier refers.<p>
+You are not allowed to use <b>bind</b> at the outermost level of the main program (except nested inside statements such as <b>if</b>) or at the outermost level in a module.<p>
+You can also optionally use the <b>register</b> keyword to request that the bind be done using a machine register. The syntax for <i>bindDeclaration</i> is actually:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td><b>bind</b> [<b>var</b>] [<b>register</b>] <i>id</i> <b>to</b> <i>variableReference</i></td></tr>
+</table>
+<table><tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td>{ , [<b>var</b>] [<b>register</b>] <i>id</i> <b>to</b> <i>variableReference </i>}</td></tr>
+</table><p>
+In the current (2002) implementation, programs are run interpretively using pseudo-code and the <b>register</b> keyword is ignored.<p>
+</table></body>
+</html>

@@ -1,0 +1,26 @@
+<html>
+<head><title>unchecked</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>unchecked</b></font></td><td align="right"><font size="+1"><b>compiler directive</b></font></td></table><p>
+Dangerous<p>
+<table><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> OOT adds the concept of "unchecked" to Turing. Here, you can request that certain run time tests, which take place by default, can be eliminated. This  makes the program more efficient  at the risk of unreliability.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Declare <i>p</i> to be an unchecked pointer to an integer (see <b>pointers</b> for details). Pointer <i>p </i>will be dangerous to use, because the run time system will not check to see if it actually locates an integer, as opposed to arbitrary computer memory. In other words, unchecked pointers are like C language pointers.<p>
+<pre><tt>        <b>var</b> <i>p</i> : <b>unchecked</b> ^ <b>int</b></tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Declare <i>C</i> to be an unchecked collection of records of type <i>R</i> (see <b>collections</b> for details). Pointers to <i>C</i> will be unchecked.<p>
+<pre><tt>        <b>var</b> <i>C</i> : <b>unchecked</b> <b>collection</b> <b>of</b> <i>R</i></tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Remove checking from the body of a loop.<p>
+<pre><tt>        <b>for</b> <i>i</i> : 1 .. 500
+            <b>unchecked</b>
+            <b>if</b> <i>a</i> ( <i>i</i> ) = <i>key</i> <b>then</b>
+                <b>exit</b>
+            <b>end</b> <b>if</b>
+        <b>end</b> <b>for</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> In the above example, the <b>unchecked</b> keyword requests that all checking, in particular, array bounds checking for array <i>a</i>, are to be omitted. The disabling lasts from the occurrence of the keyword <b>unchecked</b> to the end of the surrounding construct, in this case, until <b>end</b> <b>for</b>. In a similar way, the checked keyword will request that checking be re-enabled from the occurence of <b>checked</b> to the end of the surrounding construct.<p>
+In the current (1999) implementation, the use of <b>unchecked</b> to turn off checking in a block of statements is ignored. In general, an implementation may choose to ignore requests to disable checking.<p>
+</table></body>
+</html>

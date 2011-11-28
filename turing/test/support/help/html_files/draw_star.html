@@ -1,0 +1,32 @@
+<html>
+<head><title>Draw.Star</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Draw.Star</b></font></td><td align="right">Part of <a href="drawmodule.html">Draw</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Draw.Star </b>(<i>x1</i>, <i>y1</i>, <i>x2</i>, <i>y2</i>, <i>Color</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Draw.Star </b>procedure is used to draw a star on the screen bounded by a rectangle described by the bottom left and top right corners of (<i>x1</i>, <i>y1</i>) to (<i>x2</i>, <i>y2</i>) using the specified <i>Color</i>. If <i>y1</i> is greater than <i>y2</i> then the star is drawn upside down.<p>
+
+<center><img src="draw_star01.gif"></center>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program will draw two stars beside each other. The first star will be in color 1 and the second star will be upside down and in color 2.<p>
+<pre><tt>        <b>View.Set</b> ("graphics")
+        <b>Draw.Star</b> (0, 0, 100, 100, <b>brightred</b>)
+        <b>Draw.Star</b> (150, 100, 250, 0, <b>brightblue</b>)</tt></pre>
+    <tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+        <PARAM name="Command" value="TCard">
+        <PARAM name="Button" value="Text: Launch Example Program">
+        <PARAM name="Item1" value="-1,Draw.Star.t;Draw.Star Example">
+      </OBJECT><p></td>
+    </tr>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The <b>Draw.Star</b> procedure is useful for drawing the American flag.<p>
+The screen must be in a "<i>graphics</i>" mode. See the <b>View.Set</b> procedure for details. If the screen is not in a "<i>graphics</i>" mode, an error will occur.<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Draw.Star</b>, not by calling <b>Star</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="view_set.html">View.Set</a></b>, <b><a href="maxx.html">maxx</a></b>, <b><a href="maxy.html">maxy</a></b> and the various procedures in the <b><a href="drawmodule.html">Draw</a></b> unit.<p>
+</table></body>
+</html>

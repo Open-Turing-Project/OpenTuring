@@ -1,0 +1,24 @@
+<html>
+<head><title>natn</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>nat<i>n</i></b></font></td><td align="right"><font size="+1"><b>n-byte natural number type</b></font></td></table><p>
+Dirty<p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td><p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(a)</font></td><td colspan="7"><font size="+1"><b>nat1</b></td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="-2"><font size="+1"><i>% 1-byte natural number</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(b)</font></td><td colspan="7"><font size="+1"><b>nat2</b></td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="-2"><font size="+1"><i>% 2-byte natural number</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(c)</font></td><td colspan="7"><font size="+1"><b>nat4</b></td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="-2"><font size="+1"><i>% 4-byte natural number</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>nat<i>n</i></b> (<i>n</i>-byte natural number) types are machine-dependent  types that occupy a specified number of bytes. By contrast, the <b>nat</b> type is in principle a machine-independent and mathematical type (it overflows, however, when the value is too large or small, that is, when the value does not fit into 4 bytes).<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>var</b> <i>counter1</i> : <b>nat1</b>     <i>% Range is 0 .. 255</i>
+        <b>var</b> <i>counter2</i> : <b>nat2</b>     <i>% Range is 0 .. 65536</i>
+        <b>var</b> <i>counter4</i> : <b>nat4</b>     <i>% Range is 0 .. 4294967295</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> In Turing, the range of the <b>nat</b> is 0 to 4294967294, which means that the <b>nat4</b> type allows one more value, 4294967295. This extra value is used in <b>nat</b> to represent the state of being uninitialized. The <b>nat<i>n</i></b> types allow use of all possible values that fit into <i>n</i> bytes and thereby eliminates checking for initialization.<p>
+The <b>nat<i>n</i></b> types are like the C language types <i>short unsigned</i>, <i>unsigned</i>, and <i>long unsigned</i>, except that the number of bytes occupied by the C types depends on the particular C compiler.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> the <b><a href="int.html">int</a><i>n</i></b><i> </i>types which are <i>n</i> byte integer values. See also <b><a href="nat.html">nat</a></b> and <b><a href="int.html">int</a></b>.<p>
+</table></body>
+</html>

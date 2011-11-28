@@ -1,0 +1,20 @@
+<html>
+<head><title>implement by</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>implement by</b></font></td><td align="right"><font size="+1"><b>    clause</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> An <i>implementByClause</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>implement</b> <b>by</b> <i>implementByItem</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> An implement-by clause is used to specify that a module, monitor or class <i>C </i>is to be automatically implemented by the <i>implementByItem</i>. <i>C</i> is called the <i>interface</i> and the <i>implementByItem</i>, which must contain an implement clause, is called the <i>implementation</i>. See <b>implement</b> clause for details and an example.<p>
+The implement-by clause can only be used in a <b>unit</b>. See <b>unit</b> for the definition of a unit.<p>
+An implementByItem is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>(a)</td><td width="10">&nbsp;</td><td><i>id</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(b)</td><td width="10">&nbsp;</td><td><i>id</i> <b>in</b> <i>fileName</i></td></tr>
+</table><p>
+The second form is used when the implement-by clause is for a separate <b>unit</b> and the imported item is in a file whose name is different from the item's name, as in:<p>
+<pre><tt>        <b>implement</b> <b>by</b> ledgerBody <b>in</b> "ledgbod.t"</tt></pre>
+The fileName must be an explicit character string, e.g., "ledgbod.t". See also <b>unit</b>. Parentheses are allowed around the items in an <b>implement-by</b> clauses, as in:<p>
+<pre><tt>        <b>implement</b> <b>by</b> ( ledgerBody <b>in</b> "ledgbod.t" )</tt></pre>
+</table></body>
+</html>

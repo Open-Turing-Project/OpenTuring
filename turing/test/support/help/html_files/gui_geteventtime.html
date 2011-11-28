@@ -1,0 +1,40 @@
+<html>
+<head><title>GUI.GetEventTime</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.GetEventTime</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>GUI.GetEventTime</b> : <b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Returns the time in milliseconds when the event (mouse button or keystroke) took place. This value is the same value as <i>Time.Elapsed</i> returns if called when the event was processed. This function should only be called in an <i>action procedure</i> or in a default mouse, keystroke, or null event handler, as it will return 1 when there is no event being processed.<p>
+This event can be used as a timer for various functions such as determining whether a single click or a double click of the mouse button took place or for timing keyboard input.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program times the interval between two button presses.<p>
+<pre><tt>        <b>import</b> <i>GUI</i> <b>in</b> "%oot/lib/GUI" 
+        <b>View.Set</b> ("graphics:300;100") 
+        
+        <b>var</b> <i>startTime</i>, <i>startButton</i>, <i>finishButton</i> : <b>int</b>
+        
+        <b>procedure</b> <i>Start</i>
+            <i>startTime</i> := <b>GUI.GetEventTime</b>
+        <b>end</b> <i>Start</i>
+        
+        <b>procedure</b> <i>Finish</i>
+            <b>Text.Locate</b> (1, 1)
+            <b>put</b> "The time between button pressed is ", 
+                <b>GUI.GetEventTime </b> <i>startTime</i>, " msecs"
+            <b>GUI.Quit</b>
+        <b>end</b> Finish
+        
+        <i>startButton</i> := <b>GUI.CreateButton</b><i> </i>(10, 10, 110, "Click First", <i>Start</i>)
+        <i>finishButton</i> := <b>GUI.CreateButton</b> (180, 10, 110, "Click Second", <i>Finish</i>)
+        
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>GUI.GetEventTime</b> , not by calling <b>GetEventTime</b> .<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="gui_processevent.html">GUI.ProcessEvent</a></b>.<p>
+</table></body>
+</html>

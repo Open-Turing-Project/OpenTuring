@@ -1,0 +1,34 @@
+<html>
+<head><title>Font.Width</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Font.Width</b></font></td><td align="right">Part of <a href="fontmodule.html">Font</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Font.Width</b> (<i>txtStr</i> : <b>string</b>, <i>fontID</i> : <b>int</b>) : <b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> <b>Font.Width </b>is used to obtain the width in pixels that a specified string will take to draw in a specified font. The <i>textStr</i> parameter is the string. The <i>fontID</i> parameter is the font in which the string would be drawn.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> If <b>Font.Width</b> is passed an invalid font ID, a fatal error occurs. If the <b>Font.Width</b> call fails for other (non-fatal) reasons, the width for string in the default font will be returned. As well, <b>Error.Last</b> will return a non-zero value indicating the reason for the failure. <b>Error.LastMsg</b> will return a string which contains the textual version of the error.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The program gets information about 24pt Bold Palatino.<p>
+<pre><tt>        <b>const</b> <i>testString</i> := "Test String"
+        <b>var</b> <i>width</i>, <i>fontID</i> : <b>int</b>
+        <i>fontID</i> := <b>Font.New</b> ("Palatino:24:Bold")
+        <i>width</i> := <b>Font.Width</b> (<i>testString</i>, <i>fontID</i>)
+        <b>put</b> "The width of \"" + <i>testString</i> + "\" is ", <i>width</i>, " pixels"
+        <b>Font.Draw</b> (<i>testString</i>, 100, 100, <i>fontID</i>, <b>black</b>)
+        <b>Draw.Line</b> (100, 50, 100, 150, <b>brightred</b>)
+        <b>Draw.Line</b> (100 + <i>width</i>, 50, 100 + <i>width</i>, 150, <b>brightred</b>)
+        <b>Font.Free</b> (<i>fontID</i>)</tt></pre><p>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,Font.Width.t;Font.Width Example">
+          </OBJECT><p></td>
+    </tr>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Font.Width</b>, not by calling <b>Width</b>.<p>
+</table></body>
+</html>

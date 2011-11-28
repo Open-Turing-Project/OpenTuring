@@ -1,0 +1,144 @@
+<html>
+<head><title>GUI.CreateHorizontalScrollBar[Full]</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.CreateHorizontalScrollBar[Full]</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+  
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>GUI.CreateHorizontalScrollBar</b> (<i>x</i>, <i>y</i>, <i>size</i> : <b>int</b>,<br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;<i>min</i>, <i>max</i>, <i>start</i>: <b>int</b>, <i>actionProc</i> : <b>procedure</b> <i>x</i> (<i>value</i> : <b>int</b>)) : <b>int</b><p>
+	  <b>GUI.CreateHorizontalScrollBarFull</b> (<i>x</i>, <i>y</i>, <i>size</i> : <b>int</b>,<br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;<i>min</i>, <i>max</i>, <i>start</i> : <b>int</b>,<br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;<i>actionProc</i> : <b>procedure</b> <i>x</i> (<i>value</i> : <b>int</b>),<br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;<i>arrowInc</i>, <i>pageInc</i>, <i>thumbSize</i> : <b>int</b>) : <b>int</b><p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>Creates a horizontal (left-right) scroll bar and returns the scroll bar's widget ID. <p>
+	  A scroll bar is a widget that allows users to see a piece of a document that cannot be displayed on the screen in its entirety. The picture below shows a horizontal scroll bar. To control a scroll bar, there are a few choices: the user can click on the thumb (the box in the scroll bar) and slide it left or right, or the user can click in the scroll bar itself to the left or right of the thumb (in which case the thumb is moved up or down one "page"), or the user can click on the left or right arrows at the ends of the scroll bar (in which case the thumb is moved left or right one "arrow increment"). <p>
+	  <center><img src="gui_createhorizontalscrollbar_full01.gif"></center>
+	  <center><b>A Horizontal Scroll Bar</b></center><p>
+	  The programmer defines a page or an arrow increment. When the value of the scroll bar changes, the <i>action procedure</i> of the scroll bar is called with the new value as a parameter. The <i>action procedure</i> should then redraw the contents using the new value of the scroll bar.<p>
+	  The range of values that the scroll bar will give is determined by the <i>min</i> and <i>max</i> parameters in the <i>Create</i> call. The left side of the scroll bar represents the minimum value, while the right represents the maximum value. There is also the "thumb size". This represents the range of values that can be seen at once on the screen.<p>
+	  By default, the arrow increment (the amount the value is changed when the scrolling arrows are pressed) is set to one. The page increment (the amount the value is changed when the user clicks in the bar to the right or left of the thumb) is set to one quarter the difference between the minimum and the maximum. The "thumb size" is set to zero (see the description of scroll bars for an explanation of the thumb size).<p>
+	  The <i>x</i> and <i>y</i> parameters specify the lower-left corner of the scroll bar. The <i>size</i> parameter specifies the length of the scroll bar (including the arrows) in pixels. The <i>min</i> and <i>max</i> parameters are the minimum and maximum values returned by the scroll bar. The <i>start</i> parameter is the initial value of the scroll bar and should be between <i>min</i> and <i>max</i> inclusive. The <i>actionProc </i>parameter<i> </i>is the name of a procedure that is called when the value of the scroll bar is changed. The parameter to the <i>action procedure </i>is the current value of the scroll bar.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>The following program creates a horizontal scroll bar. Whenever the scroll bar's value is changed, a message is displayed in the window.<p>
+<pre><tt>        <b>import</b> <i>GUI</i> 
+        
+        <b>View.Set</b> ("graphics:300;60,nobuttonbar") 
+        <b>var</b> <i>scrollBar</i> : <b>int</b>
+        
+        <b>procedure</b> <i>ScrollBarMoved</i> (<i>value</i> : <b>int</b>)
+            <b>Text.Locate</b> (2, 3)
+            <b>put</b> "Horizontal Scroll Bar: ", <i>value</i> : 4
+        <b>end</b> <i>ScrollBarMoved</i>
+        
+        <i>scrollBar</i> := <b>GUI.CreateHorizontalScrollBar </b>(10, 10, 250,
+            50, 150, 50, <i>ScrollBarMoved</i>)
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b></tt></pre><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,GUI.CreateHorizontalScrollBar.t;GUI.CreateHorizontalScrollBar Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>For <b>GUI.CreateHorizontalScrollBarFull</b>, the <i>arrowInc</i> parameter specifies the arrow increment (the amount the scroll bar's value is changed when the scroll arrows are pressed). The <i>pageInc</i> specifies the page increment (the amount the scroll bar's value is changed when the user clicks in the page left/right section of the scroll bar). The <i>thumbSize</i> parameter specifies the "thumb size". (See the scroll bar explanation for more detail on a scroll bar's "thumb size").<p>
+	  For example, if you have a window that can display 20 lines of text at once and there are 100 lines of text, you would set <i>min</i> to 1, <i>max</i> to 100 and <i>thumbSize</i> to 20. The value returned by the scroll bar would then be the line number of the first line on the screen to be displayed. When the scroll bar was at its maximum value, it would return 81, since by doing so, lines 81-100 would be displayed. <p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>Here is an example program that scrolls a large picture over a smaller window.<p>
+<pre><tt>        % The "ScrollPic" program.
+        <b>import</b> <i>GUI</i>
+        
+        <b>var</b> <i>h</i>, <i>v</i> : <b>int</b>      % The scroll bars.
+        <b>var</b> <i>canvas</i> : <b>int</b>        % The canvas.
+        <b>var</b> <i>pic</i> : <b>int</b>       % The picture.
+        <b>const</b> <i>width</i> : <b>int</b> := 220    % The width of the canvas.
+        
+        <b>procedure</b> <i>ScrollPic</i> (<i>ignore</i> : <b>int</b>)
+            % Get the current value of the scroll bars.
+            <b>var</b> <i>x</i> : <b>int</b> := <b>GUI.GetSliderValue </b>(<i>h</i>)
+            <b>var</b> <i>y</i> : <b>int</b> := <b>GUI.GetSliderValue </b>(<i>v</i>)
+            <b>GUI.PicDraw</b> (<i>canvas</i>, <i>pic</i>, -<i>x</i>, -<i>y</i>, <i>picCopy</i>)
+        <b>end</b> <i>ScrollPic</i>
+        
+        <i>pic</i> := <b>Pic.FileNew</b> ("Forest.jpg")
+        <b>if</b> <i>pic</i> &lt;= 0 <b>then</b>
+            <b>put</b> "Error loading picture: ", <b>Error.LastMsg</b>
+            <b>return</b>
+        <b>end if</b>
+        
+        <b>View.Set</b> ("graphics:265;265")
+        
+        <i>canvas</i> := <b>GUI.CreateCanvas</b> (15, 15 + <b>GUI.GetScrollBarWidth</b>, 
+            <i>width</i>, <i>width</i>)
+        % Note the frame of the canvas is:
+        %   (14, 14 + ScrollbarWidth) - (235, 235 + ScrollbarWidth)
+        <i>h</i> := <b>GUI.CreateHorizontalScrollBarFull</b> (14, 14,
+            221, 0, <b>Pic.Width</b> (<i>pic</i>) , 0, <i>ScrollPic</i>, 3, 100, <i>width</i>)
+        <i>v</i> := <b>GUI.CreateVerticalScrollBarFull</b> (235, 
+            14 + <b>GUI.GetScrollBarWidth</b>, 221, 0, <b>Pic.Height </b>(<i>pic</i>), 
+            <b>Pic.Height</b> (<i>pic</i>), <i>ScrollPic</i>, 3, 100, <i>width</i>)
+        <i>ScrollPic</i> (0) % Draw the picture initially
+
+        <b>loop</b>
+            <b>exit when GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b></tt></pre><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,ScrollPic.t;Scrolling Picture Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>In some instances, you will want the the minimum and maximum values of the scroll bar to be reversed (right/top is minimum). In that case, call the <b>GUI.SetSliderReverse</b> procedure to flip the values of the scroll bar.<p>
+	  Scroll bars always have a fixed height (for horizontal scroll bars) or width (for vertical scroll bars). To get a scroll bar's width, use the <b>GUI.GetScrollBarWidth </b>function. <p>
+	  When <b>GUI.CreateHorizontalScrollBar </b>or <b>GUI.CreateHorizontalScrollBarFull</b><i> </i>is called, the newly created scroll bar will be displayed immediately unless <b>GUI.DisplayWhenCreated</b> has been called with the <i>display</i> parameter set to false. <p>
+	  When a scroll bar is not enabled, the gray in the bar is set to white and the thumb is not displayed. The scroll bar no longer responds to any mouse clicks until the scroll bar is enabled again.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The following GUI subprograms can be called with a scroll bar as the <i>widgetID</i> parameter:<p>
+          <table>
+            <tr valign="top">
+              <td width="40">&nbsp;</td>
+              <td><b>GUI.Show</b>, <b>GUI.Hide</b>, <b>GUI.Enable</b>,
+                  <b>GUI.Disable</b>, <b>GUI.Dispose</b>, <b>GUI.GetX</b>,
+                  <b>GUI.GetY</b>, <b>GUI.GetWidth</b>, <b>GUI.GetHeight</b>,
+                  <b>GUI.SetPosition</b>, <b>GUI.SetSize</b>,
+                  <b>GUI.SetPositionAndSize</b>, <b>GUI.GetSliderValue</b>,
+                  <b>GUI.SetSliderValue</b>, <b>GUI.SetSliderMinMax</b>,
+                  <b>GUI.SetSliderSize</b>, <b>GUI.SetSliderReverse</b>,
+                  <b>GUI.SetScrollAmount</b></td>
+            </tr>
+	  </table><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+	  This means that you can only call the function by calling <b>GUI.CreateHorizontalScrollBar</b>, not by calling <b>CreateHorizontalScrollBar</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="gui_getslidervalue.html">GUI.GetSliderValue</a></b> and <b><a href="gui_setslidervalue.html">GUI.SetSliderValue</a> </b>for reading and setting the value of a scroll bar, <b><a href="gui_setsliderminmax.html">GUI.SetSliderMinMax</a></b> for changing the minimum and maximum values of a scroll bar, and <b><a href="gui_setscrollamount.html">GUI.SetScrollAmount</a></b> for changing the scrolling increments and thumb size of a scroll bar. See also <b><a href="gui_setslidersize.html">GUI.SetSliderSize</a> </b>for setting the <a href="length.html">length</a> of a scroll bar and <b><a href="gui_setsliderreverse.html">GUI.SetSliderReverse</a></b> for reversing the sense of a scroll bar.<p>
+    </tr>
+  </table>
+</body>
+</html>

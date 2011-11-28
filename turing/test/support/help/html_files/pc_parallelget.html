@@ -1,0 +1,33 @@
+<html>
+<head><title>PC.ParallelGet</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>PC.ParallelGet</b></font></td><td align="right">Part of <a href="pcmodule.html">PC</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>PC.ParallelGet</b> (<i>port</i> : <b>int</b>) : <b>nat1</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>PC.ParallelGet</b> function is used to read the value of certain pins on a parallel port. The port is specified with the <i>port</i> parameter which can have the value 1, 2 or 3 corresponding to "LPT1", "LPT2" and "LPT3". This procedure can be used to control robots and peripherals.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program reads and prints the values of the five data pins of the PC's parallel port.<p>
+<pre><tt>        <i>% Read in the set of pin values from LPT1</i>
+        <b>const</b> val : <b>int</b> := <b>PC.ParallelGet</b> (1)   
+        <b>put</b> "Pin 10 is: ", (val <b>div</b> 64) <b>mod</b> 2
+        <b>put</b> "Pin 11 is: ", (val <b>div</b> 128) <b>mod</b> 2
+        <b>put</b> "Pin 12 is: ", (val <b>div</b> 32) <b>mod</b> 2
+        <b>put</b> "Pin 13 is: ", (val <b>div</b> 16) <b>mod</b> 2
+        <b>put</b> "Pin 15 is: ", (val <b>div</b> 8) <b>mod</b> 2</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The five pins that are used for parallel input are pins 10-15. The <b>PC.ParallelGet </b>procedure returns the sum of <p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>64 </td><td width="10">&nbsp;</td><td>Pin 10 high</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>128</td><td width="10">&nbsp;</td><td>Pin 11 high </td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>32 </td><td width="10">&nbsp;</td><td>Pin 12 high </td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>16 </td><td width="10">&nbsp;</td><td>Pin 13 high </td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>8 </td><td width="10">&nbsp;</td><td>Pin 15 high</td></tr>
+</table><p>
+The <b>mod</b> and <b>div</b> operators can be used to determine which pins are high or low. <p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>PC.ParallelGet</b>, not by calling <b>ParallelGet</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="pc_parallelput.html">PC.ParallelPut</a></b> <a href="procedure.html">procedure</a> for a diagram of the pins. That <a href="procedure.html">procedure</a> is used to <a href="set.html">set</a> the values on the parallel port.<p>
+</table></body>
+</html>

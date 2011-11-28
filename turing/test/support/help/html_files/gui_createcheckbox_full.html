@@ -1,0 +1,94 @@
+<html>
+<head><title>GUI.CreateCheckBox[Full]</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.CreateCheckBox[Full]</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+  
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>GUI.CreateCheckBox</b> (<i>x</i>, <i>y</i> : <b>int</b>, <i>text</i> : <b>string</b>,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<i>actionProc</i> : <b>procedure</b> <i>x</i> (<i>filled</i> : <b>boolean</b>)) : <b>int</b><p>
+	  <b>GUI.CreateCheckBoxFull</b> (<i>x</i>, <i>y</i> : <b>int</b>, <i>text</i> : <b>string</b>,<br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;<i>actionProc</i> : <b>procedure</b> <i>x</i> (<i>filled</i> : <b>boolean</b>), <i>alignment</i> : <b>int</b>, <i>shortcut</i> : <b>char</b>) : <b>int</b><p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>Creates a check box (with accompanying text) and returns the check box's widget ID.<p>
+          The check box widget is used to implement a check box that can be set or unset. When you click on a check box, the status of the check box flips from set to unset and back again and the check box's <i>action procedure</i> is called with the new status as a parameter. If a check box is given a short cut, then entering the keystroke will cause the check box to change status and the <i>action procedure</i> to be called. The new status will be displayed immediately.<p>
+          <center><img src="gui_createcheckbox_full01.gif"></center>
+          <center><b>Two Check Boxes</b></center><p>
+          The <i>x</i> and <i>y</i> parameters specify the lower-left corner of the check box (unless <i>alignment</i> is set to <i>GUI.RIGHT</i>, in which case they specify the lower-right corner of the check box). The <i>text</i> parameter specifies the text (or label) beside the check box. The <i>actionProc</i> parameter is the name of a procedure that is called when the status of the check box changes. The <i>actionProc</i>procedure must have one boolean parameter which is the new status of the check box. In <b>GUI.CreateCheckBox</b>, the check box's text is always to the right of the actual check box. In <b>GUI.CreateCheckBoxFull</b>, the text can be set to the right or left of the check box with the <i>alignment</i> parameter.<p>
+          For <b>GUI.CreateCheckBoxFull</b>, the <i>alignment</i> parameter specifies the position of the check box in relation to the text as well as the meaning of the <i>x</i> and <i>y</i> parameters. The <i>alignment</i> parameter is one of 0, <i>GUI.LEFT</i>, or <i>GUI.RIGHT</i>. An <i>alignment</i> of 0 is the default and is the same as <i>GUI.LEFT</i>. <i>GUI.LEFT</i> means the actual box in the check box appears to the left of the check box's label and (<i>x</i>, <i>y</i>) specifies the lower-left corner. An <i>alignment</i> of <i>GUI.RIGHT</i> means that the actual box appears to the right of the check box's label and (<i>x</i>, <i>y</i>) specifies the lower-right corner of the check box. The <i>shortcut </i>parameter is the keystroke to be used as the button's shortcut. The <i>default</i> parameter is a boolean indicating whether the button should be the default button. If there is already a default button, and <i>default</i> is set to true, then this button becomes the new default button.<p>
+          A check box's size is not specified during creation. It is determined based on the size of the text. Instead the user specifies the lower-left corner of the check box (or the lower-right if the check box is right justified).<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>The following program creates two buttons, one which draws a random circle on the screen and one which quits the program<p>
+<pre><tt>        <b>import</b> <i>GUI</i>
+        
+        <b>procedure</b> <i>DoNothing</i> (<i>status</i> : <b>boolean</b>)
+        <b>end</b> <i>DoNothing</i> 
+        
+        <b>View.Set</b> ("graphics:300;100,nobuttonbar")
+        <b>var</b> <i>cb1</i> : <b>int</b> := <b>GUI.CreateCheckBox </b>(10, 10, "Check Box 1",
+            <i>DoNothing</i>)
+        <b>var</b> <i>cb2</i> : <b>int</b> := <b>GUI.CreateCheckBoxFull<i> </i></b>(200, 10, "Check Box 2",
+            <i>DoNothing</i>, <i>GUI.RIGHT</i>, '2')
+        <b>GUI.SetCheckBox </b>(<i>cb2</i>, <b>true</b>)
+        <b>var</b> <i>quitBtn</i> : <b>int</b> := <b>GUI.CreateButton</b> (230, 10, 0, "Quit", <b>GUI.Quit</b>)
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end loop</b>
+        <b>var</b> <i>cb1Status</i> : <b>boolean</b> := <b>GUI.GetCheckBox</b> (<i>cb1</i>)
+        <b>var</b> <i>cb2Status</i> : <b>boolean</b> := <b>GUI.GetCheckBox </b>(<i>cb2</i>)
+        <b>if </b><i>cb1Status</i> <b>then</b>
+            <b>put</b> "Check box 1: filled"
+        <b>else</b>
+            <b>put</b> "Check box 1: empty"
+        <b>end if</b>
+        <b>if </b><i>cb2Status</i> <b>then</b>
+            <b>put</b> "Check box 2: filled"
+        <b>else</b>
+            <b>put</b> "Check box 2: empty"
+        <b>end if</b></tt></pre><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,GUI.CreateCheckBoxFull.t;GUI.CreateCheckBoxFull Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>When <b>GUI.CreateButton</b><i> </i>or<i> </i><b>GUI.CreateButtonFull</b> is called, the newly created check box will be displayed immediately unless <b>GUI.DisplayWhenCreated</b> has been called with the <i>display</i> parameter set to false. <p>
+          When a check box is not enabled, the label beside the check box is grayed out and the check box no longer responds to any mouse clicks or keystrokes until the check box is enabled again.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The following GUI subprograms can be called with a check box as the <i>widgetID</i> parameter:<p>
+          <table>
+            <tr valign="top">
+              <td width="40">&nbsp;</td><td><b>GUI.Show</b>,<b> GUI.Hide</b>,
+              <b> GUI.Enable</b>,<b> GUI.Disable</b>,<b> GUI.Dispose</b>,
+              <b> GUI.GetX</b>,<b> GUI.GetY</b>,<b> GUI.GetWidth</b>,
+              <b> GUI.GetHeight</b>,<b> GUI.SetPosition</b>,<b> GUI.SetSize</b>,
+              <b> GUI.SetPositionAndSize</b>,<b> GUI.SetLabel</b>,
+              <b> GUI.GetCheckBox</b>,<b> GUI.SetCheckBox</b></td>
+            </tr>
+          </table><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling <b>GUI.CreateCheckBox</b>, not by calling <b>CreateCheckBox</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="gui_setlabel.html">GUI.SetLabel</a></b> for changing the chec box's text and <b><a href="gui_getcheckbox.html">GUI.GetCheckBox</a></b> and <b><a href="gui_setcheckbox.html">GUI.SetCheckBox</a></b> for reading and setting the check box's state.<p>
+    </tr>
+  </table>
+</body>
+</html>

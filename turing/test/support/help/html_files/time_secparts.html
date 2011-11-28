@@ -1,0 +1,26 @@
+<html>
+<head><title>Time.SecParts</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Time.SecParts</b></font></td><td align="right">Part of <a href="timemodule.html">Time</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Time.SecParts </b>(<i>sec</i> : <b>int</b>, <b>var</b> <i>year</i>, <i>month</i>, <i>day</i>, <br>
+</font><table><tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="6"><font size="+1"><i>dayOfWeek</i>, <i>hour</i>, <i>minute</i>, <i>second</i> : <b>int</b>)</td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Time.SecParts</b> function is used to<b> </b>convert a single number form of the time (the number of seconds since 00:00:00 GMT Jan 1, 1970) into a date with numeric component parts.<p>
+The <i>dayOfWeek</i> parameter is 1 for Monday, 2 for Tuesday through 7 for Sunday.<p>
+If the <i>sec</i> parameter doesn't make any sense or can't be interpreted, then <b>Time.PartsSec</b> will set all the <b>var</b> parameters to  1 and <b>Error.Last </b>and<b> Error.LastMsg</b> will be set to the appropriate error.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program returns the current day of the week.<p>
+<pre><tt>        <b>var</b> <i>year</i>, <i>month</i>, <i>day</i>, <i>dayOfWeek</i>, <i>hour</i>, <i>minute</i>, <i>second</i> : <b>int</b>
+        <b>Time.SecParts</b> (<b>Time.Sec</b>, <i>year</i>, <i>month</i>, <i>day</i>, <i>dayOfWeek</i>, 
+                                <i>hour</i>, <i>minute</i>, <i>second</i> )
+        <b>var</b> <i>days</i> : <b>array</b> 1 .. 7 <b>of</b> <b>string</b> (10) := <b>init</b> ("Monday", "Tuesday", 
+            "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+        <b>put</b> "The current day of the week is ", <i>days</i> (<i>dayOfWeek</i>)</tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Time.SecParts</b> , not by calling <b>SecParts</b> .<p>
+<table><tr valign="top"><td><b>See also</b></td><td width="10">&nbsp;</td><td><b>Time.PartsSec</b>, <b>Time.Date</b> and <b>Time.Sec</b> functions.</td></tr>
+</table><p>
+</table></body>
+</html>

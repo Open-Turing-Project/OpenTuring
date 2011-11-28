@@ -1,0 +1,22 @@
+<html>
+<head><title>post</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>post</b></font></td><td align="right"><font size="+1"><b>assertion</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> An <i>postAssertion</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>post</b> <i>trueFalseExpn</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A <b>post</b> assertion is a special form of an <b>assert</b> statement that is used in a procedure or function. It is used to give requirements that the body of the procedure or function is supposed to satisfy. These requirements are given by the <i>trueFalseExpn</i>. After the body has executed and just before the procedure or function returns, the <i>trueFalseExpn </i>is evaluated. If it is true, all is well and execution continues. If it is false, execution is terminated with an appropriate message. See <b>assert</b> statements and <b>procedure</b> and <b>function</b> declarations for more details. See also <b>pre</b> and <b>invariant</b> assertions.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This function is supposed to produce an integer approximation of the square root of integer <i>i</i>. The post condition requires that this result, which is called <i>answer</i>, must be within a distance of 1 from the corresponding <b>real</b> number square root.<p>
+<pre><tt>        <b>function</b> <i>intSqrt</i> ( <i>i</i> : <b>int</b>) <i>answer</i> : <b>int</b>
+            <b>pre</b> <i>i</i> &gt;= 0
+            <b>post</b> <i>abs</i> ( <i>answer</i> - <i>sqrt </i>(<i> i </i>) ) &lt;= 1
+            <i>… statements to approximate square root…</i>
+        <b>end</b> <i>intSqrt</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> A <b>post</b> assertion can also be used in a module, monitor, class or process declaration to make sure that the initialization satisfies its requirements. <p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="module.html">module</a></b> and <b><a href="process.html">process</a></b>.<p>
+</table></body>
+</html>

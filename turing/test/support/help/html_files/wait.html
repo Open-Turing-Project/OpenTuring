@@ -1,0 +1,16 @@
+<html>
+<head><title>wait</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>wait</b></font></td><td align="right"><font size="+1"><b>block a process statement</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>waitStatement</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>wait</b> <i>variableReference</i> [ , <i>expn</i> ]</td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>wait</b> statement is used in a concurrent program to cause the executing process to be blocked (to go to sleep) until it is awakened by a <b>signal</b> statement. The statement can only be used inside a monitor (a special kind of module that handles concurrency). A <b>wait</b> statement operates on a <b>condition</b> variable (the <i>variableReference</i>), which is essentially a queue of sleeping processes. See <b>condition</b> for an example of a <b>wait</b> statement.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> A <b>wait</b> statement for a priority condition must include the optional <i>expn</i>,. This expression must be a non-negative <b>int</b> value which is used to order processes waiting for the condition, low numbers first.<p>
+A <b>wait</b> statement for a <b>timeout</b> condition must include the optional <i>expn</i>, which must be a non-negative <b>int</b> value which gives the <i>timeout interval</i>. <i>A </i>process waiting for a timeout condition is implicitly awakened if it waits longer than its timeout interval.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="condition.html">condition</a></b> and <b><a href="signal.html">signal</a></b>. See also <b><a href="monitor.html">monitor</a></b> and <b><a href="fork.html">fork</a></b>. See also <b><a href="empty.html">empty</a></b>. See also <b><a href="pause.html">pause</a></b>.<p>
+</table></body>
+</html>

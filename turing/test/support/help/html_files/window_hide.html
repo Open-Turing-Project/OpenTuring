@@ -1,0 +1,18 @@
+<html>
+<head><title>Window.Hide</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Window.Hide</b></font></td><td align="right">Part of <a href="windowmodule.html">Window</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Window.Hide</b> (<i>windowID</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Window.Hide</b> procedure hides the specified window. This means it disappears from the user's screen. However, it is still possible to select and draw the window while it remains hidden. If the user activates it (using <b>Window.GetActive</b>) it will automatically appear.<p>
+To make a window appear after it's hidden, you use <b>Window.Show.</b><p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> When a window is hidden, output to it is faster. It is quite possible for the you to hide a window, do complicated drawing to it and then make it appear in order to have the program execute faster.<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Window.Hide</b>, not by calling <b>Hide</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="window_select.html">Window.Select</a></b> and <b><a href="window_setactive.html">Window.SetActive</a></b>.<p>
+</table></body>
+</html>

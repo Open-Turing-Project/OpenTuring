@@ -1,0 +1,24 @@
+<html>
+<head><title>type</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>type</b></font></td><td align="right"><font size="+1"><b>declaration</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>typeDeclaration</i> is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(a)</font></td><td colspan="7"><font size="+1"><b>type</b> <i>id</i> : <i>typeSpec</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(b)</font></td><td colspan="7"><font size="+1"><b>type</b> <i>id</i> : <b>forward</b></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A type declaration gives a name to a type. This name can be used in place of the type.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>type</b> <i>nameType</i> : <b>string</b> ( 30 )
+        <b>type</b> <i>range</i> : 0 .. 150
+        <b>type</b> <i>entry</i> :
+            <b>record</b>
+                <i>name </i>: <i>nameType</i>
+                <i>age </i>: <b>int</b>
+            <b>end</b> <b>record</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The keyword <b>pervasive</b> can be inserted just after <b>type</b>. When this is done, the type is visible inside all subconstructs of the type scope. Without <b>pervasive</b>, the type is not visible inside modules, monitors and classes unless explicitly imported. Pervasive types need not be imported. You can abbreviate <b>pervasive</b> as an asterisk (<b>*</b>).<p>
+A <b>forward</b> type allows pointers to be declared to the <b>type</b> before the type is <i>resolved</i>. To resolve a <b>type</b>, you must follow a <b>forward</b> with a declaration of the same name and in the same scope. This type declaration must include a <i>typeSpec</i>.<p>
+</table></body>
+</html>

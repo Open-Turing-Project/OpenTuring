@@ -1,0 +1,26 @@
+<html>
+<head><title>max</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>max</b></font></td><td align="right"><font size="+1"><b>maximum function</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>max</b> ( <i>expn</i> , <i>expn</i> )<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>max</b> function is used to find the maximum of two numbers (the two <i>expn</i>'s). For example, <b>max</b> ( 5, 7 ) is 7. If both numbers are <b>int</b>, the result is <b>int</b>. If both numbers are <b>nat</b> (natural numbers), the result is <b>nat</b>. But if one or both of the numbers are <b>real</b>, the result is <b>real</b>. See also the <b>min</b> function.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program outputs 85.72.<p>
+<pre><tt>        <b>var</b> <i>x</i> : <b>real</b> := 74.61
+        <b>var</b> <i>y</i> : <b>real</b> := 85.72
+        <b>put</b> <b>max</b> ( <i>x</i>, <i>y</i> )        <i>% Outputs 85.72</i></tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program inputs 10 numbers and outputs their maximum.<p>
+<pre><tt>        <b>var</b> <i>m</i>, <i>t</i> : <b>real</b>
+        <b>get</b> <i>m</i>           <i>% Input first number</i>
+        <b>for</b> <i>i</i> : 2 .. 10     <i>% Handle remaining 9 numbers</i>
+            <b>get</b> <i>t</i>
+            <i>m</i> := <b>max</b> ( <i>m</i>, <i>t </i>)
+        <b>end</b> <b>for</b>
+        <b>put</b> "The maximum is ", <i>m</i></tt></pre>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> See also predefined unit <b><a href="mathmodule.html">Math</a></b>.<p>
+</table></body>
+</html>

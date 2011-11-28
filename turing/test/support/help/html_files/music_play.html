@@ -1,0 +1,70 @@
+<html>
+<head><title>Music.Play</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Music.Play</b></font></td><td align="right">Part of <a href="musicmodule.html">Music</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Music.Play</b> ( <i>music</i> : <b>string</b> )<p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>The <b>Music.Play</b> procedure is used to sound musical notes on 
+          the computer.<p>
+	  Sounds are produced synchronously on a per process basis. This means 
+	  that when a process executes a <b>Music.Sound</b> or <b>Music.Play</b> 
+	  command, it stops until the command is finished. However, other 
+	  processes will continue to executing.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program sounds the first three notes of the C scale.<p>
+<pre><tt>        <b>Music.Play</b> ( "cde" )</tt></pre>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program plays from middle C to one octave above 
+          middle C and down again in 8th notes.<p>
+<pre><tt>        <b>Music.Play</b> ( "8cdefgab&gt;c" )
+        <b>Music.Play</b> ( "&lt;bagfedc" )</tt></pre>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+	    <PARAM name="Command" value="TCard">
+	    <PARAM name="Button" value="Text: Launch Example Program">
+	    <PARAM name="Item1" value="-1,Music.Play.t;Music.Play Example">
+	  </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The syntax of the play string may be enhanced in the future.<p>
+	  The <b>Music.Play</b> procedure takes strings containing characters 
+	  that specify notes, rests, sharps, flats and duration. The notes are 
+	  the letters a to g (or A to G). A rest is p (for pause). A sharp is 
+	  <b>+</b> and a flat is <b>-</b>. The durations are 
+	  1&nbsp;(whole&nbsp;note), 2&nbsp;(half&nbsp;note), 
+	  4&nbsp;(quarter&nbsp;note), 8&nbsp;(eight&nbsp;note) and 
+	  6&nbsp;(sixteenth&nbsp;note). The character &gt; raises to the next 
+	  octave and &lt; lowers. For example, this is the way to play C and 
+	  then C sharp one octave above middle C with a rest between them, 
+	  all in sixteenth notes:  <b>Music.Play</b>("&gt;6cpc+"). Blanks can 
+	  be used for readability and are ignored by <b>Music.Play</b>.<p>
+	  The <b>Music.Play</b> procedure requires that the machine have a sound 
+	  card in order to play tones.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+	  This means that you can only call the function by calling 
+	  <b>Music.Play</b>, not by calling <b>Play</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td>the <b><a href="music_sound.html">Music.Sound</a></b> procedure, which makes a 
+          sound of a given frequency (Hertz) and duration (milliseconds).<p>
+    </tr>
+  </table>
+</body>
+</html>

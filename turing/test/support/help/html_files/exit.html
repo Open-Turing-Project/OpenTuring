@@ -1,0 +1,22 @@
+<html>
+<head><title>exit</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>exit</b></font></td><td align="right"><font size="+1"><b>statement</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> An <i>exitStatement</i> is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(a)</font></td><td colspan="7"><font size="+1"><b>exit</b> <b>when</b> trueFalseExpn</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(b)</font></td><td colspan="7"><font size="+1"><b>exit</b></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> An <b>exit</b> statement is used to stop the execution of a <b>loop</b> or <b>for</b> statement. Form (a) is the most common. Here, the true/false expression is evaluated. If it is true, the loop is terminated and execution jumps down and continues just beyond <b>end</b> <b>loop</b> or <b>end</b> <b>for</b>. If it is false, the loop keeps on repeating. Form (b) always causes the loop to terminate. This form is almost always used inside another conditional statement such as <b>if</b>.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Input names until finding Jones.<p>
+<pre><tt>        <b>var</b> <i>name</i> : <b>string</b>
+        <b>loop</b>
+            <b>get</b> <i>name</i>
+            <b>exit</b> <b>when</b> <i>name </i>= "Jones"
+        <b>end</b> <b>loop</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Exit statements must occur only inside <b>loop</b> or <b>for</b> statements. An exit takes you out of the closest surrounding <b>loop</b> or <b>for</b>. The only other ways to terminate a <b>loop</b> or <b>for</b> is by <b>return</b> (in a procedure or in the main program, in which case the entire procedure or main program is terminated) or by <b>result</b> (in a function, in which case the entire function is terminated and a result value must be supplied).<p>
+The form "<b>exit</b> <b>when</b> <i>trueFalseExpn</i>" is equivalent to "<b>if</b> <i>trueFalseExpn </i><b>then</b> <b>exit</b> <b>end</b> <b>if</b>".<p>
+</table></body>
+</html>

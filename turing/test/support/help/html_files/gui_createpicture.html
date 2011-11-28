@@ -1,0 +1,65 @@
+<html>
+<head><title>GUI.CreatePicture</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.CreatePicture</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>GUI.CreatePicture</b> ( <i>x</i>, <i>y</i>, <i>picture</i> : <b>int</b>, <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<i>mergePic</i> : <b>boolean</b> ) : <b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Creates a picture and returns the picture's widget ID. <p>
+The picture widget is used to display a picture. It can be used to display a picture either merged into the background or not.<p>
+The <i>x</i> and <i>y</i> parameters specify the lower-left corner of the picture. The <i>picture</i> parameter specifies the picture ID of the picture. The picture ID is received from a <b>Pic.New</b> or <b>Pic.FileNew</b> call. Do not call <b>Pic.Free</b> for this picture ID until the button has been disposed of by calling <b>GUI.Dispose</b>. The <i>mergePic</i> parameter is a boolean that specifies whether anything that was the background colour in the picture (usually colour 0) should be set to the background colour of the window. <p>
+A picture widget is a passive widget and cannot be enabled or disabled.<p>
+
+<center><img src="gui_createpicture01.gif"></center>
+<center><b>Two Pictures</b></center><p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program draws two pictures, merged and not merged.<p>
+<pre><tt>        <b>import</b> <i>GUI</i> 
+        <b>View.Set</b> ("graphics:230;135,nobuttonbar") 
+        
+        % We'll need to create a picture for our Picture widget. Normally 
+        % an external file (and Pic.FileNew) would be used.
+        <b>Draw.FillOval</b><i> </i>(50, 50, 50, 50, <i>blue</i>)
+        <b>Draw.FillBox </b>(17, 17, 83, 83, <i>brightred</i>)
+        <b>Draw.FillStar </b>(17, 17, 83, 83, <i>brightgreen</i>)
+        <b>Draw.FillMapleLeaf </b>(37, 37, 63, 63, <i>brightpurple</i>)
+        <b>var</b> <i>pic</i> : <b>int</b> := <b>Pic.New</b> (0, 0, 100, 100)
+        <b>var</b> <i>picture1, picture2</i> : <b>int</b>
+        <b>var</b> <i>label1, label2</i> : <b>int</b>
+        
+        <b>GUI.SetBackgroundColor</b><i> </i>(<i>gray</i>)
+        
+        <i>label1</i> := <b>GUI.CreateLabel</b> (15, 5, "Picture (no merge)")
+        <i>picture1</i> := <b>GUI.CreatePicture</b><i> </i>(10, 25, <i>pic</i>, <b>false</b>)
+        
+        <i>label2</i> := <b>GUI.CreateLabel</b><i> </i>(135, 5, "Picture (merge)")
+        <i>picture2</i> := <b>GUI.CreatePicture</b> (120, 25, <i>pic</i>, <b>true</b>)</tt></pre><p>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,GUI.CreatePicture.t;GUI.CreatePicture Example">
+          </OBJECT><p></td>
+    </tr>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> When <b>GUI.CreatePicture</b><i> </i>is called, the newly created picture will be displayed immediately unless <b>GUI.DisplayWhenCreated</b> has been called with the <i>display</i> parameter set to false. <p>
+A picture widget is a passive widget and cannot be enabled or disabled.<p>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The following GUI subprograms can be called with a picture as the <i>widgetID</i> parameter:<p>
+          <table>
+            <tr valign="top">
+              <td width="40">&nbsp;</td>
+              <td><b>GUI.Show</b>, <b>GUI.Hide</b>, <b>GUI.Dispose</b>,
+		  <b>GUI.GetX</b>, <b>GUI.GetY</b>, <b>GUI.GetWidth</b>,
+		  <b>GUI.GetHeight</b>, <b>GUI.SetPosition</b>, 
+		  <b>GUI.SetSize</b>, <b>GUI.SetPositionAndSize</b><p></td>
+	    </tr>
+	  </table><p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>GUI.CreatePicture</b>, not by calling <b>CreatePicture</b>.<p>
+</table></body>
+</html>

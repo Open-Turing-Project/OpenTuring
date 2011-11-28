@@ -1,0 +1,18 @@
+<html>
+<head><title>frealstr</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>frealstr</b></font></td><td align="right"><font size="+1"><b>real-to-string function</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>frealstr</b> ( <i>r</i> : <b>real</b>, <i>width</i>,<i> fractionWidth </i>: <b>int</b> ) : <b>string</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>frealstr</b> function is used to convert a real number to a string. For example, <b>frealstr</b> (2.5e1, 5, 1)="<i>b</i>25.0"  where <i>b</i> represents a blank. The string is an approximation to <i>r</i>, padded on the left with blanks as necessary to a length of <i>width</i>.<p>
+The number of digits of the fraction to be displayed is given by <i>fractionWidth</i>.<p>
+The <i>width</i> must be non-negative. If the <i>width</i> parameter is not large enough to represent the value of <i>r</i>, it is implicitly increased as needed.<p>
+The <i>fractionWidth</i>must be non-negative. The displayed value is rounded to the nearest decimal equivalent with this accuracy. In the case of a tie, the value is rounded to the next larger value. The result string is of the form:<p>
+<pre><tt>                {blank} [-]{digit}. {digit}</tt></pre>
+If the leftmost digit is zero, then it is the only digit to the left of the decimal point.<p>
+The <b>frealstr</b> function approximates the inverse of <b>strreal</b>, although round-off errors keep these from being exact inverses.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> the <b><a href="erealstr.html">erealstr</a></b>, <b><a href="realstr.html">realstr</a></b>, <b><a href="strreal.html">strreal</a></b>, <b><a href="intstr.html">intstr</a></b> and <b><a href="strint.html">strint</a></b> functions.<p>
+</table></body>
+</html>

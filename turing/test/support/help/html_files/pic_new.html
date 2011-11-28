@@ -1,0 +1,61 @@
+<html>
+<head><title>Pic.New</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Pic.New</b></font></td><td align="right">Part of <a href="picmodule.html">Pic</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Pic.New</b> (<i>x1</i>, <i>y1</i>, <i>x2</i>, <i>y2</i> : <b>int</b>) : <b>int</b><p></font>
+    </tr>
+    <tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+      <td><b>Pic.New</b> is used to obtain a picture of a portion of the 
+          screen. The <b>Pic.New</b> procedure allocates the memory for 
+	  the picture, which can be very large for pictures of large areas.
+	  The memory is freed up when the program calls <b>Pic.Free</b> with 
+	  the picture ID. The picture can be used with the <b>Pic.Draw</b> 
+	  and <b>Pic.Save</b>.<p>
+	  The picture is of the screen area defined by the rectangle 
+	  (<i>x1</i>,&nbsp;<i>y1</i>) - (<i>x2</i>,&nbsp;<i>y2</i>).<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>If the <b>Pic.New</b> call fails, then it returns 0. Also 
+          <b>Error.Last</b> will return a non-zero value indicating the 
+	  reason for the failure. <b>Error.LastMsg</b> will return a string 
+	  which contains the textual version of the error.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>The program draws a graphic on the screen and then draws it 50 times.<p>
+<pre><tt>        <b>var </b><i>picID</i>: <b>int</b>
+        <b>var</b> <i>x</i>, <i>y</i> : <b>int</b>
+        <b>Draw.FillBox</b> (50, 50, 150, 150, <i>red</i>)
+        <b>Draw.FillStar</b> (50, 50, 150, 150, <i>green</i>)
+        <b>Draw.FillOval</b> (100, 100, 30, 30, <i>blue</i>)
+        
+        <i>picID</i> := <b>Pic.New</b> (50, 50, 150, 150)
+        <b>for</b> i : 1 .. 50
+            <i>x</i> := <b>Rand.Int</b> (0, <b>maxx</b>)     <i>% Random x</i>
+            <i>y</i> := <b>Rand.Int</b> (0, <b>maxy</b>)     <i>% Random y</i>
+            <b>Pic.Draw</b> (<i>picID</i>, <i>x</i>, <i>y</i>, <i>picCopy</i>)
+        <b>end for</b>
+        <b>Pic.Free</b> (<i>picID</i>)</tt></pre>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+	    <PARAM name="Command" value="TCard">
+	    <PARAM name="Button" value="Text: Launch Example Program">
+	    <PARAM name="Item1" value="-1,Pic.New.t;Pic.New Example">
+	  </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+	  This means that you can only call the function by calling 
+	  <b>Pic.New</b>, not by calling <b>New</b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

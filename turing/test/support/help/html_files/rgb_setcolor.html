@@ -1,0 +1,73 @@
+<html>
+<head><title>RGB.SetColor</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>RGB.SetColor</b></font></td><td align="right">Part of <a href="rgbmodule.html">RGB</a> module</td></table><p>
+  
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>RGB.SetColor</b> (<i>colorNumber</i>: <b>int</b>,<br></font>
+      <table>
+        <tr valign="top">
+          <td width="40">&nbsp;</td>
+          <td colspan="8"><font size="+1"><i>redComp</i>, <i>greenComp</i>, <i>blueComp</i> : <b>real</b>)</td>
+        </tr>
+      </table><p>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>The <b>RGB.SetColor</b> function sets the red, green and blue 
+        components of the color associated with the <i>colorNumber</i> 
+        parameter. The red, green and blue values must normalized to be between 
+        0 and 1. Thus to set the color associated with the <i>colorNumber</i> 
+        parameter to pure red, you would call:<p>
+<pre><tt>        <b>RGB.SetColor</b> (<i>colorNumber</i>, 1.0, 0.0, 0.0)</tt></pre>
+        It is wise to use <b>Error.Last</b> and <b>Error.LastMsg</b> to check 
+        to see if the color change is successful.<p>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program sets all the available colors to shades of red<p>
+<pre><tt>        <b>for</b> <i>clr</i> : 0 .. <b>maxcolor</b>
+            <b> if not RGB.SetColor </b>(<i>clr</i>, <i>clr</i> / <b>maxcolor</b>, 0, 0) <b>then</b>
+                <b>put</b> "Color set failed on color number ", <i>clr</i>
+                <b>exit</b>
+            <b>end if</b>
+        <b>end for</b></tt></pre>
+          <table>
+            <tr valign="top">
+              <td><b>Details</b></td>
+              <td width="10">&nbsp;</td>
+              <td><b>RGB.SetColour</b> is an alternate spelling for 
+                  <b>RGB.SetColor</b>.</td>
+            </tr>
+          </table><p>
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>On monitors set to 8-bit color display (256 colors), the color
+          change will happen almost instantaneously, and only those pixels
+          that have matching color numbers will be changed.  For example, 
+          colors 7 and 255 both represent black.  Changing color 255 to red
+          will not change pixels drawn in color 7.<p>
+          On monitors set to 16, 24, or 32-bit displays (thousands or millions
+          of colors), the color change happens very slowly, and any pixel that
+          matches the color represented by the color number will be changed.
+          For example, setting color 255, which is initially black, to red will
+          change <i>all</i> black pixels in the run window to red.  After this
+          occurs, drawing in color 7 will produce black, while drawing in color
+          255 will produce red.<p>
+          This behaviour is caused by the fact that in 16-bit or higher color, 
+          the pixels on the screen are stored as actual colors, rather than 
+          color numbers and thus the system has no way of distinguising between
+          pixels drawn in different color numbers that produce identical 
+          colors.<p>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+          <b>RGB.SetColor</b>, not by calling <b>SetColor</b>.<p>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="rgb_getcolor.html">RGB.GetColor</a></b>and 
+          <b><a href="rgb_addcolor.html">RGB.AddColor</a></b>.<p>
+  </table>
+</body>
+</html>

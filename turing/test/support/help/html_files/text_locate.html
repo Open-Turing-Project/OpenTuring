@@ -1,0 +1,30 @@
+<html>
+<head><title>Text.Locate</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Text.Locate</b></font></td><td align="right">Part of <a href="textmodule.html">Text</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Text.Locate</b> ( <i>row</i>, <i>column</i> : <b>int</b> )<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Text.Locate</b> procedure is used to<b> </b>move the cursor so that the next output from <b>put</b> will be at the given row and column. Row 1 is the top of the screen and column 1 is the left side of the screen.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program outputs stars of random colors to random locations on the screen. The variable <i>colr </i>is purposely spelled differently from the word <i>color </i>to avoid the procedure of that name (used to set the color of output). The row number is purposely chosen so that it is one less than <b>maxrow</b>. This avoids the scrolling of the screen which occurs when a character is placed in the last column of the last row.<p>
+<pre><tt>        <b>View.Set</b> ("screen")
+        <b>var</b> <i>row</i>, <i>column</i>, <i>colr</i> : <b>int</b>
+        <b>loop</b>
+            <i>row</i> := <b>Rand.Int</b> (1, <b>maxrow</b>)
+            <i>column</i> := <b>Rand.Int</b> (1, <b>maxcol</b>)
+            <i>colr</i> := <b>Rand.Int</b> (0, <b>maxcolor</b>)
+            <b>Text.Color</b> (<i>colr</i>)
+            <b>Text.Locate</b> (<i>row</i>, <i>column </i>)
+            <b>put</b> "*" ..  <i>% Use dot-dot to avoid clearing end of line</i>
+        <b>end loop</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The <b>Text.Locate</b> procedure is used to locate the next output based on row and column positions. See also the <b>Text.LocateXY </b>procedure which is used to locate the output based x and y positions, where x=0, y=0 is the left bottom of the screen.<p>
+The screen should be in a "<i>screen</i>"<i> </i>or "<i>graphics</i>" mode. See the <b>View.Set</b> procedure for details. If the screen is not in one of these modes, it will automatically be set to"<i>screen</i>" mode.<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Text.Locate</b> , not by calling <b>Locate</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="view_set.html">View.Set</a> </b>and <b><a href="draw_dot.html">Draw.Dot</a></b>.<p>
+</table></body>
+</html>

@@ -1,0 +1,40 @@
+<html>
+<head><title>GUI.GetEventWidgetID</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.GetEventWidgetID</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>GUI.GetEventWidgetID</b> : <b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Returns the widget ID of the widget that was activated by the mouse button press or the keystroke. This function should only be called in an <i>action procedure</i>, as it will return 1 when there is no event that activated a widget being processed.<p>
+This function is used when a several buttons use the same action procedure to determine which button was pressed.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program prints a message stating which button was selected.<p>
+<pre><tt>        <b>import</b> <i>GUI</i> <b>in</b> "%oot/lib/GUI" 
+        <b>View.Set</b> ("graphics:150;210") 
+        
+        <b>var</b> <i>buttonNames</i> : <b>array</b> 1 .. 5 <b>of string</b> := <b>init</b> ("Red", "Green",
+            "Blue", "Yellow", "Purple")
+        <b>var</b> <i>buttons</i> : <b>array</b> 1 .. 5 <b>of int</b>
+        
+        procedure <i>ButtonPush</i>
+            <b>for</b> i : 1 .. 5
+                <b>if</b> <b>GUI.GetEventWidgetID</b> = <i>buttons</i> (<i>i</i>) <b>then</b>
+                    <b>Text.Locate</b> (1, 1)
+                    <b>put</b> <i>buttonNames</i> (i), " selected"
+                <b>end if</b>
+            <b>end for</b>
+        <b>end</b> <i>ButtonPush</i>
+        <b>for</b> <i>i</i> : 1 .. 5
+            <i>buttons</i> (i) := <b>GUI.CreateButton</b> (10, 210  40 * <i>i</i>, 110, 
+                <i>buttonNames</i> (<i>i</i>), <i>ButtonPush</i>)
+        <b>end for</b>
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>GUI.GetEventWidgetID</b>, not by calling <b>GetEventWidgetID</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="gui_processevent.html">GUI.ProcessEvent</a></b>.<p>
+</table></body>
+</html>

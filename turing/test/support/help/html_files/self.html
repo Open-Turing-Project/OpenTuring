@@ -1,0 +1,21 @@
+<html>
+<head><title>self</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>self</b></font></td><td align="right"><font size="+1"><b>pointer to current object</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>self</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>self</b> function produces a pointer to the current object. This function can be used only inside a class declaration. See <b>class</b>.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Enter the current object onto a list of displayable objects. The module called <i>displayable</i> has exported a procedure called <i>enter</i> whose parameter type is <b>pointer</b> <b>to</b> <b>anyclass</b>. Since <b>self</b> is a pointer to <i>C</i> and <i>C</i> is a descendant of <b>anyclass</b>, it is legal to pass <b>self</b> to <i>displayable.enter</i>.<p>
+<pre><tt>        <b>class</b> <i>C</i>
+            <b>import</b> <i>displayable</i>
+            <i>…</i>
+            <i>displayable</i>.<i>enter</i> ( <b>self</b> ) …
+            <i>…</i>
+        <b>end</b> <i>C</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> It is illegal to call the exported entries of a class until the current object has been completely initialized, so, many calls to the current object using self will not be legal.<p>
+The notation to call exported subprogram <i>p</i> of an enclosing class <i>C</i> or of its ancestor <i>D</i>, is <i>C.p </i>or <i>D.p</i>. Calls of this form, which can appear only within class <i>C</i>, call the subprogram in <i>C</i> (or in <i>D</i> in the case of <i>D.p</i>) regardless of the object type, or of any overriding, or of the status of initialization.<p>
+</table></body>
+</html>

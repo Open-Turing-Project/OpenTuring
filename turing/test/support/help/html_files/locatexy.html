@@ -1,0 +1,21 @@
+<html>
+<head><title>locatexy</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>locatexy</b></font></td><td align="right"><font size="+1"><b>graphics procedure</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>locatexy</b> ( <i>x</i> , <i>y</i> : <b>int</b> )<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>locatexy</b> procedure is used to move the cursor so that the next output from <b>put</b> will be at approximately (<i>x</i>, <i>y</i>). The exact location may be somewhat to the left of <i>x</i> and below <i>y</i> to force alignment to a character boundary.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program outputs "Hello" starting at approximately (100, 50) on the screen.<p>
+<pre><tt>        <b>setscreen</b> ("graphics")
+        <b>locatexy</b> ( 100, 50 )
+        <b>put</b> "Hello"</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The <b>locatexy</b> procedure is used to locate the next output based on x and y positions, where the position x=0, y=0 is the left bottom of the screen. See also the <b>locate</b> procedure which is used to locate the output-based row and column positions, where row 1 is the top row and column 1 is the left column.<p>
+The screen should be in a "<i>graphics</i>" mode. See the <b>setscreen</b> procedure for details. If the screen is not in a "<i>graphics</i>" mode, it will automatically be set to "<i>graphics</i>" mode.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="setscreen.html">setscreen</a></b> and <b><a href="drawdot.html">drawdot</a></b>.<p>
+See also predefined unit <b><a href="textmodule.html">Text</a></b>.<p>
+</table></body>
+</html>

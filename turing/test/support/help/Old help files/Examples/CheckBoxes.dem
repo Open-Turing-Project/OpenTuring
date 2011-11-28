@@ -1,0 +1,227 @@
+% The "CheckBoxes.dem" program.
+% This demonstrates the Check Box widget along with the GUI routines
+% that use Check Box widgets. [GetEventWidgetID, SetCheckBox, Enable, Disable,
+% Show, Hide, SetPosition, GetCheckBox, Refresh, SetLabel, Quit,
+% CreateCheckBox, CreateCheckBoxFull, ProcessEvent, Dispose]
+
+import GUI % Must be included in a programs using the GPL
+
+View.Set ("graphics:400;300,nobuttonbar") % Shrink the window to the minimum size
+
+% The check box IDs
+var checkbox : array 1 .. 6 of int
+
+% The button IDs
+var fillClearButton, enableDisableButton, showHideButton : int
+var moveButton, statusButton, refreshButton, changeText1Button : int
+var changeText2Button, quitButton : int
+
+% Variables used by the check box routines
+var enable := false % Whether to enable or disable the check box
+var hide := true % Whether to hide or show the check box
+var reverse := true % Whether to reverse the check box positions
+var fill := true % Whether to fill the check box or not
+% The array of names for check box 1
+const checkbox1Names : array 0 .. 4 of string := init ("CheckBox 1", "a",
+    "abcdef", "abcdefghijkl",
+    "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+var text1 := 1 % The array index to change check box 1 to
+% The array of names for check box 4
+const checkbox4Names : array 0 .. 4 of string :=
+    init ("CheckBox 4 (Shortcut: '4')", "a", "abcdef", "abcdefghijkl",
+    "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+var text4 := 1 % The array index to change check box 4 to
+
+% The routines the widgets call when pressed
+% Called when any check box is pressed
+procedure CheckBoxPressed (filled : boolean)
+    locate (1, 1)
+    put "Checkbox " ..
+    for i : 1 .. 6
+	if checkbox (i) = GUI.GetEventWidgetID then
+	    put i ..
+	end if
+    end for
+    if filled then
+	put ": filled                       " ..
+    else
+	put ": empty                        " ..
+    end if
+end CheckBoxPressed
+
+% Called when enable/disable button is pressed
+procedure EnableDisablePressed
+    locate (1, 1)
+    if enable then
+	put "Button 1 Enabled                        " ..
+	GUI.Enable (checkbox (1)) % Enable Check Box 1
+	enable := false
+	GUI.SetLabel (enableDisableButton, "Disable Check Box 1")
+    else
+	put "Button 1 Disabled                       " ..
+	GUI.Disable (checkbox (1)) % Disable Check Box 1
+	enable := true
+	GUI.SetLabel (enableDisableButton, "Enable Check Box 1")
+    end if
+end EnableDisablePressed
+
+% Called when show/hide button is pressed
+procedure ShowHidePressed
+    locate (1, 1)
+    if hide then
+	put "Check Box 1 Hidden                         " ..
+	GUI.Hide (checkbox (1)) % Hide Check Box 1
+	hide := false
+	GUI.SetLabel (showHideButton, "Show Check Box 1")
+    else
+	put "Check Box 1 Shown                          " ..
+	GUI.Show (checkbox (1)) % Show Check Box 1
+	hide := true
+	GUI.SetLabel (showHideButton, "Hide Check Box 1")
+    end if
+end ShowHidePressed
+
+% Called when move button is pressed
+procedure MovePressed
+    locate (1, 1)
+    if reverse then
+	put "Reverse Check Box Positions             " ..
+	% Move the check boxes in this order to avoid overlapping check boxes
+	% during the move.
+	GUI.SetPosition (checkbox (3), 183, maxy - 110)
+	GUI.SetPosition (checkbox (6), 177, maxy - 110)
+	GUI.SetPosition (checkbox (2), 183, maxy - 90)
+	GUI.SetPosition (checkbox (5), 177, maxy - 90)
+	GUI.SetPosition (checkbox (1), 183, maxy - 70)
+	GUI.SetPosition (checkbox (4), 177, maxy - 70)
+	reverse := false
+	GUI.SetLabel (moveButton, "Move Check Boxes Back")
+    else
+	put "Move Check Boxes Back                   " ..
+	% Move Check Boxes Back to Original Positions.
+	% Move the check boxes in this order to avoid overlapping check boxes
+	% during the move.
+	GUI.SetPosition (checkbox (1), 33, maxy - 50)
+	GUI.SetPosition (checkbox (4), maxx - 33, maxy - 50)
+	GUI.SetPosition (checkbox (2), 33, maxy - 70)
+	GUI.SetPosition (checkbox (5), maxx - 33, maxy - 70)
+	GUI.SetPosition (checkbox (3), 33, maxy - 90)
+	GUI.SetPosition (checkbox (6), maxx - 33, maxy - 90)
+	reverse := true
+	GUI.SetLabel (moveButton, "Reverse Check Boxes")
+    end if
+end MovePressed
+
+% Called when refresh button is pressed
+procedure RefreshPressed
+    Draw.FillBox (0, 0, maxx, maxy, GUI.GetBackgroundColour) % Clear the screen
+    GUI.Refresh % Redraw all the widgets on the screen
+end RefreshPressed
+
+% Called when change button 1's text is pressed
+procedure ChangeText1Pressed
+    locate (1, 1)
+    put "Check Box 1 Text Becomes: " + checkbox1Names (text1) +
+	"                                   " ..
+	GUI.SetLabel (checkbox (1), checkbox1Names (text1))
+    text1 := (text1 + 1) mod 5
+end ChangeText1Pressed
+
+% Called when change button 2's text is pressed
+procedure ChangeText2Pressed
+    locate (1, 1)
+    put "Check Box 4 Text Becomes: " + checkbox4Names (text4) +
+	"                                   " ..
+    GUI.SetLabel (checkbox (4), checkbox4Names (text4))
+    text4 := (text4 + 1) mod 5
+end ChangeText2Pressed
+
+% Called when fill/clear button is pressed
+procedure FillClearPressed
+    locate (1, 1)
+    if fill then
+	put "Check Box 1 Filled                      " ..
+	GUI.SetLabel (fillClearButton, "Clear Check Box 1")
+    else
+	put "Check Box 1 Cleared                     " ..
+	GUI.SetLabel (fillClearButton, "Fill Check Box 1")
+    end if
+    GUI.SetCheckBox (checkbox (1), fill) % Set Check Box 1 Filled Status
+    fill := not fill
+end FillClearPressed
+
+% Called when get status button is pressed
+procedure GetStatusPressed
+    locate (1, 1)
+    for i : 1 .. 6
+	put i, ":" ..
+	if GUI.GetCheckBox (checkbox (i)) then
+	    put "X  " ..
+	else
+	    put "O  " ..
+	end if
+    end for
+end GetStatusPressed
+
+% Called when quit button is pressed.
+procedure QuitPressed
+    GUI.Quit
+end QuitPressed
+
+% The main program
+% Create the check boxes
+checkbox (1) := GUI.CreateCheckBox (33, maxy - 50, "CheckBox 1",
+    CheckBoxPressed)
+checkbox (2) := GUI.CreateCheckBox (33, maxy - 70, "CheckBox 2",
+    CheckBoxPressed)
+checkbox (3) := GUI.CreateCheckBox (33, maxy - 90, "CheckBox 3",
+    CheckBoxPressed)
+checkbox (4) := GUI.CreateCheckBoxFull (maxx - 33, maxy - 50,
+    "CheckBox 4 (Shortcut: '4')", CheckBoxPressed, GUI.RIGHT, '4')
+checkbox (5) := GUI.CreateCheckBoxFull (maxx - 33, maxy - 70,
+    "CheckBox 5 (Shortcut: '5')", CheckBoxPressed, GUI.RIGHT, '5')
+checkbox (6) := GUI.CreateCheckBoxFull (maxx - 33, maxy - 90,
+    "CheckBox 6 (Shortcut: '6')", CheckBoxPressed, GUI.RIGHT, '6')
+
+% Create the dividing line
+var line := GUI.CreateLine (0, maxy - 135, maxx, maxy - 135, 0)
+
+% Create the buttons
+enableDisableButton := GUI.CreateButton (33, maxy - 170, 150,
+    "Disable Check Box 1", EnableDisablePressed)
+showHideButton := GUI.CreateButton (216, maxy - 170, 150, "Hide Check Box 1",
+    ShowHidePressed)
+moveButton := GUI.CreateButton (33, maxy - 200, 150,
+    "Reverse Check Boxes", MovePressed)
+refreshButton := GUI.CreateButton (216, maxy - 200, 150, "Refresh",
+    RefreshPressed)
+changeText1Button := GUI.CreateButton (33, maxy - 230, 150,
+    "Change Button 1 Text", ChangeText1Pressed)
+changeText2Button := GUI.CreateButton (216, maxy - 230, 150,
+    "Change Button 2 Text", ChangeText2Pressed)
+fillClearButton := GUI.CreateButton (33, maxy - 260, 150, "Fill Check Box 1",
+    FillClearPressed)
+statusButton := GUI.CreateButton (216, maxy - 260, 150,
+    "Display Check Box Status", GetStatusPressed)
+quitButton := GUI.CreateButton (125, maxy - 290, 150, "Quit", QuitPressed)
+
+% Process events, exit loop when GUI.QUIT called
+loop
+    exit when GUI.ProcessEvent
+end loop
+
+% Do the clean up.  Dispose of all but the check boxes
+GUI.Dispose (enableDisableButton)
+GUI.Dispose (showHideButton)
+GUI.Dispose (moveButton)
+GUI.Dispose (refreshButton)
+GUI.Dispose (changeText1Button)
+GUI.Dispose (changeText2Button)
+GUI.Dispose (fillClearButton)
+GUI.Dispose (statusButton)
+GUI.Dispose (quitButton)
+
+% Create a label to indicate we're finished
+var quitMessage := GUI.CreateLabelFull (0, 0, "Execution Terminated",
+    maxx, maxy - 135, GUI.CENTER + GUI.MIDDLE, 0)
+

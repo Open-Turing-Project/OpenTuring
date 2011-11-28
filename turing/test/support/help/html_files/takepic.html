@@ -1,0 +1,81 @@
+<html>
+<head><title>takepic</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>takepic</b></font></td><td align="right"><font size="+1"><b>graphics procedure</b></font></td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><b>takepic</b> (<i>x1</i>, <i>y1</i>, <i>x2</i>, <i>y2</i> : <b>int</b>, <b>var</b> <i>buffer</i> : <b>array</b> 1 .. * <b>of</b> <b>int</b>)<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>The <b>takepic</b> procedure is used to record the pixel values in a 
+          rectangle, with left bottom and right corners of (<i>x1</i>, 
+          <i>y1</i>) and (<i>x2</i>, <i>y2</i>), in the buffer array. This 
+          requires a sufficiently-large buffer (see <b>sizepic</b> ). 
+          The <b>drawpic</b> procedure is used to make copies of the recorded 
+          rectangle on the screen.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>After drawing a happy face, this program copies the face to a new 
+          location.<p>
+	  <center><img src="takepic01.gif"></center>
+    </tr>
+<pre><tt>        <b>setscreen</b> ("graphics")
+        <i>… draw happy face in the box (0</i>,<i>0) to (100</i>,<i>100) …</i>
+        <i>% Create buffer big enough to hold happy face</i>
+        <b>var</b> <i>face</i> : <b>array</b> 1 .. <b>sizepic</b> ( 0, 0, 100, 100 ) <b>of</b> <b>int</b>
+        <i>% Copy picture into the buffer</i>,<i> which is the face array</i>
+        <b>takepic</b> ( 0, 0, 100, 100, <i>face</i> )
+        <i>% Redraw the picture with its left bottom at (200</i>,<i>0)</i>
+        <b>drawpic</b> ( 200, 0, <i>face</i>, 0 )</tt></pre>
+    </tr>
+    <tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+        <PARAM name="Command" value="TCard">
+        <PARAM name="Button" value="Text: Launch Example Program">
+        <PARAM name="Item1" value="-1,takepic.t;takepic/drawpic/sizepic Example">
+      </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The integer values that <b>takepic</b> places in the buffer can be 
+          read or written (using the <b>read</b> and <b>write</b> statements). 
+          Unfortunately, if a value happens to be the pattern used to represent 
+          the uninitialized value (the largest negative number the hardware can 
+          represent) assignment (by:=) and <b>put</b> of the individual integer 
+          values in the buffer will fail.<p>
+          The screen should be in a "<i>graphics</i>" mode. See the 
+          <b>setscreen</b> procedure for details. If the screen is not in a 
+          "<i>graphics</i>" mode, it will automatically be set to 
+          "<i>graphics</i>" mode.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The <b>drawpic</b>, <b>takepic</b>, and <b>sizepic</b> subprograms
+          have been made obsolete by the subprograms 
+          <b><a href="pic_draw.html">Pic.Draw</a></b> and
+          <b><a href="pic_new.html">Pic.New</a></b> of the 
+          <b><a href="picmodule.html">Pic</a></b> module.  Users are 
+          strongly suggested to use those routines instead. The 
+          <b><a href="picmodule.html">Pic</a></b> module also contains 
+          subprograms to load images from files.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="sizepic.html">sizepic</a></b> and 
+          <b><a href="drawpic.html">drawpic</a></b>. See also 
+          <b><a href="setscreen.html">setscreen</a></b>, 
+          <b><a href="maxx.html">maxx</a></b>, 
+          <b><a href="maxy.html">maxy</a></b>, 
+          <b><a href="drawdot.html">drawdot</a></b>, 
+          <b><a href="drawline.html">drawline</a></b>, 
+          <b><a href="drawbox.html">drawbox</a></b>, and 
+          <b><a href="drawoval.html">drawoval</a></b>.<p>
+          See also predefined unit <b><a href="picmodule.html">Pic</a></b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

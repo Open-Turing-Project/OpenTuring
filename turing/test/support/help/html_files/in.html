@@ -1,0 +1,22 @@
+<html>
+<head><title>in</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>in</b></font></td><td align="right"><font size="+1"><b>member of a set</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>in</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>in</b> operator determines if an element is in a set.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>type</b> <i>rankSet </i>: <b>set</b> <b>of</b> 0 .. 10
+        <b>var</b> <i>rankings</i> : <i>rankSet</i> := <i>rankSet</i> ( 0 )  <i>% The set</i> {0}
+        …
+        <b>if</b> 5 <b>in</b> <i>rankings</i> <b>then</b> …     <i>% Is 5 in the rankings set?</i></tt></pre>
+<tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>not</b> <b>in</b> operator is exactly the opposite of <b>in</b>. For example, 7 <b>not</b> <b>in</b> <i>rankings</i> means the same as <b>not</b> (7 <b>in</b> <i>rankings</i>).<p>
+The element is required to be in the set's index type. In the above example this is satisfied because element 5 is in the index type 0 .. 10.<p>
+The keyword <b>in</b> is also used in lists such as <b>import</b> lists. See <b>import</b> list.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> the <b><a href="set.html">set</a></b> type, <i><a href="infix.html">infix</a> operators</i>, and <i><a href="precedence.html">precedence</a> </i>of operators.<p>
+</table></body>
+</html>

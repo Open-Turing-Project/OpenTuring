@@ -1,0 +1,56 @@
+<html>
+<head><title>GUI.SetTopLine</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.SetTopLine</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>GUI.SetTopLine</b> (<i>widgetID</i> : <b>int</b>, <i>lineNum</i> : <b>int</b>)<p></font>
+    </tr>
+    <tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+      <td>The <b>GUI.SetTopLine</b> procedure scrolls the text in a 
+          text box so as to place the line number specified by
+	  <i>lineNum</i> at the top of the text box (if possible).
+	  This is often used to scroll the text back to the beginning
+	  of the text box by assigning a value of 1 to <i>lineNum</i>.
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program displays 100 lines of text in a text box, then
+          sets the text box to display line 50 at the top of the box.<p>
+<pre><tt>        <b>import</b> <i>GUI</i>
+
+        <b>var</b> <i>textBox</i> : <b>int</b>     % The Text Field ID.
+        <i>textBox</i> := <b>GUI.CreateTextBoxFull</b> (10, 10, 180, 275,
+            <b>GUI.INDENT</b>, 0)
+
+        <b>GUI.SetBackgroundColor</b> (gray</b>)
+
+        % Read the file and place it in the text box.
+        <b>for</b> i : 1 .. 100
+            <b>GUI.AddLine</b> (<i>textBox</i>, <b>intstr</b> (i))
+        <b>end for</b>
+        <b>GUI.SetTopLine</b> (<i>textBox</i>, 50)
+
+        <b>loop</b>
+            <b>exit when GUI.ProcessEvent</b>
+        <b>end loop</b></tt></pre>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,GUI.SetTopLine.t;GUI.SetTopLine Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+	  <b>GUI.SetTopLine</b>, not by calling <b>SetTopLine</b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

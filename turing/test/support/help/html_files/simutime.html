@@ -1,0 +1,31 @@
+<html>
+<head><title>simutime</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>simutime</b></font></td><td align="right"><font size="+1"><b>simulated time function</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>simutime</b> : <b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>simutime</b> function returns the number of simulated time units that have passed since program execution began.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Simulated time only passes when all process are either paused or waiting. This simulates the fact that CPU time is effectively infinitely fast when compared to "pause" time.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This prints out the simulated time passing between two processes. This will print out <i>3</i>,<i> 5</i>,<i> 6</i>,<i> 9</i>,<i> 10</i>,<i> 12</i>,<i> 15</i>,<i> 15</i>,<i> 18</i>,<i> 20</i>,<i> 21</i>,<i> …</i><p>
+<pre><tt>        <b>process</b><i> p</i> (<i>t</i> : <b>int</b>)
+            <b>loop</b>
+                <b>pause</b> <i>t</i>
+                <b>put</b> <b>simutime</b>
+            <b>end</b> <b>loop</b>
+        <b>end</b> <i>p</i>
+        
+        <b>fork</b> <i>p</i> (3)
+        <b>fork</b> <i>p</i> (5)</tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,simutime.t;simutime Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> See also predefined unit <b><a href="concurrencymodule.html">Concurrency</a></b>.<p>
+</table></body>
+</html>

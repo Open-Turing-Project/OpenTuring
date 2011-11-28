@@ -1,0 +1,26 @@
+<html>
+<head><title>min</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>min</b></font></td><td align="right"><font size="+1"><b>minimum function</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>min</b> ( <i>expn</i> , <i>expn</i> )<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>min</b> function is used to find the minimum of two numbers (the two <i>expn</i>'s). For example, <b>min</b> ( 5, 7 ) is 5. If both numbers are <b>int</b>, the result is <b>int</b>. If both numbers are <b>nat</b> (natural numbers), the result is <b>nat</b>. But if one or both of the numbers are <b>real</b>, the result is <b>real</b>. See also the <b>max</b> function.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program outputs 74.61.<p>
+<pre><tt>        <b>var</b> <i>x</i> : <b>real</b> := 74.61
+        <b>var</b> <i>y</i> : <b>real</b> := 85.72
+        <b>put</b> min ( <i>x</i>, <i>y</i> )            <i>% Outputs 74.61</i></tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program inputs 10 numbers and outputs their minimum.<p>
+<pre><tt>        <b>var</b> <i>m</i>, <i>t</i> : <b>real</b>
+        <b>get</b> <i>m</i>               <i>% Input first number</i>
+        <b>for</b> <i>i</i> : 2 .. 10         <i>% Handle remaining 9 numbers</i>
+            <b>get</b> <i>t</i>
+            <i>m</i> := <b>min</b> ( <i>m</i>, <i>t </i>)
+        <b>end</b> <b>for</b>
+        <b>put</b> "The minimum is ", <i>m</i></tt></pre>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> See also predefined unit <b><a href="mathmodule.html">Math</a></b>.<p>
+</table></body>
+</html>

@@ -1,0 +1,82 @@
+<html>
+<head><title>View.WhatDotColor</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>View.WhatDotColor</b></font></td><td align="right">Part of <a href="viewmodule.html">View</a> module</td></table><p>
+  
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>View.W</b><b>hatDotColor</b> ( <i>x</i>, <i>y</i> : <b>int</b> ) : <b>int</b><p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>The <b>View.WhatDotColor</b> function is used to determine the color 
+          number of the specified pixel. The alternate spelling is 
+	  <b>View.WhatDotColour</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program draws a line which bounces off the edges of the screen and makes a beep when it finds a pixel that has already been colored.<p>
+<pre><tt>        <b>View.Set</b> ( "graphics" )
+        <b>var</b> <i>x</i>, <i>y</i> : <b>int</b> := 0
+        <b>var</b> <i>dx</i>, <i>dx</i> : <b>int</b> := 1
+        <b>loop</b>
+            <b>if</b> <b>View.WhatDotColor</b> ( <i>x</i>, <i>y</i> ) <b>not</b>= 0 <b>and</b>
+	            <b>View.WhatDotColor</b> ( <i>x</i>, <i>y</i> ) <b>not</b>= <b>brightred</b> <b>then</b>
+                <b>Draw.FillOval</b> (<i>x</i>, <i>y</i>, 10, 10, <b>brightred</b>)
+            <b>end if</b>
+            <b>Draw.Dot</b> ( <i>x</i>, <i>y</i>, 1 )
+            <i>x</i> := <i>x</i> + <i>dx</i>
+            <i>y</i> := <i>y</i> + <i>dy</i>
+            <b>if</b> <i>x</i> = 0 <b>or</b> <i>x</i> = <b>maxx</b> <b>then</b>
+                <i>dx</i> := -<i>dx</i>
+            <b>end</b> <b>if</b>
+            <b>if</b> y = 0 <b>or</b> y = <b>maxy</b> <b>then</b>
+                <i>dy</i> := -<i>dy</i>
+            <b>end</b> <b>if</b>
+        <b>end loop</b></tt></pre>
+    </tr>
+    <tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+	    <PARAM name="Button" value="Text: Launch Example Program">
+	    <PARAM name="Item1" value="-1,View.WhatDotColor.t;View.WhatDotColor Example">
+	  </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>Another example illustrates the use of <b>View.WhatDotColor</b> to 
+          determine the color of pixels in a window painted with multi-color
+	  blocks. The actual color number appears in the block. The color
+	  of the dot under the mouse cursor appears in the upper-left
+	  corner of the window.  Note that you can also place the mouse
+	  cursor over the black text indicating the color number.<p>
+          <OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+	    <PARAM name="Button" value="Text: Launch Example Program">
+	    <PARAM name="Item1" value="-1,View.WhatDotColor2.t;View.WhatDotColor Example">
+	  </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The screen should be in a"<i>graphics</i>" mode. If is not set to 
+          "<i>graphics</i>"<i>  </i>mode,  it will automatically be set to 
+	  "<i>graphics</i>" mode. See <b>View.Set </b>for details.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+	  This means that you can only call the function by calling 
+	  <b>View.WhatDotColor</b>, not by calling <b>WhatDotColor</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="draw_dot.html">Draw.Dot</a></b>, which is used for setting 
+          the color of a pixel. See also <b><a href="maxx.html">maxx</a></b> and 
+	  <b><a href="maxy.html">maxy</a></b>, which are used to determine the 
+	  number of pixels on the screen.<p>
+    </tr>
+  </table>
+</body>
+</html>

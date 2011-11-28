@@ -1,0 +1,26 @@
+<html>
+<head><title>sind</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>sind</b></font></td><td align="right"><font size="+1"><b>sine function (degrees)</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>sind</b> ( <i>r</i> : <b>real</b> ) : <b>real</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>sind</b> function is used to find the sine of an angle given in degrees. For example, <b>sind</b> (0) is 0.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program prints out the sine of 30, 60, 90, up to 360 degrees.<p>
+<pre><tt>        <b>for</b> <i>i</i> : 1 .. 12
+            <b>const</b> <i>angle</i> := <i>i</i> * 30
+            <b>put</b> "<i>Sin of </i>", <i>angle</i>, "<i> is </i>", <b>sind</b> ( <i>angle</i> )
+        <b>end</b> <b>for</b></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,sind.t;sind Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td>the <b><a href="cosd.html">cosd</a></b> and <b><a href="tand.html">tand</a></b> functions for calculating cosine and tangent.<p>
+the <b><a href="sin.html">sin</a></b> function which finds the sine of an angle given in radians. (2<font face="symbol">p</font> radians are the same as 360 degrees.)<p>
+See also predefined unit <b><a href="mathmodule.html">Math</a></b>.<p>
+</table></body>
+</html>

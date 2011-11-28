@@ -1,0 +1,117 @@
+<html>
+<head><title>View.Update</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>View.Update</b></font></td><td align="right">Part of <a href="viewmodule.html">View</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>View.Update</b><p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>The <b>View.Update</b> procedure updates a Run window from an 
+          offscreen bitmap. It is used with the command 
+          <b>View.Set</b>&nbsp;("offscreenonly") which prevents the Run window from 
+          being updated until the <b>View.Update</b> command is given.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program displays 30 circles bouncing around the screen. To see
+          the effect without <b>View.Update</b>, comment out the line
+          <b>View.Set</b>&nbsp;("offscreenonly")<p>
+<pre><tt>        <i>% Place some circles around the screen</i>
+        <b>const</b> <i>RADIUS</i> : <b>int</b> := 30
+        <b>const</b> <i>NUM_BALLS</i> : <b>int</b> := 20
+        <b>var</b> <i>x</i>, <i>y</i>, <i>dx</i>, <i>dy</i>, <i>clr</i> : <b>array</b> 1 .. NUM_BALLS <b>of int</b>
+        <b>for</b> <i>i</i> : 1 .. <i>NUM_BALLS</i>
+            <i>x</i> (<i>i</i>) := <b>Rand.Int</b> (<i>RADIUS</i>, <i>maxx</i> - <i>RADIUS</i>)
+            <i>y</i> (<i>i</i>) := <b>Rand.Int</b> (<i>RADIUS</i>, <i>maxy</i> - <i>RADIUS</i>)
+            <i>dx</i> (<i>i</i>) :=<b> Rand.Int</b> (-3, 3)
+            <i>dy</i> (<i>i</i>) := <b>Rand.Int</b> (-3, 3)
+            <i>clr</i> (<i>i</i>) := <b>Rand.Int</b> (1, 15)
+        <b>end for</b>
+        
+        <i>% Now, any drawing to the screen won't appear until a</i> 
+        <i>% View.Update is given.</i>
+        <b>View.Set</b> ("offscreenonly")
+        <b>loop</b>
+            <b>cls </b><i>% Clear the offscreen window</i>
+            <b>for</b> i : 1 .. <i>NUM_BALLS</i>
+                <b>if</b> <i>x</i> (<i>i</i>) + <i>dx</i> (<i>i</i>) &lt; <i>RADIUS</i> <b>or</b> 
+                        <i>x</i> (<i>i</i>) + <i>dx</i> (<i>i</i>) &gt; <i>maxx</i> - <i>RADIUS</i> <b>then</b>
+                    <i>dx</i> (<i>i</i>) := -<i>dx</i> (<i>i</i>)
+                <b>end if</b>
+                <b>if</b> <i>y</i> (<i>i</i>) + <i>dy</i> (<i>i</i>) &lt; <i>RADIUS</i> <b>or</b> 
+                        <i>y</i> (<i>i</i>) + <i>dy</i> (<i>i</i>) &gt; <i>maxy</i> - <i>RADIUS</i> <b>then</b>
+                    <i>dy</i> (<i>i</i>) := -<i>dy</i> (<i>i</i>)
+                <b>end if</b>
+                <i>x</i> (<i>i</i>) := <i>x</i> (<i>i</i>) + <i>dx</i> (<i>i</i>)
+                <i>y</i> (<i>i</i>) := <i>y</i> (<i>i</i>) + <i>dy</i> (<i>i</i>)
+                <b>Draw.FillOval</b> (<i>x</i> (<i>i</i>), <i>y</i> (<i>i</i>), <i>RADIUS</i>, <i>RADIUS</i>, <i>clr</i> (<i>i</i>))
+            <b>end for</b>
+            <i>% All the circles have been drawn.  Now update the screen.</i>
+            <b>View.Update</b>
+            <b>Time.Delay</b> (5)
+        <b>end loop</b></tt></pre>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,View.Update.t;View.Update Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>All Turing Run windows have both an onscreen visible window and an 
+          offscreen window. Whenever any output is sent to the screen, both 
+          the onscreen window and the offscreen window are updated. When the 
+          Run window needs to be updated (for example when another window is 
+          moved over top of it and then removed), Turing copies the offscreen 
+          window onto the onscreen window.<p>
+          When the <b>View.Set</b>&nbsp;("offscreenonly") command is given, Turing 
+          no longer draws to the onscreen window when any drawing command is 
+          given. However, it does update the offscreen window. When the 
+          <b>View.Update</b> command is given, the entire offscreen window 
+          is copied to the onscreen window.<p>
+          This can be used to provide smooth, flicker-free animation. Animated 
+          objects flicker when the object being animated disappears from the 
+          onscreen window for a period of time. By using 
+          <b>View.Set</b>&nbsp;("offscreenonly") / <b>View.Update</b>, the onscreen 
+          window is never blank. Instead, the offscreen window drawn over top 
+          off the on screen window, replacing it. This means that the on-screen
+          window is never blanked out, eliminating the flickering found in 
+          the animation.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>It's very easy to forget that no output will appear in the Run window 
+          when using <b>View.Update</b>. Remember to use 
+          <b>View.Set</b>("nooffscreenonly") to turn off this feature sending 
+          output for debugging purposes.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td><b>View.Update</b> should not be used in conjunction with the 
+          <b>Sprite </b>module. Sprites can be considered a limited version 
+          of this technique. <b>View.Update</b> also works well when the entire 
+          background is changing.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+          <b>View.Update</b>, not by calling <b>Update</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="view_set.html">View.Set</a></b> for the "offscreenonly" 
+          and "nooffscreenonly" options.<p>
+          <b><a href="view_updatearea.html">View.UpdateArea</a></b> for updating
+          part of the window at a time.
+    </tr>
+  </table>
+</body>
+</html>

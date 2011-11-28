@@ -1,0 +1,16 @@
+<html>
+<head><title>explicitRealConstant</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>explicitRealConstant</b></font></td><td align="right"><font size="+1"><b>real literal</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> An <i>explicitRealConstant</i> consists of an optional plus or minus sign, a <i>significant digits part</i>, and an <i>exponent part</i>.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> In the following, the explicit real constants are 0.0 and 2.93e3.<p>
+<pre><tt>        <b>var</b> <i>temperature</i> : <b>real</b> :=<i> </i>0.0
+        <b>const</b> <i>speed</i> := 2.93e3       <i>% Value is </i>2,930.0</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The significant digits part (or <i>fractional part</i>) of an explicit real constant consists of a sequence of one or more digits (0 to 9) optionally containing a decimal point (a period). The decimal point is allowed to follow the last digit as in 16. or to precede the first digit, as in .25.<p>
+The exponent part consists of the letter <i>e </i>or <i>E</i> followed optionally by a plus or minus sign followed by one or more digits. For example, in -9.837e-3 the exponent part is e-3. The value of -9.837e-3 is -9.837 times 0.001.<p>
+If the significant figures part contains a decimal point, then the exponent part is not required.<p>
+</table></body>
+</html>

@@ -1,0 +1,35 @@
+<html>
+<head><title>Window.Close</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Window.Close</b></font></td><td align="right">Part of <a href="windowmodule.html">Window</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Window.Close </b>(<i>windowID</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Window.Close </b> procedure closes the window specified by the <i>windowID</i> parameter.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program opens a window, makes it active and then closes the window after getting a keystroke from the user.<p>
+<pre><tt>        % Open the window
+        <b>var</b> <i>winID</i> : <b>int</b>
+        <i>winID</i> := <b>Window</b>.<b>Open</b> ("position:300;300,graphics:200;200")
+        
+        % Draw the random ovals in the box
+        <b>var</b> x, y, clr : <b>int</b>
+        <b>for</b> : 1 .. 20
+            <i>x</i> := <b>Rand.Int</b> (0, <b>maxx</b>)     <i>% Random x</i>
+            <i>y</i> := <b>Rand.Int</b> (0, <b>maxy</b>)     <i>% Random y</i>
+            <i>clr</i> := <b>Rand.Int</b> (0, <b>maxcolor</b>)   <i>% Random color</i>
+            <b>Draw.FillOval</b> (<i>x</i>, <i>y</i>, 30, 30, <i>clr</i>)
+        <b>end for</b>
+        
+        <b>var </b><i>ch</i> : <b>char</b> := <b>getchar            </b><i>% Wait for input</i>
+        
+        <b>Window.Close</b> (<i>winID</i>)            <i>% Close the window</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> If a window is selected (i.e. output is going to that window) when it is closed, the main <b>Run</b> window becomes the selected window.<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Window.Close</b>, not by calling <b>Close</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="window_open.html">Window.Open</a></b> and <b><a href="window_select.html">Window.Select</a></b>.<p>
+</table></body>
+</html>

@@ -1,0 +1,75 @@
+<html>
+<head><title>buttonwait</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>buttonwait</b></font></td><td align="right"><font size="+1"><b>get a mouse event procedure</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>buttonwait</b> (<i>motion</i> : <b>string</b>, <br>
+</font><table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>var</b> <i>x</i>, <i>y</i>, <i>buttonnumber</i>, <i>buttonupdown</i> : <b>int</b>)</td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>buttonwait</b> procedure gets information about a mouse event and removes it from the queue.<p>
+The parameter <i>motion</i> must be one of "up", "down", "updown" or "downup". If an event of the type requested is in the queue, <b>buttonwait</b> returns instantly. If there isn't such an event, <b>buttonwait</b> waits until there is one and then returns (much like <b>getch</b> handles keystrokes).<p>
+In "<i>single-button mode</i>" (where the mouse is treated like a one-button mouse), a "down" event occurs whenever all the buttons are up and a button is pressed. An "up" event takes place when the last button is released so that no buttons remain pressed.<p>
+In "<i>multi-button mode</i>", a "down" event occurs whenever any button is pressed, and an "up" event occurs whenever any button is released.<p>
+The parameters <i>x</i> and <i>y</i> are set to the position of the mouse cursor when the button was pressed. The parameter <i>buttonnumber</i> is set to 1 when in "<i>single-button mode</i>". In  "<i>multi-button mode</i>", it is set to 1 if the left button was pressed, 2 if the middle button was pressed, and 3 if the right button was pressed. The parameter <i>buttonupdown</i> is set to 1, if a button was pressed and 0 if a button was released. <p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program draws lines. It starts a line where the user presses down and continues to update the line while the mouse button is held down. When the button is released, the line is permanently draw and the user can draw another line.<p>
+<pre><tt>        <b>var</b><i> x</i>, <i>y</i>, <i>buttonnumber</i>, <i>buttonupdown</i>, <i>buttons</i> : <b>int</b>
+        <b>var</b> <i>nx</i>, <i>ny</i> : <b>int</b>
+        <b>loop</b>
+            <b>buttonwait</b> ("down", <i>x</i>, <i>y</i>, <i>buttonnumber</i>, <i>buttonupdown</i>)
+            <i>nx</i> := x
+            <i>ny</i> := <i>y</i>
+            <b>loop</b>
+                <b>drawline</b> (<i>x</i>, <i>y</i>, <i>nx</i>, <i>ny</i>, 0)  <i>% Erase previous line</i>
+                <b>exit</b> <b>when</b> <b>buttonmoved</b> ("up")
+                <b>mousewhere</b> (<i>nx</i>, <i>ny</i>, <i>buttons</i>)
+                <b>drawline</b> (<i>x</i>, <i>y</i>, <i>nx</i>, <i>ny</i>, 1)  <i>% Draw line to position</i>
+            <b>end</b> <b>loop</b>
+            <b>buttonwait</b> ("up", <i>nx</i>, <i>ny</i>, <i>buttonnumber</i>, <i>buttonupdown</i>)
+            <b>drawline</b> (<i>x</i>, <i>y</i>, <i>nx</i>, <i>ny</i>, 2)  <i>% Draw line to final position</i>
+        <b>end</b> <b>loop</b></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,buttonwait.t;buttonwait Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td>In the previous example, when the mouse moves, the line is erased by drawing it in white. This erases anything that
+the line was drawn on top of, including previous lines. A more complete example involving the clicking and dragging 
+of filled rectangles using the mouse is available. In this example, the background is fully restored when the 
+rectangle is moved by using "xor".<p>
+<OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Mouse Dragging Example">
+  <PARAM name="Item1" value="-1,MouseDrag.t;Click and Drag Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This is an example demonstrating how to check for both character and mouse input at the same time.<p>
+<pre><tt>        <b>var</b> <i>ch</i> : <b>string</b> (1)
+        <b>var</b> <i>x</i>, <i>y</i>, <i>btnnum</i>, <i>btnupdown</i> : <b>int</b>
+        <b>loop</b>
+            <b>if</b> <b>hasch</b> <b>then</b>
+                <b>getch</b> (<i>ch</i>)
+                <b>locate</b> (1, 1)
+                <b>put</b> "The character entered is a: ", <i>ch</i>
+            <b>end</b> <b>if</b>
+            <b>if</b> <b>buttonmoved</b> ("down") <b>then</b>
+                <b>buttonwait</b> ("down", <i>x</i>, <i>y</i>, <i>btnnum</i>, <i>btnupdown</i>)
+                <b>locate</b> (1, 1)
+                <b>put</b> "The button was clicked at position: ", <i>x</i>, ", ",<i>y</i>
+            <b>end</b> <b>if</b>
+        <b>end</b> <b>loop</b></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,KeyboardAndMouse.t;Keyboard and Mouse Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> <b>buttonwait </b>can be thought of as the mouse equivalent of <b>getch</b> in that they both read something in a queue and both wait until they get the thing they're looking for.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="buttonwait.html">buttonwait</a></b> to see if an appropriate event is in the queue. See also <b><a href="buttonchoose.html">buttonchoose</a></b> to switch between "<i>single-button mode</i>" and "<i>multi-button mode</i>".<p>
+See also predefined unit <b><a href="mousemodule.html">Mouse</a></b>.<p>
+</table></body>
+</html>

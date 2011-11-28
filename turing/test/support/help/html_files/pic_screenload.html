@@ -1,0 +1,33 @@
+<html>
+<head><title>Pic.ScreenLoad</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Pic.ScreenLoad</b></font></td><td align="right">Part of <a href="picmodule.html">Pic</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Pic.ScreenLoad</b> (<i>fileName</i> : <b>string</b>, <i>x</i>, <i>y</i>, <i>mode</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> <b>Pic.ScreenLoad </b>displays a picture from a file straight to the screen.<p>
+The <i>fileName</i>parameter must give the format of the file:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>JPG files</td><td width="10">&nbsp;</td><td>"JPG:filename" or "filename.JPG"</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>BMP files</td><td width="10">&nbsp;</td><td>"BMP:filename" or "filename.BMP"</td></tr>
+</table><p>
+The <i>x</i> and <i>y</i> parameters set the lower left hand corner of the picture.<p>
+The <i>mode</i> parameter has one of the following values:<p>
+<table><tr valign="top"><td><i>picCopy</i></td><td width="10">&nbsp;</td><td>This draws the picture on top of what was underneath, obscuring it completely.</td></tr>
+<tr valign="top"><td><i>picXOR</i></td><td width="10">&nbsp;</td><td>This draws the picture XORing it with the background. In DOS, you can use this function to do animation. Drawing an object on top of itself with XOR erases it and restores the background.</td></tr>
+<tr valign="top"><td><i>picMerge</i></td><td width="10">&nbsp;</td><td>This draws the picture like <i>picCopy</i> except that any occurrence of the background color in the picture is not drawn to the screen. This allows you to draw an irregularly-shaped object and draw it to the screen.</td></tr>
+<tr valign="top"><td><i>picUnderMerge</i></td><td width="10">&nbsp;</td><td>This draws the picture, but only where the background color was displayed underneath it. The effect of this is to make the picture appear to be displayed behind the background.</td></tr>
+</table><p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Various versions of Turing can convert different formats of files. Turing 4.1 for Windows can load BMP files and JPG files. Unfortunately, due to strictly enforced patents on the GIF compression algorithm, Turing will not implement importation of GIF pictures until the patents expire in June 2004.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> At the time of writing, MacOOT supported only PICT files. Consult the release notes to find out which file formats are currently supported.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> If the <b>Pic.ScreenLoad</b> fails, then <b>Error.Last</b> will return a non-zero value indicating the reason for the failure. <b>Error.LastMsg</b> will return a string which contains the textual version of the error.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The program displays a picture on the screen from the PCX file <i>mypic.BMP</i>.<p>
+<pre><tt>        <b>Pic.ScreenLoad</b> ("mypic.bmp", 0, 0, <i>picCopy</i>)</tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Pic.ScreenLoad</b>, not by calling <b>ScreenLoad</b>.<p>
+</table></body>
+</html>

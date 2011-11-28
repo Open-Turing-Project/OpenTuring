@@ -1,0 +1,52 @@
+<html>
+<head><title>Str.Upper</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Str.Upper</b></font></td><td align="right">Part of <a href="strmodule.html">Str</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Str.Upper</b> (<i>s</i> : <b>string</b>) : <b>string</b><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>The <b>Str.Upper</b> function takes the string <i>s</i> and returns
+          a string in which all the lower case letters are converted to 
+          upper case. For example, <tt>Str.Upper ("ABC123def")</tt> returns
+          <tt>"ABC123DEF"</tt>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program obtains lines of text from the user and outputs the
+          lines converted to upper case.
+          <p>
+<pre><tt>        <b>var</b> <i>line</i> : <b>string</b>
+        <b>loop</b>
+            <b>put</b> "Enter a line of text (empty to quit): " ..
+            <b>get</b> <i>line</i> : *
+            <b>exit when</b> <i>line</i> = ""
+            <b>put</b> "The upper case version: ", <b>Str.Upper</b> (<i>line</i>)
+        <b>end loop</b></tt><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,Str.Upper.t;Str.Upper Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+          <b>Str.Upper</b>, not by calling <b>Upper</b>.<p>
+    </tr>          
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="str_lower.html">Str.Lower</a></b> and 
+          <b><a href="str_trim.html">Str.Trim</a></b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

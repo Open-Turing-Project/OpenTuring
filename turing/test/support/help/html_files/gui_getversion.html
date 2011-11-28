@@ -1,0 +1,23 @@
+<html>
+<head><title>GUI.GetVersion</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.GetVersion</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>GUI.GetVersion</b> : <b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Returns the current version of the GUI Procedure Library. Because the GUI Procedure Library is expected to grow, new versions will probably be made available at our web site <b>http://www.holtsoft.com/turing</b>. If you wish to use features that do not appear in earlier versions of the library, you can have your program check that the current available version meets the programs needs. <b>GUI.GetVersion </b>returns an integer from 100 - 999 and is read as 1.00 to 9.99.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program fragment immediately exits if OOT does not support version 1.1 of the GUI Procedure Library<p>
+<pre><tt>        <b>import</b> <i>GUI</i> in "%oot/lib/GUI"
+        <b>if</b> <b>GUI.GetVersion</b> &lt; 110 then
+            <b>put</b> "You must update to at least version 1.1 of the"
+            <b>put </b>"GUI Procedure Library to use this program."
+            <b>return</b>
+        <b>end if</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> In version 1.00 (shipped with MacOOT 1.5), <b>GUI.GetVersion </b>did not exist.<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>GUI.GetVersion</b>, not by calling <b>GetVersion</b>.<p>
+</table></body>
+</html>

@@ -1,0 +1,19 @@
+<html>
+<head><title>upper</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>upper</b></font></td><td align="right"><font size="+1"><b>bound</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>upper</b> ( <i>reference</i> [ , <i>dimension</i> ] ) : <b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>upper</b> attribute is used to find the upper bound of an array, string, <b>char</b>(<i>n</i>) or non-opaque subrange type. (See <b>lower</b> for finding the lower bound.)<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> In a procedure, see if the bound of array parameter <i>a</i> is large enough that  it can be subscripted by <i>i</i>. If it is large enough, it is set <i>a</i>(<i>i</i>) to zero.<p>
+<pre><tt>        <b>procedure</b><i> test</i> ( <b>var</b> <i>a </i>: <b>array</b> 1 .. * <b>of</b> <b>real</b> )
+            if <i>i</i> &lt;= <b>upper</b> ( <i>a </i>) <b>then</b>
+                <i>a</i> ( <i>i </i>) := 0.0
+            <b>end</b> <b>if</b>
+        <b>end</b> <i>test</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> In a similar way, if <i>s</i> is a string, its upper bound (not length!) is given by <b>upper</b> (<i>s</i>). If an array has more than one dimension, as in <b>var</b> <i>b</i> : <b>array</b> 1..10, 1 .. 60 <b>of</b> <b>int</b>, you must specify the dimension. For example, <b>upper</b> (<i>b</i>, 2) returns 60.<p>
+</table></body>
+</html>

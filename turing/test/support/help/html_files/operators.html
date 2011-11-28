@@ -1,0 +1,104 @@
+<html>
+<head><title>Operators</title></head>
+<body>
+<h1>Operators</h1>
+<h2>Mathematical Operators</h2>
+<table cellpadding="3" border="1">
+<tr><th>Operator<th>Operation<th>Result Type
+<tr><td>Prefix +<td>Identity<td>As Operands
+<tr><td>Prefix  -<td>Negative<td>As Operands
+<tr><td>+<td>Addition<td>As Operands
+<tr><td>-<td>Subtraction<td>As Operands
+<tr><td>*<td>Multiplication<td>As Operands
+<tr><td>/<td>Division<td>As Operands
+<tr><td><b>div</b><td>Integer Division<td><b>int</b>
+<tr><td><b>mod</b><td>Modulo<td><b>int</b>
+<tr><td><b>rem</b><td>Remainder<td><b>int</b>
+<tr><td>**<td>Exponentiation<td>As Operands
+<tr><td>&lt;<td>Less Than<td><b>boolean</b>
+<tr><td>&gt;<td>Greater Than<td><b>boolean</b>
+<tr><td>=<td>Equals<td><b>boolean</b>
+<tr><td>&lt;=<td>Less Than or Equal<td><b>boolean</b>
+<tr><td>&gt;=<td>Greater Than or Equal<td><b>boolean</b>
+<tr><td><b>not</b>=<td>Not Equal<td><b>boolean</b>
+</table>
+
+<h2>Boolean Operators</h2>
+<table cellpadding="3" border="1">
+<tr><th>Operator<th>Operation<th>Result Type
+<tr><td>Prefix not<td>Negation<td><b>boolean</b>
+<tr><td><b>and</b><td>And<td><b>boolean</b>
+<tr><td><b>or</b><td>Or<td><b>boolean</b>
+<tr><td><b>xor</b><td>Exclusive Or<td><b>boolean</b>
+<tr><td>=><td>Implication<td><b>boolean</b>
+</table>
+
+<h2>Set Operators</h2>
+<table cellpadding="3" border="1">
+<tr><th>Operator<th>Operation<th>Result Type
+<tr><td>+<td>Union<td><b>set</b>
+<tr><td>-<td>Set Subtraction<td><b>set</b>
+<tr><td>*<td>Intersection<td><b>set</b>
+<tr><td>=<td>Equality<td><b>boolean</b>
+<tr><td><b>not</b>=<td>Inequality<td><b>boolean</b>
+<tr><td>&lt;=<td>Subset<td><b>boolean</b>
+<tr><td>&lt;<td>Strict (Proper) Subset<td><b>boolean</b>
+<tr><td>&gt;=<td>Superset<td><b>boolean</b>
+<tr><td>&gt;<td>Strict (Proper) Superset<td><b>boolean</b>
+</table>
+
+<h2>Operators on Members and Sets</h2>
+<table cellpadding="3" border="1">
+<tr><th>Operator<th>Operation<th>Result Type
+<tr><td><b>in</b><td>Member of Set<td><b>boolean</b>
+<tr><td><b>not in</b><td>Not Member of Set<td><b>boolean</b>
+<tr><td><b>xor</b><td>Exclusive Or<td><b>set</b>
+</table>
+
+<h2>Bit Manipulation Operators</h2>
+<table cellpadding="3" border="1">
+<tr><th>Operator<th>Operation<th>Result Type
+<tr><td><b>shl</b><td>Shift left<td><b>nat</b>
+<tr><td><b>shr</b><td>Shift right<td><b>nat</b>
+<tr><td><b>and</b><td>Bit-wise And<td><b>nat</b>
+<tr><td><b>or</b><td>Bit-wise Or<td><b>nat</b>
+<tr><td><b>xor</b><td>Bit-wise Exclusive Or<td><b>nat</b>
+</table>
+
+<h2>Pointer Operators</h2>
+<table cellpadding="3" border="1">
+<tr><th>Operator<th>Operation<th>Result Type
+<tr><td>^<td>Follow pointer<td>Target type
+</table>
+
+<h2>Type Cheats</h2>
+<table cellpadding="3" border="1">
+<tr><th>Operator<th>Operation<th>Result Type
+<tr><td>#<td>Type cheat<td><b>nat</b>
+</table>
+
+<h2>Operator Short Forms</h2>
+These can be used in place of the above notation.
+<table>
+<tr><td><b>not</b><td width="5">&nbsp;<td>~
+<tr><td><b>not</b>=<td width="5">&nbsp;<td>~=
+<tr><td><b>not in</b><td width="5">&nbsp;<td>~<b>in
+<tr><td><b>and</b><td width="5">&nbsp;<td>&
+<tr><td><b>or</b><td width="5">&nbsp;<td>| 
+</table>
+
+<h2>Operator Precedence</h2>
+Highest precedence operators first.
+<ol>
+  <li>**, ^, #
+  <li>prefix + and -
+  <li>* , / , <b>div</b> , <b>mod</b> , <b>rem</b> , <b>shl</b> , <b>shr</b>
+  <li>+ , -, <b>xor</b>
+  <li>&lt; , &gt; , = , &lt;= , &gt;= , <b>not</b>= , <b>in</b> , <b>not in</b>
+  <li><b>not</b>
+  <li><b>and</b>
+  <li><b>or</b>
+  <li>=&gt;
+</ol>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<html>
+<head><title>assignment</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>assignment</b></font></td><td align="right"><font size="+1"><b>statement</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> An <i>assignmentStatement</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><i>variableReference</i> := <i>expn</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> An assignment statement calculates the value of the expression (<i>expn</i>) and assigns that value to the variable (<i>variableReference</i>).<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>var</b> <i>i</i> : <b>int</b>
+        <i>i</i> := 24         <i>% Variable i becomes </i>24
+        <b>var</b> <i>a</i> : <b>array</b> 1 .. 25 <b>of</b> <b>string</b>
+        <i>a</i> (<i>i</i>) :=<i> </i>"Ralph"        <i>% The i-th element of a becomes </i>"<i>Ralph</i>"
+        <i>…</i>
+        <b>var</b> <i>b </i>: <b>array</b> 1 .. 25 <b>of</b> <b>string</b>
+        <i>b</i> := <i>a</i>          <i>% Array b becomes (is assigned) array a</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The expression on the right of := must be <i>assignable </i>to the variable on the left. For example, in the above, any integer value, such as 24, is assignable to <i>i</i>,<i> </i>but a <b>real</b> value such as 3.14 would not be not assignable to <i>i</i>. Entire arrays, records and unions can be assigned. For example, in the above, array <i>a</i> is assigned to array <i>b</i>. See <i>assignability </i>for the exact rules of allowed assignments.<p>
+You cannot assign a new value to a constant (<b>const</b>).<p>
+There are short forms that allow you to write assignment statements more compactly. For example,<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td><i>i</i> := <i>i</i> + 1</td></tr>
+</table><p>
+can be shortened to<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td><i>i</i> += 1</td></tr>
+</table><p>
+In Turing, there are short forms for combining +, = and * with assignment. For example, <i>i</i> *= 2 doubles <i>i</i>.<p>
+There are also short forms to allow any binary operator to be combined with assignment. For example, <i>i</i> <b>shl</b>= 2 shifts <i>i</i> by 2 to the left.<p>
+</table></body>
+</html>

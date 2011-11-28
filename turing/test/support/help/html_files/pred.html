@@ -1,0 +1,27 @@
+<html>
+<head><title>pred</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>pred</b></font></td><td align="right"><font size="+1"><b>predecessor function</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>pred</b> ( <i>expn</i> )<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>pred</b> function accepts an integer, character, or an enumerated value and returns the integer minus one, the previous character, or the previous value in the enumeration. For example, <b>pred</b> ( 7 ) is 6.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This part of a Turing program fills up array <i>a </i>with the enumerated values <i>red</i>,<i> yellow</i>,<i> green</i>,<i> red</i>,<i> yellow</i>,<i> green</i>,<i> </i>etc.<p>
+<pre><tt>        <b>type</b> <i>colors</i> : <b>enum</b> ( <i>green</i>, <i>yellow</i>, <i>red</i> )
+        <b>var</b> <i>a</i> : <b>array</b> 1 .. 100 <b>of</b> <i>colors</i>
+        <b>var</b> <i>c</i> : <i>colors</i> := <i>colors</i> . <i>red</i>
+        <b>for</b> <i>i</i> : 1 .. 100
+            a ( <i>i</i> ) := <i>c</i>
+            <b>if</b> <i>c</i> = <i>colors</i> . <i>green</i> <b>then</b>
+                <i>c</i> := <i>colors</i> . <i>red</i>
+            <b>else</b>
+                <i>c</i> := <b>pred</b> ( <i>c</i> )
+            <b>end</b> <b>if</b>
+        <b>end</b> <b>for</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> It is illegal to apply <b>pred</b> to the first value of an enumeration.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="succ.html">succ</a></b>, <b><a href="lower.html">lower</a></b> and <b><a href="upper.html">upper</a></b> functions.<p>
+</table></body>
+</html>

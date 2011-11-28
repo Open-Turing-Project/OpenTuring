@@ -1,0 +1,21 @@
+<html>
+<head><title>addr</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>addr</b></font></td><td align="right"><font size="+1"><b>address of a variable</b></font></td></table><p>
+
+<img src="Dirty.gif">
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>addr</b> (<i>reference</i>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>addr</b> attribute is used to find the integer address of a variable or non scalar constant. This is implementation-dependent. This address may be used in an indirection operation <b>@</b>.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Set <i>a</i> to be the address of <i>x</i>.<p>
+<pre><tt>        <b>var</b> <i>x</i> : <b>real</b>
+        <b>var</b> <i>a</i> : <b>addressint</b> := <b>addr</b> (<i>x</i>)</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The value of the address produced by <b>addr</b> is of type <b>addressint</b>, an integer type whose range is that of the underlying memory addresses.<p>
+The concept of an address is implementation-dependent. For example, an optimizing compiler could determine that a variable does not require space because the program could be computed without the variable with no change in output. However, in most implementations, types have a predictable size and variables of that type occupy that number of bytes in memory.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> the <a href="indirection.html">indirection operator @</a>, <b><a href="cheat.html">cheat</a></b>, <i><a href="explicitintegerconstant.html">explicitIntegerConstant</a> </i>(how to write hexadecimal constants), and <b><a href="pointer.html">pointer</a></b> type (in particular unchecked pointer type). See also <b><a href="sizeof.html">sizeof</a></b>, which returns the size of a variable.<p>
+</table></body>
+</html>

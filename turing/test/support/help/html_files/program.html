@@ -1,0 +1,35 @@
+<html>
+<head><title>program</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>program</b></font></td><td align="right"><font size="+1"><b>a (main) program</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>program</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><i>statementsAndDeclarations</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A Turing program consists of a list of statements and declarations.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This is a complete Turing program. It outputs <i>Alan M. Turing</i>.<p>
+<pre><tt>        <b>put</b> "Alan M. Turing"</tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This is a complete Turing program. It outputs a triangle of stars.<p>
+<pre><tt>        <b>var</b> <i>stars</i> : <b>string</b> := "*"
+        <b>loop</b>
+            <b>put</b> <i>stars</i>
+            <i>stars</i> := <i>stars</i> + "*"
+        <b>end</b> <b>loop</b></tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This is a complete Turing program. It outputs <i>Hello </i>once and <i>Goodbye</i> twice.<p>
+<pre><tt>        <b>procedure</b> <i>sayItAgain</i> ( <i>what</i> : <b>string</b>, <i>n</i> : <b>int</b> )
+            <b>for</b> <i>i</i> : 1 .. <i>n</i>
+                <b>put</b> <i>what</i>
+            <b>end</b> <b>for</b>
+        <b>end</b> <i>sayItAgain</i>
+        
+        <i>sayItAgain</i> (<i> </i>"Hello", 1)
+        <i>sayItAgain</i> ( "Goodbye", 2 )</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> In a program there can be many units (see <b>unit</b>), one of which is the program (called the main program), the others of which are modules, monitors and classes. The main program is optionally preceded by an <b>import</b> list, which lists the units that it uses.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="import.html">import</a></b> list.<p>
+</table></body>
+</html>

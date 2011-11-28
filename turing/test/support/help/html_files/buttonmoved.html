@@ -1,0 +1,66 @@
+<html>
+<head><title>buttonmoved</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>buttonmoved</b></font></td><td align="right"><font size="+1"><b>has a mouse event occurred</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>buttonmoved</b> (<i>motion</i> : <b>string</b>) : <b>boolean</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>buttonmoved</b> function indicates whether there is a mouse event of the appropriate type on the mouse queue. Events are either "up", "down", "updown" or "downup" events (although the "downup" and "updown" are the same event).<p>
+The parameter <i>motion</i> must be one of "up", "down", "updown" or "downup". If an event of the type requested is in the queue, <b>buttonmoved</b> returns <b>true</b>. If the event is not in the queue, then <b>buttonmoved</b> returns <b>false</b>.<p>
+In "<i>single-button mode</i>" (where the mouse is treated like a one-button mouse), a "down" event occurs whenever all the buttons are up and a button is pressed. An "up" event takes place when the last button is released so that no buttons remain pressed.<p>
+In "<i>multi-button mode</i>", a "down" event occurs whenever any button is pressed, and an "up" event occurs whenever any button is released.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program draws random circles on the screen until the user clicks the mouse button, whereupon is starts drawing random boxes. Clicking the mouse button switches between the two.<p>
+<pre><tt>        <b>var</b> <i>circles</i>: <b>boolean</b> := <b>true</b>
+        <b>loop</b>
+            <b>var</b><i> x</i>, <i>y</i>, <i>radius</i>,<i> clr</i>: <b>int</b>
+            <b>if</b> <b>buttonmoved</b> ("down") <b>then</b>
+                <b>var</b><i> buttonnumber</i>, <i>buttonupdown</i> : <b>int</b>
+                <b>buttonwait</b> ("down", <i>x</i>, <i>y</i>, <i>buttonnumber</i>, <i>buttonupdown</i>)
+                <i>circles</i> := <b>not</b> <i>circles</i>
+            <b>end</b> <b>if</b>
+            <b>randint</b> (<i>x</i>, 0, <b>maxx</b>)
+            <b>randint</b> (<i>y</i>, 0, <b>maxy</b>)
+            <b>randint</b> (<i>radius</i>, 0, 100)
+            <b>randint</b> (<i>clr</i>, 0, <b>maxcolor</b>)
+            <b>if</b> <i>circles</i> <b>then</b>
+                <b>drawfilloval</b> (<i>x</i>, <i>y</i>, <i>radius</i>, <i>radius</i>, <i>clr</i>)
+            <b>else</b>
+                <b>drawfillbox</b> (<i>x</i>, <i>y</i>, <i>x</i> + <i>radius</i>, <i>y</i> + <i>radius</i>, <i>clr</i>)
+            <b>end</b> <b>if</b>
+        <b>end</b> <b>loop</b></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,buttonmoved.t;buttonmoved Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This is an example demonstrating how to check for both character and mouse input at the same time.<p>
+<pre><tt>        <b>var</b> <i>ch</i> : <b>string</b> (1)
+        <b>var</b> <i>x</i>, <i>y</i>, <i>btnnum</i>, <i>btnupdown</i> : <b>int</b>
+        <b>loop</b>
+            <b>if</b> <b>hasch</b> <b>then</b>
+                <b>getch</b> (<i>ch</i>)
+                <b>locate</b> (1, 1)
+                <b>put</b> "The character entered is a: ", <i>ch</i>
+            <b>end</b> <b>if</b>
+            <b>if</b> <b>buttonmoved</b> ("down") <b>then</b>
+                <b>buttonwait</b> ("down", <i>x</i>, <i>y</i>, <i>btnnum</i>, <i>btnupdown</i>)
+                <b>locate</b> (1, 1)
+                <b>put</b> "The button was clicked at position: ", <i>x</i>, ", ",<i>y</i>
+            <b>end</b> <b>if</b>
+        <b>end</b> <b>loop</b></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,KeyboardAndMouse.t;Keyboard and Mouse Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> <b>buttonmoved</b> can be thought of as the mouse equivalent of <b>hasch</b> in that they both check for something in a queue and both return immediately.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="buttonwait.html">buttonwait</a></b> to get mouse events saved in the queue. See also <b><a href="buttonchoose.html">buttonchoose</a></b> to switch between "<i>single-button mode</i>" and "<i>multi-button mode</i>".<p>
+See also predefined unit <b><a href="mousemodule.html">Mouse</a></b>.<p>
+</table></body>
+</html>

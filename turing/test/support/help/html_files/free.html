@@ -1,0 +1,32 @@
+<html>
+<head><title>free</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>free</b></font></td><td align="right"><font size="+1"><b>statement</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>freeStatement</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>free</b> [ <i>collectionOrClassId</i>, ] <i>pointerVariableReference</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A <b>free</b> statement destroys (deallocates) an element that has been allocated by a <b>new</b> statement.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Using a collection, declare a list of records and allocate one of these records. Then deallocate the record.<p>
+<pre><tt>        <b>var</b> <i>list</i> : <b>collection</b> <b>of</b>
+            <b>record</b>
+                <i>contents</i> : <b>string</b> ( 10 )
+                <i>next</i> : <b>pointer</b> <b>to</b> <i>list</i>
+                            <i>% Short form: next : ^ list</i>
+            <b>end</b> <b>record</b>
+        <b>var</b> <i>first </i>: <b>pointer</b> <b>to</b> <i>list</i> <i>% Short form: <b>var</b> next : ^ list</i>
+        <b>new</b> <i>list</i>, <i>first</i>
+                <i>% Allocate an element of list; place its location in first</i>
+                <i>% Short form: <b>new</b> first</i>
+        <i>…</i>
+        <b>free</b> <i>list</i>, <i>first</i>    <i>% Deallocate the element of list located by first</i>
+                    <i>% Short form: <b>free</b> first</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The <b>free</b> statement sets the pointer variable to the <b>nil</b> value. See the <b>new</b> statement for examples of allocating elements of classes and values of types. It the pointer locates a type, the <i>collectionOrClassId </i>in the <b>free</b> statement must be omitted.<p>
+An imported class can have one of its objects destroyed (by the <b>free</b> statement) only if the class is imported <b>var</b>.<p>
+The <i>collectionOrClassId</i> is optional in the <b>free</b> statement.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="class.html">class</a></b> and <b><a href="collection.html">collection</a></b> declarations, the <b><a href="pointer.html">pointer</a></b> type, the <b><a href="new.html">new</a></b> <a href="statement.html">statement</a> and the <b><a href="nil.html">nil</a></b> value.<p>
+</table></body>
+</html>

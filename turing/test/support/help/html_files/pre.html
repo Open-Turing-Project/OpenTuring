@@ -1,0 +1,25 @@
+<html>
+<head><title>pre</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>pre</b></font></td><td align="right"><font size="+1"><b>assertion</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> An <i>preAssertion </i>is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>pre</b> <i>trueFalseExpn</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A <b>pre</b> assertion is a special form of an <b>assert</b> statement that is used at the beginning of a procedure or function. It is used to give requirements that the caller of the procedure or functions is supposed to satisfy. These requirements are given by the <i>trueFalseExpn</i>. The <i>trueFalseExpn </i>is evaluated. If it is true, all is well and execution continues. If it is false, execution is terminated with an appropriate message. See <b>assert</b> statements and <b>procedure</b> and <b>function</b> declarations for more details. See also <b>post</b> and <b>invariant</b> assertions.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This function computes the average of <i>n values</i>. Its <b>pre</b> condition requires that <i>n</i> must be strictly positive, to avoid the possibility of dividing by zero when computing the average.<p>
+<pre><tt>        <b>function</b> <i>average</i> ( <i>a</i> : <b>array</b> 1 .. * <b>of</b> <b>real</b>, <i>n</i> : <b>int</b>) : <b>real</b>
+            <b>pre</b> <i>n</i> &gt; 0
+            <b>var</b> <i>sum</i> : <b>real</b> := 0
+            <b>for</b> <i>i</i> : 1 .. <i>n</i>
+                <i>sum</i> := <i>sum</i> + <i>a</i> ( <i>i</i> )
+            <b>end</b> <b>for</b>
+            <b>result</b> <i>sum / n</i>
+        <b>end</b> <i>average</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> A <b>pre</b> assertion can also be used in a <b>module</b>, <b>monitor</b>, <b>class</b> or <b>process</b> declaration to make sure that requirements for initialization are met.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="module.html">module</a></b> and <b><a href="process.html">process</a></b>.<p>
+</table></body>
+</html>

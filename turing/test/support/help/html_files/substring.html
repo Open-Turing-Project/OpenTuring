@@ -1,0 +1,37 @@
+<html>
+<head><title>substring</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>substring</b></font></td><td align="right"><font size="+1"><b>of another string</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>substring </i>is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(a)</font></td><td colspan="7"><font size="+1"><i>stringReference</i> ( <i>leftPosition</i> .. <i>rightPosition</i> )</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(b)</font></td><td colspan="7"><font size="+1"><i>stringReference</i> ( <i>charPosition</i> )</td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A substring selects a part of another string. In form (a) the substring starts at the left position and runs to the right position. In form (b), the substring is only a single character. Turing support substrings of <b>char</b>(<i>n</i>) values.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>var</b> <i>word </i>: <b>string</b> := "bring"
+        <b>put</b> <i>word</i> (2 .. 4)       <i>% Outputs </i>rin
+        <b>put</b> <i>word</i> (3)        <i>% Outputs </i>i
+        <b>put</b> <i>word</i> (2 .. *)       <i>% Outputs </i>ring; <i>the star </i>(*) <i>means</i>
+                        <i>% the end of the string.</i>
+        <b>put</b> <i>word</i> (* - 2 .. * - 1 )  <i>% Outputs </i>in</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The leftmost possible position in a string is numbered 1. The last position in a string can be written as an asterisk (*). For example, <i>word</i> (2 .. *) is equivalent to <i>word</i> (2 .. <i>length</i>(<i>word</i>)).<p>
+Each of <i>leftPosition</i>,<i> rightPosition</i>,<i> </i>and <i>charPosition</i> must have one of these forms:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>(a) <i>expn</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(b) <b>*</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(c) <b>*</b> <b>-</b> <i>expn</i></td></tr>
+</table><p>
+The exact rules for the allowed values of <i>leftPosition </i>and <i>rightPosition</i> are:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>(1) <i>leftPosition</i> must be at least 1,</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(2) <i>rightPosition</i> must be at most <i>length </i>(<i>stringReference</i>), and</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(3) the length of the selected substring must zero or more.</td></tr>
+</table><p>
+This specifically allows null substrings such as <i>word </i>(1, 0) in which <i>rightPosition </i>is 0 and <i>word </i>(6, 5) in which <i>leftPosition </i>is one more that <b>length</b> (<i>stringReference</i>).<p>
+Note that substrings are not assignable. For example, if <i>s</i> is a string, the statement <i>s </i>(3) := "a" is illegal in Turing.<p>
+Turing supports substrings of <b>char</b>(<i>n</i>) values. See <b>char</b>(<i>n</i>). If a substring of <b>char</b>(<i>n</i>) value <i>t</i> has two operands, as in <i>t</i>(2..77), the result type of this operation is a <b>string</b>. If the substring has one operand, as in <i>t</i>(7), this becomes, in effect,  a subscript into an array of characters. The result is a reference to a <b>char</b>, which can be assigned to or passed to a <b>var</b> parameter.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="string1.html">string</a></b>, <b><a href="char.html">char</a></b>, <b><a href="char.html">char</a></b>(<i>n</i>), <i><a href="explicitstringconstant.html">explicitStringConstant</a></i>, <i><a href="explicitcharconstant.html">explicitCharConstant</a></i>, catenation and <b><a href="length.html">length</a></b>.<p>
+</table></body>
+</html>

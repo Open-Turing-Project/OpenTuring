@@ -1,0 +1,21 @@
+<html>
+<head><title>Time.Sec</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Time.Sec</b></font></td><td align="right">Part of <a href="timemodule.html">Time</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Time.Sec</b> : <b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Time.Sec</b> function returns the current date and time as a number. The returned integer is the time in seconds since 00:00:00 GMT (Greenwich Mean Time) January 1, 1970.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program tells you how many seconds since 1970.<p>
+<pre><tt>        <b>put</b> "The number of seconds since 1970 is ", <b>Time.Sec</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Be warned that on some computers, such as IBM PC compatibles or Apple Macintoshes, the date may not be set correctly in the operating system; in that case, the <b>Time.Date </b>procedure will give incorrect results.<p>
+The string form of the date can be converted to a numeric form for comparison purposes using the <b>Time.DateSec</b> function. The numeric form can be converted to a string using the <b>Time.SecDate</b> function. The numeric form of the time can be obtained using the <b>Time.Sec</b> function.<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Time.Sec</b>, not by calling <b>Sec</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="time_date.html">Time.Date</a></b>, <b><a href="time_datesec.html">Time.DateSec</a></b> and <b><a href="time_secdate.html">Time.SecDate</a></b> functions.<p>
+</table></body>
+</html>

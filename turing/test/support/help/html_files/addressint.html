@@ -1,0 +1,28 @@
+<html>
+<head><title>addressint</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>addressint</b></font></td><td align="right"><font size="+1"><b>type</b></font></td></table><p>
+
+<img src="Dirty.gif">
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>addressint</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>addressint</b> (address integer) type is an integer type whose range of value is the same as that of the underlying computer. This range is, by its nature, implementation-dependent. On 32-bit architectures, it is commonly the same range as <b>nat4</b> (4-byte natural number).<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Record <i>r</i> contains three fields, one of which has type <b>char</b>(28). Variable <i>a</i> is an integer whose range of values is the same as the addresses of the underlying computer. This assigns <i>B</i> to the seventh character of a record of type <i>r</i> which is assumed to be located at absolute address <i>a</i>.<p>
+<pre><tt>        <b>type</b> <i>r</i> :
+            <b>record</b>
+                <i>i</i> : <b>int</b>
+                <i>c28</i> : <b>char</b> (28)
+                <i>c11</i> : <b>char</b> (11)
+            <b>end</b> <b>record</b>
+        <b>var</b> <i>a</i> : <b>addressint</b>      <i>% An integer</i>
+        …                   <i>% a is assigned an integer value</i>
+        <i>r</i> <b>@</b> (<i>a</i>) . <i>c28</i> (7) := 'B'        <i>% Use indirection operator <b>@</b></i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Although <b>addressint</b> is called an integer type, it is commonly equivalent to a natural type such as <b>nat4</b> (for 32-bit machines).<p>
+Be careful not to confuse <b>addressint</b> with pointer types. In low level languages such as assembler and C, addresses and pointers are the same. In Turing, however, a pointer is a high level concept that is more abstract than a machine address. A Turing pointer is a reference to an object, and the representation of this reference depends upon the implementation. In current Turing implementations, pointers (which are by default checked) are represented as a time stamp (a unique number) together with an address. The time stamp is used to make sure that the pointer actually locates an object. There are also <b>unchecked</b> pointers. An <b>unchecked</b> pointer's internal representation is a machine address. You can use type cheats (a dangerous feature) to translate between <b>addressint</b> and unchecked pointers. This is meaningful in current implementations.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> the <a href="indirection.html">indirection operator @</a>, <b><a href="cheat.html">cheat</a></b>, <i><a href="explicitintegerconstant.html">explicitIntegerConstant</a> </i>(how to write hexadecimal constants), and <b><a href="pointer.html">pointer</a></b> type (in particular unchecked pointer type). See also <b><a href="addr.html">addr</a></b>, which returns the address of a variable.<p>
+</table></body>
+</html>

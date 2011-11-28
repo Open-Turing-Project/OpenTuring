@@ -1,0 +1,40 @@
+<html>
+<head><title>boolean</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>boolean</b></font></td><td align="right"><font size="+1"><b>true-false type</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>boolean</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>boolean</b> type is used for values that are either <b>true</b> or <b>false</b>. These true-false values can be combined by various operators such as <b>or</b> and <b>and</b>.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>var</b> <i>success</i> : <b>boolean</b> := <b>false</b>
+        <b>var</b> <i>continuing</i> := <b>true</b>      <i>% The type is <b>boolean</b></i>
+        …
+        <i>success</i> := <i>mark</i> &gt;= 60
+        <i>continuing</i> := <i>success</i> <b>and</b> <i>continuing</i>
+        <b>if</b> <i>continuing</i> <b>then</b> …</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> This type is named after the British mathematician, George Boole, who formulated laws of logic.<p>
+The operators for <b>true</b> and <b>false</b> are <b>and</b>, <b>or</b>,<i> </i><b>xor</b>, =<b>&gt;</b>, and <b>not</b>. For two true/false values <i>A</i> and <i>B</i>, these operators are defined as follows:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td><i>A</i> <b>and</b> <i>B</i> is true when both are true</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td><i>A</i> <b>or</b> <i>B</i> is true when either or both are true</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td><i>A</i> <b>xor</b> <i>B</i> is true when either but not both are true</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td><i>A</i> =<b>&gt;</b> <i>B</i> (A implies B) is true when both are true or when A is false</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td><b>not</b> <i>A</i> is true when A is false</td></tr>
+</table><p>
+The <b>and</b> operator has higher precedence than <b>or</b>, so <i>A</i> <b>or</b> <i>B</i> <b>and</b> <i>C</i> means <i>A</i> <b>or</b> (<i>B</i> <b>and</b> <i>C</i>).<p>
+The operators <b>or</b>, <b>and</b> and =<b>&gt;</b> are short circuit operators. For example, if <i>A</i> is true in <i>A</i> <b>or</b> <i>B</i>, <i>B </i>is not evaluated.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The <b>boolean</b> type can be used as an index to an array.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Declaration of an array with <b>boolean</b> index.<p>
+<pre><tt>        <b>var</b> <i>a</i> : <b>array</b> <b>boolean</b> <b>of</b> <b>int</b>
+        <i>a</i> (<b>false</b>) := 10
+        <i>a</i> (<b>true</b>) := 20</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The <b>put</b> and <b>get</b> semantics allow put's and get's of boolean values. <b>true</b> values will be output as "true" and <b>false</b> values will be output as "false". The only legal input values are "true" and "false", which are case sensitive.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <i><a href="explicittruefalseconstant.html">explicitTrueFalseConstant</a></i> (which discusses the values <b><a href="true.html">true</a></b> and <b><a href="false.html">false</a></b>), <i><a href="precedence.html">precedence</a></i> and <i><a href="expn.html">expn</a> </i>(expression).<p>
+</table></body>
+</html>

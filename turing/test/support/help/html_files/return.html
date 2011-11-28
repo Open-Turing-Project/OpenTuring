@@ -1,0 +1,21 @@
+<html>
+<head><title>return</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>return</b></font></td><td align="right"><font size="+1"><b>statement</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>returnStatement</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>return</b></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A <b>return</b> statement terminates the <b>procedure</b> (or main program) in which it appears. Ordinarily, a procedure (or main program) terminates by reaching its end; the <b>return</b> statement is used to cause early termination.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This procedure takes no action if the <i>errorHasOccurred </i>flag has been set to true.<p>
+<pre><tt>        <b>procedure</b> <i>double</i>
+            <b>if</b> <i>errorHasOccurred</i> <b>then</b>
+                <b>return</b>  <i>% Terminate this procedure</i>
+            <b>end</b> <b>if</b>
+            <i>… handle usual case in this procedure …</i>
+        <b>end</b> <i>double</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> A <b>return</b> must not appear as a statement in (the outermost level of) a module, nor can it appear in a <b>function</b>.<p>
+</table></body>
+</html>

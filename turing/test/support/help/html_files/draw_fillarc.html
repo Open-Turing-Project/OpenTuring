@@ -1,0 +1,32 @@
+<html>
+<head><title>Draw.FillArc</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Draw.FillArc</b></font></td><td align="right"><font size="+1"><b> </b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Draw.FillArc </b>(<i>x</i>, <i>y</i>,<b> </b><i>xRadius</i>, <i>yRadius</i><b> :</b> <b>int</b>,<br>
+</font><table><tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1"><i>initialAngle</i>, <i>finalAngle</i>, <i>Color</i> : <b>int</b>)</td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Draw.FillArc </b>procedure is used to draw a filled arc whose center is at (<i>x</i>, <i>y</i>). It then fills in the pie-shaped wedge using the specified <i>Color</i>. To outline a filled arc, use <b>Draw.FillArc</b> with the <i>Color</i> parameter set to the fill color and then <b>Draw.Arc</b> with the <i>Color</i> parameter set to the border color. For <i>initialAngle </i>and <i>finalAngle</i>, which determine the edges of the wedge, zero degrees is "three o'clock" and 90 degrees is "twelve o'clock", etc. The horizontal and vertical distances from the center to the arc are given by <i>xRadius </i>and <i>yRadius</i>.<p>
+
+<center><img src="draw_fillarc01.gif"></center>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program draws a filled semicircle (actually, an approximation to a semicircle) whose center is (<i>midx</i>,0) the bottom center of the screen, in bright red. The <b>maxx</b> and <b>maxy </b>functions are used to determine the maximum x and y values on the screen.<p>
+<pre><tt>        <b>View.Set</b> ("graphics")
+        <b>const</b> <i>midx </i>:= <b>maxx</b> <b>div</b> 2
+        <b>Draw.FillArc</b> (<i>midx</i>, 0, <b>maxy</b>, <b>maxy</b>, 0, 180, <b>brightred</b>)</tt></pre>
+    <tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+        <PARAM name="Command" value="TCard">
+        <PARAM name="Button" value="Text: Launch Example Program">
+        <PARAM name="Item1" value="-1,Draw.FillArc.t;Draw.FillArc Example">
+      </OBJECT><p></td>
+    </tr>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The screen must be in a "<i>graphics</i>" mode. See the <b>View.Set</b> procedure for details. If the screen is not in a "<i>graphics</i>" mode, an error will occur.<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Draw.FillArc</b>, not by calling <b>FillArc</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="view_set.html">View.Set</a></b>, <b><a href="maxx.html">maxx</a></b>, <b><a href="maxy.html">maxy</a></b> and the various procedures in the <b><a href="drawmodule.html">Draw</a></b> unit.<p>
+</table></body>
+</html>

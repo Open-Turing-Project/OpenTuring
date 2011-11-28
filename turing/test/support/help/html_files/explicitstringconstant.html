@@ -1,0 +1,39 @@
+<html>
+<head><title>explicitStringConstant</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>explicitStringConstant</b></font></td><td align="right"><font size="+1"><b>string literal</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> An <i>explicitStringConstant</i> is a sequence of characters surrounded by quotation marks.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> In the following, the explicit string constants are "Hello world", "" and "273 O'Reilly Ave.".<p>
+<pre><tt>        <b>var</b> <i>name</i> : <b>string</b> :=<i> </i>"Hello world"
+        <i>name </i>:= ""      <i>% Null string</i>,<i> containing zero characters</i>
+        <b>var</b> <i>address</i> : <b>string</b> := "273 O'Reilly Ave."</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Within an explicit string constant (and within an explicit character constant), the back slash \ is used to represent certain other characters as follows:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>\"</td><td width="10">&nbsp;</td><td width="10">&nbsp;</td><td>quotation mark character</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>\n or \N</td><td width="10">&nbsp;</td><td>end of line character</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>\t or \T</td><td width="10">&nbsp;</td><td>tab character</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>\f or \F</td><td width="10">&nbsp;</td><td>form feed character</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>\r or \R</td><td width="10">&nbsp;</td><td>return character</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>\b or \B</td><td width="10">&nbsp;</td><td>backspace character</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>\e or \E</td><td width="10">&nbsp;</td><td>escape character</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>\d or \D</td><td width="10">&nbsp;</td><td>delete character</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>\\</td><td width="10">&nbsp;</td><td width="10">&nbsp;</td><td>backslash character</td></tr>
+</table><p>
+For example, <b>put</b> "<i>One\nTwo</i>" will output <i>One</i> on one line and <i>Two</i> on the next. In an explicit character constant (which is surrounded by single quotes, as in <i>'John'</i>), the backslash is not required before a double quote ", but it is required before a single quote ', as in these two constants:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td><i>'John said </i>"<i>Hello</i>"<i> to you'</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td><i>'Don\'t cry'</i>.</td></tr>
+</table><p>
+You can use the caret ^ to specify ASCII control characters, for example:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>'^H'</td><td width="10">&nbsp;</td><td>ASCII backspace character</td></tr>
+</table><p>
+The caret specifies that the top three bits of the character are set to zero. For any character <i>c</i>, the following is true:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>'^c' = chr (ord ('c') &amp; 2#11111)</td></tr>
+</table><p>
+However if <i>c </i>is the question mark, as in '^?', the bits are not turned off.<p>
+Explicit string constants cannot cross line boundaries. To represent a string that is longer than a line, break it into two or more strings on separate lines and use catenation (+) to join the individual strings.<p>
+An explicit string constant can contain at most 255 characters (this is in implementation constraint).<p>
+String values are not allowed to contain characters with the code values of 0 or 128; these character values are called <i>eos </i>(end of string) and <i>uninitchar</i> (uninitialized character). These are reserved by the implementation to mark the end of a string value and to see if a string variable has been initialized.<p>
+</table></body>
+</html>

@@ -1,0 +1,71 @@
+<html>
+<head><title>paramDeclaration</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>paramDeclaration</b></font></td><td align="right"><font size="+1"><b>parameter declaration</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>paramDeclaration</i> is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(a)</font></td><td colspan="7"><font size="+1">[ <b>var</b> ] <i>id</i> {, <i>id</i> } : <i>typeSpec</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(b)</font></td><td colspan="7"><font size="+1"><i>subprogramHeader</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A parameter declaration, which is part of the header of a procedure or function, specifies a formal parameter (see also <b>procedure</b><i> </i>and<i> </i><b>function</b><i> </i>declarations). Form (a) above is the most common case. Form (b) specifies procedures and functions that are themselves passed as parameters.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>procedure</b> <i>putTitle</i> (<i> title : </i><b>string</b><i> </i>)
+            <i>%</i> <i>The parameter declaration is: title : <b>string</b></i>
+            <b>put</b> <i>title</i>
+        <b>end</b> <i>putTitle</i>
+        
+        <b>procedure</b><i> x</i> (<b>var</b> <i>s</i> : <b>array</b> 1 .. * <b>of</b> <b>string</b> (*))
+            <i>% Set each element of s to the null string</i>
+            <b>for</b> <i>i</i> : <i>1</i> .. <i><b>upper</b></i> ( <i>s </i>)
+                <i>s</i> ( <i>i</i> ) := ""
+            <b>end</b> <b>for</b>
+        <b>end</b> <i>x</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Parameters to a procedure may be declared using <b>var</b>, which means that the parameter can be changed inside the procedure. For example, <i>s</i> is changed in the <i>x</i> procedure. If a parameter is declared without <b>var</b>, it cannot be changed. (This differs from Pascal, where non-<b>var</b> parameters can be changed.)  Parameters to functions cannot be declared to be <b>var</b>.<p>
+Parameters declared <b>var</b> are passed by reference, which means that a pointer to the value is passed to the procedure, rather than passing the actual value. This implies that in the call <i>p</i> ( <i>a</i> (<i>i</i>)), in which array element <i>a</i>(<i>i</i>) is passed to procedure <i>p</i>, a change to <i>i </i>in <i>p </i>does not change the element referred to by <i>p</i>'s actual parameter. Every non-scalar (not integer, subrange, real, boolean, enumerated, pointer or the <b>char</b> type) parameter is passed by reference whether or not it is declared <b>var</b>. In all other cases (scalar non-<b>var</b> parameters) the parameter is passed by value (the actual value is copied to the procedure).<p>
+The upper bound of an array or string that is a formal parameter may be specified as an asterisk (<b>*</b>), as is done above for parameter <i>s</i> in procedure <i>x</i>. This specifies that  the size of the upper bound is inherited from the corresponding actual parameter. Parameters declared using star are called <i>dynamic</i> parameters.<p>
+The names of the formal parameters must be distinct from each other, from the procedure or function name, and from pervasive identifiers. However, they need not be distinct from names outside of the procedure or function.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Find the zero of function f. This example illustrates form (b), which is a parameter that is a function. See also <i>subprogramHeader</i>.<p>
+<pre><tt>        <b>function</b> <i>findZero</i> ( <b>function</b> <i>f</i> ( <i>x </i>: <b>real</b>) : <b>real</b>,
+                        <i>left</i>,<i> right</i>,<i> accuracy </i>: <b>real</b><i> </i>) : <b>real</b>
+            <b>pre</b> <i>sign </i>(<i> f</i> (<i> left </i>)<i> </i>)<i> </i><b>not=</b><i> </i><b>sign</b><i> </i>(<i> f</i> (<i> right)</i>)<i> </i>)
+                    <b>and</b><i> accuracy </i>&gt; <i>0</i>
+            <b>var</b><i> L </i>: <b>real</b> := <i>left</i>
+            <b>var</b><i> R </i>: <b>real</b> :=<i> right</i>
+            <b>var</b><i> M </i>: <b>real</b>
+            <b>const</b><i> signLeft</i> :=<i> </i><b>sign</b><i> </i>(<i> f</i> (<i> left</i> ) )
+            <b>loop</b>
+                <i>M </i>:=<i> </i>(<i> R + L</i>) <i>/</i> 2
+                <b>exit</b><i> </i><b>when</b><i> </i><b>abs</b><i> </i>(<i> R - L </i>)<i> </i>&lt;= <i>accuracy</i>
+                <b>if</b><i> signLeft</i> =<b>sign</b> (<i> f</i> (<i> M </i>)<i> </i>) <b>then</b>
+                    <i>L </i>:=<i> M</i>
+                <b>else</b>
+                    <i>R</i> :=<i> M</i>
+                <b>end</b> <b>if</b>
+            <b>end</b> <b>loop</b>
+            <b>result</b> <i>M</i>
+        <b>end</b> <i>findZero</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Form (b) of <i>paramDeclaration </i>is used to specify formal parameters that are themselves procedures or functions. For example, in the <i>findZero</i> function, <i>f</i> is a formal parameter that is itself a function. The subprogram type can be used to replace form (b). In particular, the header to the <i>findZero</i> function can be replaced by the following with no change in the action. The names <i>g</i> and <i>x</i> serve no purpose, except as place holders in the declaration of <i>f</i>.<p>
+<pre><tt>        <b>function</b> <i>findZero</i> ( <i>f</i> : <b>function</b> <i>g</i> ( <i>x</i> : <b>real</b>) : <b>real</b>,
+                        <i>left</i>, <i>right</i>, <i>accuracy</i> : <b>real</b> ) : <b>real</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Parameters that are declared non <b>var</b> should, in principle, be constant. Unfortunately, there is an anomalous situation in which these can change. This occurs when the parameter is passed by reference, because it is a non scalar such as a string. If the actual parameter is changed while the subprogram is executing, the formal parameter will change as well.<p>
+You can also optionally use the <b>register</b> keyword to request that the variable be placed in a machine register. This changes form (a) to allow the optional use of the <b>register</b> keyword. The syntax for form (a) is actually:<p>
+<pre><tt>        [ <b>var</b> ] [ <b>register</b> ] <i>id</i> {, <i>id</i> } : [ <b>cheat</b> ] <i>typeSpec</i></tt></pre>
+In the current (1999) implementation, programs are run interpretively using pseudo-code, which has no machine registers, and the <b>register</b> keyword is ignored. See <b>register</b> for restrictions on the use of register parameters.<p>
+The optional keyword <b>cheat</b> means that the parameter has a type cheat. See <b>cheat</b>. Any variable or constant non scalar (in other words, items passed by reference) can be passed to a type cheat parameter. The internal representation will be interpreted as a value of the specified type. This is dangerous as it provides unconstrained access to the underlying computer memory.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This procedure outputs the values of <i>n</i> bytes starting at the address of formal parameter <i>a</i>, using a parameter type cheat.<p>
+<pre><tt>        <b>procedure</b> <i>dump</i> (<i>a</i> : <b>cheat</b> <b>array</b> 0 .. 10000 <b>of</b> <b>nat1</b>, <i>n</i> : <b>int</b><i> </i>)
+            <b>for</b><i> i : </i>0<i> </i>..<i> n - </i>1
+                <b>put</b><i> i</i>, <i>a</i> ( <i>i </i>) : 4
+            <b>end</b> <b>for</b>
+        <b>end</b> <i>dump</i>
+        
+        <b>var</b><i> s</i> : <b>string</b> :=<i> </i>"abc"
+        <i>dump </i>(<i> s</i>, 5<i> </i>)       <i>% Dumps 5 bytes</i>,<i> starting with </i>"<i>abc</i>"</tt></pre>
+</table></body>
+</html>

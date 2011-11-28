@@ -1,0 +1,14 @@
+% The "Hello.dem" program
+import GUI
+
+View.Set ("graphics:200;200,nobuttonbar")
+
+procedure PutHello
+    put "Hello"
+end PutHello
+
+var b : int := GUI.CreateButton (100, 100, 0, "Say Hello", PutHello)
+
+loop
+    exit when GUI.ProcessEvent
+end loop

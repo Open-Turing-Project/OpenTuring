@@ -1,0 +1,24 @@
+<html>
+<head><title>Text.ColorBack</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Text.ColorBack</b></font></td><td align="right">Part of <a href="textmodule.html">Text</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Text.ColorBack</b> ( <i>Color</i> :<i> </i><b>int</b> )<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Text.ColorBack</b> procedure is used to<b> </b>change the current text background color. The alternate spelling is <b>Text.ColourBack</b>.<p>
+The <b>Text.ColorBack</b> procedure sets the text background color to the specified color. This is the color that surrounds characters when they are <b>put</b> onto the screen. On an IBM PC in "<i>screen</i>" mode, the color can be from 0 - 7. (You can not have the upper 8 colors as text background colors. On UNIX dumb terminals, <b>Text.ColorBack</b>(1) turns on highlighting and <b>Text.ColorBack</b>(0) turns it off. On other systems, this procedure may have no effect.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Since this program is in "<i>screen</i>"<i> </i>mode, changing the background color has no immediately observable effect. When the message "Greetings" is output, the background surrounding each letter will be red.<p>
+<pre><tt>        <b>View.Set</b> ( "screen" )
+        …
+        <b>Text.ColorBack</b> ( <i>red</i> )
+        <b>put</b> "Greetings"</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The screen should be in a "<i>screen</i>" or "<i>graphics</i>" mode. If the screen mode has not been set, it will automatically be set to "<i>screen</i>" mode. See <b>View.Set </b>for details <p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Text.ColorBack</b> , not by calling <b>ColorBack</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="text_color.html">Text.Color</a></b> and <b><a href="text_whatcolorback.html">Text.WhatColorBack</a></b>.<p>
+</table></body>
+</html>

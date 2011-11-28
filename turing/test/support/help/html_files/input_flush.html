@@ -1,0 +1,29 @@
+<html><head><title>Input.Flush</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Input.Flush</b></font></td><td align="right">Part of <a href="inputmodule.html">Input</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Input.Flush</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td>The <b>Input.Flush</b> procedure empties the keyboard buffer. It is often used to avoid accidentally reading multiple
+keystrokes because the user pressed a key for too long, causing autorepeat.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program echoes input from the keyboard at a rate of 10 characters per second. If you hold down a key, the echoing will stop as soon as you stop
+pressing the key. Without the <b>Input.Flush</b>, the program continues to echo many more keystrokes that have accumulated in the keyboard buffer.<p>
+<pre><tt>        <b>loop</b>
+            <b>if hasch then</b>
+                <b>put getchar</b> ..
+                <b>Input.Flush</b>
+                <b>delay</b> (100)
+            <b>end if</b>
+        <b>end loop</b></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,Input.Flush.t;Input.Flush Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Input.Flush</b>, not by calling <b>Flush</b>.<p>
+</table></body>
+</html>

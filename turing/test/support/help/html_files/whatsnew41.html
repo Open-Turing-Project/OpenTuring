@@ -1,0 +1,97 @@
+<html>
+<head><title>What's New in Turing 4.1</title></head>
+<body>
+  <h1>What's New in Turing 4.1</h1>
+  
+  Turing 4.1 introduces a number of new features.  This page shows some of
+  these features.
+  
+  <ol>
+    <li><h2>Sprite</h2>
+        The Turing <b>Sprite</b> module allows users to create animation without
+        having to worry about erasing and drawing the objects on the screen. A
+        sprite is created from a picture, and then commands by the program
+        to move the sprite to the desired location.  The program then 
+        automatically erases the sprite at the old location (restoring the 
+        background) and redraws it at the new location (placing it underneath
+        "higher" sprites, if necessary).<p>
+        Here is an example of a program that used sprites.  Each triangle is
+        a sprite, and the height of each sprite appears on the sprite.  Sprites
+        with a height of -1 or -2 actually <i>behind</i> the background, which
+        in this case is a set if green and blue bars.  Note how sprites with a
+        higher depth always appear above a sprite with a lower depth. <p>
+        <OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+          <PARAM name="Command" value="TCard">
+          <PARAM name="Button" value="Text: Launch Sprite Example Program">
+          <PARAM name="Item1" value="-1,Sprite.t;Sprite Example">
+        </OBJECT><p>
+        Here is a second example of a sprite being used to animate a figure
+        moving across the screen.  In this case, the figure is taken from a
+        multi-frame GIF file and the sprite module is used to make it appear to
+        move.<p>
+        <OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+          <PARAM name="Command" value="TCard">
+          <PARAM name="Button" value="Text: Launch Sprite Example Program">
+          <PARAM name="Item1" value="-1,Sprite.Animate.t;Sprite Example">
+        </OBJECT><p>
+        The Sprite module is fully documented 
+        <b><a href="spritemodule.html">here</a></b>.<p>
+    <li><h2>Special Effects</h2><p>
+        Turing supports a veriety of special effects.  These are obtained by 
+        drawing a picture (obtained using the
+        <b><a href="pic_new.html">Pic.New</a></b>, 
+        <b><a href="pic_filenew.html">Pic.FileNew</a></b>, or the new 
+        <b><a href="pic_filenewframes.html">Pic.FileNewFrames</a></b> functions).
+        When the picture is drawn, the programmer can specify the transition 
+        that should be used to display the new picture.  These transitions can
+        includes wipes, slides, a growing image, fade-ins, and so on.<p>
+        Here is an example of a program that demonstrates many of these
+        transitions.<p>
+        <OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+          <PARAM name="Command" value="TCard">
+          <PARAM name="Button" value="Text: Launch Special Effects Example Program">
+          <PARAM name="Item1" value="-1,Pic.DrawSpecial2.t;Special Effects Example">
+        </OBJECT><p>
+        The different transitions are fully documented 
+        <b><a href="pic_drawspecial.html">here</a></b>.<p>        
+    <li><h3>GIF Image support</h3>
+        The <b><a href="pic_filenew.html">Pic.FileNew</a></b> command can now
+        read GIF files (now that the patent has expired in Canada).  GIF files
+        can specify a "transparent color", and this is supported by Turing.  
+        When a GIF with a transparent color is loaded by Turing, the 
+        "transparent color" is added to the color palette (if not already 
+        present).  If the picture is displayed using the <i>picMerge</i> mode, 
+        the "transparent color" will not be displayed. Note that the 
+        "transparent color" is a real color.  If you use the <i>picCopy</i> 
+        mode, this color is displayed.<p>
+        Here is an example of a program displaying a GIF with a transparent
+        color.  In this case, the transparent color is dark blue.<p>
+        <OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+          <PARAM name="Command" value="TCard">
+          <PARAM name="Button" value="Text: Launch GIF Example Program">
+          <PARAM name="Item1" value="-1,GIF.t;GIF Example">
+        </OBJECT><p>
+    <li><h3>Multi-frame GIF Image support</h3>
+        Turing also supports multi-frame GIF images.  A GIF program can contain
+        multiple images (this is how animated GIFs work).  The
+        <b><a href="pic_filenewframes.html">Pic.FileNewFrames<a></b> procedure
+        can read a multi-frame GIF into an array of integers.  These can then
+        be displayed one at a time, or all in one call using the
+        <b><a href="pic_drawframes.html">Pic.DrawFrames<a></b> procedure.<p>
+        Here is an example of a program that displays a rotating globe found
+        in a multi-frame GIF file using these procedures.<p>
+        <OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+          <PARAM name="Command" value="TCard">
+          <PARAM name="Button" value="Text: Launch GIF Example Program">
+          <PARAM name="Item1" value="-1,Pic.DrawFrames.t;GIF Example">
+        </OBJECT><p>
+    <li><h3>Faster animation</h3>
+        Turing has been improved to speed up animation when the <i>picMerge</i>
+        mode is used.  Speed improvements from 50% to 500% have been reported.<p>
+    <li><h3>Other graphic routines</h3>
+        Turing now includes the <b><a href="pic_blend.html">Pic.Blend</a></b>
+        function to blend two pictures together and the 
+        <b><a href="pic_blur.html">Pic.Blur</a></b> function to take an existing
+        picture and make it blurry.<p>
+  </ol>
+</body>    

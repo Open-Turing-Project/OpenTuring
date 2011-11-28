@@ -1,0 +1,58 @@
+<html>
+<head><title>GUI.Disable</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.Disable</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>GUI.Disable</b> (<i>widgetID</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Disables a widget specified by <i>widgetID</i>. <p>
+Used in conjunction with <b>GUI.Enable</b> to enable and disable widgets. <p>
+Disabled widgets generally are "grayed out" to visually depict their disabled status.<p>
+Disabled widgets do not respond to keystrokes or mouse clicks.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The three color radio buttons are enabled only when the color check box is selected.<p>
+<pre><tt>        <b>import</b> <i>GUI</i> <b>in</b> "%oot/lib/GUI" 
+        <b>View.Set</b> ("graphics:100;100") 
+        
+        <b>var</b> <i>colorCheckBox</i>, <i>redRadio</i>, <i>greenRadio</i>, <i>blueRadio</i> : <b>int</b>
+        
+        <b>procedure</b> <i>DoNothing</i>
+        <b>end</b> <i>DoNothing</i>
+        
+        <b>procedure</b> <i>ColorCheckBoxProc</i> (<i>filled</i> : <b>boolean</b>)
+            <b>if</b> <i>filled</i> <b>then</b>
+                <b>GUI.Enable</b><i> </i>(<i>redRadio</i>)
+                <b>GUI.Enable</b><i> </i>(<i>greenRadio</i>)
+                <b>GUI.Enable</b><i> </i>(<i>blueRadio</i>)
+            <b>else</b>
+                <b>GUI.Disable</b> (<i>redRadio</i>)
+                <b>GUI.Disable</b><i> </i>(<i>greenRadio</i>)
+                <b>GUI.Disable</b><i> </i>(<i>blueRadio</i>)
+            <b>end if</b>
+        <b>end</b> <i>ColorCheckBoxProc</i>
+        
+        <i>colorCheckBox</i> := <b>GUI.CreateCheckBox</b> (10, 80,
+            "Use Color", <i>ColorCheckBoxProc</i>)
+        <i>redRadio</i> := <b>GUI.CreateRadioButton</b> (33, 60, "Red", 0, <i>DoNothing</i>)
+        <i>greenRadio</i> := <b>GUI.CreateRadioButton</b> (1, 1, "Green", 
+            <i>redRadio</i>, <i>DoNothing</i>)
+        <i>blueRadio</i> := <b>GUI.CreateRadioButton</b> (1, 1, "Blue", 
+            <i>greenRadio</i>, <i>DoNothing</i>)
+        <i>ColorCheckBoxProc</i> (<b>false</b>)
+        
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The following types of widgets can be enabled or disabled:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>Buttons, Check Boxes, Radio Buttons, Picture Buttons,<br>
+</table><p>
+Picture Radio Buttons, Horizontal Scroll Bars, Horizontal Sliders,<br>
+Canvases, Text Fields, Vertical Scroll Bars, Vertical Sliders<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the procedure by calling <b>GUI.Disable</b>, not by calling <b>Disable</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="gui_enable.html">GUI.Enable</a></b>.<p>
+</table></body>
+</html>

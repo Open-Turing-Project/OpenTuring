@@ -1,0 +1,21 @@
+<html>
+<head><title>shl</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>shl</b></font></td><td align="right"><font size="+1"><b>shift left operator</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><i>A</i> <b>shl</b> <i>B</i><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>shl</b> (shift left) operator produces the value of <i>A</i> shifted <i>B</i> bits to the left. Both A and B must be non-negative integers (natural numbers).<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Assign the base 2 value 11 to <i>i</i> and then shift it left by 2 places and assign the resulting base 2 value 1100 to <i>j</i>.<p>
+<pre><tt>        <b>var</b> <i>i</i>, <i>j</i> : <b>int</b>
+        <i>i</i> := 2 <b>#</b> 11     <i>% 2#11 = 3 (base 10)</i>
+        <i>j</i> := <i>i</i> <b>shl</b> 2        <i>% j becomes 2#1100 = 12 (base 10)</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The <b>shl</b> operator is defined mathematically (in a machine-independent way) as follows:  <i>A</i> <b>shl</b> <i>B</i> = <i>A</i> <b>*</b> ( 2**<i>B </i>). Overflow occurs when the result exceeds the maximum value of the <b>nat4</b> (4-byte natural number) type.<p>
+Value <i>A</i> can be of any integer type (as long as it is non-negative) or any natural number type.<p>
+The <b>shl</b> operator has the same precedence as the * operator.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="shr.html">shr</a></b> (shift right), <b><a href="or.html">or</a></b>, <b><a href="and.html">and</a></b> and <b><a href="xor.html">xor</a></b>, which also are bit manipulation operators that act on non-negative values. See also <b><a href="explicitintegerconstant.html">explicitIntegerConstant</a></b> which describes values such as 2#1100.<p>
+</table></body>
+</html>

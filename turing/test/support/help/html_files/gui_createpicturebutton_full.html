@@ -1,0 +1,91 @@
+<html>
+<head><title>GUI.CreatePictureButton[Full]</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.CreatePictureButton[Full]</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+  
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>GUI.CreatePictureButton</b> (<i>x</i>, <i>y</i>, <i>picture</i> : <b>int</b>,<br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;<i>actionProc</i> : <b>procedure</b> x ()) : <b>int</b><p>
+	  <b>GUI.CreatePictureButtonFull</b> (<i>x</i>, <i>y</i>, <i>picture</i> : <b>int</b>,<br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;<i>actionProc</i> : <b>procedure</b> x (), <i>width</i>, <i>height</i> : <b>int</b>, <br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;<i>shortcut</i> : <b>char</b>, <i>mergePic</i> : <b>boolean</b>) : <b>int</b><p></font>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>Creates a picture button and returns the button's widget ID. <p>
+	  Picture buttons behave like buttons (see <b>GUI.CreateButton</b>) except that instead of text on the button, a picture specified by the user is displayed on the button. The picture button widget responds to mouse clicks and keystrokes in the same manner as a regular button widget. <p>
+	  The picture must be created by the program beforehand using <b>Pic.New</b> or <b>Pic.FileNew</b>. The resulting picture can then be used as a parameter to <b>GUI.CreatePictureButton</b><i>.</i> In general, pictures should be a maximum of about 50 pixels high and wide, although there is no built-in limit in the GUI library. <p>
+	  The <i>x</i> and <i>y</i> parameters specify the lower-left corner of the picture button. The <i>picture</i> parameter specifies the picture ID of the picture to be displayed on the button. (Note that, in general, this picture should be fairly small.) The picture ID is received from a <b>Pic.New</b> or <b>Pic.FileNew</b> call. Do not call <b>Pic.Free</b> for this picture ID until the button has been disposed of by calling <b>GUI.Dispose</b>. The <i>actionProc</i> parameter specifies the name of a procedure that is called when the picture button is pressed.<p>
+	  For <b>GUI.CreatePictureButtonFull</b>, the <i>width</i> and <i>height</i> parameters specify the width and height of the button. If they are set to 0, then the picture radio button is automatically sized to fit the picture. If you need to know the precise size of the button, use the <b>GUI.GetWidth</b> and <b>GUI.GetHeight</b> functions. If <i>width</i> and <i>height</i> are larger than the picture, the picture is centered in the button. The <i>shortCut</i>parameter is the keystroke to be used as the button's shortcut. The <i>mergePic</i> parameter specifies whether anything that was the background colour in the picture (usually colour 0) should be set to the background colour of the button (which is usually gray). This defaults to true for <i>CreatePictureButton</i>.<p>
+	  <center><img src="gui_createpicturebutton_full01.gif"></center>
+	  <center><b>Two Picture Buttons</b> </center><p>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>The following program displays five picture buttons which output a message when pressed.<p>
+<pre><tt>        <b>import</b> <i>GUI</i>
+        <b>View.Set</b> ("graphics:100;70") 
+        
+        <b>const</b> <i>size</i> : <b>int</b> := 25   % The buttons size.
+        <b>const</b> <i>border</i> : <b>int</b> := 3
+        
+        <b>var</b> <i>starButton</i>, <i>mapleButton</i>, <i>starPic</i>, <i>mapleLeafPic</i> : <b>int</b>
+        
+        <b>procedure </b><i>StarPressed</i>
+            <b>Text.Locate</b> (1, 1)
+            <b>put</b> "Star Pressed    "
+        <b>end</b> <i>StarPressed</i>
+        
+        <b>procedure </b><i>MaplePressed</i>
+            <b>Text.Locate</b> (1, 1)
+            <b>put</b> "Maple Pressed "
+        <b>end</b> <i>MaplePressed</i>
+        
+        % Create the pictures.
+        % The star.
+        <b>Draw.Star</b> (<i>border</i>, <i>border</i>, <i>border</i> + <i>size</i>, <i>border</i> + <i>size</i>, <i>black</i>)
+        <b>Draw.Star</b> (<i>border</i> + 1, <i>border</i> + 1, <i>border</i> + <i>size</i> - 1,
+            <i>border</i> + <i>size</i> - 1, <i>black</i>)
+        <b>Draw.FillStar</b> (<i>border</i> + 2, <i>border</i> + 2, <i>border</i> + <i>size</i> - 2,
+            <i>border</i> + <i>size</i> - 2, <i>brightred</i>)
+        <i>starPic</i> := <b>Pic.New</b> (0, 0, 2 * <i>border</i> + <i>size</i>, 2 * <i>border</i> + <i>size</i>)
+        
+        % The mapleleaf.
+        <b>Draw.FillBox</b> (border, border, border + size, border + size, white)
+        <b>Draw.MapleLeaf</b> (<i>border</i>, <i>border</i>, <i>border</i> + <i>size</i>, <i>border</i> + <i>size</i>, <i>black</i>)
+        <b>Draw.MapleLeaf</b> (<i>border</i> + 1, <i>border</i> + 1, <i>border</i> + <i>size</i> - 1,
+            <i>border</i> + <i>size</i> - 1, <i>black</i>)
+        <b>Draw.FillMapleLeaf</b><i> </i>(<i>border</i> + 2, <i>border</i> + 2, <i>border</i> + <i>size</i> - 2,
+            <i>border</i> + <i>size</i> - 2, <i>brightred</i>)
+        <i>mapleLeafPic</i> := <b>Pic.New</b> (0, 0, 2 * <i>border</i> + <i>size</i>, 2 * <i>border</i> + <i>size</i>)
+        
+        % Create the picture buttons.
+        <b>Draw.Cls</b>
+        <i>starButton</i> := <b>GUI.CreatePictureButton</b><i> </i>(10, 10, <i>starPic</i>, <i>StarPressed</i>)
+        <i>mapleButton</i> := <b>GUI.CreatePictureButton</b> (55, 10, <i>mapleLeafPic</i>, 
+            <i>MaplePressed</i>)
+        
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b></tt></pre><p>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,GUI.CreatePictureButton.t;GUI.CreatePictureButton Example">
+          </OBJECT><p></td>
+    </tr>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> When <b>GUI.CreatePictureButton</b> or <b>GUI.CreatePictureButtonFull</b><i> </i>is called, the newly created picture will be displayed immediately unless <b>GUI.DisplayWhenCreated</b> has been called with the <i>display</i> parameter set to false. <p>
+When a picture button is not enabled, the picture button is grayed out and the picture button no longer responds to any mouse clicks or keystrokes until the button is enabled again.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The following GUI subprograms can be called with a picture button as the <i>widgetID</i> parameter:<p>
+<table><tr valign="top"></td><td width="40">&nbsp;</td><td><b>GUI.Show</b>,<b> GUI.Hide</b>,<b> GUI.Enable</b>,<b> GUI.Disable</b>,<b> GUI.Dispose</b>,<b> GUI.GetX</b>,<b> GUI.GetY</b>,<b> GUI.GetWidth</b>,<b> GUI.GetHeight</b>, <b>GUI.SetPosition</b>,<b> GUI.SetSize</b>,<b> GUI.SetPositionAndSize</b></td></tr>
+</table><p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>GUI.CreatePictureButton</b>, not by calling <b>CreatePictureButton</b>.<p>
+</table></body>
+</html>

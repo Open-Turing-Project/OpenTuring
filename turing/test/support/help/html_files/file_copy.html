@@ -1,0 +1,58 @@
+<html>
+<head><title>File.Copy</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>File.Copy</b></font></td><td align="right">Part of <a href="filemodule.html">File</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>File.Copy</b> (<i>srcPathName</i>, <i>destPathName</i> : <b>string</b>)<p></font>
+    </tr>        
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td><b>File.Copy</b> copies a file named by the <i>srcPathName</i> parameter to the file named by the <i>destPathName</i> parameter. The copy can be between different disks or file systems.<p>
+    </tr>        
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The source file name must be an actual file. This procedure will not 
+          copy directories. <p>
+          If the <b>File.Copy </b>call fails, then <b>Error.Last</b> will 
+          return a non-zero value indicating the reason for the failure. 
+          <b>Error.LastMsg</b> will return a string which contains the textual 
+          version of the error.<p>
+          Note that you can use either forward or backward slashes to separate
+          components in a path. If you use backward slashes, you must double
+          them in a string literal.  (i.e.  "d:\\west\\example.t")<p>
+    </tr>        
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program copies the file "<i>d:\west\example.dat</i>" to 
+          "<i>new_example.t</i>". in the current directory.<p>
+<pre><tt>        <b>File.Copy</b> ("d:/west/example.dat", "new_example.t")
+        <b>if Error.Last</b> <b>=</b> <i>eNoError</i> <b>then</b>
+            <b>put</b> "File copied"
+        <b>else</b>
+            <b>put</b> "Did not copy the file."
+            <b>put</b> "Error: ", <b>Error.LastMsg</b>
+        <b>end if</b></tt></pre><p>
+    </tr>        
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td>An example program is available that copies a file to the current 
+          directory using <b>File.Copy</b>, displays its contents to the run 
+          window, and then deletes the file using <b>File.Delete</b>.<p>
+          <OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,File.Copy.t;File.Copy Example">
+          </OBJECT><p></td>
+    </tr>        
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+          <b>File.Copy</b>, not by calling <b>Copy</b>.<p>
+    </tr>        
+  </table>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<html>
+<head><title>View.ClipSet</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>View.ClipSet</b></font></td><td align="right">Part of <a href="viewmodule.html">View</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>View.ClipSet</b> (<i>x1</i>, <i>y1</i>, <i>x2</i>, <i>y2</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>View.ClipSet</b> procedure sets the clipping region to the rectangle specified by (<i>x1</i>, <i>y1</i>) - (<i>x2</i>, <i>y2</i>). If a clipping region already exist, it is replaced by the specified rectangle.<p>
+A clipping region is the region in which the output will appear. If the rectangle is specified as the clipping region, any drawing done outside the rectangle will not appear.<p>
+To set the initial clipping, or remove the old region and replace it with a new one, use <b>View.ClipSet</b>. To set the clipping region back to the entire screen or window, use <b>View.ClipOff</b>.<p>
+These commands only work in "<i>graphics</i>" mode.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program sets the clipping region to five rectangles and then draws random circles. The circles will only appear (or partially appear) in the rectangles.<p>
+<pre><tt>        <b>const </b><i>maxx13</i> : <i>int</i> := <b>maxx div 3</b>
+        <b>const </b><i>maxx23</i> : <i>int</i> := 2 * <b>maxx div 3</b>
+        <b>const </b><i>maxy13</i> : <i>int</i> := <b>maxy div 3</b>
+        <b>const </b><i>maxy23</i> : <i>int</i> := 2 * <b>maxy div 3</b>
+        <b>View.ClipSet</b> (0, 0, maxx13, maxy13)
+        <b>View.ClipAdd</b> (maxx23, 0, maxx, maxy13)
+        <b>View.ClipAdd</b> (maxx13, maxy13, maxx23, maxy23)
+        <b>View.ClipAdd</b> (0, maxy23, maxx13, maxy)
+        <b>View.ClipAdd</b> (maxx23, maxy23, maxx, maxy)
+        
+        % Draw the random ovals in the box
+        <b>var</b> x, y, clr : <b>int</b>
+        <b>loop</b>
+            <i>x</i> := <b>Rand.Int</b> (0, <b>maxx</b>)     <i>% Random x</i>
+            <i>y</i> := <b>Rand.Int</b> (0, <b>maxy</b>)     <i>% Random y</i>
+            <i>clr</i> := <b>Rand.Int</b> (0, <b>maxcolor</b>)   <i>% Random color</i>
+            <b>Draw.FillOval</b> (<i>x</i>, <i>y</i>, 30, 30, <i>clr</i>)
+        <b>end loop</b></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>View.ClipSet</b>, not by calling <b>ClipSet</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="view_clipadd.html">View.ClipAdd</a></b> and <b><a href="view_clipoff.html">View.ClipOff</a> </b>functions.<p>
+</table></body>
+</html>

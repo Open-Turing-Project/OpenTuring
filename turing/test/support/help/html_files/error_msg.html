@@ -1,0 +1,16 @@
+<html>
+<head><title>Error.Msg</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Error.Msg</b></font></td><td align="right">Part of <a href="errormodule.html">Error</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Error.Msg</b> (<i>errorCode</i> : <b>int</b>): <b>string</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> <b>Error.Msg</b> is a function that returns the error message related to a specified error code. If the error code is <i>eNoError</i>, or if there is no such error code, it returns the empty string. If there is such an error, it returns the textual message associated with that error.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program prints out the error message associated with <i>eFsysFileNotFound</i> (“File not found”).<p>
+<pre><tt>        <b>put</b> <b>Error.Msg</b> (<i>eFsysFileNotFound</i>)</tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Error.Msg</b>, not by calling <b>Msg</b>.<p>
+</table></body>
+</html>

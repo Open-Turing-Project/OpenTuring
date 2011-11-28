@@ -1,0 +1,124 @@
+<html>
+<head><title>array</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>array</b></font></td><td align="right"><font size="+1"><b>type</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>array</b> <i>indexType</i> { , <i>indexType</i> } <b>of</b> <i>typeSpec</i><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> An array consists of a number of elements. The <i>typeSpec</i> gives the type of these elements. There is one element for each item in the (combinations of) range(s) of the <i>indexType(s)</i>. In the following example, the array called <i>marks</i> consists of 100 elements, each of which is an integer.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>var</b> <i>marks</i> : <b>array</b> 1 .. 100<i> </i><b>of</b> <b>int</b>
+        …
+        <b>var</b> <i>sum</i> : <b>int</b> := 0
+        <b>for</b> <i>i</i> : 1 .. 100        <i>% Add up the elements of marks</i>
+            <i>sum</i> := <i>sum</i> +<i> marks</i> (<i>i</i>)
+        <b>end</b> <b>for</b></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,array.t;Array Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> In the above example, <i>marks(i)</i> is the <i>i</i>-th element of the <i>marks</i> array. We call <i>i</i> the <i>index</i> or <i>subscript</i> of <i>marks</i>. In Turing, a subscript is surrounded by parentheses, not by square brackets as is the case in the Pascal or C-like languages.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The <i>prices</i> array shows how an array can have more than one dimension. This array has one dimension for the year (1988, 1989 or 1990) and another for the month (1 .. 12). There are 36 elements of the array, one for each month of each year.<p>
+<pre><tt>        <b>var</b> <i>price</i> : <b>array</b> 1988 .. 1990,<i> </i>1 .. 12<i> </i><b>of</b> <b>int</b>
+        …
+        <b>var</b> <i>sum</i> : <b>int</b> := 0
+        <b>for</b> <i>year </i>: 1988 .. 1990     <i>% For each year</i>
+            <b>for</b> <i>month </i>: 1 .. 12     <i>% For each month</i>
+                <i>sum</i> := <i>sum</i> +<i> price</i> (<i>year</i>, <i>month)</i>
+            <b>end</b> <b>for</b>
+        <b>end</b> <b>for</b></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,array2.t;Two-Dimensional Array Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Each <i>indexType</i> must contain at least one item. The range 1 .. 0, for example, would not be allowed. Each index type must be a subrange of the integers, characters (the <b>char</b> type), or of an enumerated type, an (entire) enumerated type, the <b>char</b> type, the <b>boolean </b>type, or a named type which is one of these.<p>
+Arrays can also be declared in the form<p>
+<pre><tt>        <b>var</b> <i>a</i> : <b>array</b> 1 .. * <b>of</b> <i>typeSpec := </i><b>init</b> (…)</tt></pre>
+The upper bound of <i>a</i> will be computed from the count of the initializing values. Both <b>var</b> and <b>const</b> arrays can be declared this way. An array variable/constant declared with "*" as an upper bound must have an initializing list. Only one dimensional arrays may be declared in this form.<p>
+Arrays can be assigned as a whole (to arrays of an equivalent type), but they cannot be compared.<p>
+An array can be initialized in its declaration using <b>init</b>. For details, see <b>var</b> and <b>const</b> declarations.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> In this example, the size of the array is not known until run time.<p>
+<pre><tt>        <b>var</b> <i>howMany</i> : <b>int</b>
+        <b>get</b> <i>howMany</i>
+        <b>var</b> <i>height</i> : <b>array</b> 1 .. <i>howMany</i> <b>of</b> <b>real</b>
+            <i>…read in all the elements of this array…</i>
+        <b>function</b> <i>total</i> (<i>a </i>: <b>array</b> 1 .. * <b>of</b> <b>real</b>) : <b>real</b>
+            <b>var</b> <i>sum</i> : <b>real</b> := 0
+            <b>for</b> <i>i</i> : 1 .. <b>upper</b> (<i>a</i>)
+                <i>sum</i> := <i>sum</i> +<i> a</i> (<i>i</i>)
+            <b>end</b> <b>for</b>
+            <b>result</b> <i>sum</i>
+        <b>end</b> <i>total</i>
+        
+        <b>put</b> "Sum of the heights is ", <i>total</i> (<i>height</i>)</tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,array3.t;Dynamic Arrays Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The ends of the range of a subscript are called the <i>bounds</i> of the array. If these values are not known until run time, the array is said to be <i>dynamic</i>. In the above example, <i>height</i> is a dynamic array. Dynamic arrays can be declared as variables, as in the case for <i>height</i>. However, dynamic arrays cannot appear inside other types such as records, and cannot be named types. Dynamic arrays cannot be assigned and cannot be initialized using <b>init</b>.<p>
+In the above example, <b>upper</b><i>(a) </i>returns the size of <i>a</i>. See also <b>upper</b> and <b>lower</b>.<p>
+In the declaration of an array parameter, the upper bound can be given as an asterisk (<b>*</b>), as is done in the above example. This means that the upper bound is taken from that of the corresponding actual parameter (from <i>height</i> in this example).<p>
+You can have arrays of other types, for example arrays of record. If <i>R </i>is an array of records, then <i>R(i).f</i> is the way to access the <i>f</i> field of the <i>i</i>-th element of array <i>R</i>.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Arrays can also be made resizeable. This is done using the <b>flexible</b> keyword. The declaration syntax is:<p>
+<pre><tt>        <b>var</b> <i>name</i> : <b>flexible</b> <b>array</b> <i>indexType</i> { , <i>indexType</i> } <b>of</b> <i>typeSpec</i></tt></pre>
+The indices may have compile-time or run-time upper bounds (the lower bound must be compile-time). The upper bounds can be changed by using:<p>
+<pre><tt>        <b>new</b> <i>name</i> , <i>newUpper1 {,newUpper2}</i></tt></pre>
+The existing array entries will retain their values, except that any index made smaller will have the corresponding array entries lost. Any index made larger will have the new array entries uninitialized (if applicable).<p>
+Additionally, the upper bound (both in the declaration and the <b>new</b> statement) can be made one less than the lower bound. This effectively makes an array that contains 0 elements. It can later be increased in size with another <b>new</b>.<p>
+In the current implementation (2002), with a multi-dimensional array with a non-zero number of total elements, it is a run-time error to change any but the first dimension (unless one of the new upper bounds is one less than the corresponding lower bound, giving 0 elements in the array) as the algorithm to rearrange the element memory locations has not yet been implemented.<p>
+Currently, only variables can be declared in this form. There is no flexible array parameter type, although a flexible array can be passed to an array parameter with “<b>*</b>” as the upper bound.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> In this example, the array is resized to fit the number of elements in the file.<p>
+<pre><tt>        <b>function</b><i> getLines</i> (<i>fileName</i> : <b>string</b>) : <b>int</b>
+            <b>var</b> <i>f</i>, <i>numLines</i> : <b>int</b>
+            <b>var</b><i> line</i> : <b>string</b>
+            <b>open</b> : f, <i>fileName</i>, <b>get</b>
+            <i>numLines</i> := 0
+            <b>loop</b>
+                <b>exit when eof</b> (<i>f</i>)
+                <b>get</b> : <i>f</i>, <i>line</i> : *
+                <i>numLines</i> += 1
+            <b>end loop</b>
+            <b>close</b> : <i>f</i>
+            <b>result </b><i>numLines</i>
+        <b>end</b> <i>getLines</i> 
+        
+        <b>procedure</b><i> readFile </i>(<b>var</b> <i>lines</i> : <b>array</b> 1 .. *<b> of string<i>, </i></b><i>fileName</i> : <b>string</b>)
+            <b>var</b> <i>f</i> : <b>int</b>
+            <b>var</b><i> line</i> : <b>string</b>
+            <b>open</b> : <i>f</i>, <i>fileName</i>, <b>get</b>
+            <b>for</b> i : 1 .. <b>upper</b> (<i>lines</i>)
+                <b>get</b> : <i>f</i>, <i>lines</i> (<i>i</i>) : *
+            <b>end for</b>    
+			<b>close</b> : <i>f</i>
+        <b>end</b> <i>readFile</i>
+            
+        <b>var </b><i>lines</i> : <b>flexible array</b> 1 .. 0 <b>of string</b>
+        <b>new</b> <i>lines</i>, <i>getLines</i> ("text.dat")
+        <i>readFile</i> (<i>lines</i>, "text.dat")
+        <b>for</b> <i>i</i> : 1 .. <b>upper</b> (<i>lines</i>)
+            <b>put</b> <i>lines</i> (<i>i</i>)
+        <b>end for</b></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,array4.t;Flexible Arrays Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="init.html">init</a></b> to initialize arrays, <b><a href="flexible.html">flexible</a></b> to declare resizable arrays and <i><a href="indextype.html">indexType</a></i> to specify the index of an array.<p>
+</table></body>
+</html>

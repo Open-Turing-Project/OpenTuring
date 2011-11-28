@@ -1,0 +1,31 @@
+<html>
+<head><title>Error.LastStr</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Error.LastStr</b></font></td><td align="right">Part of <a href="errormodule.html">Error</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Error.LastStr</b> : <b>string</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> <b>Error.LastStr</b> is a function that returns the string version of the error code set by the last called predefined subprogram (i.e. it would return the string "eDrawClrNumTooLarge" for using a color greater than <b>maxcolor</b> in a <b>Draw</b> command). If there is no error then it returns the empty string. If there is an error, you can use <b>Error.Last</b> to obtain the actual error code.<p>
+The fact that <b>Error.LastStr</b> is not "" does not necessarily mean that the previous predefined function failed or failed completely. <b>Error.LastStr</b> also returns a number of error codes for warning messages. For example, if a user specifies a number larger than <b>maxcolor</b> for the <i>color</i> parameter of the <b>Draw.Line</b> procedure, the line is still drawn, only in color <b>maxcolor</b>. However, <b>Error.LastStr</b> will return a string version of the error code that indicates that the color was out of range.<p>
+You can take a look at the error constants defined by looking at the unit <b>ErrorNum</b> which contains all defined error codes.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program creates the directory called <i>information</i>. If the creation fails, it prints out the error number and an error message.<p>
+<pre><tt>        <b>Dir.Create</b> ("testdata/information")
+        <b>if Error.Last</b> <b>=</b> <i>eNoError</i> <b>then</b>
+            <b>put</b> "Directory created"
+        <b>else</b>
+            <b>put</b> "Did not create the directory."
+            <b>put</b> "Error Number: ", <b>Error.Last</b>
+            <b>put</b> "Error Constant: ", <b>Error.LastStr</b>
+        <b>end if</b></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,Error.LastStr.t;Error.LastStr Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Error.LastStr</b>, not by calling <b>LastStr</b>.<p>
+</table></body>
+</html>

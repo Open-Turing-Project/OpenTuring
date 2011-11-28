@@ -1,0 +1,62 @@
+<html>
+<head><title>new</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>new</b></font></td><td align="right"><font size="+1"><b>statement</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>newStatement</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>new</b> [ <i>collectionOrClassId</i> , ] <i>pointerVariableReference</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A <b>new</b> statement creates (allocates) a new element and assigns its location to the pointer variable. This element can be an object of a collection or class or a value of a type. If the <i>collectionOrClassId</i> is omitted, the choice of element is determined by the type of the pointer. For example, if the pointer is to class <i>C</i>, an object of class <i>C</i> will be allocated.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Using a collection, declare a list of records and allocate one record.<p>
+<pre><tt>        <b>var</b><i> list</i> : <b>collection</b> <b>of</b>
+            <b>record</b>
+                <i>contents</i> : <b>string</b> ( 10 )
+                <i>next</i> : <b>pointer</b> <b>to</b> <i>list</i>  <i>% Short form: next : ^ list</i>
+            <b>end</b> <b>record</b>
+        <b>var</b> <i>first </i>: <b>pointer</b> <b>to</b> <i>list</i>     <i>% Short form: <b>var</b></i> <i>first : ^ list</i>
+        <b>new</b> <i>list</i>, <i>first</i>         <i>% Short form: <b>new</b> first</i></tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Using a class, create an object of that class. The object is located by the <i>start</i> pointer. <p>
+<pre><tt>        <b>class</b> <i>node</i>
+            <b>export</b> <b>var</b><i> next</i>, <b>var</b><i> name</i>
+            <i>name</i> : <b>string</b> (25)
+            <i>next </i>: <b>pointer</b> <b>to</b><i> node</i>  <i>% Short form: next : ^ node</i>
+        <b>end</b> <i>node</i>
+        <b>var</b> <i>start </i>: <b>pointer</b> <b>to</b> <i>node</i> <i>% Short form: <b>var</b></i> <i>start : ^ node</i>
+        <b>new</b> <i>node</i>, <i>start</i>         <i>% Short form: <b>new</b> start</i></tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Using a record type, declare a list of records and allocate one record. <p>
+<pre><tt>        <b>type</b> <i>item</i>:
+            <b>record</b>
+                <i>contents </i>: <b>string</b> ( 10 )
+                <i>next</i> : <b>pointer</b> <b>to</b> <i>item</i>  <i>% Short form: next : ^ item</i>
+            <b>end</b> <b>record</b>
+        <b>var</b> <i>first </i>: <b>pointer</b> <b>to</b> <i>item</i>     <i>% Short form: </i>var <i>first : ^ item</i>
+        <b>new</b> <i>first</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> As the examples in this section show, a pointer can locate one of three things: an object of a collection, an object of a class or a value of a type.<p>
+In the <b>new</b> statement, the <i>collectionOrClassId</i> can be omitted. If the pointer locates a type, it<i> </i>must be omitted. The <b>free</b> statement is used to deallocate an element.<p>
+An imported class can have one of its objects created (by the <b>new</b> statement) only if the class is imported <b>var</b>.<p>
+If there is no more space to allocate an element, <b>new</b> will set the pointer to be the <b>nil</b> value, and the program will continue executing.<p>
+If the pointer locates class <i>C </i>and <i>C</i> contains an <b>implement</b> <b>by</b> list, the object created by <b>new</b> is the inherited object (through any number of levels of <b>implement</b> <b>by</b>). The pointer, however, remains a pointer to <i>C</i>.<p>
+The form <b>new</b> <i>p</i>  is a short form for <b>new</b> <i>C</i>, <i>p </i>when <i>C</i> is the class or collection given in <i>p</i>'s type.<p>
+If <i>p</i> is a pointer to class <i>C</i> and <i>C</i> has a descendant (expansion) class <i>D</i>, a <b>new</b> statement can be used to allocate an object of type <i>D</i>, as in:<p>
+<pre><tt>        <b>new</b> <i>D</i>, <i>p</i>    <i>% Allocates an object of class D</i></tt></pre>
+If D has an <b>implement</b> <b>by</b> clause, the expansion is created.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The <b>new</b> statement can also be used to resize a <b>flexible array</b>. If an array has been declared flexible using the syntax .<p>
+<pre><tt>        <b>var</b> <i>name</i> : <b>flexible</b> <b>array</b> <i>indexType</i> { , <i>indexType</i> } <b>of</b> <i>typeSpec</i></tt></pre>
+The indices may have compile-time or run-time upper bounds (the lower bound must be compile-time). The upper bounds can be changed by using:<p>
+<pre><tt>        <b>new</b> <i>name</i> , <i>newUpper1 {,newUpper2}</i></tt></pre>
+The existing array entries will retain their values, except that any index made smaller will have the corresponding array entries lost. Any index made larger will have the new array entries uninitialized (if applicable).<p>
+Additionally, the upper bound (both in the declaration and the <b>new</b> statement) can be made one less than the lower bound. This effectively makes an array that contains 0 elements. It can later be increased in size with another <b>new</b>.<p>
+In the current implementation (1999), with a multi-dimensional array with a non-zero number of total elements, it is a run-time error to change any but the first dimension (unless one of the new upper bounds is one less than the corresponding lower bound, giving 0 elements in the array) as the algorithm to rearrange the element memory locations has not yet been implemented.<p>
+Currently, only variables can be declared in this form. There is no flexible array parameter type, although a flexible array can be passed to an array parameter with "<b>*"</b> as the upper bound.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> See <b>array</b> for an example of <b>flexible arrays</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="class.html">class</a></b> and <b><a href="collection.html">collection</a></b> declarations, <b><a href="pointer.html">pointer</a></b> type, <b><a href="free.html">free</a></b> <a href="statement.html">statement</a>, <b><a href="nil.html">nil</a></b> value and <b><a href="implement_by.html">implement by</a></b> list.<p>
+For <a href="flexible.html">flexible</a> arrays, see also <b><a href="array.html">array</a></b> and <b><a href="flexible.html">flexible</a></b>.<p>
+</table></body>
+</html>

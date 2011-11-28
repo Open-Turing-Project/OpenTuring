@@ -1,0 +1,46 @@
+<html>
+<head><title>GUI.SetText</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.SetText</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+  
+  <table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>GUI.SetText</b> (<i>widgetID</i> : <b>int</b>, <i>text</i> : <b>string</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Sets the text of a text field specified by <i>widgetID</i> to <i>text</i>. The selection is set to 1, 1 (i.e. the cursor is at the beginning of the text).<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>GUI.SetText</b>, not by calling <b>SetText</b>.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program converts all lower case input in the text field to upper case when the user presses ENTER.<p>
+<pre><tt>        <b>import</b> <i>GUI</i>
+        
+        <b>var</b> <i>textField</i>, <i>lbl</i> : <b>int</b>
+        
+        <b>procedure</b> <i>CheckInput</i> (<i>s</i> : <b>string</b>)
+            <b>var</b> <i>newString</i> : <b>string</b> := ""
+            <b>for</b> i : 1 .. <b>length</b> (<i>s</i>)
+                <b>if</b> 'a' &lt;= <i>s</i> (<i>i</i>) <b>and</b> <i>s</i> (<i>i</i>) &lt;= 'z' then
+                    <i>newString</i> += <b>chr</b> (<b>ord</b> (<i>s</i> (<i>i</i>))  32)
+                <b>else</b>
+                    <i>newString</i> += <i>s</i> (<i>i</i>)
+                <b>end if</b>
+            <b>end for</b>
+            <b>GUI.SetText </b>(<i>textField</i>, <i>newString</i>)
+            <b>GUI.SetSelection</b> (<i>textField</i>, 1, 1)
+        <b>end</b> <i>CheckInput</i>
+        
+        <i>textField</i> := <b>GUI.CreateTextField</b> (100, 100, 200, "", <i>CheckInput</i>)
+        <i>lbl</i> := <b>GUI.CreateLabelFull </b>(100 + <b>GUI.GetWidth</b> (<i>textField</i>) <b>div</b> 2,
+            100 + <b>GUI.GetHeight</b> (<i>textField</i>),  "Converts to Upper Case", 
+            0, 0, <i>GUI.CENTER </i>+ <i>GUI.BOTTOM</i>, 0)
+        
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end loop</b></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>GUI.SetText</b>, not by calling <b>SetText</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b>GUI.CreateTextField</b>.<p>
+</table></body>
+</html>

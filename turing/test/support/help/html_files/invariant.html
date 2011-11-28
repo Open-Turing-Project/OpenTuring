@@ -1,0 +1,33 @@
+<html>
+<head><title>invariant</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>invariant</b></font></td><td align="right"><font size="+1"><b>assertion</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> An <i>invariantAssertion</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>invariant</b> <i>trueFalseExpn</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> An <b>invariant</b> assertion is a special form of an <b>assert</b> statement that is used only in <b>loop</b> and <b>for</b> statements and in modules, monitors, and classes. It is used to make sure that a specific requirement is met. This requirement is given by the <i>trueFalseExpn</i>. The <i>trueFalseExpn </i>is evaluated. If it is true, all is well and execution continues. If it is false, execution is terminated with an appropriate message. See <b>assert</b>, <b>loop</b> and <b>for</b> statements and the <b>module</b> declarations for more details.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program uses an invariant in a <b>for</b> loop. The invariant uses the function <i>nameInList </i>to specify that a key has not yet been found in an array of names.<p>
+<pre><tt>        <b>var</b> <i>name</i> : <b>array</b> 1 .. 100 <b>of</b> <b>string</b>
+        <b>var</b> <i>key</i> : <b>string</b>
+        <i>… input name and key …</i>
+        
+        <b>function</b> <i>nameInList</i> ( <i>n</i> : int) : <b>boolean</b>
+            <b>for</b> <i>i</i> : 1 .. <i>n</i>
+                <b>if</b> <i>key</i> = <i>name</i> ( <i>i </i>) <b>then</b>
+                    <b>result</b> true
+                <b>end</b> <b>if</b>
+            <b>end</b> <b>for</b>
+            <b>result</b> <b>false</b>
+        <b>end</b> <i>nameInList</i>
+        
+        <b>for</b> <i>j</i> : 1 .. 100
+            <b>invariant</b> <b>not</b> <i>nameInList</i> (<i> j</i> - 1)
+            <b>if</b> <i>key</i> = <i>name</i> ( <i>j</i>) <b>then</b>
+                <b>put</b> "Found name at ", <i>j</i>
+                <b>exit</b>
+            <b>end</b> <b>if</b>
+        <b>end</b> <b>loop</b></tt></pre>
+</table></body>
+</html>

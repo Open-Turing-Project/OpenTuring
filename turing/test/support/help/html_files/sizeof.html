@@ -1,0 +1,21 @@
+<html>
+<head><title>sizeof</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>sizeof</b></font></td><td align="right"><font size="+1"><b>size of a type</b></font></td></table><p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dirty<p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>sizeof</b> (<i>typeNameOrVariableReference</i>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>sizeof</b> attribute is used to find the number of bytes used to represent the type or variable. This is implementation-dependent (dirty).<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The size of <b>int2</b> and <b>nat2</b> is 2.<p>
+<pre><tt>        <b>var</b> <i>i</i> : <b>int2</b>
+        <b>const</b> <i>nat2size</i> := <b>sizeof</b> ( <i>i</i> )  <i>% size is 2</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The <i>typeNameOrVariableReference</i> must be the name of a user-defined type, a variable reference, a basic type (such as <b>real</b>), or a constant.<p>
+In principle, <b>sizeof</b> returns the number of <i>storage units</i> which would not necessarily be 8-bit bytes. For example, in some older machines, such as the CDC 6000 series, the storage units are 60 bit words. However, almost all modern computers use 8-bit bytes so these are the units of <b>sizeof</b>.<p>
+Beware that sizes may reflect alignment constraints in the underlying computer. For example, string sizes may be rounded up to even values (2-byte word alignments).<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> the <i><a href="indirection.html">indirection</a> operator</i> @, <b><a href="cheat.html">cheat</a></b>, <i><a href="explicitintegerconstant.html">explicitIntegerConstant</a></i> (how to write hexadecimal constants), and pointers (in particular <a href="unchecked.html">unchecked</a> pointers). See also <b><a href="addr.html">addr</a></b>, which returns the address of a variable.<p>
+</table></body>
+</html>

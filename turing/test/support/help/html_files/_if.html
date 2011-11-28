@@ -1,0 +1,27 @@
+<html>
+<head><title>#if</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>#if</b></font></td><td align="right"><font size="+1"><b>used for conditional compilation</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A conditional compilation <b>#if</b> has the form:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>#if</b> <i>expn</i> <b>then</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1"><i>… any source text …</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1">{ <b>#elsif</b> <i>expn</i> <b>then</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1"><i>… any source text …</i> }</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1">[ <b>#else</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1"><i>… any source text …</i> ]</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>#end</b> <b>if</b></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> An #<b>if</b> construct supports compile time selection of sections of source text to make up a program (or unit of a program), in other words <i>conditional compilation</i>. Any arbitrary source text (characters) can be selected.<p>
+Each of the selecting expressions (<i>expns</i>) have the form of a boolean expression, with the use of the operators <b>and</b>, <b>or</b> and <b>not</b> (but not =&gt;) and parentheses. The short forms &amp; and ~ are supported. The operands of the expressions must be <i>preprocessor flags</i>, which are set by a system- dependent mechanism not described here. A flag is considered to be <b>true</b> if it is explicitly set. If it is not explicitly set, it is considered false.<p>
+Unlike other parts of the language, the <b>#if</b>, <b>#elsif</b>, <b>#else</b> and <b>#end</b> <b>if</b> constructs are not free format. Specifically, they must be placed by themselves on a single line.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> A pair of declarations is chosen if both <i>stats</i> and <i>debug</i> are set, otherwise the <b>put</b> statement is selected. The selected part becomes part of the program and the other parts are ignored.<p>
+<pre><tt>        <b>#if</b> <i>stats </i><b>and</b><i> debug</i> <b>then</b>
+            <b>var</b> <i>count</i> : <b>array</b> 1 .. 5 <b>of</b> <b>real</b>
+            <b>var</b> <i>message</i> : <b>string</b>
+        <b>#else</b>
+            <b>put</b> "Debugging message"
+        <b>#end</b> <b>if</b></tt></pre>
+</table></body>
+</html>

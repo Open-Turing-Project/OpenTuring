@@ -1,0 +1,62 @@
+<html>
+<head><title>cheat</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>cheat</b></font></td><td align="right"><font size="+1"><b>type cheating</b></font></td></table><p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dangerous<p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>typeCheat</i> is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(a)</font></td><td colspan="7"><font size="+1"><b>cheat</b> (<i>targetType</i>, <i>expn</i> <b>[</b> : <i>sizeSpec</i> <b>]</b> )</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(b)</font></td><td colspan="7"><font size="+1"><b>#</b> <i>expn</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(c)</font></td><td colspan="7"><font size="+1"><i>id</i> : <b>cheat</b> <i>typeSpec</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A type cheat interprets the representation (bits) of one type as another type. Type cheats are dirty (machine-dependent) and sometimes dangerous (arbitrary corruption) and should be used only by programmers who know the underlying computer representation of values. <p>
+Form (b) is a short form type cheat in which the target type is a natural number.<p>
+Form (c) is used as a parameter in a subprogram declaration. It causes whatever is passed in to the parameter to be interpreted as <i>typeSpec</i>. <p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The character 'B' is assigned to variable <i>i</i>, whose type is considered to be <b>char</b> (although it is really <b>int1</b>).<p>
+<pre><tt>        <b>var</b> i : <b>int1</b>        % One byte integer
+        <b>cheat</b> (<b>char</b>, i) := 'B'</tt></pre>
+This assignment is equivalent (on byte oriented computers) to either of the following:<p>
+<pre><tt>        <i>i</i> := <b>cheat</b> (<b>int1</b>, 'B')
+        <i>i</i> := <b>ord</b> ('B'<i>)</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The form of <i>targetType</i> must be one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>(a)</td><td width="10">&nbsp;</td><td>[ <i>id</i> . ] <i>typeId</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(b)</td><td width="10">&nbsp;</td><td><b>int</b>, <b>int1</b>, <b>int2</b> or <b>int4</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(c)</td><td width="10">&nbsp;</td><td><b>nat</b>, <b>nat1</b>, <b>nat2</b> or <b>nat4</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(d)</td><td width="10">&nbsp;</td><td><b>boolean</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(e)</td><td width="10">&nbsp;</td><td><b>char</b> [ (<i>numberOfCharacters</i> ) ]</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(f)</td><td width="10">&nbsp;</td><td><b>string</b> [ (<i>maximumLength</i> ) ]</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(g)</td><td width="10">&nbsp;</td><td><b>addressint</b></td></tr>
+</table><p>
+In form (a) the beginning identifier <i>id</i> must be the name of a module, monitor or class that exports the <i>typeId</i>. Each of <i>numberOfCharacters</i> and <i>maximumLength</i> must be compile time integer expressions.<p>
+If the <i>expn</i> in a type cheat is a variable reference and the <i>sizeSpec</i> is omitted, the type cheat is considered to be a variable whose type is <i>targetType</i>. This allows, for example, the type cheat to be assigned to, as in:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td><b>cheat</b> (<b>char</b>, <i>i</i>) := 'B'</td></tr>
+</table><p>
+If the <i>expn</i> is a value that is not a variable reference, or if <i>sizeSpec</i> is present, the type cheat is an expression value whose type is <i>targetType</i>.<p>
+The <i>sizeSpec</i> is a compile time integer expression giving the size of the <i>expn'</i>s value. It can be specified only for integer or natural number values (where it must be 1, 2 or 4) or real values (where it must be 4 or 8).<p>
+A type cheat is carried out in two steps. The first step converts the value if necessary to the size given by <i>sizeSpec</i>. The second step, which involves no generated code, interprets the value as the target type.<p>
+The prefix operator # is a short form for a class of type cheats. It interprets its argument as a natural number. In general, # <i>expn</i> is the same as <b>cheat</b> (<b>nat</b><i>n</i>, <i>expn</i>) where <i>n</i> is determined as follows. If the <i>expn</i> is a variable or expression of size 1, 2 or 4, <i>n</i> is the size of the item, otherwise <i>n </i>is 4.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Set the second character of <i>d</i> so it has the numeric representation 24. In general, if <i>c</i> is a character, then #<i>c</i> = <b>ord</b><i>(c)</i>. Note that #<i>c</i> can have a number value assigned to it, but <i>ord(c)</i> cannot.<p>
+<pre><tt>        <b>var</b> <i>d</i> : <b>char</b> (3)
+        #<i>d</i> (2) := 24        <i>% Same as d(2) := chr(24)</i></tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The notation 16#FFFF means FFFF in base 16, which is 32767 in base 10 and is 16 1's in a row in base 2. This same pattern is the two's complement representation of the value -1 in a 2-byte integer.<p>
+<pre><tt>        <b>var</b> <i>i</i> : <b>int2</b>
+        #<i>i</i> := 16#FFFF       <i>% Equivalent to i := -1</i></tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following example prints out a string located at addressint <i>myAddr</i>.<p>
+<pre><tt>        <b>procedure</b> <i>PrintString</i> (<i>str</i> : <b>cheat string</b>)
+            <b>put</b> <i>str</i>
+        <b>end</b> <i>PrintString</i> 
+        
+        <b>var</b> <i>myAddr</i> : <b>addressint</b>
+        ...             <i>% Assigned a value to myAddr</i>
+        <i>PrintString</i> (<i>myAddr</i>)    <i>% myAddr will be treated as a string</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> An implementation may prohibit certain type cheats. Memory alignment requirements may render some type cheats unfeasible. It is dangerous to consider a value to have a <i>targetType</i> larger than the value's type. An implementation may prohibit certain type cheats on <b>register</b> scalar items.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <i><a href="explicitintegerconstant.html">explicitIntegerConstant</a></i> (for description of constants such as 16#FFFF) and the following functions that convert one type to another in a machine-independent manner: <b><a href="ord.html">ord</a></b>, <b><a href="chr.html">chr</a></b>, <b><a href="intstr.html">intstr</a></b>, <b><a href="strint.html">strint</a></b>, <b><a href="natstr.html">natstr</a></b>, and <b><a href="strnat.html">strnat</a></b>.<p>
+</table></body>
+</html>

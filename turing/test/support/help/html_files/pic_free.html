@@ -1,0 +1,99 @@
+        Music.Sound (440, 30)
+<html>
+<head><title>Pic.Free</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Pic.Free</b></font></td><td align="right">Part of <a href="picmodule.html">Pic</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Pic.Free</b> (<i>picID</i> : <b>int</b>)<p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td><b>Pic.Free </b>is used to release the memory allocated by 
+          <b>Pic.New</b>. It frees up the memory allocated to the parameter 
+	  <i>picID</i>. This means that <i>picID</i> can not be used in a 
+	  <b>Draw.Pic</b> or <b>Draw.Save</b> procedure after <b>Pic.Free</b> 
+	  is called.<p>
+	  Turing has a limited number of pictures that are available at any
+	  one time (approximately 1,000). A program that continuously allocates 
+	  pictures (using <b>Pic.New</b> or <b>Pic.FileNew</b>) will eventually 
+	  fail if it does not free the pictures using <b>Pic.Free</b>. As well,
+	  if a program allocates hundreds of pictures and does not
+	  free any of them, the memory devoted to the pictures will 
+	  not be freed and eventually the program may exhaust the memory on 
+	  the machine.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>If <b>Pic.Free</b> is passed an invalid picture ID, a fatal error 
+          occurs. If the <b>Pic.Free</b> call fails for other (non-fatal) 
+	  reasons, <b>Error.Last</b> will return a non-zero value indicating 
+	  the reason for the failure. <b>Error.LastMsg</b> will return a string 
+	  which contains the textual version of the error.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>The program animates a picture moving across a background.  Each
+          time the picture is about to move to a new location, a picture of
+	  the background at that location is taken. When the picture is to be
+	  moved to the next location, the background picture is drawn over top
+	  of the picture, thus "erasing" it. The <b>Pic.Free</b> command frees 
+	  up each background picture once it is no longer in use. Without it,
+	  the program would use up all the picture identifiers and crash after
+	  one or two moves across the window.<p>
+	  The animation in the example flickers slightly. See 
+	  <a href="view_update.html">View.Update</a> for information on 
+	  how to produce flicker-free animation.<p>
+<pre><tt>        <b>var</b> <i>picID</i>, <i>bgID</i> : <b>int</b>
+        <b>var</b> <i>x</i>, <i>y</i>, <i>c</i>, <i>direction</i> : <b>int</b>
+
+        % Create the picture being moved
+        <b>Draw.FillBox</b> (50, 50, 150, 150, <b>brightred</b>)
+        <b>Draw.FillStar</b> (50, 50, 150, 150, <b>brightgreen</b>)
+        <b>Draw.FillOval</b> (100, 100, 30, 30, <b>brightblue</b>)
+        <i>picID</i> := <b>Pic.New</b> (50, 50, 150, 150)
+
+        % Create a background
+        <b>for</b> <i>i</i> : 1 .. 1000
+            <i>x</i> := <b>Rand.Int</b> (0, <b>maxx</b>)
+            <i>y</i> := <b>Rand.Int</b> (0, <b>maxy</b>)
+            <i>c</i> := <b>Rand.Int</b> (9, 15)    % Use bright colors
+            <b>Draw.FillBox</b> (<i>x</i>, <i>y</i>, <i>x</i> + 30, <i>y</i> + 30, <i>c</i>)
+        <b>end for</b>
+
+        <i>x</i> := 1
+        <i>y</i> := 100
+        <i>direction</i> := 1
+        % Main loop
+        <b>loop</b>
+            % Take a picture of the background 
+            <i>bgID</i> := <b>Pic.New</b> (<i>x</i>, <i>y</i>, <i>x</i> + 100, <i>y</i> + 100)
+            <b>Pic.Draw</b> (<i>picID</i>, <i>x</i>, <i>y</i>, <b>picCopy</b>)     % Draw the picture
+            <b>delay</b> (20)                          % Delay 20 milliseconds
+            <b>Pic.Draw</b> (<i>bgID</i>, <i>x</i>, <i>y</i>, <b>picCopy</b>)      % Draw the background over the picture
+            <b>Pic.Free</b> (<i>bgID</i>)                     % Free the background
+            <b>if</b> <i>x</i> &lt;= 0 <b>or</b> (<i>x</i> + 100) &gt;= <b>maxx then</b>
+                <i>direction</i> := -<i>direction</i>
+            <b>end if</b>
+            <i>x</i> += <i>direction</i>
+        <b>end loop</b></tt></pre>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+	    <PARAM name="Command" value="TCard">
+	    <PARAM name="Button" value="Text: Launch Example Program">
+	    <PARAM name="Item1" value="-1,Pic.Free.t;Pic.Free Example">
+	  </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+	  This means that you can only call the function by calling 
+	  <b>Pic.Free</b>, not by calling <b>Free</b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

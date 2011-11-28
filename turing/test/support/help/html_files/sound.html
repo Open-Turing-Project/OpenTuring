@@ -1,0 +1,23 @@
+<html>
+<head><title>sound</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>sound</b></font></td><td align="right"><font size="+1"><b>statement</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>sound</b> ( <i>frequency</i>, <i>duration</i> : <b>int</b> )<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>sound</b> procedure is used to cause the computer to sound a note of a given frequency for a given time. The frequency is in cycles per second (Hertz). The time duration is in milliseconds. For example, middle A on a piano is 440 Hertz, so <b>sound</b>(440, 1000) plays middle A for one second.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program sounds the frequencies 100, 200 up to 1000 each for half a second.<p>
+<pre><tt>        <b>for</b><i> i</i> : 1 .. 10
+            <b>put</b> <i>i</i>
+            <b>sound</b> ( 100 * <i>i</i>, 500 )  <i>% Sound note for 1/2 second</i>
+        <b>end</b> <b>for</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> On IBM PC compatibles, the hardware resolution of duration is in units of 55 milliseconds. For example, <b>sound</b>(440, 500) will delay the program by about half a second, but may be off by as much as 55 milliseconds.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The <b>sound</b> procedure does not currently work under MacOOT.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="play.html">play</a></b> <a href="statement.html">statement</a>, which plays notes based on musical notation. For example, <b><a href="play.html">play</a></b>("8C") plays an eighth note of middle C. See also the <b><a href="delay.html">delay</a></b>, <b><a href="clock.html">clock</a></b>, <b><a href="sysclock.html">sysclock</a></b>, <b><a href="wallclock.html">wallclock</a></b>, <b><a href="time.html">time</a></b> and <b><a href="date.html">date</a></b> statements.<p>
+See also predefined unit <b><a href="musicmodule.html">Music</a></b>.<p>
+</table></body>
+</html>

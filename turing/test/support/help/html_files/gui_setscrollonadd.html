@@ -1,0 +1,80 @@
+<html>
+<head><title>GUI.SetScrollOnAdd</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.SetScrollOnAdd</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>GUI.SetScrollOnAdd</b> (<i>widgetID</i> : <b>int</b>, <i>scrollOnAdd</i> : <b>boolean</b>)<p></font>
+    </tr>
+    <tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+      <td>The <b>GUI.SetScrollOnAdd</b> procedure allows you to specify
+          whether a text box scrolls to the bottom of the text when
+	  new text is added (the default behaviour). By calling this
+	  procedure with <i>scrollOnAdd</i> set to <b>false</b>, the 
+	  text box will not scroll unless the user manipulates the
+	  text box's scroll bars.
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program displays the contents of a file in a text box.
+          After the file is displayed, the top line in the text box will
+	  be the first line in the file.<p>
+<pre><tt>        <b>import</b> <i>GUI</i> 
+        <b>View.Set</b> ("graphics:300;300") 
+        
+        <b>const</b> <i>fileNameToBeViewed</i> : <b>string</b> := "TextBxs.DEM"
+        <b>var</b> <i>textBox</i> : <b>int</b>       % The Text Field ID.
+        <b>var</b> <i>title</i> : <b>int</b>     % The label for the title.
+        <b>var</b> <i>f</i> : <b>int</b>         % The stream number of the file.
+        <b>var</b> <i>line</i> : <b>string</b>       % Lines to be read from the file.
+        
+        % Open the file.
+        <b>open</b> : <i>f</i>, <i>fileNameToBeViewed</i>, <b>get</b>
+        <b>if</b> <i>f </i>= 0 <b>then</b>
+            <b>put</b> "Unable to open " + <i>fileNameToBeViewed</i> + " : ", <i>Error.LastMsg</i>
+            <b>return</b>
+        <b>end if</b>
+        
+        % Set background color to gray for indented text box.
+        <b>GUI.SetBackgroundColor</b><i> </i>(<i>gray</i>)
+        
+        % Create the title label and text box.
+        <i>title</i> := <b>GUI.CreateLabelFull</b><i> </i>(20, 280, <i>fileNameToBeViewed</i>, 250, 0, 
+            <i>GUI.CENTER</i>, 0)
+        <i>textBox</i> := <b>GUI.CreateTextBoxFull</b> (10, 10, 280, 265, 
+            <i>GUI.INDENT</i>, 0)
+        
+	<b>GUI.SetScrollOnAdd</b> (<i>textBox</i>, <b>false</b>)
+
+        % Read the file and place it in the text box.
+        <b>loop</b>
+            <b>exit when </b><i>eof</i> (<i>f</i>)
+            <b>get</b> : <i>f</i>, <i>line</i> : *
+            <b>GUI.AddLine</b><i> </i>(<i>textBox</i>, <i>line</i>)
+        <b>end loop</b>
+        
+        <b>close</b> : <i>f   </i>% Close the file.
+        
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b></tt></pre><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,GUI.SetScrollOnAdd.t;GUI.SetScrollOnAdd Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+	  <b>GUI.SetScrollOnAdd</b>, not by calling <b>SetScrollOnAdd</b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

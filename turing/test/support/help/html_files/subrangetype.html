@@ -1,0 +1,26 @@
+<html>
+<head><title>subrangeType</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>subrangeType</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>subrangeType</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><i>expn</i> .. <i>expn</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A subrange type defines a set of values, for example, the subrange 1 .. 4 consists of 1, 2, 3 and 4.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>var</b> <i>i</i> : 1 .. 10         <i>% i can be 1</i>,<i> 2 … up to 10</i>
+        <b>type</b> <i>xRange</i> : 0 .. 319      <i>% Define integer subrange</i>
+        <b>var</b> <i>pixels</i> : <b>array</b> <i>xRange</i> <b>of</b> <b>int</b>
+                            <i>% Array elements are</i>
+                            <i>% numbered 0</i>,<i> 1</i>,<i> … 319</i>
+        <b>for</b> <i>k</i> : <i>xRange</i>          <i>% k ranges from 0 to 319</i>
+            <i>pixels</i> ( <i>k</i> ) := 0
+        <b>end</b> <b>for</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> A subrange must contain at least one element. In other words, the second expression (<i>expn</i>) must be at least as large as the first expression.<p>
+The lower bound of a subrange must be known at compile time. The upper bound is allowed to be a run time value only in one situation and that is when it gives the upper bound of an array being declared in a variable declaration, in other words when declaring a <i>dynamic</i> array.<p>
+Subranges are usually a subset of the integers, as in 1 .. 10. You can also have subranges of enumerated types and characters (the <b>char</b> type).<p>
+You can apply <b>lower</b> and <b>upper</b> to subrange types.<p>
+</table></body>
+</html>

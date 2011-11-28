@@ -1,0 +1,52 @@
+<html>
+<head><title>Sprite.SetFrameRate</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Sprite.SetFrameRate</b></font></td><td align="right">Part of <a href="spritemodule.html">Sprite</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Sprite.SetFrameRate</b> (<i>framesPerSec</i> : <b>int</b>)<p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>Specifies the maximum number of times per second that sprite positions
+          will be changed on the screen.  The higher the number, the smoother
+          the animation will appear (and the more processor time will be used
+          to perform the animation).
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>When you change the position or appearance of a sprite, Turing does
+          not update the window immediately.  Instead, it waits a certain length
+          of time and then updates all sprites that have moved since the last
+          update.  This allows for relatively smooth animation.<p>
+          This means that you have a simple loop that calls Sprite.SetPosition
+          200 times a second, the image of the sprite on the screen is still
+          only being moved (by default) 33 times a second.
+          <p>
+          You can specify how many times a second Turing checks to see if a 
+          sprite has moved by using the <b>Sprite.SetFrameRate</b> procedure.
+          Rates of 5-10 will make the movement of the sprites seem very 
+          choppy.  Rates of 100 are more or less completely smooth (the 
+          maximum is 120) and most CRT's will not notice any difference after
+          60.  The default rate is 33 frames per second.  You should note that
+          if you set the rate higher than your computer can handle, every other
+          part of your program will slow down as Turing will be checking for
+          sprite movement rather than executing your program.
+          <p>
+          A modern PC (2+ GHz with a decent graphics card) can probably handle
+          a frame rate of 60+, depending on the number of sprites.  A 
+          Pentium III should probably use the default rate.  Slower machines
+          should probably use a lower rate (around 20).  Experimentation is
+          the best way to determine the ideal frame rate.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+          <b>Sprite.SetFrameRate</b>, not by calling <b>SetFrameRate</b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

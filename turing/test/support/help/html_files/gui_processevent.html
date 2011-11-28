@@ -1,0 +1,36 @@
+<html>
+<head><title>GUI.ProcessEvent</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.ProcessEvent</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>GUI.ProcessEvent</b> : <b>boolean</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> This function processes a single event (a mouse button press or a keystroke). If the event activates a widget, then the <i>action procedure</i> of the widget is called. <p>
+The function returns <b>false</b> until <b>GUI.Quit</b> is called. It then returns <b>true</b>.<p>
+In order for the widgets to function once placed, the GUI.ProcessEvent must be called continually. Without a call to <b>GUI.ProcessEvent</b>, the widgets will appear, but will not react to mouse clicks or keystrokes.<p>
+Almost all programs involving the GUI Procedure Library have the following code fragment in the program. This code fragment is often called the <i>event loop</i>.<p>
+<pre><tt>        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b></tt></pre>
+The loop runs continuously until <b>GUI.Quit</b> is called, whereupon <b>GUI.ProcessEvent</b> will return <b>true</b> and the loop will exit. The rest of the program is reached through the <i>action procedures</i> that are called when the user interacts with various widgets. <p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> It is usually desirable to allow the user some way of quitting the program without having to abort it. This can be done most simply by adding a Quit button and placing it in an appropriate location.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Here is program that does nothing but wait for the user to press the quit button.<p>
+<pre><tt>        <b>import</b> <i>GUI</i> <b>in</b> "%oot/lib/GUI"
+        <b>var </b><i>quitButton</i> : <b>int</b> := <b>GUI.CreateButton </b>(10, 10, 0, "Quit", <b>GUI.Quit</b>)
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> To find out which widget was activated and called the <i>action procedure</i> (necessary if several widgets have the same <i>action</i> <i>procedure</i>), you can call <b>GUI.GetEventWidgetID</b>. To get the exact time that the event occurred, you can call <b>GUI.GetEventTime.</b> To get the window in which the event took place, you can call <b>GUI.GetEventWindow</b>.<p>
+If a mouse click occured, but did not activate any widget, then the default mouse event handler is called. By default, this does nothing. However, if you want your program to respond to mouse events that do not affect a widget, call <b>GUI.SetMouseEventHandler </b>to specify your own default mouse event handler.<p>
+If a keystroke occurred, but did not activate any widget (i.e. it wasn't a short cut for a widget and there are no text fields in the window) then the default keystroke handler is called. By default, this does nothing. However, if you want your program to respond to keystroke events that do not affect a widget, call <b>GUI.SetKeyEventHandler </b>to specify your own default key event handler.<p>
+If no event occurred, then the null event handler is called. By default, this does nothing. However, if you want your program to perform some action repetetively when it is not doing anything else, then call <b>GUI.SetNullEventHandler </b>to specify your own null event handler. The null event handler is often used for such things as updating a clock and making certain that music is playing in the background.<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the procedures by calling <b>GUI.PProcessEvent</b>, not by calling <b>ProcessEvent</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="gui_geteventwidgetid.html">GUI.GetEventWidgetID</a></b>, <b><a href="gui_geteventtime.html">GUI.GetEventTime</a></b>, and <b><a href="gui_geteventwindow.html">GUI.GetEventWindow</a></b> for obtaining information about an event in an <i>action <a href="procedure.html">procedure</a></i>. See also <b><a href="gui_setmouseeventhandler.html">GUI.SetMouseEventHandler</a></b>, <b><a href="gui_setkeyeventhandler.html">GUI.SetKeyEventHandler</a></b> and <b><a href="gui_setnulleventhandler.html">GUI.SetNullEventHandler</a></b> for handling mouse, keyboard an d null events in the <i>event <a href="loop.html">loop</a></i>. See also <b><a href="gui_quit.html">GUI.Quit</a></b> for information on exitting the <i>event <a href="loop.html">loop</a></i>.<p>
+</table></body>
+</html>

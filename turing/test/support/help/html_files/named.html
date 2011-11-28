@@ -1,0 +1,26 @@
+<html>
+<head><title>named</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>named</b></font></td><td align="right"><font size="+1"><b>type</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>namedType</i> is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(a)</font></td><td colspan="7"><font size="+1"><i>typeId</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(b)</font></td><td colspan="7"><font size="+1"><i>moduleId</i> . <i>typeId</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A type can be given a name (<i>typeId</i>) and later this name can be used instead of writing out the type.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> In this example, <i>phoneRecord</i> is a named type.<p>
+<pre><tt>        <b>type</b> <i>phoneRecord</i> :
+            <b>record</b>
+                <i>name</i> : <b>string</b> ( 20 )
+                <i>phoneNumber</i> : <b>int</b>
+                <i>address</i> : <b>string</b> ( 50 )
+            <b>end</b> <b>record</b>
+        …
+        <b>var</b> <i>oneEntry</i> : <i>phoneRecord</i>
+        <b>var</b> <i>phoneBook</i> : <b>array</b> 1 .. 100 <b>of</b> <i>phoneRecord</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Form (a) is the most common kind of named type. Form (b) is used when the type name has been exported from a module.<p>
+Arrays whose bounds are not known at compile time cannot be named.<p>
+</table></body>
+</html>

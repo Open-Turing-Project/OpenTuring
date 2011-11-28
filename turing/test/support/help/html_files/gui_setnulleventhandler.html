@@ -1,0 +1,40 @@
+<html>
+<head><title>GUI.SetNullEventHandler</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.SetNullEventHandler</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>GUI.SetNullEventHandler</b> (<i>nullHandler</i> : <b>procedure</b> <i>x</i> ())<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Sets the new null event handler. The <i>nullHandler</i> parameter is the name of a procedure that is called every time <b>GUI.ProcessEvent</b> is called and there are no mouse button presses or keystrokes to be processed.<p>
+This is used by programs that need to call subprograms often, but do not wish to interrupt the action of user widgets.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program has a Quit button. When no widgets are being processed, a clock in the corner is updated.<p>
+<pre><tt>        <b>import</b> <i>GUI</i>
+        <b>View.Set</b> ("graphics:220;50")
+        
+        <b>var</b> <i>oldTime</i> : <b>string</b> := <b>""</b>
+        <b>var</b> <i>button</i> : <b>int</b>
+        
+        <b>procedure</b> <i>NullHandler</i>
+            <b>var</b> <i>newTime</i> : <b>string</b> := <b>Time.Date</b>
+            <i>newTime</i> := <i>newTime</i> (11 .. *)
+            <b>if</b> <i>newTime</i> <b>not</b>= <i>oldTime</i> <b>then</b>
+                <b>Text.Locate</b> (<b>maxrow</b>, <b>maxcol</b>  9)
+                <b>put</b> <i>newTime</i> ..
+                <i>oldTime</i> := <i>newTime</i>
+            <b>end if</b>
+        <b>end</b> <i>NullHandler</i>
+        
+        <b>GUI.SetNullEventHandler</b> (<i>NullHandler</i>)
+        <i>button</i> := <b>GUI.CreateButton </b>(10, 5, 100, "Quit", <b>GUI.Quit</b>)
+        
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>GUI.SetNullEventHandler</b>, not by calling <b>SetNullEventHandler</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="gui_processevent.html">GUI.ProcessEvent</a></b>.<p>
+</table></body>
+</html>

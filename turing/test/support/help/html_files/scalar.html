@@ -1,0 +1,21 @@
+<html>
+<head><title>scalar</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>scalar</b></font></td><td align="right"><font size="+1"><b>type</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>scalarType</i> is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(a)</font></td><td colspan="7"><font size="+1"><i>standardType</i></td><td width="40">&nbsp;</td><td colspan="-1"><font size="+1"><i>% int</i>,<i> real</i>,<i> boolean or string</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(b)</font></td><td colspan="7"><font size="+1"><i>enumeratedType</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(c)</font></td><td colspan="7"><font size="+1"><i>subrangeType</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(d)</font></td><td colspan="7"><font size="+1"><i>pointerType</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(e)</font></td><td colspan="7"><font size="+1"><b>char</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(f)</font></td><td colspan="7"><font size="+1"><b>int</b><i>n</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(g)</font></td><td colspan="7"><font size="+1"><b>nat</b><i>n</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(h)</font></td><td colspan="7"><font size="+1"><b>real</b><i>n</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(i)</font></td><td colspan="7"><font size="+1"><i>namedType</i></td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="-2"><font size="+1"><i>% Must name one of the above types</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Scalar types are sometimes called <i>simple</i> or <i>primitive</i> types. The non-scalar types are strings, sets, arrays, records, unions and in OOT <b>char</b>(<i>n</i>). They are defined using scalar types. Scalar types are passed by value to parameters, while non-scalars are passed by reference (by passing an implicit pointer to the non-scalar value).<p>
+<tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> In current Turing implementations scalar types are directly represented in 1, 2, 4 or 8 bytes in a computer's memory. This implies that they can be efficiently passed by value.<p>
+</table></body>
+</html>

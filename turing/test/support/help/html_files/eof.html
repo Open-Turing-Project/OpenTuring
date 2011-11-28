@@ -1,0 +1,66 @@
+<html>
+<head><title>eof</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>eof</b></font></td><td align="right"><font size="+1"><b>end-of-file function</b></font></td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>eof</b> (<i>streamNumber</i> : <b>int</b>) : <b>boolean</b><p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>The <b>eof</b> (end of file) function is used to determine if there 
+          is any more input. It returns <b>true</b> when there are no more 
+          characters to be read. The parameter and its parentheses are omitted 
+          when referring to the standard input (usually this is the keyboard); 
+          otherwise the parameter specifies the number of a stream. The stream 
+          number has been determined (in most cases) by an <b>open</b> 
+          statement.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program reads and outputs all the lines in the file called 
+          "info".<p>
+<pre><tt>        <b>var</b> <i>line</i> : <b>string</b>
+        <b>var</b> <i>fileNumber</i> : <b>int</b>
+        <b>open</b> : <i>fileNumber</i>, "info", <b>get</b>
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>eof</b> (<i>fileNumber</i>)
+            <b>get</b> : <i>fileNumber</i>, <i>line </i>: *
+            <b>put</b> <i>line</i>
+        <b>end</b> <b>loop</b></tt></pre>
+    </tr>
+    <tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,eof.t;eof Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>See also the description of the <b>get</b> statement, which gives 
+          more examples of the use of <b>eof</b>. See also the <b>open</b> 
+          and <b>read</b> statements.<p>
+          When the input is from the keyboard, the user can signal end-of-file 
+          by typing control-Z on a PC (or control-D on UNIX). If a program 
+          tests for <b>eof</b> on the keyboard, and the user has not typed 
+          control-Z (or control-D) and the user has typed no characters beyond 
+          those that have been read, the program must wait until the next 
+          character is typed. Once this character is typed, the program 
+          knows whether it is at the end of the input, and returns the 
+          corresponding <b>true</b> or <b>false</b> value for <b>eof</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>Another example is available that illustrates detecting EOF from
+          the keyboard.<p>
+          <OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,eof2.t;eof from Keyboard Example">
+          </OBJECT><p></td>
+    </tr>
+</table></body>
+</html>

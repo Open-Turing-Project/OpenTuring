@@ -1,0 +1,58 @@
+<html>
+<head><title>open</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>open</b></font></td><td align="right"><font size="+1"><b>file statement</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> An <i>openStatement</i> is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(a)</font></td><td colspan="7"><font size="+1"><b>open</b> : <i>fileNumberVar</i>, <i>fileName</i>, <i>ioCapability</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="3"><font size="+1">{ , <i>ioCapability</i> }</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(b)</font></td><td colspan="7"><font size="+1"><b>open</b> : <i>fileNumberVar</i>, <i>argNum</i>, <i>ioCapability</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="3"><font size="+1">{ , <i>ioCapability</i> }</td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>open</b> statement connects the program to a file so the program can perform operations such as <b>read</b> on the file. In form (a), the <b>open</b> statement translates a <i>fileName</i>, such as "Master", to a file number such as 5. Form (b), which is less-commonly used, opens a file whose name is given by a program argument. This is described below.<p>
+The <b>read</b> statement uses the file number, not the file name, to access the file. When the program is finished using the file, it disconnects from the file using the <b>close</b> statement. Each <i>ioCapability</i> is the name of an operation, such as <b>read</b>, that is to be performed on the file.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This programs illustrates how to open, read and then close a file.<p>
+<pre><tt>        <b>var</b> <i>fileName</i> : <b>string</b> := "Master"   <i>% Name of file</i>
+        <b>var</b> <i>fileNo</i> : <b>int</b>                <i>% Number of file</i>
+        <b>var</b> <i>inputVariable</i> : <b>string</b> ( 100 )
+        <b>open</b> : <i>fileNo</i>, <i>fileName</i>,<i> </i><b>read</b>
+        …
+        <b>read</b> : <i>fileNo</i>, <i>inputVariable</i>
+        …
+        <b>close</b> : <i>fileNo</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The <b>open</b> statement always sets the <i>fileNumber</i> to a positive number. If the <b>open</b> fails (generally because the file does not exist), the <i>fileNumber</i> is set to a non-positive number. It is wise to check that the stream number is greater than zero before using it further.<p>
+An <i>ioCapability</i> is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td><b>get</b>, <b>put</b>, <b>read</b>, <b>write</b>, <b>seek</b>, <b>mod</b></td></tr>
+</table><p>
+A file can be accessed using only the statements corresponding to the input/output capabilities with which it was opened. Note: <b>tell</b> is allowed only if the open is for <b>seek</b>.<p>
+The <b>open</b> statement truncates the file to length zero if the <i>ioCapabilities</i> includes <b>put</b> or <b>write</b> but not <b>mod</b> (which stands for <b>mod</b>ify). In all other cases, <b>open</b> leaves the existing file intact. The <b>mod</b> <i>ioCapability</i> specifies that the file is to be modified without being truncated. Each <b>open</b> positions to the beginning of a file. There is no mechanism to delete a file.<p>
+To open for appending to the end of the file, one has to <b>open</b> for <b>seek</b>, <b>mod</b> and for <b>write</b> or <b>put</b> and then <b>seek</b> to the end of the file. See the <b>seek</b> statement.<p>
+<i>Mixed mode</i> files, which combine <b>get</b> and <b>read</b> (or <b>put</b> and <b>write</b>), are supported by some operating systems, such as UNIX, but not by others, such as Microsoft Windows.<p>
+On Microsoft Windows, one should note that opening files in other directories uses the backslash character. This is because the backslash is a special character in Turing (as in \t for tab and \n for a newline). To get a single backslash, use \\.<p>
+<pre><tt>        e.g. <b>open</b> : f, "C:\\STUDENTS\\SMITH\\ACCT.DAT", <b>put</b></tt></pre>
+Form (b) of the syntax  allows you to open a file whose name is given as a program argument on the command line. For example, under UNIX, the command line:<p>
+<pre><tt>        prog.x infile outfile</tt></pre>
+specifies to execute <i>prog.x</i> with program arguments <i>infile</i> and <i>outfile</i>. Similarly, in the Turing programming environment, the <b>run</b> command can accept program arguments. The <i>argNumber</i> is the position of the argument on the command line. (The first argument is number 1.)  The name of the file to be opened is the corresponding program argument. If there is no such argument, or if the file cannot be opened successfully, <i>fileNumberVariable</i> is set to zero. See also <b>nargs</b>, which gives the number of arguments, and <b>fetcharg</b>, which gives the <i>n</i>-th argument string.<p>
+Program argument files referenced by argument number and used in <b>put</b>, <b>get</b>, <b>read</b> or <b>write</b> statements need not be explicitly opened, but are implicitly opened with the capability corresponding to the input/output statement in which they are first used. (The <i>fileNumber</i>gives the number of the argument.)<p>
+The operating system standard files (error, output and input) are accessed using file numbers 0, -1, and -2, respectively (although this may be subject to change). These files are not opened explicitly, but are used simply by using form (b) with the number. Beware of the anomalous case of a failed open that gives you file number 0. A subsequent use of this number in a <b>put</b> will produce output that goes to the standard error stream, with no warning that the file you attempted to open is not actually being used.<p>
+To append to a file, the file must be opened with the <b>mod</b> and <b>seek</b> capability and then there must be a seek to the end of file. For example:<p>
+<pre><tt>        <b>var</b> <i>streamnumber</i> : <b>int</b>
+        <b>open</b> : <i>streamnumber</i>, "myfile", <b>put</b>, <b>mod</b>, <b>seek</b>
+        <b>seek</b> : <i>streamnumber</i>, <b>*</b>
+        <b>put</b> : <i>streamnumber</i>, "This appears at the end of the file"</tt></pre>
+There is an older and still acceptable version of <b>open</b> that has this syntax:<p>
+<pre><tt>        <b>open</b> ( <b>var</b> <i>fileNumber</i> : <b>int</b>, <i>fileName</i> : <b>string</b>, <i>mode</i> : <b>string</b>)</tt></pre>
+The <i>mode</i> must be "r" (for <b>get</b>) or "w " (for <b>put</b>).<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The path name specified in the open statement and elsewhere can always be in UNIX format (i.e. with forward slashes, an initial forward slash indicating an absolute directory). On the PC, absolute paths would have the form:<p>
+<pre><tt>            <i>a:/dir1/dir2/filename</i></tt></pre>
+On the Macintosh, they would have the form:<p>
+<pre><tt>            <i>/volume name/directory1/directory2/file name</i></tt></pre>
+Note that in addition to the UNIX path format, on the PC, you can always use standard PC path notation and on the Macintosh, you can use standard Macintosh path notation. On the Macintosh volume, directory and file names can have spaces in them.<p>
+All routines (such as the File and Dir module routines) will return files names in UNIX format, regardless of the machine the program is run on.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="close.html">close</a></b>, <b><a href="get.html">get</a></b>, <b><a href="put.html">put</a></b>, <b><a href="read.html">read</a></b>, <b><a href="write.html">write</a></b>, <b><a href="seek.html">seek</a></b> and <b><a href="tell.html">tell</a></b> statements.<p>
+</table></body>
+</html>

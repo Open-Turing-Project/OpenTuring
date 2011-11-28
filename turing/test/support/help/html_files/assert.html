@@ -1,0 +1,20 @@
+<html>
+<head><title>assert</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>assert</b></font></td><td align="right"><font size="+1"><b>statement</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>assert</b> <i>trueFalseExpn</i><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> An <b>assert</b> statement is used to make sure that a certain requirement is met. This requirement is given by the <i>trueFalseExpn</i>. The <i>trueFalseExpn </i>is evaluated. If it is true, all is well and execution continues. If it is false, execution is terminated with an appropriate message.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Make sure that <i>n</i> is positive.<p>
+<pre><tt>        <b>assert</b> <i>n</i> &gt; 0</tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program assumes that the <i>textFile </i>exists and can be opened, in other words, that the <b>open</b> will set the <i>fileNumber </i>to a positive stream number. If this is not true, the programmer wants the program halted immediately.<p>
+<pre><tt>        <b>var</b> <i>fileNumber</i> : <b>int</b>
+        <b>open</b> : <i>fileNumber</i>, "textFile", <b>read</b>
+        <b>assert</b> <i>fileNumber</i> <b>></b> 0</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> In some Turing systems, checking can be turned off. If checking is turned off, <b>assert</b> statements may be ignored and as a result never cause termination.<p>
+</table></body>
+</html>

@@ -1,0 +1,25 @@
+<html>
+<head><title>View.maxcolor</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>View.maxcolor</b></font></td><td align="right">Part of <a href="viewmodule.html">View</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1">View.<b>maxcolor</b> : <b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>maxcolor</b> function is used to<b> </b>determine the maximum color number for the current mode of the screen. The alternate spelling is <b>maxcolour</b>.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program outputs the maximum color number.<p>
+<pre><tt>        <b>setscreen</b> ("graphics")
+        …
+        <b>put</b> "The maximum color number is ", <b>View.maxcolor</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The screen should be in a "<i>screen</i>"<i> </i>or "<i>graphics</i>" mode. If it is not, it will automatically be set to "<i>screen</i>" mode. See <b>View.Set </b>for details.<p>
+For IBM PC compatibles in "<i>screen</i>"<i> </i>mode, <b>maxcolor</b> = 15. For the default IBM PC compatible "<i>graphics</i>" mode (VGA), <b>maxcolor</b> = 15.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> <b>View.maxcolor</b> is identical to <b>RGB.maxcolor</b>.  It is placed here for consistency with other screen information routines.<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>View.maxcolor</b>. Note that <b>RGB.maxcolor</b> is exported unqualified, so that one can call <b>maxcolor</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="draw_dot.html">Draw.Dot</a></b> for examples of the use of <b><a href="maxcolor.html">maxcolor</a></b>. See the <b><a href="text_color.html">Text.Color</a></b> <a href="procedure.html">procedure</a> which is used for setting the currently-active <a href="color.html">color</a>.<p>
+</table></body>
+</html>

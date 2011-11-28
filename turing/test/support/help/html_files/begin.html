@@ -1,0 +1,21 @@
+<html>
+<head><title>begin</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>begin</b></font></td><td align="right"><font size="+1"><b>statement</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>beginStatement</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>begin</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1"><i>statementsAndDeclarations</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>end</b></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A <b>begin</b> statement limits the scope of declarations made within it to the confines of the <b>begin/end</b> block. In Turing, <b>begin</b> is rarely used, because declarations can appear wherever statements can appear, and because every structured statement such as <b>if</b> ends with an explicit <b>end</b>.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>begin</b>
+            <b>var</b> <i>bigArray</i> : <b>array</b> 1 .. 2000 <b>of</b> <b>real</b>
+            <i>… bigArray will exist only inside this begin statement…</i>
+        <b>end</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> In Pascal programs, <b>begin</b> statements are quite common because they are required for grouping two or more statements, for example, to group the statements that follow <b>then</b>. This is not necessary in Turing as where ever you can write a single statement, you can also write several statements.<p>
+</table></body>
+</html>

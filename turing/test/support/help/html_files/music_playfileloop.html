@@ -1,0 +1,96 @@
+<html>
+<head><title>Music.PlayFileLoop</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Music.PlayFileLoop</b></font></td><td align="right">Part of <a href="musicmodule.html">Music</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Music.PlayFileLoop</b> ( <i>fileName</i> : <b>string</b> )<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Music.PlayFileLoop</b> procedure is used to play a file of music continuously, looping until the program is halted or the <b>Music.PlayFileStop</b> command is given. The file must be in one of the acceptable formats and the machine, must have the appropriate hardware.<p>
+The <i>fileName</i>parameter must give the format of the file:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>WAV files</td><td width="10">&nbsp;</td><td>"WAV:filename" or "filename.WAV"</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>MP3 files</td><td width="10">&nbsp;</td><td>"MP3:filename" or "filename.MP3"</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>MIDI files</td><td width="10">&nbsp;</td><td>"MIDI:filename" or "filename.MIDI"</td></tr>
+</table><p>
+The <b>Music.PlayFileLoop</b> procedure is used to provide continuous background music for a program.
+When called, the music starts playing, and the procedure returns immediately.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td>Unlike <b>Music.PlayFile</b>, the <b>Music.PlayFileLoop</b> procedure does not have to be called in a separate process. 
+However, the music will not stop playing (nor will a program that calls this procedure terminate) until <b>Music.PlayFileStop</b> is called.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program continuously plays the music in the file "<i>branden3.wav</i>" while drawing ovals on the screen.<p>
+<pre><tt>        <b>Music.PlayFileLoop</b> ("branden3.wav")
+        <b>var</b> <i>x</i>, <i>y</i>, <i>clr</i> : <b>int</b>
+        <b>loop</b>
+            <i>x</i> := <b>Rand.Int</b> (0, <b>maxx</b>)
+            <i>y</i> := <b>Rand.Int</b> (0, <b>maxy</b>)
+            <i>clr</i> := <b>Rand.Int</b> (0, <b>maxcolor</b>)
+            <b>Draw.FillOval</b> (<i>x</i>, <i>y</i>, 30, 30, <i>clr</i>)
+            <b>exit when hasch</b>
+        <b>end loop</b>
+        <b>Music.PlayFileStop</b></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,Music.PlayFileLoop.t;Music.PlayFileLoop Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> To play a sound file requires that the computer be equipped with a sound card and speakers.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The Turing 4.1 software can play files in the following audio formats: WAVE (.wav) files, MIDI files (.midi or .mid), and MP3 files (.mp3). In general, MIDI files are the most efficient and thus are the preferred form for longer music pieces like background music. WAVE files can record anything, not just music, so are often used for sound effects.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The Turing 4.1 software can also play music on a compact disk. Toplay the complete contents of the compact disk, the filename is “cd”. To play a single track from a compact disk, the filename is “cd:[track number]”.<p>
+<pre><tt>        <b>Music.PlayFileLoop</b> ("cd")       <i>% Play the entire CD</i>
+        <b>Music.PlayFileLoop</b> ("cd:3")     <i>% Play the third track on the CD</i>
+        </tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> On the PC, different formats of music can play simultaneously. This means that a program might use a MIDI file as a background soundtrack and then use WAVE files for individual sound effects. The sound effects would not interfere with the background music. Playing a second music file with the same format as an already playing piece immediately halts the first piece and starts the second.  This can be used to stop a single type of music by playing a short silent piece of music.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program bounces a maple leaf around the screen with background music and a sound effect when the maple leaf hits an edge. When the user presses any key, the program immediately exits.<p>
+<pre><tt>        <b>const</b> <i>STAR_SIZE</i> : <b>int</b> := 80
+        <b>var</b> <i>pic</i>, <i>x</i>, <i>y</i>, <i>dx</i>, <i>dy</i> : <b>int</b>
+        
+        <i>% Get the original picture</i>
+        <b>Draw.FillStar</b> (3, 3,<i> STAR_SIZE</i> - 3, <i>STAR_SIZE</i> - 3, <i>brightred</i>)
+        <i>pic</i> := <b>Pic.New</b> (0, 0, <i>STAR_SIZE</i>, <i>STAR_SIZE</i>)
+        <b>cls</b>
+        
+        <i>% Set the initial location and direction of movement</i>
+        <i>x</i> := <b>Rand.Int </b>(0, <i>maxx</i> - <i>STAR_SIZE</i>)
+        <i>y</i> :=<b> Rand.Int</b> (0, <i>maxy</i> - <i>STAR_SIZE</i>)
+        <i>dx</i> := 1
+        <i>dy</i> := 1
+        
+        <b>Music.PlayFileLoop</b> ("background.mid")</b> <i>% Start background music playing</i>
+        
+        <b>loop</b>
+            <b>if</b> <i>x</i> + <i>dx</i> &lt; 0 <b>or</b> <i>x</i> + <i>dx</i> &gt; <i>maxx</i> - <i>STAR_SIZE</i> <b>then</b>
+                <i>dx</i> := -<i>dx</i>
+                <b>Music.PlayFileReturn</b> ("boing.wav")
+            <b>end if</b>
+            <b>if</b> <i>y</i> + <i>dy</i> &lt; 0 <b>or</b> <i>y</i> + <i>dy</i> &gt; <i>maxy</i> - <i>STAR_SIZE</i> <b>then</b>
+                <i>dy</i> := -<i>dy</i>
+                <b>Music.PlayFileReturn</b> ("boing.wav")
+            <b>end if</b>
+            <i>x</i> += <i>dx</i>
+            <i>y</i> += <i>dy</i>
+            <b>Pic.Draw</b> (<i>pic</i>, <i>x</i>, <i>y</i>, picCopy)
+            <b>exit when hasch</b>
+            <b>Time.Delay</b> (5)
+        <b>end loop</b>
+        
+        <i>% Stop the background music.</i>
+        <b>Music.PlayFileStop</b></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,MusicAndSound.t;MIDI and WAVE File Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="music_playfilestop.html">Music.PlayFileStop</a></b> to halt a music file that is current playing.<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Music.PlayFileLoop</b>, not by calling <b>PlayFileLoop</b>.<p>
+</table></body>
+</html>

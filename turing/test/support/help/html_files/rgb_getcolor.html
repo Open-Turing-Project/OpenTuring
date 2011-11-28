@@ -1,0 +1,27 @@
+<html>
+<head><title>RGB.GetColor</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>RGB.GetColor</b></font></td><td align="right">Part of <a href="rgbmodule.html">RGB</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>RGB.GetColor</b> (<i>colorNumber</i> : <b>int</b>, <br>
+</font><table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>var</b> <i>redComp</i>, <i>greenComp</i>, <i>blueComp</i> : <b>real</b>)</td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>RGB.GetColor</b> procedure returns the red, green and blue components to the color associated with the <i>colorNumber</i> parameter. The red, green and blue values are normalized to be between 0 and 1. Thus color white returns 1.0 for the <i>redComp</i>, <i>greenComp</i> and <i>blueComp</i> values and color black returns 0.0 for all three.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program gets the components of all the available colors.<p>
+<pre><tt>        <b>put</b> "Color   Red     Green     Blue"
+        <b>for</b> <i>clr</i> : 0 .. <b>maxcolor</b>
+            <b>var</b> <i>redComp</i>, <i>greenComp</i>, <i>blueComp</i> : <b>int</b>
+            <b>RGB.GetColor </b>(<i>clr</i>, <i>redComp</i>, <i>greenComp</i>, <i>blueComp</i>)
+            put <i>clr</i> : 4, "  ", <i>redComp</i> : 6 : 4 , "  ", <i>greenComp</i> : 6 : 4, " ", 
+                                        <i>blueComp</i> : 6 : 4
+        <b>end for</b></tt></pre>
+<table><tr valign="top"><td><b>Details</b></td><td width="10">&nbsp;</td><td><b>RGB.GetColour</b> is an alternate spelling for <b>RGB.GetColor</b>.</td></tr>
+</table><p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>RGB.GetColor</b>, not by calling <b>GetColor</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="rgb_setcolor.html">RGB.SetColor</a></b>and <b><a href="rgb_addcolor.html">RGB.AddColor</a></b>.<p>
+</table></body>
+</html>

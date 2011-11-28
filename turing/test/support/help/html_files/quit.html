@@ -1,0 +1,43 @@
+<html>
+<head><title>quit</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>quit</b></font></td><td align="right"><font size="+1"><b>fail statement</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>quitStatement</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>quit</b> [ <i>guiltyParty</i> ] [ : <i>quitReason</i> ]</td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>quit</b> statement causes a program (or concurrent process) to fail. The failure (called an <i>exception</i>) either aborts the program (or process) or causes control to be passed to an exception handler.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> In the <i>inputLines</i> procedure, halt the program if end of file is encountered before the string "stop" is read. Note that a <b>return</b> statement in the procedure would terminate the procedure but not the entire program.<p>
+<pre><tt>        <b>var</b> <i>line</i> : <b>array</b> 1 .. 50 <b>of</b> <b>string</b>
+        
+        <b>procedure</b> <i>inputLines</i>
+            <b>var</b><i> i </i>: <b>int</b><i> </i>:= 0
+            <b>loop</b>
+                <b>if</b> <b>eof</b> <b>then</b>
+                    <b>put</b> "Missing 'stop' in input"
+                    <b>quit</b>        <i>% Halt entire program</i>
+                <b>end</b> <b>if</b>
+                <i>i</i> := <i>i</i> + 1
+                <b>get</b> <b>line</b> ( <i>i </i>)
+                <b>exit</b> <b>when</b> <i>line</i> ( <i>i </i>) = "stop"
+            <b>end</b> <b>loop</b>
+        <b>end</b> <i>inputLines</i>
+        
+        <i>inputLines</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> In the simple case, the optional <i>guiltyParty</i> and <i>quitReason</i> are omitted. The <i>guiltyParty </i>option is used to specify the position of failure. See <i>exceptionHandler</i> for an example of a <b>quit</b> statement used in conjunction with a handler. A handler, which is located at the beginning of a subprogram body, is given control when a <b>quit</b> is executed or a failure, such as division by zero, occurs in the subprogram.<p>
+The <i>guiltyParty</i> option is used to designate the location of the failure, for example, to tell the debugger what line is considered to be the location of the failure. A <i>guiltyParty</i> is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>(a)</td><td width="10">&nbsp;</td><td>&lt;</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(b)</td><td width="10">&nbsp;</td><td>&gt;</td></tr>
+</table><p>
+If <i>guiltyParty</i> is omitted, the failure is considered to occur at the <b>quit</b> statement. If it is &lt;, the failure is considered to occur at the call to the present subprogram. For example, if the present subprogram implements square root <i>sqrt</i> and is passed a negative argument, it can use &lt; to specify that the caller provided a faulty argument. If <i>guiltyParty</i> is &gt;, this means the failure has already occurred and is being passed on to the next handler or to the system. To summarize, the three possibilities for designating the location of the failure are:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>(a)</td><td width="10">&nbsp;</td><td>&lt;</td><td width="10">&nbsp;</td><td>Caller is cause of failure</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(b)</td><td width="10">&nbsp;</td><td>&gt;</td><td width="10">&nbsp;</td><td>The exception being handled is the cause.</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(c)</td><td width="10">&nbsp;</td><td>(omitted <i>guiltyParty</i>)  The present <b>quit</b> is the cause.</td></tr>
+</table><p>
+The <i>quitReason</i> is an integer expression which is used to identify the kind of failure. If it is omitted, a default value is chosen in the following manner. If <i>guiltyParty</i> is omitted or is &lt;, the default is 1. If <i>guiltyParty</i> is &gt; and an exception handler is active, the default is the <i>quitReason</i> of the exception being handled. If no exception is being handled, the default is 1. In the case of program abortion, the implementation may pass the <i>quitReason</i> to the operating system or programming environment.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <i>exceptionHandler</i>, <b><a href="return.html">return</a></b> and <b><a href="result.html">result</a></b>.<p>
+</table></body>
+</html>

@@ -1,0 +1,92 @@
+<html>
+<head><title>Pic.FileNew</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Pic.FileNew</b></font></td><td align="right">Part of <a href="picmodule.html">Pic</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Pic.FileNew</b> (<i>fileName</i> : <b>string</b>) : <b>int</b><p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td><b>Pic.FileNew </b>is used to obtain a picture from a file. The 
+          <b>Pic.FileNew</b> procedure allocates the memory for the picture, 
+	  which can be very large for pictures of large areas. The memory is 
+	  freed up when the program calls <b>Pic.Free</b> with the picture ID. 
+	  The picture can be used with the <b>Pic.Draw</b> and 
+	  <b>Pic.Save</b>.<p>
+          The <i>fileName</i>parameter must give the format of the file:<p>
+          <table>
+	    <tr valign="top">
+	      <td width="40">&nbsp;</td>
+	      <td>GIF files</td>
+	      <td width="10">&nbsp;</td>
+	      <td>"GIF:filename" or "filename.GIF"</td>
+	    </tr>
+	    <tr valign="top">
+	      <td width="40">&nbsp;</td>
+	      <td>JPG files</td>
+	      <td width="10">&nbsp;</td>
+	      <td>"JPG:filename" or "filename.JPG"</td>
+	    </tr>
+            <tr valign="top">
+	      <td width="40">&nbsp;</td>
+	      <td>BMP files</td>
+	      <td width="10">&nbsp;</td>
+	      <td>"BMP:filename" or "filename.BMP"</td>
+	    </tr>
+          </table><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>Various versions of Turing can convert different formats of files. 
+          Turing 4.1 for Windows can load BMP, GIF and JPG files.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>For, multi-frame GIF files (GIF files that have several frames or
+          pictures and are used for animation), <b>Pic.FileNew</b> will only
+          load the first frame.  See the <b>Pic.FileNewFrames</b> and
+          <b>Pic.Frame</b> for information on loading and displaying
+          a multi-frame GIF file.
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>If the <b>Pic.FileNew</b> call fails, then it returns 0. Also 
+          <b>Error.Last</b> will return a non-zero value indicating the 
+	  reason for the failure. <b>Error.LastMsg</b> will return a string 
+	  which contains the textual version of the error.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>The program reads a graphic from the file <i>mypic.bmp</i> and then 
+          draws it 50 times.<p>
+<pre><tt>        <b>var </b><i>picID</i>: <b>int</b>
+        <b>var</b> <i>x</i>, <i>y</i> : <b>int</b>
+        
+        <i>picID</i> := <b>Pic.FileNew</b> ("mypic.bmp")
+        <b>for</b> i : 1 .. 50
+            <i>x</i> := <b>Rand.Int</b> (0, <b>maxx</b>)     <i>% Random x</i>
+            <i>y</i> := <b>Rand.Int</b> (0, <b>maxy</b>)     <i>% Random y</i>
+            <b>Pic.Draw</b> (<i>picID</i>, <i>x</i>, <i>y</i>, <i>picCopy</i>)
+        <b>end for</b>
+        <b>Pic.Free</b> (<i>picID</i>)</tt></pre>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+	    <PARAM name="Command" value="TCard">
+	    <PARAM name="Button" value="Text: Launch Example Program">
+	    <PARAM name="Item1" value="-1,Pic.FileNew.t;Pic.FileNew Example">
+	  </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+	  <b>Pic.FileNew</b>, not by calling <b>FileNew</b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

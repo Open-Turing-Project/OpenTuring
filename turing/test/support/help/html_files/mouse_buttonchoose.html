@@ -1,0 +1,34 @@
+<html>
+<head><title>Mouse.ButtonChoose</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Mouse.ButtonChoose</b></font></td><td align="right">Part of <a href="mousemodule.html">Mouse</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Mouse.ButtonChoose </b>(<i>choice</i> : <b>string</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Mouse.ButtonChoose</b> procedure is used to change the mode of the mouse. In Turing, the mouse can either be in "<i>single-button mode</i>" or in "<i>multi-button mode</i>". In "<i>single-button mode</i>" the mouse is treated as a one button mouse. A button is considered pressed when any button is pressed and released only when all buttons have been released.<p>
+In Turing, the mouse starts in "<i>single-button mode</i>".<p>
+The parameter <i>choice</i> can be one of "singlebutton", "onebutton" (which switch the mouse into "<i>single-button mode</i>") or "multibutton" (which switches the mouse into "<i>multi-button mode</i>").<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> A program that displays the status of the mouse at the top left corner of the screen.<p>
+<pre><tt>        <b>Mouse.ButtonChoose</b> ("multibutton")
+        <b>var</b> <i>x</i>, <i>y</i>, <i>button</i>, <i>left</i>, <i>middle</i>, <i>right</i> : <b>int</b>
+        <b>Mouse.Where</b> (<i>x</i>, <i>y</i>, <i>button</i>)
+        <i>left</i> := <i>button</i> <b>mod</b> 10           <i>% left = 0 or 1</i>
+        <i>middle</i> := (<i>button</i> - <i>left</i>) <b>mod</b> 100   <i>% middle = 0 or 10</i>
+        <i>right</i> := <i>button</i> - <i>middle</i> - <i>left</i>     <i>% right = 0 or 100</i>
+        <b>if </b><i>left</i> = 1<b> then</b>
+            <b>put</b> "left button down"
+        <b>end if</b>
+        <b>if </b><i>middle</i> = 10<b> then</b>
+            <b>put</b> "middle button down"
+        <b>end if</b>
+        <b>if </b><i>right</i> = 100<b> then</b>
+            <b>put</b> "right button down"
+        <b>end if</b></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Mouse.ButtonChoose</b>, not by calling <b>ButtonChoose</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="mouse_buttonmoved.html">Mouse.ButtonMoved</a></b> and <b><a href="mouse_buttonwait.html">Mouse.ButtonWait</a></b> to get mouse events saved in a queue. See also <b><a href="mouse_where.html">Mouse.Where</a></b> to get the current status of mouse button(s).<p>
+</table></body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+<head><title>GUI.GetMenuBarHeight</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.GetMenuBarHeight</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>GUI.GetMenuBarHeight</b> : <b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Returns the height of the menu bar. Useful when drawing or placing widgets to make certain that they don't overlap the menu bar.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program draws a red box in the window just belowe the menu bar.<p>
+<pre><tt>        <b>import</b> <i>GUI</i> <b>in</b> "%oot/lib/GUI"
+        
+        <b>var</b> <i>menu</i> : <b>int</b> := <b>GUI.CreateMenu</b> ("File")
+        <b>var</b> <i>item</i> : <b>int</b> := <b>GUI.CreateMenuItem</b> ("Quit", <b>GUI.Quit</b>)
+        
+        <b>Draw.FillBox</b> (0, 0, <b>maxx</b>, <b>maxy</b>  <b>GUI.GetMenuBarHeight </b> 2, 
+            <i>brightred</i>)
+        
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>GUI.GetMenuBarHeight</b>, not by calling <b>GetMenuBarHeight</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="gui_createmenu.html">GUI.CreateMenu</a></b>.<p>
+</table></body>
+</html>

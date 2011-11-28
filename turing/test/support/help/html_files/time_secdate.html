@@ -1,0 +1,23 @@
+<html>
+<head><title>Time.SecDate</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Time.SecDate</b></font></td><td align="right">Part of <a href="timemodule.html">Time</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Time.SecDate</b> (<i>timeInSecs</i> : <b>int</b>) : <b>string</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Time.SecDate</b> function is used to<b> </b>convert  the number of seconds since 00:00:00 GMT Jan 1, 1970 into a date and time string. <p>
+If <i>timeInSecs </i>is incorrect or can't be interpreted, then <b>Time.SecDate</b> will return the empty string and <b>Error.Last </b>and<b> Error.LastMsg</b> will be set to the appropriate error.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program gives the number of seconds since 00:00:00 GMT Jan 1, 1970 and the date in string form.<p>
+<pre><tt>        <b>var</b> <i>timeInSecs</i> : <b>int</b> := <b>Time.Sec</b>
+        <b>var</b> <i>theDateTime</i>: <b>string</b>
+        <i>theDateTime</i> := <b>Time.SecDate</b> (<i>timeInSecs</i>)
+        <b>put</b> "The number of seconds since 1970 is ", <i>timeInSecs</i> 
+        <b>put</b> "Greetings!!  The date and time today is ",<i> theDateTime</i></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Time.SecDate</b>, not by calling <b>SecDate</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="time_sec.html">Time.Sec</a></b>, <b><a href="time_date.html">Time.Date</a></b> and <b><a href="time_datesec.html">Time.DateSec</a></b> functions.<p>
+</table></body>
+</html>

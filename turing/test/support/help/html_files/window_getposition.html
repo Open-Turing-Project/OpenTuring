@@ -1,0 +1,37 @@
+<html>
+<head><title>Window.GetPosition</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Window.GetPosition</b></font></td><td align="right">Part of <a href="windowmodule.html">Window</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Window.GetPosition</b> (<i>windowID</i> : <b>int</b>, <b>var</b> <i>x</i>, <i>y</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Window.GetPosition</b> procedure returns the location of the specified execution window on the screen in the <i>x</i> and <i>y</i> parameters. The <i>x</i> and <i>y</i> parameters specify the lower left corner of the window in screen coordinates. (0, 0) is the lower left corner of the screen.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program outputs the current position of the run window.<p>
+<pre><tt>        % Constants for windows
+        <b>const</b> <i>titleBarHeight</i> : <b>int</b> := 21
+        <b>const</b> <i>windowEdgeSize</i> : <b>int</b> := 13
+        
+        % Calculate the actual size of a window
+        <b>var</b> <i>windowWidth</i> : <b>int</b> := <b>maxx</b> + <i>windowEdgeSize</i>
+        <b>var</b> <i>windowHeight</i> : <b>int</b> := <b>maxy</b> + <i>windowEdgeSize</i> + <i>titleBarHeight</i>
+        
+        % Get the screen size
+        <b>var</b> <i>screenWidth</i> : <b>int</b> := <b>Config.Display</b> (<i>cdScreenWidth</i>)
+        <b>var</b> <i>screenHeight</i> : <b>int</b> := <b>Config.Display</b> (<i>cdScreenHeight</i>)
+        
+        % Open the window
+        <b>var</b> <i>winID </i>: <b>int</b> := <b>Window</b>.<b>Open</b> ("title:Upper Right")
+        <b>Window.SetPosition</b> (<i>winID</i>, <i>screenWidth</i>  <i>windowWidth</i>,                    <i>screenHeight</i>  <i>windowHeight</i>)
+        
+        % Return the current position
+        <b>var </b><i>windowXPosition</i>, <i>windowYPosition</i> : <b>int</b>
+        <b>Window.GetPosition</b> (<i>winID</i>, <i>windowXPosition</i>, <i>windowYPosition</i>)
+        <b>put</b> "Window located at ", <i>windowXPosition</i>, ",", <i>windowYPosition</i></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Window.GetPosition</b>, not by calling <b>GetPosition</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="window_setposition.html">Window.SetPosition</a></b> to <a href="set.html">set</a> the current window position and <b><a href="config_display.html">Config.Display</a></b> to get the size of the screen.<p>
+</table></body>
+</html>

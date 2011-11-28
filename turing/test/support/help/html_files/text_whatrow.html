@@ -1,0 +1,23 @@
+<html>
+<head><title>Text.WhatRow</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Text.WhatRow</b></font></td><td align="right">Part of <a href="textmodule.html">Text</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Text.WhatRow</b> : <b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Text.WhatRow</b> function is used to<b> </b>determine the cursor position's row.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program outputs <i>The current row is 5</i>,<i> the current column is 15</i>.<p>
+<pre><tt>        <b>Text.Locate </b> ( 5, 10 )
+        <b>put</b> "12345"..
+        <b>put</b> "The current row is", <b>Text.WhatRow</b>
+        <b>put</b> "The current column is", <b>Text.WhatCol</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The screen should be in a "<i>screen</i>" or<i> </i>"<i>graphics</i>" mode. <b>Text.WhatRow</b> functions properly even if the cursor is invisible.<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Text.WhatRow</b>, not by calling <b>WhatRow</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> the <b><a href="text_whatcol.html">Text.WhatCol</a> </b>function, which is used to determine the cursor column. See also the <b><a href="text_locate.html">Text.Locate</a></b>, <b><a href="textmodule.html">Text</a></b>.<b><a href="maxrow.html">maxrow</a></b> and <b><a href="text_maxcol.html">Text.maxcol</a> </b><a href="procedure.html">procedure</a>.<p>
+</table></body>
+</html>

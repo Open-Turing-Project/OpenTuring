@@ -1,0 +1,24 @@
+<html>
+<head><title>objectclass</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>objectclass</b></font></td><td align="right"><font size="+1"><b>of a pointer</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>objectclass</b> ( <i>pointerExpn</i> )<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>objectclass</b> attribute is used to find the class of an object located by a pointer. The <i>pointerExpn</i> must be an expression that is a pointer to a class.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> See <b>class</b> for an example of classes and inheritance, in which a class called <i>TextFile</i> is inherited by a class called <i>Device</i>. The <i>Device</i> class adds a new exported procedure called <i>ioCtl</i>. In the present example, <b>objectclass</b> is used to test to make sure that the <i>textFilePtr</i> currently locates an object that was created as a <i>Device</i> (or as a descendant of <i>Device</i>). The notation <i>Device(textFilePtr) </i>converts the pointer to be a pointer to a <i>Device </i>so that <i>ioCtl </i>can be called.<p>
+<pre><tt>        <b>var</b> <i>textFilePtr</i> : <b>^</b> <i>TextFile</i>
+        …
+        <b>if</b> <b>objectclass</b> ( <i>textFilePtr</i> ) <b>&gt;</b>= <i>Device</i> <b>then</b>
+            <i>% Can safely treat object as a Device</i>
+            <i>Device</i> ( <i>textFilePtr</i> ) . <i>ioCtl</i>
+            …
+        <b>end</b> <b>if</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> This example uses the class comparison operator &gt;= which means "is a descendant of". See <b>class</b>.<p>
+You can only use <b>objectclass</b>  in class comparisons. In particular, <b>objectclass</b> cannot be used to declare pointers. For example, this: <p>
+<pre><tt>        <b>var</b> <i>p</i> : <b>^objectclass</b> (<i>q</i>)</tt></pre>
+is not allowed.<p>
+</table></body>
+</html>

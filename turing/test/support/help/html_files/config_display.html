@@ -1,0 +1,37 @@
+<html>
+<head><title>Config.Display</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Config.Display</b></font></td><td align="right">Part of <a href="configmodule.html">Config</a> module</td></table><p>
+  <table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Config.Display</b> (<i>displayCode</i> : <b>int</b>) : <b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> <b>Config.Display</b> returns information about the display (or displays) attached to the computer. The parameter <i>displayCode</i> determines what sort of information is passed back. <i>displayCode</i> has a number of possible values, all summarized by a set of predefined constants.<p>
+At the time of this writing, the following constants were defined:<p>
+<table><tr valign="top"><td><i>cdScreenHeight</i></td><td width="10">&nbsp;</td><td>return the height of the screen in pixels.</td></tr>
+<tr valign="top"><td><i>cdScreenWidth</i></td><td width="10">&nbsp;</td><td>return the width of the screen in pixels.</td></tr>
+<tr valign="top"><td><i>cdMaxNumColors</i></td><td width="10">&nbsp;</td><td>return the maximum number of colors supported by the display.</td></tr>
+<tr valign="top"><td><i>cdMaxNumColours</i></td><td width="10">&nbsp;</td><td>return the maximum number of colors supported by the display.</td></tr>
+</table><p>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,Config.Display.t;Config.Display Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program prints the screen width and height.<p>
+<pre><tt>        <b>const</b><i> width</i><b> </b>: <b>int</b> :=<b> Config.Display</b> (<i>cdScreenWidth</i>)
+        <b>const</b><i> height</i>: <b>int</b> :=<b> Config.Display</b> (<i>cdScreenHeight</i>)
+        <b>put </b>"The screen width is ", <i>width</i>, "  the screen height is ", <i>height</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> On the Macintosh, it's possible to have multiple displays attached to a single computer. To get information about the extra displays, you can call <b>Config.Display</b> with any of the first four constants above plus one, two, three, etc.  This will return the height, width or maximum number of colors for the second, third and beyond displays.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program prints the screen width and height of the second display on a Macintosh.<p>
+<pre><tt>        <b>const</b><i> width</i><b> </b>: <b>int</b> :=<b> Config.Display</b> (<i>cdScreenWidth</i> + 1)
+        <b>const</b><i> height</i>: <b>int</b> :=<b> Config.Display</b> (<i>cdScreenHeight</i> + 1)
+        <b>put </b>"The second display size is ", <i>width</i>, "  x ", <i>height</i></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Config.Display</b>, not by calling <b>Display</b>.<p>
+</table></body>
+</html>

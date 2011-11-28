@@ -1,0 +1,70 @@
+<html>
+<head><title>forward</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>forward</b></font></td><td align="right"><font size="+1"><b>subprogram declaration</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>forwardDeclaration</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>forward</b> <i>subprogramHeader</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1">[ <b>import</b> <i>importItem</i> {, <i>importItem</i> } ]</td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A procedure or function is declared to be <b>forward</b> when you want to define its header but not its body. This is the case when one procedure or function calls another, which in turn calls the first; this situation is called <i>mutual recursion</i>. The use of <b>forward</b> is necessary in this case, because every item must be declared before it can be used.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This example program evaluates an input expression <i>e</i> of the form <i>t</i> { + <i>t </i>} where t is of the form <i>p</i> { * <i>p </i>} and <i>p </i>is of the form (<i>e </i>) or an explicit real expression. For example, the value of 1.5 + 3.0 * (0.5 + 1.5) halt is 7.5.<p>
+<pre><tt>        <b>var</b> <i>token</i> : <b>string</b>
+        
+        <b>forward</b> <b>procedure</b> <i>expn</i> ( <b>var</b> <i>eValue</i> : <b>real</b> )
+        
+        <b>forward</b> <b>procedure</b> <i>term</i> ( <b>var</b> <i>tValue</i> : <b>real</b> )
+        
+        <b>forward</b> <b>procedure</b> <i>primary</i> ( <b>var</b> <i>pValue</i>: <b>real</b> )
+        
+        <b>body</b> <b>procedure</b> <i>expn</i>
+            <b>var</b> <i>nextValue</i> : <b>real</b>
+            <b>term</b> ( <i>eValue </i>)         <i>% Evaluate </i>t
+            <b>loop</b>                    <i>% Evaluate </i>{ + t}
+                <b>exit</b> <b>when</b> <i>token</i> <b>not=</b> "+"
+                <b>get</b> <i>token</i>
+                <i>term</i> ( <i>nextValue</i> )
+                <i>eValue</i> := <i>eValue</i> + <i>nextValue</i>
+            <b>end</b> <b>loop</b>
+        <b>end</b> <i>expn</i>
+        
+        <b>body</b> <b>procedure</b> <i>term</i>
+            <b>var</b> <i>nextValue</i> : <b>real</b>
+            <i>primary</i> (<i>tValue</i> )       <i>% Evaluate p</i>
+            <b>loop</b>                    <i>% Evaluate </i>{ * p}
+                <b>exit</b> <b>when</b> <i>token</i> <b>not=</b> "*"
+                <b>get</b> <i>token</i>
+                <i>primary</i> ( <i>nextValue </i>)
+                <i>tValue</i> := <i>tValue</i> * <i>nextValue</i>
+            <b>end</b> <b>loop</b>
+        <b>end</b> <i>term</i>
+        <b>body</b> <b>procedure</b> <i>primary</i>
+            <b>if</b> <i>token</i> =<i> </i>"(" <b>then</b>
+                <b>get</b> <i>token</i>
+                <i>expn</i> ( <i>pValue </i>)     <i>% Evaluate</i> (e)
+                <b>assert</b> <i>token</i> = ")"
+            <b>else</b>                    <i>% Evaluate </i>"<i>explicit real</i>"
+                <i>pValue</i> := <b>strreal</b> ( <i>token </i>)
+            <b>end</b> <b>if</b>
+            <b>get</b> <i>token</i>
+        <b>end</b> <i>primary</i>
+        
+        <b>get</b> <i>token</i>               <i>% Start by reading first token</i>
+        <b>var</b> <i>answer</i> : <b>real</b>
+        <i>expn</i> ( <i>answer </i>)         <i>% Scan and evaluate input expression</i>
+        <b>put</b> "Answer is ", <i>answer</i></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,ExpressionEvaluator.t;Expression Evaluator Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Following a <b>forward</b> procedure or function declaration, the <b>body</b> of the procedure must be given at the same level (in the same sequence of statements and declarations as the <b>forward</b> declaration). This is the only use of the keyword <b>body</b>. See also <b>body</b>.<p>
+Any procedure or function that is declared using <b>forward</b> requires an <b>import</b> list. In this list, imported procedures or functions that have not yet appeared must be listed as <b>forward</b>. For example, the import list for <i>expn </i>is <b>import</b> <b>forward</b> <i>term</i> … Before a procedure or function can be called, before its body appears, and before it can be passed as a parameter, its header as well as headers of procedures or functions imported directly or indirectly by it must have appeared.<p>
+The keyword <b>forward</b> is also used in <b>collection</b> and <b>type</b> declarations. <p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="collection.html">collection</a></b> and <b><a href="type.html">type</a></b> declarations.<p>
+</table></body>
+</html>

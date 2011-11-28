@@ -1,0 +1,18 @@
+<html>
+<head><title>GUI.FontDraw</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.FontDraw</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>GUI.FontDraw</b> (<i>widgetID</i> : <b>int</b>, <i>textStr</i> : <b>string</b>, <br>
+<i>x</i>, <i>y</i>, <i>fontID</i>, <i>Color</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Performs a <i>Font.Draw</i> command to the canvas specified by <i>widgetID</i>.<p>
+This routine is essentially the same as the <i>Font.Draw</i> procedure in the <i>Font</i> module. All coordinates are based on the canvas and all drawing is clipped to the canvas drawing surface. If the canvas is in "xor mode", all the drawing will be done with "xor" set. (See <b>View.Set</b><i> </i>for more information about "xor".)<p>
+The <i>widgetID</i> must specify a canvas widget.<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the procedure by calling <b>GUI.FontDraw</b>, not by calling <b>FontDraw</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b>GUI.CreateCanvas</b>.<p>
+</table></body>
+</html>

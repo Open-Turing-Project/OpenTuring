@@ -1,0 +1,66 @@
+<html>
+<head><title>Draw.Arc</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Draw.Arc</b></font></td><td align="right">Part of <a href="drawmodule.html">Draw</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Draw.Arc </b>(<i>x</i>, <i>y</i>,<b> </b><i>xRadius</i>, <i>yRadius</i><b> :</b> <b>int</b>, <br></font>
+          <table>
+            <tr valign="top">
+              <td width="40">&nbsp;</td>
+              <td width="40">&nbsp;</td>
+              <td colspan="7"><font size="+1"><i>initialAngle</i>, <i>finalAngle</i>, <i>Color</i> : <b>int</b>)</td>
+            </tr>
+          </table><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>The <b>Draw.Arc </b>procedure is used to draw an arc whose center is 
+          at (<i>x</i>, <i>y</i>). This is just like <b>Draw.Oval</b>, except 
+          that you must also give two angles, <i>initialAngle </i>and 
+          <i>finalAngle</i>, which determine where to start and stop drawing. 
+          Zero degrees is "three o'clock", 90 degrees is "twelve o'clock", etc. 
+          The horizontal and vertical distances from the center to the arc are 
+          given by <i>xRadius </i>and <i>yRadius</i>.<p>
+	  <center><img src="draw_arc01.gif"></center>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program draws a quarter circle whose center is 
+          (<i>midx</i>, <i>midy</i>) the center of the screen, using color 
+          number 1. The <b>maxx</b> and <b>maxy </b>functions are used to 
+          determine the maximum x and y values on the screen.<p>
+<pre><tt>        <b>View.Set</b> ("graphics")
+        <b>const</b> <i>midx </i>:= <b>maxx</b> <b>div</b> 2
+        <b>const</b> <i>midy </i>:= <b>maxy</b> <b>div</b> 2
+        <b>Draw.Arc</b> (<i>midx</i>, <i>midy</i>, <i>midx</i>, <i>midy</i>, 0, 90, 1)</tt></pre>
+    </tr>
+    <tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+        <PARAM name="Command" value="TCard">
+        <PARAM name="Button" value="Text: Launch Example Program">
+        <PARAM name="Item1" value="-1,Draw.Arc.t;Draw.Arc Example">
+      </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The screen must be in a "<i>graphics</i>" mode. See the <b>View.Set</b> procedure for details. If the screen is not in a "<i>graphics</i>" mode, an error will occur<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+          <b>Draw.Arc</b>, not by calling <b>Arc</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="view_set.html">View.Set</a></b>, 
+      <b><a href="maxx.html">maxx</a></b>, 
+      <b><a href="maxy.html">maxy</a></b> and the various procedures in 
+      the <b><a href="drawmodule.html">Draw</a></b> unit.<p>
+    </tr>
+  </table>
+</body>
+</html>

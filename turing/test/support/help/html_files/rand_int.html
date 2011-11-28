@@ -1,0 +1,24 @@
+<html>
+<head><title>Rand.Int</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Rand.Int</b></font></td><td align="right">Part of <a href="randmodule.html">Rand</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Rand.Int</b> (<i>low</i>,<i> high</i> : <b>int</b>) : <b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Rand.Int </b>statement is used to create a pseudo-random integer in the range <i>low</i> to <i>high</i>, inclusive. For example, if <i>i</i> is an integer, after <i>i:=</i><b>Rand.Int </b>(<i>i</i>,1, 10), <i>i</i> would have a value such as 7 or 2 or 10.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program simulates the repeated rolling of a six sided die.<p>
+<pre><tt>        <b>loop</b>
+            <b>put</b> "Rolled ",<i> </i><b>Rand.Int </b>(1, 6)
+        <b>end loop</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The <b>Rand.Int </b>statement sets its parameter to the next value of a sequence of pseudo-random integers that approximates a uniform distribution over the range <i>low</i> =<i>i</i> = <i>high</i>. It is required that <i>low</i> = <i>high</i>.<p>
+Each time a program runs, <b>Rand.Int</b> uses a different pseudo-random number sequence. To always get the same sequence (actually, to start the sequence at the same point), use the <b>Rand.Set</b> procedure.<p>
+To use several sequences of repeatable pseudo-random number sequences, use the <b>Rand.Seed </b>and <b>Rand.Next</b> procedures.<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Rand.Int</b>, not by calling <b>Int</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="rand_real.html">Rand.Real</a></b>, <b><a href="rand_set.html">Rand.Set</a></b>, <b><a href="rand_seed.html">Rand.Seed</a></b> and <b><a href="rand_next.html">Rand.Next</a></b>.<p>
+</table></body>
+</html>

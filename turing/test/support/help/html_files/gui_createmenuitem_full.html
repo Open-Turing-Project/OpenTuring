@@ -1,0 +1,56 @@
+<html>
+<head><title>GUI.CreateMenuItem[Full]</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.CreateMenuItem[Full]</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+  
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>GUI.CreateMenuItem</b> (<i>name</i> : <b>string</b>, <br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;<i>actionProc</i> : <b>procedure</b> <i>x</i> ()) : <b>int</b><p>
+	  <b>GUI.CreateMenuItemFull</b> (<i>name</i> : <b>string</b>, <br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;<i>actionProc</i> : <b>procedure</b> <i>x</i> (), <i>shortCut</i> : <b>char</b>, <i>addNow</i> : <b>boolean</b>) : <b>int</b><p></font>
+    </tr>
+    <tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+      <td>Creates a menu item and returns the menu item's widget ID. <p>
+	  Menu items are the individual entries of a menu. To create menus for a window, you must create a menu, then create the menu items for that menu, then create the next menu, etc. All menu items are automatically added to the last menu and after the last menu item of the currently selected (not active!) window.<p>
+	  The menu item will be added to the last menu after the other menu items in the menu. If there are no menus defined, an error results.<p>
+	  The <i>name</i> parameter specifies the text that is to appear. A <i>name</i> of three dashes ("---") creates a separator across the menu. The <i>actionProc</i> parameter specifies the name of a procedure to be called when user the selects the menu item from the menu.<p>
+	  For <b>GUI.CreateMenuItemFull</b>, the <i>shortCut</i> parameter specifies the keystroke to be used as the menu item's shortcut. If no shortcut is desired, then '\0' can be used. The <i>addNow</i> parameter has no effect in the current version of the GUI Library. In future versions, it will allow you to create menu items that can then be added to a menu later in the program.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Examples&nbsp;&nbsp;</b></td>
+      <td> See the example for <b><a href="gui_createmenu.html">GUI.CreateMenu</a></b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,GUI.CreateMenu.t;GUI.CreateMenu Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td> When a menu item is not enabled, the text of the menu item is grayed out and clicking on the menu item does not cause the menu to appear.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The following GUI subprograms can be called with a menu as the <i>widgetID</i> parameter:<p>
+          <table>
+            <tr valign="top">
+              <td width="40">&nbsp;</td>
+              <td><b>GUI.Show</b>, <b>GUI.Hide</b>, <b>GUI.Dispose</b>,
+                  <b>GUI.Enable</b>, <b>GUI.Disable</b>
+            </tr>
+          </table>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+	  This means that you can only call the function by calling <b>GUI.CreateMenuItem</b>, not by calling <b>CreateMenuItem</b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

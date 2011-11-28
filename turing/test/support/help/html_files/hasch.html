@@ -1,0 +1,62 @@
+<html>
+<head><title>hasch</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>hasch</b></font></td><td align="right"><font size="+1"><b>has character function</b></font></td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>hasch</b> : <b>boolean</b><p></font>
+    </tr>      
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>The <b>hasch</b> procedure is used to determine if there is a 
+          character that has been typed but not yet been read.<p>
+    </tr>      
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program simulates the rolling of a pair of dice until the
+          user pressed the keyboard.<p>
+<pre><tt>        <b>put</b> "Press any key to stop the dice rolling"
+        <b>var</b> <i>die1</i>, <i>die2</i> : <b>int</b>
+        <b>var</b> <i>ch</i> : <b>string</b> (1)
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>hasch</b>
+            <b>randint</b> (<i>die1</i>, 1, 6)
+            <b>randint</b> (<i>die2</i>, 1, 6)
+            <b>locate</b> (1, 1)
+            <b>put</b> "You rolled ", <i>die1</i> + <i>die2</i>
+        <b>end loop</b>
+            
+        <b>getch</b> (<i>ch</i>)    <i>% Discard the character</i></tt></pre><p>
+    </tr>      
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,hasch.t;hasch Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The screen should be in a "<i>graphics</i>" mode. See the 
+          <b>setscreen</b> procedure for details. If the screen is not 
+          in "<i>graphics</i>" mode, it will automatically be set 
+          to "<i>graphics</i>" mode.<p>
+          If there is the possibility that there are already keystrokes in the
+          keyboard buffer, the <a href="input_flush.html"><b>Input.Flush</b></a>
+          command can be used to flush the keyboard buffer (remove all 
+          keystrokes from the buffer) before entering the loop to check for
+          input.<p>
+    </tr>      
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="getch.html">getch</a></b> and 
+          <b><a href="getchar.html">getchar</a></b>.<p>
+          See also the <a href="input_flush.html"><b>Input.Flush</b></a>
+          command for flushing the keyboard buffer.<p>
+          See also predefined unit <b><a href="inputmodule.html">Input</a></b>.<p>
+    </tr>      
+</table></body>
+</html>

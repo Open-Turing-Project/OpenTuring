@@ -1,0 +1,33 @@
+<html>
+<head><title>Dir.Close</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Dir.Close</b></font></td><td align="right">Part of <a href="dirmodule.html">Dir</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Dir.Close</b> (<i>streamNumber</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> <b>Dir.Close</b> is part of a series of four subprograms that help users get directory listings. <b>Dir.Close</b> is used to close a directory stream number opened by <b>Dir.Open</b>. After the directory stream number is closed, it can not be used with <b>Dir.Get</b> or <b>Dir.GetLong</b>.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> If the <b>Dir.Close</b> call fails, then <b>Error.Last</b> will return a non-zero value indicating the reason for the failure. <b>Error.LastMsg</b> will return a string which contains the textual version of the error.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program prints a listing of all the files in the directory <i>datafiles</i>.<p>
+<pre><tt>        <b>var </b><i>streamNumber</i> : <b>int</b>
+        <b>var </b><i>fileName</i> : <b>string</b>
+        <i>streamNumber </i>:= <b>Dir.Open</b> ("datafiles")
+        <b>assert</b> <i>streamNumber</i> &gt; 0
+        <b>loop</b>
+            <i>fileName</i> := <b>Dir.Get</b> (<i>streamNumber</i>)
+            <b>exit when </b><i>fileName </i>= ""
+            <b>put</b> <i>fileName</i>
+        <b>end loop</b>
+        <b>Dir.Close</b> (<i>streamNumber</i>)</tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,DirectoryListing.t;Directory Listing Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Dir.Close</b>, not by calling <b>Close</b>.<p>
+</table></body>
+</html>

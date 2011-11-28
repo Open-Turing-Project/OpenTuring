@@ -1,0 +1,24 @@
+<html>
+<head><title>Config.Lang</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Config.Lang</b></font></td><td align="right">Part of <a href="configmodule.html">Config</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Config.Lang</b> (<i>langCode</i> : <b>int</b>) : <b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> <b>Config.Lang</b> returns information about the language and the limitations of the implementation that the program is currently running. The parameter <i>langCode</i> determines what sort of information is passed back. <i>langCode</i> has a number of possible values, all summarized by a set of predefined constants.<p>
+At the time of this writing, the following constants were defined:<p>
+<table><tr valign="top"><td><i>clRelease</i></td><td width="10">&nbsp;</td><td>return the current release number of the environment (e.g. 4.02 = 400).</td></tr>
+<tr valign="top"><td><i>clLanguageVersion</i></td><td width="10">&nbsp;</td><td>return the current version number of the language (e.g. 1.81 = 181).</td></tr>
+<tr valign="top"><td><i>clMaxNumStreams</i></td><td width="10">&nbsp;</td><td>return the maximum number of I/O streams (used by the <b>open</b> and <b>close</b> statements) that can be opened at once.</td></tr>
+<tr valign="top"><td><i>clMaxNumDirStreams</i></td><td width="10">&nbsp;</td><td>return the maximum number of directory streams that can be opened at once.</td></tr>
+<tr valign="top"><td><i>clMaxNumRunTimeArgs</i></td><td width="10">&nbsp;</td><td>return the maximum number of run-time arguments.</td></tr>
+</table><p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program prints the current environment version.<p>
+<pre><tt>        <b>const</b><i> version</i><b> </b>: <b>int</b> := <b>Config.Lang</b> (<i>clLanguageVersion</i>)
+        <b>put </b>"The language version number is ", <i>version</i></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Config.Lang</b>, not by calling <b>Lang</b>.<p>
+</table></body>
+</html>

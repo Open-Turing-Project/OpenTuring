@@ -1,0 +1,35 @@
+<html>
+<head><title>Draw.FillPolygon</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Draw.FillPolygon</b></font></td><td align="right"><font size="+1"><b> </b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <b>Draw.FillPolygon</b> (<i>x</i>, <i>y</i>  : <b>array</b> 1 .. * <b>of</b> <b>int</b>, <i>n</i> : <b>int</b>, <i>Color</i> : <b>int</b>)<p>
+<tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Draw.FillPolygon</b> procedure is used to draw a filled polygon with <i>n</i> points. The polygon is described by the points (<i>x</i>(1), <i>y</i>(1)) to (<i>x</i>(2), <i>y</i>(2)) to (<i>x</i>(3), <i>y</i>(3)) and so on to (<i>x</i>(<i>n</i>), <i>y</i> (<i>n</i>)). The polygon will be drawn and filled with <i>Color</i>. <p>
+To get an polygon outlined in a different color, use <b>Draw.FillPolygon </b>with the <i>Color</i> parameter set to the fill color and then call <b>Draw.Polygon</b> with the <i>Color</i> parameter set to the border color.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program will create a filled octagon and display it in bright blue and then outline it in cyan.<p>
+<pre><tt>        <b>View.Set</b> ("graphics")
+        <b>var</b> <i>x</i> : <b>array</b> 1..8 <b>of int</b> := <b>init</b> (100, 100, 135, 185, 
+                                   220, 220, 185, 135)
+        <b>var</b> <i>y</i> : <b>array</b> 1..8 <b>of int</b> := <b>init</b> (100, 150, 185, 185,
+                                   150, 100, 65, 65)
+        <b>Draw.FillPolygon</b> (<i>x</i>, <i>y</i>, 8, <b>brightblue</b>)
+        <b>Draw.Polygon</b> (<i>x</i>, <i>y</i>, 8, <b>cyan</b>)</tt></pre>
+    <tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+        <PARAM name="Command" value="TCard">
+        <PARAM name="Button" value="Text: Launch Example Program">
+        <PARAM name="Item1" value="-1,Draw.FillPolygon.t;Draw.FillPolygon Example">
+      </OBJECT><p></td>
+    </tr>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The PC allows a maximum of 256 points. As well, <b>Draw.FillPolygon  </b>can fail (due to lack of memory). If failure occurs, it will try to draw an outline of the polygon. If that also fails, it will not draw anything. <p>
+The screen must be in a "<i>graphics</i>" mode. See the <b>View.Set</b> procedure for details. If the screen is not in a "<i>graphics</i>" mode, an error will occur.<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Draw.FillPolygon</b>, not by calling <b>FillPolygon</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="view_set.html">View.Set</a></b>, <b><a href="maxx.html">maxx</a></b>, <b><a href="maxy.html">maxy</a></b> and the various procedures in the <b><a href="drawmodule.html">Draw</a></b> unit.<p>
+</table></body>
+</html>

@@ -1,0 +1,120 @@
+<html>
+<head><title>GUI.CreateTextField[Full]</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.CreateTextField[Full]</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+  
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>GUI.CreateTextField</b> (<i>x</i>, <i>y</i>, <i>width</i> : <b>int</b>, <i>text</i> : <b>string</b>, <br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;<i>actionProc</i> : <b>procedure</b> <i>x</i> (<i>text</i> : <b>string</b>)) : <b>int</b><p>
+	  <b>GUI.CreateTextFieldFull</b> (<i>x</i>, <i>y</i>, <i>width</i> : <b>int</b>, <i>text</i> : <b>string</b>, <br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;<i>actionProc</i> : <b>procedure</b> <i>x</i> (<i>text</i> : <b>string</b>),<br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;<i>border</i>, <i>fontID</i>, <i>inputKind</i> : <b>int</b>) : <b>int</b><p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>Creates a text field and returns the text field's widget ID.<p>
+	  A text field is used to create a line of text that can be edited by the user. The user can use the mouse to select part of the text and can enter text into the text field.<p>
+	  If one or more text fields are enabled in a window, then one of the text fields will be active. This means that when any keystrokes are entered into the window, the active text field will receive the keystrokes. The active text field can be changed using the <b>GUI.SetActive</b> procedure.<p>
+	  The <i>x</i> and<i> y</i> parameters specify the lower-left corner of the area in which the text will be drawn. The text field border is just outside the text drawing area. The <i>width</i> parameter specifies the width of the text drawing area. The height of the text field is determined by the height of the font used by the text field. The border of the text field is just outside the text drawing area, so <b>GUI.GetWidth</b><i> </i>will return values slightly larger than <i>width</i>. The <i>actionProc</i> parameter specifies the name of the procedure to be called when the user presses ENTER (RETURN on a Macintosh) when the text field is active. The parameter is the current text in the text field.<p>
+	  For <b>GUI.CreateTextField</b>,<b> </b>the border around the text field is always a line. For <b>GUI.CreateTextFieldFull</b>, the type of border is specified by the <i>border</i> parameter. The <i>border</i> parameter is one of 0, <i>GUI.LINE</i>, <i>GUI.INDENT</i>, or <i>GUI.EXDENT</i>. A border of 0 is the default and is the same as <i>GUI.LINE</i>. <i>GUI.INDENT</i> and <i>GUI.EXDENT</i> only display properly if the background colour has been set to <i>gray</i> using <b>GUI.SetBackgroundColor.</b> <i>GUI.INDENT</i> makes the text field appear indented or recessed. <i>GUI.EXDENT</i> makes the text field appear to stand out from the window. The <i>fontID</i> parameter specifies the font ID of the font to be used in the text field. The font ID is received from a <i>Font.New</i> call. Do not call <i>Font.Free</i> for this font ID until the label has been disposed of by calling <b>GUI.Dispose</b>. The <i>inputKind</i> parameter specifies the type of input accepted by the text field. This is one of 0, <i>GUI.ANY</i>, <i>GUI.INT</i>, or <i>GUI.REAL</i>. An input type of 0 is the default and is the same as <i>GUI.ANY</i>. <i>GUI.ANY</i> allows any type of input in the text field. <i>GUI.INTEGER</i> only allows positive integer input in the text field. <i>GUI.REAL</i> allows any real number input in the text field. Note that using <p>
+	  <i>GUI.INTEGER</i> or <i>GUI.REAL</i> does not guarantee that the text field string can be converted to an integer or a real. The text could be a null string, and for <i>GUI.REAL</i> could be part of a number such as the string "" or "1.25E" both of which are illegal numbers. (To check the conversion, use the <i>strintok</i> or <i>strrealok</i> functions before calling <i>strint</i> or <i>strreal</i>.)<p>
+	  <center><img src="gui_createtextfield_full01.gif"></center>
+	  <center><b>Two Text Fields</b></center><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>The following program creates a text field and echoes it on the screen when the user presses ENTER.<p>
+<pre><tt>        <b>import</b> <i>GUI</i>
+        <b>View.Set</b> ("graphics:200;100") 
+        
+        <b>var</b> <i>nameTextField</i>, <i>addressTextField</i> : <b>int</b>   % The Text Field IDs.
+        
+        <b>procedure</b> <i>NameEntered</i> (<i>text</i> : <b>string</b>)
+            <b>GUI.SetSelection </b>(<i>addressTextField</i>, 0, 0)
+            <b>GUI.SetActive </b>(<i>addressTextField</i>)
+        <b>end</b> <i>NameEntered</i>
+        
+        <b>procedure</b> <i>AddressEntered</i> (text : <b>string</b>)
+            <b>GUI.SetSelection </b>(<i>nameTextField</i>, 0, 0)
+            <b>GUI.SetActive </b>(<i>nameTextField</i>)
+        <b>end</b> <i>AddressEntered</i>
+        
+        <b>GUI.SetBackgroundColor</b><i> </i>(<i>gray</i>)
+        <b>var</b> <i>quitButton</i> := <b>GUI.CreateButton</b><i> </i>(52, 5, 100, "Quit", <b>GUI.Quit</b>)
+        <i>nameTextField</i> := <b>GUI.CreateTextFieldFull</b><i> </i>(50, 70, 100, "", 
+            <i>NameEntered</i>, <i>GUI.INDENT,</i> 0, 0)
+        <i>addressTextField</i> := <b>GUI.CreateTextFieldFull</b><i> </i>(50, 40, 100, "", 
+            <i>AddressEntered</i>, <i>GUI.INDENT</i>, 0, 0)
+        <b>var</b> <i>nameLabel</i> := <b>GUI.CreateLabelFull</b><i> </i>(45, 70, "Name", 0, 0, 
+            <i>GUI.RIGHT</i>, 0)
+        <b>var</b> <i>addressLabel</i> := <b>GUI.CreateLabelFull</b><i> </i>(45, 40, "Address", 0, 0, 
+            <i>GUI.RIGHT</i>, 0)
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end loop</b>
+        
+        <b>GUI.Dispose</b><i> </i>(<i>quitButton</i>)
+        <b>colorback</b> (<i>gray</i>)
+        <b>Text.Locate</b> (<i>maxrow</i> - 1, 1)
+        <b>put</b> "Name = ", <b>GUI.GetText</b><i> </i>(<i>nameTextField</i>)
+        <b>put</b> "Address = ", <b>GUI.GetText</b> (<i>addressTextField</i>) ..</tt></pre><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,GUI.CreateTextFieldFull.t;GUI.CreateTextFieldFull Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>Only one text field is active at a time. The active text field has a blinking cursor (or its selection highlighted). If a keystroke occurs when a window has an active text field in it, the keystroke will be directed to the active text field. You can change which text field is active with the <b>GUI.SetActive </b>procedure or by simply clicking on another text field with the mouse. <p>
+	  When multiple text fields are created in a window, the first text field created is active when the program begins.<p>
+	  The current version of the text field does not support cut and paste or keyboard commands to extend the selection.<p>
+	  Because strings are a maximum of 255 characters, this is the maximum number of characters in a text field.<p>
+	  The TAB character cycles between different text fields in a window. It cycles through the text fields in the order in which they were created. BACK TAB (shift+TAB) cycles through the fields in reverse order.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>When <b>GUI.CreateTextField </b>or <b>GUI.CreateTextFieldFull</b><i> </i>is called, the newly created picture will be displayed immediately unless <b>GUI.DisplayWhenCreated</b> has been called with the <i>display</i> parameter set to false. <p>
+	  When a text field is not enabled, the text field cannot be made active and the text in the field cannot be edited.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The following GUI subprograms can be called with a text box as the <i>widgetID</i> parameter:<p>
+	  <table>
+	    <tr valign="top">
+	      <td width="40">&nbsp;</td>
+	      <td><b>GUI.Show</b>, <b>GUI.Hide</b>, <b>GUI.Dispose</b>,
+		  <b>GUI.GetX</b>, <b>GUI.GetY</b>, <b>GUI.GetWidth</b>,
+		  <b>GUI.GetHeight</b>, <b>GUI.SetPosition</b>,
+		  <b>GUI.SetSize</b>, <b>GUI.SetPositionAndSize</b>,
+		  <b>GUI.GetText</b>, <b>GUI.SetText</b>, 
+		  <b>GUI.SetSelection</b>, <b>GUI.SetActive</b>,
+		  <b>GUI.SetEchoChar</b></td>
+	    </tr>
+	  </table>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+	  This means that you can only call the function by calling <b>GUI.CreateTextField</b>, not by calling <b>CreateTextField</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="gui_gettext.html">GUI.GetText</a></b> and 
+          <b><a href="gui_settext.html">GUI.SetText</a></b> for 
+	  reading and setting the text in the text field. 
+	  See also <b><a href="gui_setechochar.html">GUI.SetEchoChar</a></b> 
+	  for setting the character echoed when the user enters a
+	  character in a text field (often used for entering passwords). 
+	  See also <b><a href="gui_setselection.html">GUI.SetSelection</a></b> for setting the selected area of the text. 
+	  See also <b><a href="gui_setactive.html">GUI.SetActive</a></b> for making the text field active.<p>
+    </tr>
+  </table>
+</body>
+</html>

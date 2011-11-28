@@ -1,0 +1,77 @@
+<html>
+<head><title>GUI.CreateFrame</title></head>
+<body>
+  <table width="100%">
+    <tr valign="top">
+      <td align="left"><font size="+2"><b>GUI.CreateFrame</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td>
+    </tr>
+  </table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>GUI.CreateFrame</b> (<i>x1</i>, <i>y1</i>, <i>x2</i>, <i>y2</i>, <i>kind</i> : <b>int</b>) : <b>int</b><p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>Creates a frame and returns the frame's widget ID.<p>
+          A frame is a box drawn around other GUI widgets to make the window look better and help organize the GUI elements.<p>
+	  <center><img src="gui_createframe01.gif"></center>
+	  <center><b>Three Types of Frames With a Label in Each Frame</b></center><p>
+	  Frames are the only GUI widgets that can have other widgets placed within them. Frames are passive widgets, meaning that they do not respond to button clicks or keystrokes.<p>
+	  The <i>x1</i> and <i>y1</i> parameters specify the lower-left corner of the frame and the <i>x2</i> and <i>y2</i> parameters specify the upper-right corner of the frame. The <i>kind</i> parameter specifies the type of frame. This is one of 0, <i>GUI.LINE</i>, <i>GUI.INDENT</i>, or <i>GUI.EXDENT</i>. A <i>kind</i> of 0 is the default and is the same as <i>GUI.LINE</i>. <p>
+	  <i>GUI.INDENT</i> and <i>GUI.EXDENT</i> only display properly if the background colour has been set to <i>gray</i> using <b>GUI.SetBackgroundColor</b>. <i>GUI.INDENT</i> makes the contents frame appear indented or recessed. <i>GUI.EXDENT</i> makes the contents of the frame appear to stand out from the window.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>The following program draws three frames in the window and draws a label in each one.<p>
+<pre><tt>        <b>import</b> <i>GUI</i> 
+        <b>View.Set</b> ("graphics:250;90,nobuttonbar") 
+        <b>GUI.SetBackgroundColor</b><i> </i>(<i>gray</i>)
+        <b>var</b> <i>lineFrame</i>, <i>indentFrame</i>, <i>exdentFrame</i> : <b>int</b>
+        <b>var</b> <i>lineLabel</i>, <i>indentLabel</i>, <i>exdentLabel</i> : <b>int</b>
+        <i>lineFrame</i> := <b>GUI.CreateFrame</b><i> </i>(10, 10, 80, 70, 0) 
+        <i>indentFrame</i> := <b>GUI.CreateFrame</b><i> </i>(90, 10, 160, 70, <i>GUI.INDENT</i>) 
+        <i>exdentFrame</i> := <b>GUI.CreateFrame</b> (170, 10, 240, 70, <i>GUI.EXDENT</i>)
+		% Label the lines.
+        <i>lineLabel</i> := <b>GUI.CreateLabelFull</b> (10, 10, "Line", 70, 60,
+            <i>GUI.CENTER</i> + <i>GUI.MIDDLE</i>, 0)
+        <i>indentLabel</i> := <b>GUI.CreateLabelFull</b><i> </i>(90, 10, "Indent", 70, 60, 
+            <i>GUI.CENTER </i>+ <i>GUI.MIDDLE</i>, 0)
+        <i>exdentLabel</i> := <b>GUI.CreateLabelFull</b> (170, 10, "Exdent", 70, 60, 
+            <i>GUI.CENTER </i>+ <i>GUI.MIDDLE</i>, 0)</tt></pre><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,GUI.CreateFrame.t;GUI.CreateFrame Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>When <b>GUI.CreateFrame</b> is called, the newly created frame will be displayed immediately unless <b>GUI.DisplayWhenCreated</b> has been called with the <i>display</i> parameter set to false. <p>
+	  A frame widget is a passive widget and cannot be enabled or disabled.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The following GUI subprograms can be called with a frame as the <i>widgetID</i> parameter:<p>
+	  <table>
+	    <tr valign="top">
+	      <td width="40">&nbsp;</td>
+	      <td><b>GUI.Show</b>, <b>GUI.Hide</b>, <b>GUI.Dispose</b>, 
+	          <b>GUI.GetX</b>, <b>GUI.GetY</b>, <b>GUI.GetWidth</b>,
+	          <b>GUI.GetHeight</b>, <b>GUI.SetPosition</b>, 
+	          <b>GUI.SetSize</b>,<b> GUI.SetPositionAndSize</b></td>
+	    </tr>
+          </table><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+	  This means that you can only call the function by calling <b>GUI.CreateFrame</b>, not by calling <b>CreateFrame</b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

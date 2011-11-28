@@ -1,0 +1,19 @@
+<html>
+<head><title>maxnat</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>maxnat</b></font></td><td align="right"><font size="+1"><b>maximum natural number function</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>maxnat</b> : <b>nat</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>maxnat</b> function is used to determine the largest natural number that can be used in a program.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program outputs the maximum natural number.<p>
+<pre><tt>        <b>put</b> "The largest natural number that can be used is ", <b>maxnat</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> In current  implementations, natural numbers are stored in 4 bytes, i.e., 32 bits. This determines the maximum natural number, which is 2**32 - 2, equaling 4294967294.<p>
+In four bytes it is possible to represent one more value, namely, 2**32 - 1 = 4294967295. This extra value is used in Turing to represent the uninitialized natural number. Although it can be computed, any attempt to assign it to a <b>nat</b> variable is detected as an overflow. You can use this extra value by using the <b>nat4</b> type instead of <b>nat</b>, but this type has no initialization checking.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="maxint.html">maxint</a></b> and <b><a href="minnat.html">minnat</a></b>.<p>
+See also predefined unit <b><a href="limitsmodule.html">Limits</a></b>.<p>
+</table></body>
+</html>

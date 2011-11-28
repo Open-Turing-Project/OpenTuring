@@ -1,0 +1,13 @@
+<html>
+<head><title>strnatok</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>strnatok</b></font></td><td align="right"><font size="+1"><b>string to natural number function</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>strnatok</b> ( <i>s</i> : <b>string</b> [ , <i>base</i> : <b>int</b> ] ) : <b>boolean</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>strnatok</b> function is used determine whether the <b>strnat</b> function can be used to convert the string to a natural number without causing an error. If the string can be successfully converted, then <b>strnatok</b> returns <b>true</b>, otherwise it returns <b>false</b>.<p>
+String <i>s</i> should consist of a possibly null sequence of blanks, then an optional plus sign, and finally a sequence of one or more digits. For number bases larger than 10, the digits can include a, b, c … (alternately A, B, C …) which represent the digit values 10, 11, 12 … If <i>s</i> is correctly constructed, then <b>strnatok</b> will return <b>true</b>, otherwise it returns <b>false</b>. The <i>base</i>, if given, must be in the range 2 to 36 (36 because there are 10 base ten digits and 26 letters). For example, <b>strnatok</b> ("FF", 16) = <b>true</b>. <p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="strnat.html">strnat</a></b> function that does the actual conversion.<p>
+</table></body>
+</html>

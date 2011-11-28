@@ -1,0 +1,62 @@
+<html>
+<head><title>Pic.Flip</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Pic.Flip</b></font></td><td align="right">Part of <a href="picmodule.html">Pic</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Pic.Flip</b> (<i>picID</i> : <b>int</b>) : <b>int</b><p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td><b>Pic.Flip</b> is used to create a new picture by flipping the 
+          picture vertically. The resulting picture is exactly the same size 
+	  as the original, except it appears “upside-down”. <p>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>Note that the upside-down picture is a newly created picture. When 
+          it is no longer needed, its memory should be released by using 
+	  <b>Pic.Free</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>The program loads a picture from a file, flips it and then draws 
+          the original and the upside-down image side by side in a window 
+	  after resizing the window to fit the two pictures.<p>
+<pre><tt>        % Get the original picture
+        <b>var</b> <i>pic</i>, <i>newPic</i>, <i>width</i>, <i>height</i> : <b>int</b>
+        <i>pic</i> := <b>Pic.FileNew</b> ("lighthouse.jpg")
+        <i>newPic</i> := <b>Pic.Flip</b> (<i>pic</i>)
+        <i>width</i> := <b>Pic.Width</b> (<i>pic</i>)
+        <i>height</i> := <b>Pic.Height</b> (<i>pic</i>)
+        
+        % Draw the two images: original and flipped
+        <b>View.Set</b> ("graphics:" + <b>intstr</b> (2 * <i>width</i> + 30) + ";" + 
+            <b>intstr</b> (<i>height</i> + 25) + ",nobuttonbar")
+        <b>Pic.Draw</b> (<i>pic</i>, 10, 20, <i>picCopy</i>)
+        <b>Draw.Text</b> ("Original", 50, 5, <i>defFontID</i>, <i>black</i>)
+        <b>Pic.Draw</b> (<i>newPic</i>, 20 + <b>Pic.Width</b> (<i>pic</i>), 20, <i>picCopy</i>)
+        <b>Draw.Text</b> ("Flipped", 60 +<b> Pic.Width</b> (<i>pic</i>), 5, <i>defFontID</i>, <i>black</i>) 
+        </tt></pre>
+          <center><img src="pic_flip01.gif"></center>
+	  <center><b>Output from the Program</b></center><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+	    <PARAM name="Command" value="TCard">
+	    <PARAM name="Button" value="Text: Launch Example Program">
+	    <PARAM name="Item1" value="-1,Pic.Flip.t;Pic.Flip Example">
+	  </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+	  This means that you can only call the function by calling 
+	  <b>Pic.Flip</b>, not by calling <b>Flip</b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

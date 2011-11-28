@@ -1,0 +1,60 @@
+<html>
+<head><title>body</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>body</b></font></td><td align="right"><font size="+1"><b>declaration</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>bodyDeclaration</i> is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(a)</font></td><td colspan="7"><font size="+1"><b>body</b> <b>procedure</b> <i>procedureId</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="6"><font size="+1"><i>statementsAndDeclarations</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1"><b>end</b> <i>procedureId</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(b)</font></td><td colspan="7"><font size="+1"><b>body</b> <b>function</b> <i>functionId</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="6"><font size="+1"><i>statementsAndDeclarations</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1"><b>end</b> <i>functionId</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(c)</font></td><td colspan="7"><font size="+1"><b>body procedure</b> <i>id</i> [(<i>paramDeclaration</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="3"><font size="+1">{, <i>paramDeclaration</i> })]</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="6"><font size="+1"><i>statementsAndDeclarations</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1"><b>end</b> <i>id</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(d)</font></td><td colspan="7"><font size="+1"><b>body function</b> <i>id </i>[ ( [<i>paramDeclaration </i>{,</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="5"><font size="+1"><i>paramDeclaration</i> } ]) ] : <i>typeSpec</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="6"><font size="+1"><i>statementsAndDeclarations</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1"><b>end</b> <i>id</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A body declaration is used to resolve either a forward subprogram or a deferred subprogram.<p>
+You declare a procedure or function <b>forward</b> when you want to define its header but not its body. This is the case when one procedure or function calls another, which in turn calls the first. This situation is called <i>mutual recursion</i>. The use of <b>forward</b> is necessary in this case because every item must be declared before it can be used. The <b>forward</b> declaration must be followed by  a <b>body</b> declaration for the same procedure or function. For details, see <b>forward</b> declarations.<p>
+When a procedure or function in a class is declared to be <b>deferred</b> (or simply exported from the class), it can be resolved or <i>overridden</i> afterward by giving its body further down in that class or in descendant classes. The overriding procedure must use the keyword <b>body</b>. See <b>class</b> or "<b>implement</b> <b>by</b>" for examples.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> You can specify the parameter and return values of the subprogram in the <b>body</b> declaration. However, the names and types of the parameters and return values must match the initial declaration exactly, or a warning results and the parameter list and return values from the <b>body</b> declaration are ignored.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The example given here is part of a complete Turing program that includes an explanation of <b>forward</b> declarations.<p>
+<pre><tt>        <b>var</b> <i>token</i> : <b>string</b>
+        <b>forward</b> <b>procedure</b> <i>expn</i> (<b>var</b> <i>eValue</i> : <b>real</b>)
+            <b>import</b> <b>forward</b> <i>term</i>, <b>var</b> <i>token</i>
+        <i>… other declarations appear here …</i>
+        <b>body</b> <b>procedure</b> <i>expn</i>
+            var <i>nextValue</i> : <b>real</b>
+            term (<i>eValue)</i>               <i>% Evaluate t</i>
+            <b>loop</b>                        <i>% Evaluate </i>{ + t}
+                <b>exit</b> <b>when</b> <i>token</i> <b>not=</b> "+"
+                <b>get</b> <i>token</i>
+                <i>term</i> (<i>nextValue</i>)
+                <i>eValue</i> := <i>eValue</i> + <i>nextValue</i>
+            <b>end</b> <b>loop</b>
+        <b>end</b> <i>expn</i></tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,ExpressionEvaluator.t;Expression Evaluator Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The syntax of a <i>bodyDeclaration</i> presented above has been simplified by omitting the optional result identifier, <b>import</b> list, <b>pre</b> and <b>post</b> condition and <b>init</b> clause. See <b>procedure</b> and <b>function</b> declarations for descriptions of these omissions.<p>
+The "function" or "procedure" token in the declaration is now optional. In other words the following code fragment is legal<p>
+<pre><tt>        <b>forward</b> <b>procedure</b> <i>p</i>
+        …
+        <b>body</b>  <i>p</i>
+        …
+        <b>end</b> <i>p</i></tt></pre>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="class.html">class</a></b>, <b><a href="forward.html">forward</a></b> and <b><a href="implement_by.html">implement by</a></b><p>
+</table></body>
+</html>

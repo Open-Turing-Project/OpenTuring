@@ -1,0 +1,74 @@
+<html>
+<head><title>Dir.GetLong</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Dir.GetLong</b></font></td><td align="right">Part of <a href="dirmodule.html">Dir</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+    <td><font size="+1"><b>Dir.GetLong</b> (<i>streamNumber</i> : <b>int</b>, <b>var</b> <i>entryName</i> : <b>string</b>,</font><br>
+        <table><tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td>  <td colspan="7"><font size="+1"><b>var</b> <i>size</i>, <i>attribute</i>, <i>fileTime</i> : <b>int</b>)</td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> <b>Dir.GetLong</b> is part of a series of four subprograms that help users get directory listings. <b>Dir.GetLong</b> is used to get the names and assorted information of the files in the directory. Each time the function is called, it returns the name and information of the next file in the directory. The names are not sorted. When there are no more file names in the directory, <b>Dir.GetLong</b> returns the empty string in the <i>entryName</i> parameter.<p>
+The <i>size</i> parameter is the size of the file in bytes. The <i>attribute</i> parameter has its individual bits set as follows (the individual bits can be extracted using the <b>bits</b> operator):<p>
+Bit 0  <i>attrDir</i>   set to 1 if entry is a directory.<p>
+Bit 1  <i>attrRead</i>  set to 1 if the program can read the file.<p>
+Bit 2  <i>attrWrite</i>  set to 1 if the program can write the file.<p>
+Bit 3  <i>attrExecute</i>  set to 1 if the program can execute the file.<p>
+Bit 4  <i>attrHidden</i>  set to 1 if the entry if a hidden file (PC, Mac).<p>
+Bit 5  <i>attrSystem</i>  set to 1 if the entry is a system file (PC only).<p>
+Bit 6  <i>attrVolume</i>  set to 1 if the entry is a volume name (PC only).<p>
+Bit 7  <i>attrArchive</i>  set to 1 if the entry has archive bit set (PC only).<p>
+The <i>attr...</i> constants are defined in the <b>Dir</b> unit. They correspond to the values of <i>attribute</i> if a specified bit is set.  For example, <i>attrSystem</i> is the value of the <i>attribute</i> parameter if bit 5 is set to 1. You can <b>and</b> or <b>or </b>these constants to get combinations of specific file attributes. <p>
+The <i>fileTime</i> is the time of last modification of the file. It is returned as the number of seconds since 00:00:00 GMT 1/1/1970. To convert this to a string, use <b>Time.SecDate</b><p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> If the <b>Dir.GetLong</b> call fails, then <b>Error.Last</b> will return a non-zero value indicating the reason for the failure. <b>Error.LastMsg</b> will return a string which contains the textual version of the error.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program prints a listing of all the files in the directory <i>datafiles</i>.<p>
+<pre><tt>        <b>var </b><i>streamNumber</i> : <b>int</b>
+        <b>var </b><i>fileName</i> : <b>string</b>
+        <b>var</b> <i>size</i>, <i>attribute</i>, <i>fileTime</i> : <b>int</b>
+        <i>streamNumber </i>:= <b>Dir.Open</b> ("datafiles")
+        <b>assert</b> <i>streamNumber</i> &gt; 0
+        <b>loop</b>
+            <b>Dir.GetLong</b> (<i>streamNumber</i>, <i>fileName</i>, <i>size, attribute, fileTime</i>)
+            <b>exit when </b><i>fileName </i>= ""
+            <b>put</b> <i>fileName</i>, "  ", <b>Time.SecDate</b> (<i>fileTime</i>)
+        <b>end loop</b>
+        <b>Dir.Close</b> (<i>streamNumber</i>)</tt></pre>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program prints a listing of the attributes of all the files in the current directory.<p>
+<pre><tt>        <b>var </b><i>streamNumber</i> : <b>int</b>
+        <b>var </b><i>fileName</i> : <b>string</b>
+        <b>var</b> <i>size</i>, <i>attribute</i>, <i>fileTime</i> : <b>int</b>
+        <i>streamNumber </i>:= <b>Dir.Open</b> (<b>Dir.Current</b>)
+        <b>assert</b> <i>streamNumber</i> &gt; 0
+        <b>loop</b>
+            <b>Dir.GetLong</b> (<i>streamNumber</i>, <i>fileName</i>, <i>size, attribute, fileTime</i>)
+            <b>exit when </b><i>fileName </i>= ""
+            <b>put</b> <i>fileName</i>, "  "..
+            <b>if </b>(<i>attribute</i> <b>and</b><i> attrDir</i>) <b>not=</b> 0 <b>then</b>
+                <b>put</b> "Directory  "..
+            <b>end if</b>
+            <b>if </b>(<i>attribute</i> <b>and</b><i> attrRead</i>) <b>not=</b> 0 <b>then</b>
+                <b>put</b> "Readable  "..
+            <b>end if</b>
+            <b>if </b>(<i>attribute</i> <b>and</b><i> attrWrite</i>) <b>not=</b> 0 <b>then</b>
+                <b>put</b> "Writeable  "..
+            <b>end if</b>
+            <b>if </b>(<i>attribute</i> <b>and</b><i> attrExecute</i>) <b>not=</b> 0 <b>then</b>
+                <b>put</b> "Executable  "..
+            <b>end if</b>
+            <b>put</b> ""
+        <b>end loop</b>
+        <b>Dir.Close</b> (<i>streamNumber</i>)</tt></pre>
+<tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+<td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+  <PARAM name="Command" value="TCard">
+  <PARAM name="Button" value="Text: Launch Example Program">
+  <PARAM name="Item1" value="-1,FullDirectoryListing.t;Full Directory Listing Example">
+</OBJECT><p></td>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Dir.GetLong</b>, not by calling <b>GetLong</b>.<p>
+</table></body>
+</html>

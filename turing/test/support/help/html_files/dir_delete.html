@@ -1,0 +1,39 @@
+<html>
+<head><title>Dir.Delete</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Dir.Delete</b></font></td><td align="right">Part of <a href="dirmodule.html">Dir</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Dir.Delete</b> (<i>directoryPathName</i> : <b>string</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> <b>Dir.Delete</b> is used to delete the directory specified by the parameter <i>directoryPathName</i>. This is the equivalent of doing a <b>rmdir</b> in DOS or UNIX. On the Macintosh, it removes a folder.<p>
+<b>Dir.Delete</b> will fail if it attempts delete a directory that has files in it.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> If the <b>Dir.Delete</b> call fails, then <b>Error.Last</b> will return a non-zero value indicating the reason for the failure. <b>Error.LastMsg</b> will return a string which contains the textual version of the error.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program deletes the directory called <i>information</i>.<p>
+<pre><tt>        <b>Dir.Delete</b> ("information")
+        <b>if Error.Last</b> <b>=</b> <i>eNoError</i> <b>then</b>
+            <b>put</b> "Directory delete"
+        <b>else</b>
+            <b>put</b> "Did not delete the directory."
+            <b>put</b> "Error: ", <b>Error.LastMsg</b>
+        <b>end if</b></tt></pre>
+<tr valign="top">
+  <td><b>Example&nbsp;&nbsp;</b></td>
+  <td>An example demonstrating the use of several of the <b>Dir</b> subprograms
+      is available. In this example, a directory is created, a file is written
+      to the directory, an attempt is made to delete the directory, the file is
+      deleted, and then the directory is deleted.<p>
+      This example demonstrates the use of <b>Dir.Change</b>, 
+      <b>Dir.Current</b>, <b>Dir.Create</b>, and <b>Dir.Delete</b>.<p>
+      <OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+        <PARAM name="Command" value="TCard">
+        <PARAM name="Button" value="Text: Launch Example Program">
+        <PARAM name="Item1" value="-1,Dir.t;Dir Subprogams Example">
+      </OBJECT><p>
+</tr>     
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Dir.Delete</b>, not by calling <b>Delete</b>.<p>
+</table></body>
+</html>

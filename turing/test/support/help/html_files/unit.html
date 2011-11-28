@@ -1,0 +1,47 @@
+<html>
+<head><title>unit</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>unit</b></font></td><td align="right"><font size="+1"><b>file containing module, monitor, or class</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>compilationUnit</i> is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(a)</font></td><td colspan="7"><font size="+1">[ <i>importList</i> ] <i>mainProgram</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(b)</font></td><td colspan="7"><font size="+1"><b>unit</b> <i>moduleDeclaration</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(c)</font></td><td colspan="7"><font size="+1"><b>unit</b> <i>monitorDeclaration</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40"><font size="+1">(d)</font></td><td colspan="7"><font size="+1"><b>unit</b> <i>classDeclaration</i></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A program can be divided up into units, each in a separate file. All  of these files except the main program begin with the keyword <b>unit</b>. The unit contains the main program, a module, a monitor or a class.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Here is stack module that is separated out into a file whose name is <i>stack</i>.<p>
+<pre><tt>        <b>unit</b>        <i>% The keyword unit begins each separate file</i>
+        <b>module</b> <i>stack</i>
+            <b>export</b> <i>push</i>, <i>pop</i>
+        
+            <b>var</b> <i>top</i> : <b>int</b> := 0
+            <b>var</b> <i>contents</i> : <b>array</b> 1 .. 100 <b>of</b> <b>int</b>
+        
+            <b>procedure</b> <i>push</i> ( i : <b>int</b> )
+                <i>top</i> += 1
+                <i>contents</i> ( <i>top</i> ) := i
+            <b>end</b> <i>push</i>
+        
+            <b>procedure</b> <i>pop</i> ( <i>i</i> : <b>int</b> )
+                <i>i</i> := <i>contents</i> ( <i>top</i> )
+                <i>top</i> -= 1
+            <b>end</b> <i>pop</i>
+        <b>end</b> <b>stack</b></tt></pre>
+The main program, which is in another file, gains access to the stack by importing it. Here is the main program:<p>
+<pre><tt>        <b>import</b> <b>var</b> <i>stack</i>    <i>% Use the stack</i>
+        <b>var</b> <i>n</i> : <b>int</b>
+        …
+        <i>stack</i> . <i>push</i> ( <i>n</i> )
+        …
+        <i>stack</i> . <i>pop</i> ( <i>n</i> )</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> In this example, the  keyword <b>var</b> in the import list  is required because the main program causes a change in the stack, by calling <i>push</i> and <i>pop</i>. The import lists of units that are modules, monitors and classes are used to gain access to further units.<p>
+If the stack were in a file with a different name, say <i>stk.t</i>, the import list would be rewritten to use an <b>in</b> clause, as follows:<p>
+<pre><tt>        <b>import</b> <b>var</b> <i>stack</i> <b>in</b> "stk.t"</tt></pre>
+A mainProgram is simply a program. See <b>program</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="module.html">module</a></b>, <b><a href="monitor.html">monitor</a></b> and <b><a href="class.html">class</a></b>. See also <b><a href="export.html">export</a></b> list, <b><a href="import.html">import</a></b> list, <b><a href="inherit.html">inherit</a></b> list, <b><a href="implement.html">implement</a></b> list and <b><a href="implement_by.html">implement by</a></b> list.<p>
+</table></body>
+</html>

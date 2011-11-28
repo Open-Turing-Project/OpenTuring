@@ -1,0 +1,63 @@
+<html>
+<head><title>Music.Sound</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Music.Sound</b></font></td><td align="right">Part of <a href="musicmodule.html">Music</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Music.Sound</b> ( <i>frequency</i>, <i>duration</i> : <b>int </b>)<p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>The <b>Music.Sound </b>statement is used to cause the computer to 
+	  sound a note of a given frequency for a given time. The frequency 
+	  is in cycles per second (Hertz). The time duration is in milliseconds. 
+	  For example, middle A on a piano is 440 Hertz, so 
+	  <b>Music.Sound</b>(440, 1000) plays middle A for one second.<p>
+	  Sounds are produced synchronously on a per process basis. This means 
+	  that when a process executes a <b>Music.Sound</b> or <b>Music.Play</b> 
+	  command, it stops until the command is finished. However, other 
+	  processes will continue executing.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program plays a siren sound in the background.<p>
+<pre><tt>        <b>process</b> <i>siren</i>
+            <b>loop</b>
+                <b>for</b><i> i</i> : 100 .. 3000 <b>by</b> 100
+                    <b>Music.Sound</b> ( <i>i</i>, 50 )   <i>% Sound note</i>
+                <b>end for</b>
+                <b>for</b><i> </i><b>decreasing </b><i>i</i> : 2900 .. 200 <b>by</b> 100
+                    <b>Music.Sound</b> ( <i>i</i>, 50 )   <i>% Sound note</i>
+                <b>end for</b>
+            <b>end loop</b>
+        <b>end </b><i>siren</i>
+        
+        <b>fork</b> <i>siren</i>
+        <i>… the rest of the program goes here while the siren continues …</i></tt></pre>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+	    <PARAM name="Command" value="TCard">
+	    <PARAM name="Button" value="Text: Launch Example Program">
+	    <PARAM name="Item1" value="-1,Music.Sound.t;Music.Sound Example">
+	  </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+	  This means that you can only call the function by calling 
+	  <b>Music.Sound</b>, not by calling <b>Sound</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="music_play.html">Music.Play</a></b> statement, which 
+          plays notes based on musical notation. For example, 
+	  <b><a href="music_play.html">Music.Play</a></b>("8C") plays an 
+	  eighth note of middle C.<p>
+    </tr>
+  </table>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<html>
+<head><title>Sprite.Animate</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Sprite.Animate</b></font></td><td align="right">Part of <a href="spritemodule.html">Sprite</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Sprite.Animate</b> (<i>spriteID</i>, <i>picID, x</i>, <i>y</i> : <b>int</b>,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<i>centered</i> : <b>boolean</b>)</font><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>Moves the sprite specified by <i>spriteID</i> to the location 
+      	  specified by (<i>x, y</i>). If <i>centered</i> is <b>true</b>, 
+      	  then the sprite is centered on (<i>x, y</i>). Otherwise (<i>x, y</i>) 
+      	  specifies the lower-left corner of the sprite. At the same time, it 
+      	  changes the picture associated with the sprite.<p>
+          A simple example of the <b>Sprite.Animate</b> procedure would be of a 
+          man walking. The picture associated with the sprite would constantly 
+          change as the figure was walking. At the same time, the location of 
+          the figure would also change.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>Here is a program that loads a series of images from an animated
+          GIF file called "mypic.gif".  It works by loading the images from
+          the GIF file into an array (see 
+          <b><a href="pic_filenewframes.html">Pic.FileNewFrames</a></b> for
+          more information) and then displays the images sequentially on the 
+          screen, moving the image eight pixels each time.<p>
+<pre><tt>        <b>var</b> <i>numFrames</i> := <b>Pic.Frames</b> ("mypic.gif")
+        % Load the picture
+        <b>var</b> <i>delayTime</i> : <b>int</b>
+        <b>var</b> <i>pics</i> : <b>array</b> 1 .. <i>numFrames</i> <b>of int</b>
+	<b>Pic.FileNewFrames</b> ("mypic.gif", <i>pics</i>, <b>delayTime</b>)
+
+        <b>var</b> <i>sprite</i>: <b>int</b>
+        <i>sprite</i>:= <b>Sprite.New</b> (<i>pics</i> (1))
+        <b>Sprite.SetPosition</b> (<i>sprite</i>, 0, 100, <b>false</b>)
+        <b>Sprite.Show</b> (<i>sprite</i>)
+        <b>for</b> <i>x</i> : 8 .. <b>maxx</b> <b>by</b> 8
+            <b>Sprite.Animate</b> (<i>sprite</i>, <i>pics</i> ((<i>x</i> <b>div</b> 8) <b>mod</b> <i>numFrames</i> + 1), <i>x</i>, 100, <b>false</b>)
+    	    <b>delay</b> (40)    % Stop sprite from moving too quickly
+        <b>end for</b>
+        <b>Sprite.Free</b> (<i>sprite</i>)</tt></pre><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+	    <PARAM name="Command" value="TCard">
+	    <PARAM name="Button" value="Text: Launch Example Program">
+	    <PARAM name="Item1" value="-1,Sprite.Animate.t;Sprite Example">
+	  </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+          <b>Sprite.Animate</b>, not by calling <b>Animate</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="sprite_new.html">Sprite.New</a></b>, 
+          <b><a href="sprite_setposition.html">Sprite.SetPosition</a></b> and 
+          <b><a href="sprite_changepic.html">Sprite.ChangePic</a></b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

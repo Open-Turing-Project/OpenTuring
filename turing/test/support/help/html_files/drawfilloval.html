@@ -1,0 +1,31 @@
+<html>
+<head><title>drawfilloval</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>drawfilloval</b></font></td><td align="right"><font size="+1"><b>graphics procedure</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>drawfilloval</b> (<i>x</i>, <i>y</i>, <i>xRadius</i>, <i>yRadius</i>, <i>Color</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>drawfilloval</b> procedure is used to draw a filled oval whose center is at (<i>x</i>, <i>y</i>). The horizontal and vertical distances from the center to the oval are given by <i>xRadius </i>and <i>yRadius</i>. To get an oval outlined in a different color, use <b>drawfilloval</b> with the <i>Color</i> parameter set to the fill color and then call <b>drawoval</b>  with the <i>Color</i> parameter set to the border color.<p>
+
+<center><img src="drawfilloval01.gif"></center>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program draws a large filled oval that just touches each edge of the screen using color number 1. The <b>maxx</b> and <b>maxy</b> functions are used to determine the maximum x and y values on the screen. The center of the oval is at (<i>midx</i>, <i>midy</i>), which is the middle of the screen.<p>
+<pre><tt>        <b>setscreen</b> ("graphics")
+        <b>const</b> <i>midx</i> := <b>maxx</b> div 2
+        <b>const</b> <i>midy</i> := <b>maxy</b> div 2
+        <b>drawfilloval</b> (<i>midx</i>, <i>midy</i>, <i>midx</i>, <i>midy</i>, 1)</tt></pre>
+    <tr valign="top"><td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+        <PARAM name="Command" value="TCard">
+        <PARAM name="Button" value="Text: Launch Example Program">
+        <PARAM name="Item1" value="-1,drawfilloval.t;drawfilloval Example">
+      </OBJECT><p></td>
+    </tr>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Ideally, a circle is drawn when <i>xRadius</i> = <i>yRadius</i>. In fact, the aspect ratio (the ratio of height to width of pixels displayed on the screen) of the IBM PC compatibles is not 1.0, so this does not draw a true circle. In CGA graphics mode this ratio is 5 to 4.<p>
+The meaning of the <i>Color</i> number depends on the current palette. See the <b>palette</b> statement.<p>
+The screen should be in a "<i>graphics</i>" mode. See the <b>setscreen</b> procedure for details. If the screen is not in a "<i>graphics</i>" mode, it will automatically be set to "<i>graphics</i>" mode.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="setscreen.html">setscreen</a></b>, <b><a href="maxx.html">maxx</a></b>, <b><a href="maxy.html">maxy</a></b> and the various <b>draw…</b> procedures.<p>
+</table></body>
+</html>

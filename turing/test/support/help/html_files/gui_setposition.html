@@ -1,0 +1,31 @@
+<html>
+<head><title>GUI.SetPosition</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.SetPosition</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>GUI.SetPosition</b> (<i>widgetID</i>, <i>x</i>, <i>y</i> : <b>int</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Moves a widget specified by <i>widgetID </i>to the location (<i>x</i>, <i>y</i>). If the widget is visible, it is moved immediately to the new location. If the widget is hidden, it will appear at the new location when the <i>Show</i> procedure is called. Note that the <i>x</i> and <i>y</i> specified here are the same as in the <i>Create</i> method. For example, if you had specified a check box to be right justified in the <i>CreateCheckBoxFull</i> function, then (<i>x</i>, <i>y</i>) in a call to <i>SetPosition</i> would specify the lower-right corner as opposed to the lower-left corner.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program moves the button every time the button is pressed.<p>
+<pre><tt>        <b>import</b> <i>GUI</i> <b>in</b> "%oot/lib/GUI"
+        
+        <b>var</b> <i>button</i> : <b>int</b>
+        
+        <b>procedure</b> <i>MoveButton</i>
+            <b>var </b><i>newX</i>, <i>newY</i> : <b>int</b>
+            <i>newX</i> := <b>Rand.Int</b> (0, <b>maxx</b>  <b>GUI.GetWidth </b>(<i>button</i>))
+            <i>newY</i> := <b>Rand.Int</b> (0, <b>maxy</b>  <b>GUI.GetHeight</b> (<i>button</i>))
+            <b>GUI.SetPosition</b> (<i>button</i>, <i>newX</i>, <i>newY</i>)
+        <b>end</b> MoveButton
+        
+        <i>button</i> := <b>GUI.CreateButton</b> (100, 100, 0, "Move Button", 
+            <i>MoveButton</i>)
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>GUI.SetPosition</b>, not by calling <b>SetPosition</b>.<p>
+</table></body>
+</html>

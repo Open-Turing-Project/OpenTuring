@@ -1,0 +1,31 @@
+<html>
+<head><title>Limits</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Limits</b></font></td></table><p>
+<table><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> This unit contains constants and functions used in determining the mathematical accuracy of the language.<p>
+All routines in the Limits module are exported qualified (and thus must be prefaced with "<b>Limits.</b>") except <b>maxint</b>, <b>maxnat</b>, <b>minint</b> and <b>minnat</b>, which are exported unqualified (this means you can call those entry points directly).<p>
+<tr valign="top"><td><b>Entry Points&nbsp;&nbsp;</b></td>
+<td><table>
+ <tr valign="top"><td><a href="limits_defaultfw.html"><b>DefaultFW</b></a></td><td width="20">&nbsp;</td><td>Default fraction width used in printing using the "put" statement.</td></tr>
+<tr valign="top"><td><a href="limits_defaultew.html"><b>DefaultEW</b></a></td><td width="20">&nbsp;</td><td>Default exponent width used in printing using the "put" statement.</td></tr>
+<tr valign="top"><td><a href="limits_minint.html"><b>minint</b></a></td><td width="20">&nbsp;</td><td>The minimum integer in Turing (exported unqualified).</td></tr>
+<tr valign="top"><td><a href="limits_maxint.html"><b>maxint</b></a></td><td width="20">&nbsp;</td><td>The maximum integer in Turing (exported unqualified).</td></tr>
+<tr valign="top"><td><a href="limits_minnat.html"><b>minnat</b></a></td><td width="20">&nbsp;</td><td>The minimum natural number in Turing (exported unqualified).</td></tr>
+<tr valign="top"><td><a href="limits_maxnat.html"><b>maxnat</b></a></td><td width="20">&nbsp;</td><td>The maximum natural number in Turing (exported unqualified).</td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</table><p>
+<b>Real numbers are represented in Turing  as:</b><br>
+<b>f * (radix ** e)   or  0</b><br>
+<b>where for non-zero f:</b><br>
+<b>(1 / radix) &lt;= abs (f) and abs (f) &lt; 1.0</b><br>
+<b>minexp &lt;= e and e &lt;= maxexp</b>.<p>
+<table><tr valign="top"><td><b>Radix</b></td><td width="10">&nbsp;</td><td>The "radix" (usually 2).</td></tr>
+<tr valign="top"><td><b>NumDigits</b></td><td width="10">&nbsp;</td><td>The number of radix digits in f.</td></tr>
+<tr valign="top"><td><b>MinExp</b></td><td width="10">&nbsp;</td><td>"minexp" (the smallest exponent allowed).</td></tr>
+<tr valign="top"><td><b>MaxExp</b></td><td width="10">&nbsp;</td><td>"maxexp" (the largest exponent allowed).</td></tr>
+<tr valign="top"><td><b>GetExp</b></td><td width="10">&nbsp;</td><td>Function that returns the value of "e".</td></tr>
+<tr valign="top"><td><b>SetExp</b></td><td width="10">&nbsp;</td><td>Procedure that sets the value of "e".</td></tr>
+<tr valign="top"><td><b>Rreb</b></td><td width="10">&nbsp;</td><td>The relative round-off error bound.</td></tr>
+</table><p>
+</table></body>
+</html>

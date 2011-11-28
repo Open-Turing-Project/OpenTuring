@@ -1,0 +1,23 @@
+<html>
+<head><title>true</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>true</b></font></td><td align="right"><font size="+1"><b>boolean value (not false)</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>true</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A <b>boolean</b> (true/false) variable can be either <b>true</b> or <b>false</b> (see <b>boolean</b> type).<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>var</b> <i>passed</i> : <b>boolean</b> := <b>true</b>
+        <b>var</b> <i>mark</i> : <b>int</b>
+        <b>for</b> <i>i</i> : 1 .. 10
+            <b>get</b> <i>mark</i>
+            <i>passed</i> := <i>passed</i> <b>and</b> <i>mark</i> &gt;= 60
+        <b>end</b> <b>for</b>
+        <b>if</b> <i>passed</i> = <b>true</b> <b>then</b>
+            <b>put</b> "You passed all ten subjects"
+        <b>end</b> <b>if</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> The line <b>if</b> <i>passed</i>=<b>true</b> <b>then</b> can be simplified to <b>if</b> <i>passed </i><b>then</b> with no change to the meaning of the program.<p>
+</table></body>
+</html>

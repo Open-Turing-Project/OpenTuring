@@ -1,0 +1,35 @@
+<html>
+<head><title>Window.Open</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Window.Open</b></font></td><td align="right">Part of <a href="windowmodule.html">Window</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Window.Open</b> (<i>setUpString</i> : <b>string</b>) : <b>int</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> The <b>Window.Open</b> function is used to create a window. A window ID is returned if the window  is successfully created. If the window is not created then it returns 0. <b>Error.Last</b> and <b>Error.LastMsg</b> can then be used to determine the cause of the failure.<p>
+The <i>setUpString</i> parameter is identical to that of <b>View.Set</b>. See <b>View.Set</b> for the list of options available. <p>
+When the window is created, it is automatically selected (i.e. all output will be sent to that window unless redirected by a <b>Window.Select</b> command).<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program opens a window, makes it active and then close the window after getting a keystroke from the user.<p>
+<pre><tt>        % Open the window
+        <b>var</b> <i>winID</i> : <b>int</b>
+        <i>winID</i> := <b>Window</b>.<b>Open</b> ("position:top;center,graphics:200;200")
+        
+        % Draw the random ovals in the box
+        <b>var</b> x, y, clr : <b>int</b>
+        <b>for</b> : 1 .. 20
+            <i>x</i> := <b>Rand.Int</b> (0, <b>maxx</b>)     <i>% Random x</i>
+            <i>y</i> := <b>Rand.Int</b> (0, <b>maxy</b>)     <i>% Random y</i>
+            <i>clr</i> := <b>Rand.Int</b> (0, <b>maxcolor</b>)   <i>% Random color</i>
+            <b>Draw.FillOval</b> (<i>x</i>, <i>y</i>, 30, 30, <i>clr</i>)
+        <b>end for</b>
+        
+        <b>var </b><i>ch</i> : <b>char</b> := <b>getchar            </b><i>% Wait for input</i>
+        
+        <b>Window.Close</b> (<i>winID</i>)                <i>% Close the window</i></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Window.Open</b>, not by calling <b>Open</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="view_set.html">View.Set</a> </b>for the syntax of <i>startUpString</i>. See also <b><a href="window_select.html">Window.Select</a></b> and <b><a href="window_setactive.html">Window.SetActive</a></b>.<p>
+</table></body>
+</html>

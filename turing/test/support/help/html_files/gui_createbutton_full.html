@@ -1,0 +1,122 @@
+<html>
+<head><title>GUI.CreateButton[Full]</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.CreateButton[Full]</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+  
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>GUI.CreateButton</b> (<i>x</i>, <i>y</i>, <i>width</i> : <b>int</b>, <i>text</i> : <b>string</b>,<br>
+ 	  &nbsp;&nbsp;&nbsp;&nbsp;<i>actionProc</i> : <b>procedure</b> <i>x</i> ()) : <b>int</b><p>
+          <b>GUI.CreateButtonFull</b> (<i>x</i>, <i>y</i>, <i>width</i> : <b>int</b>, <i>text</i> : <b>string</b>,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<i>actionProc</i> : <b>procedure</b> <i>x</i> (), <i>height</i> : <b>int</b>, <i>shortcut</i> : <b>char</b>, <i>default</i> : <b>boolean</b>) : <b>int</b><p></font>
+    </tr>          
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>Creates a button and returns the button's widget ID.<p>
+          The button widget is used to implement a textual button. When you 
+          click on a button, the button's <i>action procedure</i> is called. 
+          If a button is given a short cut, then entering the keystroke will 
+          cause the <i>action procedure</i> to be called. It will not visibly 
+          cause the button to depress.<p>
+	  <center><img src="gui_createbutton_full01.gif"></center>
+          <center><b>Two Buttons</b></center><p>
+          The <i>x</i> and <i>y</i> parameters specify the lower-left corner 
+          of the button. The <i>width</i> parameter specifies the width of the 
+          button. If <i>width</i> is less than the size necessary to display 
+          the button, the button is automatically enlarged to fit the text. 
+          The <i>text</i> parameter specifies the text to appear in the button. 
+          The <i>actionProc</i> parameter is the name of a procedure that is 
+          called when the button is pressed.<p>
+          For <b>GUI.CreateButtonFull</b>, the <i>height</i> parameter 
+          specifies the height of the button. If <i>height</i> is less 
+          than the size necessary to display the button, the button is 
+          automatically enlarged to fit the text. The <i>shortcut</i> 
+          parameter is the keystroke to be used as the button's shortcut. 
+          The <i>default</i> parameter is a boolean indicating whether the 
+          button should be the default button. If there is already a default 
+          button, and <i>default</i> is set to true, then this button becomes 
+          the new default button.<p>
+    </tr>          
+    <tr valign="top">
+    <td><b>Example&nbsp;&nbsp;</b></td>
+    <td>The following program creates two buttons, one which draws a random 
+        circle on the screen and one which quits the program.<p>
+<pre><tt>        <b>import</b> <i>GUI</i>
+        
+        <b>procedure</b> <i>DrawRandomCircle</i>
+            <b>var</b> <i>r</i> : <b>int</b> := <b>Rand.Int</b> (20, 50)
+            <b>var</b> <i>x</i> : <b>int</b> := <b>Rand.Int</b> (<i>r</i>, <b>maxx</b> - <i>r</i>)
+            <b>var</b> <i>y</i> : <b>int</b> := <b>Rand.Int</b><i> </i>(<i>r</i>, <b>maxy</b> - <i>r</i>)
+            <b>var</b> <i>c</i> : <b>int</b> := <b>Rand.Int</b><i> </i>(0, <b>maxcolor</b>)
+            <b>Draw.FillOval </b>(<i>x</i>, <i>y</i>, <i>r</i>, <i>r</i>, <i>c</i>)
+            % In case we drew over the buttons, redraw them.
+            <b>GUI.Refresh</b>
+        <b>end</b> <i>DrawRandomCircle</i>
+        
+        <b>View.Set</b> ("graphics:300;200,nobuttonbar ")
+        <b>var</b> <i>draw</i> : <b>int</b> := <b>GUI.CreateButtonFull</b><i> </i>(50, 10, 0, "Draw Circle",
+            <i>DrawRandomCircle</i>, 0, '^D', true)
+        <b>var</b> <i>quitBtn</i> : <b>int</b> := <b>GUI.CreateButton </b>(200, 10, 0, "Quit", <b>GUI.Quit</b>)
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end loop</b></tt></pre><p>
+    </tr>          
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,GUI.CreateButtonFull.t;GUI.CreateButtonFull Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>When <b>GUI.CreateButton</b> or <b>GUI.CreateButtonFull</b> is 
+          called, the newly created button will be displayed immediately 
+          unless <b>GUI.DisplayWhenCreated</b> has been called with the 
+          <i>display</i> parameter set to false. <p>
+          If a button's width or height is set to zero (or not specified 
+          at all), then the button is shaped to fit the text.<p>
+          A button can be the default button for a window. The default button 
+          is drawn with a thicker border around it. If the user presses ENTER 
+          in a window with a default button, the default button's 
+          <i>action procedure</i> is called.<p>
+          When a button is not enabled, the text in the button is grayed out 
+          and the button no longer responds to any mouse clicks or keystrokes 
+          until the button is enabled again.<p>
+    </tr>          
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The following GUI subprograms can be called with a button as the 
+          <i>widgetID</i> parameter:<p>
+	  <table>
+	    <tr valign="top">
+	      <td width="40">&nbsp;</td>
+	      <td><b>GUI.Show</b>, <b>GUI.Hide</b>, <b>GUI.Enable</b>, 
+	          <b>GUI.Disable</b>, <b>GUI.Dispose</b>, <b>GUI.GetX</b>,
+	          <b>GUI.GetY</b>, <b>GUI.GetWidth</b>, <b>GUI.GetHeight</b>,
+	          <b>GUI.SetPosition</b>, <b>GUI.SetSize</b>,
+	          <b>GUI.SetPositionAndSize</b>, <b>GUI.SetLabel</b>,
+	          <b>GUI.SetDefault</b></td>
+	    </tr>
+          </table><p>
+    </tr>          
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+          <b>GUI.CreateButton</b>, not by calling <b>CreateButton</b>.<p>
+    </tr>          
+    <tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="gui_setlabel.html">GUI.SetLabel</a></b> for changing 
+          the button's text, 
+          <b><a href="gui_setdefault.html">GUI.SetDefault</a></b> for setting 
+          the default button in a window and
+          <b><a href="gui_setcolor.html">GUI.SetColor</a></b> for setting 
+          the button's color.<p>
+    </tr>          
+  </table>
+</body>
+</html>

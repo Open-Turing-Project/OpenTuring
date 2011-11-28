@@ -1,0 +1,33 @@
+<html>
+<head><title>record</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>record</b></font></td><td align="right"><font size="+1"><b>    type</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>recordType</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>record</b></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1"><i>id</i> {, <i>id</i> } : <i>typeSpec</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="7"><font size="+1">{ <i>id</i> {, <i>id</i> } : <i>typeSpec</i> }</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>end</b> <b>record</b></td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Each value of a record type consists of fields, one field for each name (<i>id</i>) declared inside the record. In the following example, the fields are <i>name</i>,<i> phoneNumber</i> and <i>address</i>.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td><p>
+<pre><tt>        <b>type</b> <i>phoneRecord</i> :
+            <b>record</b>
+                <i>name</i> : <b>string</b> ( 20 )
+                <i>phoneNumber</i> : <b>int</b>
+                <i>address</i> : <b>string</b> ( 50 )
+            <b>end</b> <b>record</b>
+        …
+        <b>var</b> <i>oneEntry</i> : <i>phoneRecord</i>
+        <b>var</b> <i>phoneBook</i> : <b>array</b> 1 .. 100 <b>of</b> <i>phoneRecord</i>
+        <b>var</b> i : <b>int</b>
+        <i>oneEntry</i> .<i>name</i> := "Turing, Alan"
+        …
+        <i>phoneBook</i> ( <i>i</i> ) := <i>oneEntry</i> <i>% Assign whole record</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> In a record, <i>id'</i>s of fields must be distinct. However, these need not be distinct from identifiers outside the record. Records can be assigned as a whole (to records of an equivalent type), but they cannot be compared. A semicolon can optionally follow each <i>typeSpec</i>.<p>
+Any array contained in a record must have bounds that are known at compile time.<p>
+The notation &gt; can be used to access record fields. For example, if <i>p</i> is a pointer to <i>phoneRecord</i>, <i>p</i>&gt;<i>name</i> locates the <i>name</i> field. See <b>pointer</b>.<p>
+</table></body>
+</html>

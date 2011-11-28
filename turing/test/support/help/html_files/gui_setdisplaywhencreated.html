@@ -1,0 +1,39 @@
+<html>
+<head><title>GUI.SetDisplayWhenCreated</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.SetDisplayWhenCreated</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>GUI.SetDisplayWhenCreated</b> (<i>display</i> : <b>boolean</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> By default, whenever a widget is created with a <i>GUI.Create…</i> procedure, the widget instantly appears. Sometimes, this is not the desired behaviour. For example, if several widgets are to occupy the same location with only one being displayed at a time, then it is desirable not to have the widget appear when first created.<p>
+If a widget is not displayed when created, then <i>GUI.Show</i> must be called to make the widget visible.<p>
+If the <i>display</i> parameter is <b>true</b>, then widgets are displayed immediately upon creation. If the <i>display</i> parameter is set to <b>false</b>, then the widget is not made visible on creation and <i>GUI.Show</i> must be called to display the widget.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program toggles the visiblility of the frame when the button is pushed. The frame starts out invisible.<p>
+<pre><tt>        <b>import</b> <i>GUI</i> <b>in</b> "%oot/lib/GUI" 
+        <b>View.Set</b> ("graphics:150;100") 
+        
+        <b>var</b> <i>visible</i> : <b>boolean</b> := <b>false</b>
+        <b>var</b> <i>button</i>, <i>frame</i> : <b>int</b>
+        
+        <b>procedure</b> <i>Toggle</i>
+            <b>if</b> <i>visible</i> <b>then</b>
+                <i>GUI.Hide</i> (<i>frame</i>)
+            <b>else</b>
+                <i>GUI.Show</i> (<i>frame</i>)
+            <b>end if</b>
+            <i>visible</i> := <b>not</b> <i>visible</i>
+        <b>end</b> <i>Toggle</i>
+        
+        <i>button</i> := <b>GUI.CreateButton</b> (25, 40, 0, "Toggle Frame", <i>Toggle</i>)
+        <i>GUI.SetDisplayWhenCreated</i> (<b>false</b>)
+        <i>frame</i> := <b>GUI.CreateFrame</b><i> </i>(10, 10, 140, 90, 0)
+        
+        <b>loop</b>
+            <b>exit</b> <b>when</b> <b>GUI.ProcessEvent</b>
+        <b>end</b> <b>loop</b></tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>GUI.SetDisplayWhenCreated</b>, not by calling <b>SetDisplayWhenCreated</b>.<p>
+</table></body>
+</html>

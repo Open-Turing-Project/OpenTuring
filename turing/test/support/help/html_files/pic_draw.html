@@ -1,0 +1,110 @@
+<html>
+<head><title>Pic.Draw</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Pic.Draw</b></font></td><td align="right">Part of <a href="picmodule.html">Pic</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Pic.Draw</b> (<i>picID</i>, <i>x</i>, <i>y</i>, <i>mode</i> : <b>int</b>)<p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td><b>Pic.Draw </b>is used to draw a picture on the screen. The picture 
+          is drawn with the lower left corner at (<i>x</i>, <i>y</i>).<p>
+	  The <i>mode</i> parameter has one of the following values:<p>
+	  <table>
+	    <tr valign="top">
+	      <td><i>picCopy</i></td>
+	      <td width="10">&nbsp;</td>
+	      <td>This draws the picture on top of what was underneath, 
+	          obscuring it completely.</td>
+	    </tr>
+	    <tr valign="top">
+	      <td><i>picXor</i></td>
+	      <td width="10">&nbsp;</td>
+	      <td>This draws the picture XORing it with the background. 
+	          In DOS, you can use this function to do animation. 
+		  Drawing an object on top of itself with XOR erases 
+		  it and restores the background.</td>
+	    </tr>
+	    <tr valign="top">
+	      <td><i>picMerge</i></td>
+	      <td width="10">&nbsp;</td>
+	      <td>This draws the picture like <i>picCopy</i> except 
+	          that any occurrence of the background color in the 
+		  picture is not drawn to the screen. This allows you 
+		  to draw an irregularly-shaped object and draw it to 
+		  the screen.</td>
+	    </tr>
+	    <tr valign="top">
+	      <td><i>picUnderMerge</i></td>
+	      <td width="10">&nbsp;</td>
+	      <td>This draws the picture, but only where the background 
+	          color was displayed underneath it. The effect of this 
+		  is to make the picture appear to be displayed behind 
+		  the background.</td>
+	    </tr>
+	  </table><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+	    <PARAM name="Command" value="TCard">
+	    <PARAM name="Button" value="Text: Launch Drawing Modes Program">
+	    <PARAM name="Item1" value="-1,Pic.Draw2.t;Drawing Modes Example">
+	  </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>If the <b>Pic.Draw</b> call fails, <b>Error.Last</b> will return a 
+          non-zero value indicating the reason for the failure. 
+	  <b>Error.LastMsg</b> will return a string which contains the textual 
+	  version of the error.<p>
+	  <center><img src="pic_draw01.gif"></center>
+	  <center><b>Display Modes with Pic.Draw</b></center><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>The program draws a graphic on the screen and then repeats it 50 
+          times in random positions.<p>
+<pre><tt>        <b>var </b><i>picID</i>: <b>int</b>
+        <b>var</b> <i>x</i>, <i>y</i> : <b>int</b>
+        <b>Draw.FillBox</b> (50, 50, 150, 150, <i>red</i>)
+        <b>Draw.FillStar</b> (50, 50, 150, 150, <i>green</i>)
+        <b>Draw.FillOval</b> (100, 100, 30, 30, <i>blue</i>)
+        
+        <i>picID</i> := <b>Pic.New</b> (50, 50, 150, 150)
+        <b>for</b> i : 1 .. 50
+            <i>x</i> := <b>Rand.Int</b> (0, <b>maxx</b>)     <i>% Random x</i>
+            <i>y</i> := <b>Rand.Int</b> (0, <b>maxy</b>)     <i>% Random y</i>
+            <b>Pic.Draw</b> (<i>picID</i>, <i>x</i>, <i>y</i>, <i>picCopy</i>)
+        <b>end for</b>
+        <b>Pic.Free</b> (<i>picID</i>)</tt></pre>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+	    <PARAM name="Command" value="TCard">
+	    <PARAM name="Button" value="Text: Launch Example Program">
+	    <PARAM name="Item1" value="-1,Pic.New.t;Pic.Draw Example">
+	  </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+	  This means that you can only call the function by calling 
+	  <b>Pic.Draw</b>, not by calling <b>Draw</b>.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><a href="view_update.html">View.Update</a> for information on how
+          to produce smooth animation.<p>
+          <a href="pic_drawspecial.html">Pic.DrawSpecial</a> for information on how
+          to make pictures appear using special effects such as wipes and slides.<p>
+          <a href="pic_drawframes.html">Pic.DrawFrames</a> for information on how
+          to display multiple frame images such as are obtained from GIF files.
+    </tr>
+  </table>
+</body>
+</html>

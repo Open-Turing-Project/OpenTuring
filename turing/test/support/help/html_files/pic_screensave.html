@@ -1,0 +1,28 @@
+<html>
+<head><title>Pic.ScreenSave</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Pic.ScreenSave</b></font></td><td align="right">Part of <a href="picmodule.html">Pic</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Pic.ScreenSave</b> (<i>x1</i>, <i>y1</i>, <i>x2</i>, <i>y2</i> : <b>int</b>, <i>fileName</i> : <b>string</b>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> <b>Pic.ScreenSave </b>saves a portion of the screen into a file in a format specified by the file name.<p>
+The picture saved to the file is the portion of the screen defined by the rectangle (<i>x1</i>, <i>y1</i>) - (<i>x2</i>, <i>y2</i>).<p>
+The <i>fileName</i>parameter must give the format of the file:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>BMP files</td><td width="10">&nbsp;</td><td>"BMP:filename" or "filename.BMP"</td></tr>
+</table><p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Various versions of Turing can save different formats of files. Turing 4.1 for Windows can save BMP. Unfortunately, due to strictly enforced patents on the GIF compression algorithm, Turing will not implement saving of GIF pictures until the patents expire in June 2004.<p>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> If the <b>Pic.ScreenSave</b> fails, then <b>Error.Last</b> will return a non-zero value indicating the reason for the failure. <b>Error.LastMsg</b> will return a string which contains the textual version of the error.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The program draws a graphic and saves it as a PICT file called <i>draw</i>.<p>
+<pre><tt>        <b>Draw.FillBox</b> (50, 50, 150, 150, <i>red</i>)
+        <b>Draw.FillStar</b> (50, 50, 150, 150, <i>green</i>)
+        <b>Draw.FillOval</b> (100, 100, 50, 50, <i>blue</i>)
+        
+        <i>picID</i> := <b>Pic.ScreenSave</b> (50, 50, 150, 150, "PICT:draw")</tt></pre>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Pic.ScreenSave</b>, not by calling <b>ScreenSave</b>.<p>
+</table></body>
+</html>

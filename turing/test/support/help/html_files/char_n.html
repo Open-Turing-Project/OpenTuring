@@ -1,0 +1,31 @@
+<html>
+<head><title>char(n)</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>char(<i>n</i>)</b></font></td><td align="right"><font size="+1"><b>type</b></font></td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>char</b> (<i>numberOfCharacters</i>)<p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Each variable whose type is a <b>char</b>(<i>n</i>) contains exactly <i>n</i> characters.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> Canadian postal codes contain six characters, for example, M4V 1Y9. This is represented in a <b>char</b>(6) variable:<p>
+<pre><tt>        <b>var</b> <i>postalCode </i>: <b>char</b> (6) := <i>'</i>M4V1Y9<i>'</i></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> Explicit constants for the <b>char</b>(<i>n</i>) type use single quotes as in 'M4V1Y9', as opposed to explicit <b>string</b> constants which use double quotes, as in "Nancy". A single character single quoted character, such as 'A', is considered to have the type <b>char</b> instead of <b>char</b>(<i>n</i>), but since these two types can be assigned to each other and compared to each other, this fact has little consequence.<p>
+The type <b>char</b>(<i>n</i>) is generally more difficult to use than the <b>string</b> type, which is favored for most simple programs. The type <b>char</b>(<i>n</i>) has the advantage that it is efficient in terms of both space and time. In particular, it is represented as <i>n</i> bytes in the computer's memory. By contrast, the <b>string</b> type must use extra space (a trailing zero byte in current implementations) to represent the current length and allocates space for the maximum value it can hold.<p>
+The form of <i>numberOfCharacters</i> is one of:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td>(a) <i>expn</i></td><td width="10">&nbsp;</td><td><i>% Integer value</i></td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td>(b) *</td><td width="10">&nbsp;</td><td><i>% Only in subprogram parameters</i></td></tr>
+</table><p>
+The first form determines <i>n</i>. If the expression is a run time value, the type is considered to be <i>dynamic</i> <b>char</b>(<i>n</i>). The value of <i>n</i> must be at least 1. The second form is used only for subprogram parameters and uses the length of the actual parameter. This too, is considered to be a<i> dynamic</i> <b>char</b>(<i>n</i>) type. Dynamic <b>char</b>(<i>n</i>) types can only be passed to <b>char</b>(*) parameters. Dynamic <b>char</b>(<i>n</i>) types have the same restrictions as dynamic arrays. This implies they cannot be assigned as a whole and cannot appear in record and union types.<p>
+An implementation may impose a limit, recommended to be at least 32767, on the length <i>n</i>.<p>
+Values of the <b>char</b>(<i>n</i>) type can be assigned and they can be compared for both equality and for ordering, but only if they have the same length and they are not dynamic (i.e. the length must be known at compile time).<p>
+Values of the <b>char</b>(<i>n</i>) type can be read and written by <b>get</b> and <b>put</b> statements.<p>
+The <b>char</b>(<i>n</i>) type is a nonscalar, which implies that its parameters are always passed by reference (by means of an implicit pointer).<p>
+As is true for the <b>char</b> type, all 256 possible values of an 8-bit byte are allowed for each character in <b>char</b>(<i>n</i>) type. There is no pattern left to be used for the "initialized value", so there is no uninitialized checking for <b>char</b>(<i>n</i>).<p>
+In general, you can freely intermix the values of the types <b>char</b>, <b>char</b>(<i>n</i>) and <b>string</b>. This means that catenation (+), comparisons, <b>length</b> and substrings can be applied to any of these types. See <b>catenation</b> and <b>substring</b>. If two non dynamic <b>char</b>(<i>n</i>) values (or <b>char</b> values) are catenated, the result is a <b>char</b>(<i>n</i>)value. If either are dynamic,  it is a <b>string</b> value. This implies that very long <b>char</b>(<i>n</i>) values can be created by catenating them together, for example to initialize a <b>char</b>(<i>n</i>) variable.<p>
+A <b>char</b> value can be assigned (or passed to an non <b>var</b> parameter) with automatic conversion to a <b>char</b>(1) variable and vice versa. String values of length 1 can be assigned to <b>char</b> variables. Character (<b>char</b>) values can be assigned to string variables, yielding a string of length 1. String values of length <i>n</i> are assignable with automatic conversion to <b>char</b>(<i>n</i>) variables. Values of type <b>char</b>(<i>n</i>) can be assigned with automatic conversion to <b>string</b> variables.<p>
+When comparing two <b>char</b>(<i>n</i>) values, as in s &gt; t, if both are non-dynamic and of the same length, they are compared without converting to strings. If either are dynamic, they are converted to strings and then compared.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> the <b><a href="char.html">char</a></b> type which is much like <b>char</b>(1). See also the <b><a href="string1.html">string</a></b> type.<p>
+</table></body>
+</html>

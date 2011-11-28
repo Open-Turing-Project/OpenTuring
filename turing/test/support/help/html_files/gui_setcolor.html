@@ -1,0 +1,54 @@
+<html>
+<head><title>GUI.SetColor</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.SetColor</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+  
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>GUI.SetColor</b> (<i>widgetID</i> : <b>int</b>, <i>clrNumber</i> : <b>int</b>)<p></font>
+    </tr>
+    <tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+      <td>The <b>GUI.SetColor</b> procedure is used buttons to change the
+          color of a button.  The color is specified by the <i>clrNumber</i>
+          parameter.  The edges of the button are a darker version of the 
+          color specified by <i>clrNumber</i>, so in general you should use
+          brighter colors for buttons.<p>
+    </tr>
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program displays three buttons with different colors.<p>
+<pre><tt>        <b>import</b> <i>GUI</i>
+
+        <b>procedure</b> <i>DoNothing</i>
+        <b>end</b> <i>DoNothing</i>
+
+        <b>var</b> <i>b1</i> := <b>GUI.CreateButton</b> (100, 100, 0, "Push Me", <i>DoNothing</i>)
+        <b>GUI.SetColor</b> (<i>b1</i>, <b>brightred</b>)
+        <b>var</b> <i>b2</i> := <b>GUI.CreateButton</b> (100, 140, 0, "Push Me", <i>DoNothing</i>)
+        <b>GUI.SetColor</b> (<i>b2</i>, <b>brightgreen</b>)
+        <b>var</b> <i>b3</i> := <b>GUI.CreateButton</b> (100, 180, 0, "Push Me", <i>DoNothing</i>)
+        <b>GUI.SetColor</b> (<i>b3</i>, <b>brightblue</b>)
+
+        <b>loop</b>
+            <b>exit when GUI.ProcessEvent</b>
+        <b>end loop</b></tt></pre><p>
+    </tr>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,GUI.SetColor.t;GUI.SetColor Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+	  <b>GUI.SetColor</b>, not by calling <b>SetColor</b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

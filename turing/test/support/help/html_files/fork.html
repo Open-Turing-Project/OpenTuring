@@ -1,0 +1,29 @@
+<html>
+<head><title>fork</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>fork</b></font></td><td align="right"><font size="+1"><b>statement</b></font></td></table><p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dirty parts<p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> A <i>forkStatement</i> is:<p>
+<table><tr valign="top"><td width="40">&nbsp;</td><td colspan="8"><font size="+1"><b>fork</b><i> processId</i> [ ( [ <i>expn</i> { , <i>expn</i> } ] ) ]</td></tr>
+<tr valign="top"><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td width="40">&nbsp;</td><td colspan="6"><font size="+1">[ : <i>reference</i> [ , <i>expn</i> [ , <i>reference</i> ] ] ]</td></tr>
+</table><p><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> A <b>fork</b> activates (starts the concurrent execution of) a process declaration. If the process has parameters, a parenthesized list of expressions (<i>expns</i>) must follow the process'  name (<i>processId</i>).<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program initiates (forks) two concurrent processes, one of which repeatedly outputs Hi and the other Ho. The resulting output is an unpredictable sequence of Hi's and Ho's, as <i>greetings</i> executes twice concurrently, one instance with its <i>word</i> set to Hi and the other with its <i>word</i> set to Ho.<p>
+<pre><tt>        <b>process</b> <i>greetings</i> ( <i>word</i> : <b>string</b> )
+            <b>loop</b>
+                <b>put</b> <i>word</i>
+            <b>end</b> <b>loop</b>
+        <b>end</b> <i>greetings</i>
+        
+        <b>fork</b><i> greetings </i>( "Hi" )
+        <b>fork</b><i> greetings </i>( "Ho" )</tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> See <b>procedure</b> declaration for details about parameters. The first optional <i>reference</i> in the <b>fork</b> statement must be a <b>boolean</b> variable reference. The <b>fork</b> sets this to <b>true</b> if the process is actually activated. If this fails to occur (probably because stack space could not be allocated), this <i>reference</i> is set to <b>false</b>. If the <b>fork</b> fails but this reference is omitted, an exception occurs. See exception handlers.<p>
+The optional <i>expn</i> specifies the number of bytes for the process' stack; this overrides the optionally given stack size in the <b>process</b> declaration. The second optional <i>reference</i> must be a variable reference with the type <b>addressint</b>. See <b>addressint</b>. This variable is set to identify the process activation. This reference has the implementation-dependent meaning of locating the process' internal descriptor.<p>
+In this explanation of the <b>fork</b> statement, we have up to this point ignored the possibility of processes exported from modules. If the process is being forked from outside of a module from which it has been exported, the syntax of the <b>fork</b><i> </i>statement<i> </i>is:<p>
+<pre><tt>        <b>fork</b> moduleId . procedureId [ ( expn {, expn } ) ] …</tt></pre>
+In other words, the module's name and a dot must precede the process' name.<p>
+</table></body>
+</html>

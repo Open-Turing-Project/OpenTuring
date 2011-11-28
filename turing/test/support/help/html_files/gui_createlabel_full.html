@@ -1,0 +1,66 @@
+<html>
+<head><title>GUI.CreateLabel[Full]</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>GUI.CreateLabel[Full]</b></font></td><td align="right">Part of <a href="guimodule.html">GUI</a> module</td></table><p>
+  
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>GUI.CreateLabel</b> (<i>x</i>,<i> y</i> : <b>int</b>, <i>text</i> : <b>string</b>) : <b>int</b><p>
+          <b>GUI.CreateLabelFull</b> (<i>x,</i> <i>y</i> : <b>int</b>, <i>text</i> : <b>string</b>, <br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;<i>width</i>, <i>height</i>, <i>alignment</i>, <i>fontID</i> : <b>int</b>) : <b>int</b><p></font>
+    </tr>
+    <tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> Creates a label and returns the label's widget ID. <p>
+The label widget is used to display text. It can be used to display text in a variety of fonts and sizes. Label widgets can also be aligned in a variety of ways.<p>
+
+<center><img src="gui_createlabel_full01.gif"></center>
+<center><b>Three Labels</b></center><p>
+The <i>x</i> and <i>y</i> parameters specify the lower-left corner of the area in which the text will be drawn. For <b>GUI.CreateLabel</b>, this is the lower-left corner of the text. The <i>text</i> parameter specifies the text of the label.<p>
+For <b>GUI.CreateLabelFull</b>, the <i>width</i> and <i>height</i> parameters specify the area in which the label is to appear. This is used for alignment purposes. See the program below for an example of aligning the text to different corners of the window. The <i>alignment</i> parameter specifies the alignment of the text in the text area. This value is the sum of horizontal alignment and the vertical alignment. The horizontal alignment is one of 0, <i>GUI.LEFT</i>, <i>GUI.CENTER</i>, or <i>GUI.RIGHT</i>. A horizontal alignment of 0 is the default and is the same as the alignment of <i>GUI.LEFT</i>. The vertical alignment is one of 0, <i>GUI.TOP</i>, <i>GUI.MIDDLE</i>, or <i>GUI.BOTTOM</i>. A horizontal alignment of 0 is the default and is the same as the alignment of <i>GUI.BOTTOM</i>. These alignments align the text in various ways in the text area. The <i>fontID</i> parameter specifies the font ID of the font to be used in the text field. The font ID is received from a <i>Font.New</i> call. Do not call <i>Font.Free</i> for this font ID until the label has been disposed of by calling <b>GUI.Dispose.</b><p>
+By using the <i>fondID</i> parameter, labels can be have any size or typeface.<p>
+Labels are passive widgets, meaning that they do not respond to button clicks or keystrokes.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> The following program creates three labels, one with the default alignment, the other two aligned to appear in the center and upper-right corner of the window.<p>
+<pre><tt>        <b>import</b> <i>GUI</i>
+        <b>View.Set</b><i> </i>("graphics:300;100,nobuttonbar ")
+        <b>var</b> <i>lowerLeft</i> : <b>int</b> := <b>GUI.CreateLabel</b> (0, 0, "Lower-Left")
+        <b>var</b> <i>center</i> : <b>int</b> := <b>GUI.CreateLabelFull</b> (0, 0, "Center", <b>maxx</b>, <b>maxy</b>, 
+            <i>GUI.MIDDLE</i> + <i>GUI.CENTER</i>, 0)
+        <b>var</b> <i>upperRight</i> : <b>int</b> := <b>GUI.CreateLabelFull</b> (0, 0, "Upper-Right", 
+            <b>maxx</b>, <b>maxy</b>, <i>GUI.RIGHT</i> + <i>GUI.TOP</i>, 0)</tt></pre>
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,GUI.CreateLabelFull.t;GUI.CreateLabelFull Example">
+          </OBJECT><p></td>
+    </tr>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> When <b>GUI.CreateLabel</b> or <b>GUI.CreateLabelFull</b><i> </i>is called, the newly created label will be displayed immediately unless <b>GUI.DisplayWhenCreated</b> has been called with the <i>display</i> parameter set to false. <p>
+A frame widget is a passive widget and cannot be enabled or disabled.<p>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The following GUI subprograms can be called with a label as the 
+          <i>widgetID</i> parameter:<p>
+          <table>
+            <tr valign="top">
+              <td width="40">&nbsp;</td>
+              <td><b>GUI.Show</b>, <b>GUI.Hide</b>, <b>GUI.Dispose</b>,
+		  <b>GUI.GetX</b>, <b>GUI.GetY</b>, <b>GUI.GetWidth</b>,
+		  <b>GUI.GetHeight</b>, <b>GUI.SetPosition</b>,
+		  <b>GUI.SetSize</b>, <b>GUI.SetPositionAndSize</b>,
+		  <b>GUI.GetSliderValue</b>, <b>GUI.SetSliderValue</b>,
+		  <b>GUI.SetSliderMinMax</b>, <b>GUI.SetLabel</b><p>
+	    </tr>
+          </table><p>
+    </tr>          
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>GUI.CreateLabel</b>, not by calling <b>CreateLabel</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="gui_setlabel.html">GUI.SetLabel</a></b> for changing the label's text.<p>
+</table></body>
+</html>

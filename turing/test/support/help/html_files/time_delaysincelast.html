@@ -1,0 +1,74 @@
+<html>
+<head><title>Time.DelaySinceLast</title></head>
+<body>
+  <table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Time.DelaySinceLast</b></font></td><td align="right">Part of <a href="timemodule.html">Time</a> module</td></table><p>
+  
+  <table>
+    <tr valign="top">
+      <td><b>Syntax&nbsp;&nbsp;</b></td>
+      <td><font size="+1"><b>Time.DelaySinceLast</b> ( <i>duration</i> : <b>int</b> )<p></font>
+    </tr>
+    <tr valign="top">
+      <td><b>Description&nbsp;&nbsp;</b></td>
+      <td>The <b>Time.DelaySinceLast</b> procedure is used to cause the 
+          program to pause for a given time since the last call to 
+          <b>Time.DelaySinceLast</b>. The time duration is in milliseconds.<p>
+    </tr>  
+    <tr valign="top">
+      <td><b>Example&nbsp;&nbsp;</b></td>
+      <td>This program outputs from 1 to 100,000, then outputs how long it 
+          took to do this (in milliseconds). It then calls <b>Time.DelaySinceLast</b>
+          to wait until 10 seconds has passed since the beginning of the
+          program (regardless of how long it took to execute the loop). Finally
+          it outputs how many milliseconds has passed since the program started.
+          This should be close to 10,000 milliseconds.<p>
+<pre><tt>        <b>var</b> <i>t</i> : <b>int</b> := <b>Time.Elapsed</b>
+        <b>put</b> "Starting now, count to 100,000"
+        for <i>i</i> : 1 .. 100000
+            put <i>i</i> ..
+            locate (whatrow, 1)
+        end for
+        <b>put</b> "Finished counting to 100,000"
+        
+        <b>put</b> "Elapsed time: ", <b>Time.Elapsed</b> - <i>t</i>, " milliseconds"
+        <b>Time.DelaySinceLast</b> (10000)
+        <b>put</b> "Elapsed time: ", <b>Time.Elapsed</b> - <i>t</i>, " milliseconds"
+    </tr>        
+    <tr valign="top">
+      <td><b>Execute&nbsp;&nbsp;</b></td>
+      <td><OBJECT id=launch type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=120 height=40>
+            <PARAM name="Command" value="TCard">
+            <PARAM name="Button" value="Text: Launch Example Program">
+            <PARAM name="Item1" value="-1,Time.DelaySinceLast.t;Time.DelaySinceLast Example">
+          </OBJECT><p></td>
+    </tr>
+    <tr valign="top">
+      <td><b>Details&nbsp;&nbsp;</b></td>
+      <td>The <b>Time.DelaySinceLast</b> is usually used to time a process so 
+          that it operates on the same speed no matter what the machine. For 
+          example, in the above example, the program will alwyas take 10 
+          seconds to execute, regardless of the speed of the machine (up to 
+          a point). Fast machines will spend little time in the <b>for</b>
+          loop and longer waiting to return from <b>Time.DelaySinceLast</b>.
+          Slower machines will take longer to execute the loop and will 
+          consequently wait less time before returning from 
+          <b>Time.DelaySinceLast</b>.<p>
+          The <b>Time.DelaySinceLast</b> procedure is often used to time the 
+          speed of animation in games.<p>
+          Note that this only works up to a point. On a very slow machine, the
+          <b>for</b> loop may take longer than 10 seconds to execute, in which
+          case the call to <b>Time.DelaySinceLast</b> will return instantly.<p>
+    </tr>  
+    <tr valign="top">
+      <td><b>Status&nbsp;&nbsp;</b></td>
+      <td>Exported qualified.<p>
+          This means that you can only call the function by calling 
+          <b>Time.DelaySinceLast</b>, not by calling <b>DelaySinceLast</b>.<p>
+    </tr>      
+    <tr valign="top">
+      <td><b>See also&nbsp;&nbsp;</b></td>
+      <td><b><a href="time_elapsed.html">Time.Elapsed</a></b> and <b><a href="time_elapsedcpu.html">Time.ElapsedCPU</a></b>.<p>
+    </tr>
+  </table>
+</body>
+</html>

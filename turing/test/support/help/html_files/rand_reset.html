@@ -1,0 +1,25 @@
+<html>
+<head><title>Rand.Reset</title></head>
+<body>
+<table width="100%"><tr valign="top"><td align="left"><font size="+2"><b>Rand.Reset</b></font></td><td align="right">Part of <a href="randmodule.html">Rand</a> module</td></table><p>
+<table><tr valign="top"><td><b>Syntax&nbsp;&nbsp;</b></td>
+<td> <font size="+1"><b>Rand.Reset</b><p>
+</font><tr valign="top"><td><b>Description&nbsp;&nbsp;</b></td>
+<td> This is a procedure with no parameters that resets the sequences of pseudo-random numbers produced by <b>Rand.Real</b> and <b>Rand.Int</b>. This allows identical executions of the same program to produce identical results.<p>
+<tr valign="top"><td><b>Example&nbsp;&nbsp;</b></td>
+<td> This program simulates the repeated rolling of a six sided die. Each time the program runs, the same sequence of rolls occurs.<p>
+<pre><tt>        <b>Rand.Reset</b>
+        <b>loop</b>
+            <b>put</b> "Rolled ",<i> </i><b>Rand.Int </b>(1, 6)
+        <b>end loop</b></tt></pre>
+<tr valign="top"><td><b>Details&nbsp;&nbsp;</b></td>
+<td> If <b>Rand.Reset </b>and<b> Rand.Set </b>are not used, each time a program runs <b>Rand.Real</b> and <b>Rand.Int </b>use a different pseudo-random number sequence. To get the same sequence each time (actually, to start the sequence at a different point), use <b>Rand.Reset</b> or <b>Rand.Set</b>.<p>
+The <b>Rand.Reset</b> procedure can be called any time. However, to make it work, it should only be called once per program. Any call to <b>Rand.Reset</b> after the first one is ignored.<p>
+To use several sequences of repeatable pseudo-random number sequences, use the <b>Rand.Seed </b>and <b>Rand.Next</b> procedures.<p>
+<tr valign="top"><td><b>Status&nbsp;&nbsp;</b></td>
+<td> Exported qualified.<p>
+This means that you can only call the function by calling <b>Rand.Reset</b>, not by calling <b>Reset</b>.<p>
+<tr valign="top"><td><b>See also&nbsp;&nbsp;</b></td>
+<td> <b><a href="rand_set.html">Rand.Set</a></b>, <b><a href="rand_int.html">Rand.Int</a></b>, <b><a href="rand_real.html">Rand.Real</a></b>, <b><a href="rand_seed.html">Rand.Seed</a></b> and <b><a href="rand_next.html">Rand.Next</a></b>.<p>
+</table></body>
+</html>
