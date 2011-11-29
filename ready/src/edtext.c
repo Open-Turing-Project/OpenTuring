@@ -4674,6 +4674,7 @@ static void	MyFindCharLocation (TextPtr pmTextPtr, int pmLoc, int *pmLine,
             	__LINE__, 0, pmTextPtr -> numLines, myStart, myEnd, myLine, 
             	pmLoc, myLineStarts [myStart], myLineStarts [myEnd], 
                 myLineStarts [myLine], myText);*/
+								break;
     	}
     }
     
