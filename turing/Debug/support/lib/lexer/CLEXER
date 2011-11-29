@@ -1,0 +1,18 @@
+/*
+ * OOT Library Class
+ *
+ */
+
+unit
+class CLexer
+    inherit Lexer in "%oot/support/lib/Lexer/Lexer"
+    export Initialize
+
+    function Initialize(srcFile: string, flags: int): boolean
+        var fullFlags : int := flags | lbitCescape
+
+        result InitializeGeneral(srcFile, "%oot/support/lib/lexer/c.sdf", fullFlags)
+    end Initialize
+
+end CLexer
+

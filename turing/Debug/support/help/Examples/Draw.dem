@@ -1,0 +1,44 @@
+% The "Draw.dem" program
+import GUI
+
+View.Set ("graphics:300;300,nobuttonbar")
+
+var oldx, oldy : int
+var canvas : int % The drawing canvas.
+var clear : int % The clear button.
+
+% Called when the user presses the mouse button in the canvas.
+% Sets the initial mouse position.
+procedure MouseDown (mx, my : int)
+    oldx := mx
+    oldy := my
+end MouseDown
+
+% Called as the user drags the mouse with the button down in the canvas.
+% Draws a line from the preious mouse position to the current position.
+procedure MouseDrag (mx, my : int)
+    GUI.DrawLine (canvas, oldx, oldy, mx, my, colourfg)
+    oldx := mx
+    oldy := my
+end MouseDrag
+
+% Called when the mouse button is released.
+procedure DoNothing (mx, my : int)
+end DoNothing
+
+% Called when the clear button is pressed.
+procedure Clear
+    GUI.DrawCls (canvas)
+end Clear
+
+% Create the canvas
+canvas := GUI.CreateCanvasFull (10, 30, maxx - 20, maxy - 40, 0,
+    MouseDown, MouseDrag, DoNothing)
+
+% Create the clear button
+clear := GUI.CreateButton (maxx div 2 - 20, 0, 40, "Clear", Clear)
+
+loop
+    exit when GUI.ProcessEvent
+end loop
+

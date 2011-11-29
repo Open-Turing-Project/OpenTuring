@@ -1,0 +1,171 @@
+
+section comment
+/* */
+%  \n
+end comment
+
+section string
+" "
+\\"
+^"
+end string
+
+section real
+eE
+end real
+
+section integer
+base #
+end integer
+
+section identifier
+_
+_
+end identifier
+
+section token
+=
+(
+)
+[
+]
+.
+*
++
+-
+~
+!
+'
+%
+<
+>
+&
+|
+^
+?
+:
+,
+;
+:=
+->
+<=
+>=
+~=
++=
+-=
+*=
+/=
+..
+~.*
+addressint
+all
+and
+array
+asm
+assert
+begin
+bind
+body
+boolean
+by
+case
+char
+checked
+class
+close
+collection
+condition
+const
+decreasing
+def
+deferred
+div
+else
+elsif
+end
+enum
+exit
+export
+external
+false
+fcn
+flexible
+for
+fork
+forward
+free
+function
+get
+handler
+if
+implement
+import
+in
+include
+inherit
+init
+int
+int1
+int2
+int4
+invariant
+label
+loop
+mod
+module
+monitor
+nat
+nat1
+nat2
+nat4
+new
+nil
+not
+of
+opaque
+open
+or
+packed
+pause
+pervasive
+pointer
+post
+pre
+priority
+proc
+procedure
+process
+put
+quit
+read
+real
+real4
+real8
+record
+register
+rem
+result
+return
+seek
+set
+shl
+shr
+signal
+skip
+string
+tag
+tell
+then
+timeout
+to
+true
+type
+unchecked
+union
+unqualified
+var
+wait
+when
+write
+xor
+end token

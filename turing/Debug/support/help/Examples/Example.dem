@@ -1,0 +1,83 @@
+% The "Example.dem" program.
+% This creates some widgets but does nothing with them.
+import GUI
+
+View.Set ("graphics:360;400,nobuttonbar")
+
+GUI.SetBackgroundColour (grey)
+
+procedure DoNothing
+end DoNothing
+
+procedure DoNothing1 (x : boolean)
+end DoNothing1
+
+procedure DoNothing2 (x : int)
+end DoNothing2
+
+procedure DoNothing3 (x : string)
+end DoNothing3
+
+
+% Place some buttons.
+var b1 := GUI.CreateButton (10, 370, 100, "Button 1", DoNothing)
+var b2 := GUI.CreateButton (130, 370, 100, "Button 2", DoNothing)
+var b3 := GUI.CreateButton (250, 370, 100, "Button 3", DoNothing)
+
+% Disable the third button to show what it looks like.
+GUI.Disable (b3)
+
+% Place some check boxes.
+var c1 := GUI.CreateCheckBox (30, 330, "Check Box 1", DoNothing1)
+var c2 := GUI.CreateCheckBox (30, 310, "Check Box 2", DoNothing1)
+var c3 := GUI.CreateCheckBoxFull (330, 330, "Check Box 3", DoNothing1,
+    GUI.RIGHT, GUI.NONE)
+var c4 := GUI.CreateCheckBoxFull (330, 310, "Check Box 4", DoNothing1,
+    GUI.RIGHT, GUI.NONE)
+
+% Disable the third button to show what it looks like.
+GUI.Disable (c3)
+
+% Put a box around the check boxes.
+var f1 := GUI.CreateLabelledFrame (10, 300, 350, 360, GUI.INDENT,
+    "Check Boxes")
+
+% Place some radio buttons.
+var r1 := GUI.CreateRadioButton (30, 250, "Radio Button 1", 0, DoNothing)
+var r2 := GUI.CreateRadioButton ( - 1, - 1, "Radio Button 2", r1, DoNothing)
+var r3 := GUI.CreateRadioButtonFull (320, 250, "Radio Button 3", 0,
+    DoNothing, GUI.RIGHT, GUI.NONE)
+var r4 := GUI.CreateRadioButtonFull ( - 1, - 1, "Radio Button 4", r3,
+    DoNothing, GUI.RIGHT, GUI.NONE)
+
+% Disable the third button to show what it looks like.
+GUI.Disable (r3)
+
+% Select the fourth radio button.  The third was created by default.
+GUI.SelectRadio (r4)
+
+% Put a box around the radio buttons.
+var f2 := GUI.CreateLabelledFrame (10, 220, 350, 280, GUI.LINE,
+    "Radio Buttons")
+
+% Draw a line from left to right.
+var l1 := GUI.CreateLine (10, 210, 350, 210, GUI.INDENT)
+
+% Create a horizontal slider.
+var s1 := GUI.CreateHorizontalSlider (30, 180, 300, 0, 100, 30, DoNothing2)
+
+% Create a horizontal sroll bar.
+var s2 := GUI.CreateHorizontalScrollBar (30, 130, 300, 0, 100, 70,
+    DoNothing2)
+
+% Create a label for the text field.
+var l2 := GUI.CreateLabelFull (30, 70, "Enter Your Name", 300, 0,
+    GUI.CENTER, 0)
+
+var tf := GUI.CreateTextFieldFull (30, 50, 300, "Tom West", DoNothing3,
+    GUI.INDENT, 0, 0)
+
+loop
+    exit when GUI.ProcessEvent
+end loop
+

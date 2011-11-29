@@ -1,0 +1,170 @@
+% The "Menus.dem" program.
+% This demonstrates the Menu widget along with the GUI routines
+% that use Menu widgets. [CreateMenu, CreateMenuItem, CreateMenuItemFull,
+% Enable, Disable, Show, Hide,
+% SetPosition, SetPositionAndSize, Refresh, SetLabel, Quit, CreateButton,
+% CreateButtonFull, ProcessEvent, Dispose]
+
+import GUI % Must be included in a programs using the GPL
+
+View.Set ("graphics:400;200,nobuttonbar") % Shrink the window to the minimum size
+
+% The menus
+var first, second, third, fourth : int
+
+% The menu items
+var menuItem : array 1 .. 21 of int
+
+% The buttons
+var hideShowBar, disableEnableMenu, disableEnableMenuItem : int
+
+% The menu item names
+var menuName : array 1 .. 21 of string (20) := init ("A", "B", "C", "D",
+    "A", "B", "---", "C", "D", "---", "E", "F", "D", "---",
+    "Disable D Menu Items", "Enable D Menu Items", "---",
+    "Disable Second Menu", "Enable Second Menu", "---", "D")
+
+% Variables used by button routines
+var hide := true
+var disableMenu := true
+var disableItem := true
+
+% Called when most menu items selected
+procedure MenuSelected
+    for i : 1 .. 21
+	if menuItem (i) = GUI.GetEventWidgetID then
+	    locate (maxrow, 1)
+	    put "Menu Item \"" + menuName (i) + "\" selected         " ..
+	end if
+    end for
+end MenuSelected
+
+% Called when Disable D Menu Items selected
+procedure DisableD
+    locate (maxrow, 1)
+    put "Items Labelled \"D\" disabled    " ..
+    GUI.Disable (menuItem (4))
+    GUI.Disable (menuItem (9))
+    GUI.Disable (menuItem (13))
+    GUI.Disable (menuItem (21))
+
+    GUI.SetLabel (disableEnableMenuItem, "Enable \"D\" Menu Items")
+    disableItem := false
+end DisableD
+
+% Called when Enable D Menu Items selected
+procedure EnableD
+    locate (maxrow, 1)
+    put "Items Labelled \"D\" enabled     " ..
+    GUI.Enable (menuItem (4))
+    GUI.Enable (menuItem (9))
+    GUI.Enable (menuItem (13))
+    GUI.Enable (menuItem (21))
+
+    GUI.SetLabel (disableEnableMenuItem, "Disable \"D\" Menu Items")
+    disableItem := true
+end EnableD
+
+% Called when Disable Second Menu Items selected
+procedure DisableSecond
+    locate (maxrow, 1)
+    put "Menu Labelled \"Second\" disabled" ..
+    GUI.Disable (second)
+
+    GUI.SetLabel (disableEnableMenu, "Enable \"Second\" Menu")
+    disableMenu := false
+end DisableSecond
+
+% Called when Enable Second Menu Items selected
+procedure EnableSecond
+    locate (maxrow, 1)
+    put "Menu Labelled \"Second\" enabled " ..
+    GUI.Enable (second)
+
+    GUI.SetLabel (disableEnableMenu, "Disable \"Second\" Menu")
+    disableMenu := true
+end EnableSecond
+
+% Called when the hide/show menu bar button pressed
+procedure HideShowBarPressed
+    if hide then
+	GUI.HideMenuBar % Hides the menu bar
+	GUI.SetLabel (hideShowBar, "Show Menu Bar")
+    else
+	GUI.ShowMenuBar % Show the menu bar
+	GUI.SetLabel (hideShowBar, "Hide Menu Bar")
+    end if
+    hide := not hide
+end HideShowBarPressed
+
+% Called when the enable/disable "second" menu pressed
+procedure DisableEnableMenuPressed
+    if disableMenu then
+	DisableSecond
+    else
+	EnableSecond
+    end if
+end DisableEnableMenuPressed
+
+% Called when the enable/disable "D" menu item pressed
+procedure DisableEnableMenuItemPressed
+    if disableItem then
+	DisableD
+    else
+	EnableD
+    end if
+end DisableEnableMenuItemPressed
+
+% Draw the background
+var clr := 0
+for cnt : 0 .. maxx + maxy by 20
+    var x : array 1 .. 4 of int
+    var y : array 1 .. 4 of int
+    x (1) := cnt - maxy + 20
+    y (1) := 20
+    x (2) := cnt
+    y (2) := maxy
+    x (3) := cnt + 20
+    y (3) := maxy
+    x (4) := cnt + 20 - maxy + 20
+    y (4) := 20
+    Draw.FillPolygon (x, y, 4, clr)
+    clr := (clr + 1) mod 16
+end for
+
+% Create the menus
+first := GUI.CreateMenu ("First")
+for cnt : 1 .. 4
+    menuItem (cnt) := GUI.CreateMenuItem (menuName (cnt), MenuSelected)
+end for
+
+second := GUI.CreateMenu ("Second")
+for cnt : 5 .. 12
+    menuItem (cnt) := GUI.CreateMenuItem (menuName (cnt), MenuSelected)
+end for
+
+third := GUI.CreateMenu ("Empty")
+
+fourth := GUI.CreateMenu ("Fourth")
+menuItem (13) := GUI.CreateMenuItem (menuName (13), MenuSelected)
+menuItem (14) := GUI.CreateMenuItem (menuName (14), MenuSelected)
+menuItem (15) := GUI.CreateMenuItem (menuName (15), DisableD)
+menuItem (16) := GUI.CreateMenuItem (menuName (16), EnableD)
+menuItem (17) := GUI.CreateMenuItem (menuName (17), MenuSelected)
+menuItem (18) := GUI.CreateMenuItem (menuName (18), DisableSecond)
+menuItem (19) := GUI.CreateMenuItem (menuName (19), EnableSecond)
+menuItem (20) := GUI.CreateMenuItem (menuName (20), MenuSelected)
+menuItem (21) := GUI.CreateMenuItem (menuName (21), MenuSelected)
+
+% Create the buttons
+hideShowBar := GUI.CreateButton (200, 130, 200, "Hide Menu Bar",
+    HideShowBarPressed)
+disableEnableMenu := GUI.CreateButton (200, 100, 200,
+    "Disable \"Second\" Menu", DisableEnableMenuPressed)
+disableEnableMenuItem := GUI.CreateButton (200, 70, 200,
+    "Disable \"D\" Menu Items", DisableEnableMenuItemPressed)
+
+loop
+    exit when GUI.ProcessEvent
+end loop
+
