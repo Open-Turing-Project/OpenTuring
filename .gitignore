@@ -8,6 +8,9 @@
 *.so
 *.pdb
 *.exe
+*.tlog
+*.suo
+
 
 # OS generated files #
 ######################
