@@ -1,0 +1,130 @@
+
+/*
+ * OOT Library Class
+ *
+ */
+
+unit
+class Lexer
+    export InitializeGeneral, Finalize, Scan, TokenRecordType,
+
+           ~.*tIntLit, ~.*tRealLit, ~.*tStringLit, ~.*tCharLit,
+           ~.*tComment, ~.*tIdentifier,
+           ~.*tNewLine, ~.*tWhiteSpace, ~.*tEOF, ~.*tOther,
+           ~.*tTokenBase,
+
+           ~.*lbitNoEval, ~.*lbitNoNewline, ~.*lbitNoComment, ~.*lbitNoSpace,
+           ~.*lbitOOTescape, ~.*lbitCescape
+
+
+    % Token record filled by Scan
+
+    type TokenRecordType:
+        record
+            lineNo:     int     % Line number containing token
+            linePos:    int     % Starting position of token in source line
+
+            tokNum:     int     % Token number
+            token:      string  % The full unmodified token string
+
+            intVal:     int4    % set iff tokNum = tIntLit
+            realVal:    real8   % set iff tokNum = tRealLit
+            stringVal:  string  % set iff tokNum = tStringLit or tCharLit
+
+            error:      boolean % true if an error was detected for token
+        end record
+
+
+    const tIntLit     := 0
+    const tRealLit    := 1
+    const tStringLit  := 2
+    const tCharLit    := 3
+
+    const tComment    := 4
+    const tIdentifier := 5
+
+    const tNewLine    := 6
+    const tWhiteSpace := 7
+    const tEOF        := 8
+
+    const tOther      := 9
+
+    const tTokenBase  := 100
+
+
+    % Option flag bits
+
+    const lbitNoEval     := 2#00001
+    const lbitNoNewline  := 2#00010
+    const lbitNoSpace    := 2#00100
+    const lbitNoComment  := 2#01000
+
+    const lbitOOTescape  := 2#0100000000
+    const lbitCescape    := 2#1000000000
+
+
+    % --------------
+    % Implementation
+    % --------------
+
+    var stream: int := 0
+
+    /* External routines */
+
+    external "lexer_begin"
+         function LexerBegin(srcFile, sdFile: string, flags: int): int
+
+    external "lexer_end" procedure LexerEnd(stream: int)
+
+    external "lexer_scan"
+       procedure LexerScan(streamID: int, var tokenRecord: TokenRecordType)
+
+
+    /* Exported routines */
+
+    % Initialize the scanner for a supported language
+
+    function InitializeGeneral(srcFile, sdFile: string, flags:int): boolean
+
+        if stream ~= 0 then
+            Error.Trip(eLexStreamAlreadyOpen)
+        end if
+
+        stream := LexerBegin(srcFile, sdFile, flags)
+
+        if stream <= 0 then
+            stream := 0
+            result false
+        else
+            result true
+        end if
+
+    end InitializeGeneral
+
+
+    % End scanning for file
+
+    procedure Finalize
+        LexerEnd(stream)
+        stream := 0
+    end Finalize
+
+
+    % Do scan for next token
+
+    procedure Scan(var tokenRecord: TokenRecordType)
+        LexerScan(stream, tokenRecord)
+    end Scan
+
+end Lexer
+
+
+
+
+
+
+
+
+
+
+

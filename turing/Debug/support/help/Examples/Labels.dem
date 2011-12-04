@@ -1,0 +1,116 @@
+% The "Labels.dem" program.
+% This demomstrates the methods of aligning labels with widgets.
+import GUI % Must be included in a programs using the GPL
+
+View.Set ("graphics:300;330,nobuttonbar") % Shrink the window to the minimum size
+
+% Dimensions of the box
+const X : int := 5
+const Y : int := 35
+var width : int := 260
+var height : int := 250
+
+% The label IDs
+var labels : array 1 .. 9 of int
+
+% The button IDs
+var hideShowButton, changeTextButton : int
+var hide := true
+var caps := true
+
+procedure HideShowPressed
+    if hide then
+	for cnt : 1 .. 8
+	    GUI.Hide (labels (cnt))
+	end for
+	GUI.SetLabel (hideShowButton, "Show Labels")
+    else
+	for cnt : 1 .. 8
+	    GUI.Show (labels (cnt))
+	end for
+	GUI.SetLabel (hideShowButton, "Hide Labels")
+    end if
+    hide := not hide
+end HideShowPressed
+
+procedure ChangeTextPressed
+    if caps then
+	GUI.SetLabel (labels (1), "LEFT")
+	GUI.SetLabel (labels (2), "TOP")
+	GUI.SetLabel (labels (3), "RIGHT")
+	GUI.SetLabel (labels (4), "BOTTOM")
+	GUI.SetLabel (labels (5), "TOP LEFT")
+	GUI.SetLabel (labels (6), "BOTTOM LEFT")
+	GUI.SetLabel (labels (7), "TOP RIGHT")
+	GUI.SetLabel (labels (8), "BOTTOM RIGHT")
+    else
+	GUI.SetLabel (labels (1), "Left")
+	GUI.SetLabel (labels (2), "Top")
+	GUI.SetLabel (labels (3), "Right")
+	GUI.SetLabel (labels (4), "Bottom")
+	GUI.SetLabel (labels (5), "Top Left")
+	GUI.SetLabel (labels (6), "Bottom Left")
+	GUI.SetLabel (labels (7), "Top Right")
+	GUI.SetLabel (labels (8), "Bottom Right")
+    end if
+    caps := not caps
+end ChangeTextPressed
+
+procedure VerticalSliderMoved (value : int)
+    Draw.Box (X, Y, X + width, Y + height, GUI.GetBackgroundColour)
+    height := value
+    for cnt : 1 .. 8
+	GUI.SetSize (labels (cnt), width - 4, height - 4)
+    end for
+    Draw.Box (X, Y, X + width, Y + height, black)
+end VerticalSliderMoved
+
+procedure HorizontalSliderMoved (value : int)
+    Draw.Box (X, Y, X + width, Y + height, GUI.GetBackgroundColour)
+    width := value
+    for cnt : 1 .. 8
+	GUI.SetSize (labels (cnt), width - 4, height - 4)
+    end for
+    Draw.Box (X, Y, X + width, Y + height, black)
+end HorizontalSliderMoved
+
+GUI.SetBackgroundColour (grey)
+
+% Create the labels
+labels (1) := GUI.CreateLabelFull (X + 2, Y + 2, "Left",
+    width - 4, height - 4, GUI.LEFT + GUI.MIDDLE, 0)
+labels (2) := GUI.CreateLabelFull (X + 2, Y + 2, "Top",
+    width - 4, height - 4, GUI.CENTER + GUI.TOP, 0)
+labels (3) := GUI.CreateLabelFull (X + 2, Y + 2, "Right",
+    width - 4, height - 4, GUI.RIGHT + GUI.MIDDLE, 0)
+labels (4) := GUI.CreateLabelFull (X + 2, Y + 2, "Bottom",
+    width - 4, height - 4, GUI.CENTER + GUI.BOTTOM, 0)
+labels (5) := GUI.CreateLabelFull (X + 2, Y + 2, "Top Left",
+    width - 4, height - 4, GUI.LEFT + GUI.TOP, 0)
+labels (6) := GUI.CreateLabelFull (X + 2, Y + 2, "Bottom Left",
+    width - 4, height - 4, GUI.LEFT + GUI.BOTTOM, 0)
+labels (7) := GUI.CreateLabelFull (X + 2, Y + 2, "Top Right",
+    width - 4, height - 4, GUI.RIGHT + GUI.TOP, 0)
+labels (8) := GUI.CreateLabelFull (X + 2, Y + 2, "Bottom Right",
+    width - 4, height - 4, GUI.RIGHT + GUI.BOTTOM, 0)
+
+% Draw a box around the labels
+Draw.Box (X, Y, X + width, Y + height, black)
+
+% Create the sliders
+var hSlider := GUI.CreateHorizontalSlider (20, 15, 245, 20, 260, 260,
+    HorizontalSliderMoved)
+var vSlider := GUI.CreateVerticalSlider (285, 50, 235, 15, 250, 250,
+    VerticalSliderMoved)
+
+% Create the buttons
+hideShowButton := GUI.CreateButton (20, maxy - 25, 120, "Hide Labels",
+    HideShowPressed)
+changeTextButton := GUI.CreateButton (160, maxy - 25, 120,
+    "Change Label Text", ChangeTextPressed)
+
+% Process Events
+loop
+    exit when GUI.ProcessEvent
+end loop
+

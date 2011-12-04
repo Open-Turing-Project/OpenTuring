@@ -1,0 +1,54 @@
+% The "Canvases.dem" program.
+% Create three canvases with different frames.
+
+import GUI % Must be included in a programs using the GPL
+
+% Shrink the window to the minimum size with no buttonbar
+View.Set ("graphics:300;170,nobuttonbar,title:Canvases.dem") 
+
+% Necessary for a 3-D look for the canvas
+GUI.SetBackgroundColour (grey)
+
+% This procedure is needed as an argument to CreateCanvasFull.
+procedure DoNothing (mx, my : int)
+end DoNothing
+
+% Called when the quit button pressed
+procedure QuitPressed
+    GUI.Quit
+end QuitPressed
+
+% Create the canvas.  We need to use CreateCanvasFull in order to
+% specify the type of border.
+var canvas1 := GUI.CreateCanvasFull (10, 60, 80, 80, GUI.INDENT, DoNothing,
+    DoNothing, DoNothing)
+var canvas2 := GUI.CreateCanvas (110, 60, 80, 80)
+var canvas3 := GUI.CreateCanvasFull (210, 60, 80, 80, GUI.EXDENT, DoNothing,
+    DoNothing, DoNothing)
+
+% Create a label for the canvases.  We could use CreateLabelFull for more
+% precise alignment.
+var label1 := GUI.CreateLabel (30, 40, "INDENT")
+var label2 := GUI.CreateLabel (140, 40, "LINE")
+var label3 := GUI.CreateLabel (225, 40, "EXDENT")
+var label1a := GUI.CreateLabel (30, 143, "Circles")
+var label2b := GUI.CreateLabel (128, 143, "Squares")
+var label3c := GUI.CreateLabel (233, 143, "Stars")
+
+% Create a quit button
+var quitButton := GUI.CreateButton (100, 10, 100, "Quit", QuitPressed)
+
+loop
+    exit when GUI.ProcessEvent
+
+    % Draw a shape in each window
+    var x, y, c : int
+    x := Rand.Int (0, 60)
+    y := Rand.Int (0, 60)
+    c := Rand.Int (10, 15)
+    GUI.DrawFillBox (canvas1, x, y, x + 20, y + 20, c)
+    GUI.DrawFillOval (canvas2, x, y, 20, 20, c)
+    GUI.DrawFillStar (canvas3, x, y, x + 20, y + 20, c)
+    delay (300) % Delay for .3 seconds
+end loop
+

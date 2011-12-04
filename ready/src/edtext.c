@@ -4670,10 +4670,11 @@ static void	MyFindCharLocation (TextPtr pmTextPtr, int pmLoc, int *pmLine,
     	    	myText = "";
     	    }
     	    
-            EdFail_Fatal (IDS_LOCATER_LOOPING_INFINITELY, __FILE__, 
+            /*EdFail_Fatal (IDS_LOCATER_LOOPING_INFINITELY, __FILE__, 
             	__LINE__, 0, pmTextPtr -> numLines, myStart, myEnd, myLine, 
             	pmLoc, myLineStarts [myStart], myLineStarts [myEnd], 
-                myLineStarts [myLine], myText);
+                myLineStarts [myLine], myText);*/
+								break;
     	}
     }
     

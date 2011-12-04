@@ -1,0 +1,65 @@
+% The "Passive.dem" program
+% This demonstrates some of the passive widgets such as:
+% Lines, Frames, Labelled Frames, Labels and Pictures.
+import GUI
+
+% We'll need a picture for our Picture widget.  Most likely
+% you would normally have it saved in an external file and
+% use Pic.FileNew to read it into a picture.  For the example
+% program we'll construct it by hand.
+Draw.FillOval (50, 50, 50, 50, blue)
+Draw.FillBox (17, 17, 83, 83, brightred)
+Draw.FillStar (17, 17, 83, 83, brightgreen)
+Draw.FillMapleLeaf (37, 37, 63, 63, brightpurple)
+var pic := Pic.New (0, 0, 100, 100)
+
+View.Set ("graphics:310;335")
+
+% The background must be grey for indented and exdented
+% items to be visible.
+GUI.SetBackgroundColour (grey)
+
+% Now place the widgets.
+% Three lines of the different types with labels
+var line1 := GUI.CreateLine (70, 10, maxx - 10, 10, GUI.LINE)
+var label1 := GUI.CreateLabelFull (60, 10, "Line", 0, 0,
+    GUI.RIGHT + GUI.MIDDLE, 0)
+var line2 := GUI.CreateLine (70, 30, maxx - 10, 30, GUI.INDENT)
+var label2 := GUI.CreateLabelFull (60, 30, "Indent", 0, 0,
+    GUI.RIGHT + GUI.MIDDLE, 0)
+var line3 := GUI.CreateLine (70, 50, maxx - 10, 50, GUI.EXDENT)
+var label3 := GUI.CreateLabelFull (60, 50, "Exdent", 0, 0,
+    GUI.RIGHT + GUI.MIDDLE, 0)
+
+% Now place the frames
+var frame1 := GUI.CreateFrame (10, 70, 100, 120, GUI.LINE)
+var label4 := GUI.CreateLabelFull (10, 70, "Line", 90, 50,
+    GUI.CENTER + GUI.MIDDLE, 0)
+var frame2 := GUI.CreateFrame (110, 70, 200, 120, GUI.INDENT)
+var label5 := GUI.CreateLabelFull (110, 70, "Indent", 90, 50,
+    GUI.CENTER + GUI.MIDDLE, 0)
+var frame3 := GUI.CreateFrame (210, 70, 300, 120, GUI.EXDENT)
+var label6 := GUI.CreateLabelFull (210, 70, "Exdent", 90, 50,
+    GUI.CENTER + GUI.MIDDLE, 0)
+
+% Now place the labelled frames
+var frame4 := GUI.CreateLabelledFrame (10, 140, 100, 190, GUI.LINE, "Line")
+var frame5 := GUI.CreateLabelledFrame (110, 140, 200, 190, GUI.INDENT,
+    "Ident")
+var frame6 := GUI.CreateLabelledFrame (210, 140, 300, 190, GUI.EXDENT,
+    "Exdent")
+
+% Place the picture
+var label7 := GUI.CreateLabel (30, 315, "Picture without merge")
+var pic1 := GUI.CreatePicture (30, 210, pic, false)
+
+#if not _DOS_ then
+    var label8 := GUI.CreateLabel (maxx - 130, 315, "Picture with merge")
+    var pic2 := GUI.CreatePicture (maxx - 130, 210, pic, true)
+#end if
+
+% This loop doesn't do much since none of the widgets have any actions.
+loop
+    exit when GUI.ProcessEvent
+end loop
+

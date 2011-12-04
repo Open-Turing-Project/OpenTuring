@@ -1,0 +1,49 @@
+anyclass in "%oot/support/predefs/anyclass"
+
+"%oot/support/predefs/IntHashMap.tu"
+"%oot/support/predefs/GL.tu"
+
+"%oot/support/predefs/Concurrency.tu"
+"%oot/support/predefs/Config.tu"
+"%oot/support/predefs/Cryptography.tu"
+"%oot/support/predefs/Dialog.tu"
+"%oot/support/predefs/Dir.tu"
+"%oot/support/predefs/Errno.tu"
+"%oot/support/predefs/Error.tu"
+"%oot/support/predefs/Excepts.tu"
+"%oot/support/predefs/File.tu"
+"%oot/support/predefs/Font.tu"
+"%oot/support/predefs/Input.tu"
+"%oot/support/predefs/Joystick.tu"
+"%oot/support/predefs/Keyboard.tu"
+"%oot/support/predefs/Limits.tu"
+"%oot/support/predefs/Math.tu"
+"%oot/support/predefs/Mouse.tu"
+"%oot/support/predefs/Music.tu"
+"%oot/support/predefs/Net.tu"
+"%oot/support/predefs/PC.tu"
+"%oot/support/predefs/Pic.tu"
+"%oot/support/predefs/Rand.tu"
+"%oot/support/predefs/RGB.tu"
+"%oot/support/predefs/Sprite.tu"
+"%oot/support/predefs/Str.tu"
+"%oot/support/predefs/Stream.tu"
+"%oot/support/predefs/Sys.tu"
+"%oot/support/predefs/Time.tu"
+"%oot/support/predefs/Typeconv.tu"
+"%oot/support/predefs/View.tu"
+"%oot/support/predefs/Window.tu"
+
+% Contains routines no longer supported
+"%oot/support/predefs/Obsolete.tu"
+
+% Contains student named versions of routines (all lowercase)
+"%oot/support/predefs/Student.tu"
+
+% Here to prevent errors
+"%oot/support/predefs/Draw.tu"
+"%oot/support/predefs/IniFile.tu"
+"%oot/support/predefs/Text.tu"
+
+% Future expansion (reserving keywords)
+"%oot/support/predefs/Future.tu"
