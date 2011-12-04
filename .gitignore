@@ -8,6 +8,7 @@
 *.so
 *.pdb
 *.exe
+*.lastbuildstate
 
 # OS generated files #
 ######################
