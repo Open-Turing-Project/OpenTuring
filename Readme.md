@@ -82,3 +82,7 @@ To get a fully working release with your changes you must compile both of these.
 ###How Can I Help?
 
 Look in the issues tab. Either fix things or add new features listed there.
+
+###Legal
+
+Open Turing uses the IGL JPEG Library and the libungif library.
