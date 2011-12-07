@@ -1812,9 +1812,9 @@ TOP_BUTTON_DATA RCDATA
 	    	VALUE "LegalCopyright",  "Copyright \251 The Open Turing Project 2011\0"
 	    	VALUE "Comments",        "Environment written by: Tom L. West\0"
 	    	VALUE "CompanyName",     "The Open Turing Project\0"
-	    	VALUE "FileVersion",     "1.0.0\0"
+	    	VALUE "FileVersion",     "1.0.1\0"
 	    	VALUE "ProductName",     "Open Turing for Windows\0"
-	    	VALUE "ProductVersion",  "1.0.0\0"
+	    	VALUE "ProductVersion",  "1.0.1\0"
 	    END
         END
     	BLOCK "VarFileInfo"
