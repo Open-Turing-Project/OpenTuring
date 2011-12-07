@@ -340,7 +340,6 @@ int WINAPI	WinMain (HINSTANCE pmApplicationInstance,
 		EdFile_CombinePath (myCurrentDirectory, "testsuite", 
     			    myOutdir);
 
-		//printf("starting...\n");
 		EdRun_RunProgramNoEditor (myCurrentDirectory,myOutdir,stAutoRunFile);
 		return 0;
     }
@@ -469,7 +468,7 @@ int WINAPI	WinMain (HINSTANCE pmApplicationInstance,
     	return 0;
     }
 
-    if (!gProperties.skipSplashScreen && !stAutoRunPrograms)
+    if (!gProperties.skipSplashScreen)
     {    
     	// Start the splash screen
     	EdSplash_Create (FALSE);
