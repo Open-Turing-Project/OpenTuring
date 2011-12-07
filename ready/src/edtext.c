@@ -210,7 +210,7 @@ static BYTE	stAcceptableChar [] =
 
 // Keywords used in structure completion
 static char		*stCompletionKeywords [] = 
-    {"proc", "procedure", "fcn", "function", "module", 
+    {"body", "proc", "procedure", "fcn", "function", "module", 
      "monitor", "class", "process",
      "if", "for", "loop", "record", "case", "begin", "handler", "union",
      "begin",
@@ -4912,7 +4912,7 @@ static int	MyGetTuringStructure (TextPtr pmTextPtr, int pmLineNum,
 	    	
 	    	// Add the identifier.
 	    	myChar += myLen;
-	    	while (*myChar == ' ')
+	    	while (*myChar == ' ' || *myChar == '*')
 	    	{
 	    	    myChar++;
 	    	    myTextType++;
