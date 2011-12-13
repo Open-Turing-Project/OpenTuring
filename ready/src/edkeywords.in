@@ -5879,6 +5879,13 @@ static char	*stTuringPredefs[] =
      "Print", "Video", "Comm", "Dialog", "Pen", "Brush", "ListBox", "EditBox",
      "CheckBox", "DropBox", "RadioButton", "Button", "Menu",
 
+	 // GL
+
+	 "GL.NewWin","GL,CloseWin","GL.Cls","GL.Update","GL.SetLight",
+	 "GL.PushMatrix","GL.PopMatrix","GL.ClearMatrix",
+	 "GL.Scale","GL.Translate","GL.Rotate",
+	 "GL.DrawLine","GL.DrawFillTriangle","GL.DrawTriangle",
+
      // IniFile
      "IniFile.Open", "IniFile.GetString", "IniFile.GetStringDefault", 
      "IniFile.GetBoolean", "IniFile.GetBooleanDefault", 
@@ -5898,6 +5905,11 @@ static char	*stTuringPredefs[] =
      "Input.getch", "Input.getchar", "Input.hasch", 
      "getch", "getchar", "hasch", 
      
+	 // IntHashMap
+
+	 "IntHashMap.New","IntHashMap.Free",
+	 "IntHashMap.Put","IntHashMap.Get","IntHashMap.Remove",
+
      // Joystick
      "Joystick.GetInfo",
      "joystick1", "joystick2", "joyMax", "joyMin",

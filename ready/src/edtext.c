@@ -87,7 +87,7 @@
 #define CH_ERR				14
 
 // Used by Structure Completion
-#define NAMED_STRUCTURE_KEYWORDS	 9
+#define NAMED_STRUCTURE_KEYWORDS	 8
 #define BEGIN_KEYWORD			17
 #define END_KEYWORD			18
 
@@ -215,7 +215,9 @@ static char		*stCompletionKeywords [] =
      "if", "for", "loop", "record", "case", "begin", "handler", "union",
      "begin",
      "end"};
-     
+
+static char		*stCompletionModifiers [] =
+{"body", "pervasive"};
 /********************/
 /* Static variables */
 /********************/
@@ -243,6 +245,8 @@ static BOOL			stPropertiesChanged;
 
     static int	stNumCompletionKeywords =
         			sizeof (stCompletionKeywords) / sizeof (char *);
+	static int	stNumCompletionModifiers =
+        			sizeof (stCompletionModifiers) / sizeof (char *);
 #endif // #if !defined (CONSOLE) && !defined (TPROLOG)
     
 /******************************/
@@ -4845,7 +4849,7 @@ static int	MyGetTuringStructure (TextPtr pmTextPtr, int pmLineNum,
     	myTextType++;
     }
     
-    strncpy (myToken, myChar, myLen);
+    strncpy (myToken, (char*)myChar, myLen);
     myToken [myLen] = 0;
     myIndent = myChar - pmTextPtr -> text - myPos;
     *pmIndent = myIndent;
@@ -4853,6 +4857,43 @@ static int	MyGetTuringStructure (TextPtr pmTextPtr, int pmLineNum,
     {
 	return CMPLT_INDENT_TOO_DEEP;
     }
+
+	// Match the keyword with modifiers
+    for (cnt = 0 ; cnt < stNumCompletionModifiers ; cnt++)
+    {
+		// structures may have a modifier like "body" or pervasive"
+		if (strcmp (myToken, stCompletionModifiers[cnt]) == 0) {
+			// TODO this code duplicates most of the code before it. Abstraction?
+			// Forward past the "body" keyword
+			myChar += myLen;
+
+			// eat whitespace
+			while (*myChar == ' ')
+			{
+	    		myChar++;
+	    		myTextType++;
+			}
+
+			// Not a keyword? return
+			if (*myTextType != TEXT_KEYWORD)
+			{
+    			return CMPLT_KEYWORD_NOT_FOUND;
+			}
+    
+			// Get the keyword
+			myLen = 0;
+			while (*myTextType == TEXT_KEYWORD)
+			{
+    			myLen++;
+    			myTextType++;
+			}
+
+			strncpy (myToken, (char*)myChar, myLen);
+			myToken [myLen] = 0;
+
+			break; // only one modifier
+		}
+	}
 
     // Match the keyword with structures
     for (cnt = 0 ; cnt < stNumCompletionKeywords ; cnt++)
@@ -4871,7 +4912,7 @@ static int	MyGetTuringStructure (TextPtr pmTextPtr, int pmLineNum,
 	    	
 	    	// Add the identifier.
 	    	myChar += myLen;
-	    	while (*myChar == ' ')
+	    	while (*myChar == ' ' || *myChar == '*')
 	    	{
 	    	    myChar++;
 	    	    myTextType++;

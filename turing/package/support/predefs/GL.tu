@@ -4,7 +4,6 @@ module pervasive GL
 
     external "glgraph_newwin" fcn NewWin (width, height : int) : boolean
     external "glgraph_closewin" proc CloseWin ()
-    %external "glgraph_copytowin" proc Blit (x,y : int)
 
     external "glgraph_cls" proc Cls ()
     external "glgraph_update" proc Update ()
