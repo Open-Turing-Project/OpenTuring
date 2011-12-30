@@ -8,9 +8,9 @@
 *.so
 *.pdb
 *.exe
+*.lastbuildstate
 *.tlog
 *.suo
-
 
 # OS generated files #
 ######################
