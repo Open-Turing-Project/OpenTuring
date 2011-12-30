@@ -786,18 +786,21 @@ void	MDIOPic_DrawPic (PICBUFFER pmPic, int pmX, int pmY, int pmWidth,
     MIOWinInfoPtr	myInfo = MIO_selectedRunWindowInfo;
     BITMAPINFO		*myBitMapInfo;
     void		*myBits;
-    HBITMAP		myBitMap;
+    MDPicInfo	*myBitMap;
+
+	myBitMap = (MDPicInfo*)malloc(sizeof *myBitMap);
     
     myBitMapInfo = (BITMAPINFO *) ((char *) pmPic + sizeof (int));
     myBits = (void *) ((char *) pmPic + * (int *) pmPic);
-    myBitMap = CreateDIBitmap (myInfo -> deviceContext, 
+	myBitMap->bmp = CreateDIBitmap ((HDC)(myInfo -> deviceContext), 
     			       (BITMAPINFOHEADER *) myBitMapInfo, CBM_INIT,
 			       myBits, myBitMapInfo, DIB_RGB_COLORS);
 
     MDIOPic_Draw (myBitMap, NULL, pmX, pmY, pmWidth, pmHeight, 
 		  pmTransparentColour, pmMode);
     
-    DeleteBitmap (myBitMap);
+    DeleteBitmap (myBitMap->bmp);
+	free(myBitMap);
 } // MDIOPic_DrawPic
 
 
