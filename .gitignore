@@ -11,6 +11,7 @@
 *.lastbuildstate
 *.tlog
 *.suo
+*.idb
 
 # OS generated files #
 ######################
@@ -19,6 +20,7 @@ ehthumbs.db
 Icon?
 Thumbs.db
 turing_files.ini
+turing.ini
 
-turing/obj/**/*
-turing/Debug/**/*
+turing/obj/*
+turing/Debug/*
