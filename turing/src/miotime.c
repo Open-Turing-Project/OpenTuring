@@ -91,7 +91,9 @@ static int	MyConvertTimeStrToSeconds (char *pmTimeString);
 /************************************************************************/
 void	MIOTime_Date (OOTstring pmOOTimeStr)
 {
-    MIOTime_SecDate (pmOOTimeStr, MIOTime_Sec ());
+	OOTint epochTime;
+	epochTime = MIOTime_Sec ();
+    MIOTime_SecDate (pmOOTimeStr, epochTime);
 } // MIOTime_Date
 
 
@@ -202,7 +204,7 @@ OOTint	MIOTime_PartsSec (OOTint pmYear, OOTint pmMon, OOTint pmDay,
 /************************************************************************/
 OOTint	MIOTime_Sec (void)
 {
-    return (OOTint) time (NULL);
+    return (OOTint) time ((time_t *)NULL);
 } // MIOTime_Sec
 
 
@@ -218,7 +220,8 @@ void	MIOTime_SecDate (OOTstring pmOOTimeStr, OOTint pmOOTTime)
     }
     else
     {
-	struct tm *myTimeRec = localtime ((time_t *) &pmOOTTime);
+	time_t epochTime = pmOOTTime;
+	struct tm *myTimeRec = localtime ((time_t *) &epochTime);
 	
 	strftime (pmOOTimeStr, DATETIME_STR_LEN + 1, "%d %b %y %H:%M:%S", myTimeRec);
 	
@@ -237,7 +240,8 @@ void	MIOTime_SecParts (OOTint pmOOTTime, OOTint *pmYear, OOTint *pmMon,
 			  OOTint *pmDay, OOTint *pmDOW, OOTint *pmHour, 
 		          OOTint *pmMin, OOTint *pmSec)
 {
-    struct tm	*myTimeRecord = localtime ((time_t *) &pmOOTTime);
+	time_t epochTime = pmOOTTime;
+    struct tm	*myTimeRecord = localtime ((time_t *) &epochTime);
 
     *pmYear = myTimeRecord -> tm_year + 1900;
     *pmMon = myTimeRecord -> tm_mon + 1;
@@ -260,7 +264,8 @@ void	MIOTime_SecParts (OOTint pmOOTTime, OOTint *pmYear, OOTint *pmMon,
 void	MIOTime_SecStr (OOTstring pmString, OOTint pmOOTTime, 
 		        OOTstring pmFormatStr)
 {
-    struct tm	*myTimeRecord = localtime ((time_t *) &pmOOTTime);
+	time_t epochTime = pmOOTTime;
+    struct tm	*myTimeRecord = localtime ((time_t *) &epochTime);
 
     strftime (pmString, STRLEN, pmFormatStr, myTimeRecord);
 } // MIOTime_SecStr
