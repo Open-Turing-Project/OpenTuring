@@ -77,6 +77,7 @@ extern void		EdRun_PropertiesImplementChanges (void);
 extern void		EdRun_CloseAllRunWindows (HWND pmEditWindow);
 extern BOOL		EdRun_Compile (HWND pmWindow, const char *pmPathName, 
 		       		       BOOL pmCompileOnly);
+extern int	EdRun_CreateByteCodeFile (FilePath pmProgramPath,FilePath pmOutputPath);
 extern void		EdRun_CreateEXE (HWND pmTextDisplayWindow, 
 					 FilePath pmPathName, 
 			 		 BOOL pmCloseWindowsOnTerminate,
@@ -123,7 +124,7 @@ extern void		EdRun_NotifyFileSaved (HWND pmTextDisplayWindow);
 extern void		EdRun_NotifyRunWindowOpened (HWND pmRunWindow);
 extern void		EdRun_PauseResumeProgram (BOOL pmActivateSourceWindow,
 						  int pmReason);
-extern void		EdRun_ResetCompiler (HWND pmEditWindow);
+extern void		EdRun_ResetCompiler ();
 extern void		EdRun_SendInfoToStderr (BOOL pmLibErrors, 
 						BOOL pmLibInfo);
 extern void		EdRun_SetStream0Destination (void);
@@ -131,9 +132,7 @@ extern void		EdRun_SetStep (int pmStep);
 extern void		EdRun_SetTraceSpeed (int pmTraceSpeed);
 extern void		EdRun_TestSuite (const char *pmFileName, 
 					 const char *pmOutputDir);
-extern void	EdRun_RunProgramNoEditor (const char *pmTestDirectory, 
-				       const char *pmOutputDirectory,
-				       const char *pmTestFileName);
+extern void	EdRun_RunProgramNoEditor (const char *pmTestDirectory, const char *pmTestFileName);
 extern void		EdRun_ToggleBreakpointVisibility (void);
 extern void		EdRun_ToggleTracing (void);
 

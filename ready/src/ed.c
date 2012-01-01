@@ -52,6 +52,7 @@
 #define OPTION_DISPLAY_HELP_STR		"-?"
 #define OPTION_TESTSUITE		"-testsuite"
 #define OPTION_AUTORUN			"-run"
+#define OPTION_COMPILEFILE			"-compile"
 
 // Argumens for MyProcessCommandLineArguments
 #define PROCESS_OPTIONS			TRUE
@@ -117,9 +118,13 @@ static BOOL		stNoWindow = FALSE;
 // Admin command line option set
 static BOOL		stWantToBecomeAdmin = FALSE;
 
-// Run files on startup
+// Run file on startup
 static BOOL		stAutoRunPrograms = FALSE;
 static FilePath		stAutoRunFile;
+
+// Compile file on startup
+static BOOL		stCompilePrograms = FALSE;
+static FilePath		stCompileFile;
 
 // Test suite command line option set
 static BOOL		stRunningTestSuite = FALSE;
@@ -169,7 +174,7 @@ extern char *tmpnam (char *string);
 /* WinMain						*/
 /*							*/
 /* Called by the system when the program is first run.	*/
-/********************************************************/
+/*********************************** *********************/
 int WINAPI	WinMain (HINSTANCE pmApplicationInstance, 
 			 HINSTANCE pmPrevInstance,
     			 PSTR pmCmdLine, int pmCmdShow)
@@ -334,15 +339,24 @@ int WINAPI	WinMain (HINSTANCE pmApplicationInstance,
     }
 	if (stAutoRunPrograms)
     {
-    	FilePath	myCurrentDirectory, myOutdir;
-    	
+    	FilePath	myCurrentDirectory;
     	EdFile_GetCurrentDirectory (myCurrentDirectory);
-		EdFile_CombinePath (myCurrentDirectory, "testsuite", 
-    			    myOutdir);
-
-		EdRun_RunProgramNoEditor (myCurrentDirectory,myOutdir,stAutoRunFile);
+		EdRun_RunProgramNoEditor (myCurrentDirectory,stAutoRunFile);
 		return 0;
     }
+	if (stCompilePrograms)
+	{
+		int myStatus;
+		FilePath	myBytecodeFile;
+		const char	*myPtr;
+	
+    	strcpy (myBytecodeFile, stCompileFile);
+    	myPtr = EdFile_GetFileSuffix (myBytecodeFile);
+    	strcpy (&myBytecodeFile [myPtr - myBytecodeFile], ".tbc");
+
+		myStatus = EdRun_CreateByteCodeFile (stCompileFile,myBytecodeFile);
+		return 0;
+	}
 
     if (myNumArgs == myNumOptionArgs)
     {
@@ -1743,6 +1757,23 @@ static BOOL	MyProcessCommandLineArguments (int pmNumArgs, char *pmArgs[],
     	    	}
     	    	pmArgs [cnt] [0] = 0;
     	    }
+			else if (strcmp (myArgument, OPTION_COMPILEFILE) == 0)
+    	    {
+    	    	if (pmProcessOptions)
+    	    	{
+					stCompilePrograms = TRUE;
+    	    	}
+    	    	pmArgs [cnt] [0] = 0;
+				cnt++;
+				if (cnt == pmNumArgs)
+				{
+						EdGUI_Message1 (NULL, 0, IDS_CMD_LINE_ERR_TITLE,
+							IDS_NO_TESTSUITE_FILE);
+    	    				return FALSE;
+				}
+				strcpy (stCompileFile, pmArgs [cnt]);
+    	    			pmArgs [cnt] [0] = 0;
+			}
 			else if (strcmp (myArgument, OPTION_AUTORUN) == 0)
     	    {
     	    	if (pmProcessOptions)
@@ -1829,7 +1860,7 @@ static BOOL	MyProcessCommandLineArguments (int pmNumArgs, char *pmArgs[],
 	        EdGUI_Message1 (NULL, 0, IDS_CMD_LINE_HELP_TITLE,
 	            IDS_CMD_LINE_HELP_MESSAGE, myApplicationName,
 	            OPTION_LOG_STR, OPTION_WRITE_ALL_PREFS_STR, 
-	            OPTION_DISPLAY_HELP_STR);
+				OPTION_DISPLAY_HELP_STR,OPTION_AUTORUN,OPTION_COMPILEFILE);
     	    	pmArgs [cnt] [0] = 0;
     	    	return FALSE;
     	    }
@@ -1838,7 +1869,8 @@ static BOOL	MyProcessCommandLineArguments (int pmNumArgs, char *pmArgs[],
     	    	// Unrecognized option
 	        EdGUI_Message1 (NULL, 0, IDS_CMD_LINE_ERR_TITLE,
 	            IDS_UNKNOWN_CMD_LINE_OPTION, pmArgs [cnt], OPTION_LOG_STR, 
-	            OPTION_WRITE_ALL_PREFS_STR, OPTION_DISPLAY_HELP_STR);
+	            OPTION_WRITE_ALL_PREFS_STR, OPTION_DISPLAY_HELP_STR,
+				OPTION_AUTORUN,OPTION_COMPILEFILE);
     	    	pmArgs [cnt] [0] = 0;
     	    	return FALSE;
     	    }

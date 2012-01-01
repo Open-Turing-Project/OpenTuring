@@ -12,6 +12,8 @@
 *.tlog
 *.suo
 *.idb
+*.tbc
+*.user
 
 # OS generated files #
 ######################

@@ -198,6 +198,10 @@ static void	MySetTuringPointers (const char *pmPathName, HWND pmEditWindow,
 				 HWND pmTextDisplayWindow, TextPtr pmTextPtr,
 				 void *pmDummy);
 static void	MyStatusExecuting (const char *pmClassName, int pmStage);
+static int	MyWriteByteCode (FileNoType pmProgramFileNo, long pmTuringFileDesciptor, 
+			 BOOL pmCloseWindowsOnTerminate, 
+			 BOOL pmDisplayRunWithArgs, BOOL pmCenterOutputWindow, 
+			 BOOL pmStopUserClose);
 
 /***********************/
 /* External procedures */
@@ -336,8 +340,9 @@ void	EdRun_CloseAllRunWindows (HWND pmEditWindow)
 BOOL	EdRun_Compile (HWND pmTextDisplayWindow, const char *dummy, 
 		       BOOL pmCompileOnly)
 {
-    TuringErrorPtr	myError;    
-    int			myMessages, myErrors, myWarnings, myNumFiles;
+    TuringErrorPtr	myError;   
+	OOTint myErrors;
+    int			myMessages, myWarnings, myNumFiles;
     FilePath		mySourceDirectory;
 
     //
@@ -462,6 +467,107 @@ BOOL	EdRun_Compile (HWND pmTextDisplayWindow, const char *dummy,
     				              pmCompileOnly);
 } // EdRun_Compile
 
+/************************************************************************/
+/* EdRun_CreateByteCodeFile							*/
+/* Creates a bytecode file to be read by the prolog with the -file option. */
+/* Returns an error code */
+/************************************************************************/
+int	EdRun_CreateByteCodeFile (FilePath pmProgramPath,FilePath pmOutputPath)
+{
+    long		myTuringFileDesciptor;
+	FileNoType	myProgramFileNumber;
+
+	TextHandleType	myDummyTuringTextHandle;
+    SizePtrType		myDummyTuringSizePtr;
+    ResultCodeType	myResult;
+
+    int			myStatus = -1;
+	FilePath mySourceDirectory;
+
+	TuringErrorPtr	myError;   
+	OOTint myErrors;
+
+	// Make certain the test file exists
+    if (!EdFile_FileExists (pmProgramPath))
+    {
+	// Test file not found
+	EdGUI_Message1 (NULL, MB_ICONEXCLAMATION, 
+	    IDS_TEST_SUITE_ERROR_TITLE, 
+	    IDS_TEST_SUITE_FILE_DOESNT_EXIST, 0,
+		"<none>", pmProgramPath);
+	return 1;
+    }
+
+	FileManager_OpenNamedHandle (pmProgramPath, &myProgramFileNumber, 
+    				     &myDummyTuringTextHandle, &myDummyTuringSizePtr,
+    				     &myResult);
+    
+    // Set the base source directory to be the directory 
+    // in which the source file was located.
+    EdFile_GetDirectoryFromPath (pmProgramPath, mySourceDirectory);
+    FileManager_ChangeDirectory ((OOTstring) mySourceDirectory);
+
+    // Compile the program
+    Language_CompileProgram ("", myProgramFileNumber, &myError, &myErrors);
+    
+    if (myError != NULL)
+    {
+		int		myMessages = 0;
+		printf("Syntax Errors:\n");
+		while (myError != NULL)
+		{
+			WORD	myErrorTuringFileNo;
+			FilePath	myErrorPathName;
+			SrcPosition	*mySrc;
+	    
+			myErrorTuringFileNo = myError -> srcPos.fileNo;
+			FileManager_FileName (myErrorTuringFileNo, myErrorPathName);
+			mySrc = &(myError -> srcPos);
+	    
+			if (mySrc -> tokLen > 0)
+			{
+			printf ("Line %d [%d - %d] of %s: %s\n",
+				mySrc -> lineNo, mySrc -> linePos + 1,
+				mySrc -> linePos + 1 + mySrc -> tokLen, 
+				EdFile_GetFileName (myErrorPathName), myError -> text);
+			}
+			else
+			{
+			printf ( 
+				"Line %d [%d] of %s: %s\n",
+				mySrc -> lineNo, mySrc -> linePos + 1,
+				EdFile_GetFileName (myErrorPathName), myError -> text);
+			}
+			myError = myError -> next;
+			myMessages++;
+		}
+		return myMessages;
+	}
+
+    // Open the executable file
+    TL_TLI_TLIOF (16, pmOutputPath, &myTuringFileDesciptor);
+    
+    if (myTuringFileDesciptor <= 0)
+    {
+    	EdGUI_Message1 (NULL, 0, IDS_CREATE_EXE_FAILED_TITLE,
+    	    	        IDS_CANT_CREATE_EXE, pmProgramPath);
+        return 1;
+    }
+
+    myStatus = MyWriteByteCode(myProgramFileNumber,myTuringFileDesciptor,FALSE,FALSE,FALSE,FALSE);
+
+	if (myStatus != 0)
+    {
+    	EdGUI_Message1 (NULL, 0, IDS_CREATE_EXE_FAILED_TITLE,
+    	    	        IDS_UNABLE_TO_WRITE_EXE, pmProgramPath, 4);
+        return 1;
+    }
+    
+    TL_TLI_TLICL (myTuringFileDesciptor);
+
+	return 0; // no errors
+} // EdRun_CreateByteCodeFile
+
 
 /************************************************************************/
 /* EdRun_CreateEXE							*/
@@ -479,8 +585,6 @@ void	EdRun_CreateEXE (HWND pmTextDisplayWindow, FilePath pmPathName,
     FilePath		myPrologPath;
     int			myNoErrors;
     ErrorBuffer		myErrorBuffer;
-    TuringErrorPtr	myError;    
-    int			myErrors;
     // Used for setting the offset
     int			myPrologSize = 0;
     char		myChar;
@@ -569,92 +673,14 @@ void	EdRun_CreateEXE (HWND pmTextDisplayWindow, FilePath pmPathName,
 
     CloseHandle (myPrologHandle);
 
-    //
-    // First write the header.
-    //
-    TL_TLI_TLIWR (OBJECT_FILE_HEADER, sizeof (OBJECT_FILE_HEADER), &myStatus,
-    		  myTuringFileDesciptor);
-    if (myStatus != 0)
-    {
-    	EdGUI_Message1 (pmTextDisplayWindow, 0, IDS_CREATE_EXE_FAILED_TITLE,
-    	    	        IDS_UNABLE_TO_WRITE_EXE, pmPathName, 1);
-        EdWin_ShowStatus (pmTextDisplayWindow, "Create EXE cancelled");
-        return;
-    }
-
-    //
-    // Then write TProlog specific preferences      
-    //
-    TL_TLI_TLIWR (&pmCloseWindowsOnTerminate, sizeof (BOOL), &myStatus,
-    		  myTuringFileDesciptor);
-    if (myStatus != 0)
-    {
-    	EdGUI_Message1 (pmTextDisplayWindow, 0, IDS_CREATE_EXE_FAILED_TITLE,
-    	    	        IDS_UNABLE_TO_WRITE_EXE, pmPathName, 2);
-        EdWin_ShowStatus (pmTextDisplayWindow, "Create EXE cancelled");
-        return;
-    }
-    TL_TLI_TLIWR (&pmDisplayRunWithArgs, sizeof (BOOL), &myStatus,
-    		  myTuringFileDesciptor);
-    if (myStatus != 0)
-    {
-    	EdGUI_Message1 (pmTextDisplayWindow, 0, IDS_CREATE_EXE_FAILED_TITLE,
-    	    	        IDS_UNABLE_TO_WRITE_EXE, pmPathName, 3);
-        EdWin_ShowStatus (pmTextDisplayWindow, "Create EXE cancelled");
-        return;
-    }
-    TL_TLI_TLIWR (&pmCenterOutputWindow, sizeof (BOOL), &myStatus,
-    		  myTuringFileDesciptor);
-    if (myStatus != 0)
+    myStatus = MyWriteByteCode(stSourceFileNo,myTuringFileDesciptor,pmCloseWindowsOnTerminate,pmDisplayRunWithArgs,pmCenterOutputWindow,pmStopUserClose);
+	if (myStatus != 0)
     {
     	EdGUI_Message1 (pmTextDisplayWindow, 0, IDS_CREATE_EXE_FAILED_TITLE,
     	    	        IDS_UNABLE_TO_WRITE_EXE, pmPathName, 4);
         EdWin_ShowStatus (pmTextDisplayWindow, "Create EXE cancelled");
         return;
     }
-    TL_TLI_TLIWR (&pmStopUserClose, sizeof (BOOL), &myStatus,
-    		  myTuringFileDesciptor);
-    if (myStatus != 0)
-    {
-    	EdGUI_Message1 (pmTextDisplayWindow, 0, IDS_CREATE_EXE_FAILED_TITLE,
-    	    	        IDS_UNABLE_TO_WRITE_EXE, pmPathName, 5);
-        EdWin_ShowStatus (pmTextDisplayWindow, "Create EXE cancelled");
-        return;
-    }
-    
-    // 
-    // Then write the environment preferences
-    //
-    TL_TLI_TLIWR (&gProperties, sizeof (Properties), &myStatus,
-    		  myTuringFileDesciptor);
-    if (myStatus != 0)
-    {
-    	EdGUI_Message1 (pmTextDisplayWindow, 0, IDS_CREATE_EXE_FAILED_TITLE,
-    	    	        IDS_UNABLE_TO_WRITE_EXE, pmPathName, 6);
-        EdWin_ShowStatus (pmTextDisplayWindow, "Create EXE cancelled");
-        return;
-    }
-    
-    //
-    // Then write another header (just to make certain we're synced)
-    //
-    TL_TLI_TLIWR (OBJECT_FILE_HEADER, sizeof (OBJECT_FILE_HEADER), &myStatus,
-    		  myTuringFileDesciptor);
-    if (myStatus != 0)
-    {
-    	EdGUI_Message1 (pmTextDisplayWindow, 0, IDS_CREATE_EXE_FAILED_TITLE,
-    	    	        IDS_UNABLE_TO_WRITE_EXE, pmPathName, 7);
-        EdWin_ShowStatus (pmTextDisplayWindow, "Create EXE cancelled");
-        return;
-    }
-
-    // 
-    // Then write the object files
-    //
-    EdRun_ResetCompiler (pmTextDisplayWindow);
-    Language_WriteObjectFile ("", stSourceFileNo, &myError, &myErrors,
-    	myTuringFileDesciptor);
-    EdRun_ResetCompiler (pmTextDisplayWindow);
     
     TL_TLI_TLICL (myTuringFileDesciptor);
     
@@ -1755,11 +1781,10 @@ void	EdRun_PauseResumeProgram (BOOL pmActivateSourceWindow, int pmReason)
 /************************************************************************/
 /* EdRun_ResetCompiler							*/
 /************************************************************************/
-void	EdRun_ResetCompiler (HWND pmEditWindow)
+void	EdRun_ResetCompiler ()
 {
     Language_Reset ();
     MySetPreprocessorSymbols ();
-    EdWin_ShowStatus (pmEditWindow, "Compiler reset");
 } // EdRun_ResetCompiler
 
 
@@ -2044,9 +2069,7 @@ void	EdRun_TestSuite (const char *pmDirectoryName, const char *pmOutputDir)
 /*									*/
 /* Run a program not from the editor. Used for command line execution.					*/
 /************************************************************************/
-void	EdRun_RunProgramNoEditor (const char *pmTestDirectory, 
-				       const char *pmOutputDirectory,
-				       const char *pmTestFileName)
+void	EdRun_RunProgramNoEditor (const char *pmTestDirectory, const char *pmTestFileName)
 {
     FilePath		myTestPathName, mySourceDirectory;
     HWND		myEditWindow, myTextDisplayWindow;
@@ -2067,26 +2090,6 @@ void	EdRun_RunProgramNoEditor (const char *pmTestDirectory,
 	    IDS_TEST_SUITE_ERROR_TITLE, 
 	    IDS_TEST_SUITE_FILE_DOESNT_EXIST, 0,
 		"<none>", myTestPathName);
-	return;
-    }
-    
-    // Make certain output directory is specified
-    if (pmOutputDirectory [0] == 0)
-    {
-	EdGUI_Message1 (NULL, MB_ICONEXCLAMATION, 
-	    IDS_TEST_SUITE_ERROR_TITLE, 
-	    IDS_TEST_SUITE_NO_OUTPUT_DIR, 0,
-	    "<none>", myTestPathName);
-	return;
-    }
-    
-    // Create the output directories as necessary
-    if (!EdFile_CreateDirectoriesIfNecessary (pmOutputDirectory))
-    {
-	EdGUI_Message1 (NULL, MB_ICONEXCLAMATION, 
-	    IDS_TEST_SUITE_ERROR_TITLE, 
-	    IDS_TEST_SUITE_NO_CREATE_DIR, 0,
-	    "<none>", pmOutputDirectory);
 	return;
     }
     
@@ -2269,9 +2272,9 @@ void	EdRun_RunProgramNoEditor (const char *pmTestDirectory,
 	}
 	
 	if (!MIO_Init_Run (pmTestFileName, 
-		      pmTestDirectory, 
+		      NULL, 
 		      FALSE, 
-		      pmOutputDirectory, 
+		      NULL, 
 		      FALSE, FALSE,
 		      myExecutionDirectory,		// Execution directory
 		      FALSE, 				// Graphics Mode
@@ -2288,7 +2291,7 @@ void	EdRun_RunProgramNoEditor (const char *pmTestDirectory,
 		      TRUE,				// Allow Sys.Exec
 		      TRUE,				// Allow Music
 		      0,				// PP I/O Port
-		      TRUE))				// A test program
+		      FALSE))				// A test program
 	{
 	    return;
 	}
@@ -2805,6 +2808,83 @@ static void CALLBACK 	MyTimerProcedure (UINT pmID, UINT pmMsg, DWORD pmWindow,
     PostMessage ((HWND) pmWindow, WM_TIMER, TURING_TIMER, (LPARAM) NULL);
 } // MyTimerProcedure
 
+// Writes bytecode to a file. Used for EXE creation and writing bytecode files
+static int	MyWriteByteCode (FileNoType pmProgramFileNo, long pmTuringFileDesciptor, 
+			 BOOL pmCloseWindowsOnTerminate, 
+			 BOOL pmDisplayRunWithArgs, BOOL pmCenterOutputWindow, 
+			 BOOL pmStopUserClose)
+{
+	OOTint			myStatus = -1;
+	TuringErrorPtr	myError;
+	int			myErrors;
+	//
+    // First write the header.
+    //
+    TL_TLI_TLIWR (OBJECT_FILE_HEADER, sizeof (OBJECT_FILE_HEADER), &myStatus,
+    		  pmTuringFileDesciptor);
+    if (myStatus != 0)
+    {
+    	return 1;
+    }
+
+    //
+    // Then write TProlog specific preferences      
+    //
+    TL_TLI_TLIWR (&pmCloseWindowsOnTerminate, sizeof (BOOL), &myStatus,
+    		  pmTuringFileDesciptor);
+    if (myStatus != 0)
+    {
+    	return 1;
+    }
+    TL_TLI_TLIWR (&pmDisplayRunWithArgs, sizeof (BOOL), &myStatus,
+    		  pmTuringFileDesciptor);
+    if (myStatus != 0)
+    {
+    	return 1;
+    }
+    TL_TLI_TLIWR (&pmCenterOutputWindow, sizeof (BOOL), &myStatus,
+    		  pmTuringFileDesciptor);
+    if (myStatus != 0)
+    {
+    	return 1;
+    }
+    TL_TLI_TLIWR (&pmStopUserClose, sizeof (BOOL), &myStatus,
+    		  pmTuringFileDesciptor);
+    if (myStatus != 0)
+    {
+    	return 1;
+    }
+    
+    // 
+    // Then write the environment preferences
+    //
+    TL_TLI_TLIWR (&gProperties, sizeof (Properties), &myStatus,
+    		  pmTuringFileDesciptor);
+    if (myStatus != 0)
+    {
+    	return 1;
+    }
+    
+    //
+    // Then write another header (just to make certain we're synced)
+    //
+    TL_TLI_TLIWR (OBJECT_FILE_HEADER, sizeof (OBJECT_FILE_HEADER), &myStatus,
+    		  pmTuringFileDesciptor);
+    if (myStatus != 0)
+    {
+        return 1;
+    }
+
+    // 
+    // Then write the object files
+    //
+    EdRun_ResetCompiler ();
+    Language_WriteObjectFile ("", pmProgramFileNo, &myError, &myErrors,
+    	pmTuringFileDesciptor);
+    EdRun_ResetCompiler ();
+
+	return 0;
+}
 
 /*********************/
 /* Static procedures */

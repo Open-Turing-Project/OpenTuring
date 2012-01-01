@@ -1849,7 +1849,7 @@ static BOOL	MyCommandHandler (HWND pmEditWindow, short pmCommand)
 	    break;
 	case COMMAND_COMPILER_RESET:
 	    EdFail_AddMessage (NORMAL, "CMD: COMMAND_COMPILER_RESET");
-	    EdRun_ResetCompiler (pmEditWindow);
+	    EdRun_ResetCompiler ();
 	    break;
 	case COMMAND_CLOSE_ALL_RUN_WIN:
 	    EdFail_AddMessage (NORMAL, "CMD: COMMAND_CLOSE_ALL_RUN_WIN");

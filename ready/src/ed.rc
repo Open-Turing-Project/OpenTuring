@@ -516,7 +516,7 @@ STRINGTABLE
     IDS_INIT_FAILURE_MESSAGE		"[ENVIRONMENT] was unable to initialize itself.\n[ENVIRONMENT] will not be started.\nFor technical support, call (416) 978-8363"
     IDS_CMD_LINE_FAILURE_MESSAGE	"[ENVIRONMENT] is in beginner mode\nOnly one file can be open at a time\nIgnoring command line file names beyond the first"
     IDS_UNABLE_TO_OPEN_WINDOW		"[ENVIRONMENT] was unable to open an editor window.\n[ENVIRONMENT] will not be started.\nFor technical support, call (416) 978-8363"
-    IDS_CMD_LINE_HELP_MESSAGE		"Usage: %1 [%2] [%3] [%4] [file]\n%2  Turn on logging\n%3  Write out all preferences to preferences file\n%4  Display command line options\n[file] Name of file to open"
+    IDS_CMD_LINE_HELP_MESSAGE		"Usage: %1 [%2] [%3] [%4] [%5] [%6] [file]\n%2  Turn on logging\n%3  Write out all preferences to preferences file\n%4  Display command line options\n%5 Run a turing file from the command line\n%6 Compile a turing file to a .tbc file which can be run when the prolog exe is passed the -file option\n[file] Name of file to open"
     IDS_OUT_OF_TEXT_MEM_MESSAGE		"Not enough memory to enter text. Try\nquitting any open applications or exiting\nand restarting [ENVIRONMENT]."
     IDS_NO_MEM_FOR_UNDO_MESSAGE		"Not enough memory to undo operation. Try\nquitting any open applications or exiting\nand restarting [ENVIRONMENT]."
     IDS_UNKNOWN_CMD_LINE_OPTION		"Unrecognized option\noption = ""%1""\nLegal options: ""%2"", ""%3"" and ""%4"""
