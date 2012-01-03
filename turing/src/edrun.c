@@ -481,7 +481,7 @@ int	EdRun_CreateByteCodeFile (FilePath pmProgramPath,FilePath pmOutputPath)
     SizePtrType		myDummyTuringSizePtr;
     ResultCodeType	myResult;
 
-    int			myStatus = -1;
+    OOTint			myStatus = -1;
 	FilePath mySourceDirectory;
 
 	TuringErrorPtr	myError;   
@@ -509,11 +509,23 @@ int	EdRun_CreateByteCodeFile (FilePath pmProgramPath,FilePath pmOutputPath)
 
     // Compile the program
     Language_CompileProgram ("", myProgramFileNumber, &myError, &myErrors);
+
+	// Open the executable file
+    TL_TLI_TLIOF (16, pmOutputPath, &myTuringFileDesciptor);
     
     if (myError != NULL)
     {
 		int		myMessages = 0;
-		printf("Syntax Errors:\n");
+		char	msgBuffer[1024];
+		
+		// error header
+		TL_TLI_TLIWR (OBJECT_FILE_ERROR_HEADER, sizeof (OBJECT_FILE_ERROR_HEADER), &myStatus,
+    		  myTuringFileDesciptor);
+		if (myStatus != 0)
+		{
+    		return 1;
+		}
+
 		while (myError != NULL)
 		{
 			WORD	myErrorTuringFileNo;
@@ -526,26 +538,36 @@ int	EdRun_CreateByteCodeFile (FilePath pmProgramPath,FilePath pmOutputPath)
 	    
 			if (mySrc -> tokLen > 0)
 			{
-			printf ("Line %d [%d - %d] of %s: %s\n",
-				mySrc -> lineNo, mySrc -> linePos + 1,
-				mySrc -> linePos + 1 + mySrc -> tokLen, 
-				EdFile_GetFileName (myErrorPathName), myError -> text);
+				sprintf (msgBuffer,"\r\nLine %d [%d - %d] of %s: %s",
+					mySrc -> lineNo, mySrc -> linePos + 1,
+					mySrc -> linePos + 1 + mySrc -> tokLen, 
+					EdFile_GetFileName (myErrorPathName), myError -> text);
 			}
 			else
 			{
-			printf ( 
-				"Line %d [%d] of %s: %s\n",
-				mySrc -> lineNo, mySrc -> linePos + 1,
-				EdFile_GetFileName (myErrorPathName), myError -> text);
+				sprintf (msgBuffer, 
+					"\r\nLine %d [%d] of %s: %s",
+					mySrc -> lineNo, mySrc -> linePos + 1,
+					EdFile_GetFileName (myErrorPathName), myError -> text);
 			}
+
+			TL_TLI_TLIWR (msgBuffer, strlen(msgBuffer), &myStatus,
+    		  myTuringFileDesciptor);
+			if (myStatus != 0)
+			{
+    			return 1;
+			}
+
 			myError = myError -> next;
 			myMessages++;
 		}
+
+		// close the file before returning
+		TL_TLI_TLICL (myTuringFileDesciptor);
+
 		return myMessages;
 	}
 
-    // Open the executable file
-    TL_TLI_TLIOF (16, pmOutputPath, &myTuringFileDesciptor);
     
     if (myTuringFileDesciptor <= 0)
     {

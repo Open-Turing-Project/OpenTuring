@@ -273,7 +273,12 @@ int WINAPI	WinMain (HINSTANCE pmApplicationInstance,
         return 0;
     }
     myObjectFileHeader [sizeof (OBJECT_FILE_HEADER)-1] = 0;
-    if (strcmp (myObjectFileHeader, OBJECT_FILE_HEADER) != 0)
+
+	if (strcmp (myObjectFileHeader, OBJECT_FILE_ERROR_HEADER) == 0) {
+		EdGUI_Message1 (NULL, 0, IDS_TPROLOG_FILE_READ_FAILED_TITLE,
+    	    	        IDS_TPROLOG_COMPILE_FAIL, myFileName);
+        return 0;
+	} else if (strcmp (myObjectFileHeader, OBJECT_FILE_HEADER) != 0)
     {
     	EdGUI_Message1 (NULL, 0, IDS_TPROLOG_FILE_READ_FAILED_TITLE,
     	    	        IDS_TPROLOG_BAD_HEADER_MATCH, myFileName, 1);

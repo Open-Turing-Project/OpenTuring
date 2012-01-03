@@ -20,6 +20,7 @@
 /* Constants */
 /*************/
 #define OBJECT_FILE_HEADER	"TWEST"
+#define OBJECT_FILE_ERROR_HEADER	"ERROR"
 #define OFFSET_STRING		"HOLTSOFT"
 
 /*********/

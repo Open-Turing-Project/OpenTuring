@@ -38,6 +38,7 @@ STRINGTABLE
     IDS_TPROLOG_ARG_TOO_LONG		"Command line argument too long"
     IDS_TPROLOG_UNTERMINATED_QUOTE	"Unterminated quotation mark"
     IDS_TPROLOG_OFFSET_NOT_SET		"The data offset has not been set on this executable.\nThis executable must be recreated from within Turing."
+	IDS_TPROLOG_COMPILE_FAIL	"The file ""%1"" did not compile correctly. Open the file in a text editor to view the errors."
 }
 
 
