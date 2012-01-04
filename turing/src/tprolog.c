@@ -126,6 +126,8 @@ static int	MyGetMaxStackSize (void);
 static BOOL	MyInitializeGlobals (HINSTANCE pmApplicationInstance);
 static BOOL	MyInitializeWindowClass (void);
 static void	MyProcessWaitingEvents (BOOL pmGetAtLeastOneEvent);
+static int	MyGetDirectoryFromPath (const char *pmPath, 
+						     char *pmDirectory);
 
 
 /***********************/
@@ -224,6 +226,15 @@ int WINAPI	WinMain (HINSTANCE pmApplicationInstance,
     	    	strcpy (myFileName, strrchr (pmCmdLine, '\\') + 1);
     	    }
     	    strcpy (myFilePath, &pmCmdLine [6]);
+
+			// resource gets must be based from the bytecode file
+			myStatus = MyGetDirectoryFromPath (myFilePath, stStartupDirectory);
+			if (myStatus != 0)
+			{
+    			EdGUI_Message1 (NULL, 0, IDS_TPROLOG_APPLICATION_NAME,
+    	    					IDS_TPROLOG_CANT_OPEN_OBJECT_FILE, myFileName);
+				return 0;
+			}
     	}
 
 	if (strncmp (pmCmdLine, "-Debug", 6) == 0)
@@ -1190,6 +1201,24 @@ static BOOL	MyInitializeGlobals (HINSTANCE pmApplicationInstance)
     return TRUE;
 } // MyInitializeGlobals
 
+/************************************************************************/
+/* MyGetDirectoryFromPath						*/
+/************************************************************************/
+static int	MyGetDirectoryFromPath (const char *pmPath, char *pmDirectory)
+{
+    char	*myPtr;
+    
+    strcpy (pmDirectory, pmPath);
+    myPtr = strrchr (pmDirectory, '\\');
+    if (myPtr == NULL)
+    {
+    	// ERROR! No backslash in pathname!
+    	return 1;
+    }
+    myPtr++;
+    *myPtr = 0;
+	return 0;
+} // EdFile_GetDirectoryFromPath
 
 /************************************************************************/
 /* MyInitializeWindowClass						*/

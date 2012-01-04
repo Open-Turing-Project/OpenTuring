@@ -130,7 +130,7 @@ STRINGTABLE
     IDS_JAVA_KEYWORD_LOOKUP		"keyword lookup.txt"
     IDS_TURING_KEYWORD_LOOKUP		"keyword lookup.txt"
     IDS_JAVA_EXE_PROLOG			"JavaEXEProlog.prg"
-    IDS_TURING_EXE_PROLOG		"TuringEXEProlog.prg"
+    IDS_TURING_EXE_PROLOG		"TuringEXEProlog.exe"
     IDS_JDB_DLL				"edjdll.dll"
     IDS_EXAMPLES_FILE			"examples.txt"
     IDS_JAVA_EXAMPLES_DIR		"Java Examples"

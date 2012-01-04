@@ -14,6 +14,8 @@
 *.idb
 *.tbc
 *.user
+*.res
+*.cache
 
 # OS generated files #
 ######################
@@ -21,8 +23,11 @@
 ehthumbs.db
 Icon?
 Thumbs.db
+
 turing_files.ini
 turing.ini
+
+turing/vc projects/BasicTest.t
 
 turing/obj/*
 turing/Debug/*

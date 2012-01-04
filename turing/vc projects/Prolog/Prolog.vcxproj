@@ -56,7 +56,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>copy ..\..\Debug\Prolog.exe ..\..\test\support\bin\TuringEXEProlog.prg</Command>
+      <Command>copy ..\..\Debug\Prolog.exe ..\..\test\support\bin\TuringEXEProlog.exe</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
