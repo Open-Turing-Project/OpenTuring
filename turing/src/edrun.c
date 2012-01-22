@@ -538,17 +538,17 @@ int	EdRun_CreateByteCodeFile (FilePath pmProgramPath,FilePath pmOutputPath)
 	    
 			if (mySrc -> tokLen > 0)
 			{
-				sprintf (msgBuffer,"\r\nLine %d [%d - %d] of %s: %s",
+				sprintf (msgBuffer,"\r\nLine %d [%d - %d] of (%s): %s",
 					mySrc -> lineNo, mySrc -> linePos + 1,
 					mySrc -> linePos + 1 + mySrc -> tokLen, 
-					EdFile_GetFileName (myErrorPathName), myError -> text);
+					myErrorPathName, myError -> text);
 			}
 			else
 			{
 				sprintf (msgBuffer, 
-					"\r\nLine %d [%d] of %s: %s",
+					"\r\nLine %d [%d] of (%s): %s",
 					mySrc -> lineNo, mySrc -> linePos + 1,
-					EdFile_GetFileName (myErrorPathName), myError -> text);
+					myErrorPathName, myError -> text);
 			}
 
 			TL_TLI_TLIWR (msgBuffer, strlen(msgBuffer), &myStatus,

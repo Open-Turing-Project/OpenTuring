@@ -161,6 +161,8 @@ int WINAPI	WinMain (HINSTANCE pmApplicationInstance,
     MMRESULT	myTimer;
     HWND	myDummyWindow;
 
+	FilePath myCurrentDirectory;
+
     //
     // Initialize Turing modules
     //
@@ -212,6 +214,7 @@ int WINAPI	WinMain (HINSTANCE pmApplicationInstance,
     //
     strcpy (myFileName, stApplicationName);
     strcpy (myFilePath, stApplicationPath);
+	strcpy (myCurrentDirectory, stStartupDirectory);
     if (pmCmdLine [0] != 0)
     {
     	if (strncmp (pmCmdLine, "-file ", 6) == 0)
@@ -225,22 +228,36 @@ int WINAPI	WinMain (HINSTANCE pmApplicationInstance,
     	    {
     	    	strcpy (myFileName, strrchr (pmCmdLine, '\\') + 1);
     	    }
-    	    strcpy (myFilePath, &pmCmdLine [6]);
+
+			// is the path quoted? Then skip the quotes.
+			if (pmCmdLine [6] == '"') {
+				// make sure to remove closing quote
+				pmCmdLine[strlen(pmCmdLine) - 1] = 0;
+				// on the file name too
+				myFileName[strlen(myFileName) - 1] = 0;
+				strcpy (myFilePath, &pmCmdLine [7]);
+			} else {
+    			strcpy (myFilePath, &pmCmdLine [6]);
+			}
+
+			// if the file name ends with .tbc, replace it with the original
+			if(strcmp(&myFileName[strlen(myFileName) - 4],".tbc") == 0) {
+				// .tbc minus 2 chars = .t
+				myFileName[strlen(myFileName) - 2] = 0;
+			}
 
 			// resource gets must be based from the bytecode file
-			myStatus = MyGetDirectoryFromPath (myFilePath, stStartupDirectory);
+			myStatus = MyGetDirectoryFromPath (myFilePath, myCurrentDirectory);
 			if (myStatus != 0)
 			{
     			EdGUI_Message1 (NULL, 0, IDS_TPROLOG_APPLICATION_NAME,
     	    					IDS_TPROLOG_CANT_OPEN_OBJECT_FILE, myFileName);
 				return 0;
 			}
-    	}
-
-	if (strncmp (pmCmdLine, "-Debug", 6) == 0)
-	{
-	    DebugBreak ();
-	}
+    	} else if (strncmp (pmCmdLine, "-Debug", 6) == 0)
+		{
+			DebugBreak ();
+		}
     }
 
     
@@ -254,7 +271,7 @@ int WINAPI	WinMain (HINSTANCE pmApplicationInstance,
     if (myTuringFileDesciptor <= 0)
     {
     	EdGUI_Message1 (NULL, 0, IDS_TPROLOG_APPLICATION_NAME,
-    	    	        IDS_TPROLOG_CANT_OPEN_OBJECT_FILE, myFileName);
+    	    	        IDS_TPROLOG_CANT_OPEN_OBJECT_FILE, myFilePath);
         return 0;
     }
     
@@ -462,7 +479,7 @@ int WINAPI	WinMain (HINSTANCE pmApplicationInstance,
     		       (myRunArgs.outputRedirection == ARGS_OUT_PRINTER_SCREEN)),
     		      ((myRunArgs.outputRedirection == ARGS_OUT_PRINTER) ||
     		       (myRunArgs.outputRedirection == ARGS_OUT_PRINTER_SCREEN)),
-    		      stStartupDirectory,		// Execution directory
+    		      myCurrentDirectory,		// Execution directory
     		      gProperties.useGraphicsMode, 	// Graphics Mode
     		      gProperties.runConsoleFontName, 	// Run window font name
     		      myFontSize, 			// Run window font size
