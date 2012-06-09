@@ -1,0 +1,8744 @@
+Luke_Stackwalker_Data_(LSD)_file_version 2
+Threads 4
+Thread_ID  300
+Total_Samples 1390
+Function_samples 5
+KernelTime 80
+UserTime 0
+RunningTime 40568
+BaseThreadStart
+
+kernel32
+0
+0
+0
+MixerCallbackThread
+
+wdmaud
+0
+0
+0
+WaitForMultipleObjects
+
+kernel32
+0
+0
+0
+WaitForMultipleObjectsEx
+
+kernel32
+0
+0
+0
+ZwWaitForMultipleObjects
+
+ntdll
+1390
+0
+0
+Callers 1
+BaseThreadStart
+0
+-1
+Callers 1
+MixerCallbackThread
+0
+-1
+Callers 1
+WaitForMultipleObjects
+0
+-1
+Callers 1
+WaitForMultipleObjectsEx
+0
+-1
+Callers 5
+ZwWaitForMultipleObjects
+1390
+-1
+WaitForMultipleObjectsEx
+1390
+0
+WaitForMultipleObjects
+1390
+0
+MixerCallbackThread
+1390
+0
+BaseThreadStart
+1390
+0
+Callees 0
+Callees 0
+Callees 0
+Callees 0
+Callees 0
+Callees 1
+1390
+0
+Callees 1
+1390
+1
+Callees 1
+1390
+2
+Callees 1
+1390
+3
+Files 0
+Thread_ID  376
+Total_Samples 1390
+Function_samples 7
+KernelTime 540
+UserTime 140
+RunningTime 40578
+BaseThreadStart
+
+kernel32
+0
+0
+0
+InitializeWaitEventArrays
+
+WINMM
+0
+0
+0
+NtWaitForSingleObject
+
+ntdll
+32
+0
+0
+RtlEnterCriticalSection
+
+ntdll
+0
+0
+0
+RtlpWaitForCriticalSection
+
+ntdll
+0
+0
+0
+ZwWaitForMultipleObjects
+
+ntdll
+1358
+0
+0
+timeThread
+
+WINMM
+0
+0
+0
+Callers 1
+BaseThreadStart
+0
+-1
+Callers 1
+InitializeWaitEventArrays
+0
+-1
+Callers 6
+NtWaitForSingleObject
+32
+-1
+RtlpWaitForCriticalSection
+32
+0
+RtlEnterCriticalSection
+32
+0
+InitializeWaitEventArrays
+32
+0
+timeThread
+32
+0
+BaseThreadStart
+32
+0
+Callers 1
+RtlEnterCriticalSection
+0
+-1
+Callers 1
+RtlpWaitForCriticalSection
+0
+-1
+Callers 3
+ZwWaitForMultipleObjects
+1358
+-1
+timeThread
+1358
+0
+BaseThreadStart
+1358
+0
+Callers 1
+timeThread
+0
+-1
+Callees 0
+Callees 0
+Callees 0
+Callees 1
+32
+0
+Callees 1
+32
+1
+Callees 1
+32
+2
+Callees 1
+32
+3
+Callees 1
+32
+4
+Callees 0
+Callees 0
+Callees 0
+Callees 1
+1358
+0
+Callees 1
+1358
+1
+Callees 0
+Files 0
+Thread_ID  2108
+Total_Samples 1390
+Function_samples 80
+KernelTime 6208
+UserTime 9744
+RunningTime 40669
+BaseProcessStart
+
+kernel32
+0
+0
+0
+ButtonWndProcA
+
+USER32
+0
+0
+0
+ButtonWndProcWorker
+
+USER32
+0
+0
+0
+DispatchClientMessage
+
+USER32
+0
+0
+0
+DispatchMessageA
+
+USER32
+0
+0
+0
+DispatchMessageWorker
+
+USER32
+0
+0
+0
+EdDisp_Run
+x:\openturing\ready\src\eddisp.c
+Turing
+0
+1811
+1811
+EdRun_Execute
+x:\openturing\turing\src\edrun.c
+Turing
+0
+1057
+1000
+Ed_ProcessWaitingEvents
+x:\openturing\ready\src\ed.c
+Turing
+0
+1048
+1048
+GetWindowLongA
+
+USER32
+29
+0
+0
+HMValidateHandle
+
+USER32
+36
+0
+0
+InternalCallWinProc
+
+USER32
+0
+0
+0
+KiFastSystemCall
+
+ntdll
+2
+0
+0
+KiUserCallbackDispatcher
+
+ntdll
+0
+0
+0
+Language_ExecuteProgram
+x:\openturing\turing\src\language.c
+Turing
+4
+1257
+1226
+Language_Execute_Executor
+x:\openturing\turing\src\execute.c
+Turing
+0
+3643
+3642
+Language_Execute_Run
+x:\openturing\turing\src\run.c
+Turing
+451
+5091
+984
+Language_Execute_SetActive
+x:\openturing\turing\src\execute.c
+Turing
+0
+1434
+1434
+Language_Execute_SetErrno
+x:\openturing\turing\src\execute.c
+Turing
+9
+911
+907
+MDIODraw_Dot
+x:\openturing\turing\src\mdiodraw.c
+Turing
+11
+229
+208
+MDIORGB_ConvertColour
+x:\openturing\turing\src\mdiorgb.c
+Turing
+5
+108
+104
+MDIOWin_GetWindowInfo
+x:\openturing\turing\src\mdiowin.c
+Turing
+3
+577
+577
+MDIOWin_GetWindowType
+x:\openturing\turing\src\mdiowin.c
+Turing
+7
+564
+562
+MIODraw_Dot
+x:\openturing\turing\src\miodraw.c
+Turing
+15
+192
+180
+MIOSprite_UpdateIfNecessary
+x:\openturing\turing\src\miosprite.c
+Turing
+1
+434
+434
+MIOWin_GetInfo
+x:\openturing\turing\src\miowin.c
+Turing
+4
+1464
+1443
+MIOWindow_Update
+x:\openturing\turing\src\miowindow.c
+Turing
+0
+715
+715
+MIO_CheckColourRange
+x:\openturing\turing\src\mio.c
+Turing
+1
+935
+935
+MIO_CheckOuputIsToWindow
+x:\openturing\turing\src\mio.c
+Turing
+3
+1009
+999
+MIO_CheckOuputWindowIsInGraphicsMode
+x:\openturing\turing\src\mio.c
+Turing
+1
+1020
+1019
+MIO_MakePopupWindowVisible
+x:\openturing\turing\src\mio.c
+Turing
+5
+1173
+1172
+MIO_SetActive
+x:\openturing\turing\src\mio.c
+Turing
+0
+2152
+2152
+MIO_UpdateSpritesIfNecessary
+x:\openturing\turing\src\mio.c
+Turing
+0
+2485
+2485
+MIO_draw_dot
+x:\openturing\turing\src\miowrapper.c
+Turing
+12
+504
+498
+MIO_view_update
+x:\openturing\turing\src\miowrapper.c
+Turing
+0
+2523
+2523
+MyButtonBarWindowProcedure
+x:\openturing\ready\src\edbbar.c
+Turing
+0
+579
+579
+MyCommandHandler
+x:\openturing\ready\src\eddisp.c
+Turing
+0
+3295
+3295
+MyCommonMessageHandler
+x:\openturing\ready\src\eddisp.c
+Turing
+0
+3494
+3494
+MyDisplayGraphics
+x:\openturing\turing\src\mdiowingraph.c
+Turing
+0
+1417
+1417
+MyEditorWindowProcedure
+x:\openturing\ready\src\edwin.c
+Turing
+0
+1505
+1505
+MyExecuteQuantum
+x:\openturing\turing\src\edrun.c
+Turing
+0
+2961
+2953
+MyExecutorScan
+x:\openturing\turing\src\miowrapper.c
+Turing
+15
+2833
+2761
+MyGraphicsInnerWindowProcedure
+x:\openturing\turing\src\mdiowingraph.c
+Turing
+0
+972
+972
+MyProcessEvents
+x:\openturing\ready\src\ed.c
+Turing
+0
+1894
+1894
+MyTextDisplayWindowProcedure
+x:\openturing\ready\src\eddisp.c
+Turing
+0
+1968
+1968
+NtCancelTimer
+
+ntdll
+9
+0
+0
+NtGdiBitBlt
+
+GDI32
+4
+0
+0
+NtGdiSetPixel
+
+GDI32
+554
+0
+0
+NtSetEventBoostPriority
+
+ntdll
+39
+0
+0
+NtSetTimer
+
+ntdll
+11
+0
+0
+NtUserRedrawWindow
+
+USER32
+0
+0
+0
+RtlEnterCriticalSection
+
+ntdll
+1
+0
+0
+RtlLeaveCriticalSection
+
+ntdll
+3
+0
+0
+RtlpUnWaitCriticalSection
+
+ntdll
+4
+0
+0
+SendMessageA
+
+USER32
+0
+0
+0
+SendMessageW
+
+USER32
+0
+0
+0
+SendMessageWorker
+
+USER32
+0
+0
+0
+SetPixel
+
+GDI32
+26
+0
+0
+TL_TLE_TLEHE
+x:\openturing\turing\tlib\tlehe.c
+Turing
+1
+175
+175
+ToolTipsWndProc
+
+COMCTL32
+1
+0
+0
+UserCallWinProcCheckWow
+
+USER32
+0
+0
+0
+ValidateHwnd
+
+USER32
+4
+0
+0
+WinMain
+x:\openturing\ready\src\ed.c
+Turing
+0
+506
+506
+WinMainCRTStartup
+f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c
+Turing
+0
+189
+189
+ZwSetEvent
+
+ntdll
+42
+0
+0
+_GetWindowLong
+
+USER32
+20
+0
+0
+_SEH_epilog
+
+USER32
+8
+0
+0
+_SEH_prolog
+
+USER32
+30
+0
+0
+__fnDWORD
+
+USER32
+0
+0
+0
+__setjmp3
+
+Turing
+2
+0
+0
+__tmainCRTStartup
+f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c
+Turing
+0
+275
+275
+_chkstk
+f:\dd\vctools\crt_bld\SELF_X86\crt\src\INTEL\chkstk.asm
+Turing
+2
+100
+100
+memset
+f:\dd\vctools\crt_bld\SELF_X86\crt\src\INTEL\memset.asm
+Turing
+12
+145
+74
+timeKillEvent
+
+WINMM
+0
+0
+0
+timeSetEvent
+
+WINMM
+1
+0
+0
+timeSetEventInternal
+
+WINMM
+1
+0
+0
+timeSetTimerEvent
+
+WINMM
+0
+0
+0
+timeThreadSetEvent
+
+WINMM
+1
+0
+0
+xxxBNReleaseCapture
+
+USER32
+0
+0
+0
+xxxButtonNotifyParent
+
+USER32
+0
+0
+0
+Callers 1
+BaseProcessStart
+0
+-1
+Callers 1
+ButtonWndProcA
+0
+-1
+Callers 1
+ButtonWndProcWorker
+0
+-1
+Callers 1
+DispatchClientMessage
+0
+-1
+Callers 1
+DispatchMessageA
+0
+-1
+Callers 1
+DispatchMessageWorker
+0
+-1
+Callers 1
+EdDisp_Run
+0
+-1
+Callers 1
+EdRun_Execute
+0
+-1
+Callers 1
+Ed_ProcessWaitingEvents
+0
+-1
+Callers 40
+GetWindowLongA
+29
+-1
+MDIOWin_GetWindowType
+16
+564
+MIOWin_GetInfo
+9
+1447
+MDIODraw_Dot
+20
+208
+MIODraw_Dot
+20
+188
+MIO_draw_dot
+27
+503
+Language_Execute_Run
+27
+1741
+Language_Execute_Executor
+27
+3643
+Language_ExecuteProgram
+29
+1257
+MyExecuteQuantum
+29
+2953
+EdRun_Execute
+29
+1000
+EdDisp_Run
+29
+1811
+MyCommandHandler
+29
+3295
+MyCommonMessageHandler
+29
+3494
+MyTextDisplayWindowProcedure
+29
+1968
+InternalCallWinProc
+116
+0
+UserCallWinProcCheckWow
+116
+0
+SendMessageWorker
+87
+0
+SendMessageA
+58
+0
+MyEditorWindowProcedure
+29
+1505
+MyButtonBarWindowProcedure
+29
+579
+SendMessageW
+29
+0
+xxxButtonNotifyParent
+29
+0
+xxxBNReleaseCapture
+29
+0
+ButtonWndProcWorker
+29
+0
+ButtonWndProcA
+29
+0
+DispatchMessageWorker
+29
+0
+DispatchMessageA
+29
+0
+MyProcessEvents
+29
+1894
+WinMain
+29
+506
+__tmainCRTStartup
+29
+275
+WinMainCRTStartup
+29
+189
+BaseProcessStart
+29
+0
+MDIOWin_GetWindowInfo
+11
+577
+MIOWin_GetInfo
+13
+1464
+MIO_CheckOuputWindowIsInGraphicsMode
+7
+1020
+MIODraw_Dot
+7
+182
+MIO_SetActive
+2
+2152
+Language_Execute_SetActive
+2
+1434
+Language_Execute_Executor
+2
+3642
+Callers 38
+HMValidateHandle
+36
+-1
+GetWindowLongA
+35
+0
+MDIOWin_GetWindowType
+26
+564
+MIOWin_GetInfo
+8
+1447
+MDIODraw_Dot
+18
+208
+MIODraw_Dot
+18
+188
+MIO_draw_dot
+36
+503
+Language_Execute_Run
+36
+1741
+Language_Execute_Executor
+36
+3643
+Language_ExecuteProgram
+36
+1257
+MyExecuteQuantum
+36
+2953
+EdRun_Execute
+36
+1000
+EdDisp_Run
+36
+1811
+MyCommandHandler
+36
+3295
+MyCommonMessageHandler
+36
+3494
+MyTextDisplayWindowProcedure
+36
+1968
+InternalCallWinProc
+144
+0
+UserCallWinProcCheckWow
+144
+0
+SendMessageWorker
+108
+0
+SendMessageA
+72
+0
+MyEditorWindowProcedure
+36
+1505
+MyButtonBarWindowProcedure
+36
+579
+SendMessageW
+36
+0
+xxxButtonNotifyParent
+36
+0
+xxxBNReleaseCapture
+36
+0
+ButtonWndProcWorker
+36
+0
+ButtonWndProcA
+36
+0
+DispatchMessageWorker
+36
+0
+DispatchMessageA
+36
+0
+MyProcessEvents
+36
+1894
+WinMain
+36
+506
+__tmainCRTStartup
+36
+275
+WinMainCRTStartup
+36
+189
+BaseProcessStart
+36
+0
+MDIOWin_GetWindowInfo
+10
+577
+MIOWin_GetInfo
+10
+1464
+MIO_CheckOuputWindowIsInGraphicsMode
+18
+1020
+MIODraw_Dot
+18
+182
+Callers 1
+InternalCallWinProc
+0
+-1
+Callers 37
+KiFastSystemCall
+2
+-1
+NtGdiSetPixel
+1
+0
+MDIODraw_Dot
+1
+224
+MIODraw_Dot
+1
+188
+MIO_draw_dot
+1
+503
+Language_Execute_Run
+1
+1741
+Language_Execute_Executor
+1
+3643
+Language_ExecuteProgram
+1
+1257
+MyExecuteQuantum
+2
+2953
+EdRun_Execute
+2
+1000
+EdDisp_Run
+2
+1811
+MyCommandHandler
+2
+3295
+MyCommonMessageHandler
+2
+3494
+MyTextDisplayWindowProcedure
+2
+1968
+InternalCallWinProc
+8
+0
+UserCallWinProcCheckWow
+8
+0
+SendMessageWorker
+6
+0
+SendMessageA
+4
+0
+MyEditorWindowProcedure
+2
+1505
+MyButtonBarWindowProcedure
+2
+579
+SendMessageW
+2
+0
+xxxButtonNotifyParent
+2
+0
+xxxBNReleaseCapture
+2
+0
+ButtonWndProcWorker
+2
+0
+ButtonWndProcA
+2
+0
+DispatchMessageWorker
+2
+0
+DispatchMessageA
+2
+0
+MyProcessEvents
+2
+1894
+WinMain
+2
+506
+__tmainCRTStartup
+2
+275
+WinMainCRTStartup
+2
+189
+BaseProcessStart
+2
+0
+NtSetEventBoostPriority
+1
+0
+RtlpUnWaitCriticalSection
+1
+0
+RtlLeaveCriticalSection
+1
+0
+timeSetEventInternal
+1
+0
+timeSetEvent
+1
+0
+Callers 1
+KiUserCallbackDispatcher
+0
+-1
+Callers 25
+Language_ExecuteProgram
+4
+-1
+MyExecuteQuantum
+4
+2953
+EdRun_Execute
+4
+1000
+EdDisp_Run
+4
+1811
+MyCommandHandler
+4
+3295
+MyCommonMessageHandler
+4
+3494
+MyTextDisplayWindowProcedure
+4
+1968
+InternalCallWinProc
+16
+0
+UserCallWinProcCheckWow
+16
+0
+SendMessageWorker
+12
+0
+SendMessageA
+8
+0
+MyEditorWindowProcedure
+4
+1505
+MyButtonBarWindowProcedure
+4
+579
+SendMessageW
+4
+0
+xxxButtonNotifyParent
+4
+0
+xxxBNReleaseCapture
+4
+0
+ButtonWndProcWorker
+4
+0
+ButtonWndProcA
+4
+0
+DispatchMessageWorker
+4
+0
+DispatchMessageA
+4
+0
+MyProcessEvents
+4
+1894
+WinMain
+4
+506
+__tmainCRTStartup
+4
+275
+WinMainCRTStartup
+4
+189
+BaseProcessStart
+4
+0
+Callers 1
+Language_Execute_Executor
+0
+-1
+Callers 27
+Language_Execute_Run
+451
+-1
+Language_Execute_Executor
+451
+3643
+Language_ExecuteProgram
+451
+1257
+MyExecuteQuantum
+451
+2953
+EdRun_Execute
+451
+1000
+EdDisp_Run
+451
+1811
+MyCommandHandler
+451
+3295
+MyCommonMessageHandler
+451
+3494
+MyTextDisplayWindowProcedure
+451
+1968
+InternalCallWinProc
+1804
+0
+UserCallWinProcCheckWow
+1804
+0
+SendMessageWorker
+1353
+0
+SendMessageA
+902
+0
+MyEditorWindowProcedure
+451
+1505
+MyButtonBarWindowProcedure
+451
+579
+SendMessageW
+451
+0
+xxxButtonNotifyParent
+451
+0
+xxxBNReleaseCapture
+451
+0
+ButtonWndProcWorker
+451
+0
+ButtonWndProcA
+451
+0
+DispatchMessageWorker
+451
+0
+DispatchMessageA
+451
+0
+MyProcessEvents
+451
+1894
+WinMain
+451
+506
+__tmainCRTStartup
+451
+275
+WinMainCRTStartup
+451
+189
+BaseProcessStart
+451
+0
+Callers 1
+Language_Execute_SetActive
+0
+-1
+Callers 28
+Language_Execute_SetErrno
+9
+-1
+Language_Execute_Run
+9
+1740
+Language_Execute_Executor
+9
+3643
+Language_ExecuteProgram
+9
+1257
+MyExecuteQuantum
+9
+2953
+EdRun_Execute
+9
+1000
+EdDisp_Run
+9
+1811
+MyCommandHandler
+9
+3295
+MyCommonMessageHandler
+9
+3494
+MyTextDisplayWindowProcedure
+9
+1968
+InternalCallWinProc
+36
+0
+UserCallWinProcCheckWow
+36
+0
+SendMessageWorker
+27
+0
+SendMessageA
+18
+0
+MyEditorWindowProcedure
+9
+1505
+MyButtonBarWindowProcedure
+9
+579
+SendMessageW
+9
+0
+xxxButtonNotifyParent
+9
+0
+xxxBNReleaseCapture
+9
+0
+ButtonWndProcWorker
+9
+0
+ButtonWndProcA
+9
+0
+DispatchMessageWorker
+9
+0
+DispatchMessageA
+9
+0
+MyProcessEvents
+9
+1894
+WinMain
+9
+506
+__tmainCRTStartup
+9
+275
+WinMainCRTStartup
+9
+189
+BaseProcessStart
+9
+0
+Callers 30
+MDIODraw_Dot
+11
+-1
+MIODraw_Dot
+8
+188
+MIO_draw_dot
+11
+503
+Language_Execute_Run
+11
+1741
+Language_Execute_Executor
+11
+3643
+Language_ExecuteProgram
+11
+1257
+MyExecuteQuantum
+11
+2953
+EdRun_Execute
+11
+1000
+EdDisp_Run
+11
+1811
+MyCommandHandler
+11
+3295
+MyCommonMessageHandler
+11
+3494
+MyTextDisplayWindowProcedure
+11
+1968
+InternalCallWinProc
+44
+0
+UserCallWinProcCheckWow
+44
+0
+SendMessageWorker
+33
+0
+SendMessageA
+22
+0
+MyEditorWindowProcedure
+11
+1505
+MyButtonBarWindowProcedure
+11
+579
+SendMessageW
+11
+0
+xxxButtonNotifyParent
+11
+0
+xxxBNReleaseCapture
+11
+0
+ButtonWndProcWorker
+11
+0
+ButtonWndProcA
+11
+0
+DispatchMessageWorker
+11
+0
+DispatchMessageA
+11
+0
+MyProcessEvents
+11
+1894
+WinMain
+11
+506
+__tmainCRTStartup
+11
+275
+WinMainCRTStartup
+11
+189
+BaseProcessStart
+11
+0
+Callers 31
+MDIORGB_ConvertColour
+5
+-1
+MDIODraw_Dot
+5
+222
+MIODraw_Dot
+5
+188
+MIO_draw_dot
+5
+503
+Language_Execute_Run
+5
+1741
+Language_Execute_Executor
+5
+3643
+Language_ExecuteProgram
+5
+1257
+MyExecuteQuantum
+5
+2953
+EdRun_Execute
+5
+1000
+EdDisp_Run
+5
+1811
+MyCommandHandler
+5
+3295
+MyCommonMessageHandler
+5
+3494
+MyTextDisplayWindowProcedure
+5
+1968
+InternalCallWinProc
+20
+0
+UserCallWinProcCheckWow
+20
+0
+SendMessageWorker
+15
+0
+SendMessageA
+10
+0
+MyEditorWindowProcedure
+5
+1505
+MyButtonBarWindowProcedure
+5
+579
+SendMessageW
+5
+0
+xxxButtonNotifyParent
+5
+0
+xxxBNReleaseCapture
+5
+0
+ButtonWndProcWorker
+5
+0
+ButtonWndProcA
+5
+0
+DispatchMessageWorker
+5
+0
+DispatchMessageA
+5
+0
+MyProcessEvents
+5
+1894
+WinMain
+5
+506
+__tmainCRTStartup
+5
+275
+WinMainCRTStartup
+5
+189
+BaseProcessStart
+5
+0
+Callers 32
+MDIOWin_GetWindowInfo
+3
+-1
+MIOWin_GetInfo
+3
+1464
+MDIODraw_Dot
+3
+208
+MIODraw_Dot
+3
+188
+MIO_draw_dot
+3
+503
+Language_Execute_Run
+3
+1741
+Language_Execute_Executor
+3
+3643
+Language_ExecuteProgram
+3
+1257
+MyExecuteQuantum
+3
+2953
+EdRun_Execute
+3
+1000
+EdDisp_Run
+3
+1811
+MyCommandHandler
+3
+3295
+MyCommonMessageHandler
+3
+3494
+MyTextDisplayWindowProcedure
+3
+1968
+InternalCallWinProc
+12
+0
+UserCallWinProcCheckWow
+12
+0
+SendMessageWorker
+9
+0
+SendMessageA
+6
+0
+MyEditorWindowProcedure
+3
+1505
+MyButtonBarWindowProcedure
+3
+579
+SendMessageW
+3
+0
+xxxButtonNotifyParent
+3
+0
+xxxBNReleaseCapture
+3
+0
+ButtonWndProcWorker
+3
+0
+ButtonWndProcA
+3
+0
+DispatchMessageWorker
+3
+0
+DispatchMessageA
+3
+0
+MyProcessEvents
+3
+1894
+WinMain
+3
+506
+__tmainCRTStartup
+3
+275
+WinMainCRTStartup
+3
+189
+BaseProcessStart
+3
+0
+Callers 37
+MDIOWin_GetWindowType
+7
+-1
+MIO_CheckOuputWindowIsInGraphicsMode
+3
+1020
+MIODraw_Dot
+3
+182
+MIO_draw_dot
+5
+503
+Language_Execute_Run
+5
+1741
+Language_Execute_Executor
+5
+3643
+Language_ExecuteProgram
+7
+1257
+MyExecuteQuantum
+7
+2953
+EdRun_Execute
+7
+1000
+EdDisp_Run
+7
+1811
+MyCommandHandler
+7
+3295
+MyCommonMessageHandler
+7
+3494
+MyTextDisplayWindowProcedure
+7
+1968
+InternalCallWinProc
+28
+0
+UserCallWinProcCheckWow
+28
+0
+SendMessageWorker
+21
+0
+SendMessageA
+14
+0
+MyEditorWindowProcedure
+7
+1505
+MyButtonBarWindowProcedure
+7
+579
+SendMessageW
+7
+0
+xxxButtonNotifyParent
+7
+0
+xxxBNReleaseCapture
+7
+0
+ButtonWndProcWorker
+7
+0
+ButtonWndProcA
+7
+0
+DispatchMessageWorker
+7
+0
+DispatchMessageA
+7
+0
+MyProcessEvents
+7
+1894
+WinMain
+7
+506
+__tmainCRTStartup
+7
+275
+WinMainCRTStartup
+7
+189
+BaseProcessStart
+7
+0
+MIO_SetActive
+2
+2152
+Language_Execute_SetActive
+2
+1434
+Language_Execute_Executor
+2
+3642
+MIOWin_GetInfo
+2
+1447
+MDIODraw_Dot
+2
+208
+MIODraw_Dot
+2
+188
+Callers 29
+MIODraw_Dot
+15
+-1
+MIO_draw_dot
+14
+503
+Language_Execute_Run
+15
+1741
+Language_Execute_Executor
+15
+3643
+Language_ExecuteProgram
+15
+1257
+MyExecuteQuantum
+15
+2953
+EdRun_Execute
+15
+1000
+EdDisp_Run
+15
+1811
+MyCommandHandler
+15
+3295
+MyCommonMessageHandler
+15
+3494
+MyTextDisplayWindowProcedure
+15
+1968
+InternalCallWinProc
+60
+0
+UserCallWinProcCheckWow
+60
+0
+SendMessageWorker
+45
+0
+SendMessageA
+30
+0
+MyEditorWindowProcedure
+15
+1505
+MyButtonBarWindowProcedure
+15
+579
+SendMessageW
+15
+0
+xxxButtonNotifyParent
+15
+0
+xxxBNReleaseCapture
+15
+0
+ButtonWndProcWorker
+15
+0
+ButtonWndProcA
+15
+0
+DispatchMessageWorker
+15
+0
+DispatchMessageA
+15
+0
+MyProcessEvents
+15
+1894
+WinMain
+15
+506
+__tmainCRTStartup
+15
+275
+WinMainCRTStartup
+15
+189
+BaseProcessStart
+15
+0
+Callers 25
+MIOSprite_UpdateIfNecessary
+1
+-1
+MIO_UpdateSpritesIfNecessary
+1
+2485
+EdRun_Execute
+1
+1005
+EdDisp_Run
+1
+1811
+MyCommandHandler
+1
+3295
+MyCommonMessageHandler
+1
+3494
+MyTextDisplayWindowProcedure
+1
+1968
+InternalCallWinProc
+4
+0
+UserCallWinProcCheckWow
+4
+0
+SendMessageWorker
+3
+0
+SendMessageA
+2
+0
+MyEditorWindowProcedure
+1
+1505
+MyButtonBarWindowProcedure
+1
+579
+SendMessageW
+1
+0
+xxxButtonNotifyParent
+1
+0
+xxxBNReleaseCapture
+1
+0
+ButtonWndProcWorker
+1
+0
+ButtonWndProcA
+1
+0
+DispatchMessageWorker
+1
+0
+DispatchMessageA
+1
+0
+MyProcessEvents
+1
+1894
+WinMain
+1
+506
+__tmainCRTStartup
+1
+275
+WinMainCRTStartup
+1
+189
+BaseProcessStart
+1
+0
+Callers 31
+MIOWin_GetInfo
+4
+-1
+MDIODraw_Dot
+4
+208
+MIODraw_Dot
+4
+188
+MIO_draw_dot
+4
+503
+Language_Execute_Run
+4
+1741
+Language_Execute_Executor
+4
+3643
+Language_ExecuteProgram
+4
+1257
+MyExecuteQuantum
+4
+2953
+EdRun_Execute
+4
+1000
+EdDisp_Run
+4
+1811
+MyCommandHandler
+4
+3295
+MyCommonMessageHandler
+4
+3494
+MyTextDisplayWindowProcedure
+4
+1968
+InternalCallWinProc
+16
+0
+UserCallWinProcCheckWow
+16
+0
+SendMessageWorker
+12
+0
+SendMessageA
+8
+0
+MyEditorWindowProcedure
+4
+1505
+MyButtonBarWindowProcedure
+4
+579
+SendMessageW
+4
+0
+xxxButtonNotifyParent
+4
+0
+xxxBNReleaseCapture
+4
+0
+ButtonWndProcWorker
+4
+0
+ButtonWndProcA
+4
+0
+DispatchMessageWorker
+4
+0
+DispatchMessageA
+4
+0
+MyProcessEvents
+4
+1894
+WinMain
+4
+506
+__tmainCRTStartup
+4
+275
+WinMainCRTStartup
+4
+189
+BaseProcessStart
+4
+0
+Callers 1
+MIOWindow_Update
+0
+-1
+Callers 30
+MIO_CheckColourRange
+1
+-1
+MIODraw_Dot
+1
+185
+MIO_draw_dot
+1
+503
+Language_Execute_Run
+1
+1741
+Language_Execute_Executor
+1
+3643
+Language_ExecuteProgram
+1
+1257
+MyExecuteQuantum
+1
+2953
+EdRun_Execute
+1
+1000
+EdDisp_Run
+1
+1811
+MyCommandHandler
+1
+3295
+MyCommonMessageHandler
+1
+3494
+MyTextDisplayWindowProcedure
+1
+1968
+InternalCallWinProc
+4
+0
+UserCallWinProcCheckWow
+4
+0
+SendMessageWorker
+3
+0
+SendMessageA
+2
+0
+MyEditorWindowProcedure
+1
+1505
+MyButtonBarWindowProcedure
+1
+579
+SendMessageW
+1
+0
+xxxButtonNotifyParent
+1
+0
+xxxBNReleaseCapture
+1
+0
+ButtonWndProcWorker
+1
+0
+ButtonWndProcA
+1
+0
+DispatchMessageWorker
+1
+0
+DispatchMessageA
+1
+0
+MyProcessEvents
+1
+1894
+WinMain
+1
+506
+__tmainCRTStartup
+1
+275
+WinMainCRTStartup
+1
+189
+BaseProcessStart
+1
+0
+Callers 30
+MIO_CheckOuputIsToWindow
+3
+-1
+MIODraw_Dot
+3
+181
+MIO_draw_dot
+3
+503
+Language_Execute_Run
+3
+1741
+Language_Execute_Executor
+3
+3643
+Language_ExecuteProgram
+3
+1257
+MyExecuteQuantum
+3
+2953
+EdRun_Execute
+3
+1000
+EdDisp_Run
+3
+1811
+MyCommandHandler
+3
+3295
+MyCommonMessageHandler
+3
+3494
+MyTextDisplayWindowProcedure
+3
+1968
+InternalCallWinProc
+12
+0
+UserCallWinProcCheckWow
+12
+0
+SendMessageWorker
+9
+0
+SendMessageA
+6
+0
+MyEditorWindowProcedure
+3
+1505
+MyButtonBarWindowProcedure
+3
+579
+SendMessageW
+3
+0
+xxxButtonNotifyParent
+3
+0
+xxxBNReleaseCapture
+3
+0
+ButtonWndProcWorker
+3
+0
+ButtonWndProcA
+3
+0
+DispatchMessageWorker
+3
+0
+DispatchMessageA
+3
+0
+MyProcessEvents
+3
+1894
+WinMain
+3
+506
+__tmainCRTStartup
+3
+275
+WinMainCRTStartup
+3
+189
+BaseProcessStart
+3
+0
+Callers 30
+MIO_CheckOuputWindowIsInGraphicsMode
+1
+-1
+MIODraw_Dot
+1
+182
+MIO_draw_dot
+1
+503
+Language_Execute_Run
+1
+1741
+Language_Execute_Executor
+1
+3643
+Language_ExecuteProgram
+1
+1257
+MyExecuteQuantum
+1
+2953
+EdRun_Execute
+1
+1000
+EdDisp_Run
+1
+1811
+MyCommandHandler
+1
+3295
+MyCommonMessageHandler
+1
+3494
+MyTextDisplayWindowProcedure
+1
+1968
+InternalCallWinProc
+4
+0
+UserCallWinProcCheckWow
+4
+0
+SendMessageWorker
+3
+0
+SendMessageA
+2
+0
+MyEditorWindowProcedure
+1
+1505
+MyButtonBarWindowProcedure
+1
+579
+SendMessageW
+1
+0
+xxxButtonNotifyParent
+1
+0
+xxxBNReleaseCapture
+1
+0
+ButtonWndProcWorker
+1
+0
+ButtonWndProcA
+1
+0
+DispatchMessageWorker
+1
+0
+DispatchMessageA
+1
+0
+MyProcessEvents
+1
+1894
+WinMain
+1
+506
+__tmainCRTStartup
+1
+275
+WinMainCRTStartup
+1
+189
+BaseProcessStart
+1
+0
+Callers 30
+MIO_MakePopupWindowVisible
+5
+-1
+MIODraw_Dot
+5
+183
+MIO_draw_dot
+5
+503
+Language_Execute_Run
+5
+1741
+Language_Execute_Executor
+5
+3643
+Language_ExecuteProgram
+5
+1257
+MyExecuteQuantum
+5
+2953
+EdRun_Execute
+5
+1000
+EdDisp_Run
+5
+1811
+MyCommandHandler
+5
+3295
+MyCommonMessageHandler
+5
+3494
+MyTextDisplayWindowProcedure
+5
+1968
+InternalCallWinProc
+20
+0
+UserCallWinProcCheckWow
+20
+0
+SendMessageWorker
+15
+0
+SendMessageA
+10
+0
+MyEditorWindowProcedure
+5
+1505
+MyButtonBarWindowProcedure
+5
+579
+SendMessageW
+5
+0
+xxxButtonNotifyParent
+5
+0
+xxxBNReleaseCapture
+5
+0
+ButtonWndProcWorker
+5
+0
+ButtonWndProcA
+5
+0
+DispatchMessageWorker
+5
+0
+DispatchMessageA
+5
+0
+MyProcessEvents
+5
+1894
+WinMain
+5
+506
+__tmainCRTStartup
+5
+275
+WinMainCRTStartup
+5
+189
+BaseProcessStart
+5
+0
+Callers 1
+MIO_SetActive
+0
+-1
+Callers 1
+MIO_UpdateSpritesIfNecessary
+0
+-1
+Callers 28
+MIO_draw_dot
+12
+-1
+Language_Execute_Run
+11
+1741
+Language_Execute_Executor
+12
+3643
+Language_ExecuteProgram
+12
+1257
+MyExecuteQuantum
+12
+2953
+EdRun_Execute
+12
+1000
+EdDisp_Run
+12
+1811
+MyCommandHandler
+12
+3295
+MyCommonMessageHandler
+12
+3494
+MyTextDisplayWindowProcedure
+12
+1968
+InternalCallWinProc
+48
+0
+UserCallWinProcCheckWow
+48
+0
+SendMessageWorker
+36
+0
+SendMessageA
+24
+0
+MyEditorWindowProcedure
+12
+1505
+MyButtonBarWindowProcedure
+12
+579
+SendMessageW
+12
+0
+xxxButtonNotifyParent
+12
+0
+xxxBNReleaseCapture
+12
+0
+ButtonWndProcWorker
+12
+0
+ButtonWndProcA
+12
+0
+DispatchMessageWorker
+12
+0
+DispatchMessageA
+12
+0
+MyProcessEvents
+12
+1894
+WinMain
+12
+506
+__tmainCRTStartup
+12
+275
+WinMainCRTStartup
+12
+189
+BaseProcessStart
+12
+0
+Callers 1
+MIO_view_update
+0
+-1
+Callers 1
+MyButtonBarWindowProcedure
+0
+-1
+Callers 1
+MyCommandHandler
+0
+-1
+Callers 1
+MyCommonMessageHandler
+0
+-1
+Callers 1
+MyDisplayGraphics
+0
+-1
+Callers 1
+MyEditorWindowProcedure
+0
+-1
+Callers 1
+MyExecuteQuantum
+0
+-1
+Callers 29
+MyExecutorScan
+15
+-1
+MIO_draw_dot
+15
+503
+Language_Execute_Run
+15
+1741
+Language_Execute_Executor
+15
+3643
+Language_ExecuteProgram
+15
+1257
+MyExecuteQuantum
+15
+2953
+EdRun_Execute
+15
+1000
+EdDisp_Run
+15
+1811
+MyCommandHandler
+15
+3295
+MyCommonMessageHandler
+15
+3494
+MyTextDisplayWindowProcedure
+15
+1968
+InternalCallWinProc
+60
+0
+UserCallWinProcCheckWow
+60
+0
+SendMessageWorker
+45
+0
+SendMessageA
+30
+0
+MyEditorWindowProcedure
+15
+1505
+MyButtonBarWindowProcedure
+15
+579
+SendMessageW
+15
+0
+xxxButtonNotifyParent
+15
+0
+xxxBNReleaseCapture
+15
+0
+ButtonWndProcWorker
+15
+0
+ButtonWndProcA
+15
+0
+DispatchMessageWorker
+15
+0
+DispatchMessageA
+15
+0
+MyProcessEvents
+15
+1894
+WinMain
+15
+506
+__tmainCRTStartup
+15
+275
+WinMainCRTStartup
+15
+189
+BaseProcessStart
+15
+0
+Callers 1
+MyGraphicsInnerWindowProcedure
+0
+-1
+Callers 1
+MyProcessEvents
+0
+-1
+Callers 1
+MyTextDisplayWindowProcedure
+0
+-1
+Callers 26
+NtCancelTimer
+9
+-1
+timeKillEvent
+9
+0
+MyExecuteQuantum
+9
+2961
+EdRun_Execute
+9
+1000
+EdDisp_Run
+9
+1811
+MyCommandHandler
+9
+3295
+MyCommonMessageHandler
+9
+3494
+MyTextDisplayWindowProcedure
+9
+1968
+InternalCallWinProc
+36
+0
+UserCallWinProcCheckWow
+36
+0
+SendMessageWorker
+27
+0
+SendMessageA
+18
+0
+MyEditorWindowProcedure
+9
+1505
+MyButtonBarWindowProcedure
+9
+579
+SendMessageW
+9
+0
+xxxButtonNotifyParent
+9
+0
+xxxBNReleaseCapture
+9
+0
+ButtonWndProcWorker
+9
+0
+ButtonWndProcA
+9
+0
+DispatchMessageWorker
+9
+0
+DispatchMessageA
+9
+0
+MyProcessEvents
+9
+1894
+WinMain
+9
+506
+__tmainCRTStartup
+9
+275
+WinMainCRTStartup
+9
+189
+BaseProcessStart
+9
+0
+Callers 36
+NtGdiBitBlt
+4
+-1
+MyDisplayGraphics
+4
+1417
+MyGraphicsInnerWindowProcedure
+4
+972
+InternalCallWinProc
+20
+0
+UserCallWinProcCheckWow
+20
+0
+DispatchClientMessage
+4
+0
+__fnDWORD
+4
+0
+KiUserCallbackDispatcher
+4
+0
+NtUserRedrawWindow
+4
+0
+MIOWindow_Update
+4
+715
+MIO_view_update
+4
+2523
+Language_Execute_Run
+4
+1741
+Language_Execute_Executor
+4
+3643
+Language_ExecuteProgram
+4
+1257
+MyExecuteQuantum
+4
+2953
+EdRun_Execute
+4
+1000
+EdDisp_Run
+4
+1811
+MyCommandHandler
+4
+3295
+MyCommonMessageHandler
+4
+3494
+MyTextDisplayWindowProcedure
+4
+1968
+SendMessageWorker
+12
+0
+SendMessageA
+8
+0
+MyEditorWindowProcedure
+4
+1505
+MyButtonBarWindowProcedure
+4
+579
+SendMessageW
+4
+0
+xxxButtonNotifyParent
+4
+0
+xxxBNReleaseCapture
+4
+0
+ButtonWndProcWorker
+4
+0
+ButtonWndProcA
+4
+0
+DispatchMessageWorker
+4
+0
+DispatchMessageA
+4
+0
+MyProcessEvents
+4
+1894
+WinMain
+4
+506
+__tmainCRTStartup
+4
+275
+WinMainCRTStartup
+4
+189
+BaseProcessStart
+4
+0
+Callers 31
+NtGdiSetPixel
+554
+-1
+MDIODraw_Dot
+554
+224
+MIODraw_Dot
+554
+188
+MIO_draw_dot
+554
+503
+Language_Execute_Run
+554
+1741
+Language_Execute_Executor
+554
+3643
+Language_ExecuteProgram
+554
+1257
+MyExecuteQuantum
+554
+2953
+EdRun_Execute
+554
+1000
+EdDisp_Run
+554
+1811
+MyCommandHandler
+554
+3295
+MyCommonMessageHandler
+554
+3494
+MyTextDisplayWindowProcedure
+554
+1968
+InternalCallWinProc
+2216
+0
+UserCallWinProcCheckWow
+2216
+0
+SendMessageWorker
+1662
+0
+SendMessageA
+1108
+0
+MyEditorWindowProcedure
+554
+1505
+MyButtonBarWindowProcedure
+554
+579
+SendMessageW
+554
+0
+xxxButtonNotifyParent
+554
+0
+xxxBNReleaseCapture
+554
+0
+ButtonWndProcWorker
+554
+0
+ButtonWndProcA
+554
+0
+DispatchMessageWorker
+554
+0
+DispatchMessageA
+554
+0
+MyProcessEvents
+554
+1894
+WinMain
+554
+506
+__tmainCRTStartup
+554
+275
+WinMainCRTStartup
+554
+189
+BaseProcessStart
+554
+0
+Callers 31
+NtSetEventBoostPriority
+39
+-1
+RtlpUnWaitCriticalSection
+39
+0
+RtlLeaveCriticalSection
+39
+0
+timeSetEventInternal
+16
+0
+timeSetEvent
+16
+0
+MyExecuteQuantum
+16
+2953
+EdRun_Execute
+39
+1000
+EdDisp_Run
+39
+1811
+MyCommandHandler
+39
+3295
+MyCommonMessageHandler
+39
+3494
+MyTextDisplayWindowProcedure
+39
+1968
+InternalCallWinProc
+156
+0
+UserCallWinProcCheckWow
+156
+0
+SendMessageWorker
+117
+0
+SendMessageA
+78
+0
+MyEditorWindowProcedure
+39
+1505
+MyButtonBarWindowProcedure
+39
+579
+SendMessageW
+39
+0
+xxxButtonNotifyParent
+39
+0
+xxxBNReleaseCapture
+39
+0
+ButtonWndProcWorker
+39
+0
+ButtonWndProcA
+39
+0
+DispatchMessageWorker
+39
+0
+DispatchMessageA
+39
+0
+MyProcessEvents
+39
+1894
+WinMain
+39
+506
+__tmainCRTStartup
+39
+275
+WinMainCRTStartup
+39
+189
+BaseProcessStart
+39
+0
+timeKillEvent
+23
+0
+MyExecuteQuantum
+23
+2961
+Callers 29
+NtSetTimer
+11
+-1
+timeSetTimerEvent
+11
+0
+timeThreadSetEvent
+11
+0
+timeSetEventInternal
+11
+0
+timeSetEvent
+11
+0
+MyExecuteQuantum
+11
+2953
+EdRun_Execute
+11
+1000
+EdDisp_Run
+11
+1811
+MyCommandHandler
+11
+3295
+MyCommonMessageHandler
+11
+3494
+MyTextDisplayWindowProcedure
+11
+1968
+InternalCallWinProc
+44
+0
+UserCallWinProcCheckWow
+44
+0
+SendMessageWorker
+33
+0
+SendMessageA
+22
+0
+MyEditorWindowProcedure
+11
+1505
+MyButtonBarWindowProcedure
+11
+579
+SendMessageW
+11
+0
+xxxButtonNotifyParent
+11
+0
+xxxBNReleaseCapture
+11
+0
+ButtonWndProcWorker
+11
+0
+ButtonWndProcA
+11
+0
+DispatchMessageWorker
+11
+0
+DispatchMessageA
+11
+0
+MyProcessEvents
+11
+1894
+WinMain
+11
+506
+__tmainCRTStartup
+11
+275
+WinMainCRTStartup
+11
+189
+BaseProcessStart
+11
+0
+Callers 1
+NtUserRedrawWindow
+0
+-1
+Callers 28
+RtlEnterCriticalSection
+1
+-1
+timeThreadSetEvent
+1
+0
+timeSetEventInternal
+1
+0
+timeSetEvent
+1
+0
+MyExecuteQuantum
+1
+2953
+EdRun_Execute
+1
+1000
+EdDisp_Run
+1
+1811
+MyCommandHandler
+1
+3295
+MyCommonMessageHandler
+1
+3494
+MyTextDisplayWindowProcedure
+1
+1968
+InternalCallWinProc
+4
+0
+UserCallWinProcCheckWow
+4
+0
+SendMessageWorker
+3
+0
+SendMessageA
+2
+0
+MyEditorWindowProcedure
+1
+1505
+MyButtonBarWindowProcedure
+1
+579
+SendMessageW
+1
+0
+xxxButtonNotifyParent
+1
+0
+xxxBNReleaseCapture
+1
+0
+ButtonWndProcWorker
+1
+0
+ButtonWndProcA
+1
+0
+DispatchMessageWorker
+1
+0
+DispatchMessageA
+1
+0
+MyProcessEvents
+1
+1894
+WinMain
+1
+506
+__tmainCRTStartup
+1
+275
+WinMainCRTStartup
+1
+189
+BaseProcessStart
+1
+0
+Callers 26
+RtlLeaveCriticalSection
+3
+-1
+timeKillEvent
+3
+0
+MyExecuteQuantum
+3
+2961
+EdRun_Execute
+3
+1000
+EdDisp_Run
+3
+1811
+MyCommandHandler
+3
+3295
+MyCommonMessageHandler
+3
+3494
+MyTextDisplayWindowProcedure
+3
+1968
+InternalCallWinProc
+12
+0
+UserCallWinProcCheckWow
+12
+0
+SendMessageWorker
+9
+0
+SendMessageA
+6
+0
+MyEditorWindowProcedure
+3
+1505
+MyButtonBarWindowProcedure
+3
+579
+SendMessageW
+3
+0
+xxxButtonNotifyParent
+3
+0
+xxxBNReleaseCapture
+3
+0
+ButtonWndProcWorker
+3
+0
+ButtonWndProcA
+3
+0
+DispatchMessageWorker
+3
+0
+DispatchMessageA
+3
+0
+MyProcessEvents
+3
+1894
+WinMain
+3
+506
+__tmainCRTStartup
+3
+275
+WinMainCRTStartup
+3
+189
+BaseProcessStart
+3
+0
+Callers 30
+RtlpUnWaitCriticalSection
+4
+-1
+RtlLeaveCriticalSection
+4
+0
+timeKillEvent
+2
+0
+MyExecuteQuantum
+2
+2961
+EdRun_Execute
+4
+1000
+EdDisp_Run
+4
+1811
+MyCommandHandler
+4
+3295
+MyCommonMessageHandler
+4
+3494
+MyTextDisplayWindowProcedure
+4
+1968
+InternalCallWinProc
+16
+0
+UserCallWinProcCheckWow
+16
+0
+SendMessageWorker
+12
+0
+SendMessageA
+8
+0
+MyEditorWindowProcedure
+4
+1505
+MyButtonBarWindowProcedure
+4
+579
+SendMessageW
+4
+0
+xxxButtonNotifyParent
+4
+0
+xxxBNReleaseCapture
+4
+0
+ButtonWndProcWorker
+4
+0
+ButtonWndProcA
+4
+0
+DispatchMessageWorker
+4
+0
+DispatchMessageA
+4
+0
+MyProcessEvents
+4
+1894
+WinMain
+4
+506
+__tmainCRTStartup
+4
+275
+WinMainCRTStartup
+4
+189
+BaseProcessStart
+4
+0
+timeSetEventInternal
+2
+0
+timeSetEvent
+2
+0
+MyExecuteQuantum
+2
+2953
+Callers 1
+SendMessageA
+0
+-1
+Callers 1
+SendMessageW
+0
+-1
+Callers 1
+SendMessageWorker
+0
+-1
+Callers 31
+SetPixel
+26
+-1
+MDIODraw_Dot
+26
+224
+MIODraw_Dot
+26
+188
+MIO_draw_dot
+26
+503
+Language_Execute_Run
+26
+1741
+Language_Execute_Executor
+26
+3643
+Language_ExecuteProgram
+26
+1257
+MyExecuteQuantum
+26
+2953
+EdRun_Execute
+26
+1000
+EdDisp_Run
+26
+1811
+MyCommandHandler
+26
+3295
+MyCommonMessageHandler
+26
+3494
+MyTextDisplayWindowProcedure
+26
+1968
+InternalCallWinProc
+104
+0
+UserCallWinProcCheckWow
+104
+0
+SendMessageWorker
+78
+0
+SendMessageA
+52
+0
+MyEditorWindowProcedure
+26
+1505
+MyButtonBarWindowProcedure
+26
+579
+SendMessageW
+26
+0
+xxxButtonNotifyParent
+26
+0
+xxxBNReleaseCapture
+26
+0
+ButtonWndProcWorker
+26
+0
+ButtonWndProcA
+26
+0
+DispatchMessageWorker
+26
+0
+DispatchMessageA
+26
+0
+MyProcessEvents
+26
+1894
+WinMain
+26
+506
+__tmainCRTStartup
+26
+275
+WinMainCRTStartup
+26
+189
+BaseProcessStart
+26
+0
+Callers 26
+TL_TLE_TLEHE
+1
+-1
+Language_ExecuteProgram
+1
+1229
+MyExecuteQuantum
+1
+2953
+EdRun_Execute
+1
+1000
+EdDisp_Run
+1
+1811
+MyCommandHandler
+1
+3295
+MyCommonMessageHandler
+1
+3494
+MyTextDisplayWindowProcedure
+1
+1968
+InternalCallWinProc
+4
+0
+UserCallWinProcCheckWow
+4
+0
+SendMessageWorker
+3
+0
+SendMessageA
+2
+0
+MyEditorWindowProcedure
+1
+1505
+MyButtonBarWindowProcedure
+1
+579
+SendMessageW
+1
+0
+xxxButtonNotifyParent
+1
+0
+xxxBNReleaseCapture
+1
+0
+ButtonWndProcWorker
+1
+0
+ButtonWndProcA
+1
+0
+DispatchMessageWorker
+1
+0
+DispatchMessageA
+1
+0
+MyProcessEvents
+1
+1894
+WinMain
+1
+506
+__tmainCRTStartup
+1
+275
+WinMainCRTStartup
+1
+189
+BaseProcessStart
+1
+0
+Callers 25
+ToolTipsWndProc
+1
+-1
+InternalCallWinProc
+5
+0
+UserCallWinProcCheckWow
+5
+0
+DispatchMessageWorker
+2
+0
+DispatchMessageA
+2
+0
+Ed_ProcessWaitingEvents
+1
+1048
+EdRun_Execute
+1
+1057
+EdDisp_Run
+1
+1811
+MyCommandHandler
+1
+3295
+MyCommonMessageHandler
+1
+3494
+MyTextDisplayWindowProcedure
+1
+1968
+SendMessageWorker
+3
+0
+SendMessageA
+2
+0
+MyEditorWindowProcedure
+1
+1505
+MyButtonBarWindowProcedure
+1
+579
+SendMessageW
+1
+0
+xxxButtonNotifyParent
+1
+0
+xxxBNReleaseCapture
+1
+0
+ButtonWndProcWorker
+1
+0
+ButtonWndProcA
+1
+0
+MyProcessEvents
+1
+1894
+WinMain
+1
+506
+__tmainCRTStartup
+1
+275
+WinMainCRTStartup
+1
+189
+BaseProcessStart
+1
+0
+Callers 1
+UserCallWinProcCheckWow
+0
+-1
+Callers 36
+ValidateHwnd
+4
+-1
+GetWindowLongA
+4
+0
+MDIOWin_GetWindowType
+4
+564
+MIOWin_GetInfo
+2
+1447
+MDIODraw_Dot
+2
+208
+MIODraw_Dot
+2
+188
+MIO_draw_dot
+4
+503
+Language_Execute_Run
+4
+1741
+Language_Execute_Executor
+4
+3643
+Language_ExecuteProgram
+4
+1257
+MyExecuteQuantum
+4
+2953
+EdRun_Execute
+4
+1000
+EdDisp_Run
+4
+1811
+MyCommandHandler
+4
+3295
+MyCommonMessageHandler
+4
+3494
+MyTextDisplayWindowProcedure
+4
+1968
+InternalCallWinProc
+16
+0
+UserCallWinProcCheckWow
+16
+0
+SendMessageWorker
+12
+0
+SendMessageA
+8
+0
+MyEditorWindowProcedure
+4
+1505
+MyButtonBarWindowProcedure
+4
+579
+SendMessageW
+4
+0
+xxxButtonNotifyParent
+4
+0
+xxxBNReleaseCapture
+4
+0
+ButtonWndProcWorker
+4
+0
+ButtonWndProcA
+4
+0
+DispatchMessageWorker
+4
+0
+DispatchMessageA
+4
+0
+MyProcessEvents
+4
+1894
+WinMain
+4
+506
+__tmainCRTStartup
+4
+275
+WinMainCRTStartup
+4
+189
+BaseProcessStart
+4
+0
+MIO_CheckOuputWindowIsInGraphicsMode
+2
+1020
+MIODraw_Dot
+2
+182
+Callers 1
+WinMain
+0
+-1
+Callers 1
+WinMainCRTStartup
+0
+-1
+Callers 30
+ZwSetEvent
+42
+-1
+timeKillEvent
+21
+0
+MyExecuteQuantum
+21
+2961
+EdRun_Execute
+42
+1000
+EdDisp_Run
+42
+1811
+MyCommandHandler
+42
+3295
+MyCommonMessageHandler
+42
+3494
+MyTextDisplayWindowProcedure
+42
+1968
+InternalCallWinProc
+168
+0
+UserCallWinProcCheckWow
+168
+0
+SendMessageWorker
+126
+0
+SendMessageA
+84
+0
+MyEditorWindowProcedure
+42
+1505
+MyButtonBarWindowProcedure
+42
+579
+SendMessageW
+42
+0
+xxxButtonNotifyParent
+42
+0
+xxxBNReleaseCapture
+42
+0
+ButtonWndProcWorker
+42
+0
+ButtonWndProcA
+42
+0
+DispatchMessageWorker
+42
+0
+DispatchMessageA
+42
+0
+MyProcessEvents
+42
+1894
+WinMain
+42
+506
+__tmainCRTStartup
+42
+275
+WinMainCRTStartup
+42
+189
+BaseProcessStart
+42
+0
+timeThreadSetEvent
+21
+0
+timeSetEventInternal
+21
+0
+timeSetEvent
+21
+0
+MyExecuteQuantum
+21
+2953
+Callers 38
+_GetWindowLong
+20
+-1
+GetWindowLongA
+20
+0
+MDIOWin_GetWindowInfo
+6
+577
+MIOWin_GetInfo
+6
+1464
+MDIODraw_Dot
+16
+208
+MIODraw_Dot
+16
+188
+MIO_draw_dot
+20
+503
+Language_Execute_Run
+20
+1741
+Language_Execute_Executor
+20
+3643
+Language_ExecuteProgram
+20
+1257
+MyExecuteQuantum
+20
+2953
+EdRun_Execute
+20
+1000
+EdDisp_Run
+20
+1811
+MyCommandHandler
+20
+3295
+MyCommonMessageHandler
+20
+3494
+MyTextDisplayWindowProcedure
+20
+1968
+InternalCallWinProc
+80
+0
+UserCallWinProcCheckWow
+80
+0
+SendMessageWorker
+60
+0
+SendMessageA
+40
+0
+MyEditorWindowProcedure
+20
+1505
+MyButtonBarWindowProcedure
+20
+579
+SendMessageW
+20
+0
+xxxButtonNotifyParent
+20
+0
+xxxBNReleaseCapture
+20
+0
+ButtonWndProcWorker
+20
+0
+ButtonWndProcA
+20
+0
+DispatchMessageWorker
+20
+0
+DispatchMessageA
+20
+0
+MyProcessEvents
+20
+1894
+WinMain
+20
+506
+__tmainCRTStartup
+20
+275
+WinMainCRTStartup
+20
+189
+BaseProcessStart
+20
+0
+MDIOWin_GetWindowType
+14
+564
+MIO_CheckOuputWindowIsInGraphicsMode
+4
+1020
+MIODraw_Dot
+4
+182
+MIOWin_GetInfo
+10
+1447
+Callers 35
+_SEH_epilog
+8
+-1
+MIO_CheckOuputWindowIsInGraphicsMode
+5
+1020
+MIODraw_Dot
+5
+182
+MIO_draw_dot
+8
+503
+Language_Execute_Run
+8
+1741
+Language_Execute_Executor
+8
+3643
+Language_ExecuteProgram
+8
+1257
+MyExecuteQuantum
+8
+2953
+EdRun_Execute
+8
+1000
+EdDisp_Run
+8
+1811
+MyCommandHandler
+8
+3295
+MyCommonMessageHandler
+8
+3494
+MyTextDisplayWindowProcedure
+8
+1968
+InternalCallWinProc
+32
+0
+UserCallWinProcCheckWow
+32
+0
+SendMessageWorker
+24
+0
+SendMessageA
+16
+0
+MyEditorWindowProcedure
+8
+1505
+MyButtonBarWindowProcedure
+8
+579
+SendMessageW
+8
+0
+xxxButtonNotifyParent
+8
+0
+xxxBNReleaseCapture
+8
+0
+ButtonWndProcWorker
+8
+0
+ButtonWndProcA
+8
+0
+DispatchMessageWorker
+8
+0
+DispatchMessageA
+8
+0
+MyProcessEvents
+8
+1894
+WinMain
+8
+506
+__tmainCRTStartup
+8
+275
+WinMainCRTStartup
+8
+189
+BaseProcessStart
+8
+0
+MIOWin_GetInfo
+3
+1447
+MDIODraw_Dot
+3
+208
+MIODraw_Dot
+3
+188
+MDIOWin_GetWindowType
+5
+564
+Callers 40
+_SEH_prolog
+30
+-1
+MDIOWin_GetWindowInfo
+7
+577
+MIOWin_GetInfo
+9
+1464
+MIO_SetActive
+1
+2152
+Language_Execute_SetActive
+1
+1434
+Language_Execute_Executor
+1
+3642
+Language_ExecuteProgram
+30
+1257
+MyExecuteQuantum
+30
+2953
+EdRun_Execute
+30
+1000
+EdDisp_Run
+30
+1811
+MyCommandHandler
+30
+3295
+MyCommonMessageHandler
+30
+3494
+MyTextDisplayWindowProcedure
+30
+1968
+InternalCallWinProc
+120
+0
+UserCallWinProcCheckWow
+120
+0
+SendMessageWorker
+90
+0
+SendMessageA
+60
+0
+MyEditorWindowProcedure
+30
+1505
+MyButtonBarWindowProcedure
+30
+579
+SendMessageW
+30
+0
+xxxButtonNotifyParent
+30
+0
+xxxBNReleaseCapture
+30
+0
+ButtonWndProcWorker
+30
+0
+ButtonWndProcA
+30
+0
+DispatchMessageWorker
+30
+0
+DispatchMessageA
+30
+0
+MyProcessEvents
+30
+1894
+WinMain
+30
+506
+__tmainCRTStartup
+30
+275
+WinMainCRTStartup
+30
+189
+BaseProcessStart
+30
+0
+MDIOWin_GetWindowType
+11
+564
+MIOWin_GetInfo
+7
+1447
+MDIODraw_Dot
+15
+208
+MIODraw_Dot
+15
+188
+MIO_draw_dot
+29
+503
+Language_Execute_Run
+29
+1741
+Language_Execute_Executor
+29
+3643
+MIO_CheckOuputWindowIsInGraphicsMode
+14
+1020
+MIODraw_Dot
+14
+182
+Callers 1
+__fnDWORD
+0
+-1
+Callers 27
+__setjmp3
+2
+-1
+Language_Execute_Executor
+1
+3643
+Language_ExecuteProgram
+1
+1257
+MyExecuteQuantum
+2
+2953
+EdRun_Execute
+2
+1000
+EdDisp_Run
+2
+1811
+MyCommandHandler
+2
+3295
+MyCommonMessageHandler
+2
+3494
+MyTextDisplayWindowProcedure
+2
+1968
+InternalCallWinProc
+8
+0
+UserCallWinProcCheckWow
+8
+0
+SendMessageWorker
+6
+0
+SendMessageA
+4
+0
+MyEditorWindowProcedure
+2
+1505
+MyButtonBarWindowProcedure
+2
+579
+SendMessageW
+2
+0
+xxxButtonNotifyParent
+2
+0
+xxxBNReleaseCapture
+2
+0
+ButtonWndProcWorker
+2
+0
+ButtonWndProcA
+2
+0
+DispatchMessageWorker
+2
+0
+DispatchMessageA
+2
+0
+MyProcessEvents
+2
+1894
+WinMain
+2
+506
+__tmainCRTStartup
+2
+275
+WinMainCRTStartup
+2
+189
+BaseProcessStart
+2
+0
+Callers 1
+__tmainCRTStartup
+0
+-1
+Callers 27
+_chkstk
+2
+-1
+Language_Execute_Executor
+2
+3643
+Language_ExecuteProgram
+2
+1257
+MyExecuteQuantum
+2
+2953
+EdRun_Execute
+2
+1000
+EdDisp_Run
+2
+1811
+MyCommandHandler
+2
+3295
+MyCommonMessageHandler
+2
+3494
+MyTextDisplayWindowProcedure
+2
+1968
+InternalCallWinProc
+8
+0
+UserCallWinProcCheckWow
+8
+0
+SendMessageWorker
+6
+0
+SendMessageA
+4
+0
+MyEditorWindowProcedure
+2
+1505
+MyButtonBarWindowProcedure
+2
+579
+SendMessageW
+2
+0
+xxxButtonNotifyParent
+2
+0
+xxxBNReleaseCapture
+2
+0
+ButtonWndProcWorker
+2
+0
+ButtonWndProcA
+2
+0
+DispatchMessageWorker
+2
+0
+DispatchMessageA
+2
+0
+MyProcessEvents
+2
+1894
+WinMain
+2
+506
+__tmainCRTStartup
+2
+275
+WinMainCRTStartup
+2
+189
+BaseProcessStart
+2
+0
+Callers 28
+memset
+12
+-1
+Language_Execute_Run
+12
+1932
+Language_Execute_Executor
+12
+3643
+Language_ExecuteProgram
+12
+1257
+MyExecuteQuantum
+12
+2953
+EdRun_Execute
+12
+1000
+EdDisp_Run
+12
+1811
+MyCommandHandler
+12
+3295
+MyCommonMessageHandler
+12
+3494
+MyTextDisplayWindowProcedure
+12
+1968
+InternalCallWinProc
+48
+0
+UserCallWinProcCheckWow
+48
+0
+SendMessageWorker
+36
+0
+SendMessageA
+24
+0
+MyEditorWindowProcedure
+12
+1505
+MyButtonBarWindowProcedure
+12
+579
+SendMessageW
+12
+0
+xxxButtonNotifyParent
+12
+0
+xxxBNReleaseCapture
+12
+0
+ButtonWndProcWorker
+12
+0
+ButtonWndProcA
+12
+0
+DispatchMessageWorker
+12
+0
+DispatchMessageA
+12
+0
+MyProcessEvents
+12
+1894
+WinMain
+12
+506
+__tmainCRTStartup
+12
+275
+WinMainCRTStartup
+12
+189
+BaseProcessStart
+12
+0
+Callers 1
+timeKillEvent
+0
+-1
+Callers 25
+timeSetEvent
+1
+-1
+MyExecuteQuantum
+1
+2953
+EdRun_Execute
+1
+1000
+EdDisp_Run
+1
+1811
+MyCommandHandler
+1
+3295
+MyCommonMessageHandler
+1
+3494
+MyTextDisplayWindowProcedure
+1
+1968
+InternalCallWinProc
+4
+0
+UserCallWinProcCheckWow
+4
+0
+SendMessageWorker
+3
+0
+SendMessageA
+2
+0
+MyEditorWindowProcedure
+1
+1505
+MyButtonBarWindowProcedure
+1
+579
+SendMessageW
+1
+0
+xxxButtonNotifyParent
+1
+0
+xxxBNReleaseCapture
+1
+0
+ButtonWndProcWorker
+1
+0
+ButtonWndProcA
+1
+0
+DispatchMessageWorker
+1
+0
+DispatchMessageA
+1
+0
+MyProcessEvents
+1
+1894
+WinMain
+1
+506
+__tmainCRTStartup
+1
+275
+WinMainCRTStartup
+1
+189
+BaseProcessStart
+1
+0
+Callers 26
+timeSetEventInternal
+1
+-1
+timeSetEvent
+1
+0
+MyExecuteQuantum
+1
+2953
+EdRun_Execute
+1
+1000
+EdDisp_Run
+1
+1811
+MyCommandHandler
+1
+3295
+MyCommonMessageHandler
+1
+3494
+MyTextDisplayWindowProcedure
+1
+1968
+InternalCallWinProc
+4
+0
+UserCallWinProcCheckWow
+4
+0
+SendMessageWorker
+3
+0
+SendMessageA
+2
+0
+MyEditorWindowProcedure
+1
+1505
+MyButtonBarWindowProcedure
+1
+579
+SendMessageW
+1
+0
+xxxButtonNotifyParent
+1
+0
+xxxBNReleaseCapture
+1
+0
+ButtonWndProcWorker
+1
+0
+ButtonWndProcA
+1
+0
+DispatchMessageWorker
+1
+0
+DispatchMessageA
+1
+0
+MyProcessEvents
+1
+1894
+WinMain
+1
+506
+__tmainCRTStartup
+1
+275
+WinMainCRTStartup
+1
+189
+BaseProcessStart
+1
+0
+Callers 1
+timeSetTimerEvent
+0
+-1
+Callers 27
+timeThreadSetEvent
+1
+-1
+timeSetEventInternal
+1
+0
+timeSetEvent
+1
+0
+MyExecuteQuantum
+1
+2953
+EdRun_Execute
+1
+1000
+EdDisp_Run
+1
+1811
+MyCommandHandler
+1
+3295
+MyCommonMessageHandler
+1
+3494
+MyTextDisplayWindowProcedure
+1
+1968
+InternalCallWinProc
+4
+0
+UserCallWinProcCheckWow
+4
+0
+SendMessageWorker
+3
+0
+SendMessageA
+2
+0
+MyEditorWindowProcedure
+1
+1505
+MyButtonBarWindowProcedure
+1
+579
+SendMessageW
+1
+0
+xxxButtonNotifyParent
+1
+0
+xxxBNReleaseCapture
+1
+0
+ButtonWndProcWorker
+1
+0
+ButtonWndProcA
+1
+0
+DispatchMessageWorker
+1
+0
+DispatchMessageA
+1
+0
+MyProcessEvents
+1
+1894
+WinMain
+1
+506
+__tmainCRTStartup
+1
+275
+WinMainCRTStartup
+1
+189
+BaseProcessStart
+1
+0
+Callers 1
+xxxBNReleaseCapture
+0
+-1
+Callers 1
+xxxButtonNotifyParent
+0
+-1
+Callees 0
+Callees 0
+Callees 0
+Callees 0
+Callees 0
+Callees 0
+Callees 0
+Callees 0
+Callees 0
+Callees 0
+Callees 1
+16
+0
+Callees 1
+9
+1
+Callees 2
+7
+2
+13
+34
+Callees 1
+20
+3
+Callees 2
+20
+4
+7
+36
+Callees 1
+27
+5
+Callees 1
+27
+6
+Callees 2
+27
+7
+2
+39
+Callees 1
+29
+8
+Callees 1
+29
+9
+Callees 1
+29
+10
+Callees 1
+29
+11
+Callees 1
+29
+12
+Callees 1
+29
+13
+Callees 4
+29
+14
+29
+19
+29
+20
+29
+25
+Callees 1
+116
+15
+Callees 1
+87
+16
+Callees 1
+58
+17
+Callees 1
+29
+18
+Callees 1
+29
+18
+Callees 1
+29
+17
+Callees 1
+29
+21
+Callees 1
+29
+22
+Callees 1
+29
+23
+Callees 1
+29
+24
+Callees 1
+29
+16
+Callees 1
+29
+26
+Callees 1
+29
+27
+Callees 1
+29
+28
+Callees 1
+29
+29
+Callees 1
+29
+30
+Callees 1
+29
+31
+Callees 1
+11
+0
+Callees 2
+11
+33
+2
+0
+Callees 1
+7
+1
+Callees 1
+7
+35
+Callees 1
+2
+2
+Callees 1
+2
+37
+Callees 1
+2
+38
+Callees 0
+Callees 1
+35
+0
+Callees 2
+25
+1
+1
+0
+Callees 1
+8
+2
+Callees 2
+8
+3
+10
+35
+Callees 1
+18
+4
+Callees 2
+18
+5
+18
+37
+Callees 1
+36
+6
+Callees 1
+36
+7
+Callees 1
+36
+8
+Callees 1
+36
+9
+Callees 1
+36
+10
+Callees 1
+36
+11
+Callees 1
+36
+12
+Callees 1
+36
+13
+Callees 1
+36
+14
+Callees 4
+36
+15
+36
+20
+36
+21
+36
+26
+Callees 1
+144
+16
+Callees 1
+108
+17
+Callees 1
+72
+18
+Callees 1
+36
+19
+Callees 1
+36
+19
+Callees 1
+36
+18
+Callees 1
+36
+22
+Callees 1
+36
+23
+Callees 1
+36
+24
+Callees 1
+36
+25
+Callees 1
+36
+17
+Callees 1
+36
+27
+Callees 1
+36
+28
+Callees 1
+36
+29
+Callees 1
+36
+30
+Callees 1
+36
+31
+Callees 1
+36
+32
+Callees 1
+10
+1
+Callees 1
+10
+34
+Callees 1
+18
+2
+Callees 1
+18
+36
+Callees 0
+Callees 0
+Callees 1
+1
+0
+Callees 1
+1
+1
+Callees 1
+1
+2
+Callees 1
+1
+3
+Callees 1
+1
+4
+Callees 1
+1
+5
+Callees 1
+1
+6
+Callees 2
+1
+7
+1
+36
+Callees 1
+2
+8
+Callees 1
+2
+9
+Callees 1
+2
+10
+Callees 1
+2
+11
+Callees 1
+2
+12
+Callees 4
+2
+13
+2
+18
+2
+19
+2
+24
+Callees 1
+8
+14
+Callees 1
+6
+15
+Callees 1
+4
+16
+Callees 1
+2
+17
+Callees 1
+2
+17
+Callees 1
+2
+16
+Callees 1
+2
+20
+Callees 1
+2
+21
+Callees 1
+2
+22
+Callees 1
+2
+23
+Callees 1
+2
+15
+Callees 1
+2
+25
+Callees 1
+2
+26
+Callees 1
+2
+27
+Callees 1
+2
+28
+Callees 1
+2
+29
+Callees 1
+2
+30
+Callees 1
+1
+0
+Callees 1
+1
+32
+Callees 1
+1
+33
+Callees 1
+1
+34
+Callees 1
+1
+35
+Callees 0
+Callees 0
+Callees 1
+4
+0
+Callees 1
+4
+1
+Callees 1
+4
+2
+Callees 1
+4
+3
+Callees 1
+4
+4
+Callees 1
+4
+5
+Callees 4
+4
+6
+4
+11
+4
+12
+4
+17
+Callees 1
+16
+7
+Callees 1
+12
+8
+Callees 1
+8
+9
+Callees 1
+4
+10
+Callees 1
+4
+10
+Callees 1
+4
+9
+Callees 1
+4
+13
+Callees 1
+4
+14
+Callees 1
+4
+15
+Callees 1
+4
+16
+Callees 1
+4
+8
+Callees 1
+4
+18
+Callees 1
+4
+19
+Callees 1
+4
+20
+Callees 1
+4
+21
+Callees 1
+4
+22
+Callees 1
+4
+23
+Callees 0
+Callees 0
+Callees 1
+451
+0
+Callees 1
+451
+1
+Callees 1
+451
+2
+Callees 1
+451
+3
+Callees 1
+451
+4
+Callees 1
+451
+5
+Callees 1
+451
+6
+Callees 1
+451
+7
+Callees 4
+451
+8
+451
+13
+451
+14
+451
+19
+Callees 1
+1804
+9
+Callees 1
+1353
+10
+Callees 1
+902
+11
+Callees 1
+451
+12
+Callees 1
+451
+12
+Callees 1
+451
+11
+Callees 1
+451
+15
+Callees 1
+451
+16
+Callees 1
+451
+17
+Callees 1
+451
+18
+Callees 1
+451
+10
+Callees 1
+451
+20
+Callees 1
+451
+21
+Callees 1
+451
+22
+Callees 1
+451
+23
+Callees 1
+451
+24
+Callees 1
+451
+25
+Callees 0
+Callees 0
+Callees 1
+9
+0
+Callees 1
+9
+1
+Callees 1
+9
+2
+Callees 1
+9
+3
+Callees 1
+9
+4
+Callees 1
+9
+5
+Callees 1
+9
+6
+Callees 1
+9
+7
+Callees 1
+9
+8
+Callees 4
+9
+9
+9
+14
+9
+15
+9
+20
+Callees 1
+36
+10
+Callees 1
+27
+11
+Callees 1
+18
+12
+Callees 1
+9
+13
+Callees 1
+9
+13
+Callees 1
+9
+12
+Callees 1
+9
+16
+Callees 1
+9
+17
+Callees 1
+9
+18
+Callees 1
+9
+19
+Callees 1
+9
+11
+Callees 1
+9
+21
+Callees 1
+9
+22
+Callees 1
+9
+23
+Callees 1
+9
+24
+Callees 1
+9
+25
+Callees 1
+9
+26
+Callees 0
+Callees 1
+8
+0
+Callees 2
+8
+1
+3
+0
+Callees 1
+11
+2
+Callees 1
+11
+3
+Callees 1
+11
+4
+Callees 1
+11
+5
+Callees 1
+11
+6
+Callees 1
+11
+7
+Callees 1
+11
+8
+Callees 1
+11
+9
+Callees 1
+11
+10
+Callees 4
+11
+11
+11
+16
+11
+17
+11
+22
+Callees 1
+44
+12
+Callees 1
+33
+13
+Callees 1
+22
+14
+Callees 1
+11
+15
+Callees 1
+11
+15
+Callees 1
+11
+14
+Callees 1
+11
+18
+Callees 1
+11
+19
+Callees 1
+11
+20
+Callees 1
+11
+21
+Callees 1
+11
+13
+Callees 1
+11
+23
+Callees 1
+11
+24
+Callees 1
+11
+25
+Callees 1
+11
+26
+Callees 1
+11
+27
+Callees 1
+11
+28
+Callees 0
+Callees 1
+5
+0
+Callees 1
+5
+1
+Callees 1
+5
+2
+Callees 1
+5
+3
+Callees 1
+5
+4
+Callees 1
+5
+5
+Callees 1
+5
+6
+Callees 1
+5
+7
+Callees 1
+5
+8
+Callees 1
+5
+9
+Callees 1
+5
+10
+Callees 1
+5
+11
+Callees 4
+5
+12
+5
+17
+5
+18
+5
+23
+Callees 1
+20
+13
+Callees 1
+15
+14
+Callees 1
+10
+15
+Callees 1
+5
+16
+Callees 1
+5
+16
+Callees 1
+5
+15
+Callees 1
+5
+19
+Callees 1
+5
+20
+Callees 1
+5
+21
+Callees 1
+5
+22
+Callees 1
+5
+14
+Callees 1
+5
+24
+Callees 1
+5
+25
+Callees 1
+5
+26
+Callees 1
+5
+27
+Callees 1
+5
+28
+Callees 1
+5
+29
+Callees 0
+Callees 1
+3
+0
+Callees 1
+3
+1
+Callees 1
+3
+2
+Callees 1
+3
+3
+Callees 1
+3
+4
+Callees 1
+3
+5
+Callees 1
+3
+6
+Callees 1
+3
+7
+Callees 1
+3
+8
+Callees 1
+3
+9
+Callees 1
+3
+10
+Callees 1
+3
+11
+Callees 1
+3
+12
+Callees 4
+3
+13
+3
+18
+3
+19
+3
+24
+Callees 1
+12
+14
+Callees 1
+9
+15
+Callees 1
+6
+16
+Callees 1
+3
+17
+Callees 1
+3
+17
+Callees 1
+3
+16
+Callees 1
+3
+20
+Callees 1
+3
+21
+Callees 1
+3
+22
+Callees 1
+3
+23
+Callees 1
+3
+15
+Callees 1
+3
+25
+Callees 1
+3
+26
+Callees 1
+3
+27
+Callees 1
+3
+28
+Callees 1
+3
+29
+Callees 1
+3
+30
+Callees 0
+Callees 1
+3
+0
+Callees 1
+3
+1
+Callees 2
+3
+2
+2
+36
+Callees 1
+5
+3
+Callees 1
+5
+4
+Callees 2
+5
+5
+2
+33
+Callees 1
+7
+6
+Callees 1
+7
+7
+Callees 1
+7
+8
+Callees 1
+7
+9
+Callees 1
+7
+10
+Callees 1
+7
+11
+Callees 4
+7
+12
+7
+17
+7
+18
+7
+23
+Callees 1
+28
+13
+Callees 1
+21
+14
+Callees 1
+14
+15
+Callees 1
+7
+16
+Callees 1
+7
+16
+Callees 1
+7
+15
+Callees 1
+7
+19
+Callees 1
+7
+20
+Callees 1
+7
+21
+Callees 1
+7
+22
+Callees 1
+7
+14
+Callees 1
+7
+24
+Callees 1
+7
+25
+Callees 1
+7
+26
+Callees 1
+7
+27
+Callees 1
+7
+28
+Callees 1
+7
+29
+Callees 1
+2
+0
+Callees 1
+2
+31
+Callees 1
+2
+32
+Callees 1
+2
+0
+Callees 1
+2
+34
+Callees 1
+2
+35
+Callees 0
+Callees 1
+14
+0
+Callees 2
+14
+1
+1
+0
+Callees 1
+15
+2
+Callees 1
+15
+3
+Callees 1
+15
+4
+Callees 1
+15
+5
+Callees 1
+15
+6
+Callees 1
+15
+7
+Callees 1
+15
+8
+Callees 1
+15
+9
+Callees 4
+15
+10
+15
+15
+15
+16
+15
+21
+Callees 1
+60
+11
+Callees 1
+45
+12
+Callees 1
+30
+13
+Callees 1
+15
+14
+Callees 1
+15
+14
+Callees 1
+15
+13
+Callees 1
+15
+17
+Callees 1
+15
+18
+Callees 1
+15
+19
+Callees 1
+15
+20
+Callees 1
+15
+12
+Callees 1
+15
+22
+Callees 1
+15
+23
+Callees 1
+15
+24
+Callees 1
+15
+25
+Callees 1
+15
+26
+Callees 1
+15
+27
+Callees 0
+Callees 1
+1
+0
+Callees 1
+1
+1
+Callees 1
+1
+2
+Callees 1
+1
+3
+Callees 1
+1
+4
+Callees 1
+1
+5
+Callees 4
+1
+6
+1
+11
+1
+12
+1
+17
+Callees 1
+4
+7
+Callees 1
+3
+8
+Callees 1
+2
+9
+Callees 1
+1
+10
+Callees 1
+1
+10
+Callees 1
+1
+9
+Callees 1
+1
+13
+Callees 1
+1
+14
+Callees 1
+1
+15
+Callees 1
+1
+16
+Callees 1
+1
+8
+Callees 1
+1
+18
+Callees 1
+1
+19
+Callees 1
+1
+20
+Callees 1
+1
+21
+Callees 1
+1
+22
+Callees 1
+1
+23
+Callees 0
+Callees 1
+4
+0
+Callees 1
+4
+1
+Callees 1
+4
+2
+Callees 1
+4
+3
+Callees 1
+4
+4
+Callees 1
+4
+5
+Callees 1
+4
+6
+Callees 1
+4
+7
+Callees 1
+4
+8
+Callees 1
+4
+9
+Callees 1
+4
+10
+Callees 1
+4
+11
+Callees 4
+4
+12
+4
+17
+4
+18
+4
+23
+Callees 1
+16
+13
+Callees 1
+12
+14
+Callees 1
+8
+15
+Callees 1
+4
+16
+Callees 1
+4
+16
+Callees 1
+4
+15
+Callees 1
+4
+19
+Callees 1
+4
+20
+Callees 1
+4
+21
+Callees 1
+4
+22
+Callees 1
+4
+14
+Callees 1
+4
+24
+Callees 1
+4
+25
+Callees 1
+4
+26
+Callees 1
+4
+27
+Callees 1
+4
+28
+Callees 1
+4
+29
+Callees 0
+Callees 0
+Callees 1
+1
+0
+Callees 1
+1
+1
+Callees 1
+1
+2
+Callees 1
+1
+3
+Callees 1
+1
+4
+Callees 1
+1
+5
+Callees 1
+1
+6
+Callees 1
+1
+7
+Callees 1
+1
+8
+Callees 1
+1
+9
+Callees 1
+1
+10
+Callees 4
+1
+11
+1
+16
+1
+17
+1
+22
+Callees 1
+4
+12
+Callees 1
+3
+13
+Callees 1
+2
+14
+Callees 1
+1
+15
+Callees 1
+1
+15
+Callees 1
+1
+14
+Callees 1
+1
+18
+Callees 1
+1
+19
+Callees 1
+1
+20
+Callees 1
+1
+21
+Callees 1
+1
+13
+Callees 1
+1
+23
+Callees 1
+1
+24
+Callees 1
+1
+25
+Callees 1
+1
+26
+Callees 1
+1
+27
+Callees 1
+1
+28
+Callees 0
+Callees 1
+3
+0
+Callees 1
+3
+1
+Callees 1
+3
+2
+Callees 1
+3
+3
+Callees 1
+3
+4
+Callees 1
+3
+5
+Callees 1
+3
+6
+Callees 1
+3
+7
+Callees 1
+3
+8
+Callees 1
+3
+9
+Callees 1
+3
+10
+Callees 4
+3
+11
+3
+16
+3
+17
+3
+22
+Callees 1
+12
+12
+Callees 1
+9
+13
+Callees 1
+6
+14
+Callees 1
+3
+15
+Callees 1
+3
+15
+Callees 1
+3
+14
+Callees 1
+3
+18
+Callees 1
+3
+19
+Callees 1
+3
+20
+Callees 1
+3
+21
+Callees 1
+3
+13
+Callees 1
+3
+23
+Callees 1
+3
+24
+Callees 1
+3
+25
+Callees 1
+3
+26
+Callees 1
+3
+27
+Callees 1
+3
+28
+Callees 0
+Callees 1
+1
+0
+Callees 1
+1
+1
+Callees 1
+1
+2
+Callees 1
+1
+3
+Callees 1
+1
+4
+Callees 1
+1
+5
+Callees 1
+1
+6
+Callees 1
+1
+7
+Callees 1
+1
+8
+Callees 1
+1
+9
+Callees 1
+1
+10
+Callees 4
+1
+11
+1
+16
+1
+17
+1
+22
+Callees 1
+4
+12
+Callees 1
+3
+13
+Callees 1
+2
+14
+Callees 1
+1
+15
+Callees 1
+1
+15
+Callees 1
+1
+14
+Callees 1
+1
+18
+Callees 1
+1
+19
+Callees 1
+1
+20
+Callees 1
+1
+21
+Callees 1
+1
+13
+Callees 1
+1
+23
+Callees 1
+1
+24
+Callees 1
+1
+25
+Callees 1
+1
+26
+Callees 1
+1
+27
+Callees 1
+1
+28
+Callees 0
+Callees 1
+5
+0
+Callees 1
+5
+1
+Callees 1
+5
+2
+Callees 1
+5
+3
+Callees 1
+5
+4
+Callees 1
+5
+5
+Callees 1
+5
+6
+Callees 1
+5
+7
+Callees 1
+5
+8
+Callees 1
+5
+9
+Callees 1
+5
+10
+Callees 4
+5
+11
+5
+16
+5
+17
+5
+22
+Callees 1
+20
+12
+Callees 1
+15
+13
+Callees 1
+10
+14
+Callees 1
+5
+15
+Callees 1
+5
+15
+Callees 1
+5
+14
+Callees 1
+5
+18
+Callees 1
+5
+19
+Callees 1
+5
+20
+Callees 1
+5
+21
+Callees 1
+5
+13
+Callees 1
+5
+23
+Callees 1
+5
+24
+Callees 1
+5
+25
+Callees 1
+5
+26
+Callees 1
+5
+27
+Callees 1
+5
+28
+Callees 0
+Callees 0
+Callees 0
+Callees 1
+11
+0
+Callees 2
+11
+1
+1
+0
+Callees 1
+12
+2
+Callees 1
+12
+3
+Callees 1
+12
+4
+Callees 1
+12
+5
+Callees 1
+12
+6
+Callees 1
+12
+7
+Callees 1
+12
+8
+Callees 4
+12
+9
+12
+14
+12
+15
+12
+20
+Callees 1
+48
+10
+Callees 1
+36
+11
+Callees 1
+24
+12
+Callees 1
+12
+13
+Callees 1
+12
+13
+Callees 1
+12
+12
+Callees 1
+12
+16
+Callees 1
+12
+17
+Callees 1
+12
+18
+Callees 1
+12
+19
+Callees 1
+12
+11
+Callees 1
+12
+21
+Callees 1
+12
+22
+Callees 1
+12
+23
+Callees 1
+12
+24
+Callees 1
+12
+25
+Callees 1
+12
+26
+Callees 0
+Callees 0
+Callees 0
+Callees 0
+Callees 0
+Callees 0
+Callees 0
+Callees 0
+Callees 1
+15
+0
+Callees 1
+15
+1
+Callees 1
+15
+2
+Callees 1
+15
+3
+Callees 1
+15
+4
+Callees 1
+15
+5
+Callees 1
+15
+6
+Callees 1
+15
+7
+Callees 1
+15
+8
+Callees 1
+15
+9
+Callees 4
+15
+10
+15
+15
+15
+16
+15
+21
+Callees 1
+60
+11
+Callees 1
+45
+12
+Callees 1
+30
+13
+Callees 1
+15
+14
+Callees 1
+15
+14
+Callees 1
+15
+13
+Callees 1
+15
+17
+Callees 1
+15
+18
+Callees 1
+15
+19
+Callees 1
+15
+20
+Callees 1
+15
+12
+Callees 1
+15
+22
+Callees 1
+15
+23
+Callees 1
+15
+24
+Callees 1
+15
+25
+Callees 1
+15
+26
+Callees 1
+15
+27
+Callees 0
+Callees 0
+Callees 0
+Callees 0
+Callees 1
+9
+0
+Callees 1
+9
+1
+Callees 1
+9
+2
+Callees 1
+9
+3
+Callees 1
+9
+4
+Callees 1
+9
+5
+Callees 1
+9
+6
+Callees 4
+9
+7
+9
+12
+9
+13
+9
+18
+Callees 1
+36
+8
+Callees 1
+27
+9
+Callees 1
+18
+10
+Callees 1
+9
+11
+Callees 1
+9
+11
+Callees 1
+9
+10
+Callees 1
+9
+14
+Callees 1
+9
+15
+Callees 1
+9
+16
+Callees 1
+9
+17
+Callees 1
+9
+9
+Callees 1
+9
+19
+Callees 1
+9
+20
+Callees 1
+9
+21
+Callees 1
+9
+22
+Callees 1
+9
+23
+Callees 1
+9
+24
+Callees 0
+Callees 1
+4
+0
+Callees 1
+4
+1
+Callees 5
+4
+2
+4
+19
+4
+22
+4
+23
+4
+28
+Callees 1
+20
+3
+Callees 1
+4
+4
+Callees 1
+4
+5
+Callees 1
+4
+6
+Callees 1
+4
+7
+Callees 1
+4
+8
+Callees 1
+4
+9
+Callees 1
+4
+10
+Callees 1
+4
+11
+Callees 1
+4
+12
+Callees 1
+4
+13
+Callees 1
+4
+14
+Callees 1
+4
+15
+Callees 1
+4
+16
+Callees 1
+4
+17
+Callees 1
+4
+18
+Callees 1
+12
+4
+Callees 1
+8
+20
+Callees 1
+4
+21
+Callees 1
+4
+21
+Callees 1
+4
+20
+Callees 1
+4
+24
+Callees 1
+4
+25
+Callees 1
+4
+26
+Callees 1
+4
+27
+Callees 1
+4
+4
+Callees 1
+4
+29
+Callees 1
+4
+30
+Callees 1
+4
+31
+Callees 1
+4
+32
+Callees 1
+4
+33
+Callees 1
+4
+34
+Callees 0
+Callees 1
+554
+0
+Callees 1
+554
+1
+Callees 1
+554
+2
+Callees 1
+554
+3
+Callees 1
+554
+4
+Callees 1
+554
+5
+Callees 1
+554
+6
+Callees 1
+554
+7
+Callees 1
+554
+8
+Callees 1
+554
+9
+Callees 1
+554
+10
+Callees 1
+554
+11
+Callees 4
+554
+12
+554
+17
+554
+18
+554
+23
+Callees 1
+2216
+13
+Callees 1
+1662
+14
+Callees 1
+1108
+15
+Callees 1
+554
+16
+Callees 1
+554
+16
+Callees 1
+554
+15
+Callees 1
+554
+19
+Callees 1
+554
+20
+Callees 1
+554
+21
+Callees 1
+554
+22
+Callees 1
+554
+14
+Callees 1
+554
+24
+Callees 1
+554
+25
+Callees 1
+554
+26
+Callees 1
+554
+27
+Callees 1
+554
+28
+Callees 1
+554
+29
+Callees 0
+Callees 1
+39
+0
+Callees 1
+39
+1
+Callees 1
+16
+2
+Callees 1
+16
+3
+Callees 1
+16
+4
+Callees 2
+16
+5
+23
+30
+Callees 1
+39
+6
+Callees 1
+39
+7
+Callees 1
+39
+8
+Callees 1
+39
+9
+Callees 4
+39
+10
+39
+15
+39
+16
+39
+21
+Callees 1
+156
+11
+Callees 1
+117
+12
+Callees 1
+78
+13
+Callees 1
+39
+14
+Callees 1
+39
+14
+Callees 1
+39
+13
+Callees 1
+39
+17
+Callees 1
+39
+18
+Callees 1
+39
+19
+Callees 1
+39
+20
+Callees 1
+39
+12
+Callees 1
+39
+22
+Callees 1
+39
+23
+Callees 1
+39
+24
+Callees 1
+39
+25
+Callees 1
+39
+26
+Callees 1
+39
+27
+Callees 1
+23
+2
+Callees 1
+23
+29
+Callees 0
+Callees 1
+11
+0
+Callees 1
+11
+1
+Callees 1
+11
+2
+Callees 1
+11
+3
+Callees 1
+11
+4
+Callees 1
+11
+5
+Callees 1
+11
+6
+Callees 1
+11
+7
+Callees 1
+11
+8
+Callees 1
+11
+9
+Callees 4
+11
+10
+11
+15
+11
+16
+11
+21
+Callees 1
+44
+11
+Callees 1
+33
+12
+Callees 1
+22
+13
+Callees 1
+11
+14
+Callees 1
+11
+14
+Callees 1
+11
+13
+Callees 1
+11
+17
+Callees 1
+11
+18
+Callees 1
+11
+19
+Callees 1
+11
+20
+Callees 1
+11
+12
+Callees 1
+11
+22
+Callees 1
+11
+23
+Callees 1
+11
+24
+Callees 1
+11
+25
+Callees 1
+11
+26
+Callees 1
+11
+27
+Callees 0
+Callees 0
+Callees 1
+1
+0
+Callees 1
+1
+1
+Callees 1
+1
+2
+Callees 1
+1
+3
+Callees 1
+1
+4
+Callees 1
+1
+5
+Callees 1
+1
+6
+Callees 1
+1
+7
+Callees 1
+1
+8
+Callees 4
+1
+9
+1
+14
+1
+15
+1
+20
+Callees 1
+4
+10
+Callees 1
+3
+11
+Callees 1
+2
+12
+Callees 1
+1
+13
+Callees 1
+1
+13
+Callees 1
+1
+12
+Callees 1
+1
+16
+Callees 1
+1
+17
+Callees 1
+1
+18
+Callees 1
+1
+19
+Callees 1
+1
+11
+Callees 1
+1
+21
+Callees 1
+1
+22
+Callees 1
+1
+23
+Callees 1
+1
+24
+Callees 1
+1
+25
+Callees 1
+1
+26
+Callees 0
+Callees 1
+3
+0
+Callees 1
+3
+1
+Callees 1
+3
+2
+Callees 1
+3
+3
+Callees 1
+3
+4
+Callees 1
+3
+5
+Callees 1
+3
+6
+Callees 4
+3
+7
+3
+12
+3
+13
+3
+18
+Callees 1
+12
+8
+Callees 1
+9
+9
+Callees 1
+6
+10
+Callees 1
+3
+11
+Callees 1
+3
+11
+Callees 1
+3
+10
+Callees 1
+3
+14
+Callees 1
+3
+15
+Callees 1
+3
+16
+Callees 1
+3
+17
+Callees 1
+3
+9
+Callees 1
+3
+19
+Callees 1
+3
+20
+Callees 1
+3
+21
+Callees 1
+3
+22
+Callees 1
+3
+23
+Callees 1
+3
+24
+Callees 0
+Callees 1
+4
+0
+Callees 1
+2
+1
+Callees 1
+2
+2
+Callees 2
+2
+3
+2
+29
+Callees 1
+4
+4
+Callees 1
+4
+5
+Callees 1
+4
+6
+Callees 1
+4
+7
+Callees 4
+4
+8
+4
+13
+4
+14
+4
+19
+Callees 1
+16
+9
+Callees 1
+12
+10
+Callees 1
+8
+11
+Callees 1
+4
+12
+Callees 1
+4
+12
+Callees 1
+4
+11
+Callees 1
+4
+15
+Callees 1
+4
+16
+Callees 1
+4
+17
+Callees 1
+4
+18
+Callees 1
+4
+10
+Callees 1
+4
+20
+Callees 1
+4
+21
+Callees 1
+4
+22
+Callees 1
+4
+23
+Callees 1
+4
+24
+Callees 1
+4
+25
+Callees 1
+2
+1
+Callees 1
+2
+27
+Callees 1
+2
+28
+Callees 0
+Callees 0
+Callees 0
+Callees 0
+Callees 1
+26
+0
+Callees 1
+26
+1
+Callees 1
+26
+2
+Callees 1
+26
+3
+Callees 1
+26
+4
+Callees 1
+26
+5
+Callees 1
+26
+6
+Callees 1
+26
+7
+Callees 1
+26
+8
+Callees 1
+26
+9
+Callees 1
+26
+10
+Callees 1
+26
+11
+Callees 4
+26
+12
+26
+17
+26
+18
+26
+23
+Callees 1
+104
+13
+Callees 1
+78
+14
+Callees 1
+52
+15
+Callees 1
+26
+16
+Callees 1
+26
+16
+Callees 1
+26
+15
+Callees 1
+26
+19
+Callees 1
+26
+20
+Callees 1
+26
+21
+Callees 1
+26
+22
+Callees 1
+26
+14
+Callees 1
+26
+24
+Callees 1
+26
+25
+Callees 1
+26
+26
+Callees 1
+26
+27
+Callees 1
+26
+28
+Callees 1
+26
+29
+Callees 0
+Callees 1
+1
+0
+Callees 1
+1
+1
+Callees 1
+1
+2
+Callees 1
+1
+3
+Callees 1
+1
+4
+Callees 1
+1
+5
+Callees 1
+1
+6
+Callees 4
+1
+7
+1
+12
+1
+13
+1
+18
+Callees 1
+4
+8
+Callees 1
+3
+9
+Callees 1
+2
+10
+Callees 1
+1
+11
+Callees 1
+1
+11
+Callees 1
+1
+10
+Callees 1
+1
+14
+Callees 1
+1
+15
+Callees 1
+1
+16
+Callees 1
+1
+17
+Callees 1
+1
+9
+Callees 1
+1
+19
+Callees 1
+1
+20
+Callees 1
+1
+21
+Callees 1
+1
+22
+Callees 1
+1
+23
+Callees 1
+1
+24
+Callees 0
+Callees 5
+1
+0
+1
+10
+1
+13
+1
+14
+1
+19
+Callees 1
+5
+1
+Callees 1
+2
+2
+Callees 1
+2
+3
+Callees 1
+1
+4
+Callees 1
+1
+5
+Callees 1
+1
+6
+Callees 1
+1
+7
+Callees 1
+1
+8
+Callees 1
+1
+9
+Callees 1
+3
+2
+Callees 1
+2
+11
+Callees 1
+1
+12
+Callees 1
+1
+12
+Callees 1
+1
+11
+Callees 1
+1
+15
+Callees 1
+1
+16
+Callees 1
+1
+17
+Callees 1
+1
+18
+Callees 1
+1
+4
+Callees 1
+1
+20
+Callees 1
+1
+21
+Callees 1
+1
+22
+Callees 1
+1
+23
+Callees 0
+Callees 0
+Callees 1
+4
+0
+Callees 1
+4
+1
+Callees 1
+2
+2
+Callees 1
+2
+3
+Callees 1
+2
+4
+Callees 2
+2
+5
+2
+35
+Callees 1
+4
+6
+Callees 1
+4
+7
+Callees 1
+4
+8
+Callees 1
+4
+9
+Callees 1
+4
+10
+Callees 1
+4
+11
+Callees 1
+4
+12
+Callees 1
+4
+13
+Callees 1
+4
+14
+Callees 4
+4
+15
+4
+20
+4
+21
+4
+26
+Callees 1
+16
+16
+Callees 1
+12
+17
+Callees 1
+8
+18
+Callees 1
+4
+19
+Callees 1
+4
+19
+Callees 1
+4
+18
+Callees 1
+4
+22
+Callees 1
+4
+23
+Callees 1
+4
+24
+Callees 1
+4
+25
+Callees 1
+4
+17
+Callees 1
+4
+27
+Callees 1
+4
+28
+Callees 1
+4
+29
+Callees 1
+4
+30
+Callees 1
+4
+31
+Callees 1
+4
+32
+Callees 1
+2
+2
+Callees 1
+2
+34
+Callees 0
+Callees 0
+Callees 0
+Callees 1
+21
+0
+Callees 1
+21
+1
+Callees 2
+21
+2
+21
+29
+Callees 1
+42
+3
+Callees 1
+42
+4
+Callees 1
+42
+5
+Callees 1
+42
+6
+Callees 4
+42
+7
+42
+12
+42
+13
+42
+18
+Callees 1
+168
+8
+Callees 1
+126
+9
+Callees 1
+84
+10
+Callees 1
+42
+11
+Callees 1
+42
+11
+Callees 1
+42
+10
+Callees 1
+42
+14
+Callees 1
+42
+15
+Callees 1
+42
+16
+Callees 1
+42
+17
+Callees 1
+42
+9
+Callees 1
+42
+19
+Callees 1
+42
+20
+Callees 1
+42
+21
+Callees 1
+42
+22
+Callees 1
+42
+23
+Callees 1
+42
+24
+Callees 1
+21
+0
+Callees 1
+21
+26
+Callees 1
+21
+27
+Callees 1
+21
+28
+Callees 0
+Callees 1
+20
+0
+Callees 1
+6
+1
+Callees 1
+6
+2
+Callees 2
+6
+3
+10
+37
+Callees 1
+16
+4
+Callees 2
+16
+5
+4
+36
+Callees 1
+20
+6
+Callees 1
+20
+7
+Callees 1
+20
+8
+Callees 1
+20
+9
+Callees 1
+20
+10
+Callees 1
+20
+11
+Callees 1
+20
+12
+Callees 1
+20
+13
+Callees 1
+20
+14
+Callees 4
+20
+15
+20
+20
+20
+21
+20
+26
+Callees 1
+80
+16
+Callees 1
+60
+17
+Callees 1
+40
+18
+Callees 1
+20
+19
+Callees 1
+20
+19
+Callees 1
+20
+18
+Callees 1
+20
+22
+Callees 1
+20
+23
+Callees 1
+20
+24
+Callees 1
+20
+25
+Callees 1
+20
+17
+Callees 1
+20
+27
+Callees 1
+20
+28
+Callees 1
+20
+29
+Callees 1
+20
+30
+Callees 1
+20
+31
+Callees 1
+20
+32
+Callees 1
+14
+1
+Callees 1
+4
+34
+Callees 1
+4
+35
+Callees 1
+10
+34
+Callees 0
+Callees 2
+1
+0
+4
+34
+Callees 1
+5
+1
+Callees 2
+5
+2
+3
+33
+Callees 1
+8
+3
+Callees 1
+8
+4
+Callees 1
+8
+5
+Callees 1
+8
+6
+Callees 1
+8
+7
+Callees 1
+8
+8
+Callees 1
+8
+9
+Callees 1
+8
+10
+Callees 1
+8
+11
+Callees 4
+8
+12
+8
+17
+8
+18
+8
+23
+Callees 1
+32
+13
+Callees 1
+24
+14
+Callees 1
+16
+15
+Callees 1
+8
+16
+Callees 1
+8
+16
+Callees 1
+8
+15
+Callees 1
+8
+19
+Callees 1
+8
+20
+Callees 1
+8
+21
+Callees 1
+8
+22
+Callees 1
+8
+14
+Callees 1
+8
+24
+Callees 1
+8
+25
+Callees 1
+8
+26
+Callees 1
+8
+27
+Callees 1
+8
+28
+Callees 1
+8
+29
+Callees 2
+2
+0
+1
+34
+Callees 1
+3
+31
+Callees 1
+3
+32
+Callees 1
+5
+0
+Callees 0
+Callees 1
+7
+0
+Callees 2
+7
+1
+2
+0
+Callees 1
+1
+2
+Callees 1
+1
+3
+Callees 1
+1
+4
+Callees 2
+1
+5
+29
+37
+Callees 1
+30
+6
+Callees 1
+30
+7
+Callees 1
+30
+8
+Callees 1
+30
+9
+Callees 1
+30
+10
+Callees 1
+30
+11
+Callees 4
+30
+12
+30
+17
+30
+18
+30
+23
+Callees 1
+120
+13
+Callees 1
+90
+14
+Callees 1
+60
+15
+Callees 1
+30
+16
+Callees 1
+30
+16
+Callees 1
+30
+15
+Callees 1
+30
+19
+Callees 1
+30
+20
+Callees 1
+30
+21
+Callees 1
+30
+22
+Callees 1
+30
+14
+Callees 1
+30
+24
+Callees 1
+30
+25
+Callees 1
+30
+26
+Callees 1
+30
+27
+Callees 1
+30
+28
+Callees 1
+30
+29
+Callees 1
+11
+0
+Callees 2
+2
+31
+5
+0
+Callees 2
+7
+32
+8
+2
+Callees 1
+15
+33
+Callees 2
+15
+34
+14
+39
+Callees 1
+29
+35
+Callees 1
+29
+36
+Callees 2
+9
+31
+5
+0
+Callees 1
+14
+38
+Callees 0
+Callees 0
+Callees 1
+1
+0
+Callees 1
+1
+1
+Callees 2
+1
+2
+1
+0
+Callees 1
+2
+3
+Callees 1
+2
+4
+Callees 1
+2
+5
+Callees 1
+2
+6
+Callees 1
+2
+7
+Callees 4
+2
+8
+2
+13
+2
+14
+2
+19
+Callees 1
+8
+9
+Callees 1
+6
+10
+Callees 1
+4
+11
+Callees 1
+2
+12
+Callees 1
+2
+12
+Callees 1
+2
+11
+Callees 1
+2
+15
+Callees 1
+2
+16
+Callees 1
+2
+17
+Callees 1
+2
+18
+Callees 1
+2
+10
+Callees 1
+2
+20
+Callees 1
+2
+21
+Callees 1
+2
+22
+Callees 1
+2
+23
+Callees 1
+2
+24
+Callees 1
+2
+25
+Callees 0
+Callees 0
+Callees 1
+2
+0
+Callees 1
+2
+1
+Callees 1
+2
+2
+Callees 1
+2
+3
+Callees 1
+2
+4
+Callees 1
+2
+5
+Callees 1
+2
+6
+Callees 1
+2
+7
+Callees 4
+2
+8
+2
+13
+2
+14
+2
+19
+Callees 1
+8
+9
+Callees 1
+6
+10
+Callees 1
+4
+11
+Callees 1
+2
+12
+Callees 1
+2
+12
+Callees 1
+2
+11
+Callees 1
+2
+15
+Callees 1
+2
+16
+Callees 1
+2
+17
+Callees 1
+2
+18
+Callees 1
+2
+10
+Callees 1
+2
+20
+Callees 1
+2
+21
+Callees 1
+2
+22
+Callees 1
+2
+23
+Callees 1
+2
+24
+Callees 1
+2
+25
+Callees 0
+Callees 1
+12
+0
+Callees 1
+12
+1
+Callees 1
+12
+2
+Callees 1
+12
+3
+Callees 1
+12
+4
+Callees 1
+12
+5
+Callees 1
+12
+6
+Callees 1
+12
+7
+Callees 1
+12
+8
+Callees 4
+12
+9
+12
+14
+12
+15
+12
+20
+Callees 1
+48
+10
+Callees 1
+36
+11
+Callees 1
+24
+12
+Callees 1
+12
+13
+Callees 1
+12
+13
+Callees 1
+12
+12
+Callees 1
+12
+16
+Callees 1
+12
+17
+Callees 1
+12
+18
+Callees 1
+12
+19
+Callees 1
+12
+11
+Callees 1
+12
+21
+Callees 1
+12
+22
+Callees 1
+12
+23
+Callees 1
+12
+24
+Callees 1
+12
+25
+Callees 1
+12
+26
+Callees 0
+Callees 0
+Callees 1
+1
+0
+Callees 1
+1
+1
+Callees 1
+1
+2
+Callees 1
+1
+3
+Callees 1
+1
+4
+Callees 1
+1
+5
+Callees 4
+1
+6
+1
+11
+1
+12
+1
+17
+Callees 1
+4
+7
+Callees 1
+3
+8
+Callees 1
+2
+9
+Callees 1
+1
+10
+Callees 1
+1
+10
+Callees 1
+1
+9
+Callees 1
+1
+13
+Callees 1
+1
+14
+Callees 1
+1
+15
+Callees 1
+1
+16
+Callees 1
+1
+8
+Callees 1
+1
+18
+Callees 1
+1
+19
+Callees 1
+1
+20
+Callees 1
+1
+21
+Callees 1
+1
+22
+Callees 1
+1
+23
+Callees 0
+Callees 1
+1
+0
+Callees 1
+1
+1
+Callees 1
+1
+2
+Callees 1
+1
+3
+Callees 1
+1
+4
+Callees 1
+1
+5
+Callees 1
+1
+6
+Callees 4
+1
+7
+1
+12
+1
+13
+1
+18
+Callees 1
+4
+8
+Callees 1
+3
+9
+Callees 1
+2
+10
+Callees 1
+1
+11
+Callees 1
+1
+11
+Callees 1
+1
+10
+Callees 1
+1
+14
+Callees 1
+1
+15
+Callees 1
+1
+16
+Callees 1
+1
+17
+Callees 1
+1
+9
+Callees 1
+1
+19
+Callees 1
+1
+20
+Callees 1
+1
+21
+Callees 1
+1
+22
+Callees 1
+1
+23
+Callees 1
+1
+24
+Callees 0
+Callees 0
+Callees 1
+1
+0
+Callees 1
+1
+1
+Callees 1
+1
+2
+Callees 1
+1
+3
+Callees 1
+1
+4
+Callees 1
+1
+5
+Callees 1
+1
+6
+Callees 1
+1
+7
+Callees 4
+1
+8
+1
+13
+1
+14
+1
+19
+Callees 1
+4
+9
+Callees 1
+3
+10
+Callees 1
+2
+11
+Callees 1
+1
+12
+Callees 1
+1
+12
+Callees 1
+1
+11
+Callees 1
+1
+15
+Callees 1
+1
+16
+Callees 1
+1
+17
+Callees 1
+1
+18
+Callees 1
+1
+10
+Callees 1
+1
+20
+Callees 1
+1
+21
+Callees 1
+1
+22
+Callees 1
+1
+23
+Callees 1
+1
+24
+Callees 1
+1
+25
+Callees 0
+Callees 0
+Files 14
+f:\dd\vctools\crt_bld\SELF_X86\crt\src\INTEL\chkstk.asm
+Lines 101
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 
+f:\dd\vctools\crt_bld\SELF_X86\crt\src\INTEL\memset.asm
+Lines 146
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 
+x:\openturing\turing\src\execute.c
+Lines 912
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 0 0 0 5 
+x:\openturing\turing\src\language.c
+Lines 1227
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 
+x:\openturing\turing\src\mdiodraw.c
+Lines 230
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0 4 0 0 0 0 3 
+x:\openturing\turing\src\mdiorgb.c
+Lines 109
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 3 
+x:\openturing\turing\src\mdiowin.c
+Lines 578
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 5 0 0 0 0 0 0 0 0 0 0 0 0 3 
+x:\openturing\turing\src\mio.c
+Lines 1174
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 3 
+x:\openturing\turing\src\miodraw.c
+Lines 193
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 1 1 0 0 0 2 0 6 0 2 0 1 
+x:\openturing\turing\src\miosprite.c
+Lines 435
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+x:\openturing\turing\src\miowin.c
+Lines 1459
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 1 0 0 0 0 0 0 0 1 
+x:\openturing\turing\src\miowrapper.c
+Lines 2834
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 5 0 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 3 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5 
+x:\openturing\turing\src\run.c
+Lines 5092
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 52 21 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 30 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 17 0 0 0 7 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 6 0 0 0 0 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 2 0 1 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 13 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 12 0 3 0 4 0 0 0 0 0 0 0 0 0 0 0 53 8 2 0 11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5 0 0 0 0 5 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5 0 1 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 1 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 1 1 0 0 0 0 0 0 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 21 0 0 0 0 0 0 4 34 
+x:\openturing\turing\tlib\tlehe.c
+Lines 176
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+Thread_ID  2324
+Total_Samples 775
+Function_samples 4
+KernelTime 0
+UserTime 0
+RunningTime 28911
+BaseThreadStart
+
+kernel32
+0
+0
+0
+WaitForMultipleObjectsEx
+
+kernel32
+0
+0
+0
+WmipEventPump
+
+ADVAPI32
+0
+0
+0
+ZwWaitForMultipleObjects
+
+ntdll
+775
+0
+0
+Callers 1
+BaseThreadStart
+0
+-1
+Callers 1
+WaitForMultipleObjectsEx
+0
+-1
+Callers 1
+WmipEventPump
+0
+-1
+Callers 4
+ZwWaitForMultipleObjects
+775
+-1
+WaitForMultipleObjectsEx
+775
+0
+WmipEventPump
+775
+0
+BaseThreadStart
+775
+0
+Callees 0
+Callees 0
+Callees 0
+Callees 0
+Callees 1
+775
+0
+Callees 1
+775
+1
+Callees 1
+775
+2
+Files 0

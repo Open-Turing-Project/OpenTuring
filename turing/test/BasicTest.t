@@ -21,6 +21,7 @@ var sum := 0
 for i : 1..100
     sum += collatz(90)
 end for
-put "its:",sum
+put "its:",sums
 put "time:",Time.Elapsed - start
+delay(2000)
 

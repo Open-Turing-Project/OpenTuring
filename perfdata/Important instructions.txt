@@ -1,0 +1,3 @@
+Important instructions to optimize:
+51 - Call external function
+150 - Branch?
