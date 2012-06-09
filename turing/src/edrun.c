@@ -2094,9 +2094,12 @@ void	EdRun_TestSuite (const char *pmDirectoryName, const char *pmOutputDir)
 void	EdRun_RunProgramNoEditor (const char *pmTestDirectory, const char *pmTestFileName)
 {
     FilePath		myTestPathName, mySourceDirectory;
-    HWND		myEditWindow, myTextDisplayWindow;
     TuringErrorPtr	myError;    
     int			myErrors;
+
+    TextHandleType	myTuringTextHandle;
+    SizePtrType		myTuringSizePtr;
+    ResultCodeType	myResult;
 
 	printf("running program %s\n",pmTestFileName);
 
@@ -2116,7 +2119,7 @@ void	EdRun_RunProgramNoEditor (const char *pmTestDirectory, const char *pmTestFi
     }
     
     //
-    // Open the file in the editor
+    // Open the turing file handle
     // Compile the file
     // Write extant errors to path.err
     // If no errors, execute program
@@ -2124,23 +2127,10 @@ void	EdRun_RunProgramNoEditor (const char *pmTestDirectory, const char *pmTestFi
     //    At end of execution, write output to path.out or path.bmp
     // Close the editor file.
     //
-    
-    // Open the file in the editor.
-    myEditWindow = EdWin_CreateShow (myTestPathName, NULL, 0, FALSE, FALSE,FALSE);
-    if (myEditWindow == NULL)
-    {
-	EdGUI_Message1 (NULL, 0, IDS_TEST_SUITE_ERROR_TITLE,
-	    IDS_TEST_SUITE_UNABLE_TO_OPEN_WINDOW, 0,
-	    "<none>", myTestPathName);
-	return;
-    }
-    myTextDisplayWindow = EdWin_GetActiveDisplayWindow (myEditWindow);
-    
     //
     // Compile the file
     //
-    
-    stSourceFileNo = EdDisp_GetTuringFileNo (myTextDisplayWindow);
+    FileManager_OpenNamedHandle (myTestPathName, &stSourceFileNo, &myTuringTextHandle, &myTuringSizePtr,&myResult);
     strncpy (stRunArgs.ootArgs [0], pmTestFileName, 255);    	    			     
     
     // Set the base source directory to be the directory 
@@ -2150,12 +2140,12 @@ void	EdRun_RunProgramNoEditor (const char *pmTestDirectory, const char *pmTestFi
     
     // Now, for every open file, set the OOT file manager pointer to 
     // point to it and mark it modified
-    Ed_EnumerateFiles (MySetTuringPointers, NULL);
+    //Ed_EnumerateFiles (MySetTuringPointers, NULL);
     
-    stCompilingWindow = myTextDisplayWindow;
+    stCompilingWindow = NULL;
     
     // Clear all previous errors
-    EdErr_ClearErrors ();
+    //EdErr_ClearErrors ();
     
     // Free any previously allocated memory.  This could take a while if 
     // someone allocated a huge amount
@@ -2167,7 +2157,7 @@ void	EdRun_RunProgramNoEditor (const char *pmTestDirectory, const char *pmTestFi
     MIO_Init_Free ();
     
     // Compile the program
-    EdWin_ShowStatus (myTextDisplayWindow, "Initializing Compiler");
+    //EdWin_ShowStatus (myTextDisplayWindow, "Initializing Compiler");
     Language_CompileProgram ("", stSourceFileNo, &myError, &myErrors);
     
     //
@@ -2267,7 +2257,6 @@ void	EdRun_RunProgramNoEditor (const char *pmTestDirectory, const char *pmTestFi
 	int		myFontSize;
 	OOTargs		myOOTArgs;
 	
-	stExecutingWindow = myTextDisplayWindow;
 	stAllRunWindowsClosed = TRUE;
 	
 	// Clear all previous errors (warnings)
@@ -2379,10 +2368,6 @@ void	EdRun_RunProgramNoEditor (const char *pmTestDirectory, const char *pmTestFi
 	    }
 	} // if (myNumErrors >= 1)
     } // Finished execution
-    //
-    // Close the editor file.
-    //
-    SendMessage (myEditWindow, WM_CLOSE, 0, 0);
 
     // Process events to allow windows to close, etc.
     Ed_ProcessWaitingEvents (FALSE);
