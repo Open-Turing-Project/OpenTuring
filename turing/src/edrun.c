@@ -2281,14 +2281,13 @@ void	EdRun_RunProgramNoEditor (const char *pmTestDirectory, const char *pmTestFi
 		myFontSize = 9;
 	    }
 	}
-	
 	if (!MIO_Init_Run (pmTestFileName, 
 		      NULL, 
 		      FALSE, 
 		      NULL, 
 		      FALSE, FALSE,
 		      myExecutionDirectory,		// Execution directory
-		      FALSE, 				// Graphics Mode
+		      TRUE, 				// Graphics Mode
 		      gProperties.runConsoleFontName, 	// Run window font name
 		      myFontSize, 			// Run window font size
 		      0, // Run window font width
@@ -2320,6 +2319,8 @@ void	EdRun_RunProgramNoEditor (const char *pmTestDirectory, const char *pmTestFi
 	{
 	    MyExecuteQuantum (&myNumErrors, NULL);
 	    
+		// If we're using sprites, then it may be time to update the screen.
+		MIO_UpdateSpritesIfNecessary ();
 	    Ed_ProcessWaitingEvents (stTuringProgramWaitingForEvent);
 	} while (stRunStatus.state != Finished);
 	
