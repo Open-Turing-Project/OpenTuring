@@ -129,6 +129,14 @@
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
       <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
+    <ProjectReference Include="..\Interpreter.vcxproj">
+      <Project>{bdf6d383-41f1-45f6-8d62-8ed3504c04d8}</Project>
+      <Private>true</Private>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+    </ProjectReference>
     <ProjectReference Include="..\JPEG.vcxproj">
       <Project>{8e6bda1d-8c70-401a-b1b9-39a62a52197a}</Project>
       <Private>true</Private>

@@ -486,6 +486,9 @@ int WINAPI	WinMain (HINSTANCE pmApplicationInstance,
 /****************************************************/
 /* Emulated routines from other parts of the editor */
 /****************************************************/
+void FeedBack(const char *msg) {
+
+}
 /************************************************************************/
 /* Ed_GetLastActiveEditWindow						*/
 /************************************************************************/
