@@ -6,6 +6,7 @@
 /* System includes */
 /*******************/
 #include <windows.h>
+#include "stdio.h"
 
 /****************/
 /* Self include */
@@ -61,6 +62,14 @@ typedef struct RunArgs
     int		outputRedirection;
     FilePath	inputFile, outputFile;
 } RunArgs;
+typedef struct RunSettings
+{
+    int		status;
+    BOOL	closeWindowsOnTerminate;
+    BOOL	displayRunWithArgs;
+    BOOL	centerOutputWindow;
+    BOOL	stopUserClose;
+} RunSettings;
 
 /**********************/
 /* External variables */
@@ -125,9 +134,12 @@ static void CALLBACK 	MyTimerProcedure (UINT pmID, UINT pmMsg, DWORD pmUser,
 static int	MyGetMaxStackSize (void);
 static BOOL	MyInitializeGlobals (HINSTANCE pmApplicationInstance);
 static BOOL	MyInitializeWindowClass (void);
+static BOOL MyInitializeRunFromByteCode(RunSettings *runSettings, RunArgs *runArgs, char *filePath, char *fileName, BOOL useSeparateFile);
+static BOOL MyInitializeRunFromFile(RunSettings *runSettings, RunArgs *runArgs, char *filePath, char *fileName, BOOL useSeparateFile);
 static void	MyProcessWaitingEvents (BOOL pmGetAtLeastOneEvent);
 static int	MyGetDirectoryFromPath (const char *pmPath, 
 						     char *pmDirectory);
+static void MyGetFilePathFromCmdLine(const char *cmdLine, unsigned int start, char *outFileName, char *outFilePath);
 
 
 /***********************/
@@ -143,15 +155,11 @@ int WINAPI	WinMain (HINSTANCE pmApplicationInstance,
     			 PSTR pmCmdLine, int pmCmdShow)
 {
     BOOL	myUseSeparateFile = FALSE;
+	BOOL	myCompileFile = FALSE;
     FilePath	myFileName, myFilePath;
-    long	myTuringFileDesciptor;
-    int		myStatus;
-    char	myObjectFileHeader [6];
-    BOOL	myCloseWindowsOnTerminate;
-    BOOL	myDisplayRunWithArgs;
-    BOOL	myCenterOutputWindow;
-    BOOL	myStopUserClose;
+	int myStatus;
     RunArgs	myRunArgs;
+	RunSettings myRunSettings;
     char	*myInputFile, *myOutputFile;
     int		myFontSize;
     OOTint	myNumErrors;
@@ -162,6 +170,8 @@ int WINAPI	WinMain (HINSTANCE pmApplicationInstance,
     HWND	myDummyWindow;
 
 	FilePath myCurrentDirectory;
+
+
 
     //
     // Initialize Turing modules
@@ -220,31 +230,20 @@ int WINAPI	WinMain (HINSTANCE pmApplicationInstance,
     	if (strncmp (pmCmdLine, "-file ", 6) == 0)
     	{
     	    myUseSeparateFile = TRUE;
-    	    if (strrchr (pmCmdLine, '\\') == NULL)
-    	    {
-    	    	strcpy (myFileName, &pmCmdLine [6]);
-    	    }
-    	    else
-    	    {
-    	    	strcpy (myFileName, strrchr (pmCmdLine, '\\') + 1);
-    	    }
+			MyGetFilePathFromCmdLine(pmCmdLine,6,myFileName,myFilePath);
 
-			// is the path quoted? Then skip the quotes.
-			if (pmCmdLine [6] == '"') {
-				// make sure to remove closing quote
-				pmCmdLine[strlen(pmCmdLine) - 1] = 0;
-				// on the file name too
-				myFileName[strlen(myFileName) - 1] = 0;
-				strcpy (myFilePath, &pmCmdLine [7]);
-			} else {
-    			strcpy (myFilePath, &pmCmdLine [6]);
+			// resource gets must be based from the bytecode file
+			myStatus = MyGetDirectoryFromPath (myFilePath, myCurrentDirectory);
+			if (myStatus != 0)
+			{
+    			EdGUI_Message1 (NULL, 0, IDS_TPROLOG_APPLICATION_NAME,
+    	    					IDS_TPROLOG_CANT_OPEN_OBJECT_FILE, myFileName);
+				return 0;
 			}
-
-			// if the file name ends with .tbc, replace it with the original
-			if(strcmp(&myFileName[strlen(myFileName) - 4],".tbc") == 0) {
-				// .tbc minus 2 chars = .t
-				myFileName[strlen(myFileName) - 2] = 0;
-			}
+    	} else if (strncmp (pmCmdLine, "-run ", 5) == 0)
+    	{
+    	    myCompileFile = TRUE;
+			MyGetFilePathFromCmdLine(pmCmdLine,5,myFileName,myFilePath);
 
 			// resource gets must be based from the bytecode file
 			myStatus = MyGetDirectoryFromPath (myFilePath, myCurrentDirectory);
@@ -262,158 +261,21 @@ int WINAPI	WinMain (HINSTANCE pmApplicationInstance,
 
     
     FileManager_SetHomeDir (stStartupDirectory);
-    
-    //
-    // Open the executable file
-    //
-    TL_TLI_TLIOF (9, myFilePath, &myTuringFileDesciptor);
-    
-    if (myTuringFileDesciptor <= 0)
-    {
-    	EdGUI_Message1 (NULL, 0, IDS_TPROLOG_APPLICATION_NAME,
-    	    	        IDS_TPROLOG_CANT_OPEN_OBJECT_FILE, myFilePath);
-        return 0;
-    }
-    
-    //
-    // If we're reading from the executable, skip the header
-    //
-    if (!myUseSeparateFile)
-    {
-    	if (strcmp (stSizeMarker, OFFSET_STRING) == 0)
-    	{
-    	    EdGUI_Message1 (NULL, 0, IDS_TPROLOG_APPLICATION_NAME,
-    	    		    IDS_TPROLOG_OFFSET_NOT_SET);
-    	    return 0;
-    	}
-    	TL_TLI_TLISK (* (int *) stSizeMarker, myTuringFileDesciptor);
-    } 
 
-    //
-    // First read the header.
-    //
-    TL_TLI_TLIRE (myObjectFileHeader, sizeof (OBJECT_FILE_HEADER), &myStatus,
-    		  myTuringFileDesciptor);
-    if (myStatus != 0)
-    {
-    	EdGUI_Message1 (NULL, 0, IDS_TPROLOG_FILE_READ_FAILED_TITLE,
-    	    	        IDS_TPROLOG_UNABLE_TO_READ_EXE, myFileName, 1);
-        return 0;
-    }
-    myObjectFileHeader [sizeof (OBJECT_FILE_HEADER)-1] = 0;
-
-	if (strcmp (myObjectFileHeader, OBJECT_FILE_ERROR_HEADER) == 0) {
-		EdGUI_Message1 (NULL, 0, IDS_TPROLOG_FILE_READ_FAILED_TITLE,
-    	    	        IDS_TPROLOG_COMPILE_FAIL, myFileName);
-        return 0;
-	} else if (strcmp (myObjectFileHeader, OBJECT_FILE_HEADER) != 0)
-    {
-    	EdGUI_Message1 (NULL, 0, IDS_TPROLOG_FILE_READ_FAILED_TITLE,
-    	    	        IDS_TPROLOG_BAD_HEADER_MATCH, myFileName, 1);
-        return 0;
-    }
-        	
-    //
-    // Then read TProlog specific preferences      
-    //
-    TL_TLI_TLIRE (&myCloseWindowsOnTerminate, sizeof (BOOL), &myStatus,
-    		  myTuringFileDesciptor);
-    if (myStatus != 0)
-    {
-    	EdGUI_Message1 (NULL, 0, IDS_TPROLOG_FILE_READ_FAILED_TITLE,
-    	    	        IDS_TPROLOG_UNABLE_TO_READ_EXE, myFileName, 2);
-        return 0;
-    }
-    TL_TLI_TLIRE (&myDisplayRunWithArgs, sizeof (BOOL), &myStatus,
-    		  myTuringFileDesciptor);
-    if (myStatus != 0)
-    {
-    	EdGUI_Message1 (NULL, 0, IDS_TPROLOG_FILE_READ_FAILED_TITLE,
-    	    	        IDS_TPROLOG_UNABLE_TO_READ_EXE, myFileName, 3);
-        return 0;
-    }
-    TL_TLI_TLIRE (&myCenterOutputWindow, sizeof (BOOL), &myStatus,
-    		  myTuringFileDesciptor);
-    if (myStatus != 0)
-    {
-    	EdGUI_Message1 (NULL, 0, IDS_TPROLOG_FILE_READ_FAILED_TITLE,
-    	    	        IDS_TPROLOG_UNABLE_TO_READ_EXE, myFileName, 4);
-        return 0;
-    }
-    TL_TLI_TLIRE (&myStopUserClose, sizeof (BOOL), &myStatus,
-    		  myTuringFileDesciptor);
-    if (myStatus != 0)
-    {
-    	EdGUI_Message1 (NULL, 0, IDS_TPROLOG_FILE_READ_FAILED_TITLE,
-    	    	        IDS_TPROLOG_UNABLE_TO_READ_EXE, myFileName, 5);
-        return 0;
-    }
-    
-    // 
-    // Then read the environment preferences
-    //
-    TL_TLI_TLIRE (&gProperties, sizeof (Properties), &myStatus,
-    		  myTuringFileDesciptor);
-    if (myStatus != 0)
-    {
-    	EdGUI_Message1 (NULL, 0, IDS_TPROLOG_FILE_READ_FAILED_TITLE,
-    	    	        IDS_TPROLOG_UNABLE_TO_READ_EXE, myFileName, 6);
-        return 0;
-    }
-    
-    //
-    // Then read another header (just to make certain we're synced)
-    //
-    TL_TLI_TLIRE (myObjectFileHeader, sizeof (OBJECT_FILE_HEADER), &myStatus,
-    		  myTuringFileDesciptor);
-    if (myStatus != 0)
-    {
-    	EdGUI_Message1 (NULL, 0, IDS_TPROLOG_FILE_READ_FAILED_TITLE,
-    	    	        IDS_TPROLOG_UNABLE_TO_READ_EXE, myFileName, 7);
-        return 0;
-    }
-    myObjectFileHeader [sizeof (OBJECT_FILE_HEADER)-1] = 0;
-    if (strcmp (myObjectFileHeader, OBJECT_FILE_HEADER) != 0)
-    {
-    	EdGUI_Message1 (NULL, 0, IDS_TPROLOG_FILE_READ_FAILED_TITLE,
-    	    	        IDS_TPROLOG_BAD_HEADER_MATCH, myFileName, 2);
-        return 0;
-    }
-
-    //
-    // Get run arguments if necessary
-    //
-    myRunArgs.commandLineArguments [0] = 0;
-    strncpy (myRunArgs.ootArgs [0], stRunArgs.ootArgs [0], 255);    	    			     
-    myRunArgs.numArgs = 0;
-    myRunArgs.inputRedirection = ARGS_IN_KEY;
-    myRunArgs.outputRedirection = ARGS_OUT_SCREEN;
-    myRunArgs.inputFile [0] = 0;
-    myRunArgs.outputFile [0] = 0;
-
-    if (myDisplayRunWithArgs)
-    {
-    	if (!DialogBoxParam (gProgram.applicationInstance, 
-                MAKEINTRESOURCE (TPROLOG_RUN_WITH_ARGS_DIALOG),
-	        NULL, MyRunWithArgsDialogProcedure, (LPARAM) &stRunArgs))
-    	{
-	    return FALSE;
-    	}
-	myRunArgs = stRunArgs;
-    }
-    
-    // 
-    // Then read the object files
-    //
-    Language_SetupExecutionFromObjectFile (myTuringFileDesciptor, 0, 
-    	MyGetMaxStackSize (), "", "", myRunArgs.ootArgs, myRunArgs.numArgs);
-   
-    TL_TLI_TLICL (myTuringFileDesciptor);
+	if(myCompileFile) {
+		if(!MyInitializeRunFromFile(&myRunSettings,&myRunArgs,myFilePath,myFileName,myUseSeparateFile)) {
+			return FALSE; // initialize failed
+		}
+	} else {
+		if(!MyInitializeRunFromByteCode(&myRunSettings,&myRunArgs,myFilePath,myFileName,myUseSeparateFile)) {
+			return FALSE; // initialize failed
+		}
+	}
 
     // Initialize the MIO module
     MIO_Initialize (gProgram.applicationInstance, OS_WINDOWS, 
     		    stApplicationDirectory, stStartupDirectory,
-    		    myCenterOutputWindow, myStopUserClose,
+    		    myRunSettings.centerOutputWindow, myRunSettings.stopUserClose,
 		    SYSEXIT_ERROR_STRING);
     		    
     if (myRunArgs.inputRedirection == ARGS_IN_KEY)
@@ -601,7 +463,7 @@ int WINAPI	WinMain (HINSTANCE pmApplicationInstance,
     DestroyWindow (myDummyWindow);
 
     // If we are to continue after program is finished, then continue
-    if (!myCloseWindowsOnTerminate)
+    if (!myRunSettings.closeWindowsOnTerminate)
     {
     	int	myResult = TRUE;
     	MSG	myMessage;
@@ -1218,6 +1080,35 @@ static BOOL	MyInitializeGlobals (HINSTANCE pmApplicationInstance)
     return TRUE;
 } // MyInitializeGlobals
 
+static void MyGetFilePathFromCmdLine(const char *cmdLine, unsigned int start, char *outFileName, char *outFilePath)
+{
+	if (strrchr (cmdLine, '\\') == NULL)
+    {
+    	strcpy (outFileName, &cmdLine [start]);
+    }
+    else
+    {
+    	strcpy (outFileName, strrchr (cmdLine, '\\') + 1);
+    }
+
+	// is the path quoted? Then skip the quotes.
+	if (cmdLine [start] == '"') {
+		// on the file name
+		outFileName[strlen(outFileName) - 1] = 0;
+		strcpy (outFilePath, &cmdLine [start + 1]);
+		// make sure to remove closing quote on path too
+		outFilePath[strlen(outFilePath) - 1] = 0;
+	} else {
+    	strcpy (outFilePath, &cmdLine [start]);
+	}
+
+	// if the file name ends with .tbc, replace it with the original
+	if(strcmp(&outFileName[strlen(outFileName) - 4],".tbc") == 0) {
+		// .tbc minus 2 chars = .t
+		outFileName[strlen(outFileName) - 2] = 0;
+	}
+}
+
 /************************************************************************/
 /* MyGetDirectoryFromPath						*/
 /************************************************************************/
@@ -1324,6 +1215,296 @@ static BOOL	MyInitializeWindowClass (void)
     return TRUE;
 } // MyInitializeWindowClass
 
+static BOOL MyInitializeRunFromByteCode(RunSettings *runSettings, RunArgs *runArgs, char *filePath, char *fileName, BOOL useSeparateFile)
+{
+	long	myTuringFileDesciptor;
+    int		myStatus;
+    char	myObjectFileHeader [6];
+	//
+    // Open the executable file
+    //
+    TL_TLI_TLIOF (9, filePath, &myTuringFileDesciptor);
+    
+    if (myTuringFileDesciptor <= 0)
+    {
+    	EdGUI_Message1 (NULL, 0, IDS_TPROLOG_APPLICATION_NAME,
+    	    	        IDS_TPROLOG_CANT_OPEN_OBJECT_FILE, filePath);
+        return 0;
+    }
+    
+    //
+    // If we're reading from the executable, skip the header
+    //
+    if (!useSeparateFile)
+    {
+    	if (strcmp (stSizeMarker, OFFSET_STRING) == 0)
+    	{
+    	    EdGUI_Message1 (NULL, 0, IDS_TPROLOG_APPLICATION_NAME,
+    	    		    IDS_TPROLOG_OFFSET_NOT_SET);
+    	    return 0;
+    	}
+    	TL_TLI_TLISK (* (int *) stSizeMarker, myTuringFileDesciptor);
+    } 
+
+    //
+    // First read the header.
+    //
+    TL_TLI_TLIRE (myObjectFileHeader, sizeof (OBJECT_FILE_HEADER), &myStatus,
+    		  myTuringFileDesciptor);
+    if (myStatus != 0)
+    {
+    	EdGUI_Message1 (NULL, 0, IDS_TPROLOG_FILE_READ_FAILED_TITLE,
+    	    	        IDS_TPROLOG_UNABLE_TO_READ_EXE, fileName, 1);
+        return 0;
+    }
+    myObjectFileHeader [sizeof (OBJECT_FILE_HEADER)-1] = 0;
+
+	if (strcmp (myObjectFileHeader, OBJECT_FILE_ERROR_HEADER) == 0) {
+		EdGUI_Message1 (NULL, 0, IDS_TPROLOG_FILE_READ_FAILED_TITLE,
+    	    	        IDS_TPROLOG_COMPILE_FAIL, fileName);
+        return 0;
+	} else if (strcmp (myObjectFileHeader, OBJECT_FILE_HEADER) != 0)
+    {
+    	EdGUI_Message1 (NULL, 0, IDS_TPROLOG_FILE_READ_FAILED_TITLE,
+    	    	        IDS_TPROLOG_BAD_HEADER_MATCH, fileName, 1);
+        return 0;
+    }
+        	
+    //
+    // Then read TProlog specific preferences      
+    //
+    TL_TLI_TLIRE (&runSettings->closeWindowsOnTerminate, sizeof (BOOL), &myStatus,
+    		  myTuringFileDesciptor);
+    if (myStatus != 0)
+    {
+    	EdGUI_Message1 (NULL, 0, IDS_TPROLOG_FILE_READ_FAILED_TITLE,
+    	    	        IDS_TPROLOG_UNABLE_TO_READ_EXE, fileName, 2);
+        return 0;
+    }
+    TL_TLI_TLIRE (&runSettings->displayRunWithArgs, sizeof (BOOL), &myStatus,
+    		  myTuringFileDesciptor);
+    if (myStatus != 0)
+    {
+    	EdGUI_Message1 (NULL, 0, IDS_TPROLOG_FILE_READ_FAILED_TITLE,
+    	    	        IDS_TPROLOG_UNABLE_TO_READ_EXE, fileName, 3);
+        return 0;
+    }
+    TL_TLI_TLIRE (&runSettings->centerOutputWindow, sizeof (BOOL), &myStatus,
+    		  myTuringFileDesciptor);
+    if (myStatus != 0)
+    {
+    	EdGUI_Message1 (NULL, 0, IDS_TPROLOG_FILE_READ_FAILED_TITLE,
+    	    	        IDS_TPROLOG_UNABLE_TO_READ_EXE, fileName, 4);
+        return 0;
+    }
+    TL_TLI_TLIRE (&runSettings->stopUserClose, sizeof (BOOL), &myStatus,
+    		  myTuringFileDesciptor);
+    if (myStatus != 0)
+    {
+    	EdGUI_Message1 (NULL, 0, IDS_TPROLOG_FILE_READ_FAILED_TITLE,
+    	    	        IDS_TPROLOG_UNABLE_TO_READ_EXE, fileName, 5);
+        return 0;
+    }
+    
+    // 
+    // Then read the environment preferences
+    //
+    TL_TLI_TLIRE (&gProperties, sizeof (Properties), &myStatus,
+    		  myTuringFileDesciptor);
+    if (myStatus != 0)
+    {
+    	EdGUI_Message1 (NULL, 0, IDS_TPROLOG_FILE_READ_FAILED_TITLE,
+    	    	        IDS_TPROLOG_UNABLE_TO_READ_EXE, fileName, 6);
+        return 0;
+    }
+    
+    //
+    // Then read another header (just to make certain we're synced)
+    //
+    TL_TLI_TLIRE (myObjectFileHeader, sizeof (OBJECT_FILE_HEADER), &myStatus,
+    		  myTuringFileDesciptor);
+    if (myStatus != 0)
+    {
+    	EdGUI_Message1 (NULL, 0, IDS_TPROLOG_FILE_READ_FAILED_TITLE,
+    	    	        IDS_TPROLOG_UNABLE_TO_READ_EXE, fileName, 7);
+        return 0;
+    }
+    myObjectFileHeader [sizeof (OBJECT_FILE_HEADER)-1] = 0;
+    if (strcmp (myObjectFileHeader, OBJECT_FILE_HEADER) != 0)
+    {
+    	EdGUI_Message1 (NULL, 0, IDS_TPROLOG_FILE_READ_FAILED_TITLE,
+    	    	        IDS_TPROLOG_BAD_HEADER_MATCH, fileName, 2);
+        return 0;
+    }
+
+	    //
+    // Get run arguments if necessary
+    //
+    runArgs->commandLineArguments [0] = 0;
+    strncpy (runArgs->ootArgs [0], stRunArgs.ootArgs [0], 255);    	    			     
+    runArgs->numArgs = 0;
+    runArgs->inputRedirection = ARGS_IN_KEY;
+    runArgs->outputRedirection = ARGS_OUT_SCREEN;
+    runArgs->inputFile [0] = 0;
+    runArgs->outputFile [0] = 0;
+
+    if (runSettings->displayRunWithArgs)
+    {
+    	if (!DialogBoxParam (gProgram.applicationInstance, 
+                MAKEINTRESOURCE (TPROLOG_RUN_WITH_ARGS_DIALOG),
+	        NULL, MyRunWithArgsDialogProcedure, (LPARAM) &stRunArgs))
+    	{
+	    return FALSE;
+    	}
+	*runArgs = stRunArgs;
+    }
+    
+    // 
+    // Then read the object files
+    //
+    Language_SetupExecutionFromObjectFile (myTuringFileDesciptor, 0, 
+    	MyGetMaxStackSize (), "", "", runArgs->ootArgs, runArgs->numArgs);
+   
+    TL_TLI_TLICL (myTuringFileDesciptor);
+	return TRUE;
+}
+
+static BOOL MyInitializeRunFromFile(RunSettings *runSettings, RunArgs *runArgs, char *filePath, char *fileName, BOOL useSeparateFile)
+{
+	TextHandleType	myTuringTextHandle;
+    SizePtrType		myTuringSizePtr;
+	FileNoType		myTuringFileNo;
+    ResultCodeType	myResult;
+	TuringErrorPtr	myError;    
+    int			myErrors;
+        	
+	runSettings->closeWindowsOnTerminate = FALSE;
+	runSettings->displayRunWithArgs = FALSE;
+	runSettings->centerOutputWindow = FALSE;
+	runSettings->stopUserClose = FALSE;
+
+	gProperties.runUseSmallFont = FALSE;
+    gProperties.useGraphicsMode = TRUE; 	// Graphics Mode
+	strcpy(gProperties.runConsoleFontName,"Courier New");
+	gProperties.runConsoleFontSize = 10;
+    gProperties.runConsoleTextRows = 25; 	// Run window rows
+    gProperties.runConsoleTextCols = 80; 	// Run window columns
+    gProperties.runConsoleFullScreen = FALSE;
+    gProperties.prohibitSysExec = FALSE;	// Allow/Forbid Sys.Exec
+    gProperties.noSound = FALSE;		// Allow/Forbid Music
+    gProperties.parallelIOPort = FALSE;	// Set PP I/O Port
+	gProperties.executionDelay = 0;
+	gProperties.turingStackSizeInKB = 0;
+
+	//
+    // Get run arguments if necessary
+    //
+    runArgs->commandLineArguments [0] = 0;
+    strncpy (runArgs->ootArgs [0], stRunArgs.ootArgs [0], 255);    	    			     
+    runArgs->numArgs = 0;
+    runArgs->inputRedirection = ARGS_IN_KEY;
+    runArgs->outputRedirection = ARGS_OUT_SCREEN;
+    runArgs->inputFile [0] = 0;
+    runArgs->outputFile [0] = 0;
+    
+    // 
+    // Then read the file
+    //
+	FileManager_OpenNamedHandle (filePath, &myTuringFileNo, &myTuringTextHandle, &myTuringSizePtr,&myResult);
+	if(myResult != 0)
+	{
+		EdGUI_Message1 (NULL, 0, IDS_TPROLOG_FILE_READ_FAILED_TITLE,
+    	    	        IDS_TPROLOG_UNABLE_TO_READ_EXE, fileName, 1);
+		return FALSE;
+	}
+	Language_CompileProgram ("", myTuringFileNo, &myError, &myErrors);
+	//
+    // Write extant errors to stdout
+    //
+    if (myError != NULL)
+    {
+		int		myMessages = 0;
+		printf("Syntax Errors:\n");
+		while (myError != NULL)
+		{
+			WORD	myErrorTuringFileNo;
+			FilePath	myErrorPathName;
+			SrcPosition	*mySrc;
+	    
+			myErrorTuringFileNo = myError -> srcPos.fileNo;
+			FileManager_FileName (myErrorTuringFileNo, myErrorPathName);
+			mySrc = &(myError -> srcPos);
+	    
+			if (mySrc -> tokLen > 0)
+			{
+			printf ("Line %d [%d - %d] of %s: %s\n",
+				mySrc -> lineNo, mySrc -> linePos + 1,
+				mySrc -> linePos + 1 + mySrc -> tokLen, 
+				EdFile_GetFileName (myErrorPathName), myError -> text);
+			}
+			else
+			{
+			printf ( 
+				"Line %d [%d] of %s: %s\n",
+				mySrc -> lineNo, mySrc -> linePos + 1,
+				EdFile_GetFileName (myErrorPathName), myError -> text);
+			}
+			myError = myError -> next;
+			myMessages++;
+		} // while (myError != NULL)
+
+		// Add a message about the number of errors and warnings
+		if (myErrors > 1)
+		{
+			if (myMessages - myErrors > 1)
+			{
+			printf ( "%d Errors and %d Warnings\n",
+				myErrors, myMessages - myErrors);
+			}
+			else if (myMessages - myErrors == 1)
+			{
+			printf ( "%d Errors and 1 Warning\n",
+				myErrors);
+			}
+			else
+			{
+			printf ( "%d Errors\n", myErrors);
+			}
+		}
+		else if (myErrors == 1)
+		{
+			if (myMessages - myErrors > 1)
+			{
+			printf ( "1 Error and %d Warnings\n",
+				myMessages - myErrors);
+			}
+			else if (myMessages - myErrors == 1)
+			{
+			printf ( "1 Error and 1 Warning\n");
+			}
+			else
+			{
+			printf ( "1 Error\n");
+			}
+		}
+		else
+		{
+			if (myMessages - myErrors > 1)
+			{
+			printf ( "%d Warnings\n",
+				myMessages - myErrors);
+			}
+			else if (myMessages - myErrors == 1)
+			{
+			printf ( "1 Warning\n");
+			}
+		}
+		return FALSE;
+    } // if (myError != NULL)
+	// Set up for running
+	Language_SetupExecution (MyGetMaxStackSize (), "", "", runArgs->ootArgs, runArgs->numArgs);
+	return TRUE;
+}
 
 /************************************************************************/
 /* MyProcessWaitingEvents						*/
