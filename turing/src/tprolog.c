@@ -366,7 +366,7 @@ int WINAPI	WinMain (HINSTANCE pmApplicationInstance,
     stTuringProgramPaused = FALSE;
     stTuringProgramHalting = FALSE;
     stQuittingEnvironment = FALSE;
-
+	if(myCompileFile || myUseSeparateFile) printf("Running Program...\n");
     do
     {
     	if (!stTuringProgramPaused)
@@ -452,12 +452,22 @@ int WINAPI	WinMain (HINSTANCE pmApplicationInstance,
 		  strlen (SYSEXIT_ERROR_STRING)) != 0))
     {
     	FilePath	myErrorPathName;
-
-	Language_GetFileName (stErrorPtr -> srcPos.fileNo, myErrorPathName);
-    	EdGUI_Message ("Run Time Error", 
-    	    "An run-time error has occurred in this program.\n\n"
-    	    "Line %d of %s: %s", stErrorPtr -> srcPos.lineNo, 
-    	    myErrorPathName, stErrorPtr -> text);
+		if(myCompileFile) {
+			FileManager_FileName (stErrorPtr -> srcPos.fileNo, myErrorPathName);
+		} else {
+			Language_GetFileName (stErrorPtr -> srcPos.fileNo, myErrorPathName);
+		}
+		if(myCompileFile || myUseSeparateFile) {
+			SrcPosition	*mySrc = &(stErrorPtr -> srcPos);
+			printf ("Run time error on line %d [%d-%d] of %s: %s\n",
+					mySrc->lineNo, mySrc->linePos + 1,mySrc -> linePos + mySrc -> tokLen,
+					myErrorPathName, stErrorPtr -> text);
+		} else {
+    		EdGUI_Message ("Run Time Error", 
+    			"An run-time error has occurred in this program.\n\n"
+    			"Line %d of %s: %s", stErrorPtr -> srcPos.lineNo, 
+    			myErrorPathName, stErrorPtr -> text);
+		}
     }
 
     DestroyWindow (myDummyWindow);
@@ -1427,7 +1437,7 @@ static BOOL MyInitializeRunFromFile(RunSettings *runSettings, RunArgs *runArgs, 
     if (myError != NULL)
     {
 		int		myMessages = 0;
-		printf("Syntax Errors:\n");
+		printf("Compile Errors:\n");
 		while (myError != NULL)
 		{
 			WORD	myErrorTuringFileNo;
@@ -1440,7 +1450,7 @@ static BOOL MyInitializeRunFromFile(RunSettings *runSettings, RunArgs *runArgs, 
 	    
 			if (mySrc -> tokLen > 0)
 			{
-			printf ("Line %d [%d - %d] of %s: %s\n",
+			printf ("Error on line %d [%d - %d] of %s: %s\n",
 				mySrc -> lineNo, mySrc -> linePos + 1,
 				mySrc -> linePos + 1 + mySrc -> tokLen, 
 				EdFile_GetFileName (myErrorPathName), myError -> text);
@@ -1448,7 +1458,7 @@ static BOOL MyInitializeRunFromFile(RunSettings *runSettings, RunArgs *runArgs, 
 			else
 			{
 			printf ( 
-				"Line %d [%d] of %s: %s\n",
+				"Error on line %d [%d] of %s: %s\n",
 				mySrc -> lineNo, mySrc -> linePos + 1,
 				EdFile_GetFileName (myErrorPathName), myError -> text);
 			}
