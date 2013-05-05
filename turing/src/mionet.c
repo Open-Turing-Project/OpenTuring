@@ -46,7 +46,7 @@ xxx
 /*************/
 /* Constants */
 /*************/
-#define BUFFER_SIZE		128*1024
+#define BUFFER_SIZE		(128*1024)
 #define NET_STREAM_CLOSED	(NetRecord *) 1
 
 #define NA_BYTES		0
