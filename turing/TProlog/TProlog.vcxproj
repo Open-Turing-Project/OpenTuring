@@ -86,13 +86,8 @@
     <ClCompile Include="..\..\ready\src\edprint.c" />
     <ClCompile Include="..\..\ready\src\edprog.c" />
     <ClCompile Include="..\..\ready\src\edtext.c" />
-    <ClCompile Include="..\src\debug.c" />
     <ClCompile Include="..\src\edint.c" />
-    <ClCompile Include="..\src\error.c" />
-    <ClCompile Include="..\src\paraoot.c" />
     <ClCompile Include="..\src\tprolog.c" />
-    <ClCompile Include="..\src\tprolog\language.c" />
-    <ClCompile Include="..\src\unitman.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\tprolog.h" />

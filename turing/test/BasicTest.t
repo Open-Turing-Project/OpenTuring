@@ -7,7 +7,7 @@ fcn test (hi : int) : int
     end if
 end test
 
-
+put eeee
 fcn collatz (n : int) : int
     var prev := n
     loop
